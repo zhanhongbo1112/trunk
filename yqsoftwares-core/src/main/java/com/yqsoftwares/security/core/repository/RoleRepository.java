@@ -1,0 +1,31 @@
+package com.yqsoftwares.security.core.repository;
+
+import com.yqsoftwares.security.core.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Created by Administrator on 2015-12-13.
+ */
+public interface RoleRepository extends JpaRepository<Role, Long>, JpaSpecificationExecutor<Role> {
+    Role findByPath(String path);
+
+    @Query("delete from #{#entityName} where path = ?1")
+    @Modifying
+    void delete(final String path);
+
+    List<Role> findByUsersUsername(final String username);
+
+    List<Role> findByGroupsPath(final String groupPath);
+
+    List<Role> findByGroupsPathIn(final Set<String> groupPaths);
+
+    List<Role> findByPathIn(Set<String> paths);
+
+    List<Role> findByPathLikeIgnoreCase(String pathFilter);
+}
