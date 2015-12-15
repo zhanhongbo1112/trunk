@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Set;
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
     User findByUsername(String username);
 
+    @Transactional
     @Query("delete from #{#entityName} where username = ?1")
     @Modifying
     void delete(String username);
@@ -26,7 +28,11 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 
     List<User> findByRolesPath(final String rolePath);
 
+    List<User> findByRolesPathIn(final Set<String> rolePaths);
+
     List<User> findByGroupsPath(final String groupPath);
+
+    List<User> findByGroupsPathIn(final Set<String> groupPaths);
 
     List<User> findByUsernameLikeIgnoreCase(String usernameFilter);
 }

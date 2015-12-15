@@ -1,5 +1,6 @@
 package com.yqsoftwares.security.core.repository;
 
+import com.yqsoftwares.commons.db.util.DBUtils;
 import com.yqsoftwares.security.Application;
 import com.yqsoftwares.security.core.User;
 import org.junit.Assert;
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2015-12-14.
@@ -28,26 +31,48 @@ public class UserRepositoryTest {
 
     @Test
     public void testDelete() throws Exception {
-        Assert.fail("not yet implemented");
+        userRepository.delete("noneusername");
     }
 
     @Test
     public void testFindByUsernameIn() throws Exception {
-        Assert.fail("not yet implemented");
+        Set<String> usernames = new HashSet<>();
+        usernames.add("nonexistedusername");
+        List<User> users = userRepository.findByUsernameIn(usernames);
+        Assert.assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByRolesPath() throws Exception {
-        Assert.fail("not yet implemented");
+        List<User> users = userRepository.findByRolesPath("nonexistedpath");
+        Assert.assertTrue(users.isEmpty());
+    }
+
+    @Test
+    public void testFindByRolesPathIn() throws Exception {
+        Set<String> paths = new HashSet<>();
+        paths.add("nonexistedpath");
+        List<User> users = userRepository.findByRolesPathIn(paths);
+        Assert.assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByGroupsPath() throws Exception {
-        Assert.fail("not yet implemented");
+        List<User> users = userRepository.findByGroupsPath("nonexistedpath");
+        Assert.assertTrue(users.isEmpty());
+    }
+
+    @Test
+    public void testFindByGroupsPathIn() throws Exception {
+        Set<String> paths = new HashSet<>();
+        paths.add("nonexistedpath");
+        List<User> users = userRepository.findByGroupsPathIn(paths);
+        Assert.assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByUsernameLikeIgnoreCase() throws Exception {
-        Assert.fail("not yet implemented");
+        List<User> users = userRepository.findByUsernameLikeIgnoreCase(DBUtils.wildcard("none"));
+        Assert.assertTrue(users.isEmpty());
     }
 }

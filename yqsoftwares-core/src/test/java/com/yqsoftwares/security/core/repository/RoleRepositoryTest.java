@@ -1,5 +1,6 @@
 package com.yqsoftwares.security.core.repository;
 
+import com.yqsoftwares.commons.db.util.DBUtils;
 import com.yqsoftwares.security.Application;
 import com.yqsoftwares.security.core.Role;
 import org.junit.Assert;
@@ -8,6 +9,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -28,31 +33,48 @@ public class RoleRepositoryTest {
 
     @Test
     public void testDelete() throws Exception {
-        Assert.fail("not yet implemented");
+        roleRepository.delete("nonexistedpath");
     }
 
     @Test
     public void testFindByUsersUsername() throws Exception {
-        Assert.fail("not yet implemented");
+        List<Role> roles = roleRepository.findByUsersUsername("nonexistedusername");
+        Assert.assertTrue(roles.isEmpty());
+    }
+
+    @Test
+    public void testFindByUsersUsernameIn() throws Exception {
+        Set<String> usernames = new HashSet<>();
+        usernames.add("nonexistedusername");
+        List<Role> roles = roleRepository.findByUsersUsernameIn(usernames);
+        Assert.assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByGroupsPath() throws Exception {
-        Assert.fail("not yet implemented");
+        List<Role> roles = roleRepository.findByGroupsPath("nonexistedgrouppath");
+        Assert.assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByGroupsPathIn() throws Exception {
-        Assert.fail("not yet implemented");
+        Set<String> paths = new HashSet<>();
+        paths.add("nonexistedpath");
+        List<Role> roles = roleRepository.findByGroupsPathIn(paths);
+        Assert.assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByPathIn() throws Exception {
-        Assert.fail("not yet implemented");
+        Set<String> paths = new HashSet<>();
+        paths.add("nonexistedpath");
+        List<Role> roles = roleRepository.findByPathIn(paths);
+        Assert.assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByPathLikeIgnoreCase() throws Exception {
-        Assert.fail("not yet implemented");
+        List<Role> roles = roleRepository.findByPathLikeIgnoreCase(DBUtils.wildcard("none"));
+        Assert.assertTrue(roles.isEmpty());
     }
 }
