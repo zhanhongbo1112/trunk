@@ -2,6 +2,8 @@ package com.yqsoftwares.security.audit;
 
 import com.yqsoftwares.security.core.User;
 import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -18,14 +20,14 @@ import java.util.Date;
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING, length = 64)
 @DiscriminatorValue("DEFAULT")
 public class Audit extends AbstractPersistable<Long> {
-    @LastModifiedBy
+    @CreatedBy
     @ManyToOne
-    @JoinColumn(name = "LAST_MODIFIED_BY", referencedColumnName = "USERNAME", nullable = false)
+    @JoinColumn(name = "CREATED_BY", referencedColumnName = "USERNAME", nullable = false)
     private User createdBy;
 
-    @LastModifiedDate
+    @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "LAST_MODIFIED_DATE", nullable = false)
+    @Column(name = "CREATED_DATE", nullable = false)
     private Date createdDate;
 
     private int code;

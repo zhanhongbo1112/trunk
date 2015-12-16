@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -36,11 +34,24 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
 
     @ManyToMany
     @JoinTable(name = "SEC_USER_ROLES", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
-    private Set<Role> roles = Collections.synchronizedSet(new HashSet<>());
+    private Set<Role> roles;
 
     @ManyToMany
     @JoinTable(name = "SEC_USER_GROUPS", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
-    private Set<Group> groups = Collections.synchronizedSet(new HashSet<>());
+    private Set<Group> groups;
+
+    public User() {
+        super();
+    }
+
+    public User(Long id, String username, String password, boolean enabled, Set<Role> roles) {
+        super();
+        this.setId(id);
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
 
     public String getUsername() {
         return username;
