@@ -24,15 +24,15 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     @Modifying
     void delete(String username);
 
-    List<User> findByUsernameIn(final Set<String> usernames);
+    List<User> findByUsernameIn(final Collection<String> usernames);
 
     List<User> findByRolesPath(final String rolePath);
 
-    List<User> findByRolesPathIn(final Set<String> rolePaths);
+    List<User> findByRolesPathIn(final Collection<String> rolePaths);
 
     List<User> findByGroupsPath(final String groupPath);
 
-    List<User> findByGroupsPathIn(final Set<String> groupPaths);
+    List<User> findByGroupsPathIn(final Collection<String> groupPaths);
 
     List<User> findByUsernameLikeIgnoreCase(String usernameFilter);
 }

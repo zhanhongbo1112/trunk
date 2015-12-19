@@ -8,6 +8,6 @@ import javax.persistence.Table;
  * Created by Administrator on 2015-12-15.
  */
 @Entity
-@DiscriminatorValue("SECURITY")
+@DiscriminatorValue("1")
 public class SecurityAudit extends Audit {
 }

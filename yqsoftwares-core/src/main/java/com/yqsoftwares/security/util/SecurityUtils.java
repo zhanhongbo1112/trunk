@@ -12,11 +12,11 @@ public final class SecurityUtils {
         User result = null;
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || !authentication.isAuthenticated()) {
-            return null;
+        if (authentication != null && authentication.isAuthenticated()) {
+            result = (User) authentication.getPrincipal();
         }
 
-        return (User) authentication.getPrincipal();
+        return result;
     }
 
     private SecurityUtils() {

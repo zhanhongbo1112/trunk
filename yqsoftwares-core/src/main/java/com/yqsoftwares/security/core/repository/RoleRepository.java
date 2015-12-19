@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -23,13 +24,13 @@ public interface RoleRepository extends JpaRepository<Role, Long>, JpaSpecificat
 
     List<Role> findByUsersUsername(final String username);
 
-    List<Role> findByUsersUsernameIn(final Set<String> usernames);
+    List<Role> findByUsersUsernameIn(final Collection<String> usernames);
 
     List<Role> findByGroupsPath(final String groupPath);
 
-    List<Role> findByGroupsPathIn(final Set<String> groupPaths);
+    List<Role> findByGroupsPathIn(final Collection<String> groupPaths);
 
-    List<Role> findByPathIn(Set<String> paths);
+    List<Role> findByPathIn(Collection<String> paths);
 
     List<Role> findByPathLikeIgnoreCase(String pathFilter);
 }

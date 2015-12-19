@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -23,13 +24,13 @@ public interface GroupRepository extends JpaRepository<Group, Long>, JpaSpecific
 
     List<Group> findByUsersUsername(final String username);
 
-    List<Group> findByUsersUsernameIn(final Set<String> username);
+    List<Group> findByUsersUsernameIn(final Collection<String> username);
 
     List<Group> findByRolesPath(final String rolePath);
 
-    List<Group> findByRolesPathIn(final Set<String> rolePath);
+    List<Group> findByRolesPathIn(final Collection<String> rolePath);
 
-    List<Group> findByPathIn(Set<String> paths);
+    List<Group> findByPathIn(Collection<String> paths);
 
     List<Group> findByPathLikeIgnoreCase(String pathFilter);
 }

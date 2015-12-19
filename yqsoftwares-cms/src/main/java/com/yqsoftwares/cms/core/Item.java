@@ -14,8 +14,13 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "CMS_ITEM", uniqueConstraints = {@UniqueConstraint(name = "UN_ITEM_NAME", columnNames = {"NAME"})})
-@AssociationOverrides({@AssociationOverride(name = "createdBy", joinColumns = {@JoinColumn(name = "CREATED_BY", referencedColumnName = "USERNAME")}),
-        @AssociationOverride(name = "lastModifiedBy", joinColumns = {@JoinColumn(name = "LAST_MODIFIED_BY", referencedColumnName = "USERNAME")})})
+@Inheritance
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorValue(value = "0")
+@AssociationOverrides({@AssociationOverride(name = "createdBy", joinColumns = {@JoinColumn(referencedColumnName = "USERNAME", nullable = false)}),
+        @AssociationOverride(name = "lastModifiedBy", joinColumns = {@JoinColumn(referencedColumnName = "USERNAME", nullable = false)})})
+@AttributeOverrides({@AttributeOverride(name = "createdDate", column = @Column(nullable = false)),
+        @AttributeOverride(name = "lastModifiedDate", column = @Column(nullable = false))})
 public class Item extends AbstractAuditable<User, Long> {
     @NotEmpty
     @Length(max = 64)
@@ -24,9 +29,9 @@ public class Item extends AbstractAuditable<User, Long> {
     private String name;
 
     @NotNull
-    @Length(max = 20)
+    @Length(max = 32)
     @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false)
+    @Column(length = 32, nullable = false)
     private ItemState state;
 
     public String getName() {
