@@ -24,6 +24,9 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     @Modifying
     void delete(String username);
 
+    @Query("select 1 from #{#entityName} where username = ?1")
+    boolean exists(String username);
+
     List<User> findByUsernameIn(final Collection<String> usernames);
 
     List<User> findByRolesPath(final String rolePath);
@@ -35,4 +38,6 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     List<User> findByGroupsPathIn(final Collection<String> groupPaths);
 
     List<User> findByUsernameLikeIgnoreCase(String usernameFilter);
+
+    Page<User> findByUsernameLikeIgnoreCase(String usernameFilter, Pageable pageable);
 }
