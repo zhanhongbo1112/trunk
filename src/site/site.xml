@@ -1,128 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="YuQi Softwares" xmlns="http://maven.apache.org/DECORATION/1.6.0"
+<project name="YuQi Projects" xmlns="http://maven.apache.org/DECORATION/1.6.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
     <bannerLeft>
         <!-- Reflow Maven Skin, but with "Reflow" highlighted -->
-        <name><![CDATA[<span class="color-highlight">YuQi</span> Softwares]]></name>
+        <name><![CDATA[<span class="color-highlight">YuQi</span> Projects]]></name>
         <href>https://github.com/zhanhongbo1112</href>
     </bannerLeft>
-    <publishDate position="bottom" format="yyyy-MM-dd"/>
-    <version position="bottom"/>
+    <publishDate position="top" format="yyyy-MM-dd"/>
+    <version position="top"/>
     <googleAnalyticsAccountId/>
 
     <skin>
-        <groupId>lt.velykis.maven.skins</groupId>
-        <artifactId>reflow-maven-skin</artifactId>
-        <version>1.1.1</version>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.4</version>
     </skin>
     <custom>
-        <reflowSkin>
-            <!-- Make this to 'false' for local development, i.e. file:// URLs -->
-            <protocolRelativeURLs>false</protocolRelativeURLs>
-            <smoothScroll>true</smoothScroll>
-            <theme>default</theme>
-            <highlightJs>true</highlightJs>
-            <highlightJsTheme>github</highlightJsTheme>
-            <absoluteResourceURL>https://github.com/zhanhongbo1112/</absoluteResourceURL>
-            <brand>
-                <!-- Brand text in top-left part of the site -->
-                <name><![CDATA[<span class="color-highlight">YuQi</span> Projects]]></name>
-                <href>https://github.com/zhanhongbo1112/</href>
-            </brand>
-            <slogan>Building production-ready Spring application and getting you up and running as quickly as possible
-            </slogan>
-            <titleTemplate>%2$s | %1$s</titleTemplate>
-            <!-- Use Table of Contents at the top of the page (max 6 elements) -->
-            <toc>top</toc>
-            <tocTopMax>6</tocTopMax>
-            <!-- Include the documentation and tools in the top navigation (in addition to links) -->
-            <topNav>Documentation|Tools|Contribute</topNav>
-            <bottomNav maxSpan="9">
-                <column>Documentation</column>
-                <column>Tools</column>
-                <column>Contribute</column>
-                <column>reports</column>
-            </bottomNav>
-            <bottomDescription>
-                <![CDATA[
-                   <span class="color-highlight">YuQi Softwares</span> is an Open Source Project built on
-                   <a href="https://spring.io/spring-boot" title="Spring Boot">Spring Boot</a>.
-                   It allows you to build production-ready Spring application,getting you up and running as quickly as possible..
-                 ]]>
-            </bottomDescription>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <topBarIcon>
+                <name>YuQi Projects</name>
+                <alt>YuQi Projects</alt>
+                <!--<src></src>-->
+                <href>/index.html</href>
+            </topBarIcon>
 
-            <pages>
-                <index project="yqsoftwares-projects">
-                    <!-- Override the title -->
-                    <titleTemplate>YuQi Softwares</titleTemplate>
-                    <!-- no breadcrumbs on the main index page -->
-                    <breadcrumbs>false</breadcrumbs>
-                    <!-- no ToC on the main index page -->
-                    <toc>false</toc>
-                    <markPageHeader>false</markPageHeader>
-                    <sections>
-                        <!--<carousel/>-->
-                        <columns/>
-                        <body/>
-                        <sidebar/>
-                    </sections>
-                </index>
-                <contribute>
-                    <breadcrumbs>false</breadcrumbs>
-                </contribute>
-                <!-- Disable source highlighting for Maven reports -->
-                <source-repository>
-                    <highlightJs>false</highlightJs>
-                </source-repository>
-                <issue-tracking>
-                    <highlightJs>false</highlightJs>
-                    <toc>false</toc>
-                </issue-tracking>
-                <license>
-                    <highlightJs>false</highlightJs>
-                    <toc>false</toc>
-                </license>
-                <!-- Disable ToC for some Maven reports -->
-                <project-info>
-                    <toc>false</toc>
-                </project-info>
-                <github-report>
-                    <toc>false</toc>
-                </github-report>
-                <dependencies>
-                    <tocTopMax>4</tocTopMax>
-                </dependencies>
-            </pages>
-        </reflowSkin>
+            <sideBarEnabled>false</sideBarEnabled>
+            <topBarContainerStyle>width: 90%;</topBarContainerStyle>
+            <googleSearch>
+                <sitesearch/>
+            </googleSearch>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <skipGenerationDate>true</skipGenerationDate>
+            <breadcrumbDivider>»</breadcrumbDivider>
+            <gitHub>
+                <projectId>zhanhongbo1112/trunk</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>black</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
     </custom>
     <body>
-        <!-- Add a rel to head for all pages -->
-        <head>
-            <link rel="author" href="https://github.com/zhanhongbo1112"/>
-        </head>
-        <links>
-            <item name="GitHub project" href="https://github.com/zhanhongbo1112/"/>
-        </links>
         <breadcrumbs>
             <item name="YuQi" href="/"/>
         </breadcrumbs>
-        <menu name="Documentation" inherit="top,bottom">
-            <item name="Usage" href="skin/"/>
-            <item name="Configuration" href="skin/config.html"/>
-            <item name="Themes" href="skin/themes/"/>
-        </menu>
-        <menu name="Tools" inherit="top,bottom">
-            <item name="Reflow Velocity tools"
-                  href="http://github.com/andriusvelykis/reflow-maven-skin/reflow-velocity-tools/"/>
-            <item name="Tools Javadoc"
-                  href="http://github.com/andriusvelykis/reflow-maven-skin/reflow-velocity-tools/apidocs/"/>
-        </menu>
-        <menu name="Contribute" inherit="top,bottom">
-            <!-- <item name="Contribute" href="contribute.html"/>-->
-            <item name="Issues" href="https://github.com/zhanhongbo1112/issues/"/>
-            <item name="Fork on GitHub" href="https://github.com/zhanhongbo1112/"/>
-        </menu>
-        <menu name="Maven documentation" ref="reports" inherit="bottom"/>
+<!--        <menu name="Documentation" inherit="top">
+            <item name="Usage" href=""/>
+            <item name="Configuration" href="config.html"/>
+        </menu>-->
+        <menu name="Maven Documentation" ref="reports" inherit="top"/>
     </body>
 </project>
