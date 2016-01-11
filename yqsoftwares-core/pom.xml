@@ -10,6 +10,8 @@
     </parent>
     <artifactId>yqsoftwares-core</artifactId>
     <packaging>jar</packaging>
+    <name>YuQi Softwares Core Module</name>
+    <description>Defines the core functions</description>
 
     <dependencies>
         <dependency>
@@ -60,6 +62,23 @@
                 <configuration>
                     <mainClass>com.yqsoftwares.security.Application</mainClass>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site-deploy</phase>
+                        <configuration>
+                            <message>deploy to gh-pages ${project.artifactId} (${project.version})</message>
+                            <path>${project.version}/${project.artifactId}</path>
+                            <merge>true</merge>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

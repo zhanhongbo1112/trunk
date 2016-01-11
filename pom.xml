@@ -18,9 +18,12 @@
     <artifactId>yqsoftwares-projects</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+    <name>YuQi Softwares Projects</name>
+    <description>Defines the root modules of the projects</description>
+
     <properties>
         <java.version>1.8</java.version>
-        <site.url>https://github.com/zhanhongbo1112/</site.url>
+        <site.url>https://github.com/zhanhongbo1112</site.url>
         <github.global.server>github</github.global.server>
         <site.deploy.id>gh-pages</site.deploy.id>
         <site.deploy.url/>
@@ -30,7 +33,7 @@
     <url>${site.url}</url>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/zhanhongbo1112/trunk/issues</url>
+        <url>${site.url}/trunk/issues</url>
     </issueManagement>
     <licenses>
         <license>
@@ -41,14 +44,14 @@
     </licenses>
     <organization>
         <name>Eric H B Zhan</name>
-        <url>https://github.com/zhanhongbo1112</url>
+        <url>${site.url}</url>
     </organization>
     <developers>
         <developer>
             <id>zhanhongbo1112</id>
             <name>Eric H B Zhan</name>
             <timezone>GMT+08:00</timezone>
-            <url>https://github.com/zhanhongbo1112</url>
+            <url>${site.url}</url>
         </developer>
     </developers>
 
@@ -63,10 +66,48 @@
     </dependencyManagement>
     <scm>
         <connection>scm:git:git@github.com:zhanhongbo1112/trunk.git</connection>
-        <url>https://github.com/zhanhongbo1112/trunk</url>
+        <url>${site.url}/trunk</url>
         <developerConnection>scm:git:git@github.com:zhanhongbo1112/trunk.git</developerConnection>
     </scm>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.4</version>
+                    <configuration>
+                        <generateReports>true</generateReports>
+                        <inputEncoding>UTF-8</inputEncoding>
+                        <outputEncoding>UTF-8</outputEncoding>
+                        <skipDeploy>true</skipDeploy>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.github</groupId>
+                    <artifactId>site-maven-plugin</artifactId>
+                    <version>0.12</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>site</goal>
+                            </goals>
+                            <phase>site-deploy</phase>
+                            <configuration>
+                                <message>deploy to gh-pages ${project.artifactId} (${project.version})</message>
+                                <path>${project.version}</path>
+                                <merge>true</merge>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
@@ -79,40 +120,17 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.4</version>
-                <configuration>
-                    <generateReports>true</generateReports>
-                    <inputEncoding>UTF-8</inputEncoding>
-                    <outputEncoding>UTF-8</outputEncoding>
-                    <skipDeploy>true</skipDeploy>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <phase>site-deploy</phase>
-                        <configuration>
-                            <message>deploy to gh-pages ${project.version}</message>
-                            <path>${project.version}</path>
-                            <merge>true</merge>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
     <reporting>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>2.8.1</version>
                 <reportSets>
@@ -130,6 +148,10 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+                <configuration>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>
