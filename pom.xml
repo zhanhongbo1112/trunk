@@ -61,7 +61,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <scm>
+        <connection>scm:git:git@github.com:zhanhongbo1112/trunk.git</connection>
+        <url>https://github.com/zhanhongbo1112/trunk</url>
+        <developerConnection>scm:git:git@github.com:zhanhongbo1112/trunk.git</developerConnection>
+    </scm>
     <build>
         <plugins>
             <plugin>
@@ -84,6 +88,24 @@
                     <outputEncoding>UTF-8</outputEncoding>
                     <skipDeploy>true</skipDeploy>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site-deploy</phase>
+                        <configuration>
+                            <message>deploy to gh-pages ${project.version}</message>
+                            <path>${project.version}</path>
+                            <merge>true</merge>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
