@@ -22,6 +22,9 @@ public interface RoleRepository extends JpaRepository<Role, Long>, JpaSpecificat
     @Modifying
     void delete(final String path);
 
+    @Query("select case when count(0) > 0 then true else false end from #{#entityName} where path = ?1")
+    boolean exists(String path);
+
     List<Role> findByUsersUsername(final String username);
 
     List<Role> findByUsersUsernameIn(final Collection<String> usernames);

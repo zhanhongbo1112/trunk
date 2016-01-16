@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
     @Modifying
     void delete(String username);
 
-    @Query("select 1 from #{#entityName} where username = ?1")
+    @Query("select case when count(0) > 0 then true else false end from #{#entityName} where username = ?1")
     boolean exists(String username);
 
     List<User> findByUsernameIn(final Collection<String> usernames);

@@ -33,11 +33,11 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
     @Column(nullable = false)
     private boolean enabled;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "SEC_USER_ROLES", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
     private Set<Role> roles;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Group.class)
     @JoinTable(name = "SEC_USER_GROUPS", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
     private Set<Group> groups;
 

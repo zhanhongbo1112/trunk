@@ -22,6 +22,9 @@ public interface GroupRepository extends JpaRepository<Group, Long>, JpaSpecific
     @Modifying
     void delete(final String path);
 
+    @Query("select case when count(0) > 0 then true else false end from #{#entityName} where path = ?1")
+    boolean exists(String path);
+
     List<Group> findByUsersUsername(final String username);
 
     List<Group> findByUsersUsernameIn(final Collection<String> username);

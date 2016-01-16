@@ -14,6 +14,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by Administrator on 2015-12-14.
  */
@@ -39,13 +42,13 @@ public class UserRepositoryTest {
         Set<String> usernames = new HashSet<>();
         usernames.add("nonexistedusername");
         List<User> users = userRepository.findByUsernameIn(usernames);
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByRolesPath() throws Exception {
         List<User> users = userRepository.findByRolesPath("nonexistedpath");
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
     }
 
     @Test
@@ -53,13 +56,13 @@ public class UserRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<User> users = userRepository.findByRolesPathIn(paths);
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByGroupsPath() throws Exception {
         List<User> users = userRepository.findByGroupsPath("nonexistedpath");
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
     }
 
     @Test
@@ -67,12 +70,18 @@ public class UserRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<User> users = userRepository.findByGroupsPathIn(paths);
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
     }
 
     @Test
     public void testFindByUsernameLikeIgnoreCase() throws Exception {
         List<User> users = userRepository.findByUsernameLikeIgnoreCase(DBUtils.wildcard("none"));
-        Assert.assertTrue(users.isEmpty());
+        assertTrue(users.isEmpty());
+    }
+
+    @Test
+    public void testExists() throws Exception {
+        boolean result = userRepository.exists("nonexitedpath");
+        assertFalse(result);
     }
 }

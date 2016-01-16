@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class UserController {
         String[] groups = (String[]) inputs.get("groups");
         String[] roles = (String[]) inputs.get("roles");
 
-        userManager.addUser(entity, groups, roles);
+        userManager.addUser(entity, Arrays.asList(groups), Arrays.asList(roles));
 
         return true;
     }
@@ -46,7 +47,7 @@ public class UserController {
         String[] groups = (String[]) inputs.get("groups");
         String[] roles = (String[]) inputs.get("roles");
 
-        userManager.updateUser(entity, groups, roles);
+        userManager.updateUser(entity, Arrays.asList(groups), Arrays.asList(roles));
 
         return true;
     }

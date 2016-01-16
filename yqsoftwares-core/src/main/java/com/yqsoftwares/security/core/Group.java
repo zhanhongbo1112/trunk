@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -29,7 +30,7 @@ public class Group extends AbstractPersistable<Long> {
     @Column(length = 255)
     private String description;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "SEC_GROUP_ROLES", joinColumns = @JoinColumn(name = "GROUP_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
     private Set<Role> roles;
 

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -40,13 +41,12 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    public void addUser(User entity, String[] groups, String[] roles) {
+    public void addUser(User entity, Collection<String> groups, Collection<String> roles) {
         Assert.isTrue(entity.isNew());
         Assert.hasText(entity.getUsername());
         Assert.notNull(groups);
         Assert.notNull(roles);
-        final User user = userRepository.findByUsername(entity.getUsername());
-        if (user != null) {
+        if (userRepository.exists(entity.getUsername())) {
             throw new UserExistsException(entity.getUsername());
         }
 
@@ -59,40 +59,61 @@ public class UserManagerImpl implements UserManager {
         password = passwordEncoder.encode(password);
         entity.setPassword(password);
 
-        List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
-        entity.setGroups(new HashSet<>(inGroups));
+        List<Group> inGroups = groupRepository.findByPathIn(groups);
+        if (!inGroups.isEmpty()) {
+            entity.setGroups(new HashSet<>(inGroups));
+        }
 
-        List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
-        entity.setRoles(new HashSet<>(inRoles));
+        List<Role> inRoles = roleRepository.findByPathIn(roles);
+        if (!inRoles.isEmpty()) {
+            entity.setRoles(new HashSet<>(inRoles));
+        }
 
         userRepository.save(entity);
     }
 
     @Override
     @Transactional
-    public void updateUser(User entity, String[] groups, String[] roles) {
+    public void updateUser(User entity, Collection<String> groups, Collection<String> roles) {
         Assert.isTrue(!entity.isNew());
         Assert.hasText(entity.getUsername());
         Assert.notNull(groups);
         Assert.notNull(roles);
 
-        final User user = userRepository.findByUsername(entity.getUsername());
-        if (user == null) {
+        if (!userRepository.exists(entity.getUsername())) {
             throw new UserNotFoundException(entity.getUsername());
         }
 
-        final List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
-        user.setGroups(new HashSet<>(inGroups));
+        User user = userRepository.findByUsername(entity.getUsername());
+        user.getGroups().clear();
+        user.getRoles().clear();
+        userRepository.save(user);
 
-        final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
-        user.setRoles(new HashSet<>(inRoles));
+        final List<Group> inGroups = groupRepository.findByPathIn(groups);
+        if (!inGroups.isEmpty()) {
+            user.setGroups(new HashSet<>(inGroups));
+        }
+
+        final List<Role> inRoles = roleRepository.findByPathIn(roles);
+        if (!inRoles.isEmpty()) {
+            user.setRoles(new HashSet<>(inRoles));
+        }
 
         userRepository.save(entity);
     }
 
     @Override
-    public Page<User> findUsers(String username, Pageable pageable) {
-        final String filter = DBUtils.wildcard(username);
+    public User findUser(String username) throws UserNotFoundException {
+        if (!userRepository.exists(username)) {
+            throw new UserNotFoundException(username);
+        }
+
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Page<User> findUsers(String usernameFilter, Pageable pageable) {
+        final String filter = DBUtils.wildcard(usernameFilter);
         return userRepository.findByUsernameLikeIgnoreCase(filter, pageable);
     }
 

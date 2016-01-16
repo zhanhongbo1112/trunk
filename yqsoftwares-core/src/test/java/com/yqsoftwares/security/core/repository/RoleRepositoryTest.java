@@ -3,7 +3,6 @@ package com.yqsoftwares.security.core.repository;
 import com.yqsoftwares.commons.db.util.DBUtils;
 import com.yqsoftwares.security.Application;
 import com.yqsoftwares.security.core.Role;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class RoleRepositoryTest {
     @Test
     public void testFindByPath() throws Exception {
         Role role = roleRepository.findByPath("nonexistedpath");
-        Assert.assertNull(role);
+        assertNull(role);
     }
 
     @Test
@@ -39,7 +38,7 @@ public class RoleRepositoryTest {
     @Test
     public void testFindByUsersUsername() throws Exception {
         List<Role> roles = roleRepository.findByUsersUsername("nonexistedusername");
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
     }
 
     @Test
@@ -47,13 +46,13 @@ public class RoleRepositoryTest {
         Set<String> usernames = new HashSet<>();
         usernames.add("nonexistedusername");
         List<Role> roles = roleRepository.findByUsersUsernameIn(usernames);
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByGroupsPath() throws Exception {
         List<Role> roles = roleRepository.findByGroupsPath("nonexistedgrouppath");
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
     }
 
     @Test
@@ -61,7 +60,7 @@ public class RoleRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<Role> roles = roleRepository.findByGroupsPathIn(paths);
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
     }
 
     @Test
@@ -69,12 +68,18 @@ public class RoleRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<Role> roles = roleRepository.findByPathIn(paths);
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
     }
 
     @Test
     public void testFindByPathLikeIgnoreCase() throws Exception {
         List<Role> roles = roleRepository.findByPathLikeIgnoreCase(DBUtils.wildcard("none"));
-        Assert.assertTrue(roles.isEmpty());
+        assertTrue(roles.isEmpty());
+    }
+
+    @Test
+    public void testExists() throws Exception {
+        boolean result = roleRepository.exists("nonexitedpath");
+        assertFalse(result);
     }
 }

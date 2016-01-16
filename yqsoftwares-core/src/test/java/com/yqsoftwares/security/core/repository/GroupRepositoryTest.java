@@ -14,6 +14,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by Administrator on 2015-12-14.
  */
@@ -37,7 +40,7 @@ public class GroupRepositoryTest {
     @Test
     public void testFindByUsersUsername() throws Exception {
         List<Group> groups = groupRepository.findByUsersUsername("nonexistedusername");
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
     }
 
     @Test
@@ -45,13 +48,13 @@ public class GroupRepositoryTest {
         Set<String> usernames = new HashSet<>();
         usernames.add("nonexistedusername");
         List<Group> groups = groupRepository.findByUsersUsernameIn(usernames);
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
     }
 
     @Test
     public void testFindByRolesPath() throws Exception {
         List<Group> groups = groupRepository.findByRolesPath("nonexistedpath");
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
     }
 
     @Test
@@ -59,7 +62,7 @@ public class GroupRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<Group> groups = groupRepository.findByRolesPathIn(paths);
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
     }
 
     @Test
@@ -67,12 +70,18 @@ public class GroupRepositoryTest {
         Set<String> paths = new HashSet<>();
         paths.add("nonexistedpath");
         List<Group> groups = groupRepository.findByPathIn(paths);
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
     }
 
     @Test
     public void testFindByPathLikeIgnoreCase() throws Exception {
         List<Group> groups = groupRepository.findByPathLikeIgnoreCase(DBUtils.wildcard("none"));
-        Assert.assertTrue(groups.isEmpty());
+        assertTrue(groups.isEmpty());
+    }
+
+    @Test
+    public void testExists() throws Exception {
+        boolean result = groupRepository.exists("nonexitedpath");
+        assertFalse(result);
     }
 }
