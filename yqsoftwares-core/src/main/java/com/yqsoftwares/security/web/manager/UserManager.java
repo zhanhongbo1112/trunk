@@ -1,9 +1,6 @@
 package com.yqsoftwares.security.web.manager;
 
-import com.yqsoftwares.security.core.Group;
-import com.yqsoftwares.security.core.Role;
-import com.yqsoftwares.security.core.User;
-import com.yqsoftwares.security.core.UserNotFoundException;
+import com.yqsoftwares.security.core.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,9 +11,29 @@ import java.util.List;
  * Created by Administrator on 2015-12-19.
  */
 public interface UserManager {
-    void addUser(User entity, Collection<String> groups, Collection<String> roles);
+    void addUser(User entity) throws UserExistsException;
 
-    void updateUser(User entity, Collection<String> groups, Collection<String> roles);
+    void addGroups(User user, String... groups) throws UserExistsException;
+
+    void addRoles(User user, String... roles) throws UserExistsException;
+
+    void updateUser(User entity) throws UserNotFoundException;
+
+    void updateGroups(User user, String... groups) throws UserNotFoundException;
+
+    void updateRoles(User user, String... roles) throws UserNotFoundException;
+
+    void removeUser(String username) throws UserNotFoundException;
+
+    void removeGroups(User user, String... groups) throws UserNotFoundException;
+
+    void removeRoles(User user, String... roles) throws UserNotFoundException;
+
+    void addUser(User entity, Collection<String> groups, Collection<String> roles) throws UserExistsException;
+
+    void updateUser(User entity, Collection<String> groups, Collection<String> roles) throws UserNotFoundException;
+
+    boolean hasUser(String username);
 
     User findUser(String username) throws UserNotFoundException;
 
@@ -26,5 +43,5 @@ public interface UserManager {
 
     List<Role> findAllRoles(Pageable pageable);
 
-    void updateState(String username, boolean enabled);
+    void updateState(String username, boolean enabled) throws UserNotFoundException;
 }

@@ -5,9 +5,12 @@ import com.yqsoftwares.security.core.*;
 import com.yqsoftwares.security.core.repository.GroupRepository;
 import com.yqsoftwares.security.core.repository.RoleRepository;
 import com.yqsoftwares.security.core.repository.UserRepository;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -39,13 +42,205 @@ public class UserManagerImpl implements UserManager {
     @Autowired(required = false)
     private PasswordEncoder passwordEncoder = NoOpPasswordEncoder.getInstance();
 
+    @Value("${yq.security.user.disabled-when-removing}")
+    private boolean disabledWhenRemoving = false;
+
+    @Value("${yq.security.user.password.default}")
+    private String defaultPassword;
+
     @Override
     @Transactional
-    public void addUser(User entity, Collection<String> groups, Collection<String> roles) {
+    public void addUser(User entity) throws UserExistsException {
+        Assert.isTrue(entity.isNew());
+        Assert.hasText(entity.getUsername());
+        if (userRepository.exists(entity.getUsername())) {
+            throw new UserExistsException(entity.getUsername());
+        }
+
+        String password = entity.getPassword();
+        if (StringUtils.isEmpty(password)) {
+            password = defaultPassword;
+        }
+        // encrypt the password
+        password = passwordEncoder.encode(password);
+        entity.setPassword(password);
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void addGroups(User user, String... groups) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(groups);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+
+        List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
+        if (!inGroups.isEmpty()) {
+            entity.getGroups().addAll(inGroups);
+        }
+
+        userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void addRoles(User user, String... roles) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(roles);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+
+        List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
+        if (!inRoles.isEmpty()) {
+            entity.getRoles().addAll(inRoles);
+        }
+
+        userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void updateUser(User user) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        BeanUtils.copyProperties(user, entity, new String[]{"id", "password"});
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void updateGroups(User user, String... groups) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(groups);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        entity.getGroups().clear();
+        if (ArrayUtils.isNotEmpty(groups)) {
+            final List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
+            if (!inGroups.isEmpty()) {
+                entity.setGroups(new HashSet<>(inGroups));
+            }
+        }
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void updateRoles(User user, String... roles) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(roles);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        entity.getRoles().clear();
+        if (ArrayUtils.isNotEmpty(roles)) {
+            final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
+            if (!inRoles.isEmpty()) {
+                entity.setRoles(new HashSet<>(inRoles));
+            }
+        }
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void removeUser(String username) throws UserNotFoundException {
+        Assert.hasText(username);
+        if (!userRepository.exists(username)) {
+            throw new UserNotFoundException(username);
+        }
+
+        final User entity = userRepository.findByUsername(username);
+        if (disabledWhenRemoving) {
+            entity.setEnabled(false);
+            userRepository.save(entity);
+        } else {
+            userRepository.delete(entity);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void removeGroups(User user, String... groups) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(groups);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (ArrayUtils.isNotEmpty(groups)) {
+            final List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
+            if (!inGroups.isEmpty()) {
+                entity.getGroups().removeAll(inGroups);
+            }
+        }
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void removeRoles(User user, String... roles) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+        Assert.notNull(roles);
+
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (ArrayUtils.isNotEmpty(roles)) {
+            final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
+            if (!inRoles.isEmpty()) {
+                entity.getRoles().removeAll(inRoles);
+            }
+        }
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
+    public void addUser(User entity, Collection<String> groups, Collection<String> roles) throws UserExistsException {
         Assert.isTrue(entity.isNew());
         Assert.hasText(entity.getUsername());
         Assert.notNull(groups);
         Assert.notNull(roles);
+
         if (userRepository.exists(entity.getUsername())) {
             throw new UserExistsException(entity.getUsername());
         }
@@ -74,32 +269,41 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    public void updateUser(User entity, Collection<String> groups, Collection<String> roles) {
-        Assert.isTrue(!entity.isNew());
-        Assert.hasText(entity.getUsername());
+    public void updateUser(User user, Collection<String> groups, Collection<String> roles) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
         Assert.notNull(groups);
         Assert.notNull(roles);
 
-        if (!userRepository.exists(entity.getUsername())) {
-            throw new UserNotFoundException(entity.getUsername());
+        if (!userRepository.exists(user.getUsername())) {
+            throw new UserNotFoundException(user.getUsername());
         }
 
-        User user = userRepository.findByUsername(entity.getUsername());
-        user.getGroups().clear();
-        user.getRoles().clear();
-        userRepository.save(user);
+        User entity = userRepository.findByUsername(user.getUsername());
+        entity.getGroups().clear();
+        entity.getRoles().clear();
+        userRepository.save(entity);
 
-        final List<Group> inGroups = groupRepository.findByPathIn(groups);
-        if (!inGroups.isEmpty()) {
-            user.setGroups(new HashSet<>(inGroups));
+        if (CollectionUtils.isNotEmpty(groups)) {
+            final List<Group> inGroups = groupRepository.findByPathIn(groups);
+            if (!inGroups.isEmpty()) {
+                entity.setGroups(new HashSet<>(inGroups));
+            }
         }
 
-        final List<Role> inRoles = roleRepository.findByPathIn(roles);
-        if (!inRoles.isEmpty()) {
-            user.setRoles(new HashSet<>(inRoles));
+        if (CollectionUtils.isNotEmpty(roles)) {
+            final List<Role> inRoles = roleRepository.findByPathIn(roles);
+            if (!inRoles.isEmpty()) {
+                entity.setRoles(new HashSet<>(inRoles));
+            }
         }
 
         userRepository.save(entity);
+    }
+
+    @Override
+    public boolean hasUser(String username) {
+        return userRepository.exists(username);
     }
 
     @Override
@@ -129,18 +333,13 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    public void updateState(String username, boolean enabled) {
+    public void updateState(String username, boolean enabled) throws UserNotFoundException {
         Assert.hasText(username);
         if (!userRepository.exists(username)) {
             throw new UserNotFoundException(username);
         }
 
         final User user = userRepository.findByUsername(username);
-//        if (user.isEnabled() == enabled) {
-//            // if in the same state, no update
-//            return;
-//        }
-
         user.setEnabled(enabled);
         userRepository.save(user);
     }
