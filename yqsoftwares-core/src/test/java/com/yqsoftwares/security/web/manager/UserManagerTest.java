@@ -5,6 +5,7 @@ import com.yqsoftwares.security.core.Group;
 import com.yqsoftwares.security.core.Role;
 import com.yqsoftwares.security.core.User;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class UserManagerTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Before
+    public void setUp() throws Exception {
+        ScriptUtils.executeSqlScript(jdbcTemplate.getDataSource().getConnection(),
+                new ClassPathResource("com/yqsoftwares/security/web/manager/init.sql"));
+    }
+
     @After
     public void destroy() throws Exception {
         ScriptUtils.executeSqlScript(jdbcTemplate.getDataSource().getConnection(),
@@ -42,8 +49,8 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"init.sql", "testAddUser.sql"})
-    public void testAddUser() throws Exception {
+    @Sql(scripts = {"testAddUser.sql"})
+    public void testAddUserWithGroupsAndRoles() throws Exception {
         User entity = new User();
         entity.setUsername("user1");
         entity.setPassword("password");
@@ -54,65 +61,197 @@ public class UserManagerTest {
 
         userManager.addUser(entity, Arrays.asList(inGroups), Arrays.asList(inRoles));
 
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=3");
+        User createdUser = userManager.findUser("user1");
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=" + createdUser.getId());
         assertTrue(count == 1);
 
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=3");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=" + createdUser.getId());
         assertTrue(count == 1);
     }
 
     @Test
-    @Sql(scripts = {"init.sql", "testUpdateUser.sql"})
+    public void testAddUser() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user1'");
+        assertTrue(count == 0);
+
+        User entity = new User();
+        entity.setUsername("user1");
+        entity.setPassword("password");
+        entity.setEnabled(true);
+
+        userManager.addUser(entity);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user1'");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    @Sql(scripts = {"testAddGroups.sql"})
+    public void testAddGroups() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2");
+        assertTrue(count == 1);
+
+        String[] inGroups = new String[]{"/AGENTS"};
+        userManager.addGroups("user", inGroups);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2");
+        assertTrue(count == 2);
+    }
+
+    @Test
+    @Sql(scripts = {"testAddRoles.sql"})
+    public void testAddRoles() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2");
+        assertTrue(count == 1);
+
+        String[] inRoles = new String[]{"/AGENTS"};
+        userManager.addRoles("user", inRoles);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2");
+        assertTrue(count == 2);
+    }
+
+    @Test
     public void testUpdateUser() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=3 and GROUP_ID=1");
+        User user = userManager.findUser("user");
+        assertEquals(user.isEnabled(), true);
+
+        user.setEnabled(false);
+        userManager.updateUser(user);
+
+        user = userManager.findUser("user");
+        assertEquals(user.isEnabled(), false);
+    }
+
+    @Test
+    public void testUpdateGroups() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1");
+        assertTrue(count == 2);
+
+        userManager.updateGroups("admin", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
         assertTrue(count == 1);
 
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=3 AND ROLE_ID=1");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=1");
+        assertTrue(count == 0);
+    }
+
+    @Test
+    public void testUpdateRoles() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1");
+        assertTrue(count == 2);
+
+        userManager.updateRoles("admin", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=2");
         assertTrue(count == 1);
 
-        User entity = userManager.findUser("user1");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 0);
+    }
+
+    @Test
+    public void testRemoveUser() throws Exception {
+        User user = userManager.findUser("user");
+        assertTrue(user.isEnabled());
+
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user'");
+        assertTrue(count == 1);
+
+        userManager.removeUser("user");
+
+        // yq.security.user.disabled-when-removing=true
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user'");
+        assertTrue(count == 1);
+
+        user = userManager.findUser("user");
+        assertFalse(user.isEnabled());
+    }
+
+    @Test
+    public void testRemoveGroups() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1");
+        assertTrue(count == 2);
+
+        userManager.removeGroups("admin", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=1");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    public void testRemoveRoles() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1");
+        assertTrue(count == 2);
+
+        userManager.removeRoles("admin", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=2");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    public void testHasUser() throws Exception {
+        boolean result = userManager.hasUser("user");
+        assertTrue(result);
+
+        result = userManager.hasUser("nonexisteduser");
+        assertFalse(result);
+    }
+
+    @Test
+    @Sql(scripts = {"testUpdateUser.sql"})
+    public void testUpdateUserWithGroupsAndRoles() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=2");
+        assertTrue(count == 1);
+
+        User entity = userManager.findUser("user");
 
         String[] inGroups = new String[]{"/AGENTS"};
         String[] inRoles = new String[]{"/AGENTS"};
 
         userManager.updateUser(entity, Arrays.asList(inGroups), Arrays.asList(inRoles));
 
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=3 and GROUP_ID=3");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=3");
         assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=3 AND ROLE_ID=3");
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=3 and GROUP_ID=1");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=2");
         assertTrue(count == 0);
 
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=3 AND ROLE_ID=1");
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=3");
+        assertTrue(count == 1);
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=2");
         assertTrue(count == 0);
     }
 
     @Test
-    @Sql(scripts = {"init.sql"})
     public void testFindUsers() throws Exception {
         Page<User> users = userManager.findUsers("nonexisteduser", new PageRequest(0, 10));
         assertFalse(users.hasContent());
     }
 
     @Test
-    @Sql(scripts = {"init.sql"})
     public void testFindAllGroups() throws Exception {
         List<Group> groups = userManager.findAllGroups(new PageRequest(0, 10));
         assertTrue(groups.size() == 2);
     }
 
     @Test
-    @Sql(scripts = {"init.sql"})
     public void testFindAllRoles() throws Exception {
         List<Role> roles = userManager.findAllRoles(new PageRequest(0, 10));
         assertTrue(roles.size() == 2);
     }
 
     @Test
-    @Sql(scripts = {"init.sql"})
     public void testUpdateState() throws Exception {
         User user = userManager.findUser("user");
         assertTrue(user.isEnabled());
@@ -123,9 +262,9 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"init.sql"})
     public void testFindUser() throws Exception {
         User user = userManager.findUser("user");
         assertNotNull(user);
     }
+
 }

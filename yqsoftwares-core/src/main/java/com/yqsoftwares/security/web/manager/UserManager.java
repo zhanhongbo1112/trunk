@@ -11,27 +11,27 @@ import java.util.List;
  * Created by Administrator on 2015-12-19.
  */
 public interface UserManager {
-    void addUser(User entity) throws UserExistsException;
+    void addUser(User user) throws UserExistsException;
 
-    void addGroups(User user, String... groups) throws UserExistsException;
+    void addGroups(String username, String... groups) throws UserExistsException;
 
-    void addRoles(User user, String... roles) throws UserExistsException;
+    void addRoles(String username, String... roles) throws UserExistsException;
 
-    void updateUser(User entity) throws UserNotFoundException;
+    void updateUser(User user) throws UserNotFoundException;
 
-    void updateGroups(User user, String... groups) throws UserNotFoundException;
+    void updateGroups(String username, String... groups) throws UserNotFoundException;
 
-    void updateRoles(User user, String... roles) throws UserNotFoundException;
+    void updateRoles(String username, String... roles) throws UserNotFoundException;
 
     void removeUser(String username) throws UserNotFoundException;
 
-    void removeGroups(User user, String... groups) throws UserNotFoundException;
+    void removeGroups(String username, String... groups) throws UserNotFoundException;
 
-    void removeRoles(User user, String... roles) throws UserNotFoundException;
+    void removeRoles(String username, String... roles) throws UserNotFoundException;
 
-    void addUser(User entity, Collection<String> groups, Collection<String> roles) throws UserExistsException;
+    void addUser(User user, Collection<String> groups, Collection<String> roles) throws UserExistsException;
 
-    void updateUser(User entity, Collection<String> groups, Collection<String> roles) throws UserNotFoundException;
+    void updateUser(User user, Collection<String> groups, Collection<String> roles) throws UserNotFoundException;
 
     boolean hasUser(String username);
 
