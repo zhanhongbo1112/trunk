@@ -241,14 +241,14 @@ public class UserManagerTest {
 
     @Test
     public void testFindAllGroups() throws Exception {
-        List<Group> groups = userManager.findAllGroups(new PageRequest(0, 10));
-        assertTrue(groups.size() == 2);
+        Page<Group> groups = userManager.findAllGroups(new PageRequest(0, 10));
+        assertTrue(groups.getContent().size() == 2);
     }
 
     @Test
     public void testFindAllRoles() throws Exception {
-        List<Role> roles = userManager.findAllRoles(new PageRequest(0, 10));
-        assertTrue(roles.size() == 2);
+        Page<Role> roles = userManager.findAllRoles(new PageRequest(0, 10));
+        assertTrue(roles.getContent().size() == 2);
     }
 
     @Test

@@ -88,12 +88,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         final List<Group> groups = groupRepository.findByUsersUsername(username);
 
         @SuppressWarnings("unchecked")
-        final Collection<String> groupPaths = CollectionUtils.transformedCollection(groups, new Transformer() {
-            @Override
-            public Object transform(Object input) {
-                final Group group = (Group) input;
-                return group.getPath();
-            }
+        final Collection<String> groupPaths = CollectionUtils.transformedCollection(groups, input -> {
+            final Group group = (Group) input;
+            return group.getPath();
         });
 
         if (!groupPaths.isEmpty()) {

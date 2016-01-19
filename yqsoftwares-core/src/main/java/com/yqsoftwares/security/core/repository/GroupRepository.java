@@ -1,6 +1,8 @@
 package com.yqsoftwares.security.core.repository;
 
 import com.yqsoftwares.security.core.Group;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -36,4 +38,6 @@ public interface GroupRepository extends JpaRepository<Group, Long>, JpaSpecific
     List<Group> findByPathIn(Collection<String> paths);
 
     List<Group> findByPathLikeIgnoreCase(String pathFilter);
+
+    Page<Group> findByPathLikeIgnoreCase(String pathFilter, Pageable pageable);
 }

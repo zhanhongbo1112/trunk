@@ -70,42 +70,38 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    public void addGroups(String username, String... groups) throws UserNotFoundException {
+    public void addGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(groups);
+        Assert.notEmpty(groupPaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-
-        List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
-        if (!inGroups.isEmpty()) {
-            entity.getGroups().addAll(inGroups);
+        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+        if (!groups.isEmpty()) {
+            user.getGroups().addAll(groups);
+            userRepository.save(user);
         }
-
-        userRepository.save(entity);
     }
 
     @Override
     @Transactional
-    public void addRoles(String username, String... roles) throws UserNotFoundException {
+    public void addRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(roles);
+        Assert.notEmpty(rolePaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-
-        List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
-        if (!inRoles.isEmpty()) {
-            entity.getRoles().addAll(inRoles);
+        List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+        if (!roles.isEmpty()) {
+            user.getRoles().addAll(roles);
+            userRepository.save(user);
         }
-
-        userRepository.save(entity);
     }
 
     @Override
@@ -114,126 +110,118 @@ public class UserManagerImpl implements UserManager {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
 
-        if (!userRepository.exists(user.getUsername())) {
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (entity == null) {
             throw new UserNotFoundException(user.getUsername());
         }
 
-        User entity = userRepository.findByUsername(user.getUsername());
-        BeanUtils.copyProperties(user, entity, new String[]{"id", "password"});
+        BeanUtils.copyProperties(user, entity, new String[]{"id", "username", "password"});
 
         userRepository.save(entity);
     }
 
     @Override
     @Transactional
-    public void updateGroups(String username, String... groups) throws UserNotFoundException {
+    public void updateGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(groups);
+        Assert.notEmpty(groupPaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-        entity.getGroups().clear();
-        if (ArrayUtils.isNotEmpty(groups)) {
-            final List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
-            if (!inGroups.isEmpty()) {
-                entity.setGroups(new HashSet<>(inGroups));
-            }
+        user.getGroups().clear();
+        final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+        if (!groups.isEmpty()) {
+            user.setGroups(new HashSet<>(groups));
         }
 
-        userRepository.save(entity);
+        userRepository.save(user);
     }
 
     @Override
     @Transactional
-    public void updateRoles(String username, String... roles) throws UserNotFoundException {
+    public void updateRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(roles);
+        Assert.notEmpty(rolePaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-        entity.getRoles().clear();
-        if (ArrayUtils.isNotEmpty(roles)) {
-            final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
-            if (!inRoles.isEmpty()) {
-                entity.setRoles(new HashSet<>(inRoles));
-            }
+        user.getRoles().clear();
+        final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+        if (!roles.isEmpty()) {
+            user.setRoles(new HashSet<>(roles));
         }
 
-        userRepository.save(entity);
+        userRepository.save(user);
     }
 
     @Override
     @Transactional
     public void removeUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
-        if (!userRepository.exists(username)) {
+
+        final User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        final User entity = userRepository.findByUsername(username);
         if (disabledWhenRemoving) {
-            entity.setEnabled(false);
-            userRepository.save(entity);
+            user.setEnabled(false);
+            userRepository.save(user);
         } else {
-            userRepository.delete(entity);
+            userRepository.delete(user);
         }
     }
 
     @Override
     @Transactional
-    public void removeGroups(String username, String... groups) throws UserNotFoundException {
+    public void removeGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(groups);
+        Assert.notEmpty(groupPaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-        if (ArrayUtils.isNotEmpty(groups)) {
-            final List<Group> inGroups = groupRepository.findByPathIn(Arrays.asList(groups));
-            if (!inGroups.isEmpty()) {
-                entity.getGroups().removeAll(inGroups);
-            }
+        final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+        if (!groups.isEmpty()) {
+            user.getGroups().removeAll(groups);
+            userRepository.save(user);
         }
-
-        userRepository.save(entity);
     }
 
     @Override
     @Transactional
-    public void removeRoles(String username, String... roles) throws UserNotFoundException {
+    public void removeRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(roles);
+        Assert.notNull(rolePaths);
 
-        if (!userRepository.exists(username)) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        User entity = userRepository.findByUsername(username);
-        if (ArrayUtils.isNotEmpty(roles)) {
-            final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(roles));
-            if (!inRoles.isEmpty()) {
-                entity.getRoles().removeAll(inRoles);
-            }
+        final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+        if (!inRoles.isEmpty()) {
+            user.getRoles().removeAll(inRoles);
         }
 
-        userRepository.save(entity);
+        userRepository.save(user);
     }
 
     @Override
     @Transactional
-    public void addUser(User user, Collection<String> groups, Collection<String> roles) throws UserExistsException {
+    public void addUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
-        Assert.notNull(groups);
-        Assert.notNull(roles);
+        Assert.notNull(groupPaths);
+        Assert.notNull(rolePaths);
 
         if (userRepository.exists(user.getUsername())) {
             throw new UserExistsException(user.getUsername());
@@ -248,14 +236,18 @@ public class UserManagerImpl implements UserManager {
         password = passwordEncoder.encode(password);
         user.setPassword(password);
 
-        List<Group> inGroups = groupRepository.findByPathIn(groups);
-        if (!inGroups.isEmpty()) {
-            user.setGroups(new HashSet<>(inGroups));
+        if (!groupPaths.isEmpty()) {
+            List<Group> groups = groupRepository.findByPathIn(groupPaths);
+            if (!groups.isEmpty()) {
+                user.setGroups(new HashSet<>(groups));
+            }
         }
 
-        List<Role> inRoles = roleRepository.findByPathIn(roles);
-        if (!inRoles.isEmpty()) {
-            user.setRoles(new HashSet<>(inRoles));
+        if (!rolePaths.isEmpty()) {
+            List<Role> roles = roleRepository.findByPathIn(rolePaths);
+            if (!roles.isEmpty()) {
+                user.setRoles(new HashSet<>(roles));
+            }
         }
 
         userRepository.save(user);
@@ -263,32 +255,30 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    public void updateUser(User user, Collection<String> groups, Collection<String> roles) throws UserNotFoundException {
+    public void updateUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserNotFoundException {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
-        Assert.notNull(groups);
-        Assert.notNull(roles);
+        Assert.notNull(groupPaths);
+        Assert.notNull(rolePaths);
 
-        if (!userRepository.exists(user.getUsername())) {
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (entity == null) {
             throw new UserNotFoundException(user.getUsername());
         }
 
-        User entity = userRepository.findByUsername(user.getUsername());
         entity.getGroups().clear();
         entity.getRoles().clear();
-        userRepository.save(entity);
-
-        if (CollectionUtils.isNotEmpty(groups)) {
-            final List<Group> inGroups = groupRepository.findByPathIn(groups);
-            if (!inGroups.isEmpty()) {
-                entity.setGroups(new HashSet<>(inGroups));
+        if (!groupPaths.isEmpty()) {
+            final List<Group> groups = groupRepository.findByPathIn(groupPaths);
+            if (!groups.isEmpty()) {
+                entity.setGroups(new HashSet<>(groups));
             }
         }
 
-        if (CollectionUtils.isNotEmpty(roles)) {
-            final List<Role> inRoles = roleRepository.findByPathIn(roles);
-            if (!inRoles.isEmpty()) {
-                entity.setRoles(new HashSet<>(inRoles));
+        if (!rolePaths.isEmpty()) {
+            final List<Role> roles = roleRepository.findByPathIn(rolePaths);
+            if (!roles.isEmpty()) {
+                entity.setRoles(new HashSet<>(roles));
             }
         }
 
@@ -302,11 +292,14 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     public User findUser(String username) throws UserNotFoundException {
-        if (!userRepository.exists(username)) {
+        Assert.hasText(username);
+
+        User result = userRepository.findByUsername(username);
+        if (result == null) {
             throw new UserNotFoundException(username);
         }
 
-        return userRepository.findByUsername(username);
+        return result;
     }
 
     @Override
@@ -316,24 +309,25 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public List<Group> findAllGroups(Pageable pageable) {
-        return groupRepository.findAll(pageable).getContent();
+    public Page<Group> findAllGroups(Pageable pageable) {
+        return groupRepository.findAll(pageable);
     }
 
     @Override
-    public List<Role> findAllRoles(Pageable pageable) {
-        return roleRepository.findAll(pageable).getContent();
+    public Page<Role> findAllRoles(Pageable pageable) {
+        return roleRepository.findAll(pageable);
     }
 
     @Override
     @Transactional
     public void updateState(String username, boolean enabled) throws UserNotFoundException {
         Assert.hasText(username);
-        if (!userRepository.exists(username)) {
+
+        final User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException(username);
         }
 
-        final User user = userRepository.findByUsername(username);
         user.setEnabled(enabled);
         userRepository.save(user);
     }

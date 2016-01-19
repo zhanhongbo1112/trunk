@@ -53,12 +53,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/groups", method = RequestMethod.GET)
-    public List<Group> findAllGroups(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
+    public Page<Group> findAllGroups(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
         return userManager.findAllGroups(pageable);
     }
 
     @RequestMapping(value = "/roles", method = RequestMethod.GET)
-    public List<Role> findAllRoles(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
+    public Page<Role> findAllRoles(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
         return userManager.findAllRoles(pageable);
     }
 
