@@ -57,7 +57,6 @@ public class GroupManagerImpl implements GroupManager {
 
         List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
         if (!users.isEmpty()) {
-
             for (User user : users) {
                 group.getUsers().add(user);
                 user.getGroups().add(group);
@@ -94,7 +93,8 @@ public class GroupManagerImpl implements GroupManager {
             throw new GroupNotFoundException(group.getPath());
         }
 
-        BeanUtils.copyProperties(group, entity, new String[]{"id", "path"});
+        entity.setAlias(group.getAlias());
+        entity.setDescription(group.getDescription());
 
         groupRepository.save(entity);
     }

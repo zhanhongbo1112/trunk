@@ -16,6 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
@@ -29,6 +30,13 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
+// not work
+//@Sql(scripts = "init.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
+//        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
+//)
+//@Sql(scripts = "destroy.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
+//        executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
+//)
 public class UserManagerTest {
     @Autowired
     private UserManager userManager;
@@ -49,7 +57,7 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"testAddUser.sql"})
+    @Sql
     public void testAddUserWithGroupsAndRoles() throws Exception {
         User entity = new User();
         entity.setUsername("user1");
@@ -86,7 +94,7 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"testAddGroups.sql"})
+    @Sql
     public void testAddGroups() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2");
         assertTrue(count == 1);
@@ -99,7 +107,7 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"testAddRoles.sql"})
+    @Sql
     public void testAddRoles() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2");
         assertTrue(count == 1);
@@ -207,7 +215,7 @@ public class UserManagerTest {
     }
 
     @Test
-    @Sql(scripts = {"testUpdateUser.sql"})
+    @Sql
     public void testUpdateUserWithGroupsAndRoles() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=2");
         assertTrue(count == 1);

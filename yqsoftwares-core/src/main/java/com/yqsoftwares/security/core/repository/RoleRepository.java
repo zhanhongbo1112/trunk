@@ -1,6 +1,8 @@
 package com.yqsoftwares.security.core.repository;
 
 import com.yqsoftwares.security.core.Role;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -36,4 +38,6 @@ public interface RoleRepository extends JpaRepository<Role, Long>, JpaSpecificat
     List<Role> findByPathIn(Collection<String> paths);
 
     List<Role> findByPathLikeIgnoreCase(String pathFilter);
+
+    Page<Role> findByPathLikeIgnoreCase(String pathFilter, Pageable pageable);
 }

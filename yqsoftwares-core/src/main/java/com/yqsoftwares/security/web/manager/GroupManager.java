@@ -19,13 +19,13 @@ public interface GroupManager {
 
     void addUsers(String path, String... usernames) throws GroupNotFoundException;
 
-    void addRoles(String path, String... roles) throws GroupNotFoundException;
+    void addRoles(String path, String... rolePaths) throws GroupNotFoundException;
 
     void updateGroup(Group group) throws GroupNotFoundException;
 
     void updateUsers(String path, String... usernames) throws GroupNotFoundException;
 
-    void updateRoles(String path, String... roles) throws GroupNotFoundException;
+    void updateRoles(String path, String... rolePaths) throws GroupNotFoundException;
 
     void removeGroup(String path) throws GroupNotFoundException;
 
@@ -35,9 +35,9 @@ public interface GroupManager {
 
     void removeRoles(String path, String... roles) throws GroupNotFoundException;
 
-    void addGroup(Group group, Collection<String> usernames, Collection<String> roles) throws GroupExistsException;
+    void addGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupExistsException;
 
-    void updateGroup(Group group, Collection<String> usernames, Collection<String> roles) throws GroupNotFoundException;
+    void updateGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupNotFoundException;
 
     boolean hasGroup(String path);
 
