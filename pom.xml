@@ -52,8 +52,17 @@
             <name>Eric H B Zhan</name>
             <timezone>GMT+08:00</timezone>
             <url>${site.url}</url>
+            <email>eric.zhan@163.com</email>
         </developer>
     </developers>
+    <contributors>
+        <contributor>
+            <name>Eric H B Zhan</name>
+            <url>${site.url}</url>
+            <timezone>GMT+08:00</timezone>
+            <email>eric.zhan@163.com</email>
+        </contributor>
+    </contributors>
 
     <dependencyManagement>
         <dependencies>

@@ -1,7 +1,6 @@
 package com.yqsoftwares.security.audit;
 
 import com.yqsoftwares.security.core.User;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -49,12 +48,12 @@ public class Audit extends AbstractPersistable<Long> {
         this.createdBy = createdBy;
     }
 
-    public DateTime getCreatedDate() {
-        return null == createdDate ? null : new DateTime(createdDate);
+    public Date getCreatedDate() {
+        return null == createdDate ? null : new Date(createdDate.getTime());
     }
 
-    public void setCreatedDate(final DateTime createdDate) {
-        this.createdDate = null == createdDate ? null : createdDate.toDate();
+    public void setCreatedDate(final Date createdDate) {
+        this.createdDate = null == createdDate ? null : new Date(createdDate.getTime());
     }
 
     public int getCode() {
