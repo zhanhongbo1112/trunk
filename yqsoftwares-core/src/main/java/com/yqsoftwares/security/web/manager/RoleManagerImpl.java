@@ -5,7 +5,7 @@ import com.yqsoftwares.security.core.*;
 import com.yqsoftwares.security.core.repository.GroupRepository;
 import com.yqsoftwares.security.core.repository.RoleRepository;
 import com.yqsoftwares.security.core.repository.UserRepository;
-import org.springframework.beans.BeanUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +15,6 @@ import org.springframework.util.Assert;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -34,6 +33,7 @@ public class RoleManagerImpl implements RoleManager {
     private RoleRepository roleRepository;
 
     @Override
+    @Transactional
     public void addRole(Role role) throws RoleExistsException {
         Assert.isTrue(role.isNew());
         Assert.hasText(role.getPath());
@@ -45,6 +45,7 @@ public class RoleManagerImpl implements RoleManager {
     }
 
     @Override
+    @Transactional
     public void addUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -55,17 +56,14 @@ public class RoleManagerImpl implements RoleManager {
         }
 
         List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
-        if (!users.isEmpty()) {
-            for (User user : users) {
-                role.getUsers().add(user);
-                user.getRoles().add(role);
-            }
-
-            roleRepository.save(role);
+        for (User user : users) {
+            user.getRoles().add(role);
+            userRepository.save(user);
         }
     }
 
     @Override
+    @Transactional
     public void addGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -75,14 +73,15 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(path));
-        if (!groups.isEmpty()) {
-            role.getGroups().addAll(groups);
-            roleRepository.save(role);
+        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+        for (Group group : groups) {
+            group.getRoles().add(role);
+            groupRepository.save(group);
         }
     }
 
     @Override
+    @Transactional
     public void updateRole(Role role) throws RoleNotFoundException {
         Assert.isTrue(!role.isNew());
         Assert.hasText(role.getPath());
@@ -99,6 +98,7 @@ public class RoleManagerImpl implements RoleManager {
     }
 
     @Override
+    @Transactional
     public void updateUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -108,19 +108,20 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        entity.getUsers().clear();
-        List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
-        if (!users.isEmpty()) {
-            entity.setUsers(new HashSet<>(users));
-            for (User user : users) {
-                user.getRoles().remove(entity);
-            }
+        for (User user : entity.getUsers()) {
+            user.getRoles().remove(entity);
+            userRepository.saveAndFlush(user);
         }
 
-        roleRepository.save(entity);
+        List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
+        for (User user : users) {
+            user.getRoles().add(entity);
+            userRepository.save(user);
+        }
     }
 
     @Override
+    @Transactional
     public void updateGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -130,19 +131,20 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        entity.getUsers().clear();
-        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        if (!groups.isEmpty()) {
-            entity.setGroups(new HashSet<>(groups));
-            for (Group group : groups) {
-                group.getRoles().remove(entity);
-            }
+        for (Group group : entity.getGroups()) {
+            group.getRoles().remove(entity);
+            groupRepository.saveAndFlush(group);
         }
 
-        roleRepository.save(entity);
+        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+        for (Group group : groups) {
+            group.getRoles().add(entity);
+            groupRepository.save(group);
+        }
     }
 
     @Override
+    @Transactional
     public void removeRole(String path) throws RoleNotFoundException {
         Assert.hasText(path);
 
@@ -151,10 +153,22 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
+        List<User> users = userRepository.findByRolesPath(role.getPath());
+        for (User user : users) {
+            user.getRoles().remove(role);
+            userRepository.saveAndFlush(user);
+        }
+        List<Group> groups = groupRepository.findByRolesPath(role.getPath());
+        for (Group group : groups) {
+            group.getRoles().remove(role);
+            groupRepository.saveAndFlush(group);
+        }
+
         roleRepository.delete(role);
     }
 
     @Override
+    @Transactional
     public void removeUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -164,18 +178,15 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
-        if (!users.isEmpty()) {
-            role.getUsers().removeAll(users);
-            for (User user : users) {
-                user.getGroups().remove(role);
-            }
-
-            roleRepository.save(role);
-        }
+        List<User> users = userRepository.findByRolesPath(role.getPath());
+        users.stream().filter(user -> ArrayUtils.contains(usernames, user.getUsername())).forEach(user -> {
+            user.getRoles().remove(role);
+            userRepository.save(user);
+        });
     }
 
     @Override
+    @Transactional
     public void removeGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -185,18 +196,15 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        if (!groups.isEmpty()) {
-            role.getGroups().removeAll(groups);
-            for (Group user : groups) {
-                user.getRoles().remove(role);
-            }
-
-            roleRepository.save(role);
-        }
+        List<Group> groups = groupRepository.findByRolesPath(role.getPath());
+        groups.stream().filter(group -> ArrayUtils.contains(groupPaths, group.getPath())).forEach(group -> {
+            group.getRoles().remove(role);
+            groupRepository.save(group);
+        });
     }
 
     @Override
+    @Transactional
     public void addRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException {
         Assert.isTrue(role.isNew());
         Assert.hasText(role.getPath());
@@ -207,24 +215,26 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleExistsException(role.getPath());
         }
 
+        Role createdRole = roleRepository.saveAndFlush(role);
         if (!usernames.isEmpty()) {
             List<User> users = userRepository.findByUsernameIn(usernames);
-            if (!users.isEmpty()) {
-                role.setUsers(new HashSet<>(users));
+            for (User user : users) {
+                user.getRoles().add(createdRole);
+                userRepository.save(user);
             }
         }
 
         if (!groupPaths.isEmpty()) {
             List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            if (!groups.isEmpty()) {
-                role.setGroups(new HashSet<>(groups));
+            for (Group group : groups) {
+                group.getRoles().add(createdRole);
+                groupRepository.save(group);
             }
         }
-
-        roleRepository.save(role);
     }
 
     @Override
+    @Transactional
     public void updateRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws GroupNotFoundException {
         Assert.isTrue(!role.isNew());
         Assert.hasText(role.getPath());
@@ -239,23 +249,31 @@ public class RoleManagerImpl implements RoleManager {
         entity.setAlias(role.getAlias());
         entity.setDescription(role.getDescription());
 
-        entity.getUsers().clear();
-        entity.getGroups().clear();
+        Role updatedRole = roleRepository.saveAndFlush(entity);
+        for (User user : updatedRole.getUsers()) {
+            user.getRoles().remove(updatedRole);
+            userRepository.saveAndFlush(user);
+        }
+        for (Group group : updatedRole.getGroups()) {
+            group.getRoles().remove(updatedRole);
+            groupRepository.saveAndFlush(group);
+        }
+
         if (!usernames.isEmpty()) {
             List<User> users = userRepository.findByUsernameIn(usernames);
-            if (!users.isEmpty()) {
-                role.setUsers(new HashSet<>(users));
+            for (User user : users) {
+                user.getRoles().add(updatedRole);
+                userRepository.save(user);
             }
         }
 
         if (!groupPaths.isEmpty()) {
             List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            if (!groups.isEmpty()) {
-                role.setGroups(new HashSet<>(groups));
+            for (Group group : groups) {
+                group.getRoles().add(updatedRole);
+                groupRepository.save(group);
             }
         }
-
-        roleRepository.save(entity);
     }
 
     @Override

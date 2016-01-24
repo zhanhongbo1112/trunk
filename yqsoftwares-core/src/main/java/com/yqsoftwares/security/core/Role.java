@@ -31,7 +31,7 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Column(length = 255)
     private String description;
 
-    protected Role() {
+    public Role() {
     }
 
     public Role(String path) {
@@ -46,10 +46,10 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
      * "ROLE_ID"),inverseJoinColumns = @JoinColumn(name =
      * "USER_ID"))
      */
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<User> users;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Group> groups;
 
     public String getPath() {

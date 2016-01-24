@@ -34,7 +34,7 @@ public class Group extends AbstractPersistable<Long> {
     @JoinTable(name = "SEC_GROUP_ROLES", joinColumns = @JoinColumn(name = "GROUP_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
     private Set<Role> roles;
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(mappedBy = "groups", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<User> users;
 
     public String getPath() {

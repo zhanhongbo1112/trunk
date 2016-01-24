@@ -234,17 +234,18 @@ public class UserManagerImpl implements UserManager {
         password = passwordEncoder.encode(password);
         user.setPassword(password);
 
+        User createdUser = userRepository.saveAndFlush(user);
         if (!groupPaths.isEmpty()) {
             List<Group> groups = groupRepository.findByPathIn(groupPaths);
             if (!groups.isEmpty()) {
-                user.setGroups(new HashSet<>(groups));
+                createdUser.setGroups(new HashSet<>(groups));
             }
         }
 
         if (!rolePaths.isEmpty()) {
             List<Role> roles = roleRepository.findByPathIn(rolePaths);
             if (!roles.isEmpty()) {
-                user.setRoles(new HashSet<>(roles));
+                createdUser.setRoles(new HashSet<>(roles));
             }
         }
 
