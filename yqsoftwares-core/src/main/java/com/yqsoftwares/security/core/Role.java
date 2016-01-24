@@ -16,6 +16,8 @@ import java.util.Set;
 @Entity
 @Table(name = "SEC_ROLE", uniqueConstraints = {@UniqueConstraint(name = "UN_ROLE_PATH", columnNames = {"PATH"})})
 public class Role extends AbstractPersistable<Long> implements GrantedAuthority {
+    @NotEmpty
+    @Length(max = 255)
     @Column(unique = true, length = 255, nullable = false)
     @NaturalId
     private String path;

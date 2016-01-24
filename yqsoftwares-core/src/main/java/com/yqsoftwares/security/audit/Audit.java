@@ -16,8 +16,8 @@ import java.util.Date;
 @Entity
 @Table(name = "SEC_AUDIT")
 @Inheritance
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
-@DiscriminatorValue("0")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("DEFAULT")
 public class Audit extends AbstractPersistable<Long> {
     @CreatedBy
     @ManyToOne

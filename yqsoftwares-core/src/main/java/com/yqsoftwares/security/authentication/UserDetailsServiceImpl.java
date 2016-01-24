@@ -19,12 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Administrator on 2015-12-16.
  */
 @Service
-@Transactional(readOnly = true)
 public class UserDetailsServiceImpl implements UserDetailsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
@@ -87,13 +87,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         final List<Group> groups = groupRepository.findByUsersUsername(username);
 
-        @SuppressWarnings("unchecked")
-        final Collection<String> groupPaths = CollectionUtils.transformedCollection(groups, input -> {
-            final Group group = (Group) input;
-            return group.getPath();
-        });
+        if (!groups.isEmpty()) {
+            Set<String> groupPaths = groups.stream().map(Group::getPath).collect(Collectors.toSet());
 
-        if (!groupPaths.isEmpty()) {
             results = roleRepository.findByGroupsPathIn(groupPaths);
         }
 
