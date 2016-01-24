@@ -5,8 +5,6 @@ import com.yqsoftwares.security.core.*;
 import com.yqsoftwares.security.core.repository.GroupRepository;
 import com.yqsoftwares.security.core.repository.RoleRepository;
 import com.yqsoftwares.security.core.repository.UserRepository;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,7 +113,7 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(user.getUsername());
         }
 
-        BeanUtils.copyProperties(user, entity, new String[]{"id", "username", "password"});
+        entity.setEnabled(user.isEnabled());
 
         userRepository.save(entity);
     }
@@ -316,19 +314,5 @@ public class UserManagerImpl implements UserManager {
     @Override
     public Page<Role> findAllRoles(Pageable pageable) {
         return roleRepository.findAll(pageable);
-    }
-
-    @Override
-    @Transactional
-    public void updateState(String username, boolean enabled) throws UserNotFoundException {
-        Assert.hasText(username);
-
-        final User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UserNotFoundException(username);
-        }
-
-        user.setEnabled(enabled);
-        userRepository.save(user);
     }
 }

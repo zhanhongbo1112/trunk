@@ -4,24 +4,29 @@ import com.yqsoftwares.security.audit.Audit;
 import com.yqsoftwares.security.audit.repository.AuditRepository;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 /**
  * Created by Administrator on 2015-12-14.
  */
+@Component
 public class AuditInterceptor implements MethodInterceptor, Serializable {
     private AuditRepository auditRepository;
 
     private AuditAttributeSource auditAttributeSource;
 
-    public AuditInterceptor() {
-        super();
-    }
-
+    @Autowired
     public AuditInterceptor(AuditRepository auditRepository, AuditAttributeSource auditAttributeSource) {
+        this();
         this.auditRepository = auditRepository;
         this.auditAttributeSource = auditAttributeSource;
+    }
+
+    protected AuditInterceptor() {
+        super();
     }
 
     @Override
@@ -37,13 +42,5 @@ public class AuditInterceptor implements MethodInterceptor, Serializable {
         auditRepository.save(entity);
 
         return returnObj;
-    }
-
-    public void setAuditRepository(AuditRepository auditRepository) {
-        this.auditRepository = auditRepository;
-    }
-
-    public void setAuditAttributeSource(AuditAttributeSource auditAttributeSource) {
-        this.auditAttributeSource = auditAttributeSource;
     }
 }

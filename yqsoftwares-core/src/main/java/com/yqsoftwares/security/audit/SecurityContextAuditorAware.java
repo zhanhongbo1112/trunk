@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * Created by Administrator on 2015-12-15.
  */
 @Component
-public class SecurityContextAuditorAware implements AuditorAware<User> {
+public class SecurityContextAuditorAware implements AuditorAware<String> {
     @Override
-    public User getCurrentAuditor() {
-        return SecurityUtils.getCurrentUser();
+    public String getCurrentAuditor() {
+        return SecurityUtils.getCurrentUser().getUsername();
     }
 }

@@ -45,6 +45,12 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
         super();
     }
 
+    public User(String username, String password, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public User(Long id, String username, String password, boolean enabled, Set<Role> roles) {
         super();
         this.setId(id);

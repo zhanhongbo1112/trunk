@@ -31,6 +31,14 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Column(length = 255)
     private String description;
 
+    protected Role() {
+    }
+
+    public Role(String path) {
+        this();
+        this.path = path;
+    }
+
     /**
      * Note: specified <code>mappedBy</code> to avoid defining in two sides of
      *

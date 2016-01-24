@@ -2,12 +2,15 @@ package com.yqsoftwares.security.audit.interceptor;
 
 import com.yqsoftwares.security.audit.annotation.Auditable;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
 /**
  * Created by Administrator on 2015-12-14.
  */
+@Component
 public class AuditPointcut extends StaticMethodMatcherPointcut {
     @Override
     public boolean matches(Method method, Class<?> targetClass) {

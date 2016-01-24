@@ -64,7 +64,10 @@ public class UserController {
 
     @RequestMapping(value = "/{username}/{enabled}", method = RequestMethod.POST)
     public boolean enableUser(@RequestParam String username, @RequestParam boolean enabled) {
-        userManager.updateState(username, enabled);
+        User user = userManager.findUser(username);
+        user.setEnabled(enabled);
+
+        userManager.updateUser(user);
 
         return true;
     }

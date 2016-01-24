@@ -15,11 +15,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithSecurityContext;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
+import java.security.Security;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +54,9 @@ public class UserManagerTest {
     public void setUp() throws Exception {
         ScriptUtils.executeSqlScript(jdbcTemplate.getDataSource().getConnection(),
                 new ClassPathResource("com/yqsoftwares/security/web/manager/init.sql"));
+
+        User user = userManager.findUser("user");
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, user.getPassword(), null));
     }
 
     @After

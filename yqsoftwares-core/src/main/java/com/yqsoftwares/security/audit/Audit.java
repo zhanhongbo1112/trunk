@@ -1,10 +1,7 @@
 package com.yqsoftwares.security.audit;
 
-import com.yqsoftwares.security.core.User;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -20,9 +17,8 @@ import java.util.Date;
 @DiscriminatorValue("DEFAULT")
 public class Audit extends AbstractPersistable<Long> {
     @CreatedBy
-    @ManyToOne
-    @JoinColumn(name = "CREATED_BY", referencedColumnName = "USERNAME", nullable = false)
-    private User createdBy;
+    @Column(name = "CREATED_BY",length = 64, nullable = false)
+    private String createdBy;
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
@@ -40,11 +36,11 @@ public class Audit extends AbstractPersistable<Long> {
         this.code = code;
     }
 
-    public User getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(final User createdBy) {
+    public void setCreatedBy(final String createdBy) {
         this.createdBy = createdBy;
     }
 

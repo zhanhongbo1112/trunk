@@ -42,6 +42,4 @@ public interface UserManager {
     Page<Group> findAllGroups(Pageable pageable);
 
     Page<Role> findAllRoles(Pageable pageable);
-
-    void updateState(String username, boolean enabled) throws UserNotFoundException;
 }
