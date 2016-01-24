@@ -269,16 +269,6 @@ public class UserManagerTest {
     }
 
     @Test
-    public void testUpdateState() throws Exception {
-        User user = userManager.findUser("user");
-        assertTrue(user.isEnabled());
-        userManager.updateState("user", false);
-
-        user = userManager.findUser("user");
-        assertTrue(!user.isEnabled());
-    }
-
-    @Test
     public void testFindUser() throws Exception {
         User user = userManager.findUser("user");
         assertNotNull(user);
