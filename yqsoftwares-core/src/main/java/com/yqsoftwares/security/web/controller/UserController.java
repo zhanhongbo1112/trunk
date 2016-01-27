@@ -3,7 +3,7 @@ package com.yqsoftwares.security.web.controller;
 import com.yqsoftwares.security.core.Group;
 import com.yqsoftwares.security.core.Role;
 import com.yqsoftwares.security.core.User;
-import com.yqsoftwares.security.web.manager.UserManager;
+import com.yqsoftwares.security.core.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Administrator on 2015-12-14.

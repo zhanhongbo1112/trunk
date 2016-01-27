@@ -1,6 +1,6 @@
 package com.yqsoftwares.security.web.controller;
 
-import com.yqsoftwares.security.web.manager.GroupManager;
+import com.yqsoftwares.security.core.GroupManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
