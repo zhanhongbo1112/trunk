@@ -4,14 +4,14 @@ package com.yqsoftwares.security.core.audit.interceptor;
  * Created by Administrator on 2015-12-14.
  */
 public class AuditAttributeImpl implements AuditAttribute {
-    private int code;
+    private int[] codes;
 
-    public AuditAttributeImpl(int code) {
-        this.code = code;
+    public AuditAttributeImpl(int[] codes) {
+        this.codes = codes;
     }
 
     @Override
-    public int getCode() {
-        return code;
+    public int[] getCodes() {
+        return codes;
     }
 }

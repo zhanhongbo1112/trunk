@@ -1,6 +1,8 @@
 package com.yqsoftwares.security.core;
 
 import com.yqsoftwares.commons.db.util.DBUtils;
+import com.yqsoftwares.security.core.audit.SecurityAudit;
+import com.yqsoftwares.security.core.audit.annotation.Auditable;
 import com.yqsoftwares.security.core.repository.GroupRepository;
 import com.yqsoftwares.security.core.repository.RoleRepository;
 import com.yqsoftwares.security.core.repository.UserRepository;
@@ -33,6 +35,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_ADD_ROLE})
     public void addRole(Role role) throws RoleExistsException {
         Assert.isTrue(role.isNew());
         Assert.hasText(role.getPath());
@@ -45,6 +48,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_ADD_USERS_TO_ROLE})
     public void addUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -63,6 +67,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_ADD_GROUPS_TO_ROLE})
     public void addGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -81,6 +86,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_UPDATE_ROLE})
     public void updateRole(Role role) throws RoleNotFoundException {
         Assert.isTrue(!role.isNew());
         Assert.hasText(role.getPath());
@@ -98,6 +104,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_UPDATE_USERS_OF_ROLE})
     public void updateUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -121,6 +128,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE})
     public void updateGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -144,6 +152,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_REMOVE_ROLE})
     public void removeRole(String path) throws RoleNotFoundException {
         Assert.hasText(path);
 
@@ -168,6 +177,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_REMOVE_USERS_FROM_ROLE})
     public void removeUsers(String path, String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -186,6 +196,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_REMOVE_GROUPS_FROM_ROLE})
     public void removeGroups(String path, String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(groupPaths);
@@ -204,6 +215,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_ADD_ROLE, SecurityAudit.CODE_ADD_USERS_TO_ROLE, SecurityAudit.CODE_ADD_GROUPS_TO_ROLE})
     public void addRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException {
         Assert.isTrue(role.isNew());
         Assert.hasText(role.getPath());
@@ -234,6 +246,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
+    @Auditable(codes = {SecurityAudit.CODE_UPDATE_ROLE, SecurityAudit.CODE_UPDATE_USERS_OF_ROLE, SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE})
     public void updateRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws GroupNotFoundException {
         Assert.isTrue(!role.isNew());
         Assert.hasText(role.getPath());
@@ -306,5 +319,17 @@ public class RoleManagerImpl implements RoleManager {
     @Override
     public Page<Group> findAllGroups(Pageable pageable) {
         return groupRepository.findAll(pageable);
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void setGroupRepository(GroupRepository groupRepository) {
+        this.groupRepository = groupRepository;
+    }
+
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 }

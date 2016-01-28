@@ -37,6 +37,6 @@ public class AuditAnnotationParserImpl implements AuditAnnotationParser {
     }
 
     private AuditAttribute parseAuditAnnotation(Auditable ann) {
-        return new AuditAttributeImpl(ann.code());
+        return new AuditAttributeImpl(ann.codes());
     }
 }

@@ -10,5 +10,5 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 public @interface Auditable {
-    int code();
+    int[] codes();
 }

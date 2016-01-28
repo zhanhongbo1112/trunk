@@ -37,9 +37,10 @@ public class AuditInterceptor implements MethodInterceptor, Serializable {
 
 //        final Object[] arguments = invocation.getArguments();
 
-        Audit entity = new Audit(attr.getCode());
-
-        auditRepository.save(entity);
+        for(int code : attr.getCodes()) {
+            Audit entity = new Audit(code);
+            auditRepository.save(entity);
+        }
 
         return returnObj;
     }
