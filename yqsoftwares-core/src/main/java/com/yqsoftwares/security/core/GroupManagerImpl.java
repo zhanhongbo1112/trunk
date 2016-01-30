@@ -36,7 +36,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_GROUP})
+    @Auditable(code = SecurityAudit.CODE_ADD_GROUP)
     public void addGroup(Group group) throws GroupExistsException {
         Assert.isTrue(group.isNew());
         Assert.hasText(group.getPath());
@@ -49,7 +49,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_USERS_TO_GROUP})
+    @Auditable(code = SecurityAudit.CODE_ADD_USERS_TO_GROUP)
     public void addUsers(String path, String... usernames) throws GroupNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -68,7 +68,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_ROLES_TO_GROUP})
+    @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_GROUP)
     public void addRoles(String path, String... rolePaths) throws GroupExistsException {
         Assert.hasText(path);
         Assert.notEmpty(rolePaths);
@@ -87,7 +87,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_GROUP})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUP)
     public void updateGroup(Group group) throws GroupNotFoundException {
         Assert.isTrue(!group.isNew());
         Assert.hasText(group.getPath());
@@ -105,7 +105,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_USERS_OF_GROUP})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_GROUP)
     public void updateUsers(String path, String... usernames) throws GroupNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -129,7 +129,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP)
     public void updateRoles(String path, String... rolePaths) throws GroupNotFoundException {
         Assert.hasText(path);
         Assert.notNull(rolePaths);
@@ -150,7 +150,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_ROLES_TO_GROUP})
+    @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_GROUP)
     public void removeGroup(String path) throws GroupNotFoundException {
         Assert.hasText(path);
 
@@ -170,7 +170,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_GROUPS})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS)
     public void removeGroups(String... paths) {
         Assert.notEmpty(paths);
 
@@ -190,7 +190,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_USERS_FROM_GROUP})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_USERS_FROM_GROUP)
     public void removeUsers(String path, String... usernames) throws GroupNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(usernames);
@@ -209,7 +209,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_ROLES_FROM_GROUP})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_GROUP)
     public void removeRoles(String path, String... rolePaths) throws GroupNotFoundException {
         Assert.hasText(path);
         Assert.notEmpty(rolePaths);
@@ -228,7 +228,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_GROUP, SecurityAudit.CODE_ADD_USERS_TO_GROUP, SecurityAudit.CODE_ADD_ROLES_TO_GROUP})
+    @Auditable(code = SecurityAudit.CODE_ADD_GROUP)
     public void addGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupExistsException {
         Assert.isTrue(group.isNew());
         Assert.hasText(group.getPath());
@@ -261,7 +261,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_GROUP, SecurityAudit.CODE_UPDATE_USERS_OF_GROUP, SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUP)
     public void updateGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupNotFoundException {
         Assert.isTrue(!group.isNew());
         Assert.hasText(group.getPath());

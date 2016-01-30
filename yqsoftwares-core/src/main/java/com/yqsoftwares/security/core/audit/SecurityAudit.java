@@ -12,9 +12,9 @@ public class SecurityAudit extends Audit {
     public static final int CODE_ADD_USER = 1;
     public static final int CODE_ADD_GROUPS_TO_USER = 10;
     public static final int CODE_ADD_ROLES_TO_USER = 11;
-    public static final int CODE_UPDATE_GROUPS_OF_USER = 2;
-    public static final int CODE_UPDATE_ROLES_OF_USER = 20;
-    public static final int CODE_UPDATE_USER = 21;
+    public static final int CODE_UPDATE_USER = 2;
+    public static final int CODE_UPDATE_GROUPS_OF_USER = 20;
+    public static final int CODE_UPDATE_ROLES_OF_USER = 21;
     public static final int CODE_REMOVE_USER = 3;
     public static final int CODE_REMOVE_GROUPS_FROM_USER = 30;
     public static final int CODE_REMOVE_ROLES_FROM_USER = 31;
@@ -38,4 +38,8 @@ public class SecurityAudit extends Audit {
     public static final int CODE_REMOVE_ROLE = 9;
     public static final int CODE_REMOVE_USERS_FROM_ROLE = 90;
     public static final int CODE_REMOVE_GROUPS_FROM_ROLE = 91;
+
+    public SecurityAudit(int code) {
+        super(code);
+    }
 }

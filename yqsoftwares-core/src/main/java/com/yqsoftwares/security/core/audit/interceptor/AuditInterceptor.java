@@ -1,47 +1,56 @@
 package com.yqsoftwares.security.core.audit.interceptor;
 
-import com.yqsoftwares.security.core.audit.Audit;
-import com.yqsoftwares.security.core.audit.repository.AuditRepository;
+import com.yqsoftwares.security.core.audit.AuditProvider;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015-12-14.
  */
-@Component
 public class AuditInterceptor implements MethodInterceptor, Serializable {
-    private AuditRepository auditRepository;
-
-    private AuditAttributeSource auditAttributeSource;
-
     @Autowired
-    public AuditInterceptor(AuditRepository auditRepository, AuditAttributeSource auditAttributeSource) {
-        this();
-        this.auditRepository = auditRepository;
-        this.auditAttributeSource = auditAttributeSource;
-    }
+    private List<AuditProvider> auditProviders = new ArrayList<>();
 
-    protected AuditInterceptor() {
+    public AuditInterceptor(List<AuditProvider> auditProviders) {
         super();
+        this.auditProviders = auditProviders;
     }
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        final AuditAttribute attr = auditAttributeSource.getAuditAttribute(invocation.getMethod());
+        Object returnObj = null;
 
-        final Object returnObj = invocation.proceed();
+        boolean found = false;
 
-//        final Object[] arguments = invocation.getArguments();
+        for (AuditProvider auditProvider : auditProviders) {
+            if (auditProvider.supports(invocation.getMethod().getDeclaringClass())) {
+                found = true;
 
-        for(int code : attr.getCodes()) {
-            Audit entity = new Audit(code);
-            auditRepository.save(entity);
+                final Object[] arguments = invocation.getArguments();
+
+                auditProvider.beforeInvoke(invocation.getMethod(), arguments);
+
+                returnObj = invocation.proceed();
+
+                auditProvider.afterInvoke(invocation.getMethod(), arguments, returnObj);
+
+                break;
+            }
+        }
+
+        if (!found) {
+            returnObj = invocation.proceed();
         }
 
         return returnObj;
+    }
+
+    public List<AuditProvider> getAuditProviders() {
+        return auditProviders;
     }
 }

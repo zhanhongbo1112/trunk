@@ -27,8 +27,7 @@ public class AuditRepositoryTest {
     @Test
     @WithUserDetails("admin")
     public void testSave() {
-        SecurityAudit audit = new SecurityAudit();
-        audit.setCode(0);
+        SecurityAudit audit = new SecurityAudit(0);
         auditRepository.save(audit);
 
         List<Audit> audits = auditRepository.findAll();

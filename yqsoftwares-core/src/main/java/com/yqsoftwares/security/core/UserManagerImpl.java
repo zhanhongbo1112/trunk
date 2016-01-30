@@ -48,7 +48,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_USER})
+    @Auditable(code = SecurityAudit.CODE_ADD_USER)
     public void addUser(User user) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
@@ -69,7 +69,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_GROUPS_TO_USER})
+    @Auditable(code = SecurityAudit.CODE_ADD_GROUPS_TO_USER)
     public void addGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(groupPaths);
@@ -88,7 +88,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_ROLES_TO_USER})
+    @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_USER)
     public void addRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(rolePaths);
@@ -107,7 +107,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_USER})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
     public void updateUser(User user) throws UserNotFoundException {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
@@ -124,7 +124,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_GROUPS_OF_USER})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
     public void updateGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(groupPaths);
@@ -145,7 +145,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_ROLES_OF_USER})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
     public void updateRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(rolePaths);
@@ -166,7 +166,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_USER})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
     public void removeUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
 
@@ -185,7 +185,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER)
     public void removeGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(groupPaths);
@@ -204,7 +204,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_REMOVE_ROLES_FROM_USER})
+    @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
     public void removeRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notNull(rolePaths);
@@ -224,7 +224,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_ADD_USER, SecurityAudit.CODE_ADD_GROUPS_TO_USER, SecurityAudit.CODE_ADD_ROLES_TO_USER})
+    @Auditable(code = SecurityAudit.CODE_ADD_USER)
     public void addUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
@@ -264,7 +264,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(codes = {SecurityAudit.CODE_UPDATE_USER, SecurityAudit.CODE_UPDATE_GROUPS_OF_USER, SecurityAudit.CODE_UPDATE_ROLES_OF_USER})
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
     public void updateUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserNotFoundException {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
