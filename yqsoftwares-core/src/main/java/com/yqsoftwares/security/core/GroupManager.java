@@ -29,8 +29,6 @@ public interface GroupManager {
 
     void removeGroup(String path) throws GroupNotFoundException;
 
-    void removeGroups(String... paths);
-
     void removeUsers(String path, String... usernames) throws GroupNotFoundException;
 
     void removeRoles(String path, String... roles) throws GroupNotFoundException;

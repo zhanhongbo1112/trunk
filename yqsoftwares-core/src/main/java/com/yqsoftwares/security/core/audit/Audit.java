@@ -25,7 +25,12 @@ public class Audit extends AbstractPersistable<Long> {
     @Column(name = "CREATED_DATE", nullable = false)
     private Date createdDate;
 
+    @Column(name = "CODE", nullable = false)
     private int code;
+
+    @Lob
+    @Column(name = "DESCRIPTION", nullable = true)
+    private String description;
 
     public Audit() {
         super();
@@ -58,5 +63,13 @@ public class Audit extends AbstractPersistable<Long> {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

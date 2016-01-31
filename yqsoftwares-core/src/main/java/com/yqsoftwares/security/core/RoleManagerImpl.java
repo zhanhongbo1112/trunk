@@ -215,7 +215,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_ROLE)
+    @Auditable(code = SecurityAudit.CODE_ADD_ROLE_WITH_USERS_AND_GROUPS)
     public void addRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException {
         Assert.isTrue(role.isNew());
         Assert.hasText(role.getPath());
@@ -246,7 +246,7 @@ public class RoleManagerImpl implements RoleManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLE)
+    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLE_WITH_USERS_AND_GROUPS)
     public void updateRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws GroupNotFoundException {
         Assert.isTrue(!role.isNew());
         Assert.hasText(role.getPath());

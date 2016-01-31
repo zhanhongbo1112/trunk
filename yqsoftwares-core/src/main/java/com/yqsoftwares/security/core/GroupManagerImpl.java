@@ -150,7 +150,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_GROUP)
+    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUP)
     public void removeGroup(String path) throws GroupNotFoundException {
         Assert.hasText(path);
 
@@ -166,26 +166,6 @@ public class GroupManagerImpl implements GroupManager {
         }
 
         groupRepository.delete(group);
-    }
-
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS)
-    public void removeGroups(String... paths) {
-        Assert.notEmpty(paths);
-
-        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(paths));
-        if (!groups.isEmpty()) {
-            for (Group group : groups) {
-                List<User> users = userRepository.findByGroupsPath(group.getPath());
-                for (User user : users) {
-                    user.getGroups().remove(group);
-                    userRepository.saveAndFlush(user);
-                }
-
-                groupRepository.delete(group);
-            }
-        }
     }
 
     @Override
@@ -228,7 +208,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_GROUP)
+    @Auditable(code = SecurityAudit.CODE_ADD_GROUP_WITH_USERS_AND_ROLES)
     public void addGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupExistsException {
         Assert.isTrue(group.isNew());
         Assert.hasText(group.getPath());
@@ -261,7 +241,7 @@ public class GroupManagerImpl implements GroupManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUP)
+    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUP_WITH_USERS_AND_ROLES)
     public void updateGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupNotFoundException {
         Assert.isTrue(!group.isNew());
         Assert.hasText(group.getPath());

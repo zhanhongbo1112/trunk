@@ -224,7 +224,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_USER)
+    @Auditable(code = SecurityAudit.CODE_ADD_USER_WITH_GROUPS_AND_ROLES)
     public void addUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
@@ -264,7 +264,7 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USER_WITH_GROUPS_AND_ROLES)
     public void updateUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserNotFoundException {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());

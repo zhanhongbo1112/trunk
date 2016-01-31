@@ -28,6 +28,7 @@ public class AuditRepositoryTest {
     @WithUserDetails("admin")
     public void testSave() {
         SecurityAudit audit = new SecurityAudit(0);
+        audit.setTarget("object id");
         auditRepository.save(audit);
 
         List<Audit> audits = auditRepository.findAll();

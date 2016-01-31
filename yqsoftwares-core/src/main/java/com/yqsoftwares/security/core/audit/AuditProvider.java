@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public interface AuditProvider {
     boolean supports(Class<?> clazz);
 
-    void beforeInvoke(Method method, Object[] arguments);
+    void beforeInvocation(Method method, Object[] arguments);
 
-    void afterInvoke(Method method, Object[] arguments, Object returnObj);
+    void afterInvocation(Method method, Object[] arguments, Object returnObj);
 }

@@ -35,11 +35,11 @@ public class AuditInterceptor implements MethodInterceptor, Serializable {
 
                 final Object[] arguments = invocation.getArguments();
 
-                auditProvider.beforeInvoke(invocation.getMethod(), arguments);
+                auditProvider.beforeInvocation(invocation.getMethod(), arguments);
 
                 returnObj = invocation.proceed();
 
-                auditProvider.afterInvoke(invocation.getMethod(), arguments, returnObj);
+                auditProvider.afterInvocation(invocation.getMethod(), arguments, returnObj);
 
                 break;
             }
