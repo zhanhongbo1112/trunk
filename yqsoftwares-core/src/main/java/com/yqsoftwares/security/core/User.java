@@ -1,5 +1,6 @@
 package com.yqsoftwares.security.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -28,6 +29,7 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
     @NotEmpty
     @Length(max = 128)
     @Column(length = 128, nullable = false)
+    @JsonIgnore
     private String password;
 
     @Column(nullable = false)
@@ -35,10 +37,12 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
 
     @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "SEC_USER_ROLES", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    @JsonIgnore
     private Set<Role> roles;
 
     @ManyToMany(targetEntity = Group.class)
     @JoinTable(name = "SEC_USER_GROUPS", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "GROUP_ID"))
+    @JsonIgnore
     private Set<Group> groups;
 
     public User() {

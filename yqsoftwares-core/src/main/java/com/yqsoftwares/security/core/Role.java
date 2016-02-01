@@ -1,5 +1,6 @@
 package com.yqsoftwares.security.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -31,14 +32,6 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Column(length = 255)
     private String description;
 
-    public Role() {
-    }
-
-    public Role(String path) {
-        this();
-        this.path = path;
-    }
-
     /**
      * Note: specified <code>mappedBy</code> to avoid defining in two sides of
      *
@@ -47,10 +40,20 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
      * "USER_ID"))
      */
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     private Set<User> users;
 
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     private Set<Group> groups;
+
+    public Role() {
+    }
+
+    public Role(String path) {
+        this();
+        this.path = path;
+    }
 
     public String getPath() {
         return path;

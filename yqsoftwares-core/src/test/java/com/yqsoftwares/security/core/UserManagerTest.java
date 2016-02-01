@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -267,11 +268,21 @@ public class UserManagerTest {
     }
 
     @Test
+    public void testFindUserGroups() throws Exception {
+        List<Group> groups = userManager.findUserGroups("supervisor");
+        assertTrue(!groups.isEmpty());
+    }
+
+    @Test
     public void testFindAllRoles() throws Exception {
         Page<Role> roles = userManager.findAllRoles(new PageRequest(0, 10));
         assertTrue(!roles.getContent().isEmpty());
     }
 
-
+    @Test
+    public void testFindUserRoles() throws Exception {
+        List<Role> roles = userManager.findUserRoles("supervisor");
+        assertTrue(roles.isEmpty());
+    }
 
 }

@@ -324,8 +324,18 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
+    public List<Group> findUserGroups(String username) {
+        return groupRepository.findByUsersUsername(username);
+    }
+
+    @Override
     public Page<Role> findAllRoles(Pageable pageable) {
         return roleRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Role> findUserRoles(String username) {
+        return roleRepository.findByUsersUsername(username);
     }
 
     public void setUserRepository(UserRepository userRepository) {

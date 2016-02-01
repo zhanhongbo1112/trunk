@@ -41,5 +41,9 @@ public interface UserManager {
 
     Page<Group> findAllGroups(Pageable pageable);
 
+    List<Group> findUserGroups(String username);
+
     Page<Role> findAllRoles(Pageable pageable);
+
+    List<Role> findUserRoles(String username);
 }
