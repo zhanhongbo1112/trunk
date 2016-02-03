@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
-import java.util.Collection;
 
 /**
  * Created by Administrator on 2016-01-30.
@@ -105,13 +104,6 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                     audit.setTarget(arguments[0].toString());
                     sb.append("roles", arguments[1]);
                     break;
-                case SecurityAudit.CODE_ADD_USER_WITH_GROUPS_AND_ROLES:
-                case SecurityAudit.CODE_UPDATE_USER_WITH_GROUPS_AND_ROLES:
-                    user = (User) arguments[0];
-                    audit.setTarget(user.getUsername());
-                    sb.append("groups", ((Collection<String>) arguments[1]).toArray())
-                            .append("roles", ((Collection<String>) arguments[2]).toArray());
-                    break;
                 case SecurityAudit.CODE_REMOVE_USER:
                     audit.setTarget(arguments[0].toString());
                     break;
@@ -158,13 +150,6 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                     audit.setTarget(arguments[0].toString());
                     sb.append("roles", arguments[1]);
                     break;
-                case SecurityAudit.CODE_ADD_GROUP_WITH_USERS_AND_ROLES:
-                case SecurityAudit.CODE_UPDATE_GROUP_WITH_USERS_AND_ROLES:
-                    group = (Group) arguments[0];
-                    audit.setTarget(group.getPath());
-                    sb.append("users", ((Collection<String>) arguments[1]).toArray())
-                            .append("roles", ((Collection<String>) arguments[2]).toArray());
-                    break;
                 case SecurityAudit.CODE_REMOVE_GROUP:
                     audit.setTarget(arguments[0].toString());
                     break;
@@ -210,13 +195,6 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                 case SecurityAudit.CODE_REMOVE_GROUPS_FROM_ROLE:
                     audit.setTarget(arguments[0].toString());
                     sb.append("groups", arguments[1]);
-                    break;
-                case SecurityAudit.CODE_ADD_ROLE_WITH_USERS_AND_GROUPS:
-                case SecurityAudit.CODE_UPDATE_ROLE_WITH_USERS_AND_GROUPS:
-                    role = (Role) arguments[0];
-                    audit.setTarget(role.getPath());
-                    sb.append("users", ((Collection<String>) arguments[1]).toArray())
-                            .append("groups", ((Collection<String>) arguments[2]).toArray());
                     break;
                 case SecurityAudit.CODE_REMOVE_ROLE:
                     audit.setTarget(arguments[0].toString());
