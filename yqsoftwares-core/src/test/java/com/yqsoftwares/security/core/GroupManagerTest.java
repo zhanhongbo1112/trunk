@@ -177,59 +177,6 @@ public class GroupManagerTest {
     }
 
     @Test
-    public void testAddGroupWithUsersAndRoles() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP", "PATH='/USERS/AGENTS'");
-        assertTrue(count == 0);
-
-        Group entity = new Group();
-        entity.setPath("/USERS/AGENTS");
-        entity.setAlias("AGENTS");
-        entity.setDescription("Agent Group");
-
-        String[] inUsers = new String[]{"user"};
-        String[] inRoles = new String[]{"/USERS"};
-
-        groupManager.addGroup(entity, Arrays.asList(inUsers), Arrays.asList(inRoles));
-
-        Group createdGroup = groupManager.findGroup("/USERS/AGENTS");
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=" + createdGroup.getId());
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=" + createdGroup.getId());
-        assertTrue(count == 1);
-    }
-
-    @Test
-    public void testUpdateGroupWithUsersAndRoles() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=1");
-        assertTrue(count == 0);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 and GROUP_ID=1");
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=2");
-        assertTrue(count == 0);
-
-        Group entity = groupManager.findGroup("/ADMINS");
-
-        String[] inUsers = new String[]{"user"};
-        String[] inRoles = new String[]{"/USERS"};
-
-        groupManager.updateGroup(entity, Arrays.asList(inUsers), Arrays.asList(inRoles));
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 and GROUP_ID=1");
-        assertTrue(count == 0);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
-        assertTrue(count == 0);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=2");
-        assertTrue(count == 1);
-    }
-
-    @Test
     public void testHasGroup() throws Exception {
         boolean result = groupManager.hasGroup("/USERS");
         assertTrue(result);

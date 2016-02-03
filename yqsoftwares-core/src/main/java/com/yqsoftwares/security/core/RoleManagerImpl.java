@@ -214,81 +214,6 @@ public class RoleManagerImpl implements RoleManager {
     }
 
     @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_ROLE_WITH_USERS_AND_GROUPS)
-    public void addRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException {
-        Assert.isTrue(role.isNew());
-        Assert.hasText(role.getPath());
-        Assert.notNull(usernames);
-        Assert.notNull(groupPaths);
-
-        if (roleRepository.exists(role.getPath())) {
-            throw new RoleExistsException(role.getPath());
-        }
-
-        Role createdRole = roleRepository.saveAndFlush(role);
-        if (!usernames.isEmpty()) {
-            List<User> users = userRepository.findByUsernameIn(usernames);
-            for (User user : users) {
-                user.getRoles().add(createdRole);
-                userRepository.save(user);
-            }
-        }
-
-        if (!groupPaths.isEmpty()) {
-            List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            for (Group group : groups) {
-                group.getRoles().add(createdRole);
-                groupRepository.save(group);
-            }
-        }
-    }
-
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLE_WITH_USERS_AND_GROUPS)
-    public void updateRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws GroupNotFoundException {
-        Assert.isTrue(!role.isNew());
-        Assert.hasText(role.getPath());
-        Assert.notNull(usernames);
-        Assert.notNull(groupPaths);
-
-        Role entity = roleRepository.findByPath(role.getPath());
-        if (entity == null) {
-            throw new GroupNotFoundException(role.getPath());
-        }
-
-        entity.setAlias(role.getAlias());
-        entity.setDescription(role.getDescription());
-
-        Role updatedRole = roleRepository.saveAndFlush(entity);
-        for (User user : updatedRole.getUsers()) {
-            user.getRoles().remove(updatedRole);
-            userRepository.saveAndFlush(user);
-        }
-        for (Group group : updatedRole.getGroups()) {
-            group.getRoles().remove(updatedRole);
-            groupRepository.saveAndFlush(group);
-        }
-
-        if (!usernames.isEmpty()) {
-            List<User> users = userRepository.findByUsernameIn(usernames);
-            for (User user : users) {
-                user.getRoles().add(updatedRole);
-                userRepository.save(user);
-            }
-        }
-
-        if (!groupPaths.isEmpty()) {
-            List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            for (Group group : groups) {
-                group.getRoles().add(updatedRole);
-                groupRepository.save(group);
-            }
-        }
-    }
-
-    @Override
     public boolean hasRole(String path) {
         return roleRepository.exists(path);
     }
@@ -317,19 +242,17 @@ public class RoleManagerImpl implements RoleManager {
     }
 
     @Override
+    public List<User> findRoleUsers(String path) {
+        return userRepository.findByRolesPath(path);
+    }
+
+    @Override
     public Page<Group> findAllGroups(Pageable pageable) {
         return groupRepository.findAll(pageable);
     }
 
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void setGroupRepository(GroupRepository groupRepository) {
-        this.groupRepository = groupRepository;
-    }
-
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
+    @Override
+    public List<Group> findRoleGroups(String path) {
+        return groupRepository.findByRolesPath(path);
     }
 }

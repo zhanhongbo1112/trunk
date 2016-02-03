@@ -69,6 +69,23 @@ public class UserManagerImpl implements UserManager {
 
     @Override
     @Transactional
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
+    public void updateUser(User user) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
+
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (entity == null) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        entity.setEnabled(user.isEnabled());
+
+        userRepository.save(entity);
+    }
+
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_GROUPS_TO_USER)
     public void addGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
@@ -105,22 +122,6 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
-    public void updateUser(User user) throws UserNotFoundException {
-        Assert.isTrue(!user.isNew());
-        Assert.hasText(user.getUsername());
-
-        User entity = userRepository.findByUsername(user.getUsername());
-        if (entity == null) {
-            throw new UserNotFoundException(user.getUsername());
-        }
-
-        entity.setEnabled(user.isEnabled());
-
-        userRepository.save(entity);
-    }
 
     @Override
     @Transactional
@@ -223,79 +224,6 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_USER_WITH_GROUPS_AND_ROLES)
-    public void addUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserExistsException {
-        Assert.isTrue(user.isNew());
-        Assert.hasText(user.getUsername());
-        Assert.notNull(groupPaths);
-        Assert.notNull(rolePaths);
-
-        if (userRepository.exists(user.getUsername())) {
-            throw new UserExistsException(user.getUsername());
-        }
-
-        String password = user.getPassword();
-        if (StringUtils.isEmpty(password)) {
-            // TODO: put the default password to configuration properties
-            password = "password";
-        }
-        // encrypt the password
-        password = passwordEncoder.encode(password);
-        user.setPassword(password);
-
-        User createdUser = userRepository.saveAndFlush(user);
-        if (!groupPaths.isEmpty()) {
-            List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            if (!groups.isEmpty()) {
-                createdUser.setGroups(new HashSet<>(groups));
-            }
-        }
-
-        if (!rolePaths.isEmpty()) {
-            List<Role> roles = roleRepository.findByPathIn(rolePaths);
-            if (!roles.isEmpty()) {
-                createdUser.setRoles(new HashSet<>(roles));
-            }
-        }
-
-        userRepository.save(user);
-    }
-
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_USER_WITH_GROUPS_AND_ROLES)
-    public void updateUser(User user, Collection<String> groupPaths, Collection<String> rolePaths) throws UserNotFoundException {
-        Assert.isTrue(!user.isNew());
-        Assert.hasText(user.getUsername());
-        Assert.notNull(groupPaths);
-        Assert.notNull(rolePaths);
-
-        User entity = userRepository.findByUsername(user.getUsername());
-        if (entity == null) {
-            throw new UserNotFoundException(user.getUsername());
-        }
-
-        entity.getGroups().clear();
-        entity.getRoles().clear();
-        if (!groupPaths.isEmpty()) {
-            final List<Group> groups = groupRepository.findByPathIn(groupPaths);
-            if (!groups.isEmpty()) {
-                entity.setGroups(new HashSet<>(groups));
-            }
-        }
-
-        if (!rolePaths.isEmpty()) {
-            final List<Role> roles = roleRepository.findByPathIn(rolePaths);
-            if (!roles.isEmpty()) {
-                entity.setRoles(new HashSet<>(roles));
-            }
-        }
-
-        userRepository.save(entity);
-    }
-
-    @Override
     public boolean hasUser(String username) {
         return userRepository.exists(username);
     }
@@ -336,21 +264,5 @@ public class UserManagerImpl implements UserManager {
     @Override
     public List<Role> findUserRoles(String username) {
         return roleRepository.findByUsersUsername(username);
-    }
-
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public void setGroupRepository(GroupRepository groupRepository) {
-        this.groupRepository = groupRepository;
-    }
-
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
-    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
     }
 }

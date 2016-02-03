@@ -178,59 +178,6 @@ public class RoleManagerTest {
     }
 
     @Test
-    public void testAddRoleWithUsersAndGroups() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_ROLE", "PATH='/USERS/AGENTS'");
-        assertTrue(count == 0);
-
-        Role entity = new Role();
-        entity.setPath("/USERS/AGENTS");
-        entity.setAlias("AGENTS");
-        entity.setDescription("Agent Group");
-
-        String[] inUsers = new String[]{"user"};
-        String[] inGroups = new String[]{"/USERS"};
-
-        roleManager.addRole(entity, Arrays.asList(inUsers), Arrays.asList(inGroups));
-
-        Role createdRole = roleManager.findRole("/USERS/AGENTS");
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "ROLE_ID=" + createdRole.getId());
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "ROLE_ID=" + createdRole.getId());
-        assertTrue(count == 1);
-    }
-
-    @Test
-    public void testUpdateRoleWithUsersAndGroups() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 and ROLE_ID=1");
-        assertTrue(count == 0);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 and ROLE_ID=1");
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 AND ROLE_ID=1");
-        assertTrue(count == 0);
-
-        Role entity = roleManager.findRole("/ADMINS");
-
-        String[] inUsers = new String[]{"user"};
-        String[] inGroups = new String[]{"/USERS"};
-
-        roleManager.updateRole(entity, Arrays.asList(inUsers), Arrays.asList(inGroups));
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 and ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 and ROLE_ID=1");
-        assertTrue(count == 0);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
-        assertTrue(count == 0);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 AND ROLE_ID=1");
-        assertTrue(count == 1);
-    }
-
-    @Test
     public void testHasRole() throws Exception {
         boolean result = roleManager.hasRole("/USERS");
         assertTrue(result);

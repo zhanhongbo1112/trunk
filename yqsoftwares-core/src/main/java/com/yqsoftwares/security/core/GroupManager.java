@@ -33,10 +33,6 @@ public interface GroupManager {
 
     void removeRoles(String path, String... roles) throws GroupNotFoundException;
 
-    void addGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupExistsException;
-
-    void updateGroup(Group group, Collection<String> usernames, Collection<String> rolePaths) throws GroupNotFoundException;
-
     boolean hasGroup(String path);
 
     Group findGroup(String path) throws GroupNotFoundException;
@@ -45,5 +41,9 @@ public interface GroupManager {
 
     Page<User> findAllUsers(Pageable pageable);
 
+    List<User> findGroupUsers(String path);
+
     Page<Role> findAllRoles(Pageable pageable);
+
+    List<Role> findGroupRoles(String path);
 }

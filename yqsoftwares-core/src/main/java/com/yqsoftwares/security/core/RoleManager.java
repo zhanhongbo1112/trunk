@@ -29,10 +29,6 @@ public interface RoleManager {
 
     void removeGroups(String path, String... groupPaths) throws RoleNotFoundException;
 
-    void addRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException;
-
-    void updateRole(Role role, Collection<String> usernames, Collection<String> groupPaths) throws RoleExistsException;
-
     boolean hasRole(String path);
 
     Role findRole(String path) throws RoleNotFoundException;
@@ -41,5 +37,9 @@ public interface RoleManager {
 
     Page<User> findAllUsers(Pageable pageable);
 
+    List<User> findRoleUsers(String path);
+
     Page<Group> findAllGroups(Pageable pageable);
+
+    List<Group> findRoleGroups(String path);
 }

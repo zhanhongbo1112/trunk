@@ -40,26 +40,6 @@ public class UserManagerTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void testAddUserWithGroupsAndRoles() throws Exception {
-        User entity = new User();
-        entity.setUsername("user1");
-        entity.setPassword("password");
-        entity.setEnabled(true);
-
-        String[] inGroups = new String[]{"/USERS"};
-        String[] inRoles = new String[]{"/USERS"};
-
-        userManager.addUser(entity, Arrays.asList(inGroups), Arrays.asList(inRoles));
-
-        User createdUser = userManager.findUser("user1");
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=" + createdUser.getId());
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=" + createdUser.getId());
-        assertTrue(count == 1);
-    }
-
-    @Test
     public void testAddUser() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user1'");
         assertTrue(count == 0);
@@ -216,32 +196,6 @@ public class UserManagerTest {
 
         result = userManager.hasUser("nonexisteduser");
         assertFalse(result);
-    }
-
-    @Test
-    public void testUpdateUserWithGroupsAndRoles() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=2");
-        assertTrue(count == 1);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=2");
-        assertTrue(count == 1);
-
-        User entity = userManager.findUser("user");
-
-        String[] inGroups = new String[]{"/ADMINS"};
-        String[] inRoles = new String[]{"/ADMINS"};
-
-        userManager.updateUser(entity, Arrays.asList(inGroups), Arrays.asList(inRoles));
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 and GROUP_ID=2");
-        assertTrue(count == 0);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 AND ROLE_ID=2");
-        assertTrue(count == 0);
     }
 
     @Test
