@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>yqsoftwares-core</module>
-        <module>yqsoftwares-cms</module>
+        <module>yqboots-core</module>
+        <module>yqboots-cms</module>
     </modules>
     <parent>
         <groupId>io.spring.platform</groupId>
@@ -14,8 +14,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.yqsoftwares</groupId>
-    <artifactId>yqsoftwares-projects</artifactId>
+    <groupId>com.yqboots</groupId>
+    <artifactId>yqboots-projects</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <name>YuQi Softwares Projects</name>
@@ -67,8 +67,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.yqsoftwares</groupId>
-                <artifactId>yqsoftwares-core</artifactId>
+                <groupId>com.yqboots</groupId>
+                <artifactId>yqboots-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -136,16 +136,20 @@
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
+                    <aggregate>true</aggregate>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
                     <detectLinks/>
                     <includeDependencySources>true</includeDependencySources>
                     <dependencySourceIncludes>
-                        <dependencySourceInclude>com.yqsoftwares:*</dependencySourceInclude>
+                        <dependencySourceInclude>com.yqboots:*</dependencySourceInclude>
                     </dependencySourceIncludes>
                     <!-- heavily used dependencies -->
                     <links>
                         <link>http://docs.oracle.com/javase/7/docs/api/</link>
                         <link>http://docs.oracle.com/javaee/6/api</link>
-                        <link>http://docs.spring.io/spring/docs/current/javadoc-api/</link>
+                        <!--<link>http://docs.spring.io/spring/docs/current/javadoc-api/</link>-->
                     </links>
                 </configuration>
                 <executions>
