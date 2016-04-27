@@ -1,11 +1,11 @@
 package com.yqboots.security.core;
 
-import com.yqboots.commons.db.util.DBUtils;
 import com.yqboots.security.core.audit.SecurityAudit;
 import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
+import com.yqboots.util.DBUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

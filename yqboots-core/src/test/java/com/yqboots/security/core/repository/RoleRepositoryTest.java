@@ -1,8 +1,8 @@
 package com.yqboots.security.core.repository;
 
-import com.yqboots.commons.db.util.DBUtils;
 import com.yqboots.security.Application;
 import com.yqboots.security.core.Role;
+import com.yqboots.util.DBUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

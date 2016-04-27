@@ -1,4 +1,4 @@
-package com.yqboots.commons.db.util;
+package com.yqboots.util;
 
 import org.apache.commons.lang3.StringUtils;
 
