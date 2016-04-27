@@ -1,4 +1,4 @@
-package com.yqboots.web.fileupload.controller;
+package com.yqboots.fss.web.controller;
 
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
