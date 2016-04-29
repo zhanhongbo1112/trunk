@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">YuQi Boots Web Application</title>
+</head>
+<body>
+<div th:replace="layouts/header :: header">&nbsp;</div>
+<div class="container">
+    <div layout:fragment="content">
+        <h1>Static content for prototyping purposes only</h1>
+        <p>Hello Thymeleaf</p>
+    </div>
+    <div th:replace="layouts/footer :: footer">&nbsp;</div>
+</div>
+</body>
+</html>
