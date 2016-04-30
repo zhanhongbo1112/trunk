@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en"
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">YuQi Boots Web Application</title>
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE" th:text="#{app.name}">YuQi</title>
 </head>
 <body>
 <div th:replace="layouts/header :: header">&nbsp;</div>

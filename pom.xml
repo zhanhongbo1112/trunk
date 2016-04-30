@@ -73,6 +73,12 @@
                 <artifactId>yqboots-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>1.3.3.RELEASE</version>
+                <optional>true</optional>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <scm>
