@@ -3,10 +3,16 @@
       xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE" th:text="#{app.name}">YuQi</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" th:src="@{/js/jquery.min.js}"/>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"/>
 </head>
 <body>
 <div th:replace="layouts/header :: header">&nbsp;</div>
-<div class="container">
+<div class="container" style="padding-top: 60px;">
     <div layout:fragment="content">
         <h1>Static content for prototyping purposes only</h1>
         <p>Hello Thymeleaf</p>
