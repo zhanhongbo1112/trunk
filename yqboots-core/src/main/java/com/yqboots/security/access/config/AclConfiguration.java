@@ -7,9 +7,6 @@ import org.springframework.cache.support.NoOpCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.PermissionEvaluator;
-import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
-import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
-import org.springframework.security.acls.AclPermissionCacheOptimizer;
 import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.AclAuthorizationStrategyImpl;
 import org.springframework.security.acls.domain.ConsoleAuditLogger;
@@ -21,16 +18,14 @@ import org.springframework.security.acls.jdbc.LookupStrategy;
 import org.springframework.security.acls.model.AclCache;
 import org.springframework.security.acls.model.AclService;
 import org.springframework.security.authentication.event.LoggerListener;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.sql.DataSource;
 
 /**
- * Created by Administrator on 2016-05-02.
+ * Created by Administrator on 2016-05-03.
  */
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AclConfiguration {
     @Autowired
     private DataSource dataSource;
@@ -38,15 +33,6 @@ public class AclConfiguration {
     @Bean
     public LoggerListener loggerListener() {
         return new LoggerListener();
-    }
-
-    @Bean
-    public MethodSecurityExpressionHandler methodSecurityExpressionHandler() {
-        DefaultMethodSecurityExpressionHandler bean = new DefaultMethodSecurityExpressionHandler();
-        bean.setPermissionEvaluator(aclPermissionEvaluator());
-        bean.setPermissionCacheOptimizer(new AclPermissionCacheOptimizer(jdbcMutableAclService()));
-
-        return bean;
     }
 
     @Bean
