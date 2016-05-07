@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Created by Administrator on 2015-12-14.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "CMS_ITEM", uniqueConstraints = {@UniqueConstraint(name = "UN_ITEM_NAME", columnNames = {"NAME"})})
 @Inheritance

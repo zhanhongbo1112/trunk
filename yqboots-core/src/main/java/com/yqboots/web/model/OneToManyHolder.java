@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Administrator on 2016-02-03.
  */
+@SuppressWarnings("serial")
 public class OneToManyHolder<O extends Serializable, M extends Serializable> implements Serializable {
     O one;
     M[] many;

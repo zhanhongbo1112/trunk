@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 /**
  * Created by Administrator on 2015-12-15.
  */
+@SuppressWarnings("serial")
 @Entity
 @DiscriminatorValue("SECURITY")
 public class SecurityAudit extends Audit {
@@ -47,7 +48,7 @@ public class SecurityAudit extends Audit {
         super(code);
     }
 
-    private SecurityAudit() {
+    protected SecurityAudit() {
         super();
     }
 

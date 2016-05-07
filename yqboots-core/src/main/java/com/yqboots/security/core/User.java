@@ -16,6 +16,7 @@ import java.util.Set;
 /**
  * Created by Administrator on 2015-12-13.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "SEC_USER", uniqueConstraints = {@UniqueConstraint(name = "UN_USER_USERNAME", columnNames = {"USERNAME"})})
 public class User extends AbstractPersistable<Long> implements UserDetails, CredentialsContainer {

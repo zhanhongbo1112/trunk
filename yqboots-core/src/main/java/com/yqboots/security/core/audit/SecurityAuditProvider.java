@@ -4,7 +4,6 @@ import com.yqboots.security.core.*;
 import com.yqboots.security.core.audit.interceptor.AuditAttribute;
 import com.yqboots.security.core.audit.interceptor.AuditAttributeSource;
 import com.yqboots.security.core.audit.repository.AuditRepository;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -29,19 +28,6 @@ public class SecurityAuditProvider extends AuditProviderSupport {
 
     @Autowired
     private AuditRepository auditRepository;
-
-    private static StringBuilder append(String label, Object... values) {
-        StringBuilder sb = new StringBuilder(64);
-        if (ArrayUtils.isNotEmpty(values)) {
-            sb.append(label).append(": ");
-            for (Object value : values) {
-                sb.append(value).append(",");
-            }
-            sb.deleteCharAt(sb.length() - 1);
-        }
-
-        return sb;
-    }
 
     @Override
     public boolean supports(Class<?> clazz) {

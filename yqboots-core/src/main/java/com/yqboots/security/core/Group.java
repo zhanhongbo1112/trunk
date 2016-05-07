@@ -12,6 +12,7 @@ import java.util.Set;
 /**
  * Created by Administrator on 2015-12-13.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "SEC_GROUP", uniqueConstraints = {@UniqueConstraint(name = "UN_GROUP_PATH", columnNames = {"PATH"})})
 public class Group extends AbstractPersistable<Long> {

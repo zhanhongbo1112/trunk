@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Administrator on 2015-12-14.
  */
+@SuppressWarnings("serial")
 @Component
 public class AuditAdvisor extends AbstractPointcutAdvisor {
     @Autowired

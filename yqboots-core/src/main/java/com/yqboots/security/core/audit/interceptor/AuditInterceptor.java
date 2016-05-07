@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015-12-14.
  */
+@SuppressWarnings("serial")
 @Component
 public class AuditInterceptor implements MethodInterceptor, Serializable {
     private List<AuditProvider> auditProviders = new ArrayList<>();

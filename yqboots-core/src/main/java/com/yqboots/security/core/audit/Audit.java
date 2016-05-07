@@ -10,6 +10,7 @@ import java.util.Date;
 /**
  * Created by Administrator on 2015-12-14.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "SEC_AUDIT")
 @Inheritance

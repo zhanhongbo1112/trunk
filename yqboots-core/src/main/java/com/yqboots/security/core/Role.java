@@ -13,6 +13,7 @@ import java.util.Set;
 /**
  * Created by Administrator on 2015-12-13.
  */
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "SEC_ROLE", uniqueConstraints = {@UniqueConstraint(name = "UN_ROLE_PATH", columnNames = {"PATH"})})
 public class Role extends AbstractPersistable<Long> implements GrantedAuthority {

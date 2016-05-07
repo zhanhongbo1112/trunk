@@ -12,22 +12,23 @@ import java.lang.reflect.Modifier;
 /**
  * Created by Administrator on 2015-12-14.
  */
+@SuppressWarnings("serial")
 @Component
 public class AnnotationAuditAttributeSource implements AuditAttributeSource, Serializable {
-    private final AuditAnnotationParser auditAnnotationParser;
+	private final AuditAnnotationParser auditAnnotationParser;
 
-    @Autowired
-    public AnnotationAuditAttributeSource(AuditAnnotationParser auditAnnotationParser) {
-        super();
-        this.auditAnnotationParser = auditAnnotationParser;
-    }
+	@Autowired
+	public AnnotationAuditAttributeSource(AuditAnnotationParser auditAnnotationParser) {
+		super();
+		this.auditAnnotationParser = auditAnnotationParser;
+	}
 
-    @Override
-    public AuditAttribute getAuditAttribute(Method method) {
-        if (!Modifier.isPublic(method.getModifiers())) {
-            return null;
-        }
+	@Override
+	public AuditAttribute getAuditAttribute(Method method) {
+		if (!Modifier.isPublic(method.getModifiers())) {
+			return null;
+		}
 
-        return this.auditAnnotationParser.parseAuditAnnotation(method);
-    }
+		return this.auditAnnotationParser.parseAuditAnnotation(method);
+	}
 }
