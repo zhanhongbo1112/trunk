@@ -1,0 +1,98 @@
+/*
+ * Template Name: Unify - Responsive Bootstrap Template
+ * Description: Business, Corporate, Portfolio, E-commerce, Blog and One Page Template.
+ * Version: 1.9.2
+ * Author: @htmlstream
+ * Website: http://htmlstream.com
+*/
+/*Import Global Bootstrap CSS FIle*/
+@import url(css/bootstrap.css);
+
+/*Import Global Compulsory CSS Files*/
+@import url(css/app.css);
+@import url(css/blocks.css);
+
+/*Import CSS Plugins*/
+@import url(css/plugins/style-switcher.css);
+@import url(css/headers/header-default.css);
+@import url(css/footers/footer-v1.css);
+@import url(css/plugins/animate.css);
+@import url(css/plugins/line-icons/line-icons.css);
+@import url(css/plugins/font-awesome/css/font-awesome.css);
+@import url(css/plugins/cube-portfolio/css/cubeportfolio.css);
+@import url(css/plugins/cube-portfolio/custom/custom-cubeportfolio.css);
+@import url(css/plugins/skyforms/css/sky-forms.css);
+@import url(css/plugins/skyforms/custom/custom-sky-forms.css);
+@import url(css/pages/page_search.css);
+
+* {
+	border-radius: 0;
+}
+
+body {
+ color: #333;
+ font-size: 13px;
+ line-height: 1.6;
+}
+
+body.header-fixed-space {
+  padding-top: 94px;
+}
+body.header-fixed-space-v2 {
+	padding-top: 135px;
+}
+
+@media (max-width: 991px) {
+	body.header-fixed-space,
+	body.header-fixed-space-v2 {
+		padding-top: 0;
+	}
+}
+
+p,
+li,
+li a,
+label {
+ color: #555;
+}
+
+a {
+ color: #72c02c;
+ text-decoration: none;
+}
+
+a,
+a:focus,
+a:hover,
+a:active,
+button,
+button:hover {
+	outline: 0 !important;
+}
+
+a:focus {
+text-decoration: none;
+}
+a:hover {
+ color: #72c02c;
+ text-decoration: underline;
+}
+
+/*Boxed Layout
+------------------------------------*/
+.wrapper {
+	background: #fff;
+}
+
+.boxed-layout {
+  padding: 0;
+  box-shadow: 0 0 5px #ccc;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  background: url(../images/patterns/15.png) repeat;
+}
+
+/*Hiding arrows for select field in IE*/
+select::-ms-expand {
+  display: none;
+}
