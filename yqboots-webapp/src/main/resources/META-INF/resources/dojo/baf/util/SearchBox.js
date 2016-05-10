@@ -1,8 +1,8 @@
-define(['jquery'], function(){
+define([ 'jquery' ], function() {
     return {
         startup : function() {
-            $('.search').on("click", function () {
-                if($('.search-btn').hasClass('fa-search')){
+            $('.search').on("click", function() {
+                if ($('.search-btn').hasClass('fa-search')) {
                     $('.search-open').fadeIn(500);
                     $('.search-btn').removeClass('fa-search');
                     $('.search-btn').addClass('fa-times');

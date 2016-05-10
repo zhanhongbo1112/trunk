@@ -5,73 +5,122 @@
 //** 2) Fixes scroll animation not working in Opera.
 define(['jquery'], function() {
     return {
-        //startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
-    	//scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
-    	setting: {startline:100, scrollto: 0, scrollduration:1000, fadeduration:[500, 100]},
+        // startLine: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
+    	// scrollTo: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
+    	setting : {
+            startLine : 100,
+            scrollTo : 0,
+            scrollDuration : 1000,
+            fadeDuration : [ 500, 100 ]
+        },
+        
+        // <img src="assets/img/up.png" style="width:51px; height:42px" />
+        // HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+        controlHTML : '', 
 
-    	controlHTML: '', //<img src="assets/img/up.png" style="width:51px; height:42px" /> //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+    	// offset of control relative to right/ bottom of window corner
+        controlAttrs : {
+            offsetX : 5,
+            offsetY : 5
+        }, 
 
-    	controlattrs: {offsetx:5, offsety:5}, //offset of control relative to right/ bottom of window corner
+        // Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
+    	anchorKeyword: '#top',
 
-    	anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
+    	state : {
+            isVisible : false,
+            shouldVisible : false
+        },
 
-    	state: {
-    	    isvisible:false,
-    	    shouldvisible:false
-    	},
-
-    	scrollup:function(){
-    		if (!this.cssfixedsupport) //if control is positioned using JavaScript
-    			this.$control.css({opacity:0}) //hide control immediately after clicking it
-    		var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto);
-    		if (typeof dest=="string" && jQuery('#'+dest).length==1) //check element set by string exists
-    			dest=jQuery('#'+dest).offset().top;
-    		else
-    			dest=0;
-    		this.$body.animate({scrollTop: dest}, this.setting.scrollduration);
-    	},
-
-    	keepfixed:function(){
-    		var $window=jQuery(window);
-    		var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx;
-    		var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety;
-    		this.$control.css({left:controlx+'px', top:controly+'px'});
-    	},
-
-    	togglecontrol:function(){
-            var scrolltop=jQuery(window).scrollTop();
-            if (!this.cssfixedsupport)
-                this.keepfixed();
-            this.state.shouldvisible=(scrolltop>=this.setting.startline)? true : false;
-            if (this.state.shouldvisible && !this.state.isvisible){
-                this.$control.stop().animate({opacity:1}, this.setting.fadeduration[0]);
-                this.state.isvisible=true;
+    	scrollUp : function() {
+            // if control is positioned using JavaScript
+            if (!this.cssFixedSupport) {
+                // hide control immediately after clicking it
+                this.$control.css({
+                    opacity : 0
+                })
             }
-            else if (this.state.shouldvisible==false && this.state.isvisible){
-                this.$control.stop().animate({opacity:0}, this.setting.fadeduration[1]);
-                this.state.isvisible=false;
+
+            var dest = isNaN(this.setting.scrollTo) ? this.setting.scrollTo : parseInt(this.setting.scrollTo);
+            // check element set by string exists
+            if (typeof dest == "string" && jQuery('#' + dest).length == 1) {
+                dest = jQuery('#' + dest).offset().top;
+            } else {
+                dest = 0;
+            }
+
+            this.$body.animate({
+                scrollTop : dest
+            }, this.setting.scrollDuration);
+        },
+
+    	keepFixed : function() {
+            var $window = $(window);
+            var controlX = $window.scrollLeft() + $window.width() - this.$control.width() - this.controlAttrs.offsetX;
+            var controlY = $window.scrollTop() + $window.height() - this.$control.height() - this.controlAttrs.offsetY;
+            this.$control.css({
+                left : controlX + 'px',
+                top : controlY + 'px'
+            });
+        },
+
+    	toggleControl : function() {
+            var scrollTop = jQuery(window).scrollTop();
+            if (!this.cssFixedSupport) {
+                this.keepFixed();
+            }
+                
+            this.state.shouldVisible = (scrollTop >= this.setting.startLine) ? true : false;
+            if (this.state.shouldVisible && !this.state.isVisible) {
+                this.$control.stop().animate({
+                    opacity : 1
+                }, this.setting.fadeDuration[0]);
+                this.state.isVisible = true;
+            } else if (this.state.shouldVisible == false && this.state.isVisible) {
+                this.$control.stop().animate({
+                    opacity : 0
+                }, this.setting.fadeDuration[1]);
+                this.state.isVisible = false;
             }
         },
 
-        startup:function(){
+        startup : function() {
             var _this = this;
-            var iebrws=document.all;
-            this.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest; //not IE or IE7+ browsers in standards mode
-            this.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body');
-            this.$control=$('<div id="topcontrol">'+_this.controlHTML+'</div>')
-                .css({position:_this.cssfixedsupport? 'fixed' : 'absolute', bottom:_this.controlattrs.offsety, right:_this.controlattrs.offsetx, opacity:0, cursor:'pointer'})
-                .attr({title:'Scroll Back to Top'})
-                .click(function(){_this.scrollup(); return false})
-                .appendTo('body');
-            if (document.all && !window.XMLHttpRequest && _this.$control.text()!='') //loose check for IE6 and below, plus whether control contains any text
-                _this.$control.css({width:_this.$control.width()}); //IE6- seems to require an explicit width on a DIV containing text
-            this.togglecontrol();
-            $('a[href="' + _this.anchorkeyword +'"]').click(function(){
-                _this.scrollup();
+            var iebrws = document.all;
+            // not IE or IE7+ browsers in standards mode
+            this.cssFixedSupport = !iebrws || iebrws && document.compatMode == "CSS1Compat" && window.XMLHttpRequest;
+            this.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body'))
+                    : $('html,body');
+            this.$control = $('<div id="topcontrol">' + _this.controlHTML + '</div>').css({
+                position : _this.cssFixedSupport ? 'fixed' : 'absolute',
+                bottom : _this.controlAttrs.offsetY,
+                right : _this.controlAttrs.offsetX,
+                opacity : 0,
+                cursor : 'pointer'
+            }).attr({
+                title : 'Scroll Back to Top'
+            }).click(function() {
+                _this.scrollUp();
+                return false
+            }).appendTo('body');
+            // loose check for IE6 and below, plus whether control contains any
+            // text
+            if (document.all && !window.XMLHttpRequest && _this.$control.text() != '') {
+                // IE6- seems to require an explicit width on a DIV containing
+                // text
+                _this.$control.css({
+                    width : _this.$control.width()
+                });
+            }
+
+            this.toggleControl();
+            $('a[href="' + _this.anchorKeyword + '"]').click(function() {
+                _this.scrollUp();
                 return false;
             });
-            $(window).bind('scroll resize', function(e){
-                _this.togglecontrol();
+
+            $(window).bind('scroll resize', function(e) {
+                _this.toggleControl();
             })
         }
     };

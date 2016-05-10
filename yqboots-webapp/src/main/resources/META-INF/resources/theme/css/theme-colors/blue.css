@@ -1010,17 +1010,6 @@ blockquote.text-right:hover {
 	color: #3498db;
 }
 
-/* Typography
-------------------------------------*/
-.dropcap {
-	color: #3498db;
-}
-
-.dropcap-bg {
-	color: #fff;
-	background: #3498db;
-}
-
 /* Breadcrumbs
 ------------------------------------*/
 span.label-u,
@@ -1441,12 +1430,6 @@ i.icon-bg-u {
 ------------------------------------*/
 .footer-v4 .copyright a {
   color: #3498db;
-}
-
-/* Title v1
-------------------------------------*/
-.title-v1 h1:after, .title-v1 h2:after {
-  background-color: #3498db;
 }
 
 /* Copyright Section

@@ -33,13 +33,6 @@ body.dark .headline {
   border-bottom: 1px dotted #555;
 }
 
-/*Headline v2
-------------------------------------*/
-body.dark .headline-v2,
-body.dark .headline-v2.bg-color-light {
-	background: #333 !important;
-}
-
 /*Parallax Backgrounds
 ------------------------------------*/
 body.dark .parallax-bg {
@@ -901,33 +894,33 @@ body.dark .popover.bottom .arrow:after {
 	border-bottom-color: #333;
 }
 
-/*Contex Background
+/*Contextual Background
 ------------------------------------*/
-body.dark .contex-bg p.bg-info,
-body.dark .contex-bg p.bg-danger,
-body.dark .contex-bg p.bg-warning,
-body.dark .contex-bg p.bg-primary,
-body.dark .contex-bg p.bg-success {
+body.dark .contextual-bg p.bg-info,
+body.dark .contextual-bg p.bg-danger,
+body.dark .contextual-bg p.bg-warning,
+body.dark .contextual-bg p.bg-primary,
+body.dark .contextual-bg p.bg-success {
 	background-color: #333;
 }
 
-body.dark .contex-bg p.bg-info {
+body.dark .contextual-bg p.bg-info {
 	color: #27d7e7;
 }
 
-body.dark .contex-bg p.bg-danger {
+body.dark .contextual-bg p.bg-danger {
 	color: #e74c3c;
 }
 
-body.dark .contex-bg p.bg-warning {
+body.dark .contextual-bg p.bg-warning {
 	color: #e67e22;
 }
 
-body.dark .contex-bg p.bg-primary {
+body.dark .contextual-bg p.bg-primary {
 	color: #3498db;
 }
 
-body.dark .contex-bg p.bg-success {
+body.dark .contextual-bg p.bg-success {
 	color: #72c02c;
 }
 
@@ -944,30 +937,17 @@ body.dark .heading h2:after {
 	border-color: #555;
 }
 
-body.dark .contacts-section .title-v1 h2 {
-	color: #ccc;
-}
-
 body.dark .headline-left .headline-brd {
 	color: #ccc;
 }
 
-body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon {
-	color: #eee;
-}
-
-body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon:before,
-body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon:after {
-  background: #eee;
-}
-
 /*Divider
 ------------------------------------*/
-body.dark .devider.devider-dotted,
-body.dark .devider.devider-dashed,
-body.dark .devider.devider-db,
-body.dark .devider.devider-db-dotted,
-body.dark .devider.devider-db-dashed {
+body.dark .divider.divider-dotted,
+body.dark .divider.divider-dashed,
+body.dark .divider.divider-db,
+body.dark .divider.divider-db-dotted,
+body.dark .divider.divider-db-dashed {
 	border-color: #555;
 }
 

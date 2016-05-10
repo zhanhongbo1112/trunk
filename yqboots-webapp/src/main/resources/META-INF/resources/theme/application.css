@@ -23,7 +23,6 @@
 @import url(css/plugins/cube-portfolio/custom/custom-cubeportfolio.css);
 @import url(css/plugins/skyforms/css/sky-forms.css);
 @import url(css/plugins/skyforms/custom/custom-sky-forms.css);
-@import url(css/pages/page_search.css);
 
 * {
 	border-radius: 0;
@@ -89,7 +88,7 @@ a:hover {
   box-shadow: 0 0 5px #ccc;
   margin-left: auto !important;
   margin-right: auto !important;
-  background: url(../images/patterns/15.png) repeat;
+  background: url(images/patterns/15.png) repeat;
 }
 
 /*Hiding arrows for select field in IE*/

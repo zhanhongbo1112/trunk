@@ -4615,38 +4615,6 @@
   position: absolute;
 }
 
-/*Slider Contents v2*/
-.re-title-v1 {
-	color: #fff;
-	font-size: 75px;
-	font-weight: 600;
-	line-height: 60px;
-	text-transform: uppercase;
-	font-family: "Open Sans", Arial, sans-serif;
-}
-
-.re-title-v2 {
-  color: #fff;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 45px;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: "Open Sans", Arial, sans-serif;
-}
-
-.re-text-v1 {
-  color: #fff;
-  font-size: 24px;
-  text-align: center;
-  font-family: "Open Sans", Arial, sans-serif;
-}
-
-.re-text-v2 {
-  color: #fff;
-  font-size: 24px;
-  font-family: "Open Sans", Arial, sans-serif;
-}
 
 /*Slides*/
 .rs-caption-1 {
@@ -5305,11 +5273,6 @@
   content: " ";
   position: absolute;
   background: url(../img/patterns/gridtile.png) repeat;
-}
-
-.clients-section .title-v1 p,
-.clients-section .title-v1 h2 {
-  color: #fff;
 }
 
 .clients-section ul {
@@ -7799,11 +7762,6 @@ img.img-mouse {
 .testimonials-bs {
   padding: 50px 0;
   background: url(../img/bg/16.jpg) 50% 0 repeat fixed;
-}
-
-.testimonials-bs .headline-center-v2 span.author {
-  color: #777;
-  font-size: 14px;
 }
 
 /*Removes Bootstrap carousel background images*/

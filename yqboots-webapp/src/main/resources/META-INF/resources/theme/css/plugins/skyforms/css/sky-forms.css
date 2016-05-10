@@ -182,7 +182,7 @@
 
 
 /**/
-/* textareas */
+/* textarea */
 /**/
 .sky-form .textarea textarea {
 	height: auto;
@@ -197,7 +197,6 @@
 .sky-form .textarea-expandable textarea:focus {
 	height: auto;
 }
-
 
 /**/
 /* radios and checkboxes */

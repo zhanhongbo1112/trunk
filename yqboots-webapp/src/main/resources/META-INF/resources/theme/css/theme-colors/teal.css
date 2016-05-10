@@ -997,17 +997,6 @@ blockquote.text-right:hover {
 	color: #18ba9b;
 }
 
-/* Typography
-------------------------------------*/
-.dropcap {
-	color: #18ba9b;
-}
-
-.dropcap-bg {
-	color: #fff;
-	background: #18ba9b;
-}
-
 /* Breadcrumbs
 ------------------------------------*/
 span.label-u,
@@ -1428,12 +1417,6 @@ i.icon-bg-u {
 ------------------------------------*/
 .footer-v4 .copyright a {
   color: #18ba9b;
-}
-
-/* Title v1
-------------------------------------*/
-.title-v1 h1:after, .title-v1 h2:after {
-  background-color: #18ba9b;
 }
 
 /* Copyright Section

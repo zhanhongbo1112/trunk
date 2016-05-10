@@ -549,7 +549,7 @@ body.header-fixed-space-default {
 	margin-left: 10px;
 }
 
-/*Dropdow Mmenu Icons (Font Awesome)*/
+/*Dropdown menu Icons (Font Awesome)*/
 .header .dropdown-menu li [class^="fa-"],
 .header .dropdown-menu li [class*=" fa-"] {
 	left: -3px;
@@ -822,7 +822,7 @@ body.header-fixed-space-default {
     }
 }
 
-/*Equal Hight List Style*/
+/*Equal High List Style*/
 @media (max-width: 991px) {
     /*Equal Height List Style*/
     .header .mega-menu .equal-height-list h3 {
