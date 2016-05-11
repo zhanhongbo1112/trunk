@@ -632,15 +632,6 @@ blockquote.hero.hero-default:hover {
 	border-bottom:solid 1px #e74c3c;
 }
 
-/* Testimonials
-------------------------------------*/
-.testimonials .testimonial-info {
-	color: #e74c3c;
-}
-.testimonials .carousel-arrow i:hover {
-	background: #e74c3c;
-}
-
 /* Info Blocks
 ------------------------------------*/
 .info-blocks:hover i.icon-info-blocks {
@@ -967,28 +958,6 @@ blockquote.text-right:hover {
   border-left-color: #e74c3c;
 }
 
-/* Testimonials Default
-------------------------------------*/
-/* Testimonials */
-.testimonials .carousel-arrow i:hover {
-  background: #e74c3c;
-}
-
-/* Testimonials Default */
-.testimonials-bg-default .item p {
-  background: #e74c3c;
-}
-.testimonials.testimonials-bg-default .item p:after,
-.testimonials.testimonials-bg-default .item p:after {
-  border-top-color: #e74c3c;
-}
-.testimonials-bg-default .carousel-arrow i {
-  background: #e74c3c;
-}
-.testimonials.testimonials-bg-default .carousel-arrow i:hover {
-  background: #c0392b;
-}
-
 /* Promo Page
 ------------------------------------*/
 /* Promo Box */
@@ -1214,17 +1183,6 @@ i.icon-bg-u {
   border-color: #e74c3c;
 }
 
-/* Testimonials v3 Title
-------------------------------------*/
-.testimonials-v3 .testimonials-v3-title p {
-  color: #e74c3c;
-}
-
-.testimonials-v3 .owl-buttons .owl-prev:hover,
-.testimonials-v3 .owl-buttons .owl-next:hover {
-  background:  #e74c3c;
-}
-
 /* Content Boxes v4
 ------------------------------------*/
 .content-boxes-v4 i {
@@ -1235,12 +1193,6 @@ i.icon-bg-u {
 ------------------------------------*/
 .thumbnails-v1 .read-more {
   color: #e74c3c;
-}
-
-/* Thumbnails v6
-------------------------------------*/
-.testimonials-v6 .testimonials-info:hover {
-  border-color: #e74c3c;
 }
 
 /* Team v1
@@ -1352,13 +1304,6 @@ i.icon-bg-u {
 ------------------------------------*/
 .service-block-v8 .service-block-desc h3::after {
   background: #e74c3c;
-}
-
-/* Testimonials bs
-------------------------------------*/
-.testimonials-bs .carousel-control-v2 i:hover {
-  border-color: #e74c3c;
-  color: #e74c3c;
 }
 
 /* Fusion Portfolio

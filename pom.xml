@@ -19,7 +19,6 @@
 
     <modules>
         <module>yqboots-core</module>
-        <module>yqboots-cms</module>
         <module>yqboots-fss</module>
         <module>yqboots-webapp</module>
     </modules>

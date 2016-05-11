@@ -1056,43 +1056,6 @@ body.dark .bg-grey {
 	border-bottom-color: #222;
 }
 
-/*Testimonials
-------------------------------------*/
-/*General Testimonials v1/v2*/
-body.dark .testimonials.testimonials-v1 p,
-body.dark .testimonials.testimonials-v2 p {
-	background: #202020;
-}
-
-body.dark .testimonials.testimonials-v1 .item p:after,
-body.dark .testimonials.testimonials-v2 .item p:after {
-	border-top-color: #202020;
-}
-
-body.dark .testimonials .testimonial-info img {
-	border-color: #999;
-}
-
-body.dark .testimonials .carousel-arrow i {
-	color: #999;
-	background: #202020;
-}
-
-body.dark .testimonials.testimonials-v1 .carousel-arrow i:hover {
-	color: #fff;
-	background: #444;
-}
-
-/*Testimonials v6
-------------------------------------*/
-body.dark .testimonials-v6 .testimonials-info {
-	background: #333;
-}
-
-body.dark .testimonials-v6 .testimonials-info {
-	border-color: #252525;
-}
-
 /*Bordered Buttons
 ------------------------------------*/
 body.dark .btn-u.btn-brd {
@@ -2940,39 +2903,6 @@ body.dark .block-grid-v2-info,
 body.dark .block-grid-v1-add-info,
 body.dark .block-grid-v1-add-info li a {
 	border-color: #292929;
-}
-
-/*Testimonials v3
-------------------------------------*/
-body.dark .testimonials-v3 .owl-buttons .owl-prev, 
-body.dark .testimonials-v3 .owl-buttons .owl-next {
-	background: #333;
-}
-
-body.dark .testimonials-v3 .owl-buttons .owl-prev:hover, 
-body.dark .testimonials-v3 .owl-buttons .owl-next:hover {
-	background: #444;
-}
-
-/*Testimonials v4
-------------------------------------*/
-body.dark .testimonials-v4 .testimonials-v4-in {
-	background: #333;
-	box-shadow: 3px 3px 3px 0 rgba(0,0,0,0.2);
-}
-
-body.dark .testimonials-v4 .testimonials-v4-in:after {
-	border-color: #333 transparent transparent transparent;
-	-webkit-filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2));
-  	filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.2));
-}
-
-body.dark .testimonials-v4 .testimonials-author {
-	color: #ccc;
-}
-
-body.dark .testimonials-v4 .testimonials-author em {
-	color: #999;
 }
 
 /*Portfolio Box v1
