@@ -651,11 +651,6 @@ blockquote.hero.hero-default:hover {
 	color:#95a5a6 !important;
 }
 
-/* Social Icons */
-.team ul.team-socail li i:hover {
-	background: #95a5a6;
-}
-
 /* Right Sidebar
 ------------------------------------*/
 /* Right Sidebar */
@@ -1033,26 +1028,6 @@ i.icon-bg-u {
 	border-top: 7px solid #95a5a6;
 }
 
-/* SKy-Forms
-------------------------------------*/
-/* Buttons */
-.sky-form .button {
-	background: #95a5a6;
-}
-
-/* Rating */
-.sky-form .rating input:checked ~ label {
-	color: #95a5a6;
-}
-
-/* Message */
-.sky-form .message {
-	color: #95a5a6;
-}
-.sky-form .message i {
-	border-color: #95a5a6;
-}
-
 /* Profile
 ------------------------------------*/
 .profile .profile-post:hover span.profile-post-numb {
@@ -1063,9 +1038,6 @@ i.icon-bg-u {
 }
 .profile .name-location span i,
 .profile .name-location span a:hover {
-	color: #95a5a6;
-}
-.share-list li i {
 	color: #95a5a6;
 }
 .profile .comment-list-v2 li:hover i,
@@ -1192,26 +1164,6 @@ i.icon-bg-u {
 /* Thumbnails v1
 ------------------------------------*/
 .thumbnails-v1 .read-more {
-  color: #95a5a6;
-}
-
-/* Team v1
-------------------------------------*/
-.team-v1 li:hover > p:before {
-  background:  #95a5a6;
-}
-
-/* Team v4
-------------------------------------*/
-.team-v4 .team-social-v4 a:hover {
-  color: #95a5a6;
-}
-
-/* Team v5 & v6 & v7
-------------------------------------*/
-.team-v5 small,
-.team-v6 small,
-.team-v7 .team-v7-position {
   color: #95a5a6;
 }
 
