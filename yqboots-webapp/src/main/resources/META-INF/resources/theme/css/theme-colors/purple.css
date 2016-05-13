@@ -631,12 +631,6 @@ blockquote.hero.hero-default:hover {
 	border-bottom:solid 1px #9b6bcc;
 }
 
-/* Info Blocks
-------------------------------------*/
-.info-blocks:hover i.icon-info-blocks {
-	color: #9b6bcc;
-}
-
 /* Breadcrumb
 ------------------------------------*/
 .breadcrumb li.active,
@@ -648,15 +642,6 @@ blockquote.hero.hero-default:hover {
 ------------------------------------*/
 .team .thumbnail-style:hover h3 a {
 	color:#9b6bcc !important;
-}
-
-/* Right Sidebar
-------------------------------------*/
-/* Right Sidebar */
-.who li i,
-.who li:hover i,
-.who li:hover a {
-	color:#9b6bcc;
 }
 
 /* Privacy Page
@@ -696,23 +681,6 @@ ul.blog-tags a:hover {
 }
 .blog-post-tags ul.blog-tags a:hover {
   background:  #9b6bcc;
-}
-
-/* Blog Photos */
-.blog-photos li img:hover {
-	box-shadow: 0 0 0 2px #9b6bcc;
-}
-
-/* Blog Latest Tweets */
-.blog-twitter .blog-twitter-inner:hover {
-	border-color: #9b6bcc;
-	border-top-color: #9b6bcc;
-}
-.blog-twitter .blog-twitter-inner:hover:after {
-	border-top-color: #9b6bcc;
-}
-.blog-twitter .blog-twitter-inner a {
-	color: #9b6bcc;
 }
 
 /* Blog Item Page
@@ -801,11 +769,6 @@ ul.blog-tags a:hover {
   background: #9b6bcc;
 }
 
-/* GLYPHICONS Icons Page Style */
-.bs-glyphicons li:hover {
-  color: #9b6bcc;
-}
-
 /* Navigation
 ------------------------------------*/
 /* Pagination */
@@ -841,13 +804,6 @@ ul.blog-tags a:hover {
 ------------------------------------*/
 .reg-block {
 	border-top: solid 2px #9b6bcc;
-}
-
-/*Image Hover
-------------------------------------*/
-/* Image-hover */
-#effect-2 figure .img-hover {
-	background: #9b6bcc;
 }
 
 /* Blog Large Page
@@ -912,18 +868,6 @@ ul.blog-tags a:hover {
 	color: #9b6bcc;
 }
 
-/* Funny Boxes
-------------------------------------*/
-.funny-boxes p a {
-  color: #9b6bcc;
-}
-.funny-boxes .funny-boxes-img li i {
-  color: #9b6bcc;
-}
-.funny-boxes-colored p, .funny-boxes-colored h2 a, .funny-boxes-colored .funny-boxes-img li, .funny-boxes-colored .funny-boxes-img li i {
-  color: #fff;
-}
-
 /* Sidebar Sub Navigation
 ------------------------------------*/
 .sidebar-nav-v1 ul li:hover a,
@@ -942,22 +886,6 @@ blockquote.text-right:hover {
 }
 .quote-v1 p::before {
   color: #9b6bcc;
-}
-
-/* Green Left Bordered Funny Box */
-.funny-boxes-left-green {
-  border-left: solid 2px #9b6bcc;
-}
-.funny-boxes-left-green:hover {
-  border-left-color: #9b6bcc;
-}
-
-/* Promo Page
-------------------------------------*/
-/* Promo Box */
-.promo-box:hover strong,
-.promo-box:hover strong a {
-	color: #9b6bcc;
 }
 
 /* Breadcrumbs
@@ -988,18 +916,6 @@ i.icon-color-u {
   border: solid 1px #9b6bcc;
 }
 i.icon-bg-u {
-  background: #9b6bcc;
-}
-
-/* Line Icon Page
-------------------------------------*/
-.line-icon-page .item:hover {
-	color: #9b6bcc;
-}
-
-/* Colored Content Boxes
-------------------------------------*/
-.service-block-u {
   background: #9b6bcc;
 }
 
@@ -1203,18 +1119,6 @@ i.icon-bg-u {
   background:  #9b6bcc;
 }
 
-/* Block Grid v1
-------------------------------------*/
-.block-grid-v1:hover {
-  border-color: #9b6bcc;
-}
-
-/* Block Grid v2
-------------------------------------*/
-.block-grid-v2 li:hover .block-grid-v2-info {
-  border-color: #9b6bcc;
-}
-
 /* Content Boxes v6
 ------------------------------------*/
 .content-boxes-v6:hover i:after {
@@ -1231,30 +1135,6 @@ i.icon-bg-u {
 }
 .portfolio-box-v2 .portfolio-box-v2-in i:hover {
   background:  #9b6bcc;
-}
-
-/* Service Block v1
-------------------------------------*/
-.service-block-v1 i {
-  background:  #9b6bcc;
-}
-
-/* Service Block v4
-------------------------------------*/
-.service-block-v4 .service-desc i {
-  color: #9b6bcc;
-}
-
-/* Service Block v7
-------------------------------------*/
-.service-block-v7 i {
-  background: #9b6bcc;
-}
-
-/* Service Block v8
-------------------------------------*/
-.service-block-v8 .service-block-desc h3::after {
-  background: #9b6bcc;
 }
 
 /* Fusion Portfolio
