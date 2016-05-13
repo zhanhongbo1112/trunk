@@ -12,9 +12,4 @@ public class HomeController {
     public String home() {
         return "index";
     }
-
-    @RequestMapping(value = "/prototype/userProfile/")
-    public String userProfile() {
-        return "/prototype/userProfile/index";
-    }
 }
