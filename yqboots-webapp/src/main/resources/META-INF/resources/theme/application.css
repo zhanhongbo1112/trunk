@@ -6,18 +6,16 @@
  * Website: http://htmlstream.com
 */
 /*Import Global Bootstrap CSS FIle*/
-@import url(bootstrap.css);
-
+@import url(css/bootstrap.css);
 /*Import Global Compulsory CSS Files*/
-@import url(blocks.css);
-
+@import url(css/commons/blocks.css);
 /*Import CSS Plugins*/
-@import url(plugins/style-switcher.css);
-@import url(headers/header-default.css);
-@import url(footers/footer-v1.css);
-@import url(plugins/animate.css);
-@import url(plugins/line-icons/line-icons.css);
-@import url(plugins/font-awesome/css/font-awesome.css);
+@import url(css/commons/header.css);
+@import url(css/commons/footer.css);
+@import url(css/plugins/style-switcher.css);
+@import url(css/plugins/animate.css);
+@import url(css/plugins/line-icons/line-icons.css);
+@import url(css/plugins/font-awesome/css/font-awesome.css);
 
 * {
 	border-radius: 0;
