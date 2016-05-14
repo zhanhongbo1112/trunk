@@ -17,7 +17,7 @@
 </head>
 <body class="dark header-fixed header-fixed-space-default">
 <div class="wrapper">
-  <div th:replace="layouts/header :: header">&nbsp;</div>
+  <header th:replace="layouts/header :: header">&nbsp;</header>
   <div layout:fragment="breadcrumbs">
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
@@ -35,7 +35,7 @@
     <h1>Static content for prototyping purposes only</h1>
     <p>Hello Thymeleaf</p>
   </div>
-  <div th:replace="layouts/footer :: footer">&nbsp;</div>
+  <footer th:replace="layouts/footer :: footer">&nbsp;</footer>
 </div>
 <!--=== Style Switcher ===-->
 <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>

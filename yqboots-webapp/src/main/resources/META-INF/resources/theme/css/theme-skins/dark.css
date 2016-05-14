@@ -2280,9 +2280,9 @@ body.dark .footer-default .footer .dl-horizontal img {
 }
 
 /*Footer v1*/
-body.dark .footer-v1 address, 
-body.dark .footer-v1 .link-list a, 
-body.dark .footer-v1 .link-list i {
+body.dark footer address,
+body.dark footer .link-list a,
+body.dark footer .link-list i {
 	color: #999;
 }
 
@@ -2306,48 +2306,6 @@ body.dark .footer-default .copyright p {
 ------------------------------------*/
 body.dark .copyright-v2 {
 	background: #222;
-}
-
-/*Footer v1
-------------------------------------*/
-body.dark .footer-v1 .footer {
-	background: #1c1c1c;
-}
-
-/*Footer v2
-------------------------------------*/
-body.dark .footer-v2 .footer {
-	border-color: #333;	
-	background: #1c1c1c;
-}
-
-body.dark .footer-v2 .headline h2 {
-	color: #ccc;
-}
-
-body.dark .footer-v2 .link-list li {
-	border-color: #555;
-}
-
-body.dark .footer-v2 .link-list a {
-	color: #999;
-}
-
-body.dark .footer-v2 .copyright {
-	background: #191919;
-}
-
-/*Footer v3
-------------------------------------*/
-body.dark .footer-v3 .footer {
-	border-color: #333;
-	background: #1c1c1c;
-}
-
-/*Footer v5
-------------------------------------*/
-body.dark .footer-v5 .footer {
-	background: #1c1c1c;
 }
 
 /*Footer One Page

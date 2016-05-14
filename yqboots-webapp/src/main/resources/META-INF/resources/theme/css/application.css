@@ -472,12 +472,6 @@ h3.heading-xs {
 }
 
 /*For FF Only*/
-@
--moz-document url-prefix() {
-	.footer-subscribe .btn-u {
-		padding-bottom: 4px;
-	}
-}
 @media (max-width: 768px) {
 	@-moz-document url-prefix() {
 		.btn-u {
