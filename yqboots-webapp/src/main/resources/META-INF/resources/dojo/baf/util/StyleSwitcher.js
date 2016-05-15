@@ -41,19 +41,6 @@ define([ 'jquery' ], function() {
                 $(".skins-btn").removeClass("active-switcher-btn");
                 $("body").removeClass("dark");
             });
-
-            // Boxed Layout
-            $('.boxed-layout-btn').click(function() {
-                $(this).addClass("active-switcher-btn");
-                $(".wide-layout-btn").removeClass("active-switcher-btn");
-                $("body").addClass("boxed-layout container");
-            });
-
-            $('.wide-layout-btn').click(function() {
-                $(this).addClass("active-switcher-btn");
-                $(".boxed-layout-btn").removeClass("active-switcher-btn");
-                $("body").removeClass("boxed-layout container");
-            });
         }
     };
 });
