@@ -29,7 +29,7 @@ define([ 'jquery' ], function() {
                 $(this).addClass("theme-active");
             });
 
-            // Boxed Layout
+            // Skins
             $('.skins-btn').click(function() {
                 $(this).addClass("active-switcher-btn");
                 $(".handle-skins-btn").removeClass("active-switcher-btn");

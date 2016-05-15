@@ -1,5 +1,8 @@
 package com.yqboots.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.WebMvcProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -7,27 +10,27 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import java.util.TimeZone;
+
 /**
  * Created by Administrator on 2016-05-01.
  */
 @Configuration
 public class WebApplication extends WebMvcConfigurerAdapter {
+    @Autowired
+    private WebMvcProperties mvcProperties = new WebMvcProperties();
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(new LocaleChangeInterceptor());
     }
 
-    // @Bean
+    @Bean
     public LocaleResolver localeResolver() {
-        /* TODO: use SessionLocaleResolver
-        SessionLocaleResolver.LOCALE=en
-        SessionLocaleResolver.TIME_ZONE=GMT+08:00
-         */
-        return new SessionLocaleResolver();
-    }
+        SessionLocaleResolver bean = new SessionLocaleResolver();
+        bean.setDefaultLocale(mvcProperties.getLocale());
+        bean.setDefaultTimeZone(TimeZone.getDefault());
 
-    private LocaleChangeInterceptor localeChangeInterceptor() {
-        // TODO: change "locale" request parameter
-        return new LocaleChangeInterceptor();
+        return bean;
     }
 }

@@ -12,7 +12,7 @@
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" th:href="@{/theme/application.css}"/>
   <!-- CSS Theme -->
-  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/default.css}" id="style_color"/>
+  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
   <link rel="stylesheet" th:href="@{/theme/css/theme-skins/dark.css}"/>
 </head>
 <body class="dark header-fixed header-fixed-space-default">
@@ -49,7 +49,7 @@
     <!-- Theme Colors -->
     <div class="style-switcher-heading">Theme Colors</div>
     <ul class="list-unstyled">
-      <li class="theme-default theme-active" data-style="default" data-header="light"></li>
+      <li class="theme-green theme-active" data-style="green" data-header="light"></li>
       <li class="theme-blue" data-style="blue" data-header="light"></li>
       <li class="theme-orange" data-style="orange" data-header="light"></li>
       <li class="theme-red" data-style="red" data-header="light"></li>
@@ -67,9 +67,7 @@
     <div class="style-switcher-heading">Theme Skins</div>
     <div class="row no-col-space margin-bottom-20 skins-section">
       <div class="col-xs-6">
-        <button data-skins="default"
-                class="btn-u btn-u-xs btn-u-dark btn-block handle-skins-btn">Light
-        </button>
+        <button data-skins="default" class="btn-u btn-u-xs btn-u-dark btn-block handle-skins-btn">Light</button>
       </div>
       <div class="col-xs-6">
         <button data-skins="dark" class="btn-u btn-u-xs btn-u-dark btn-block active-switcher-btn skins-btn">
@@ -101,6 +99,7 @@
     require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'], function(app){
       app.startup();
     });
+
 </script>
 </body>
 </html>

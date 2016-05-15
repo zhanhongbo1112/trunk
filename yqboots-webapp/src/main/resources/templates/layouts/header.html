@@ -14,12 +14,10 @@
       <ul class="loginbar pull-right">
         <li class="hoverSelector">
           <i class="fa fa-globe"></i>
-          <a>Languages</a>
+          <a><span th:text="#{languages}">Languages</span></a>
           <ul class="languages hoverSelectorBlock">
-            <li class="active">
-              <a href="#">English <i class="fa fa-check"></i></a>
-            </li>
-            <li><a href="#">Chinese</a></li>
+            <li><a href="#" th:href="@{/?locale=en}" th:text="#{english}">English</a></li>
+            <li><a href="#" th:href="@{/?locale=zh_CN}" th:text="#{chinese}">Chinese</a></li>
           </ul>
         </li>
       </ul>
