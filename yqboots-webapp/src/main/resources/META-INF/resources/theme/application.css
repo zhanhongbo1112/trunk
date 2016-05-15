@@ -1081,14 +1081,6 @@ span.label-dark, span.badge-dark, .list-group-item.active>.badge.badge-dark
 	opacity: 1;
 }
 
-.social_github {
-	background: url(../images/icons/social/github.png) no-repeat;
-}
-
-.social_linkedin {
-	background: url(../images/icons/social/linkedin.png) no-repeat;
-}
-
 /*Font Awesome Icon Styles*/
 i.icon-custom {
 	color: #555;
