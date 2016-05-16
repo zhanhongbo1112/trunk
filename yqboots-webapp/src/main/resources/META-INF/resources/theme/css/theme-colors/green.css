@@ -5,3 +5,123 @@
 */
 
 /*If you are using default Unify color (green - #72c02c), you do not need to link (use) default.css*/
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav>.active>a {
+	color: #72c02c;
+}
+
+.header .navbar-nav>.active>a {
+	border-color: #72c02c;
+}
+
+.header .dropdown-menu {
+	border-top: solid 2px #72c02c;
+}
+
+.header .navbar-nav>li:hover>a {
+	color: #2980b9;
+}
+
+.header .nav>li>.search:hover {
+	border-bottom-color: #2980b9;
+	color: #2980b9;
+}
+
+.header .navbar-nav>li>a:hover, .header .navbar-nav>.active>a {
+	border-bottom-color: #72c02c;
+}
+
+.header .navbar-toggle {
+	border-color: #2980b9;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus
+	{
+	background: #72c02c;
+}
+
+.header .navbar-toggle:hover {
+	background: #2980b9 !important;
+}
+
+.header .navbar-nav>.open>a, .header .navbar-nav>.open>a:hover, .header .navbar-nav>.open>a:focus
+	{
+	color: #72c02c;
+}
+
+.header.header-dark .navbar-nav .dropdown > a:hover {
+    color: #72c02c;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width : 991px) {
+	.header .navbar-nav>.active>a, .header .navbar-nav>.active>a:hover,
+		.header .navbar-nav>.active>a:focus {
+		background: #72c02c;
+		color: #fff !important;
+	}
+	.header .navbar-nav>.active>a {
+		border-color: #eee;
+	}
+	.header .nav>li>.search:hover {
+		background: #72c02c;
+	}
+}
+
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
+	color: #72c02c;
+}
+
+.cube-portfolio .cbp-l-filters-text .cbp-filter-counter {
+	background: #72c02c;
+}
+
+.cube-portfolio .cbp-l-filters-text .cbp-filter-counter:before {
+	border-top-color: #72c02c;
+}
+
+.cube-portfolio .link-captions li i:hover {
+	color: #fff;
+	background: #72c02c;
+}
+
+.breadcrumb li.active, .breadcrumb li a:hover {
+	color: #72c02c;
+}
+
+.service .service-icon {
+	color: #72c02c;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-u {
+	background: #72c02c;
+}
+
+.btn-u.btn-brd {
+	border-color: #72c02c;
+}
+
+/* Breadcrumbs
+------------------------------------*/
+span.label-u, span.badge-u {
+	background: #72c02c;
+}
+
+/* Icons Background Color
+------------------------------------*/
+i.icon-color-u {
+	color: #72c02c;
+	border: solid 1px #72c02c;
+}
+
+i.icon-bg-u {
+	background: #72c02c;
+}
+
+#topcontrol:hover {
+  background: #72c02c;
+}

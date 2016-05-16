@@ -18,7 +18,7 @@
 <body class="dark header-fixed header-fixed-space-default">
 <div class="wrapper">
   <header th:replace="layouts/header :: header">&nbsp;</header>
-  <div layout:fragment="breadcrumbs">
+  <!--<div layout:fragment="breadcrumbs">-->
     <!--=== Breadcrumbs ===-->
     <div class="breadcrumbs">
       <div class="container">
@@ -28,7 +28,7 @@
           <li class="active">TODO Page</li>
         </ul>
       </div>
-    </div>
+      <!--</div>-->
     <!--=== End Breadcrumbs ===-->
   </div>
   <div layout:fragment="content" class="container content height-500">
@@ -75,20 +75,6 @@
         </button>
       </div>
     </div>
-
-    <hr/>
-
-    <!-- Layout Styles -->
-    <div class="style-switcher-heading">Layout Styles</div>
-    <div class="row no-col-space margin-bottom-20">
-      <div class="col-xs-6">
-        <a href="javascript:void(0);"
-           class="btn-u btn-u-xs btn-u-dark btn-block active-switcher-btn wide-layout-btn">Wide</a>
-      </div>
-      <div class="col-xs-6">
-        <a href="javascript:void(0);" class="btn-u btn-u-xs btn-u-dark btn-block boxed-layout-btn">Boxed</a>
-      </div>
-    </div>
   </div>
 </div><!--/style-switcher-->
 <!--=== End Style Switcher ===-->
@@ -99,7 +85,6 @@
     require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'], function(app){
       app.startup();
     });
-
 </script>
 </body>
 </html>

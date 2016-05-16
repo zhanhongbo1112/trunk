@@ -6,17 +6,6 @@
  * Website: http://htmlstream.com
 */
 
-/*[-----*** TABLE OF CONTENT ***-----]
-
-2. Breadcrumbs
-  2.1 - Breadcrumbs v1
-  2.2 - Breadcrumbs v2
-  2.3 - Breadcrumbs v3
-44. Back To Top
-##. Main Page Styles
-
--------------------------------------------------------------*/
-
 /*--------------------------------------------------
 	[2. Breadcrumbs]
 ----------------------------------------------------*/
@@ -25,7 +14,7 @@
   overflow: hidden;
   padding: 10px 0 6px;
   border-bottom: solid 1px #eee;
-  background: url(../img/patterns/breadcrumbs.png) repeat;
+  background: url(../images/patterns/breadcrumbs.png) repeat;
 }
 
 .breadcrumbs h1 {
@@ -41,12 +30,12 @@
   background: none;
   position: relative;
 }
+
 .breadcrumb a {
   color: #777;
 }
-.breadcrumb li.active,
-.breadcrumb li a:hover {
-  color: #72c02c;
+
+.breadcrumb li.active, .breadcrumb li a:hover {
   text-decoration: none;
 }
 
@@ -141,7 +130,6 @@
 
 #topcontrol:hover {
   color: #fff;
-  background: #72c02c;
   transition: all 0.3s ease-in-out;
 }
 
@@ -176,7 +164,6 @@
 .service .service-icon {
 	float: left;
 	padding: 10px;
-	color: #72c02c;
 	font-size: 35px;
 	text-align: center;
     transition: all 0.4s ease-in-out;
