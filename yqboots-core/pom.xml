@@ -9,8 +9,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>yqboots-core</artifactId>
-    <packaging>jar</packaging>
-    <name>YuQi Softwares Core Module</name>
+
+    <name>YuQi Core</name>
     <description>Defines the core functions</description>
 
     <dependencies>

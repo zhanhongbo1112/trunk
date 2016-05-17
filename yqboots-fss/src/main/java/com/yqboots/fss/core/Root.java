@@ -1,4 +1,4 @@
-package com.yqboots.fss;
+package com.yqboots.fss.core;
 
 import java.io.Serializable;
 
