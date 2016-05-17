@@ -492,10 +492,6 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 	border-width: 2px;
 }
 
-.btn-u.btn-brd:hover {
-	background: none;
-}
-
 .btn-u.btn-brd:focus {
 	background: none;
 }
@@ -507,10 +503,6 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 .btn-u.btn-brd:hover {
 	color: #5fb611;
 	border-color: #5fb611;
-}
-
-.btn-u.btn-brd.btn-brd-hover:hover {
-	background: #5fb611;
 }
 
 .btn-u.btn-brd.btn-u-blue {
@@ -1609,7 +1601,7 @@ img.image-md {
 .color-dark {
 	color: #555;
 }
-/*.color-dark1 { color: #444;}*/
+
 .color-darker {
 	color: #444;
 }

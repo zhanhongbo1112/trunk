@@ -13,18 +13,6 @@ a:focus, a:hover, a:active {
 	color: #18ba9b;
 }
 
-.color-green {
-	color: #18ba9b;
-}
-
-a.read-more:hover {
-	color: #18ba9b;
-}
-
-.linked:hover {
-	color: #18ba9b;
-}
-
 /* Headers Default
 ------------------------------------*/
 .header .navbar-nav>.active>a {
@@ -56,8 +44,7 @@ a.read-more:hover {
 	border-color: #2cd5b6;
 }
 
-.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus
-	{
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
 	background: #18ba9b;
 }
 
@@ -65,8 +52,7 @@ a.read-more:hover {
 	background: #2cd5b6 !important;
 }
 
-.header .navbar-nav>.open>a, .header .navbar-nav>.open>a:hover, .header .navbar-nav>.open>a:focus
-	{
+.header .navbar-nav>.open>a, .header .navbar-nav>.open>a:hover, .header .navbar-nav>.open>a:focus {
 	color: #18ba9b;
 }
 
@@ -77,9 +63,11 @@ a.read-more:hover {
 		background: #18ba9b;
 		color: #fff !important;
 	}
+
 	.header .navbar-nav>.active>a {
 		border-color: #eee;
 	}
+
 	.header .nav>li>.search:hover {
 		background: #18ba9b;
 	}
@@ -91,8 +79,7 @@ a.read-more:hover {
 	background: #18ba9b;
 }
 
-.btn-u:hover, .btn-u:focus, .btn-u:active, .btn-u.active, .open .dropdown-toggle.btn-u
-	{
+.btn-u:hover, .btn-u:focus, .btn-u:active, .btn-u.active, .open .dropdown-toggle.btn-u {
 	background: #2cd5b6;
 	color: #fff;
 }
