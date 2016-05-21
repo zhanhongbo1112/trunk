@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+    <title th:text="#{app.001}">Project Initializer</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left" th:text="#{app.001}">Project Initializer</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="#" th:text="#{text.tools}">Tools</a></li>
+                <li class="active" th:text="#{app.001}">Project Initializer</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div layout:fragment="content" class="content-sm">
+    <p>Hello, Project Initializer</p>
+</div>
+</body>
+</html>

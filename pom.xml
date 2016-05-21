@@ -158,7 +158,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
                     <aggregate>true</aggregate>
@@ -170,17 +170,17 @@
                     <dependencySourceIncludes>
                         <dependencySourceInclude>com.yqboots:*</dependencySourceInclude>
                     </dependencySourceIncludes>
-                    <!-- heavily used dependencies -->
+                    &lt;!&ndash; heavily used dependencies &ndash;&gt;
                     <links>
                         <link>http://docs.oracle.com/javase/7/docs/api/</link>
                         <link>http://docs.oracle.com/javaee/6/api</link>
-                        <!--<link>http://docs.spring.io/spring/docs/current/javadoc-api/</link>-->
+                        &lt;!&ndash;<link>http://docs.spring.io/spring/docs/current/javadoc-api/</link>&ndash;&gt;
                     </links>
                 </configuration>
                 <executions>
                     <execution>
                         <id>aggregate</id>
-                        <!-- <phase>site</phase> -->
+                        &lt;!&ndash; <phase>site</phase> &ndash;&gt;
                         <phase>package</phase>
                         <goals>
                             <goal>aggregate</goal>
@@ -188,7 +188,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
