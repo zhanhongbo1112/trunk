@@ -22,10 +22,6 @@ body.dark p, body.dark li, body.dark li a {
 	color: #999;
 }
 
-body.dark .headline {
-	border-bottom: 1px dotted #555;
-}
-
 /*Header
 ------------------------------------*/
 body.dark .header {
@@ -522,12 +518,6 @@ body.dark .map {
 
 body.dark footer address, body.dark footer .link-list a, body.dark footer .link-list i {
 	color: #999;
-}
-
-/*Footer One Page
-------------------------------------*/
-body.dark .copyright-section, body.dark .copyright-section i.back-to-top {
-	background: #1c1c1c;
 }
 
 /*Buttons

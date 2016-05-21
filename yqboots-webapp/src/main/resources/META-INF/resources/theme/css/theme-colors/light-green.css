@@ -103,12 +103,6 @@ a:focus, a:hover, a:active {
     background: #59b795;
 }
 
-/* Service
-------------------------------------*/
-.service .service-icon {
-    color: #79d5b3;
-}
-
 /* Footer
 ------------------------------------*/
 .copyright a, .copyright a:hover {
@@ -147,6 +141,12 @@ i.icon-bg-u {
     background: #79d5b3;
 }
 
+/* Top Control
+------------------------------------*/
+#topcontrol:hover {
+    background-color: #79d5b3;
+}
+
 /* Cube Portfolio
 ------------------------------------*/
 .cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
@@ -163,16 +163,11 @@ i.icon-bg-u {
     background: rgba(121, 213, 179, .9) !important;
 }
 
-/* Copyright Section
-------------------------------------*/
-.copyright-section i.back-to-top:hover {
-    color: #79d5b3;
-}
-
-/* Top Control
-------------------------------------*/
-#topcontrol:hover {
-    background-color: #79d5b3;
+/* Heading */
+.headline h2,
+.headline h3,
+.headline h4 {
+    border-bottom: 2px solid #79d5b3;
 }
 
 /* Progress Bar
@@ -186,4 +181,10 @@ i.icon-bg-u {
 /* The icons */
 .timeline > li .cbp_tmicon {
     background: #79d5b3;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #79d5b3;
 }

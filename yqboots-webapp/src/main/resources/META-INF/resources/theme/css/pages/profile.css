@@ -78,6 +78,21 @@
     padding: 11px;
 }
 
+.profile .map-img {
+    background: url(../../images/map.png) 5px 40px no-repeat;
+}
+
+.profile .map-img address {
+    line-height: 23px;
+    padding: 10px 0 20px 0;
+}
+
+.profile .map-img h2 {
+    color: #eee;
+    font-size: 18px;
+    font-weight: 200;
+}
+
 /*Profile Me
 ------------------------------------*/
 /*Profile Biography*/
