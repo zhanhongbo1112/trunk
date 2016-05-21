@@ -3078,19 +3078,19 @@
 					//		you may de-reference as far as you like down the package
 					//		hierarchy.  This is sometimes handy to avoid lengthy relative
 					//		urls or for building portable sub-packages. In this example,
-					//		the `acme.widget` and `acme.util` directories may be located
+					//		the `acme.widget` and `acme.plugin` directories may be located
 					//		under different roots (see `dojo.registerModulePath`) but the
 					//		the modules which reference them can be unaware of their
 					//		relative locations on the filesystem:
 					//	|	// somewhere in a configuration block
 					//	|	dojo.registerModulePath("acme.widget", "../../acme/widget");
-					//	|	dojo.registerModulePath("acme.util", "../../util");
+					//	|	dojo.registerModulePath("acme.plugin", "../../plugin");
 					//	|
 					//	|	// ...
 					//	|
 					//	|	// code in a module using acme resources
 					//	|	var tmpltPath = dojo.moduleUrl("acme.widget","templates/template.html");
-					//	|	var dataPath = dojo.moduleUrl("acme.util","resources/data.json");
+					//	|	var dataPath = dojo.moduleUrl("acme.plugin","resources/data.json");
 
 					dojo.deprecated("dojo.moduleUrl()", "use require.toUrl", "2.0");
 
@@ -5693,7 +5693,7 @@
 			"../aspect",
 			"../request/watch",
 			"../request/xhr",
-			"../request/util"
+			"../request/plugin"
 		], function(dojo, has, require, ioq, /*===== declare, =====*/ dom, domForm, Deferred, config, json, lang, array, on, aspect, watch, _xhr, util){
 			// module:
 			//		dojo/_base/xhr
@@ -9229,7 +9229,7 @@
 	},
 	'dojo/request/watch':function(){
 		define([
-			'./util',
+			'./plugin',
 			'../errors/RequestTimeoutError',
 			'../errors/CancelError',
 			'../_base/array',
@@ -9541,7 +9541,7 @@
 			'../errors/RequestError',
 			'./watch',
 			'./handlers',
-			'./util',
+			'./plugin',
 			'../has'/*=====,
 			 '../request',
 			 '../_base/declare' =====*/
@@ -9695,7 +9695,7 @@
 				};
 				cancel = function(dfd, response){
 					// summary:
-					//		canceller function for util.deferred call.
+					//		canceller function for plugin.deferred call.
 					var xhr = response.xhr;
 					var _at = typeof xhr.abort;
 					if(_at === 'function' || _at === 'object' || _at === 'unknown'){

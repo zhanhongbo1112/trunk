@@ -575,3 +575,70 @@ body.dark .cube-portfolio .cbp-title-dark .cbp-l-grid-agency-desc {
 body.dark .cube-portfolio .cbp-l-filters-text {
 	color: #777;
 }
+
+/*Profile Page
+------------------------------------*/
+body.dark .profile-body {
+	background: #1c1c1c;
+}
+
+body.dark .profile .notification,
+body.dark .profile .project-share,
+body.dark .profile .social-contacts-v3 li {
+	border-top-color: #333;
+}
+
+body.dark .profile .comment,
+body.dark .profile .panel-heading {
+	border-bottom-color: #333;
+}
+
+body.dark .profile .profile-bio span,
+body.dark .profile .panel-heading h2,
+body.dark .profile .profile-post-in h3 a {
+	color: #999;
+}
+
+body.dark .profile .projects,
+body.dark .profile .profile-bio,
+body.dark .profile .profile-blog,
+body.dark .profile .profile-post,
+body.dark .profile .profile-edit,
+body.dark .profile .profile-event,
+body.dark .profile .panel-heading,
+body.dark .profile .project-share {
+	background: #252525;
+}
+
+body.dark .profile .profile-blog {
+	border-color: #444;
+}
+
+body.dark .profile .timeline-me .cbp_tmlabel:after {
+	border: none;
+}
+
+body.dark .profile .timeline-v2.timeline-me > li .cbp_tmtime span:first-child {
+	color: #666;
+}
+
+body.dark .profile .comment-list-v2 li a {
+	color: #999;
+}
+
+body.dark .profile .media.media-v2 {
+	border-color: #555;
+}
+
+body.dark .profile .blog-info-v2 li {
+	border-color: #555;
+}
+
+body.dark .profile .btn-u.btn-u-default {
+	color: #999;
+	background: #333;
+}
+
+body.dark .profile .btn-u.btn-u-default:hover {
+	background: #444;
+}
