@@ -14,7 +14,7 @@
   overflow: hidden;
   padding: 10px 0 6px;
   border-bottom: solid 1px #eee;
-  background: url(../images/patterns/breadcrumbs.png) repeat;
+  background: url(../../images/patterns/breadcrumbs.png) repeat;
 }
 
 .breadcrumbs h1 {
@@ -55,53 +55,6 @@
     margin-bottom: 10px;
   }
 }
-
-/*Breadcrumbs Dark and Light*/
-.breadcrumbs.breadcrumbs-dark,
-.breadcrumbs.breadcrumbs-light {
-  background: #222;
-  padding: 30px 0 20px;
-  border-bottom: solid 3px #777;
-}
-
-.breadcrumbs.breadcrumbs-light {
-  background: #f7f7f7;
-  border-bottom: 1px solid #eee;
-}
-
-.breadcrumbs.breadcrumbs-dark h1,
-.breadcrumbs.breadcrumbs-dark a,
-.breadcrumbs.breadcrumbs-light h1,
-.breadcrumbs.breadcrumbs-light a {
-  color: #fff;
-  font-weight: 200;
-}
-
-.breadcrumbs.breadcrumbs-light h1, .breadcrumbs.breadcrumbs-light a {
-  color: #555;
-}
-
-.breadcrumbs.breadcrumbs-dark h1 {
-  font-size: 24px;
-}
-
-.breadcrumbs.breadcrumbs-light h1 {
-  font-size: 26px;
-}
-
-/*Breadcrumbs Sizes*/
-.breadcrumbs-sm {
-  padding: 50px 0;
-}
-
-.breadcrumbs-md {
-  padding: 100px 0;
-}
-
-.breadcrumbs-lg {
-  padding: 200px 0;
-}
-
 
 /*--------------------------------------------------
 	[44. Back To Top]

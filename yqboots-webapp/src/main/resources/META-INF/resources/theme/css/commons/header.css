@@ -1053,13 +1053,3 @@ body.header-fixed-space-default {
 		top: 60px;
 	}
 }
-
-
-/*--------------------------------------------------
-    [9. Header - Fixed Boxed]
-----------------------------------------------------*/
-
-.boxed-layout.header-fixed .header.header-sticky {
-	left: inherit;
-	width: inherit;
-}
