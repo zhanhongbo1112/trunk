@@ -576,62 +576,61 @@ body.dark .cube-portfolio .cbp-l-filters-text {
 	color: #777;
 }
 
+/*Progress Bar
+------------------------------------*/
+body.dark .progress {
+	background: #777777;
+}
+
+body.dark .progress-bar-dark {
+	background: #555555;
+}
+
+/*Panel
+------------------------------------*/
+body.dark .panel {
+	background: none;
+}
+
+body.dark .panel.panel-default .panel-heading {
+	color: #ccc;
+	background: #222;
+	border-color: #303030;
+}
+
+body.dark .panel .panel-title {
+	color: inherit;
+}
+
+body.dark .panel .panel-body {
+	background: #222;
+}
+
 /*Profile Page
 ------------------------------------*/
 body.dark .profile-body {
 	background: #1c1c1c;
 }
 
-body.dark .profile .notification,
-body.dark .profile .project-share,
-body.dark .profile .social-contacts-v3 li {
-	border-top-color: #333;
-}
-
-body.dark .profile .comment,
 body.dark .profile .panel-heading {
 	border-bottom-color: #333;
 }
 
-body.dark .profile .profile-bio span,
-body.dark .profile .panel-heading h2,
-body.dark .profile .profile-post-in h3 a {
-	color: #999;
-}
-
-body.dark .profile .projects,
-body.dark .profile .profile-bio,
-body.dark .profile .profile-blog,
-body.dark .profile .profile-post,
-body.dark .profile .profile-edit,
-body.dark .profile .profile-event,
-body.dark .profile .panel-heading,
-body.dark .profile .project-share {
+body.dark .profile .profile-bio, body.dark .profile .profile-heading, body.dark .profile .panel-heading {
 	background: #252525;
 }
 
-body.dark .profile .profile-blog {
-	border-color: #444;
+body.dark .profile .profile-bio span,
+body.dark .profile .panel-heading h2 {
+	color: #999;
 }
 
 body.dark .profile .timeline-me .cbp_tmlabel:after {
 	border: none;
 }
 
-body.dark .profile .timeline-v2.timeline-me > li .cbp_tmtime span:first-child {
+body.dark .profile .timelin2.timeline-me > li .cbp_tmtime span:first-child {
 	color: #666;
-}
-
-body.dark .profile .comment-list-v2 li a {
-	color: #999;
-}
-
-body.dark .profile .media.media-v2 {
-	border-color: #555;
-}
-
-body.dark .profile .blog-info-v2 li {
-	border-color: #555;
 }
 
 body.dark .profile .btn-u.btn-u-default {

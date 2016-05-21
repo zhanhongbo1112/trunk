@@ -181,3 +181,10 @@ i.icon-bg-u {
 #topcontrol:hover {
   background: #72c02c;
 }
+
+/* Timeline Page
+------------------------------------*/
+/* The icons */
+.timeline > li .cbp_tmicon {
+	background: #72c02c;
+}
