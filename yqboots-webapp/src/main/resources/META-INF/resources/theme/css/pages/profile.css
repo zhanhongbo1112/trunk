@@ -115,7 +115,7 @@
 }
 
 .profile .profile-bio span {
-    display: block;
+    display: inline;
 }
 
 .profile .profile-bio hr {
