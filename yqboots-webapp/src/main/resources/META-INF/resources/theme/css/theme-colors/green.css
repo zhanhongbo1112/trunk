@@ -27,12 +27,12 @@ a:focus, a:hover, a:active {
 }
 
 .header .navbar-nav > li:hover > a {
-    color: #2980b9;
+    color: #72c02c;
 }
 
 .header .nav > li > .search:hover {
-    border-bottom-color: #2980b9;
-    color: #2980b9;
+    border-bottom-color: #72c02c;
+    color: #72c02c;
 }
 
 .header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
@@ -40,7 +40,7 @@ a:focus, a:hover, a:active {
 }
 
 .header .navbar-toggle {
-    border-color: #2980b9;
+    border-color: #72c02c;
 }
 
 .header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
@@ -48,7 +48,7 @@ a:focus, a:hover, a:active {
 }
 
 .header .navbar-toggle:hover {
-    background: #2980b9 !important;
+    background: #72c02c !important;
 }
 
 .header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {

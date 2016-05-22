@@ -11,121 +11,219 @@
 ----------------------------------------------------*/
 /*Default Breadcrumbs*/
 .breadcrumbs {
-  overflow: hidden;
-  padding: 10px 0 6px;
-  border-bottom: solid 1px #eee;
-  background: url(../../images/patterns/breadcrumbs.png) repeat;
+    overflow: hidden;
+    padding: 10px 0 6px;
+    border-bottom: solid 1px #eee;
+    background: url(../../images/patterns/breadcrumbs.png) repeat;
 }
 
 .breadcrumbs h1 {
-  color: #666;
-  font-size: 22px;
-  margin-top: 8px;
+    color: #666;
+    font-size: 22px;
+    margin-top: 8px;
 }
 
 .breadcrumb {
-  top: 10px;
-  z-index: 1;
-  padding-right: 0;
-  background: none;
-  position: relative;
+    top: 10px;
+    z-index: 1;
+    padding-right: 0;
+    background: none;
+    position: relative;
 }
 
 .breadcrumb a {
-  color: #777;
+    color: #777;
 }
 
 .breadcrumb li.active, .breadcrumb li a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 @media (max-width: 550px) {
-  .breadcrumbs h1.pull-left,
-  .breadcrumbs ul.pull-right {
-    width: 100%;
-    text-align: center;
-  }
+    .breadcrumbs h1.pull-left,
+    .breadcrumbs ul.pull-right {
+        width: 100%;
+        text-align: center;
+    }
 
-  .breadcrumbs h1.pull-left {
-    margin-bottom: 0;
-  }
+    .breadcrumbs h1.pull-left {
+        margin-bottom: 0;
+    }
 
-  .breadcrumbs .breadcrumb {
-    top: 0;
-    margin-bottom: 10px;
-  }
+    .breadcrumbs .breadcrumb {
+        top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* Sidebar Menu v1
+------------------------------------*/
+.sidebar-nav li {
+    padding: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 8px 30px 8px 10px;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+}
+
+.sidebar-nav > li.active,
+.sidebar-nav > li.active:hover {
+    background: #717984;
+}
+
+.sidebar-nav > li.active,
+.sidebar-nav > li.active:hover,
+.sidebar-nav > li.active:focus {
+    border-color: #ddd;
+}
+
+.sidebar-nav > li.active > a {
+    color: #fff;
+}
+
+/*Sidebar Sub Navigation*/
+.sidebar-nav-v1 li ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li ul,
+.sidebar-nav li.active ul a {
+    background: #f8f8f8;
+}
+
+.sidebar-nav li ul a {
+    color: #555;
+    font-size: 12px;
+    border-top: solid 1px #ddd;
+    padding: 6px 30px 6px 17px;
+}
+
+.sidebar-nav ul li:hover a,
+.sidebar-nav ul li.active a {
+    color: #72c02c;
+}
+
+/*Sidebar Badges*/
+.list-group-item li > .badge {
+    float: right;
+}
+
+.sidebar-nav span.badge {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+.sidebar-nav .list-toggle > span.badge {
+    margin-right: 25px;
+}
+
+.sidebar-nav ul li span.badge {
+    margin-top: 8px;
+    font-size: 11px;
+    padding: 3px 5px;
+    margin-right: 10px;
+}
+
+/* Sidebar List Toggle
+------------------------------------*/
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-toggle:after {
+    top: 7px;
+    right: 10px;
+    color: #777;
+    font-size: 14px;
+    content: "\f105";
+    position: absolute;
+    font-weight: normal;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+
+.list-toggle.active:after {
+    color: #fff;
+    content: "\f107";
 }
 
 /*--------------------------------------------------
 	[44. Back To Top]
 ----------------------------------------------------*/
 #topcontrol {
-  color: #fff;
-  z-index: 99;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  background: #222;
-  position: relative;
-  right: 14px !important;
-  bottom: 11px !important;
-  border-radius: 3px !important;
+    color: #fff;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background: #222;
+    position: relative;
+    right: 14px !important;
+    bottom: 11px !important;
+    border-radius: 3px !important;
 }
 
 #topcontrol:after {
-  top: -2px;
-  left: 8.5px;
-  content: "\f106";
-  position: absolute;
-  text-align: center;
-  font-family: FontAwesome;
+    top: -2px;
+    left: 8.5px;
+    content: "\f106";
+    position: absolute;
+    text-align: center;
+    font-family: FontAwesome;
 }
 
 #topcontrol:hover {
-  color: #fff;
-  transition: all 0.3s ease-in-out;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Service Block
 ------------------------------------*/
 .service {
-	overflow: hidden;
-	margin-bottom: 10px;
-	padding: 15px 15px 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding: 15px 15px 10px;
 }
 
 .service:hover {
-	background: #fcfcfc;
-	box-shadow: 0 0 5px #ddd;
-	transition: box-shadow 0.2s ease-in-out;
+    background: #fcfcfc;
+    box-shadow: 0 0 5px #ddd;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
 .service:hover i {
-	color: #656565;
+    color: #656565;
 }
 
 .service .desc {
-	padding: 0 15px;
-	overflow: hidden;
+    padding: 0 15px;
+    overflow: hidden;
 }
 
 .service .desc h4 {
-	font-size: 22px;
-	line-height: 25px;
+    font-size: 22px;
+    line-height: 25px;
 }
 
 .service .service-icon {
-	float: left;
-	padding: 10px;
-	font-size: 35px;
-	text-align: center;
+    float: left;
+    padding: 10px;
+    font-size: 35px;
+    text-align: center;
     transition: all 0.4s ease-in-out;
 }
 
 .service .service-icon.icon-cogs {
-	font-size: 37px;
+    font-size: 37px;
 }
 
 .service .service-icon.icon-plane {
-	font-size: 43px;
+    font-size: 43px;
 }
