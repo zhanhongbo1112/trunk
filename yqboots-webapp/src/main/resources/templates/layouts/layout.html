@@ -5,15 +5,17 @@
   <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE" th:text="#{app.name}">YuQi</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta content="" name="description"/>
-  <meta content="" name="author"/>
+  <meta content="YuQi Projects" name="description"/>
+  <meta content="Eric H B Zhan" name="author"/>
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico" th:href="@{/favicon.ico}"/>
+  <link rel="shortcut icon" href="../../META-INF/resources/favicon.ico" th:href="@{/favicon.ico}"/>
   <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" th:href="@{/theme/application.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"/>
   <!-- CSS Theme -->
-  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
-  <link rel="stylesheet" th:href="@{/theme/css/theme-skins/dark.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
+        th:href="@{/theme/css/theme-colors/green.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
+        th:href="@{/theme/css/theme-skins/dark.css}"/>
 </head>
 <body class="dark header-fixed header-fixed-space-default">
 <div class="wrapper">
@@ -79,8 +81,9 @@
 </div><!--/style-switcher-->
 <!--=== End Style Switcher ===-->
 <!-- JS Global Compulsory -->
-<script type="text/javascript" th:src="@{/dojo/dojo/dojo.js}" data-dojo-config="async: true"/>
-<script type="text/javascript" th:src="@{/dojo/jquery.js}"/>
+<script type="text/javascript" src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}"
+        data-dojo-config="async: true"/>
+<script type="text/javascript" src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"/>
 <script type="text/javascript">
     require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'], function(app){
       app.startup();

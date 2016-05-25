@@ -3,8 +3,19 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
   <title th:text="#{my.profile}">My Profile</title>
-  <link rel="stylesheet" th:href="@{/theme/css/pages/profile.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/pages/timeline.css}"/>
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
+        th:remove="all"/>
+  <!-- CSS Theme -->
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
+        th:href="@{/theme/css/theme-colors/green.css}" th:remove="all"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
+        th:href="@{/theme/css/theme-skins/dark.css}" th:remove="all"/>
+
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/profile.css"
+        th:href="@{/theme/css/pages/profile.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/timeline.css"
+        th:href="@{/theme/css/pages/timeline.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -22,10 +33,14 @@
   <div class="row">
     <!--Left Sidebar-->
     <div class="col-md-3 md-margin-bottom-40">
-      <img class="img-responsive profile-img margin-bottom-20" th:src="@{/theme/images/profile/me-md.jpg}" alt=""/>
+      <img class="img-responsive profile-img margin-bottom-20"
+           src="../../META-INF/resources/theme/images/profile/me-md.jpg"
+           th:src="@{/theme/images/profile/me-md.jpg}" alt=""/>
       <ul class="list-group sidebar-nav margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item active">
-          <a href="#" th:href="@{/profile}"><i class="fa fa-user"></i><span th:text="#{profile}">Profile</span></a>
+          <a href="#" th:href="@{/profile}">
+            <i class="fa fa-user"></i><span th:text="#{profile}">Profile</span>
+          </a>
         </li>
       </ul>
       <div class="map-img md-margin-bottom-40">
@@ -44,10 +59,12 @@
         <div class="profile-bio">
           <div class="row">
             <div class="col-md-5">
-              <img class="img-responsive md-margin-bottom-10" th:src="@{/theme/images/profile/me-md.jpg}" alt=""/>
+              <img class="img-responsive md-margin-bottom-10" th:src="@{/theme/images/profile/me-md.jpg}" alt=""
+                   src="../../META-INF/resources/theme/images/profile/me-md.jpg"/>
             </div>
             <div class="col-md-7">
               <h2>Eric H B Zhan</h2>
+
               <div>
                 <strong><span th:text="#{job}">Job</span>: </strong>
                 <span th:text="#{job.dev}">Software Developer</span>
@@ -80,7 +97,7 @@
             <div class="panel panel-profile">
               <div class="panel-heading overflow-h">
                 <h2 class="panel-title heading-sm pull-left">
-                  <i class="fa fa-lightbulb-o"></i> <span th:text="#{skills}">Skills</span>
+                  <i class="fa fa-lightbulb-o"></i><span th:text="#{skills}">Skills</span>
                 </h2>
                 <a href="#"><i class="fa fa-cog pull-right"></i></a>
               </div>
@@ -125,7 +142,7 @@
             <div class="panel panel-profile">
               <div class="panel-heading overflow-h">
                 <h2 class="panel-title heading-sm pull-left">
-                  <i class="fa fa-pencil"></i> <span th:text="#{language.skills}">Language Skills</span>
+                  <i class="fa fa-pencil"></i><span th:text="#{language.skills}">Language Skills</span>
                 </h2>
                 <a href="#"><i class="fa fa-cog pull-right"></i></a>
               </div>
@@ -148,7 +165,7 @@
         <div class="panel panel-profile">
           <div class="panel-heading overflow-h">
             <h2 class="panel-title heading-sm pull-left">
-              <i class="fa fa-briefcase"></i> <span th:text="#{experience}">Experience</span>
+              <i class="fa fa-briefcase"></i><span th:text="#{experience}">Experience</span>
             </h2>
             <a href="#"><i class="fa fa-cog pull-right"></i></a>
           </div>
@@ -226,7 +243,7 @@
         <div class="panel panel-profile">
           <div class="panel-heading overflow-h">
             <h2 class="panel-title heading-sm pull-left">
-              <i class="fa fa-mortar-board"></i> <span th:text="#{education}">Education</span>
+              <i class="fa fa-mortar-board"></i><span th:text="#{education}">Education</span>
             </h2>
             <a href="#"><i class="fa fa-cog pull-right"></i></a>
           </div>
@@ -266,5 +283,9 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"
+        th:remove="all"/>
+<script type="text/javascript" src="../../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}"
+        th:remove="all"/>
 </body>
 </html>

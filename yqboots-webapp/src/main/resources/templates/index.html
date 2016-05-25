@@ -3,8 +3,19 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
   <title>YuQi Boots Web Application</title>
-  <link rel="stylesheet" th:href="@{/dojo/jquery/cube-portfolio/css/cubeportfolio.css}"/>
-  <link rel="stylesheet" th:href="@{/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css}"/>
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
+        th:remove="all"/>
+  <!-- CSS Theme -->
+  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
+        th:href="@{/theme/css/theme-colors/green.css}" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-skins/dark.css"
+        th:href="@{/theme/css/theme-skins/dark.css}" th:remove="all"/>
+
+  <link rel="stylesheet" href="../META-INF/resources/dojo/jquery/cube-portfolio/css/cubeportfolio.css"
+        th:href="@{/dojo/jquery/cube-portfolio/css/cubeportfolio.css}"/>
+  <link rel="stylesheet" href="../META-INF/resources/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css"
+        th:href="@{/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs"></div>
@@ -15,8 +26,10 @@
       <div class="col-md-4">
         <div class="service">
           <i class="fa fa-compress service-icon"></i>
+
           <div class="desc">
             <h4>Fully Responsive</h4>
+
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
               condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
           </div>
@@ -25,8 +38,10 @@
       <div class="col-md-4">
         <div class="service">
           <i class="fa fa-cogs service-icon"></i>
+
           <div class="desc">
             <h4>HTML5 + CSS3</h4>
+
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
               condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
           </div>
@@ -35,8 +50,10 @@
       <div class="col-md-4">
         <div class="service">
           <i class="fa fa-rocket service-icon"></i>
+
           <div class="desc">
             <h4>Launch Ready</h4>
+
             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
               condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
           </div>
@@ -52,14 +69,15 @@
         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item" th:text="#{all}">All</div>
         |
         <div data-filter=".tools" class="cbp-filter-item" th:text="#{tools}">Tools</div>
-      </div><!--/end Filters Container-->
+      </div>
+      <!--/end Filters Container-->
     </div>
 
     <div id="grid-container" class="cbp-l-grid-agency">
       <div class="cbp-item tools">
         <div class="cbp-caption margin-bottom-20">
           <div class="cbp-caption-defaultWrap">
-            <img th:src="@{/theme/images/demo.jpg}" alt=""/>
+            <img src="../META-INF/resources/theme/images/demo.jpg" th:src="@{/theme/images/demo.jpg}" alt=""/>
           </div>
           <div class="cbp-caption-activeWrap">
             <div class="cbp-l-caption-alignCenter">
@@ -76,9 +94,13 @@
           <div class="cbp-l-grid-agency-desc" th:text="#{tools}">Tools</div>
         </div>
       </div>
-    </div><!--/end Grid Container-->
+    </div>
+    <!--/end Grid Container-->
   </div>
   <!--=== End Cube-Portfolio ===-->
 </div>
+<script type="text/javascript" src="../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"/>
+<script type="text/javascript" src="../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}"
+        th:remove="all"/>
 </body>
 </html>

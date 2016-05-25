@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-    <title th:text="#{app.001}">Project Initializer</title>
+  <title th:text="#{app.001}">Project Initializer</title>
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
+        th:remove="all"/>
+  <!-- CSS Theme -->
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
+        th:href="@{/theme/css/theme-colors/green.css}" th:remove="all"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
+        th:href="@{/theme/css/theme-skins/dark.css}" th:remove="all"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-    <div class="breadcrumbs">
-        <div class="container">
-            <h1 class="pull-left" th:text="#{app.001}">Project Initializer</h1>
-            <ul class="pull-right breadcrumb">
-                <li><a href="#" th:text="#{tools}">Tools</a></li>
-                <li class="active" th:text="#{app.001}">Project Initializer</li>
-            </ul>
-        </div>
+  <div class="breadcrumbs">
+    <div class="container">
+      <h1 class="pull-left" th:text="#{app.001}">Project Initializer</h1>
+      <ul class="pull-right breadcrumb">
+        <li><a href="#" th:text="#{tools}">Tools</a></li>
+        <li class="active" th:text="#{app.001}">Project Initializer</li>
+      </ul>
     </div>
+  </div>
 </div>
 <div layout:fragment="content" class="content-sm">
-    <p>Hello, Project Initializer</p>
+  <p>Hello, Project Initializer</p>
 </div>
+<script type="text/javascript" src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"
+        th:remove="all"/>
+<script type="text/javascript" src="../../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}"
+        th:remove="all"/>
 </body>
 </html>
