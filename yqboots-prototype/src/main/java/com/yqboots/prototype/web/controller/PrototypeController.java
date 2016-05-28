@@ -15,22 +15,19 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.fss.core;
+package com.yqboots.prototype.web.controller;
 
-import java.io.Serializable;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by Administrator on 2016-04-27.
+ * Created by Administrator on 2016-05-21.
  */
-@SuppressWarnings("serial")
-public class Root implements Serializable {
-    private String path;
-
-    public Root(String path) {
-        this.path = path;
-    }
-
-    public String getPath() {
-        return path;
+@Controller
+@RequestMapping(value = "/prototype")
+public class PrototypeController {
+    @RequestMapping
+    public String home() {
+        return "prototype/index";
     }
 }

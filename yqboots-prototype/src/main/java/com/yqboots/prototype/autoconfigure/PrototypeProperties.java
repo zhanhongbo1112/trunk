@@ -15,22 +15,25 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.fss.core;
+package com.yqboots.prototype.autoconfigure;
 
-import java.io.Serializable;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Created by Administrator on 2016-04-27.
+ * Created by Administrator on 2016-05-28.
  */
-@SuppressWarnings("serial")
-public class Root implements Serializable {
-    private String path;
+@ConfigurationProperties(prefix = "yqboots.prototype")
+public class PrototypeProperties {
+    private Map<String, String> properties = new HashMap<>();
 
-    public Root(String path) {
-        this.path = path;
+    public Map<String, String> getProperties() {
+        return properties;
     }
 
-    public String getPath() {
-        return path;
+    public void setProperties(Map<String, String> properties) {
+        this.properties = properties;
     }
 }
