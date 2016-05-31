@@ -1,8 +1,26 @@
 <!DOCTYPE html>
+<!--
+  ~ /*
+  ~  * Copyright 2015-2016 the original author or authors.
+  ~  *
+  ~  * Licensed under the Apache License, Version 2.0 (the "License");
+  ~  * you may not use this file except in compliance with the License.
+  ~  * You may obtain a copy of the License at
+  ~  *
+  ~  *      http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  * Unless required by applicable law or agreed to in writing, software
+  ~  * distributed under the License is distributed on an "AS IS" BASIS,
+  ~  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  * See the License for the specific language governing permissions and
+  ~  * limitations under the License.
+  ~  */
+  -->
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{app.001}">Project Initializer</title>
+  <title>Project Initializer</title>
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
         th:remove="all"/>
@@ -16,10 +34,10 @@
 <div layout:fragment="breadcrumbs">
   <div class="breadcrumbs">
     <div class="container">
-      <h1 class="pull-left" th:text="#{app.001}">Project Initializer</h1>
+      <h1 class="pull-left">Project Initializer</h1>
       <ul class="pull-right breadcrumb">
-        <li><a href="#" th:text="#{tools}">Tools</a></li>
-        <li class="active" th:text="#{app.001}">Project Initializer</li>
+        <li><a href="#">Tools</a></li>
+        <li class="active">Project Initializer</li>
       </ul>
     </div>
   </div>
