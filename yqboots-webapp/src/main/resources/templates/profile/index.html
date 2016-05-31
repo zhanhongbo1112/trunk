@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{my.profile}">My Profile</title>
+  <title>My Profile</title>
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
         th:remove="all"/>
@@ -21,10 +21,10 @@
 <div layout:fragment="breadcrumbs">
   <div class="breadcrumbs">
     <div class="container">
-      <h1 class="pull-left" th:text="#{my.profile}">My Profile</h1>
+      <h1 class="pull-left">My Profile</h1>
       <ul class="pull-right breadcrumb">
-        <li><a href="#" th:text="#{home}">HOME</a></li>
-        <li class="active" th:text="#{my.profile}">My Profile</li>
+        <li><a href="#" th:href="@{/}">HOME</a></li>
+        <li class="active">My Profile</li>
       </ul>
     </div>
   </div>
@@ -39,13 +39,13 @@
       <ul class="list-group sidebar-nav margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item active">
           <a href="#" th:href="@{/profile}">
-            <i class="fa fa-user"></i><span th:text="#{profile}">Profile</span>
+            <i class="fa fa-user"></i><span>Profile</span>
           </a>
         </li>
       </ul>
       <div class="map-img md-margin-bottom-40">
-        <div class="headline"><h2 th:text="#{contact.me}">Contact Me</h2></div>
-        <address class="md-margin-bottom-40" th:utext="#{my.address}">
+        <div class="headline"><h2>Contact Me</h2></div>
+        <address class="md-margin-bottom-40">
           383, TaiKooHui Building, Tianhe Road, <br/>
           Tianhe District, Guangzhou, Guangdong, China <br/>
           Zip Code: 510000 <br/>
@@ -66,16 +66,16 @@
               <h2>Eric H B Zhan</h2>
 
               <div>
-                <strong><span th:text="#{job}">Job</span>: </strong>
-                <span th:text="#{job.dev}">Software Developer</span>
+                <strong><span>Job</span>: </strong>
+                <span>Software Developer</span>
               </div>
               <div>
-                <strong><span th:text="#{position}">Position</span>: </strong>
-                <span th:text="#{position.sse}">Senior Software Engineer</span>
+                <strong><span>Position</span>: </strong>
+                <span>Senior Software Engineer</span>
               </div>
               <div>
-                <strong><span th:text="#{experience}">Experience</span>: </strong>
-                10+ <span th:text="#{years}">years</span>
+                <strong><span>Experience</span>: </strong>
+                10+ <span>years</span>
               </div>
               <hr/>
               <p>Serious and responsible work. Have patience, pay attention to the method, can withstand a certain
@@ -97,7 +97,7 @@
             <div class="panel panel-profile">
               <div class="panel-heading overflow-h">
                 <h2 class="panel-title heading-sm pull-left">
-                  <i class="fa fa-lightbulb-o"></i><span th:text="#{skills}">Skills</span>
+                  <i class="fa fa-lightbulb-o"></i><span>Skills</span>
                 </h2>
                 <a href="#"><i class="fa fa-cog pull-right"></i></a>
               </div>
@@ -142,7 +142,7 @@
             <div class="panel panel-profile">
               <div class="panel-heading overflow-h">
                 <h2 class="panel-title heading-sm pull-left">
-                  <i class="fa fa-pencil"></i><span th:text="#{language.skills}">Language Skills</span>
+                  <i class="fa fa-pencil"></i><span>Language Skills</span>
                 </h2>
                 <a href="#"><i class="fa fa-cog pull-right"></i></a>
               </div>
@@ -165,7 +165,7 @@
         <div class="panel panel-profile">
           <div class="panel-heading overflow-h">
             <h2 class="panel-title heading-sm pull-left">
-              <i class="fa fa-briefcase"></i><span th:text="#{experience}">Experience</span>
+              <i class="fa fa-briefcase"></i><span>Experience</span>
             </h2>
             <a href="#"><i class="fa fa-cog pull-right"></i></a>
           </div>
@@ -173,13 +173,13 @@
             <ul class="timeline timeline-me">
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{position.sse}">Senior Software Engineer</span>
+                  <span>Senior Software Engineer</span>
                   <span>2013 - </span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{company.01}">HSBC Software Development (Guangdong) Limited</h2>
+                  <h2>HSBC Software Development (Guangdong) Limited</h2>
 
                   <p>Bought in to HSBC Software Development (Guangdong) Limited. Engage into a project which is based
                     on an existing framework, Global Workflow and Image System. In charge of the development of core
@@ -191,24 +191,24 @@
               </li>
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{position.sse}">Senior Software Engineer</span> <span>2011 - 2013</span>
+                  <span>Senior Software Engineer</span> <span>2011 - 2013</span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{company.02}">Shanghai Huateng Systems Ltd</h2>
+                  <h2>Shanghai Huateng Systems Ltd</h2>
 
                   <p>Outsourcing to HSBC Software Development (Guangdong) Limited.</p>
                 </div>
               </li>
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{position.se}">Software Engineer</span> <span>2007 - 2009</span>
+                  <span>Software Engineer</span> <span>2007 - 2009</span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{company.03}">Longtop Financial Technologies Limited</h2>
+                  <h2>Longtop Financial Technologies Limited</h2>
 
                   <p>From 2007 to 2008, engage into a J2EE project <strong>Group Customer Information Management
                     System</strong>
@@ -223,12 +223,12 @@
               </li>
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{book.editor}">Book Editor</span><span>2005 - 2007</span>
+                  <span>Book Editor</span><span>2005 - 2007</span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{company.04}">Tianding Scientific Books Ltd</h2>
+                  <h2>Tianding Scientific Books Ltd</h2>
 
                   <p>Be an editor, to facilitate authors to write on given topics about science and technology,
                     edit, design, compose, publish books.</p>
@@ -243,7 +243,7 @@
         <div class="panel panel-profile">
           <div class="panel-heading overflow-h">
             <h2 class="panel-title heading-sm pull-left">
-              <i class="fa fa-mortar-board"></i><span th:text="#{education}">Education</span>
+              <i class="fa fa-mortar-board"></i><span>Education</span>
             </h2>
             <a href="#"><i class="fa fa-cog pull-right"></i></a>
           </div>
@@ -251,12 +251,12 @@
             <ul class="timeline timeline-me">
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{degree.01}">Bachelor of Engineering</span><span>2001 - 2005</span>
+                  <span>Bachelor of Engineering</span><span>2001 - 2005</span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{school.01}">Shangrao Normal University, Jiangxi Province</h2>
+                  <h2>Shangrao Normal University, Jiangxi Province</h2>
 
                   <p>Be a student, learning about Computer Science and Technologies. Main Courses are: C Language
                     Program Design,
@@ -265,12 +265,12 @@
               </li>
               <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span th:text="#{degree.02}">High School</span> <span>1998 - 2001</span>
+                  <span>High School</span> <span>1998 - 2001</span>
                 </time>
                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
 
                 <div class="cbp_tmlabel">
-                  <h2 th:text="#{school.02}">Wuhan Pioneer High School, Hubei Province</h2>
+                  <h2>Wuhan Pioneer High School, Hubei Province</h2>
 
                   <p>Learning in the science departments.</p>
                 </div>

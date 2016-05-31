@@ -20,20 +20,20 @@
     </a>
     <!-- End Logo -->
 
-    <!-- Topbar -->
+    <!-- Topbar
     <div class="topbar">
       <ul class="loginbar pull-right">
         <li class="hoverSelector">
           <i class="fa fa-globe"></i>
-          <a><span th:text="#{languages}">Languages</span></a>
+          <a><span>Languages</span></a>
           <ul class="languages hoverSelectorBlock">
-            <li><a href="#" th:href="@{?locale=en}" th:text="#{locale.english}">English</a></li>
-            <li><a href="#" th:href="@{?locale=zh_CN}" th:text="#{locale.chinese}">Chinese</a></li>
+            <li><a href="#" th:href="@{?locale=en}">English</a></li>
+            <li><a href="#" th:href="@{?locale=zh_CN}">Chinese</a></li>
           </ul>
         </li>
       </ul>
     </div>
-    <!-- End Topbar -->
+    End Topbar -->
 
     <!-- Toggle get grouped for better mobile display -->
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -49,11 +49,11 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <!-- Home -->
-        <li><a href="javascript:void(0);" th:href="@{/}" th:text="#{home}">HOME</a></li>
+        <li><a href="javascript:void(0);" th:href="@{/}">HOME</a></li>
         <li class="dropdown">
-          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" th:text="#{tools}">Tools</a>
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Tools</a>
           <ul class="dropdown-menu">
-            <li><a href="#" th:href="@{/prototype}" th:text="#{app.001}">Project Initializer</a></li>
+            <li><a href="#" th:href="@{/prototype}">Project Initializer</a></li>
           </ul>
         </li>
         <!-- End ADMINISTRATION -->
@@ -65,7 +65,7 @@
             <div class="input-group animated fadeInDown">
               <input type="text" class="form-control" placeholder="Search"/>
               <span class="input-group-btn">
-                  <button class="btn-u" type="button" th:text="#{go}">Go</button>
+                  <button class="btn-u" type="button">Go</button>
               </span>
             </div>
           </div>
