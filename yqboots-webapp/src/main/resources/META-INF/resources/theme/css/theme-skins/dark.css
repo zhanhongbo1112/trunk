@@ -596,6 +596,210 @@ body.dark .panel .panel-body {
 	background: #222;
 }
 
+/*Sky Forms
+------------------------------------*/
+body.dark .sky-form {
+	border-color: #555;
+}
+
+/*Bug fixed v1.9*/
+body.dark .sky-form header,
+body.dark .sky-form fieldset,
+body.dark .sky-form footer {
+	background: #222;
+	border-color: #555;
+}
+
+/*Bug fixed v1.9*/
+body.dark .sky-form.contact-style fieldset {
+	background: #252525 none repeat scroll 0% 0%;
+}
+
+
+/*Bug fixed v1.9.1*/
+body.dark .contacts-section .sky-form fieldset {
+	background: transparent none repeat scroll 0% 0%;
+}
+
+body.dark .sky-form header {
+	color: #ccc;
+}
+
+body.dark .sky-form label {
+	color: #999;
+}
+
+body.dark .sky-form input,
+body.dark .sky-form .input input,
+body.dark .sky-form .select select,
+body.dark .sky-form .textarea textarea,
+body.dark .sky-form .input input:focus,
+body.dark .sky-form .select select:focus,
+body.dark .sky-form .textarea textarea:focus {
+	color: #999;
+	box-shadow: none;
+	border-color: #303030;
+	background: #202020;
+}
+
+body.dark .sky-form input:hover,
+body.dark .sky-form input:focus {
+	box-shadow: none;
+	border-color: #555;
+}
+
+body.dark .sky-form .input input,
+body.dark .sky-form .select select,
+body.dark .sky-form .textarea textarea,
+body.dark .sky-form .radio i,
+body.dark .sky-form .checkbox i,
+body.dark .sky-form .toggle i,
+body.dark .sky-form .icon-append,
+body.dark .sky-form .icon-prepend {
+	border-color: #555;
+}
+
+/*Select*/
+body.dark .sky-form .select i {
+	background: #303030;
+	box-shadow: 0 0 0 12px #303030;
+}
+
+body.dark .sky-form .select i:after {
+	border-top-color: #999;
+}
+body.dark .sky-form .select i:before {
+	border-bottom-color: #999;
+}
+
+/*Radio*/
+body.dark .sky-form .radio i,
+body.dark .sky-form .checkbox i {
+	background: #303030;
+}
+
+body.dark .sky-form .radio input + i:after {
+	background: #999;
+}
+
+body.dark .sky-form .radio input:checked + i,
+body.dark .sky-form .checkbox input:checked + i,
+body.dark .sky-form .toggle input:checked + i {
+	border-color: #555;
+}
+
+/*Toggle*/
+body.dark .sky-form .toggle i {
+	background: #303030;
+}
+
+body.dark .sky-form .toggle i:before,
+body.dark .sky-form .toggle i:after {
+	color: #999;
+}
+
+/*Rating*/
+body.dark .sky-form .rating {
+	color: #999;
+}
+
+/*Prepend & Append*/
+body.dark .sky-form .icon-append,
+body.dark .sky-form .icon-prepend {
+	color: #999;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker {
+	background: rgba(0,0,0,0.9);
+}
+
+body.dark .ui-datepicker span {
+	color: #ccc;
+}
+
+body.dark .ui-datepicker span:hover {
+	color: #72c02c;
+}
+
+body.dark .ui-datepicker-inline {
+	background: #202020;
+	border-color: #555;
+}
+
+body.dark .ui-datepicker-header {
+	border-color: #555;
+}
+
+body.dark .ui-datepicker-calendar a:hover {
+	border-color: #555;
+}
+
+body.dark .ui-datepicker-calendar a,
+body.dark .ui-datepicker-calendar span {
+	color: #999;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active {
+	color: #eee;
+	border-color: #555;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+	color: #72c02c;
+	border-color: #555;
+}
+
+/*Slider*/
+body.dark .sky-form .ui-slider {
+	border-color: #555;
+}
+
+body.dark .sky-form .ui-slider-handle {
+	background: #999;
+	border-color: #555;
+}
+
+/*Success State*/
+body.dark .sky-form .state-success input,
+body.dark .sky-form .state-success select,
+body.dark .sky-form .state-success textarea,
+body.dark .sky-form .radio.state-success i,
+body.dark .sky-form .checkbox.state-success i,
+body.dark .sky-form .toggle.state-success i {
+	background: #ceedce !important;
+}
+
+body.dark .sky-form .state-error input,
+body.dark .sky-form .state-error select,
+body.dark .sky-form .state-error textarea,
+body.dark .sky-form .radio.state-error i,
+body.dark .sky-form .checkbox.state-error i,
+body.dark .sky-form .toggle.state-error i {
+	background: #fff0e0 !important;
+}
+
+/*Hover State*/
+body.dark .sky-form .radio:hover i,
+body.dark .sky-form .checkbox:hover i,
+body.dark .sky-form .toggle:hover i,
+body.dark .sky-form .ui-slider-handle:hover {
+	border-color: #444 !important;
+}
+
+/*Modal Content
+------------------------------------*/
+body.dark .modal-content {
+	box-shadow: none;
+	border-color: #303030;
+	background: #202020;
+}
+
+body.dark .modal-header,
+body.dark .modal-footer {
+	border-color: #303030;
+}
+
 /*Profile Page
 ------------------------------------*/
 body.dark .profile-body {
