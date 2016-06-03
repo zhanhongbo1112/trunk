@@ -29,81 +29,87 @@
   </div>
 </div>
 <div layout:fragment="content" class="container content">
-  <div class="row margin-bottom-40">
-    <h3>Bootstrap your application with Maven now.</h3>
+  <div class="margin-bottom-40">
+    <h3>Bootstrap your application with <a href="http://maven.apache.org" target="_blank">Maven</a>, <a
+        href="http://www.thymeleaf.org/" target="_blank">Thymeleaf</a>,
+      <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a
+          href="http://spring.io/projects" target="_blank">Spring</a> NOW!</h3>
 
-    <div class="col-md-9">
-      <form action="#" class="sky-form">
-        <header>Project Metadata</header>
+    <form action="#" class="sky-form">
+      <header>Project Metadata</header>
 
-        <fieldset>
-          <section>
-            <label class="label">Name:</label>
-            <label class="input">
-              <input type="text"/>
-            </label>
-          </section>
-
-          <div class="row">
-            <section class="col col-6">
-              <label class="label">Group:</label>
-              <label class="input">
-                <input type="text"/>
+      <div class="row">
+        <div class="col-md-9">
+          <fieldset>
+            <div class="row">
+              <section class="col col-3">
+                <label class="label">Name:</label>
+                <label class="input">
+                  <input type="text"/>
+                </label>
+              </section>
+              <section class="col col-9">
+                <label class="label">Description:</label>
+                <label class="input">
+                  <input type="text"/>
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">Group:</label>
+                <label class="input">
+                  <input type="text"/>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="label">Artifact:</label>
+                <label class="input">
+                  <input type="text"/>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-3">
+          <fieldset>
+            <section>
+              <label class="label">Theme Skin:</label>
+              <label class="select">
+                <select>
+                  <option value="0">Light</option>
+                  <option value="1">Dark</option>
+                </select>
+                <i></i>
               </label>
             </section>
-
-            <section class="col col-6">
-              <label class="label">Artifact:</label>
-              <label class="input">
-                <input type="text"/>
+            <section>
+              <label class="label">Theme Color:</label>
+              <label class="select">
+                <select>
+                  <option value="green">Green</option>
+                  <option value="blue">Blue</option>
+                  <option value="orange">Orange</option>
+                  <option value="red">Red</option>
+                  <option value="light">Light</option>
+                  <option value="purple">Purple</option>
+                  <option value="aqua">Aqua</option>
+                  <option value="brown">Brown</option>
+                  <option value="dark-blue">Dark Blue</option>
+                  <option value="light-green">Light Green</option>
+                  <option value="dark-red">Dark Red</option>
+                  <option value="teal">Teal</option>
+                </select>
+                <i></i>
               </label>
             </section>
-          </div>
-        </fieldset>
-        <footer>
-          <button type="submit" class="btn-u">Submit</button>
-        </footer>
-      </form>
-    </div>
-    <div class="col-md-3">
-      <form action="#" class="sky-form">
-        <header>Theme</header>
-
-        <fieldset>
-          <section>
-            <label class="label">Skin:</label>
-            <label class="select">
-              <select>
-                <option value="0">Light</option>
-                <option value="1">Dark</option>
-              </select>
-              <i></i>
-            </label>
-          </section>
-
-          <section>
-            <label class="label">Color:</label>
-            <label class="select">
-              <select>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="orange">Orange</option>
-                <option value="red">Red</option>
-                <option value="light">Light</option>
-                <option value="purple">Purple</option>
-                <option value="aqua">Aqua</option>
-                <option value="brown">Brown</option>
-                <option value="dark-blue">Dark Blue</option>
-                <option value="light-green">Light Green</option>
-                <option value="dark-red">Dark Red</option>
-                <option value="teal">Teal</option>
-              </select>
-              <i></i>
-            </label>
-          </section>
-        </fieldset>
-      </form>
-    </div>
+          </fieldset>
+        </div>
+      </div>
+      <footer>
+        <button type="submit" class="btn-u">Submit</button>
+      </footer>
+    </form>
   </div>
 </div>
 <script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"/>
