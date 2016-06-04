@@ -17,9 +17,10 @@
  */
 package com.yqboots.prototype.project.maven;
 
+import com.yqboots.prototype.project.ProjectContext;
 import com.yqboots.prototype.project.ProjectInitializer;
-import com.yqboots.prototype.project.ProjectMetadata;
-import com.yqboots.prototype.project.ProjectType;
+import com.yqboots.prototype.project.core.ProjectMetadata;
+import com.yqboots.prototype.project.core.ProjectType;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.Template;
@@ -52,17 +53,18 @@ public class MavenProjectInitializer implements ProjectInitializer {
     }
 
     @Override
-    public void startup(ProjectMetadata metadata) throws IOException {
+    public void startup(ProjectContext context) throws IOException {
+        ProjectMetadata metadata = context.getMetadata();
         if (metadata.getType() != ProjectType.MAVEN) {
             LOG.info("Not a Maven project [{0}], ignore...", metadata.getType());
             return;
         }
 
-        final VelocityContext context = new VelocityContext();
+        final VelocityContext velocityContext = new VelocityContext();
         Template template;
         Writer writer = null;
 
-        context.put(ProjectMetadata.KEY, metadata);
+        velocityContext.put(ProjectMetadata.KEY, metadata);
 
         Object commaSeparatedPaths = velocityEngine.getProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH);
         for (Map.Entry<String, String> entry : resolveTemplates(commaSeparatedPaths).entrySet()) {
@@ -76,7 +78,7 @@ public class MavenProjectInitializer implements ProjectInitializer {
             try {
                 writer = new FileWriter(entry.getValue());
 
-                template.merge(context, writer);
+                template.merge(velocityContext, writer);
                 writer.flush();
             } finally {
                 if (writer != null) {

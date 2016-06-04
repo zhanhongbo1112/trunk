@@ -18,15 +18,17 @@
 package com.yqboots.prototype.project.maven;
 
 import com.yqboots.prototype.Application;
-import com.yqboots.prototype.project.ProjectMetadata;
-import com.yqboots.prototype.project.ProjectType;
+import com.yqboots.prototype.project.ProjectContext;
+import com.yqboots.prototype.project.core.ProjectMetadata;
+import com.yqboots.prototype.project.core.ProjectType;
+import com.yqboots.prototype.project.core.theme.Theme;
+import com.yqboots.prototype.project.core.theme.ThemeColor;
+import com.yqboots.prototype.project.core.theme.ThemeSkin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
@@ -36,12 +38,21 @@ public class MavenProjectInitializerTest {
 
     @Test
     public void testStartup() throws Exception {
+        ProjectContext context = new ProjectContext();
+
         ProjectMetadata metadata = new ProjectMetadata();
         metadata.setGroupId("com.yqboots.test");
         metadata.setArtifactId("test-core");
         metadata.setType(ProjectType.MAVEN);
         metadata.setName("Test Project");
 
-        initializer.startup(metadata);
+        context.setMetadata(metadata);
+
+        Theme theme = new Theme();
+        theme.setSkin(ThemeSkin.DARK);
+        theme.setColor(ThemeColor.GREEN);
+        context.setTheme(theme);
+
+        initializer.startup(context);
     }
 }

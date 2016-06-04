@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.prototype.project;
+package com.yqboots.prototype.project.core;
 
 /**
  * Created by Administrator on 2016-05-28.

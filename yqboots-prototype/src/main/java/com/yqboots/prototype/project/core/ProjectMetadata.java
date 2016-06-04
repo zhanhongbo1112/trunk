@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.prototype.project;
+package com.yqboots.prototype.project.core;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -32,6 +32,8 @@ public class ProjectMetadata implements Serializable {
     @NotEmpty
     private String name;
 
+    private String description;
+
     @NotNull
     private ProjectType type = ProjectType.MAVEN;
 
@@ -47,6 +49,14 @@ public class ProjectMetadata implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public ProjectType getType() {
