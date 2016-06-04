@@ -17,8 +17,8 @@
  */
 package com.yqboots.prototype.project.autoconfigure;
 
-import com.yqboots.prototype.project.ProjectInitializer;
-import com.yqboots.prototype.project.maven.MavenProjectInitializer;
+import com.yqboots.prototype.project.core.ProjectInitializer;
+import com.yqboots.prototype.project.core.MavenProjectInitializer;
 import com.yqboots.prototype.project.velocity.CustomVelocityEngineFactoryBean;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;

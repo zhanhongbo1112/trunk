@@ -15,12 +15,8 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.prototype.project.maven;
+package com.yqboots.prototype.project.core;
 
-import com.yqboots.prototype.project.ProjectContext;
-import com.yqboots.prototype.project.ProjectInitializer;
-import com.yqboots.prototype.project.core.ProjectMetadata;
-import com.yqboots.prototype.project.core.ProjectType;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.Template;
@@ -53,12 +49,18 @@ public class MavenProjectInitializer implements ProjectInitializer {
     }
 
     @Override
+    public boolean supports(ProjectType type) {
+        if (type != ProjectType.MAVEN) {
+            LOG.info("Not a Maven project [{0}], ignore...", type);
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
     public void startup(ProjectContext context) throws IOException {
         ProjectMetadata metadata = context.getMetadata();
-        if (metadata.getType() != ProjectType.MAVEN) {
-            LOG.info("Not a Maven project [{0}], ignore...", metadata.getType());
-            return;
-        }
 
         final VelocityContext velocityContext = new VelocityContext();
         Template template;

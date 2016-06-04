@@ -15,19 +15,15 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.prototype.web.controller;
+package com.yqboots.prototype.project.core;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.io.IOException;
 
 /**
- * Created by Administrator on 2016-05-21.
+ * Created by Administrator on 2016-05-28.
  */
-@Controller
-@RequestMapping(value = "/prototype")
-public class PrototypeController {
-    @RequestMapping
-    public String home() {
-        return "prototype/index";
-    }
+public interface ProjectInitializer {
+    boolean supports(ProjectType type);
+
+    void startup(ProjectContext context) throws IOException;
 }

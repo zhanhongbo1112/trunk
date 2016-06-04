@@ -15,12 +15,9 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.prototype.project.maven;
+package com.yqboots.prototype.project.core;
 
 import com.yqboots.prototype.Application;
-import com.yqboots.prototype.project.ProjectContext;
-import com.yqboots.prototype.project.core.ProjectMetadata;
-import com.yqboots.prototype.project.core.ProjectType;
 import com.yqboots.prototype.project.core.theme.Theme;
 import com.yqboots.prototype.project.core.theme.ThemeColor;
 import com.yqboots.prototype.project.core.theme.ThemeSkin;

@@ -1,4 +1,4 @@
-package com.yqboots.prototype.project;
+package com.yqboots.prototype.project.core;
 
 import com.yqboots.prototype.project.core.ProjectMetadata;
 import com.yqboots.prototype.project.core.theme.Theme;
