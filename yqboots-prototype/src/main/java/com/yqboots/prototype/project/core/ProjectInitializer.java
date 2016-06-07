@@ -23,7 +23,5 @@ import java.io.IOException;
  * Created by Administrator on 2016-05-28.
  */
 public interface ProjectInitializer {
-    boolean supports(ProjectType type);
-
     void startup(ProjectContext context) throws IOException;
 }

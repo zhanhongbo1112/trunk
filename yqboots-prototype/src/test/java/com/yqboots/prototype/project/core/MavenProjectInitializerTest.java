@@ -31,7 +31,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(Application.class)
 public class MavenProjectInitializerTest {
     @Autowired
-    private MavenProjectInitializer initializer;
+    private ProjectInitializer initializer;
 
     @Test
     public void testStartup() throws Exception {
@@ -40,7 +40,6 @@ public class MavenProjectInitializerTest {
         ProjectMetadata metadata = new ProjectMetadata();
         metadata.setGroupId("com.yqboots.test");
         metadata.setArtifactId("test-core");
-        metadata.setType(ProjectType.MAVEN);
         metadata.setName("Test Project");
 
         context.setMetadata(metadata);

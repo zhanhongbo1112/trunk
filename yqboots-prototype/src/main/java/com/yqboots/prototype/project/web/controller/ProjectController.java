@@ -2,7 +2,6 @@ package com.yqboots.prototype.project.web.controller;
 
 import com.yqboots.prototype.project.core.ProjectContext;
 import com.yqboots.prototype.project.core.ProjectInitializer;
-import com.yqboots.prototype.project.core.ProjectType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +20,7 @@ import java.util.List;
 @RequestMapping(value = "/prototype/project")
 public class ProjectController {
     @Autowired
-    private List<ProjectInitializer> initializers;
+    private ProjectInitializer initializer;
 
     @ModelAttribute("projectContext")
     public ProjectContext projectContext() {
@@ -40,12 +39,7 @@ public class ProjectController {
             return "/prototype/project";
         }
 
-        ProjectType type = context.getMetadata().getType();
-        for (ProjectInitializer initializer : initializers) {
-            if (initializer.supports(type)) {
-                initializer.startup(context);
-            }
-        }
+        initializer.startup(context);
 
         model.clear();
         return "redirect:/prototype/project";

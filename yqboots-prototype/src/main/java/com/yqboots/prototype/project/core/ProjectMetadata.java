@@ -34,9 +34,6 @@ public class ProjectMetadata implements Serializable {
 
     private String description;
 
-    @NotNull
-    private ProjectType type = ProjectType.MAVEN;
-
     @NotEmpty
     private String groupId;
 
@@ -57,14 +54,6 @@ public class ProjectMetadata implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public ProjectType getType() {
-        return type;
-    }
-
-    public void setType(ProjectType type) {
-        this.type = type;
     }
 
     public String getGroupId() {

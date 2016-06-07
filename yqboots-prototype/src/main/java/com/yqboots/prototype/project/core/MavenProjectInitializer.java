@@ -49,16 +49,6 @@ public class MavenProjectInitializer implements ProjectInitializer {
     }
 
     @Override
-    public boolean supports(ProjectType type) {
-        if (type != ProjectType.MAVEN) {
-            LOG.info("Not a Maven project [{0}], ignore...", type);
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
     public void startup(ProjectContext context) throws IOException {
         ProjectMetadata metadata = context.getMetadata();
 
