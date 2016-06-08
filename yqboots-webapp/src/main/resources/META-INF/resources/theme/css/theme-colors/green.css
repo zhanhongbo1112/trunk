@@ -168,6 +168,11 @@ i.icon-bg-u {
     background: #72c02c;
 }
 
+/*Green Transparent*/
+.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
+    background: rgba(114,192,44,.9) !important;
+}
+
 /* Heading */
 .headline h2,
 .headline h3,

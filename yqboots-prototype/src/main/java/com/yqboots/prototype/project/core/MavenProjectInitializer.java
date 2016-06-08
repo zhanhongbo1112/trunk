@@ -17,21 +17,17 @@
  */
 package com.yqboots.prototype.project.core;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
+import com.yqboots.prototype.project.core.builder.FileBuilder;
+import com.yqboots.prototype.project.core.velocity.CustomVelocityEngine;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.runtime.RuntimeConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.velocity.VelocityProperties;
 
 import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Vector;
 
 /**
  * Created by Administrator on 2016-05-28.
@@ -41,11 +37,8 @@ public class MavenProjectInitializer implements ProjectInitializer {
 
     private VelocityEngine velocityEngine;
 
-    private VelocityProperties velocityProperties;
-
-    public MavenProjectInitializer(VelocityEngine velocityEngine, VelocityProperties velocityProperties) {
+    public MavenProjectInitializer(VelocityEngine velocityEngine) {
         this.velocityEngine = velocityEngine;
-        this.velocityProperties = velocityProperties;
     }
 
     @Override
@@ -58,16 +51,25 @@ public class MavenProjectInitializer implements ProjectInitializer {
 
         velocityContext.put(ProjectMetadata.KEY, metadata);
 
-        Object commaSeparatedPaths = velocityEngine.getProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH);
-        for (Map.Entry<String, String> entry : resolveTemplates(commaSeparatedPaths).entrySet()) {
+        for (Map.Entry<String, String> entry : resolveTemplates().entrySet()) {
             if (!velocityEngine.resourceExists(entry.getKey())) {
-                LOG.warn("Template {0} not found.", entry.getKey());
+                LOG.warn("Template {0} not found, ignore...", entry.getKey());
                 continue;
             }
 
             template = getVelocityEngine().getTemplate(entry.getKey());
 
             try {
+
+                CustomVelocityEngine engine = (CustomVelocityEngine) velocityEngine;
+                Map<String, FileBuilder> builders = engine.getBuilders();
+                if (!builders.containsKey(entry.getKey())) {
+                    LOG.warn("Template {0} not found in builder, ignore...", entry.getKey());
+                    continue;
+                }
+
+                FileBuilder builder = builders.get(entry.getKey());
+                // TODO: build target file
                 writer = new FileWriter(entry.getValue());
 
                 template.merge(velocityContext, writer);
@@ -80,36 +82,15 @@ public class MavenProjectInitializer implements ProjectInitializer {
         }
     }
 
-    private Map<String, String> resolveTemplates(Object _paths) {
+    private Map<String, String> resolveTemplates() {
         final Map<String, String> results = new HashMap<>();
 
-        Vector<String> paths = new Vector<>();
-        if (_paths instanceof String) {
-            paths.add((String) _paths);
-        } else {
-            paths = (Vector<String>) _paths;
-        }
-
-        for (String path : paths) {
-            Iterator<File> templates = FileUtils.iterateFiles(new File(path),
-                    new String[]{getVelocityProperties().getSuffix().substring(1)}, false);
-            while (templates.hasNext()) {
-                File template = templates.next();
-
-                String newFilePath = StringUtils.substringBeforeLast(template.getPath(),
-                        getVelocityProperties().getSuffix());
-                results.put(template.getName(), newFilePath);
-            }
-        }
+        results.put("pom.xml.vm", "D:\\pom.xml");
 
         return results;
     }
 
     protected VelocityEngine getVelocityEngine() {
         return velocityEngine;
-    }
-
-    protected VelocityProperties getVelocityProperties() {
-        return velocityProperties;
     }
 }

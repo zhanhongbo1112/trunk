@@ -19,16 +19,18 @@ package com.yqboots.prototype.project.autoconfigure;
 
 import com.yqboots.prototype.project.core.ProjectInitializer;
 import com.yqboots.prototype.project.core.MavenProjectInitializer;
-import com.yqboots.prototype.project.velocity.CustomVelocityEngineFactoryBean;
+import com.yqboots.prototype.project.core.velocity.CustomVelocityEngine;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.VelocityException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.velocity.VelocityProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.velocity.VelocityEngineFactory;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 /**
@@ -38,41 +40,33 @@ import java.util.Properties;
 @EnableConfigurationProperties(ProjectProperties.class)
 public class ProjectAutoConfiguration {
     @Autowired
-    private VelocityEngine velocityEngine;
-
-    @Autowired
-    protected VelocityProperties velocityProperties;
+    private ProjectProperties projectProperties;
 
     @Bean
-    public ProjectInitializer mavenProjectInitializer() {
-        return new MavenProjectInitializer(this.velocityEngine, this.velocityProperties);
+    public ProjectInitializer projectInitializer() throws Exception {
+        return new MavenProjectInitializer(starterVelocityEngine());
     }
 
-    @Configuration
-    public static class VelocityConfiguration {
-        @Autowired
-        private ProjectProperties projectProperties;
+    protected void applyProperties(final VelocityEngineFactory factory, final String resourceLoaderPath) {
+        factory.setResourceLoaderPath(resourceLoaderPath);
+        factory.setPreferFileSystemAccess(false);
 
-        @Autowired
-        protected VelocityProperties velocityProperties;
+        Properties velocityProperties = new Properties();
+        velocityProperties.setProperty("input.encoding", Charset.forName("UTF-8").name());
+        velocityProperties.putAll(this.projectProperties.getProperties());
+        factory.setVelocityProperties(velocityProperties);
+    }
 
-        @Bean
-        public VelocityEngineFactoryBean velocityConfiguration() throws Exception {
-            CustomVelocityEngineFactoryBean velocityEngineFactoryBean =
-                    new CustomVelocityEngineFactoryBean(velocityProperties);
-            velocityEngineFactoryBean.setRoot(projectProperties.getSourcePath());
-            applyProperties(velocityEngineFactoryBean);
-            velocityEngineFactoryBean.afterPropertiesSet();
-            return velocityEngineFactoryBean;
-        }
-
-        private void applyProperties(VelocityEngineFactory factory) {
-            factory.setResourceLoaderPath(this.velocityProperties.getResourceLoaderPath());
-            factory.setPreferFileSystemAccess(this.velocityProperties.isPreferFileSystemAccess());
-            Properties velocityProperties = new Properties();
-            velocityProperties.setProperty("input.encoding", this.velocityProperties.getCharsetName());
-            velocityProperties.putAll(this.velocityProperties.getProperties());
-            factory.setVelocityProperties(velocityProperties);
-        }
+    private VelocityEngine starterVelocityEngine() throws Exception {
+        VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean() {
+            @Override
+            protected VelocityEngine newVelocityEngine() throws IOException, VelocityException {
+                // TODO: custom velocity engine to include FileBuilders
+                return new CustomVelocityEngine();
+            }
+        };
+        applyProperties(velocityEngineFactoryBean, "classpath:/vm/starter/");
+        velocityEngineFactoryBean.afterPropertiesSet();
+        return velocityEngineFactoryBean.getObject();
     }
 }
