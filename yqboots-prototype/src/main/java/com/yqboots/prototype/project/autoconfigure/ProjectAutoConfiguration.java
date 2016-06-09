@@ -17,9 +17,9 @@
  */
 package com.yqboots.prototype.project.autoconfigure;
 
+import com.yqboots.prototype.core.support.CustomVelocityEngine;
 import com.yqboots.prototype.project.core.ProjectInitializer;
 import com.yqboots.prototype.project.core.ProjectInitializerImpl;
-import com.yqboots.prototype.project.core.velocity.CustomVelocityEngine;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +40,11 @@ import java.util.Properties;
 @EnableConfigurationProperties(ProjectProperties.class)
 public class ProjectAutoConfiguration {
     @Autowired
-    private ProjectProperties projectProperties;
+    private ProjectProperties properties;
 
     @Bean
     public ProjectInitializer projectInitializer() throws Exception {
-        return new ProjectInitializerImpl(starterVelocityEngine());
+        return new ProjectInitializerImpl(starterVelocityEngine(), properties);
     }
 
     protected void applyProperties(final VelocityEngineFactory factory, final String resourceLoaderPath) {
@@ -53,11 +53,10 @@ public class ProjectAutoConfiguration {
 
         Properties velocityProperties = new Properties();
         velocityProperties.setProperty("input.encoding", Charset.forName("UTF-8").name());
-        velocityProperties.putAll(this.projectProperties.getProperties());
         factory.setVelocityProperties(velocityProperties);
     }
 
-    private VelocityEngine starterVelocityEngine() throws Exception {
+    private CustomVelocityEngine starterVelocityEngine() throws Exception {
         VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean() {
             @Override
             protected VelocityEngine newVelocityEngine() throws IOException, VelocityException {
@@ -65,8 +64,8 @@ public class ProjectAutoConfiguration {
                 return new CustomVelocityEngine();
             }
         };
-        applyProperties(velocityEngineFactoryBean, "classpath:/vm/starter/");
+        applyProperties(velocityEngineFactoryBean, "classpath:/vm/initializer/");
         velocityEngineFactoryBean.afterPropertiesSet();
-        return velocityEngineFactoryBean.getObject();
+        return (CustomVelocityEngine) velocityEngineFactoryBean.getObject();
     }
 }

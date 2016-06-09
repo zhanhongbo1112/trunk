@@ -17,7 +17,6 @@
  */
 package com.yqboots.prototype.project.autoconfigure;
 
-import com.yqboots.fss.core.Root;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
@@ -28,25 +27,25 @@ import java.util.Map;
  */
 @ConfigurationProperties(prefix = "yqboots.prototype.project")
 public class ProjectProperties {
-    private Root sourcePath;
+    private String sourcePath;
 
-    private Root targetPath;
+    private String targetPath;
 
     private Map<String, String> properties = new HashMap<>();
 
-    public Root getSourcePath() {
+    public String getSourcePath() {
         return sourcePath;
     }
 
-    public void setSourcePath(Root sourcePath) {
+    public void setSourcePath(String sourcePath) {
         this.sourcePath = sourcePath;
     }
 
-    public Root getTargetPath() {
+    public String getTargetPath() {
         return targetPath;
     }
 
-    public void setTargetPath(Root targetPath) {
+    public void setTargetPath(String targetPath) {
         this.targetPath = targetPath;
     }
 

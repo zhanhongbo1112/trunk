@@ -24,13 +24,13 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class Root implements Serializable {
-    private String path;
+    private final String path;
 
-    public Root(String path) {
+    public Root(final String path) {
         this.path = path;
     }
 
     public String getPath() {
-        return path;
+        return this.path;
     }
 }

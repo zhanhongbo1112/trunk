@@ -17,18 +17,23 @@
  */
 package com.yqboots.prototype.project.core;
 
-import com.yqboots.prototype.project.core.builder.FileBuilder;
-import com.yqboots.prototype.project.core.velocity.CustomVelocityEngine;
+import com.yqboots.prototype.core.builder.FileBuilder;
+import com.yqboots.prototype.core.support.CustomVelocityEngine;
+import com.yqboots.prototype.project.autoconfigure.ProjectProperties;
+import org.apache.commons.io.FileUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.HashMap;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 /**
@@ -37,24 +42,43 @@ import java.util.Map;
 public class ProjectInitializerImpl implements ProjectInitializer {
     private static final Logger LOG = LoggerFactory.getLogger(ProjectInitializerImpl.class);
 
-    private VelocityEngine velocityEngine;
+    private CustomVelocityEngine velocityEngine;
 
-    public ProjectInitializerImpl(VelocityEngine velocityEngine) {
+    private ProjectProperties properties;
+
+    public ProjectInitializerImpl(CustomVelocityEngine velocityEngine, ProjectProperties properties) {
         this.velocityEngine = velocityEngine;
+        this.properties = properties;
     }
 
     @Override
     public void startup(ProjectContext context) throws IOException {
+        Path sourcePath = Paths.get(properties.getSourcePath());
+        if (!Files.exists(sourcePath)) {
+            throw new FileSystemNotFoundException("The source path not found, " + properties.getSourcePath());
+        }
+
+        Path targetPath = Paths.get(properties.getTargetPath() + File.pathSeparator + System.currentTimeMillis()
+                + File.pathSeparator + context.getMetadata().getName());
+        if (!Files.exists(targetPath)) {
+            LOG.info("Creating the target path: {}", targetPath);
+            targetPath = Files.createDirectories(targetPath);
+        }
+
+        // copy shared resources to target path
+        FileUtils.copyDirectory(sourcePath.toFile(), targetPath.toFile());
+
         ProjectMetadata metadata = context.getMetadata();
 
         final VelocityContext velocityContext = new VelocityContext();
+        velocityContext.put(ProjectMetadata.KEY, metadata);
+
         Template template;
         Writer writer = null;
 
-        velocityContext.put(ProjectMetadata.KEY, metadata);
-
-        for (Map.Entry<String, String> entry : resolveTemplates().entrySet()) {
-            if (!velocityEngine.resourceExists(entry.getKey())) {
+        final Map<String, FileBuilder> builders = getVelocityEngine().getBuilders();
+        for (Map.Entry<String, FileBuilder> entry : builders.entrySet()) {
+            if (!getVelocityEngine().resourceExists(entry.getKey())) {
                 LOG.warn("Template {0} not found, ignore...", entry.getKey());
                 continue;
             }
@@ -62,17 +86,9 @@ public class ProjectInitializerImpl implements ProjectInitializer {
             template = getVelocityEngine().getTemplate(entry.getKey());
 
             try {
-
-                CustomVelocityEngine engine = (CustomVelocityEngine) velocityEngine;
-                Map<String, FileBuilder> builders = engine.getBuilders();
-                if (!builders.containsKey(entry.getKey())) {
-                    LOG.warn("Template {0} not found in builder, ignore...", entry.getKey());
-                    continue;
-                }
-
-                FileBuilder builder = builders.get(entry.getKey());
-                // TODO: build target file
-                writer = new FileWriter(entry.getValue());
+                FileBuilder builder = entry.getValue();
+                // TODO: retrieve the root path of the target project
+                writer = new FileWriter(builder.getFile("TODO: root path"));
 
                 template.merge(velocityContext, writer);
                 writer.flush();
@@ -82,17 +98,21 @@ public class ProjectInitializerImpl implements ProjectInitializer {
                 }
             }
         }
+
+        // compress to one file for downloading
+        compressTargetResources(targetPath);
     }
 
-    private Map<String, String> resolveTemplates() {
-        final Map<String, String> results = new HashMap<>();
-
-        results.put("pom.xml.vm", "D:\\pom.xml");
-
-        return results;
-    }
-
-    protected VelocityEngine getVelocityEngine() {
+    protected CustomVelocityEngine getVelocityEngine() {
         return velocityEngine;
+    }
+
+    /**
+     * Compress the resources of target path.
+     *
+     * @param targetDir the target directory
+     */
+    private void compressTargetResources(Path targetDir) {
+
     }
 }
