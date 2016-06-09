@@ -17,7 +17,6 @@
  */
 package com.yqboots.fss.autoconfigure;
 
-import com.yqboots.fss.core.Root;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -25,13 +24,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "yqboots.fss")
 public class FssProperties {
-    private Root root;
+    private String root;
 
-    public Root getRoot() {
+    public String getRoot() {
         return root;
     }
 
-    public void setRoot(Root root) {
+    public void setRoot(String root) {
         this.root = root;
     }
 }
