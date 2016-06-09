@@ -14,8 +14,7 @@ body {
 	margin: 0;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup,
-	main, menu, nav, section, summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
 	display: block;
 }
 
@@ -2849,8 +2848,7 @@ output {
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #555;
-	background-color: #fff;
-	background-image: none;
+	background: #fff none;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -5556,36 +5554,33 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 	color: #843534;
 }
 
-@
--webkit-keyframes progress-bar-stripes {from { background-position:40px0;
-	
+@-webkit-keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0;
+	}
+	to {
+		background-position: 0 0;
+	}
 }
 
-to {
-	background-position: 0 0;
+@-o-keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0;
+	}
+	to {
+		background-position: 0 0;
+	}
 }
 
-}
-@
--o-keyframes progress-bar-stripes {from { background-position:40px0;
-	
-}
-
-to {
-	background-position: 0 0;
-}
-
-}
-@
-keyframes progress-bar-stripes {from { background-position:40px0;
-	
+@keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0;
+	}
+	to {
+		background-position: 0 0;
+	}
 }
 
-to {
-	background-position: 0 0;
-}
-
-}
 .progress {
 	height: 20px;
 	margin-bottom: 20px;
@@ -6879,7 +6874,7 @@ button.close {
 	line-height: 1;
 }
 
-@media all and (transform-3d) , ( -webkit-transform-3d ) {
+@media all and (transform-3d), (-webkit-transform-3d) {
 	.carousel-inner>.item {
 		-webkit-transition: -webkit-transform .6s ease-in-out;
 		-o-transition: -o-transform .6s ease-in-out;
@@ -7170,8 +7165,7 @@ button.close {
 	position: fixed;
 }
 
-@
--ms-viewport {
+@-ms-viewport {
 	width: device-width;
 }
 

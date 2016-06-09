@@ -226,7 +226,7 @@
 }
 
 @-webkit-keyframes cbp-rotation {
-    0 {
+    0% {
         -webkit-transform: rotate(0deg);
     }
     100% {
@@ -235,7 +235,7 @@
 }
 
 @keyframes cbp-rotation {
-    0 {
+    0% {
         transform: rotate(0deg);
     }
     100% {
@@ -1735,14 +1735,14 @@
 @-webkit-keyframes skew-off {
     100% {
         opacity: 0;
-        -webkit-transform: scale3d(0, 0, 0) skew(20deg, 0);
+        -webkit-transform: scale3d(0, 0, 0) skew(20deg, 0deg);
     }
 }
 
 @keyframes skew-off {
     100% {
         opacity: 0;
-        transform: scale3d(0, 0, 0) skew(20deg, 0);
+        transform: scale3d(0, 0, 0) skew(20deg, 0deg);
     }
 }
 
@@ -1750,14 +1750,14 @@
 @-webkit-keyframes skew-on {
     0% {
         opacity: 0;
-        -webkit-transform: scale3d(0, 0, 0) skew(0, 20deg);
+        -webkit-transform: scale3d(0, 0, 0) skew(0deg, 20deg);
     }
 }
 
 @keyframes skew-on {
     0% {
         opacity: 0;
-        transform: scale3d(0, 0, 0) skew(0, 20deg);
+        transform: scale3d(0, 0, 0) skew(0deg, 20deg);
     }
 }
 
@@ -3263,8 +3263,8 @@
 
 .cbp-popup-singlePageInline-close .cbp-popup-singlePageInline .cbp-popup-content,
 .cbp-popup-singlePageInline-close .cbp-popup-singlePageInline .cbp-popup-navigation {
-    -webkit-transition-delay: 0;
-    transition-delay: 0;
+    -webkit-transition-delay: 0ms;
+    transition-delay: 0ms;
 }
 
 .cbp-popup-singlePageInline {

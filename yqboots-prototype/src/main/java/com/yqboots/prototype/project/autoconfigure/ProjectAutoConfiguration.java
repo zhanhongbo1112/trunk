@@ -18,7 +18,7 @@
 package com.yqboots.prototype.project.autoconfigure;
 
 import com.yqboots.prototype.project.core.ProjectInitializer;
-import com.yqboots.prototype.project.core.MavenProjectInitializer;
+import com.yqboots.prototype.project.core.ProjectInitializerImpl;
 import com.yqboots.prototype.project.core.velocity.CustomVelocityEngine;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
@@ -44,7 +44,7 @@ public class ProjectAutoConfiguration {
 
     @Bean
     public ProjectInitializer projectInitializer() throws Exception {
-        return new MavenProjectInitializer(starterVelocityEngine());
+        return new ProjectInitializerImpl(starterVelocityEngine());
     }
 
     protected void applyProperties(final VelocityEngineFactory factory, final String resourceLoaderPath) {

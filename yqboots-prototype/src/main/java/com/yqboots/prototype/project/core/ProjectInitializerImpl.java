@@ -25,19 +25,21 @@ import org.apache.velocity.app.VelocityEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Administrator on 2016-05-28.
  */
-public class MavenProjectInitializer implements ProjectInitializer {
-    private static final Logger LOG = LoggerFactory.getLogger(MavenProjectInitializer.class);
+public class ProjectInitializerImpl implements ProjectInitializer {
+    private static final Logger LOG = LoggerFactory.getLogger(ProjectInitializerImpl.class);
 
     private VelocityEngine velocityEngine;
 
-    public MavenProjectInitializer(VelocityEngine velocityEngine) {
+    public ProjectInitializerImpl(VelocityEngine velocityEngine) {
         this.velocityEngine = velocityEngine;
     }
 
