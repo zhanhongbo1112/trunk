@@ -1,11 +1,11 @@
 define([ 'jquery' ], function() {
     var setColor = function(color, data_header) {
-        $('#style_color').attr("href", "theme/css/theme-colors/" + color + ".css");
+        $('#style_color').attr("href", "/theme/css/theme-colors/" + color + ".css");
         if (data_header == 'light') {
-            $('.logo img').attr("src", "theme/images/logo-" + color + ".png");
-            // $('.navbar-brand img').attr("src", "theme/images/logo-" + color + ".png");
+            $('.logo img').attr("src", "/theme/images/logo-" + color + ".png");
+            // $('.navbar-brand img').attr("src", "/theme/images/logo-" + color + ".png");
         } else if (data_header == 'dark') {
-            $('.logo img').attr("src", "theme/images/logo-" + color + ".png");
+            $('.logo img').attr("src", "/theme/images/logo-" + color + ".png");
         }
     };
 
