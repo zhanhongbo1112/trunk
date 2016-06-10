@@ -17,6 +17,7 @@
  */
 package com.yqboots.prototype.project.core;
 
+import com.yqboots.fss.util.ZipUtils;
 import com.yqboots.prototype.core.builder.FileBuilder;
 import com.yqboots.prototype.core.support.CustomVelocityEngine;
 import com.yqboots.prototype.project.autoconfigure.ProjectProperties;
@@ -58,8 +59,8 @@ public class ProjectInitializerImpl implements ProjectInitializer {
             throw new FileSystemNotFoundException("The source path not found, " + properties.getSourcePath());
         }
 
-        Path targetPath = Paths.get(properties.getTargetPath() + File.pathSeparator + System.currentTimeMillis()
-                + File.pathSeparator + context.getMetadata().getName());
+        Path targetPath = Paths.get(properties.getTargetPath() + File.separator + System.currentTimeMillis()
+                + File.separator + context.getMetadata().getName());
         if (!Files.exists(targetPath)) {
             LOG.info("Creating the target path: {}", targetPath);
             targetPath = Files.createDirectories(targetPath);
@@ -100,19 +101,10 @@ public class ProjectInitializerImpl implements ProjectInitializer {
         }
 
         // compress to one file for downloading
-        compressTargetResources(targetPath);
+        ZipUtils.compress(targetPath);
     }
 
     protected CustomVelocityEngine getVelocityEngine() {
         return velocityEngine;
-    }
-
-    /**
-     * Compress the resources of target path.
-     *
-     * @param targetDir the target directory
-     */
-    private void compressTargetResources(Path targetDir) {
-
     }
 }
