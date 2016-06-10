@@ -102,6 +102,10 @@ a:focus, a:hover, a:active {
     background: #7f8c8d;
 }
 
+i.style-switcher-btn:hover {
+    background: #7f8c8d;
+}
+
 /* Footer
 ------------------------------------*/
 .copyright a, .copyright a:hover {
