@@ -27,15 +27,11 @@ import org.apache.velocity.VelocityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.FileSystemNotFoundException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016-05-28.
@@ -56,7 +52,7 @@ public class ProjectInitializerImpl implements ProjectInitializer {
     public void startup(ProjectContext context) throws IOException {
         Path sourcePath = Paths.get(properties.getSourcePath());
         if (!Files.exists(sourcePath)) {
-            throw new FileSystemNotFoundException("The source path not found, " + properties.getSourcePath());
+            throw new FileNotFoundException("The source path not found, " + properties.getSourcePath());
         }
 
         Path targetPath = Paths.get(properties.getTargetPath() + File.separator + System.currentTimeMillis()
@@ -77,19 +73,18 @@ public class ProjectInitializerImpl implements ProjectInitializer {
         Template template;
         Writer writer = null;
 
-        final Map<String, FileBuilder> builders = getVelocityEngine().getBuilders();
-        for (Map.Entry<String, FileBuilder> entry : builders.entrySet()) {
-            if (!getVelocityEngine().resourceExists(entry.getKey())) {
-                LOG.warn("Template {0} not found, ignore...", entry.getKey());
+        final List<FileBuilder> builders = getVelocityEngine().getBuilders();
+        for (FileBuilder builder : builders) {
+            if (!getVelocityEngine().resourceExists(builder.getTemplate())) {
+                LOG.warn("Template {0} not found, ignore...", builder.getTemplate());
                 continue;
             }
 
-            template = getVelocityEngine().getTemplate(entry.getKey());
+            template = getVelocityEngine().getTemplate(builder.getTemplate());
 
             try {
-                FileBuilder builder = entry.getValue();
-                // TODO: retrieve the root path of the target project
-                writer = new FileWriter(builder.getFile("TODO: root path"));
+                // retrieve the root path of the target project
+                writer = new FileWriter(builder.getFile(targetPath).toFile());
 
                 template.merge(velocityContext, writer);
                 writer.flush();
@@ -102,6 +97,8 @@ public class ProjectInitializerImpl implements ProjectInitializer {
 
         // compress to one file for downloading
         ZipUtils.compress(targetPath);
+        // clear folders
+        FileUtils.deleteDirectory(targetPath.toFile());
     }
 
     protected CustomVelocityEngine getVelocityEngine() {

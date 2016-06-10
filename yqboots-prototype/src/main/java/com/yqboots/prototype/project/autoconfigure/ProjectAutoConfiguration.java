@@ -17,6 +17,8 @@
  */
 package com.yqboots.prototype.project.autoconfigure;
 
+import com.yqboots.prototype.core.builder.FileBuilder;
+import com.yqboots.prototype.core.builder.FileBuilderImpl;
 import com.yqboots.prototype.core.support.CustomVelocityEngine;
 import com.yqboots.prototype.project.core.ProjectInitializer;
 import com.yqboots.prototype.project.core.ProjectInitializerImpl;
@@ -26,11 +28,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.ui.velocity.VelocityEngineFactory;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -44,28 +47,29 @@ public class ProjectAutoConfiguration {
 
     @Bean
     public ProjectInitializer projectInitializer() throws Exception {
-        return new ProjectInitializerImpl(starterVelocityEngine(), properties);
+        return new ProjectInitializerImpl(velocityEngine(), properties);
     }
 
-    protected void applyProperties(final VelocityEngineFactory factory, final String resourceLoaderPath) {
-        factory.setResourceLoaderPath(resourceLoaderPath);
-        factory.setPreferFileSystemAccess(false);
+    private CustomVelocityEngine velocityEngine() throws Exception {
+        VelocityEngineFactoryBean factoryBean = new VelocityEngineFactoryBean() {
+            @Override
+            protected VelocityEngine newVelocityEngine() throws IOException, VelocityException {
+                // custom velocity engine to include FileBuilders
+                List<FileBuilder> builders = new ArrayList<>();
+                builders.add(new FileBuilderImpl("pom.xml.vm", "/pom.xml"));
+
+                return new CustomVelocityEngine(builders);
+            }
+        };
+        factoryBean.setResourceLoaderPath("classpath:/vm/initializer/");
+        factoryBean.setPreferFileSystemAccess(false);
 
         Properties velocityProperties = new Properties();
         velocityProperties.setProperty("input.encoding", Charset.forName("UTF-8").name());
-        factory.setVelocityProperties(velocityProperties);
-    }
+        factoryBean.setVelocityProperties(velocityProperties);
 
-    private CustomVelocityEngine starterVelocityEngine() throws Exception {
-        VelocityEngineFactoryBean velocityEngineFactoryBean = new VelocityEngineFactoryBean() {
-            @Override
-            protected VelocityEngine newVelocityEngine() throws IOException, VelocityException {
-                // TODO: custom velocity engine to include FileBuilders
-                return new CustomVelocityEngine();
-            }
-        };
-        applyProperties(velocityEngineFactoryBean, "classpath:/vm/initializer/");
-        velocityEngineFactoryBean.afterPropertiesSet();
-        return (CustomVelocityEngine) velocityEngineFactoryBean.getObject();
+        factoryBean.afterPropertiesSet();
+
+        return (CustomVelocityEngine) factoryBean.getObject();
     }
 }

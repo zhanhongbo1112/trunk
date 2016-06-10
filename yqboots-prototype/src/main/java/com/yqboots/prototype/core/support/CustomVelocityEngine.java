@@ -3,20 +3,21 @@ package com.yqboots.prototype.core.support;
 import com.yqboots.prototype.core.builder.FileBuilder;
 import org.apache.velocity.app.VelocityEngine;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016-06-08.
  */
 public class CustomVelocityEngine extends VelocityEngine {
-    private Map<String, FileBuilder> builders = new HashMap<>();
+    private List<FileBuilder> builders = new ArrayList<>();
 
-    public Map<String, FileBuilder> getBuilders() {
-        return builders;
+    public CustomVelocityEngine(final List<FileBuilder> builders) {
+        super();
+        this.builders = builders;
     }
 
-    public void setBuilders(Map<String, FileBuilder> builders) {
-        this.builders = builders;
+    public List<FileBuilder> getBuilders() {
+        return builders;
     }
 }
