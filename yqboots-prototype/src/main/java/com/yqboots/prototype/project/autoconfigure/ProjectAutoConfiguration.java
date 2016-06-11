@@ -17,11 +17,13 @@
  */
 package com.yqboots.prototype.project.autoconfigure;
 
-import com.yqboots.prototype.core.builder.FileBuilder;
-import com.yqboots.prototype.core.builder.FileBuilderImpl;
-import com.yqboots.prototype.core.support.CustomVelocityEngine;
 import com.yqboots.prototype.project.core.ProjectInitializer;
 import com.yqboots.prototype.project.core.ProjectInitializerImpl;
+import com.yqboots.prototype.project.core.builder.FileBuilder;
+import com.yqboots.prototype.project.core.builder.FileBuilderImpl;
+import com.yqboots.prototype.project.core.builder.JavaFileBuilder;
+import com.yqboots.prototype.project.core.builder.ResourcesFileBuilder;
+import com.yqboots.prototype.project.core.support.ProjectVelocityEngine;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,15 +52,17 @@ public class ProjectAutoConfiguration {
         return new ProjectInitializerImpl(velocityEngine(), properties);
     }
 
-    private CustomVelocityEngine velocityEngine() throws Exception {
+    private ProjectVelocityEngine velocityEngine() throws Exception {
         VelocityEngineFactoryBean factoryBean = new VelocityEngineFactoryBean() {
             @Override
             protected VelocityEngine newVelocityEngine() throws IOException, VelocityException {
                 // custom velocity engine to include FileBuilders
                 List<FileBuilder> builders = new ArrayList<>();
                 builders.add(new FileBuilderImpl("pom.xml.vm", "/pom.xml"));
+                builders.add(new JavaFileBuilder("Application.java.vm", "/Application.java"));
+                builders.add(new ResourcesFileBuilder("layout.html.vm", "/templates/layouts/layout.html"));
 
-                return new CustomVelocityEngine(builders);
+                return new ProjectVelocityEngine(builders);
             }
         };
         factoryBean.setResourceLoaderPath("classpath:/vm/initializer/");
@@ -70,6 +74,6 @@ public class ProjectAutoConfiguration {
 
         factoryBean.afterPropertiesSet();
 
-        return (CustomVelocityEngine) factoryBean.getObject();
+        return (ProjectVelocityEngine) factoryBean.getObject();
     }
 }

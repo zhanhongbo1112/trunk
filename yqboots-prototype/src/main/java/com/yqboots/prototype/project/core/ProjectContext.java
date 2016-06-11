@@ -1,6 +1,5 @@
 package com.yqboots.prototype.project.core;
 
-import com.yqboots.prototype.project.core.ProjectMetadata;
 import com.yqboots.prototype.project.core.theme.Theme;
 
 import java.io.Serializable;
@@ -10,6 +9,8 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class ProjectContext implements Serializable {
+    public static final String KEY = "context";
+
     private ProjectMetadata metadata;
 
     private Theme theme;

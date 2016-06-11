@@ -17,9 +17,9 @@
  */
 package com.yqboots.prototype.project.core;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -27,8 +27,6 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class ProjectMetadata implements Serializable {
-    public static final String KEY = "metadata";
-
     @NotEmpty
     private String name;
 
@@ -49,7 +47,7 @@ public class ProjectMetadata implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+        return StringUtils.defaultIfEmpty(this.description, StringUtils.EMPTY);
     }
 
     public void setDescription(String description) {
@@ -57,7 +55,7 @@ public class ProjectMetadata implements Serializable {
     }
 
     public String getGroupId() {
-        return groupId;
+        return this.groupId;
     }
 
     public void setGroupId(String groupId) {
@@ -65,10 +63,14 @@ public class ProjectMetadata implements Serializable {
     }
 
     public String getArtifactId() {
-        return artifactId;
+        return this.artifactId;
     }
 
     public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
+    }
+
+    public String getGroupPath() {
+        return StringUtils.replace(getGroupId(), ".", "/");
     }
 }

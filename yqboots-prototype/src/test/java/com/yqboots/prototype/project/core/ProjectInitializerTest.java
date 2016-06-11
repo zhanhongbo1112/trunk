@@ -41,11 +41,12 @@ public class ProjectInitializerTest {
         metadata.setGroupId("com.yqboots.test");
         metadata.setArtifactId("test-core");
         metadata.setName("Test Project");
+        metadata.setDescription("Test Description");
 
         context.setMetadata(metadata);
 
         Theme theme = new Theme();
-        theme.setSkin(ThemeSkin.DARK);
+        theme.setSkin(ThemeSkin.LIGHT);
         theme.setColor(ThemeColor.GREEN);
         context.setTheme(theme);
 

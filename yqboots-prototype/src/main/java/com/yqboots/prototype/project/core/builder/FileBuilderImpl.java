@@ -1,4 +1,6 @@
-package com.yqboots.prototype.core.builder;
+package com.yqboots.prototype.project.core.builder;
+
+import com.yqboots.prototype.project.core.ProjectContext;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,14 +26,19 @@ public class FileBuilderImpl implements FileBuilder {
     }
 
     @Override
-    public Path getFile(final Path root) throws IOException {
-        Path result = Paths.get(root.toAbsolutePath() + path);
+    public Path getFile(final Path root, final ProjectContext context) throws IOException {
+        Path result = Paths.get(root.toAbsolutePath() + getPath());
         if (Files.exists(result)) {
             result.toFile().createNewFile();
         } else {
+            Files.createDirectories(result.getParent());
             Files.createFile(result);
         }
 
         return result;
+    }
+
+    public String getPath() {
+        return path;
     }
 }

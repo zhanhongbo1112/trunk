@@ -18,10 +18,11 @@
 package com.yqboots.prototype.project.core;
 
 import com.yqboots.fss.util.ZipUtils;
-import com.yqboots.prototype.core.builder.FileBuilder;
-import com.yqboots.prototype.core.support.CustomVelocityEngine;
 import com.yqboots.prototype.project.autoconfigure.ProjectProperties;
+import com.yqboots.prototype.project.core.builder.FileBuilder;
+import com.yqboots.prototype.project.core.support.ProjectVelocityEngine;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.slf4j.Logger;
@@ -39,17 +40,17 @@ import java.util.List;
 public class ProjectInitializerImpl implements ProjectInitializer {
     private static final Logger LOG = LoggerFactory.getLogger(ProjectInitializerImpl.class);
 
-    private CustomVelocityEngine velocityEngine;
+    private ProjectVelocityEngine velocityEngine;
 
     private ProjectProperties properties;
 
-    public ProjectInitializerImpl(CustomVelocityEngine velocityEngine, ProjectProperties properties) {
+    public ProjectInitializerImpl(ProjectVelocityEngine velocityEngine, ProjectProperties properties) {
         this.velocityEngine = velocityEngine;
         this.properties = properties;
     }
 
     @Override
-    public void startup(ProjectContext context) throws IOException {
+    public void startup(final ProjectContext context) throws IOException {
         Path sourcePath = Paths.get(properties.getSourcePath());
         if (!Files.exists(sourcePath)) {
             throw new FileNotFoundException("The source path not found, " + properties.getSourcePath());
@@ -65,10 +66,9 @@ public class ProjectInitializerImpl implements ProjectInitializer {
         // copy shared resources to target path
         FileUtils.copyDirectory(sourcePath.toFile(), targetPath.toFile());
 
-        ProjectMetadata metadata = context.getMetadata();
-
         final VelocityContext velocityContext = new VelocityContext();
-        velocityContext.put(ProjectMetadata.KEY, metadata);
+        velocityContext.put(ProjectContext.KEY, context);
+        velocityContext.put("StringUtils", StringUtils.class);
 
         Template template;
         Writer writer = null;
@@ -84,7 +84,7 @@ public class ProjectInitializerImpl implements ProjectInitializer {
 
             try {
                 // retrieve the root path of the target project
-                writer = new FileWriter(builder.getFile(targetPath).toFile());
+                writer = new FileWriter(builder.getFile(targetPath, context).toFile());
 
                 template.merge(velocityContext, writer);
                 writer.flush();
@@ -98,10 +98,10 @@ public class ProjectInitializerImpl implements ProjectInitializer {
         // compress to one file for downloading
         ZipUtils.compress(targetPath);
         // clear folders
-        FileUtils.deleteDirectory(targetPath.toFile());
+        // FileUtils.deleteDirectory(targetPath.toFile());
     }
 
-    protected CustomVelocityEngine getVelocityEngine() {
+    protected ProjectVelocityEngine getVelocityEngine() {
         return velocityEngine;
     }
 }
