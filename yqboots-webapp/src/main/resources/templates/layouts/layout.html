@@ -80,13 +80,15 @@
   </div>
 </div><!--/style-switcher-->
 <!--=== End Style Switcher ===-->
-<!-- JS Global Compulsory -->
-<script src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}" data-dojo-config="async: true"/>
-<script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"/>
-<script type="text/javascript">
+<script src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}"
+        data-dojo-config="async: true"></script>
+<script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>
+<script th:inline="javascript">
+  /*<![CDATA[*/
     require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'], function(app){
-      app.startup();
+      app.startup(/*[[${execInfo.templateName}]]*/);
     });
+  /*]]>*/
 </script>
 </body>
 </html>
