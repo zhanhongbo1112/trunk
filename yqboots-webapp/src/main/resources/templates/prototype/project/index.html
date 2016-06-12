@@ -3,14 +3,9 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
   <title>Project Initializer</title>
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
-        th:remove="all"/>
-  <!-- CSS Theme -->
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
-        th:href="@{/theme/css/theme-colors/green.css}" th:remove="all"/>
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-skins/dark.css"
-        th:href="@{/theme/css/theme-skins/dark.css}" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+
   <link rel="stylesheet" href="../../../META-INF/resources/dojo/jquery/skyforms/css/sky-forms.css"
         th:href="@{/dojo/jquery/skyforms/css/sky-forms.css}"/>
   <link rel="stylesheet" href="../../../META-INF/resources/dojo/jquery/skyforms/custom/custom-sky-forms.css"
@@ -112,8 +107,9 @@
     </form>
   </div>
 </div>
-<script src="../../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"/>
-<script src="../../../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}" th:remove="all"/>
+<script src="../../../META-INF/resources/dojo/jquery.js" th:remove="all"/>
+<script src="../../../META-INF/resources/dojo/bootstrap.js" th:remove="all"/>
+
 <script src="../../../META-INF/resources/dojo/jquery/skyforms/js/jquery.maskedinput.min.js"
         th:src="@{/dojo/jquery/skyforms/js/jquery.maskedinput.min.js}"/>
 <script src="../../../META-INF/resources/dojo/jquery/skyforms/js/jquery-ui.min.js"

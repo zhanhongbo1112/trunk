@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head th:remove="all">
-  <title>Header</title>
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"/>
-  <!-- CSS Theme -->
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
-        th:href="@{/theme/css/theme-colors/green.css}"/>
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
-        th:href="@{/theme/css/theme-skins/dark.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css"/>
 </head>
 <body>
 <header th:fragment="header" class="header header-sticky">
@@ -78,8 +72,7 @@
   </div>
   <!--/navbar-collapse-->
 </header>
-<script type="text/javascript" src="../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"/>
-<script type="text/javascript" src="../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}"
-        th:remove="all"/>
+<script src="../../META-INF/resources/dojo/jquery.js" th:remove="all"/>
+<script src="../../META-INF/resources/dojo/bootstrap.js" th:remove="all"/>
 </body>
 </html>

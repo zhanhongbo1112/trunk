@@ -1,34 +1,10 @@
 <!DOCTYPE html>
-<!--
-  ~ /*
-  ~  * Copyright 2015-2016 the original author or authors.
-  ~  *
-  ~  * Licensed under the Apache License, Version 2.0 (the "License");
-  ~  * you may not use this file except in compliance with the License.
-  ~  * You may obtain a copy of the License at
-  ~  *
-  ~  *      http://www.apache.org/licenses/LICENSE-2.0
-  ~  *
-  ~  * Unless required by applicable law or agreed to in writing, software
-  ~  * distributed under the License is distributed on an "AS IS" BASIS,
-  ~  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~  * See the License for the specific language governing permissions and
-  ~  * limitations under the License.
-  ~  */
-  -->
-
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
   <title>YuQi Boots Web Application</title>
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"
-        th:remove="all"/>
-  <!-- CSS Theme -->
-  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" id="style_color"
-        th:href="@{/theme/css/theme-colors/green.css}" th:remove="all"/>
-  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-skins/dark.css"
-        th:href="@{/theme/css/theme-skins/dark.css}" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
 
   <link rel="stylesheet" href="../META-INF/resources/dojo/jquery/cube-portfolio/css/cubeportfolio.css"
         th:href="@{/dojo/jquery/cube-portfolio/css/cubeportfolio.css}"/>
@@ -142,8 +118,7 @@
   </div>
   <!--=== End Cube-Portfolio ===-->
 </div>
-<script type="text/javascript" src="../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"/>
-<script type="text/javascript" src="../META-INF/resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}"
-        th:remove="all"/>
+<script src="../META-INF/resources/dojo/jquery.js" th:remove="all"/>
+<script src="../META-INF/resources/dojo/bootstrap.js" th:remove="all"/>
 </body>
 </html>
