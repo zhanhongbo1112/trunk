@@ -5,12 +5,8 @@
   <title>My Profile</title>
   <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css" th:remove="all"/>
-
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/profile.css"
-        th:href="@{/theme/css/pages/profile.css}"/>
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/timeline.css"
-        th:href="@{/theme/css/pages/timeline.css}"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/profile.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/pages/timeline.css" th:remove="all"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -28,9 +24,8 @@
   <div class="row">
     <!--Left Sidebar-->
     <div class="col-md-3 md-margin-bottom-40">
-      <img class="img-responsive profile-img margin-bottom-20"
-           src="../../META-INF/resources/theme/images/profile/me-md.jpg"
-           th:src="@{/theme/images/profile/me-md.jpg}" alt=""/>
+      <img class="img-responsive profile-img margin-bottom-20" th:src="@{/theme/images/profile/me-md.jpg}" alt=""
+           src="../../META-INF/resources/theme/images/profile/me-md.jpg"/>
       <ul class="list-group sidebar-nav margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item active">
           <a href="#" th:href="@{/profile}">

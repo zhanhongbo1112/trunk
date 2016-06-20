@@ -85,8 +85,9 @@
 <script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>
 <script th:inline="javascript">
   /*<![CDATA[*/
-    require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'], function(app){
-      app.startup(/*[[${execInfo.templateName}]]*/);
+  require(['baf/main', 'app/_base/PageRegistry', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'],
+      function (app, PageRegistry) {
+        app.startup([[${execInfo.templateName}]], PageRegistry.PAGES);
     });
   /*]]>*/
 </script>
