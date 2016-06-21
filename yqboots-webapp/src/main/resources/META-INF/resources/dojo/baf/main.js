@@ -14,8 +14,9 @@ define(['baf/_base/StickyHeader', 'baf/_base/MegaMenu', 'baf/_base/SearchBox', '
                 StyleSwitcher.startup();
                 ScrollToTop.startup();
 
-                if (!pages[templateName]) {
-                    console.info("No mapping page for template " + templateName);
+                var template = pages[templateName];
+                if (!template) {
+                    console.info("No mapping page for template: " + templateName);
                 }
 
                 if (pages[templateName]) {
