@@ -148,7 +148,7 @@ i.icon-bg-u {
 
 /* Top Control
 ------------------------------------*/
-#topcontrol:hover {
+#topControl:hover {
     background: #72c02c;
 }
 
@@ -178,9 +178,7 @@ i.icon-bg-u {
 }
 
 /* Heading */
-.headline h2,
-.headline h3,
-.headline h4 {
+.headline h2, .headline h3, .headline h4 {
     border-bottom: 2px solid #72c02c;
 }
 

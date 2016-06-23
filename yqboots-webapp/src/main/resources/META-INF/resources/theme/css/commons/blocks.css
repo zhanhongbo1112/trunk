@@ -157,7 +157,7 @@
 /*--------------------------------------------------
 	[44. Back To Top]
 ----------------------------------------------------*/
-#topcontrol {
+#topControl {
     color: #fff;
     z-index: 99;
     width: 30px;
@@ -170,7 +170,7 @@
     border-radius: 3px !important;
 }
 
-#topcontrol:after {
+#topControl:after {
     top: -2px;
     left: 8.5px;
     content: "\f106";
@@ -179,7 +179,7 @@
     font-family: FontAwesome;
 }
 
-#topcontrol:hover {
+#topControl:hover {
     color: #fff;
     transition: all 0.3s ease-in-out;
 }

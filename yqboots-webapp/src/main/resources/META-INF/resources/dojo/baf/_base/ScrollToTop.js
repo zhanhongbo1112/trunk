@@ -15,7 +15,7 @@ define(['jquery'], function() {
         },
         
         // <img src="assets/img/up.png" style="width:51px; height:42px" />
-        // HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+        // HTML for control, which is auto wrapped in DIV w/ ID="topControl"
         controlHTML : '', 
 
     	// offset of control relative to right/ bottom of window corner
@@ -41,16 +41,16 @@ define(['jquery'], function() {
                 })
             }
 
-            var dest = isNaN(this.setting.scrollTo) ? this.setting.scrollTo : parseInt(this.setting.scrollTo);
+            var destination = isNaN(this.setting.scrollTo) ? this.setting.scrollTo : parseInt(this.setting.scrollTo);
             // check element set by string exists
-            if (typeof dest == "string" && $('#' + dest).length == 1) {
-                dest = $('#' + dest).offset().top;
+            if (typeof destination == "string" && $('#' + destination).length == 1) {
+                destination = $('#' + destination).offset().top;
             } else {
-                dest = 0;
+                destination = 0;
             }
 
             this.$body.animate({
-                scrollTop : dest
+                scrollTop : destination
             }, this.setting.scrollDuration);
         },
 
@@ -86,12 +86,12 @@ define(['jquery'], function() {
 
         startup : function() {
             var _this = this;
-            var iebrws = document.all;
+            var isIE = document.all;
             // not IE or IE7+ browsers in standards mode
-            this.cssFixedSupport = !iebrws || iebrws && document.compatMode == "CSS1Compat" && window.XMLHttpRequest;
+            this.cssFixedSupport = !isIE || isIE && document.compatMode == "CSS1Compat" && window.XMLHttpRequest;
             this.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body'))
                     : $('html,body');
-            this.$control = $('<div id="topcontrol">' + _this.controlHTML + '</div>').css({
+            this.$control = $('<div id="topControl">' + _this.controlHTML + '</div>').css({
                 position : _this.cssFixedSupport ? 'fixed' : 'absolute',
                 bottom : _this.controlAttrs.offsetY,
                 right : _this.controlAttrs.offsetX,
