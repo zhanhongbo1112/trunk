@@ -18,10 +18,11 @@
 package com.yqboots.prototype.project.core;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * Created by Administrator on 2016-05-28.
  */
 public interface ProjectInitializer {
-    void startup(ProjectContext context) throws IOException;
+    Path startup(ProjectContext context) throws IOException;
 }

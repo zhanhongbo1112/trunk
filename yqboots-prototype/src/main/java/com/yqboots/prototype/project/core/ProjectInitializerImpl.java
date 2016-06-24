@@ -50,7 +50,7 @@ public class ProjectInitializerImpl implements ProjectInitializer {
     }
 
     @Override
-    public void startup(final ProjectContext context) throws IOException {
+    public Path startup(final ProjectContext context) throws IOException {
         Path sourcePath = Paths.get(properties.getSourcePath());
         if (!Files.exists(sourcePath)) {
             throw new FileNotFoundException("The source path not found, " + properties.getSourcePath());
@@ -96,9 +96,7 @@ public class ProjectInitializerImpl implements ProjectInitializer {
         }
 
         // compress to one file for downloading
-        ZipUtils.compress(targetPath);
-        // clear folders
-        // FileUtils.deleteDirectory(targetPath.toFile());
+        return ZipUtils.compress(targetPath);
     }
 
     protected ProjectVelocityEngine getVelocityEngine() {

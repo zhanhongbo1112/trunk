@@ -17,11 +17,11 @@ public class ZipUtils {
 
     private static final String SUFFIX = ".zip";
 
-    public static void compress(Path dir) throws IOException {
+    public static Path compress(Path dir) throws IOException {
         Assert.isTrue(Files.exists(dir) && Files.isDirectory(dir), "Should be a directory");
 
-        Path targetFile = Paths.get(dir.toAbsolutePath() + SUFFIX);
-        final ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(targetFile.toFile())));
+        Path result = Paths.get(dir.toAbsolutePath() + SUFFIX);
+        final ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(result.toFile())));
         // out.setMethod(ZipOutputStream.DEFLATED);
         final byte data[] = new byte[BUFFER];
         // get a list of files from current directory
@@ -48,5 +48,7 @@ public class ZipUtils {
         });
 
         out.close();
+
+        return result;
     }
 }
