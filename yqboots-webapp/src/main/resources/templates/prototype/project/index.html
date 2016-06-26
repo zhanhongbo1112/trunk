@@ -35,31 +35,43 @@
         <div class="col-md-9">
           <fieldset>
             <div class="row">
-              <section class="col col-3">
+              <section class="col col-4">
                 <label class="label">Name:</label>
                 <label class="input">
-                  <input type="text" th:field="*{metadata.name}"/>
+                  <input type="text" maxlength="30" th:field="*{metadata.name}" th:errorclass="state-error"/>
+                  <b class="tooltip tooltip-top-right">Project Name</b>
                 </label>
+
+                <p th:if="${#fields.hasErrors('metadata.name')}" th:errors="*{metadata.name}"></p>
               </section>
-              <section class="col col-9">
+              <section class="col col-8">
                 <label class="label">Description:</label>
                 <label class="input">
-                  <input type="text" th:field="*{metadata.description}"/>
+                  <input type="text" th:field="*{metadata.description}" maxlength="64" th:errorclass="state-error"/>
+                  <b class="tooltip tooltip-top-right">Some description about the project</b>
                 </label>
+
+                <p th:if="${#fields.hasErrors('metadata.description')}" th:errors="*{metadata.description}"></p>
               </section>
             </div>
             <div class="row">
               <section class="col col-6">
                 <label class="label">Group:</label>
                 <label class="input">
-                  <input type="text" th:field="*{metadata.groupId}"/>
+                  <input type="text" th:field="*{metadata.groupId}" maxlength="30" th:errorclass="state-error"/>
+                  <b class="tooltip tooltip-top-right">For example: com.company.project</b>
                 </label>
+
+                <p th:if="${#fields.hasErrors('metadata.groupId')}" th:errors="*{metadata.groupId}"></p>
               </section>
               <section class="col col-6">
                 <label class="label">Artifact:</label>
                 <label class="input">
-                  <input type="text" th:field="*{metadata.artifactId}"/>
+                  <input type="text" th:field="*{metadata.artifactId}" maxlength="20" th:errorclass="state-error"/>
+                  <b class="tooltip tooltip-top-right">For example: project-core</b>
                 </label>
+
+                <p th:if="${#fields.hasErrors('metadata.artifactId')}" th:errors="*{metadata.artifactId}"></p>
               </section>
             </div>
           </fieldset>

@@ -18,9 +18,9 @@
 package com.yqboots.prototype.project.core;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.Max;
 import java.io.Serializable;
 
 /**
@@ -29,18 +29,18 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ProjectMetadata implements Serializable {
     @NotEmpty
-    @Max(value = 30)
+    @Length(max = 30)
     private String name;
 
-    @Max(value = 64)
+    @Length(max = 64)
     private String description;
 
     @NotEmpty
-    @Max(value = 30)
+    @Length(max = 30)
     private String groupId;
 
     @NotEmpty
-    @Max(value = 20)
+    @Length(max = 20)
     private String artifactId;
 
     public String getName() {

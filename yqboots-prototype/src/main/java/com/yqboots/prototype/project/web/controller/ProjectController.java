@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -40,10 +41,10 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public HttpEntity<byte[]> startup(final ProjectContext context, final BindingResult bindingResult, final ModelMap model)
+    public Object startup(@ModelAttribute("context") @Valid final ProjectContext context, final BindingResult bindingResult, final ModelMap model)
             throws IOException {
         if (bindingResult.hasErrors()) {
-            return null;
+            return ProjectKeys.HOME_URL;
         }
 
         Path path = initializer.startup(context);

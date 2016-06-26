@@ -2,6 +2,7 @@ package com.yqboots.prototype.project.core;
 
 import com.yqboots.prototype.project.core.theme.Theme;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
 public class ProjectContext implements Serializable {
     public static final String KEY = "context";
 
+    @Valid
     private ProjectMetadata metadata;
 
     private Theme theme;
