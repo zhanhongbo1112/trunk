@@ -4,12 +4,12 @@ define(['jquery'], function () {
 
     // register the pages, based on the template path
     return {
-        CSS_CUBE_PORTFOLIO: ["../dojo/jquery/cube-portfolio/css/cubeportfolio.css",
-            "../dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css"],
-        CSS_ERROR: ["../theme/css/pages/error.css"],
-        CSS_PROFILE: ["../theme/css/pages/profile.css"],
-        CSS_TIMELINE: ["../theme/css/pages/timeline.css"],
-        CSS_FORMS: ["../dojo/jquery/skyforms/css/sky-forms.css", "../dojo/jquery/skyforms/custom/custom-sky-forms.css"],
+        CSS_CUBE_PORTFOLIO: ["/dojo/jquery/cube-portfolio/css/cubeportfolio.css",
+            "/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css"],
+        CSS_ERROR: ["/theme/css/pages/error.css"],
+        CSS_PROFILE: ["/theme/css/pages/profile.css"],
+        CSS_TIMELINE: ["/theme/css/pages/timeline.css"],
+        CSS_FORMS: ["/dojo/jquery/skyforms/css/sky-forms.css", "/dojo/jquery/skyforms/custom/custom-sky-forms.css"],
 
         PAGES: {
             "error": "app/ErrorPage",
