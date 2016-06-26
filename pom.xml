@@ -20,8 +20,9 @@
     <modules>
         <module>yqboots-core</module>
         <module>yqboots-fss</module>
-        <module>yqboots-prototype</module>
         <module>yqboots-webapp</module>
+        <module>project-initializer</module>
+        <module>project-modeler</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -86,6 +87,16 @@
             <dependency>
                 <groupId>com.yqboots</groupId>
                 <artifactId>yqboots-webapp</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-initializer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-modeler</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -14,9 +14,8 @@ define(['jquery'], function () {
         PAGES: {
             "error": "app/ErrorPage",
             "/index": "app/HomePage",
-            "/profile/index": "app/profile/ProfilePage",
-            "/prototype/project/index": "app/prototype/ProjectPage",
-            "/prototype/model/index": "app/prototype/ModelPage"
+            "/project/initializer/index": "app/project/initializer/ProjectInitializerPage",
+            "/project/modeler/index": "app/project/modeler/ProjectModelerPage"
         },
 
         appendCss: function (cssFiles) {
