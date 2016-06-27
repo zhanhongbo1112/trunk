@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.yqboots</groupId>
@@ -10,25 +9,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yqboots.project</groupId>
-    <artifactId>project-modeler</artifactId>
+    <artifactId>project-menu</artifactId>
 
-    <name>Project Modeler</name>
-    <description>Defines the Project Modeler Service</description>
+    <name>Project Menu</name>
+    <description>Defines the Project Menu</description>
 
     <dependencies>
         <dependency>
-            <groupId>com.yqboots</groupId>
-            <artifactId>yqboots-fss</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -41,7 +31,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.yqboots.project.modeler.Application</mainClass>
+                    <mainClass>com.yqboots.project.menu.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>
