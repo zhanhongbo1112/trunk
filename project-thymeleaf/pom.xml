@@ -3,22 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.yqboots</groupId>
         <artifactId>yqboots-projects</artifactId>
+        <groupId>com.yqboots</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>com.yqboots.project</groupId>
-    <artifactId>project-menu</artifactId>
+    <artifactId>project-thymeleaf</artifactId>
 
-    <name>Project Menu</name>
-    <description>Defines the Project Menu</description>
+    <name>Project Thymeleaf</name>
+    <description>Defines the Project Thymeleaf Dialect</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -31,7 +32,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.yqboots.project.menu.Application</mainClass>
+                    <mainClass>com.yqboots.project.thymeleaf.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>

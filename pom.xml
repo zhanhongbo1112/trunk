@@ -24,6 +24,7 @@
         <module>project-initializer</module>
         <module>project-modeler</module>
         <module>project-menu</module>
+        <module>project-thymeleaf</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
@@ -103,6 +104,11 @@
             <dependency>
                 <groupId>com.yqboots.project</groupId>
                 <artifactId>project-menu</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-thymeleaf</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
