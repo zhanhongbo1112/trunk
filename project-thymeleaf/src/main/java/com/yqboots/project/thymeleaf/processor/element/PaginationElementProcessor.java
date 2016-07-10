@@ -75,6 +75,10 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
 
     private void addStepElements(Page<?> page, String contextPath, Element container) {
         for (int step = 0; step < DEFAULT_STEPS; step++) {
+            // less than DEFAULT STEPS
+            if (page.getTotalPages() < step + 1) {
+                continue;
+            }
             final Element li = new Element("li");
 
             int stepValue;
@@ -84,6 +88,11 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
                 a.setAttribute("href", getPagedParams(contextPath, page.getNumber() + step, page.getSize()));
 
                 stepValue = page.getNumber() + step + 1;
+                a.addChild(new Text(stepValue + ""));
+            } else if (page.getTotalPages() < DEFAULT_STEPS && page.getTotalPages() >= step + 1) {
+                a.setAttribute("href", getPagedParams(contextPath, step, page.getSize()));
+
+                stepValue = step + 1;
                 a.addChild(new Text(stepValue + ""));
             } else {
                 a.setAttribute("href", getPagedParams(contextPath, page.getTotalPages() - DEFAULT_STEPS + step, page.getSize()));
