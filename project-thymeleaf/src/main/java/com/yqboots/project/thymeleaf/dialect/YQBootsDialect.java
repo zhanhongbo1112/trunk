@@ -1,5 +1,6 @@
 package com.yqboots.project.thymeleaf.dialect;
 
+import com.yqboots.project.thymeleaf.processor.attr.PageSummaryAttrProcessor;
 import com.yqboots.project.thymeleaf.processor.element.PaginationElementProcessor;
 import org.thymeleaf.dialect.AbstractDialect;
 import org.thymeleaf.processor.IProcessor;
@@ -37,6 +38,7 @@ public class YQBootsDialect extends AbstractDialect {
     @Override
     public Set<IProcessor> getProcessors() {
         final Set<IProcessor> processors = new HashSet<>();
+        processors.add(new PageSummaryAttrProcessor());
         processors.add(new PaginationElementProcessor());
         return processors;
     }
