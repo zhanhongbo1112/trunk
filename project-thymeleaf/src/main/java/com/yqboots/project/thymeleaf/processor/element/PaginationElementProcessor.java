@@ -21,7 +21,8 @@ import java.util.List;
  * Created by Administrator on 2016-07-09.
  */
 public class PaginationElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
-    public static final String ATTR_NAME = "page";
+    public static final String ATTR_PAGE = "page";
+
     private static final int DEFAULT_STEPS = 5;
 
     public PaginationElementProcessor() {
@@ -70,7 +71,7 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
         // Obtain the Thymeleaf Standard Expression parser
         final IStandardExpressionParser parser = StandardExpressions.getExpressionParser(configuration);
         // Parse the attribute value as a Thymeleaf Standard Expression
-        final String pageAttrValue = element.getAttributeValue(ATTR_NAME);
+        final String pageAttrValue = element.getAttributeValue(ATTR_PAGE);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
         final Page<?> page = (Page<?>) expression.execute(configuration, arguments);
 

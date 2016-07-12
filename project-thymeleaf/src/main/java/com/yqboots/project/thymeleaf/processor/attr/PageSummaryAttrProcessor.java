@@ -14,10 +14,10 @@ import org.thymeleaf.standard.processor.attr.StandardTextAttrProcessor;
  * Created by Administrator on 2016-07-09.
  */
 public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProcessor {
-    public static final String ATTR_NAME = "page";
+    public static final String ATTR_NAME = "pageSummary";
 
     public PageSummaryAttrProcessor() {
-        super("pageSummary");
+        super(ATTR_NAME);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProce
         // Obtain the Thymeleaf Standard Expression parser
         final IStandardExpressionParser parser = StandardExpressions.getExpressionParser(configuration);
         // Parse the attribute value as a Thymeleaf Standard Expression
-        final String pageAttrValue = element.getAttributeValue(ATTR_NAME);
+        final String pageAttrValue = element.getAttributeValue(attributeName);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
         final Page<?> page = (Page<?>) expression.execute(configuration, arguments);
 
