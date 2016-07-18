@@ -24,6 +24,7 @@
         <module>project-initializer</module>
         <module>project-menu</module>
         <module>project-thymeleaf</module>
+        <module>project-data-dict</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
