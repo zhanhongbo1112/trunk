@@ -22,7 +22,6 @@
         <module>yqboots-fss</module>
         <module>yqboots-webapp</module>
         <module>project-initializer</module>
-        <module>project-modeler</module>
         <module>project-menu</module>
         <module>project-thymeleaf</module>
     </modules>
@@ -83,22 +82,12 @@
             </dependency>
             <dependency>
                 <groupId>com.yqboots</groupId>
-                <artifactId>yqboots-prototype</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yqboots</groupId>
                 <artifactId>yqboots-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
                 <artifactId>project-initializer</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-modeler</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
