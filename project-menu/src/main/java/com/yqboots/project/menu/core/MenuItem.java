@@ -2,9 +2,14 @@ package com.yqboots.project.menu.core;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created by Administrator on 2016-06-28.
  */
+@Entity
+@Table(name = "PRJ_MENUITEM")
 public class MenuItem extends AbstractPersistable<Long> {
     private String name;
     private String group;
