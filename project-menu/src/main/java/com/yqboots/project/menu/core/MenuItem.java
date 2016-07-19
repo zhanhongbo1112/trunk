@@ -1,38 +1,14 @@
 package com.yqboots.project.menu.core;
 
-import java.io.Serializable;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * Created by Administrator on 2016-06-28.
  */
-public class MenuItem implements Serializable {
-    private String id;
+public class MenuItem extends AbstractPersistable<Long> {
     private String name;
     private String group;
-
-    public MenuItem() {
-        super();
-    }
-
-    public MenuItem(final String id, final String name) {
-        super();
-        this.id = id;
-        this.name = name;
-    }
-
-    public MenuItem(final String id, final String name, final String group) {
-        this.id = id;
-        this.name = name;
-        this.group = group;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(final String id) {
-        this.id = id;
-    }
+    private String subGroup;
 
     public String getName() {
         return name;
@@ -48,5 +24,13 @@ public class MenuItem implements Serializable {
 
     public void setGroup(final String group) {
         this.group = group;
+    }
+
+    public String getSubGroup() {
+        return subGroup;
+    }
+
+    public void setSubGroup(final String subGroup) {
+        this.subGroup = subGroup;
     }
 }

@@ -11,12 +11,12 @@ import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-public class MenuManagerTest {
+public class MenuItemManagerTest {
     @Autowired
-    private MenuManager menuManager;
+    private MenuItemManager menuItemManager;
 
     @Test
     public void testGetMenus() throws Exception {
-        assertFalse(menuManager.getMenus().isEmpty());
+        assertFalse(menuItemManager.getMenuItems().isEmpty());
     }
 }

@@ -11,16 +11,22 @@ import javax.persistence.Table;
  * Created by Administrator on 2016-07-19.
  */
 @Entity
-@Table(name = "PRJ_DICT", indexes = {@Index(name = "IDX_DICT_NAME", columnList = "name")})
+@Table(name = "PRJ_DICT", indexes = {
+        @Index(name = "IDX_DICT_NAME", columnList = "name"),
+        @Index(name = "IDX_DICT_NAME_VALUE", columnList = "name, value", unique = true)
+})
 public class DataDict extends AbstractPersistable<Long> {
     @Column(length = 32)
     private String name;
 
-    @Column(length = 128)
+    @Column(length = 64)
     private String text;
 
-    @Column(length = 64)
+    @Column(length = 32)
     private String value;
+
+    @Column(length = 256)
+    private String description;
 
     public String getName() {
         return name;
@@ -44,5 +50,13 @@ public class DataDict extends AbstractPersistable<Long> {
 
     public void setValue(final String value) {
         this.value = value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(final String description) {
+        this.description = description;
     }
 }
