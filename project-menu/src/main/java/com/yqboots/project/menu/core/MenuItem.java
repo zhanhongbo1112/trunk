@@ -12,8 +12,10 @@ import javax.persistence.Table;
 @Table(name = "PRJ_MENUITEM")
 public class MenuItem extends AbstractPersistable<Long> {
     private String name;
-    private String group;
-    private String subGroup;
+
+    private String url;
+
+    private String menu;
 
     public String getName() {
         return name;
@@ -23,19 +25,19 @@ public class MenuItem extends AbstractPersistable<Long> {
         this.name = name;
     }
 
-    public String getGroup() {
-        return group;
+    public String getUrl() {
+        return url;
     }
 
-    public void setGroup(final String group) {
-        this.group = group;
+    public void setUrl(final String url) {
+        this.url = url;
     }
 
-    public String getSubGroup() {
-        return subGroup;
+    public String getMenu() {
+        return menu;
     }
 
-    public void setSubGroup(final String subGroup) {
-        this.subGroup = subGroup;
+    public void setMenu(final String menu) {
+        this.menu = menu;
     }
 }
