@@ -15,7 +15,9 @@ public class MenuItem extends AbstractPersistable<Long> {
 
     private String url;
 
-    private String menu;
+    private String menuGroup;
+
+    private String menuItemGroup;
 
     public String getName() {
         return name;
@@ -33,11 +35,19 @@ public class MenuItem extends AbstractPersistable<Long> {
         this.url = url;
     }
 
-    public String getMenu() {
-        return menu;
+    public String getMenuGroup() {
+        return menuGroup;
     }
 
-    public void setMenu(final String menu) {
-        this.menu = menu;
+    public void setMenuGroup(final String menuGroup) {
+        this.menuGroup = menuGroup;
+    }
+
+    public String getMenuItemGroup() {
+        return menuItemGroup;
+    }
+
+    public void setMenuItemGroup(final String menuItemGroup) {
+        this.menuItemGroup = menuItemGroup;
     }
 }
