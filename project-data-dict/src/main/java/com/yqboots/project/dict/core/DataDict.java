@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Administrator on 2016-07-19.
  */
 @Entity
-@Table(name = "PRJ_DICT", indexes = {
+@Table(name = "PRJ_DATA_DICT", indexes = {
         @Index(name = "IDX_DICT_NAME", columnList = "name"),
         @Index(name = "IDX_DICT_NAME_VALUE", columnList = "name, value", unique = true)
 })
