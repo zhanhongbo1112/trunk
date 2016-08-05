@@ -1,5 +1,6 @@
 package com.yqboots.project.thymeleaf.processor.attr;
 
+import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import org.springframework.data.domain.Page;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
@@ -36,7 +37,7 @@ public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProce
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
         final Page<?> page = (Page<?>) expression.execute(configuration, arguments);
 
-        return getMessage(arguments, "page.summary", new Object[]{page.getSize(), page.getNumber() + 1,
+        return getMessage(arguments, MessageKeys.PAGE_SUMMARY, new Object[]{page.getSize(), page.getNumber() + 1,
                 page.getTotalPages(), page.getTotalElements()});
     }
 }

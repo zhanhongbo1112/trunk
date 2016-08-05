@@ -1989,6 +1989,22 @@ h3.heading-xs {
     margin-bottom: 0;
 }
 
+/*Panels
+------------------------------------*/
+.panel, .panel-heading, .panel-group .panel {
+    border-radius: 0;
+}
+
+.panel-heading {
+    color: #fff;
+    padding: 5px 15px;
+}
+
+/*Panel Table*/
+.panel .table {
+    margin-bottom: 0;
+}
+
 /*Progress Bar
 ------------------------------------*/
 .progress {

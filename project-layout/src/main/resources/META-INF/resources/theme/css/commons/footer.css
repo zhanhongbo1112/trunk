@@ -1,0 +1,21 @@
+/*Copyright*/
+footer .copyright {
+    background: #222;
+    border-top: none;
+    padding: 10px 0 5px;
+}
+
+footer .copyright p {
+    color: #eee;
+    margin-top: 14px;
+}
+
+footer .copyright a {
+    margin: 0 2px;
+}
+
+@media (max-width: 991px) {
+    footer .copyright {
+        text-align: left;
+    }
+}

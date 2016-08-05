@@ -1,0 +1,122 @@
+/*
+* Version: 1.8
+* Light Color: #95a5a6;
+* Light Hover Color: #7f8c8d;
+* Additional color: #f0f0f0;
+* rgba(149, 165, 166, 1);
+*/
+a {
+    color: #95a5a6;
+}
+
+a:focus, a:hover, a:active {
+    color: #95a5a6;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #95a5a6;
+}
+
+/* Headers
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #95a5a6;
+}
+
+.header .navbar-nav > .active > a {
+    border-color: #95a5a6;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #95a5a6;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #7f8c8d;
+}
+
+.header .nav > li > .search:hover {
+    border-bottom-color: #7f8c8d;
+    color: #7f8c8d;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #95a5a6;
+}
+
+.header .navbar-toggle {
+    border-color: #7f8c8d;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #95a5a6;
+}
+
+.header .navbar-toggle:hover {
+    background: #7f8c8d !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #95a5a6;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a, .header .navbar-nav > .active > a:hover, .header .navbar-nav > .active > a:focus {
+        background: #95a5a6;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    .header .nav > li > .search:hover {
+        background: #95a5a6;
+    }
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #95a5a6;
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #95a5a6;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-default {
+    background: #95a5a6;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background: #7f8c8d;
+    color: #fff;
+}
+
+.panel {
+    border-color: #95a5a6;
+}
+
+.panel > .panel-heading {
+    background: #95a5a6;
+}
+
+/* Pagination */
+.pagination li a:hover {
+    background: #7f8c8d;
+    border-color: #7f8c8d;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    border-color: #95a5a6;
+    background-color: #95a5a6;
+}

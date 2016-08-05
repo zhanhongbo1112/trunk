@@ -1,0 +1,265 @@
+@import url(css/bootstrap.css);
+@import url(css/commons/header.css);
+@import url(css/commons/blocks.css);
+@import url(css/commons/footer.css);
+@import url(css/plugins/animate.css);
+@import url(css/plugins/line-icons/line-icons.css);
+@import url(css/plugins/font-awesome/css/font-awesome.css);
+
+* {
+    border-radius: 0;
+}
+
+body {
+    color: #333;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+p, li, li a, label {
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:focus, a:hover, a:active, button, button:hover {
+    outline: 0 !important;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*Top Control
+------------------------------------*/
+#topControl {
+    color: #fff;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background: #222;
+    position: relative;
+    right: 14px !important;
+    bottom: 11px !important;
+    border-radius: 3px !important;
+}
+
+#topControl:after {
+    top: -2px;
+    left: 10px;
+    position: absolute;
+    text-align: center;
+}
+
+#topControl:hover {
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/*Boxed Layout
+------------------------------------*/
+.wrapper {
+    background: #fff;
+}
+
+/*Thematic Break
+------------------------------------*/
+hr {
+    margin: 30px 0;
+}
+
+/*Headings
+------------------------------------*/
+h1 {
+    font-size: 28px;
+    line-height: 35px;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 33px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 27px;
+}
+
+h4 {
+    line-height: 25px;
+}
+
+h5 {
+    line-height: 20px;
+}
+
+h6 {
+    line-height: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #555;
+    margin-top: 5px;
+    text-shadow: none;
+    font-weight: normal;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
+    margin-right: 5px;
+}
+
+/*Button Styles
+------------------------------------*/
+.btn {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.btn-default {
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 6px 13px;
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-default:hover {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/*For FF Only*/
+@media (max-width: 768px) {
+    @-moz-document url-prefix() {
+        .btn-default {
+            padding-bottom: 6px;
+        }
+    }
+}
+
+/*Navigation
+------------------------------------*/
+.dropdown-menu, .navbar-toggle {
+    border-radius: 0;
+}
+
+/*Dropdown Buttons
+------------------------------------*/
+.dropdown-show {
+    box-shadow: 0 0 4px #eee;
+    display: inline-block;
+    position: relative;
+}
+
+/*Forms
+------------------------------------*/
+.form-control {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.input-group-addon {
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border-color: #bbb;
+    box-shadow: 0 0 2px #c9c9c9;
+}
+
+/*Tables
+------------------------------------*/
+/*Basic Tables*/
+.table thead > tr > th {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .table th.hidden-sm, .table td.hidden-sm {
+        display: none !important;
+    }
+}
+
+/*Panels
+------------------------------------*/
+.panel, .panel-heading, .panel-group .panel {
+    border-radius: 0;
+}
+
+.panel-heading {
+    color: #fff;
+    padding: 5px 15px;
+}
+
+/*Panel Table*/
+.panel .table {
+    margin-bottom: 0;
+}
+
+.height-600 {
+    min-height: 600px;
+}
+
+.content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.content-xs {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.content-sm {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.content-md {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.content-lg {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.content-xlg {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.overflow-h {
+    overflow: hidden;
+}
+
+.overflow-a {
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.clear-both {
+    clear: both;
+}
+
+div.separator {
+    margin: 2px 0;
+}

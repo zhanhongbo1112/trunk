@@ -21,8 +21,7 @@
 <div class="wrapper">
   <header th:replace="layouts/header :: header">&nbsp;</header>
   <div layout:fragment="breadcrumbs">
-    <!--=== Breadcrumbs ===-->
-    <div class="breadcrumbs">
+    <div class="breadcrumbs" th:remove="all">
       <div class="container">
         <h1 class="pull-left">TODO Page</h1>
         <ul class="pull-right breadcrumb">
@@ -31,7 +30,6 @@
         </ul>
       </div>
     </div>
-    <!--=== End Breadcrumbs ===-->
   </div>
   <div layout:fragment="content" class="container content height-500">
     <h1>Static content for prototyping purposes only</h1>
@@ -85,9 +83,9 @@
 <script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>
 <script th:inline="javascript">
   /*<![CDATA[*/
-  require(['baf/main', 'app/_base/PageRegistry', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'],
-      function (app, PageRegistry) {
-        app.startup([[${execInfo.templateName}]], PageRegistry.PAGES);
+  require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'],
+      function (app) {
+        app.startup([[${execInfo.templateName}]]);
     });
   /*]]>*/
 </script>

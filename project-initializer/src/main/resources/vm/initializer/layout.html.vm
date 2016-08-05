@@ -29,7 +29,7 @@
 <div class="wrapper">
   <header th:replace="layouts/header :: header">&nbsp;</header>
   <div layout:fragment="breadcrumbs">
-    <div class="breadcrumbs">
+    <div class="breadcrumbs" th:remove="all">
       <div class="container">
         <h1 class="pull-left">TODO Page</h1>
         <ul class="pull-right breadcrumb">

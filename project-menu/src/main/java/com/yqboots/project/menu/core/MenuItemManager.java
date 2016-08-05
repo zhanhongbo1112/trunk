@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface MenuItemManager {
     List<MenuItem> getMenuItems();
+
+    MenuItem getMenuItem(String name);
 }

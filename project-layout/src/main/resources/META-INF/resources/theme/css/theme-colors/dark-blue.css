@@ -1,0 +1,122 @@
+/*
+* Version: 1.8
+* Dark Blue Color: #4765a0;
+* Dark Blue Hover Color: #324c80;
+* Additional color: #cad9f6;
+* rgba(71, 101, 160, 1);
+*/
+a {
+    color: #4765a0;
+}
+
+a:focus, a:hover, a:active {
+    color: #4765a0;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #4765a0;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #4765a0;
+}
+
+.header .navbar-nav > .active > a {
+    border-color: #4765a0;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #4765a0;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #324c80;
+}
+
+.header .nav > li > .search:hover {
+    border-bottom-color: #324c80;
+    color: #324c80;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #4765a0;
+}
+
+.header .navbar-toggle {
+    border-color: #324c80;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #4765a0;
+}
+
+.header .navbar-toggle:hover {
+    background: #324c80 !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #4765a0;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a, .header .navbar-nav > .active > a:hover, .header .navbar-nav > .active > a:focus {
+        background: #4765a0;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    .header .nav > li > .search:hover {
+        background: #4765a0;
+    }
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #4765a0;
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #4765a0;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-default {
+    background: #4765a0;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background: #324c80;
+    color: #fff;
+}
+
+.panel {
+    border-color: #4765a0;
+}
+
+.panel > .panel-heading {
+    background: #4765a0;
+}
+
+/* Pagination */
+.pagination li a:hover {
+    background: #324c80;
+    border-color: #324c80;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    border-color: #4765a0;
+    background-color: #4765a0;
+}

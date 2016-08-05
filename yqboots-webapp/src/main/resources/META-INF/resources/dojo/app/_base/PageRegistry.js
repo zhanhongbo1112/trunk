@@ -2,7 +2,7 @@ define(['jquery'], function () {
     // check whether the css files are merged into application.css
     var cssMerged = false;
 
-    // register the pages, based on the template path
+    // register the pages and css, based on the template
     return {
         CSS_CUBE_PORTFOLIO: ["/dojo/jquery/cube-portfolio/css/cubeportfolio.css",
             "/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css"],
@@ -10,13 +10,6 @@ define(['jquery'], function () {
         CSS_PROFILE: ["/theme/css/pages/profile.css"],
         CSS_TIMELINE: ["/theme/css/pages/timeline.css"],
         CSS_FORMS: ["/dojo/jquery/skyforms/css/sky-forms.css", "/dojo/jquery/skyforms/custom/custom-sky-forms.css"],
-
-        PAGES: {
-            "error": "app/ErrorPage",
-            "/index": "app/HomePage",
-            "/project/initializer/index": "app/project/initializer/ProjectInitializerPage",
-            "/project/modeler/index": "app/project/modeler/ProjectModelerPage"
-        },
 
         appendCss: function (cssFiles) {
             if (cssMerged) {

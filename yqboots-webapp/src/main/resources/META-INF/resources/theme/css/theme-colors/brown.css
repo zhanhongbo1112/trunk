@@ -190,3 +190,26 @@ i.icon-bg-u {
 .service .service-icon {
     color: #9c8061;
 }
+
+/* Panel
+------------------------------------*/
+.panel {
+    border-color: #9c8061;
+}
+
+.panel > .panel-heading {
+    background: #9c8061;
+}
+
+/* Pagination
+------------------------------------*/
+.pagination li a:hover {
+    background: #81674b;
+    border-color: #81674b;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    border-color: #9c8061;
+    background-color: #9c8061;
+}

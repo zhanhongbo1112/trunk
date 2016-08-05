@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title>Data Dict Management</title>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/dojo/jquery/skyforms/css/sky-forms.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/dojo/jquery/skyforms/custom/custom-sky-forms.css"
+        th:remove="all"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_MENU_ITEM"/>
+</div>
+<div layout:fragment="content" class="content content-sm height-600">
+  <div class="container">
+    <form class="sky-form" action="#" th:action="@{/project/menu/}" th:object="${model}" method="post">
+      <input type="hidden" th:field="*{id}"/>
+      <header>Add/Update</header>
+      <div class="row">
+        <div class="col-md-12">
+          <fieldset>
+            <div class="row">
+              <section class="col col-4">
+                <label class="label">Name:</label>
+                <label class="input">
+                  <input type="text" maxlength="32" th:field="*{name}" th:errorclass="state-error"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+              </section>
+              <section class="col col-8">
+                <label class="label">URL:</label>
+                <label class="input">
+                  <input type="text" maxlength="64" th:field="*{url}" th:errorclass="state-error"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></p>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">Menu Group:</label>
+                <label class="input">
+                  <input type="text" maxlength="32" th:field="*{menuGroup}" th:errorclass="state-error"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('menuGroup')}" th:errors="*{menuGroup}"></p>
+              </section>
+              <section class="col col-6">
+                <label class="label">Menu Item Group:</label>
+                <label class="input">
+                  <input type="text" maxlength="32" th:field="*{menuItemGroup}" th:errorclass="state-error"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('menuItemGroup')}" th:errors="*{menuItemGroup}"></p>
+              </section>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <footer>
+        <button type="submit" class="btn-u">Submit</button>
+        <button type="reset" class="btn-u">Reset</button>
+      </footer>
+    </form>
+  </div>
+</div>
+<script src="../../../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
+<script src="../../../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>
+</body>
+</html>

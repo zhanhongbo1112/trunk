@@ -16,17 +16,27 @@ import javax.persistence.Table;
         @Index(name = "IDX_DICT_NAME_VALUE", columnList = "name, value", unique = true)
 })
 public class DataDict extends AbstractPersistable<Long> {
-    @Column(length = 32)
+    @Column(length = 32, nullable = false)
     private String name;
 
-    @Column(length = 64)
+    @Column(length = 64, nullable = false)
     private String text;
 
-    @Column(length = 32)
+    @Column(length = 32, nullable = false)
     private String value;
 
-    @Column(length = 256)
+    @Column(length = 255)
     private String description;
+
+    /**
+     * Sets the id of the entity.
+     *
+     * @param id the id to set
+     */
+    @Override
+    public void setId(final Long id) {
+        super.setId(id);
+    }
 
     public String getName() {
         return name;

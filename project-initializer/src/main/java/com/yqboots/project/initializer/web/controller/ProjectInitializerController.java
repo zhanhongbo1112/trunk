@@ -2,7 +2,7 @@ package com.yqboots.project.initializer.web.controller;
 
 import com.yqboots.project.initializer.core.ProjectContext;
 import com.yqboots.project.initializer.core.ProjectInitializer;
-import com.yqboots.project.initializer.web.ProjectInitializerKeys;
+import com.yqboots.project.web.WebKeys;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -25,26 +25,30 @@ import java.nio.file.Path;
  * Created by Administrator on 2016-06-04.
  */
 @Controller
-@RequestMapping(value = ProjectInitializerKeys.BASE_URL)
+@RequestMapping(value = "/project/initializer")
 public class ProjectInitializerController {
+
+    public static final String HOME_URL = "project/initializer/form";
+
     @Autowired
     private ProjectInitializer initializer;
 
-    @ModelAttribute("context")
+    @ModelAttribute(WebKeys.MODEL)
     public ProjectContext projectContext() {
         return new ProjectContext();
     }
 
     @RequestMapping
     public String index() {
-        return ProjectInitializerKeys.HOME_URL;
+        return HOME_URL;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Object startup(@ModelAttribute("context") @Valid final ProjectContext context, final BindingResult bindingResult, final ModelMap model)
-            throws IOException {
+    public Object startup(@ModelAttribute(WebKeys.MODEL) @Valid final ProjectContext context,
+                          final BindingResult bindingResult,
+                          final ModelMap model) throws IOException {
         if (bindingResult.hasErrors()) {
-            return ProjectInitializerKeys.HOME_URL;
+            return HOME_URL;
         }
 
         Path path = initializer.startup(context);

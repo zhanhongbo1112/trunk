@@ -227,3 +227,26 @@
 .service .service-icon.icon-plane {
     font-size: 43px;
 }
+
+/* Pagination
+------------------------------------*/
+.pagination > li:first-child > a, .pagination > li:first-child > span,
+.pagination-lg > li:first-child > a, .pagination-lg > li:first-child > span,
+.pagination-lg > li:last-child > a, .pagination-lg > li:last-child > span,
+.pagination > li:last-child > a, .pagination > li:last-child > span {
+    border-radius: 0;
+}
+
+.pagination li a {
+    color: #777;
+    padding: 5px 15px;
+}
+
+.pagination li a:hover {
+    color: #fff;
+}
+
+/*Pagination Without Space*/
+.pagination-no-space .pagination {
+    margin: 0;
+}

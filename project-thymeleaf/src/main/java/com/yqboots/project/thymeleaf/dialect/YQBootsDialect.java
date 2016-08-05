@@ -1,6 +1,7 @@
 package com.yqboots.project.thymeleaf.dialect;
 
 import com.yqboots.project.thymeleaf.processor.attr.PageSummaryAttrProcessor;
+import com.yqboots.project.thymeleaf.processor.element.BreadcrumbsElementProcessor;
 import com.yqboots.project.thymeleaf.processor.element.MenuElementProcessor;
 import com.yqboots.project.thymeleaf.processor.element.OptionsElementProcessor;
 import com.yqboots.project.thymeleaf.processor.element.PaginationElementProcessor;
@@ -44,6 +45,7 @@ public class YQBootsDialect extends AbstractDialect {
         processors.add(new PageSummaryAttrProcessor());
         processors.add(new PaginationElementProcessor());
         processors.add(new OptionsElementProcessor());
+        processors.add(new BreadcrumbsElementProcessor());
         return processors;
     }
 }

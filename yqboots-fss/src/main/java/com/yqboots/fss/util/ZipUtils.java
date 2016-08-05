@@ -18,7 +18,8 @@ public class ZipUtils {
     private static final String SUFFIX = ".zip";
 
     public static Path compress(Path dir) throws IOException {
-        Assert.isTrue(Files.exists(dir) && Files.isDirectory(dir), "Should be a directory");
+        Assert.isTrue(Files.exists(dir), "The directory does not exist: " + dir.toAbsolutePath());
+        Assert.isTrue(Files.isDirectory(dir), "Should be a directory: " + dir.toAbsolutePath());
 
         Path result = Paths.get(dir.toAbsolutePath() + SUFFIX);
         final ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(result.toFile())));

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title>Project Data Menu Item Management</title>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_MENU_ITEM"/>
+</div>
+<div layout:fragment="content" class="content content-sm height-600">
+  <div class="container table-responsive">
+    <form class="sky-form" action="#" th:action="@{/project/menu}" th:object="${searchForm}" method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Search"/>
+            <span class="input-group-btn">
+                <button class="btn-u" type="submit">Search</button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-8"></div>
+      </div>
+    </form>
+    <div class="separator"/>
+    <div class="panel margin-bottom-40">
+      <div class="panel-heading">
+        <h3 class="panel-title">Menu Item List</h3>
+      </div>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Menu Group</th>
+          <th>Menu Item Group</th>
+        </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+        <tr th:each="item : ${page}">
+          <td th:text="${item.name}">NAME 1</td>
+          <td th:text="${item.url}">/project/menu</td>
+          <td th:text="${item.menuGroup}">Group 1</td>
+          <td th:text="${item.menuItemGroup}">Item Group 1</td>
+          <td>
+            <a href="#" th:href="@{/project/menu(id=${item.id},action='update')}" title="Update">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a href="#" th:href="@{/project/menu(id=${item.id},action='delete')}" title="Delete">
+              <i class="glyphicon glyphicon-remove-sign"></i>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>Name1</td>
+          <td>/project/menu</td>
+          <td>Group 1</td>
+          <td>Item Group 1</td>
+          <td>
+            <a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+            <span>&nbsp;&nbsp;</span>
+            <a href="#"><i class="glyphicon glyphicon-remove-sign"></i></a>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr th:remove="all-but-first">
+          <th colspan="8">
+            <div yq:pageSummary="${page}" class="pull-left"/>
+            <div class="pull-right">
+              <a href="#" title="Add New" th:href="@{/project/menu(action='new')}"><i class="glyphicon glyphicon-plus"></i></a>
+            </div>
+            <div class="clear-both"></div>
+          </th>
+          <th colspan="8">
+            <div class="pull-left">10 items per page, 1 of 11 pages, 102 items in all</div>
+            <div class="pull-right">
+              <a href="#" title="Add New"><i class="glyphicon glyphicon-plus"></i></a>
+            </div>
+            <div class="clear-both"></div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="panel-footer text-center" th:remove="all-but-first">
+        <yq:pagination page="${page}" th:href="@{/project/menu}"/>
+        <ul class="pagination">
+          <li class="disabled"><a><i class="glyphicon glyphicon-step-backward"></i></a></li>
+          <li class="disabled"><a><i class="glyphicon glyphicon-triangle-left"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="disabled"><a><i class="glyphicon glyphicon-triangle-right"></i></a></li>
+          <li class="disabled"><a><i class="glyphicon glyphicon-step-forward"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
+<script src="../../../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>
+</body>
+</html>

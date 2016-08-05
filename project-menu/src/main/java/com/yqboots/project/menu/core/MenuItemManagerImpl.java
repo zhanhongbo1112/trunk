@@ -25,4 +25,9 @@ public class MenuItemManagerImpl implements MenuItemManager {
     public List<MenuItem> getMenuItems() {
         return menuItemRepository.findAll();
     }
+
+    @Override
+    public MenuItem getMenuItem(final String name) {
+        return menuItemRepository.findByName(name);
+    }
 }

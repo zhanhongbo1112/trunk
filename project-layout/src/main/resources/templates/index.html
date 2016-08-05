@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title>YuQi Layout</title>
+  <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+</head>
+<body>
+<div layout:fragment="content" class="content content-md height-600">
+  <div class="container">
+    Hello World
+  </div>
+</div>
+<script src="../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
+<script src="../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* 
+* Version: 1.8
+* Default Color 	  : #72c02c;
+* Default Hover Color : #5fb611;
+*/
+
+a {
+    color: #72c02c;
+}
+
+a:focus, a:hover, a:active {
+    color: #72c02c;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background: #72c02c;
+}
+
+/* Headers
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #72c02c;
+}
+
+.header .navbar-nav > .active > a {
+    border-color: #72c02c;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #72c02c;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #72c02c;
+}
+
+.header .nav > li > .search:hover {
+    border-bottom-color: #72c02c;
+    color: #72c02c;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #72c02c;
+}
+
+.header .navbar-toggle {
+    border-color: #72c02c;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #72c02c;
+}
+
+.header .navbar-toggle:hover {
+    background: #72c02c !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #72c02c;
+}
+
+.header.header-dark .navbar-nav .dropdown > a:hover {
+    color: #72c02c;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a, .header .navbar-nav > .active > a:hover, .header .navbar-nav > .active > a:focus {
+        background: #72c02c;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    .header .nav > li > .search:hover {
+        background: #72c02c;
+    }
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #72c02c;
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #72c02c;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-default {
+    background: #72c02c;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background: #5fb611;
+    color: #fff;
+}
+
+.panel {
+    border-color: #72c02c;
+}
+
+.panel > .panel-heading {
+    background: #72c02c;
+}
+
+/* Pagination */
+.pagination li a:hover {
+    background: #5fb611;
+    border-color: #5fb611;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    border-color: #72c02c;
+    background-color: #72c02c;
+}
