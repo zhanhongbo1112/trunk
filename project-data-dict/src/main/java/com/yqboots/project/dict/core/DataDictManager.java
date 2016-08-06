@@ -10,5 +10,5 @@ public interface DataDictManager {
 
     String getText(String name, String value);
 
-    String getText(final String name, final String value, boolean valueIncluded );
+    String getText(final String name, final String value, boolean valueIncluded);
 }

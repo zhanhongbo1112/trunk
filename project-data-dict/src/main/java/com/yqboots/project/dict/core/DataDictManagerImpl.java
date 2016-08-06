@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class DataDictManagerImpl implements DataDictManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(DataDictManagerImpl.class);
 
     private DataDictRepository dataDictRepository;
+
+    @Autowired
+    @Qualifier(value = "dataDictXmlMarshaller")
+    private Jaxb2Marshaller jaxb2Marshaller;
 
     @Autowired
     public DataDictManagerImpl(final DataDictRepository dataDictRepository) {

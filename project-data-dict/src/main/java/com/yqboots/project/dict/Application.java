@@ -17,6 +17,6 @@ public class Application {
 
     @RequestMapping(value = "/")
     public String home() {
-        return "project/dict/index";
+        return "redirect:project/dict";
     }
 }

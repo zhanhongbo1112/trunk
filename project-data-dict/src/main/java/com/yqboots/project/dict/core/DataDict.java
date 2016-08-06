@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.*;
 
 /**
  * Created by Administrator on 2016-07-19.
@@ -15,14 +16,19 @@ import javax.persistence.Table;
         @Index(name = "IDX_DICT_NAME", columnList = "name"),
         @Index(name = "IDX_DICT_NAME_VALUE", columnList = "name, value", unique = true)
 })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataDict extends AbstractPersistable<Long> {
     @Column(length = 32, nullable = false)
+    @XmlElement(required = true)
     private String name;
 
     @Column(length = 64, nullable = false)
+    @XmlElement(required = true)
     private String text;
 
     @Column(length = 32, nullable = false)
+    @XmlElement(required = true)
     private String value;
 
     @Column(length = 255)

@@ -36,8 +36,7 @@ public class DataDictController {
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final DataDictSearchForm searchForm,
-                       @PageableDefault final Pageable pageable,
-                       final ModelMap model) {
+                       @PageableDefault final Pageable pageable, final ModelMap model) {
         String searchStr = StringUtils.defaultIfEmpty(searchForm.getName(), StringUtils.EMPTY);
         searchStr = StringUtils.trim(searchStr);
         model.addAttribute(WebKeys.PAGE, this.dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%",
@@ -59,8 +58,7 @@ public class DataDictController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final DataDict dict,
-                         final BindingResult bindingResult,
-                         final ModelMap model) {
+                         final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return VIEW_FORM;
         }

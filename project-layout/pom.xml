@@ -3,22 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.yqboots</groupId>
-        <artifactId>yqboots-framework</artifactId>
+        <groupId>com.yqboots.project</groupId>
+        <artifactId>project-parent</artifactId>
         <version>1.0.0</version>
     </parent>
-
-    <groupId>com.yqboots.project</groupId>
     <artifactId>project-layout</artifactId>
 
     <name>Project Layout</name>
     <description>Defines the Data Layout Module of a project</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.yqboots.project</groupId>
-            <artifactId>project-thymeleaf</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -48,32 +42,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.yqboots.project.Application</mainClass>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>make shared resources</id>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <phase>package</phase>
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
-                            <descriptors>
-                                <descriptor>src/main/assembly/resources.xml</descriptor>
-                            </descriptors>
+                            <mainClass>com.yqboots.project.layout.Application</mainClass>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

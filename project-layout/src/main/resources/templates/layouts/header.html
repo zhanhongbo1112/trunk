@@ -9,8 +9,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="logo" th:href="@{/}">
-      <img src="../../META-INF/resources/theme/images/logo-green.png" th:src="@{/theme/images/logo-green.png}"
-           alt="YuQi"/>
+      <img src="../../META-INF/resources/theme/images/logo-green.png" th:src="@{/theme/images/logo-green.png}"/>
     </a>
     <!-- End Logo -->
 
@@ -19,14 +18,14 @@
       <ul class="loginbar pull-right">
         <li class="hoverSelector">
           <i class="fa fa-globe"></i>
-          <a><span>Languages</span></a>
+          <a><span th:text="#{text.languages}">Languages</span></a>
           <ul class="languages hoverSelectorBlock">
-            <li><a href="#" th:href="@{?locale=en}">English</a></li>
-            <li><a href="#" th:href="@{?locale=zh_CN}">Chinese</a></li>
+            <li><a href="#" th:href="@{?locale=en}" th:text="#{lang.en}">English</a></li>
+            <li><a href="#" th:href="@{?locale=zh_CN}" th:text="#{lang.zh_CN}">Chinese</a></li>
           </ul>
         </li>
         <li class="topbar-divider"></li>
-        <li><a href="https://zhanhongbo1112.github.io" target="_blank">Help</a></li>
+        <li><a href="https://zhanhongbo1112.github.io" target="_blank" th:text="#{text.help}">Help</a></li>
       </ul>
     </div>
     <!-- End Topbar -->
@@ -46,7 +45,7 @@
   <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li><a href="javascript:void(0);" th:href="@{/}">HOME</a></li>
+        <li><a href="javascript:void(0);" th:href="@{/}" th:text="#{text.home}">HOME</a></li>
         <yq:menus layout="full-width"/>
       </ul>
     </div>

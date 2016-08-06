@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.*;
 
 /**
  * Created by Administrator on 2016-06-28.
@@ -14,14 +15,19 @@ import javax.persistence.Table;
 @Table(name = "PRJ_MENUITEM", indexes = {
         @Index(name = "IDX_MENU_NAME", columnList = "name", unique = true)
 })
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MenuItem extends AbstractPersistable<Long> {
     @Column(nullable = false, length = 32, unique = true)
+    @XmlElement(required = true)
     private String name;
 
     @Column(nullable = false, length = 64)
+    @XmlElement(required = true)
     private String url;
 
     @Column(nullable = false, length = 32)
+    @XmlElement(required = true)
     private String menuGroup;
 
     @Column(length = 32)

@@ -1,0 +1,198 @@
+/*Profile
+------------------------------------*/
+.profile .list-group i {
+    min-width: 20px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.profile .profile-body {
+    padding: 20px;
+    background: #f7f7f7;
+}
+
+/*Panel Title Box*/
+.profile .panel-profile {
+    border: none;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+
+.profile .panel-profile.no-bg {
+    background: inherit;
+}
+
+.profile .panel-heading {
+    color: #585f69;
+    background: #fff;
+    padding: 7px 15px;
+    border-bottom: solid 3px #f7f7f7;
+}
+
+.profile .panel-heading.overflow-h i.pull-right {
+    top: 7px;
+    position: relative;
+}
+
+.profile .panel-heading.overflow-h a i {
+    color: #777;
+}
+
+.profile .panel-heading.overflow-h a:hover i {
+    color: #555;
+}
+
+.profile .panel-title {
+    font-size: 16px;
+}
+
+/*Table*/
+.profile .table {
+    background: #fff;
+}
+
+.profile .table th {
+    min-width: 100px;
+}
+
+.profile .table td {
+    vertical-align: middle;
+}
+
+.profile .table h3 {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.profile .table a {
+    color: #555;
+}
+
+.profile .table > thead > tr > th,
+.profile .table > tbody > tr > th,
+.profile .table > tfoot > tr > th,
+.profile .table > thead > tr > td,
+.profile .table > tbody > tr > td,
+.profile .table > tfoot > tr > td {
+    padding: 11px;
+}
+
+.profile .map-img {
+    background: url(../../images/map.png) 5px 40px no-repeat;
+}
+
+.profile .map-img address {
+    line-height: 23px;
+    padding: 10px 0 20px 0;
+}
+
+.profile .map-img h2 {
+    font-size: 18px;
+    font-weight: 200;
+}
+
+/*Profile Me
+------------------------------------*/
+/*Profile Biography*/
+.profile .profile-bio {
+    background: #fff;
+    position: relative;
+    padding: 15px 10px 5px 15px;
+}
+
+.profile .profile-bio a {
+    left: 50%;
+    bottom: 20px;
+    margin-left: -60px;
+    text-align: center;
+    position: absolute;
+}
+
+.profile .profile-bio h2 {
+    margin-top: 0;
+    font-weight: 200;
+}
+
+.profile .profile-bio span {
+    display: inline;
+}
+
+.profile .profile-bio hr {
+    margin: 12px 0 10px;
+}
+
+/*Timeline*/
+.profile .timeline.timeline-me:before {
+    left: 19%;
+}
+
+.profile .timeline.timeline-me p {
+    margin-bottom: 0;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmtime {
+    width: 27%;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmicon {
+    left: 19%;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmtime span:first-child {
+    color: #585f69;
+    font-size: 16px;
+    text-align: left;
+    line-height: 20px;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmtime span:last-child {
+    color: #999;
+    font-size: 14px;
+    text-align: left;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmlabel {
+    padding: 0;
+    background: inherit;
+    margin: 0 0 20px 23%;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmlabel:after {
+    border-color: inherit;
+}
+
+.profile .timeline.timeline-me > li .cbp_tmlabel h2 {
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 20px;
+    border-bottom: none;
+}
+
+/*Profile History
+------------------------------------*/
+.profile .timeline:before {
+    background: #eee;
+}
+
+.profile .timeline > li .cbp_tmlabel {
+    background: #fff;
+}
+
+.profile .timeline > li .cbp_tmlabel:after {
+    border-right-color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    .profile .timeline > li .cbp_tmlabel:after {
+        border-bottom-color: #fff;
+        border-right-color: transparent;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .profile .timeline > li .cbp_tmlabel:after {
+        border-bottom-color: #fff;
+        border-right-color: transparent;
+    }
+}

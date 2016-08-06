@@ -17,6 +17,6 @@ public class Application {
 
     @RequestMapping(value = "/")
     public String home() {
-        return "project/menu/index";
+        return "redirect:project/menu";
     }
 }
