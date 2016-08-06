@@ -18,9 +18,6 @@
     <description>Defines the root modules of the projects</description>
 
     <modules>
-        <module>yqboots-core</module>
-        <module>yqboots-fss</module>
-        <module>yqboots-webapp</module>
         <module>project-initializer</module>
         <module>project-menu</module>
         <module>project-thymeleaf</module>
@@ -75,17 +72,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.yqboots</groupId>
-                <artifactId>yqboots-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yqboots</groupId>
                 <artifactId>yqboots-fss</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yqboots</groupId>
-                <artifactId>yqboots-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
