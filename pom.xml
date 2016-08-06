@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>com.yqboots</groupId>
-    <artifactId>yqboots-projects</artifactId>
+    <artifactId>yqboots-framework</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>YuQi Boots Projects</name>
+    <name>YuQi Boots Framework</name>
     <description>Defines the root modules of the projects</description>
 
     <modules>
@@ -31,13 +31,13 @@
         <github.global.server>github</github.global.server>
         <site.deploy.id>gh-pages</site.deploy.id>
         <site.deploy.url/>
-        <repositoryName>trunk</repositoryName>
+        <repositoryName>yqboots-framework</repositoryName>
         <repositoryOwner>zhanhongbo1112</repositoryOwner>
     </properties>
     <url>${site.url}</url>
     <issueManagement>
         <system>GitHub</system>
-        <url>${site.url}/trunk/issues</url>
+        <url>${site.url}/yqboots-framework/issues</url>
     </issueManagement>
     <licenses>
         <license>
@@ -114,9 +114,9 @@
         </dependencies>
     </dependencyManagement>
     <scm>
-        <connection>scm:git:git@github.com:zhanhongbo1112/trunk.git</connection>
-        <url>${site.url}/trunk</url>
-        <developerConnection>scm:git:git@github.com:zhanhongbo1112/trunk.git</developerConnection>
+        <connection>scm:git:git@github.com:zhanhongbo1112/yqboots-framework.git</connection>
+        <url>${site.url}/yqboots-framework</url>
+        <developerConnection>scm:git:git@github.com:zhanhongbo1112/yqboots-framework.git</developerConnection>
     </scm>
     <build>
         <pluginManagement>
