@@ -11,22 +11,23 @@
 
     <groupId>com.yqboots</groupId>
     <artifactId>yqboots-framework</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>YuQi Boots Framework</name>
     <description>Defines the root modules of the projects</description>
 
     <modules>
-        <module>project-initializer</module>
-        <module>project-menu</module>
-        <module>project-thymeleaf</module>
-        <module>project-data-dict</module>
         <module>project-layout</module>
         <module>project-web</module>
+        <module>project-menu</module>
+        <module>project-data-dict</module>
+        <module>project-thymeleaf</module>
+        <module>project-initializer</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
+        <yqboots.fss.version>1.0.0</yqboots.fss.version>
         <site.url>https://github.com/zhanhongbo1112</site.url>
         <github.global.server>github</github.global.server>
         <site.deploy.id>gh-pages</site.deploy.id>
@@ -73,16 +74,19 @@
             <dependency>
                 <groupId>com.yqboots</groupId>
                 <artifactId>yqboots-fss</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-initializer</artifactId>
-                <version>${project.version}</version>
+                <version>${yqboots.fss.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
                 <artifactId>project-layout</artifactId>
+                <classifier>resources</classifier>
+                <version>${project.version}</version>
+                <type>zip</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -102,7 +106,7 @@
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
-                <artifactId>project-web</artifactId>
+                <artifactId>project-initializer</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
