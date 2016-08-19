@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{text.dict.management}">Data Dict Management</title>
+  <title th:text="#{T0017}">Data Dict Management</title>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
 </head>
@@ -12,62 +12,84 @@
 </div>
 <div layout:fragment="content" class="content content-sm height-500">
   <div class="container table-responsive">
-    <form action="#" th:action="@{/project/dict}" th:object="${searchForm}" method="post">
-      <div class="row">
-        <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-4">
+        <form action="#" th:action="@{/project/dict}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input type="text" th:field="*{name}" class="form-control" placeholder="Search" th:placeholder="#{text.search}"/>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Search"
+                   th:placeholder="#{T0007}"/>
             <span class="input-group-btn">
-                <button class="btn-u" type="submit" th:text="#{text.search}">Search</button>
+                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
             </span>
           </div>
-        </div>
-        <div class="col-md-8"></div>
+        </form>
       </div>
-    </form>
+      <div class="col-md-8">
+        <div class="btn-group pull-right">
+          <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+            <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#" title="New" th:title="#{T0010}" th:href="@{/project/dict(action='new')}">
+                <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Import" th:title="#{T0015}" th:href="@{/project/dict/imports}">
+                <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Export" th:title="#{T0016}" th:href="@{/project/dict/exports}">
+                <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="divider divider-blank"></div>
     <div class="panel margin-bottom-40">
       <div class="panel-heading">
-        <h3 class="panel-title" th:text="#{text.dict.list}">Data Dict List</h3>
+        <h3 class="panel-title" th:text="#{T0019}">Data Dict List</h3>
       </div>
       <table class="table table-hover">
         <thead>
         <tr>
-          <th th:text="#{text.name}">Name</th>
-          <th th:text="#{text.text}">Text</th>
-          <th th:text="#{text.value}">Value</th>
-          <th th:text="#{text.description}">Description</th>
+          <th th:text="#{T0020}">Name</th>
+          <th th:text="#{T0021}">Text</th>
+          <th th:text="#{T0022}">Value</th>
+          <th th:text="#{T0023}">Description</th>
         </tr>
         </thead>
-        <tbody th:remove="all-but-first">
+        <tbody>
         <tr th:each="item : ${page}">
           <td th:text="${item.name}">NAME 1</td>
           <td th:text="${item.text}">Text 1</td>
           <td th:text="${item.value}">1</td>
           <td th:text="${item.description}">Description 1</td>
           <td>
-            <a href="#" th:href="@{/project/dict(id=${item.id},action='update')}" title="Update" th:title="#{text.update}">
+            <a href="#" th:href="@{/project/dict(id=${item.id},action='update')}" title="Update"
+               th:title="#{T0008}">
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            <a href="#" th:href="@{/project/dict(id=${item.id},action='delete')}" title="Delete" th:title="#{text.delete}">
+            <a href="#" th:href="@{/project/dict(id=${item.id},action='delete')}" title="Delete"
+               th:title="#{T0009}">
               <i class="glyphicon glyphicon-remove-sign"></i>
             </a>
           </td>
         </tr>
         </tbody>
         <tfoot>
-        <tr th:remove="all-but-first">
+        <tr>
           <th colspan="8">
-            <div yq:pageSummary="${page}" class="pull-left"/>
-            <div class="pull-right">
-              <a href="#" title="New" th:title="#{text.new}" th:href="@{/project/dict(action='new')}"><i class="glyphicon glyphicon-plus"></i></a>
-            </div>
-            <div class="clear-both"></div>
+            <div yq:pageSummary="${page}"/>
           </th>
         </tr>
         </tfoot>
       </table>
-      <div class="panel-footer text-center" th:remove="all-but-first">
+      <div class="panel-footer text-center">
         <yq:pagination page="${page}" th:href="@{/project/dict}"/>
       </div>
     </div>

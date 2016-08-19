@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{text.dict.management}">Data Dict Management</title>
+  <title th:text="#{T0017}">Data Dict Management</title>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
   <link rel="stylesheet" href="../../../META-INF/resources/dojo/jquery/skyforms/css/sky-forms.css" th:remove="all"/>
@@ -17,55 +17,51 @@
   <div class="container">
     <form class="sky-form" action="#" th:action="@{/project/dict/}" th:object="${model}" method="post">
       <input type="hidden" th:field="*{id}"/>
-      <header th:text="#{text.dict.form}">Data Dict Form</header>
-      <div class="row">
-        <div class="col-md-12">
-          <fieldset>
-            <div class="row">
-              <section class="col col-12">
-                <label class="label" th:text="#{text.name}">Name</label>
-                <label class="input">
-                  <input type="text" maxlength="32" th:field="*{name}" th:errorclass="state-error"/>
-                </label>
+      <header th:text="#{T0018}">Data Dict Form</header>
+      <fieldset>
+        <div class="row">
+          <section class="col col-12">
+            <label class="label" th:text="#{T0020}">Name</label>
+            <label class="input">
+              <input type="text" maxlength="32" th:field="*{name}" th:errorclass="state-error"/>
+            </label>
 
-                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-              </section>
-            </div>
-            <div class="row">
-              <section class="col col-6">
-                <label class="label" th:text="#{text.text}">Text</label>
-                <label class="input">
-                  <input type="text" th:field="*{text}" maxlength="64" th:errorclass="state-error"/>
-                </label>
-
-                <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
-              </section>
-              <section class="col col-6">
-                <label class="label" th:text="#{text.value}">Value</label>
-                <label class="input">
-                  <input type="text" th:field="*{value}" maxlength="32" th:errorclass="state-error"/>
-                  <i></i>
-                </label>
-
-                <p th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
-              </section>
-            </div>
-            <div class="row">
-              <section class="col col-12">
-                <label class="label" th:text="#{text.description}">Description</label>
-                <label class="textarea">
-                  <textarea th:field="*{description}" maxlength="255" rows="5" cols="80" th:errorclass="state-error"/>
-                </label>
-
-                <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
-              </section>
-            </div>
-          </fieldset>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+          </section>
         </div>
-      </div>
+        <div class="row">
+          <section class="col col-6">
+            <label class="label" th:text="#{T0021}">Text</label>
+            <label class="input">
+              <input type="text" th:field="*{text}" maxlength="64" th:errorclass="state-error"/>
+            </label>
+
+            <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
+          </section>
+          <section class="col col-6">
+            <label class="label" th:text="#{T0022}">Value</label>
+            <label class="input">
+              <input type="text" th:field="*{value}" maxlength="32" th:errorclass="state-error"/>
+              <i></i>
+            </label>
+
+            <p th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col col-12">
+            <label class="label" th:text="#{T0023}">Description</label>
+            <label class="textarea">
+              <textarea th:field="*{description}" maxlength="255" rows="5" cols="80" th:errorclass="state-error"/>
+            </label>
+
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+          </section>
+        </div>
+      </fieldset>
       <footer>
-        <button type="submit" class="btn-u" th:text="#{text.submit}">Submit</button>
-        <button type="reset" class="btn-u" th:text="#{text.reset}">Reset</button>
+        <button type="submit" class="btn-u" th:text="#{T0012}">Submit</button>
+        <button type="reset" class="btn-u" th:text="#{T0013}">Reset</button>
       </footer>
     </form>
   </div>

@@ -14,5 +14,7 @@ import java.util.List;
 public interface DataDictRepository extends JpaRepository<DataDict, Long>, JpaSpecificationExecutor<DataDict> {
     List<DataDict> findByNameOrderByText(String name);
 
+    DataDict findByNameAndValue(String name, String value);
+
     Page<DataDict> findByNameLikeIgnoreCaseOrderByName(String name, Pageable pageable);
 }

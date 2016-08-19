@@ -1,5 +1,8 @@
 package com.yqboots.project.dict.core;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -10,5 +13,9 @@ public interface DataDictManager {
 
     String getText(String name, String value);
 
-    String getText(final String name, final String value, boolean valueIncluded);
+    String getText(String name, String value, boolean valueIncluded);
+
+    void imports(InputStream inputStream) throws IOException;
+
+    Path exports() throws IOException;
 }
