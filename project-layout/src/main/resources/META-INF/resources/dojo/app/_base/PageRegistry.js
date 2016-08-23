@@ -5,7 +5,6 @@ define(['jquery'], function () {
     // register the pages and css, based on the template
     return {
         CSS_ERROR: ["/theme/css/pages/error.css"],
-        CSS_FORMS: ["/dojo/jquery/skyforms/css/sky-forms.css", "/dojo/jquery/skyforms/custom/custom-sky-forms.css"],
 
         appendCss: function (cssFiles) {
             if (cssMerged) {
