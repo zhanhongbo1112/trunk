@@ -2,10 +2,11 @@ package com.yqboots.project.dict.web.controller;
 
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.repository.DataDictRepository;
-import com.yqboots.project.dict.web.form.DataDictSearchForm;
 import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/project/dict")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM}, types = {DataDictSearchForm.class})
+@SessionAttributes(names = {WebKeys.SEARCH_FORM})
 public class DataDictController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/project/dict";
     private static final String VIEW_HOME = "project/dict/index";
@@ -30,17 +31,17 @@ public class DataDictController {
     private DataDictRepository dataDictRepository;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
-    protected DataDictSearchForm searchForm() {
-        return new DataDictSearchForm();
+    protected SearchForm<String> searchForm() {
+        return new SearchForm<>();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final DataDictSearchForm searchForm,
+    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable, final ModelMap model) {
-        String searchStr = StringUtils.defaultIfEmpty(searchForm.getName(), StringUtils.EMPTY);
+        String searchStr = StringUtils.defaultIfEmpty(searchForm.getCriterion(), StringUtils.EMPTY);
         searchStr = StringUtils.trim(searchStr);
-        model.addAttribute(WebKeys.PAGE, this.dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%",
-                pageable));
+        Page<DataDict> pagedData = dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
+        model.addAttribute(WebKeys.PAGE, pagedData);
         return VIEW_HOME;
     }
 

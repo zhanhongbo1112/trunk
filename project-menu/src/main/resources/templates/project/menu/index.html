@@ -14,9 +14,9 @@
   <div class="container table-responsive">
     <div class="row">
       <div class="col-md-4">
-        <form action="#" th:action="@{/project/dict}" th:object="${searchForm}" method="post">
+        <form action="#" th:action="@{/project/menu}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input type="text" th:field="*{name}" class="form-control" placeholder="Search"
+            <input type="text" th:field="*{criterion}" class="form-control" placeholder="Search"
                    th:placeholder="#{T0007}"/>
             <span class="input-group-btn">
                 <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>

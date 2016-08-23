@@ -2,8 +2,8 @@ package com.yqboots.project.menu.web.controller;
 
 import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.repository.MenuItemRepository;
-import com.yqboots.project.menu.web.form.MenuItemSearchForm;
 import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/project/menu")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM}, types = {MenuItemSearchForm.class})
+@SessionAttributes(names = {WebKeys.SEARCH_FORM})
 public class MenuItemController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/project/menu";
     private static final String VIEW_HOME = "project/menu/index";
@@ -30,15 +30,15 @@ public class MenuItemController {
     private MenuItemRepository menuItemRepository;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
-    protected MenuItemSearchForm searchForm() {
-        return new MenuItemSearchForm();
+    protected SearchForm<String> searchForm() {
+        return new SearchForm<>();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final MenuItemSearchForm searchForm,
+    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
                        final ModelMap model) {
-        String searchStr = StringUtils.defaultIfEmpty(searchForm.getName(), StringUtils.EMPTY);
+        String searchStr = StringUtils.defaultIfEmpty(searchForm.getCriterion(), StringUtils.EMPTY);
         searchStr = StringUtils.trim(searchStr);
         model.addAttribute(WebKeys.PAGE, this.menuItemRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%",
                 pageable));
