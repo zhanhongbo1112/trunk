@@ -45,7 +45,11 @@
   <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li><a href="javascript:void(0);" th:href="@{/}" th:text="#{T0004}">HOME</a></li>
+        <li>
+          <a href="javascript:void(0);" th:href="@{/}">
+            <i class="glyphicon glyphicon-home"></i> <span th:text="#{T0004}">HOME</span>
+          </a>
+        </li>
         <yq:menus layout="full-width"/>
       </ul>
     </div>

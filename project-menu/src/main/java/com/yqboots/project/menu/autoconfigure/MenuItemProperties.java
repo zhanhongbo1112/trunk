@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class MenuItemProperties {
     private Path exportFileLocation;
 
-    private String exportNamePrefix;
+    private String exportFileNamePrefix;
 
     private boolean importEnabled;
 
@@ -25,12 +25,12 @@ public class MenuItemProperties {
         this.exportFileLocation = exportFileLocation;
     }
 
-    public String getExportNamePrefix() {
-        return exportNamePrefix;
+    public String getExportFileNamePrefix() {
+        return exportFileNamePrefix;
     }
 
-    public void setExportNamePrefix(final String exportNamePrefix) {
-        this.exportNamePrefix = exportNamePrefix;
+    public void setExportFileNamePrefix(final String exportFileNamePrefix) {
+        this.exportFileNamePrefix = exportFileNamePrefix;
     }
 
     public boolean isImportEnabled() {

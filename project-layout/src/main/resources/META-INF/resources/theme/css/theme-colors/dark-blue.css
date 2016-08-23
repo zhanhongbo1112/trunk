@@ -213,3 +213,16 @@ i.icon-bg-u {
     border-color: #4765a0;
     background-color: #4765a0;
 }
+
+/* Tabs v1 */
+.tab-v1 .nav-tabs {
+    border-bottom: solid 2px #4765a0;
+}
+.tab-v1 .nav-tabs > .active > a,
+.tab-v1 .nav-tabs > .active > a:hover,
+.tab-v1 .nav-tabs > .active > a:focus {
+    background: #4765a0;
+}
+.tab-v1 .nav-tabs > li > a:hover {
+    background: #4765a0;
+}

@@ -12,84 +12,115 @@
 </div>
 <div layout:fragment="content" class="content content-sm height-500">
   <div class="container table-responsive">
-    <div class="row">
-      <div class="col-md-4">
-        <form action="#" th:action="@{/project/menu}" th:object="${searchForm}" method="post">
-          <div class="input-group">
-            <input type="text" th:field="*{criterion}" class="form-control" placeholder="Search"
-                   th:placeholder="#{T0007}"/>
-            <span class="input-group-btn">
-                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
-            </span>
+    <div class="tab-v1">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#list" data-toggle="tab">
+            <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0025}">Domain List</span>
+          </a>
+        </li>
+        <li>
+          <a href="#import" data-toggle="tab">
+            <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="list" class="tab-pane fade in active">
+          <div class="row">
+            <div class="col-md-4">
+              <form action="#" th:action="@{/project/menu}" th:object="${searchForm}" method="post">
+                <div class="input-group">
+                  <input type="text" th:field="*{criterion}" class="form-control" placeholder="Search"
+                         th:placeholder="#{T0007}"/>
+                  <span class="input-group-btn">
+                      <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-8">
+              <div class="btn-group pull-right">
+                <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+                  <span th:text="#{T0011}">Action</span> <i class="glyphicon glyphicon-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="#" title="New" th:title="#{T0010}" th:href="@{/project/menu(action='new')}">
+                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Export" th:title="#{T0016}" th:href="@{/project/menu/exports}">
+                      <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
-      <div class="col-md-8">
-        <div class="btn-group pull-right">
-          <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
-            <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="#" title="New" th:title="#{T0010}" th:href="@{/project/menu(action='new')}">
-                <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" title="Import" th:title="#{T0015}" th:href="@{/project/menu/imports}">
-                <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" title="Export" th:title="#{T0016}" th:href="@{/project/menu/exports}">
-                <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
-              </a>
-            </li>
-          </ul>
+          <div class="divider divider-blank"></div>
+          <div class="panel">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th th:text="#{T0020}">Name</th>
+                <th th:text="#{T0027}">URL</th>
+                <th th:text="#{T0028}">Menu Group</th>
+                <th th:text="#{T0029}">Menu Item Group</th>
+                <th>&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item : ${page}">
+                <td th:text="${item.name}">NAME 1</td>
+                <td th:text="${item.url}">/project/menu</td>
+                <td th:text="${item.menuGroup}">Group 1</td>
+                <td th:text="${item.menuItemGroup}">Item Group 1</td>
+                <td>
+                  <a href="#" th:href="@{/project/menu(id=${item.id},action='update')}" title="Update"
+                     th:title="#{T0008}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                  <a href="#" th:href="@{/project/menu(id=${item.id},action='delete')}" title="Delete"
+                     th:title="#{T0009}">
+                    <i class="glyphicon glyphicon-remove-sign"></i>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <th colspan="8">
+                  <div yq:pageSummary="${page}"></div>
+                </th>
+              </tr>
+              </tfoot>
+            </table>
+            <div class="panel-footer text-center">
+              <yq:pagination page="${page}" th:href="@{/project/menu}"/>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="divider divider-blank"></div>
-    <div class="panel margin-bottom-40">
-      <div class="panel-heading">
-        <h3 class="panel-title" th:text="#{T0025}">Menu Item List</h3>
-      </div>
-      <table class="table table-hover">
-        <thead>
-        <tr>
-          <th th:text="#{T0020}">Name</th>
-          <th th:text="#{T0027}">URL</th>
-          <th th:text="#{T0028}">Menu Group</th>
-          <th th:text="#{T0029}">Menu Item Group</th>
-          <th>&nbsp;</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="item : ${page}">
-          <td th:text="${item.name}">NAME 1</td>
-          <td th:text="${item.url}">/project/menu</td>
-          <td th:text="${item.menuGroup}">Group 1</td>
-          <td th:text="${item.menuItemGroup}">Item Group 1</td>
-          <td>
-            <a href="#" th:href="@{/project/menu(id=${item.id},action='update')}" title="Update" th:title="#{T0008}">
-              <i class="glyphicon glyphicon-pencil"></i>
-            </a>
-            <a href="#" th:href="@{/project/menu(id=${item.id},action='delete')}" title="Delete" th:title="#{T0009}">
-              <i class="glyphicon glyphicon-remove-sign"></i>
-            </a>
-          </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <th colspan="8">
-            <div yq:pageSummary="${page}"></div>
-          </th>
-        </tr>
-        </tfoot>
-      </table>
-      <div class="panel-footer text-center">
-        <yq:pagination page="${page}" th:href="@{/project/menu}"/>
+        <div id="import" class="tab-pane fade in">
+          <form class="sky-form" action="#" th:action="@{/project/menu/imports}" method="post"
+                enctype="multipart/form-data">
+            <fieldset>
+              <section>
+                <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
+                <label class="input input-file">
+                  <div class="button">
+                    <input name="file" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>Browse
+                  </div><input type="text" readonly="readonly"/>
+                </label>
+              </section>
+            </fieldset>
+            <footer>
+              <button type="submit" class="btn-u" th:text="#{T0012}">Submit</button>
+              <button type="reset" class="btn-u" th:text="#{T0013}">Reset</button>
+            </footer>
+          </form>
+        </div>
       </div>
     </div>
   </div>

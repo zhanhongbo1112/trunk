@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -96,12 +97,18 @@ public class DataDictManagerImpl implements DataDictManager {
     @Override
     public Path exports() throws IOException {
         final String fileName = properties.getExportFileNamePrefix() + LocalDate.now() + FileType.DOT_XML;
+
+        if (!Files.exists(properties.getExportFileLocation())) {
+            Files.createDirectories(properties.getExportFileLocation());
+        }
+
         final Path result = Paths.get(properties.getExportFileLocation() + File.separator + fileName);
 
         final List<DataDict> dataDicts = dataDictRepository.findAll();
 
-        FileWriter writer = new FileWriter(result.toFile());
-        jaxb2Marshaller.marshal(new DataDicts(dataDicts), new StreamResult(writer));
+        try (FileWriter writer = new FileWriter(result.toFile())) {
+            jaxb2Marshaller.marshal(new DataDicts(dataDicts), new StreamResult(writer));
+        }
 
         return result;
     }

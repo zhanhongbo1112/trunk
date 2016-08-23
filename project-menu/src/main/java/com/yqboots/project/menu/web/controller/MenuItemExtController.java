@@ -21,15 +21,9 @@ import java.nio.file.Path;
 @RequestMapping(value = "/project/menu")
 public class MenuItemExtController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/project/menu";
-    private static final String VIEW_IMPORT = "project/menu/import";
 
     @Autowired
     private MenuItemManager menuItemManager;
-
-    @RequestMapping(value = "/imports", method = RequestMethod.GET)
-    public String preImport() {
-        return VIEW_IMPORT;
-    }
 
     @RequestMapping(value = "/imports", method = RequestMethod.POST)
     public String imports(@RequestParam("file") MultipartFile file) throws IOException {

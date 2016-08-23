@@ -1,7 +1,7 @@
-define(['app/_base/PageRegistry'], function (PageRegistry) {
+define([], function () {
     return {
         startup: function () {
-            PageRegistry.appendCss(PageRegistry.CSS_FORMS);
+
         }
     };
 });

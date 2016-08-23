@@ -22,16 +22,10 @@ import java.nio.file.Path;
 @RequestMapping(value = "/project/dict")
 public class DataDictExtController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/project/dict";
-    private static final String VIEW_IMPORT = "project/dict/import";
 
     @Autowired
     @Qualifier("dataDictManager")
     private DataDictManager dataDictManager;
-
-    @RequestMapping(value = "/imports", method = RequestMethod.GET)
-    public String preImport() {
-        return VIEW_IMPORT;
-    }
 
     @RequestMapping(value = "/imports", method = RequestMethod.POST)
     public String imports(@RequestParam("file") MultipartFile file) throws IOException {

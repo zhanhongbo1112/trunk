@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -69,13 +70,19 @@ public class MenuItemManagerImpl implements MenuItemManager {
 
     @Override
     public Path exports() throws IOException {
-        final String fileName = properties.getExportNamePrefix() + LocalDate.now() + FileType.DOT_XML;
+        final String fileName = properties.getExportFileNamePrefix() + LocalDate.now() + FileType.DOT_XML;
+
+        if (!Files.exists(properties.getExportFileLocation())) {
+            Files.createDirectories(properties.getExportFileLocation());
+        }
+
         final Path result = Paths.get(properties.getExportFileLocation() + File.separator + fileName);
 
         final List<MenuItem> menuItems = menuItemRepository.findAll();
 
-        FileWriter writer = new FileWriter(result.toFile());
-        jaxb2Marshaller.marshal(new MenuItems(menuItems), new StreamResult(writer));
+        try (FileWriter writer = new FileWriter(result.toFile())) {
+            jaxb2Marshaller.marshal(new MenuItems(menuItems), new StreamResult(writer));
+        }
 
         return result;
     }
