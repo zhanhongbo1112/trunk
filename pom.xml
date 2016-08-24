@@ -19,6 +19,7 @@
 
     <modules>
         <module>project-layout</module>
+        <module>project-fss</module>
         <module>project-web</module>
         <module>project-menu</module>
         <module>project-data-dict</module>
@@ -70,9 +71,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.yqboots</groupId>
-                <artifactId>yqboots-fss</artifactId>
-                <version>${yqboots.fss.version}</version>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-fss</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
