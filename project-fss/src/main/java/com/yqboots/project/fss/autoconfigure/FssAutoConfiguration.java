@@ -17,37 +17,26 @@
  */
 package com.yqboots.project.fss.autoconfigure;
 
-import com.yqboots.project.fss.core.convert.StringToPathConverter;
+import com.yqboots.project.fss.core.repository.FileItemRepository;
+import com.yqboots.project.fss.core.repository.FileItemRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ConversionServiceFactoryBean;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.converter.Converter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Administrator on 2016-05-18.
  */
 @Configuration
-@EnableConfigurationProperties(FssProperties.class)
+@EnableConfigurationProperties({FssProperties.class})
 public class FssAutoConfiguration {
+    @Autowired
+    private FssProperties properties;
+
     @Bean
-    @ConditionalOnMissingBean({ConversionService.class})
-    public ConversionService conversionService() {
-        ConversionServiceFactoryBean bean = new ConversionServiceFactoryBean();
-
-        bean.setConverters(additionalConverters());
-        bean.afterPropertiesSet();
-        return bean.getObject();
-    }
-
-    private Set<Converter> additionalConverters() {
-        Set<Converter> converters = new HashSet<>();
-        converters.add(new StringToPathConverter());
-        return converters;
+    @ConditionalOnMissingBean({FileItemRepository.class})
+    public FileItemRepository fileItemRepository() {
+        return new FileItemRepositoryImpl(properties);
     }
 }

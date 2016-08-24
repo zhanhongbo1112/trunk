@@ -110,7 +110,8 @@
                 <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
                 <label class="input input-file">
                   <div class="button">
-                    <input name="file" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>Browse
+                    <input name="file" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
+                    <span th:text="#{T0039}">Browse</span>
                   </div><input type="text" readonly="readonly"/>
                 </label>
               </section>
