@@ -214,15 +214,15 @@ i.icon-bg-u {
     background-color: #e74c3c;
 }
 
-/* Tabs v1 */
-.tab-v1 .nav-tabs {
+/* Tabs */
+.tab .nav-tabs {
     border-bottom: solid 2px #e74c3c;
 }
-.tab-v1 .nav-tabs > .active > a,
-.tab-v1 .nav-tabs > .active > a:hover,
-.tab-v1 .nav-tabs > .active > a:focus {
+.tab .nav-tabs > .active > a,
+.tab .nav-tabs > .active > a:hover,
+.tab .nav-tabs > .active > a:focus {
     background: #e74c3c;
 }
-.tab-v1 .nav-tabs > li > a:hover {
+.tab .nav-tabs > li > a:hover {
     background: #e74c3c;
 }
