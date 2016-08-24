@@ -1,6 +1,6 @@
 package com.yqboots.project.menu.web.controller;
 
-import com.yqboots.fss.web.util.FssWebUtils;
+import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.menu.core.MenuItemManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

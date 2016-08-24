@@ -1,6 +1,6 @@
 package com.yqboots.project.menu.core;
 
-import com.yqboots.fss.core.support.FileType;
+import com.yqboots.project.fss.core.support.FileType;
 import com.yqboots.project.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.project.menu.core.repository.MenuItemRepository;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;

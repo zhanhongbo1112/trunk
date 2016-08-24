@@ -1,7 +1,7 @@
 package com.yqboots.project.dict.web.controller;
 
-import com.yqboots.fss.web.util.FssWebUtils;
 import com.yqboots.project.dict.core.DataDictManager;
+import com.yqboots.project.fss.web.util.FssWebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpEntity;

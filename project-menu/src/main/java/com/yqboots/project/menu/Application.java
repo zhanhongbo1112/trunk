@@ -1,6 +1,6 @@
 package com.yqboots.project.menu;
 
-import com.yqboots.fss.autoconfigure.FssAutoConfiguration;
+import com.yqboots.project.fss.autoconfigure.FssAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;

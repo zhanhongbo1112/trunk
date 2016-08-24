@@ -1,8 +1,8 @@
 package com.yqboots.project.dict.core;
 
-import com.yqboots.fss.core.support.FileType;
 import com.yqboots.project.dict.autoconfigure.DataDictProperties;
 import com.yqboots.project.dict.core.repository.DataDictRepository;
+import com.yqboots.project.fss.core.support.FileType;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
