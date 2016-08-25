@@ -20,6 +20,7 @@ package com.yqboots.project.fss.autoconfigure;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.nio.file.Path;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016-05-18.
@@ -28,11 +29,21 @@ import java.nio.file.Path;
 public class FssProperties {
     private Path root;
 
+    private List<Path> directories;
+
     public Path getRoot() {
         return this.root;
     }
 
     public void setRoot(Path root) {
         this.root = root;
+    }
+
+    public List<Path> getDirectories() {
+        return directories;
+    }
+
+    public void setDirectories(final List<Path> directories) {
+        this.directories = directories;
     }
 }

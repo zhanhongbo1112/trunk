@@ -1,7 +1,7 @@
 package com.yqboots.project.fss.core;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created by Administrator on 2016-08-24.
@@ -11,9 +11,9 @@ public class FileItem implements Serializable {
 
     private String path;
 
-    private Date lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 
-    private int length;
+    private long length;
 
     public String getName() {
         return name;
@@ -31,19 +31,19 @@ public class FileItem implements Serializable {
         this.path = path;
     }
 
-    public Date getLastModifiedDate() {
+    public LocalDateTime getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(final Date lastModifiedDate) {
+    public void setLastModifiedDate(final LocalDateTime lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public int getLength() {
+    public long getLength() {
         return length;
     }
 
-    public void setLength(final int length) {
+    public void setLength(final long length) {
         this.length = length;
     }
 }

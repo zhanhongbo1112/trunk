@@ -9,6 +9,13 @@ import java.io.Serializable;
 public class SearchForm<T> implements Serializable {
     private T criterion;
 
+    public SearchForm() {
+    }
+
+    public SearchForm(final T criterion) {
+        this.criterion = criterion;
+    }
+
     public T getCriterion() {
         return criterion;
     }

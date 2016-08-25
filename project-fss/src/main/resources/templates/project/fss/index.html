@@ -32,8 +32,8 @@
               <form action="#" th:action="@{/project/fss}" th:object="${searchForm}" method="post">
                 <div class="input-group">
                   <select th:field="*{criterion}" class="form-control">
-                    <option value="/test">/path</option>
-                    <option value="/test">/path1</option>
+                    <option value="">Please Select</option>
+                    <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
                   </select>
                   <span class="input-group-btn">
                       <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
@@ -83,19 +83,19 @@
         </div>
         <div id="upload" class="tab-pane fade in">
           <form class="sky-form" action="#" th:action="@{/project/fss/upload}" method="post"
-                enctype="multipart/form-data">
+                enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
               <section>
                 <label class="label" th:text="#{T0020}">Name</label>
                 <label class="input">
-                  <input name="name" type="text" maxlength="64"/>
+                  <input th:field="*{name}" type="text" maxlength="64"/>
                 </label>
               </section>
               <section>
                 <label class="label" th:text="#{T0038}">Input a File</label>
                 <label class="input input-file">
                   <div class="button">
-                    <input name="file" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
+                    <input th:field="*{file}" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
                     <span th:text="#{T0039}">Browse</span>
                   </div><input type="text" readonly="readonly"/>
                 </label>
@@ -103,18 +103,17 @@
               <section>
                 <label class="label" th:text="#{T0035}">Destination</label>
                 <label class="select">
-                  <select name="path">
-                    <option value="/Path1">/Path1</option>
-                    <option value="/Path2">/Path2</option>
+                  <select th:field="*{path}">
+                    <option value="" selected="selected">Please Select</option>
+                    <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
                   </select>
                   <i></i>
                 </label>
               </section>
               <section>
                 <label class="label" th:text="#{T0036}">Override</label>
-                <label class="checkbox">
-                  <input name="overrideExisting" type="checkbox"/><i></i><span th:text="#{T0037}">Override Existing?</span>
-                </label>
+                <input th:field="*{overrideExisting}" type="checkbox"/>
+                <label th:for="${#ids.prev('overrideExisting')}" th:text="#{T0037}">Override Existing?</label>
               </section>
             </fieldset>
             <footer>
