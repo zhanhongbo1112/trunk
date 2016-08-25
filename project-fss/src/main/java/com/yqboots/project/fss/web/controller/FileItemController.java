@@ -1,7 +1,7 @@
 package com.yqboots.project.fss.web.controller;
 
 import com.yqboots.project.fss.core.FileItem;
-import com.yqboots.project.fss.core.repository.FileItemRepository;
+import com.yqboots.project.fss.core.FileItemManager;
 import com.yqboots.project.fss.web.form.FileUploadForm;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
@@ -13,10 +13,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +40,7 @@ public class FileItemController {
     private static final String FILE_UPLOAD_FORM = "fileUploadForm";
 
     @Autowired
-    private FileItemRepository fileItemRepository;
+    private FileItemManager fileItemRepository;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -48,10 +54,7 @@ public class FileItemController {
 
     @ModelAttribute("directories")
     protected List<String> directories() {
-        List<String> results = new ArrayList<>();
-        results.add("\\dict");
-        results.add("\\menu");
-        return results;
+        return fileItemRepository.getAvailableDirectories();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
@@ -68,13 +71,33 @@ public class FileItemController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(@ModelAttribute(FILE_UPLOAD_FORM) final FileUploadForm form) {
+    public String upload(@Valid @ModelAttribute(FILE_UPLOAD_FORM) final FileUploadForm form,
+                         final BindingResult bindingResult, final ModelMap model) throws IOException {
+        if (bindingResult.hasErrors()) {
+            return VIEW_HOME;
+        }
 
+        final MultipartFile file = form.getFile();
+        if (StringUtils.isBlank(file.getName())) {
+            return VIEW_HOME;
+        }
+
+        Path destination = fileItemRepository.getFullPath(form.getPath());
+        destination = Paths.get(destination + File.separator + file.getOriginalFilename());
+        if (Files.exists(destination) && form.isOverrideExisting()) {
+            file.transferTo(destination.toFile());
+        } else {
+            Files.createDirectories(destination.getParent());
+            Files.createFile(destination);
+            file.transferTo(destination.toFile());
+        }
+
+        model.clear();
         return REDIRECT_VIEW_PATH;
     }
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
-    public String delete(@RequestParam final String path, final ModelMap model) throws IOException {
+    public String delete(@RequestParam(WebKeys.ID) final String path, final ModelMap model) throws IOException {
         this.fileItemRepository.delete(path);
         model.clear();
 

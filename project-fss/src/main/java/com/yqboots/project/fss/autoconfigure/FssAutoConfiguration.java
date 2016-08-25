@@ -17,8 +17,8 @@
  */
 package com.yqboots.project.fss.autoconfigure;
 
-import com.yqboots.project.fss.core.repository.FileItemRepository;
-import com.yqboots.project.fss.core.repository.FileItemRepositoryImpl;
+import com.yqboots.project.fss.core.FileItemManager;
+import com.yqboots.project.fss.core.FileItemManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -35,8 +35,8 @@ public class FssAutoConfiguration {
     private FssProperties properties;
 
     @Bean
-    @ConditionalOnMissingBean({FileItemRepository.class})
-    public FileItemRepository fileItemRepository() {
-        return new FileItemRepositoryImpl(properties);
+    @ConditionalOnMissingBean({FileItemManager.class})
+    public FileItemManager fileItemRepository() {
+        return new FileItemManagerImpl(properties);
     }
 }

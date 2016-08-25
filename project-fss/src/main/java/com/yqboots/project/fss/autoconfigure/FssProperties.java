@@ -31,6 +31,8 @@ public class FssProperties {
 
     private List<Path> directories;
 
+    private String[] fileTypes = new String[]{};
+
     public Path getRoot() {
         return this.root;
     }
@@ -45,5 +47,13 @@ public class FssProperties {
 
     public void setDirectories(final List<Path> directories) {
         this.directories = directories;
+    }
+
+    public String[] getFileTypes() {
+        return fileTypes;
+    }
+
+    public void setFileTypes(final String[] fileTypes) {
+        this.fileTypes = fileTypes;
     }
 }

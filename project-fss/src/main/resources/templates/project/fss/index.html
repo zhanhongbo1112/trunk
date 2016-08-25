@@ -86,12 +86,6 @@
                 enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
               <section>
-                <label class="label" th:text="#{T0020}">Name</label>
-                <label class="input">
-                  <input th:field="*{name}" type="text" maxlength="64"/>
-                </label>
-              </section>
-              <section>
                 <label class="label" th:text="#{T0038}">Input a File</label>
                 <label class="input input-file">
                   <div class="button">
@@ -99,6 +93,8 @@
                     <span th:text="#{T0039}">Browse</span>
                   </div><input type="text" readonly="readonly"/>
                 </label>
+
+                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
               </section>
               <section>
                 <label class="label" th:text="#{T0035}">Destination</label>
@@ -109,6 +105,8 @@
                   </select>
                   <i></i>
                 </label>
+
+                <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
               </section>
               <section>
                 <label class="label" th:text="#{T0036}">Override</label>

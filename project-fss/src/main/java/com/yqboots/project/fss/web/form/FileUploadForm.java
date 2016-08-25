@@ -1,28 +1,23 @@
 package com.yqboots.project.fss.web.form;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
  * Created by Administrator on 2016-08-25.
  */
 public class FileUploadForm implements Serializable {
-    private String name;
-
+    @NotBlank
     private String path;
 
+    @NotNull
     private MultipartFile file;
 
     private boolean overrideExisting;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
 
     public String getPath() {
         return path;
