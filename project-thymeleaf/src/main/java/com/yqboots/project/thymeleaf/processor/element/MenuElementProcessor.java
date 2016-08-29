@@ -1,3 +1,20 @@
+/*
+ *
+ *  * Copyright 2015-2016 the original author or authors.
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ */
 package com.yqboots.project.thymeleaf.processor.element;
 
 import com.yqboots.project.menu.core.MenuItem;
@@ -6,6 +23,7 @@ import com.yqboots.project.menu.core.convert.MenuGroupsConverter;
 import com.yqboots.project.menu.core.convert.MenuItemGroupsConverter;
 import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.dom.Node;
@@ -17,7 +35,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Created by Administrator on 2016-07-22.
+ * The element processor which processes the list of MenuItem in the menu bar.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
     public static final String ATTR_LAYOUT = "layout";
@@ -58,6 +79,12 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
         return nodes;
     }
 
+    /**
+     * Builds 3-level menus.
+     *
+     * @author Eric H B Zhan
+     * @since 1.0.0
+     */
     private class MenuGroupBuilder {
         private final Arguments arguments;
 
@@ -66,7 +93,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
         }
 
         public Collection<? extends Node> build(final Map<String, Map<String, List<MenuItem>>> groups) {
-            return groups.entrySet().stream().map(entry -> getMenuGroup(entry)).collect(Collectors.toList());
+            return groups.entrySet().stream().map(this::getMenuGroup).collect(Collectors.toList());
         }
 
         private Element getMenuGroup(final Map.Entry<String, Map<String, List<MenuItem>>> menuGroup) {
@@ -109,6 +136,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
                     container.addChild(row);
                 }
 
+                Assert.notNull(row);
                 row.addChild(getMenuItems(entries.get(i)));
             }
 
@@ -152,6 +180,12 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
         }
     }
 
+    /**
+     * Builds 2-level menus.
+     *
+     * @author Eric H B Zhan
+     * @since 1.0.0
+     */
     private class MenuItemGroupBuilder {
         private final Arguments arguments;
 
@@ -160,7 +194,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
         }
 
         public List<Node> build(final Map<String, List<MenuItem>> groups) {
-            return groups.entrySet().stream().map(entry -> getMenuItemGroup(entry)).collect(Collectors.toList());
+            return groups.entrySet().stream().map(this::getMenuItemGroup).collect(Collectors.toList());
         }
 
         private Element getMenuItemGroup(final Map.Entry<String, List<MenuItem>> group) {

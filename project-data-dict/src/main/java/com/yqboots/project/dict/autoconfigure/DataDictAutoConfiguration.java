@@ -41,6 +41,11 @@ public class DataDictAutoConfiguration {
     @Autowired
     private DataDictProperties properties;
 
+    /**
+     * the name "dicts" is used in the thymeleaf html template file as #dicts.
+     *
+     * @return the DataDictManager
+     */
     @Bean(name = {"dicts", "dataDictManager"})
     public DataDictManager dataDictManager() {
         return new DataDictManagerImpl(dataDictRepository, properties);

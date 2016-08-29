@@ -48,6 +48,9 @@ public class DataDictManagerImpl implements DataDictManager {
 
     private DataDictProperties properties;
 
+    /**
+     * For marshalling and unmarshalling Data Dictionaries.
+     */
     private static Jaxb2Marshaller jaxb2Marshaller;
 
     static {
@@ -60,16 +63,37 @@ public class DataDictManagerImpl implements DataDictManager {
         this.properties = properties;
     }
 
+    /**
+     * Gets the Data Dictionaries by name.
+     *
+     * @param name the name of one DataDict
+     * @return list of DataDict
+     */
     @Override
     public List<DataDict> getDataDicts(final String name) {
         return dataDictRepository.findByNameOrderByText(name);
     }
 
+    /**
+     * Gets the displayed text. Usually used in the Thymeleaf html template file.
+     *
+     * @param name  the name of a DataDict
+     * @param value the value of a DataDict
+     * @return the displayed text
+     */
     @Override
     public String getText(final String name, final String value) {
         return getText(name, value, false);
     }
 
+    /**
+     * Gets the displayed text. Usually used in the Thymeleaf html template file.
+     *
+     * @param name          the name of a DataDict
+     * @param value         the value of a DataDict
+     * @param valueIncluded whether includes the value
+     * @return the displayed text
+     */
     @Override
     public String getText(final String name, final String value, boolean valueIncluded) {
         // TODO: add cache
@@ -88,6 +112,12 @@ public class DataDictManagerImpl implements DataDictManager {
         return valueIncluded ? StringUtils.join(new String[]{item.getValue(), item.getText()}, " - ") : item.getText();
     }
 
+    /**
+     * Imports an XML-presented file, which contains data dictionaries..
+     *
+     * @param inputStream the file stream
+     * @throws IOException if failed
+     */
     @Override
     @Transactional
     public void imports(final InputStream inputStream) throws IOException {
@@ -106,6 +136,12 @@ public class DataDictManagerImpl implements DataDictManager {
         }
     }
 
+    /**
+     * Exports all data dictionaries to a file for downloading.
+     *
+     * @return the exported file path
+     * @throws IOException if failed
+     */
     @Override
     public Path exports() throws IOException {
         final String fileName = properties.getExportFileNamePrefix() + LocalDate.now() + FileType.DOT_XML;

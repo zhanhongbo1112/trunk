@@ -1,3 +1,20 @@
+/*
+ *
+ *  * Copyright 2015-2016 the original author or authors.
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ */
 package com.yqboots.project.menu.context;
 
 import com.yqboots.project.menu.autoconfigure.MenuItemProperties;
@@ -8,7 +25,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
@@ -17,9 +33,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by Administrator on 2016-08-17.
+ * A listener, which importing menu items from XML after the application context refreshed.
+ *
+ * @author Eric H B Zhan
+ * @see com.yqboots.project.menu.core.MenuItem
+ * @since 1.0.0
  */
-@Component
 public class MenuItemImportListener implements ApplicationListener<ContextRefreshedEvent> {
     private static final Logger LOG = LoggerFactory.getLogger(MenuItemImportListener.class);
 
@@ -34,10 +53,12 @@ public class MenuItemImportListener implements ApplicationListener<ContextRefres
 
         final MenuItemManager manager = context.getBean(MenuItemManager.class);
         final MenuItemProperties properties = context.getBean(MenuItemProperties.class);
+        // ignore if importing is disabled
         if (!properties.isImportEnabled()) {
             return;
         }
 
+        // find importing file in the specified location
         final String location = properties.getImportFileLocation();
         if (StringUtils.isEmpty(location)) {
             LOG.warn("Menu Item Importing is enabled, but location was not set");
@@ -45,6 +66,7 @@ public class MenuItemImportListener implements ApplicationListener<ContextRefres
         }
 
         try {
+            // get file, may throw FileNotFoundException
             final File file = ResourceUtils.getFile(location);
             try (final InputStream inputStream = new FileInputStream(file)) {
                 manager.imports(inputStream);

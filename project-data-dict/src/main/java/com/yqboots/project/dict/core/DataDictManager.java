@@ -27,13 +27,46 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface DataDictManager {
+    /**
+     * Gets the Data Dictionaries by name.
+     *
+     * @param name the name of one DataDict
+     * @return list of DataDict
+     */
     List<DataDict> getDataDicts(String name);
 
+    /**
+     * Gets the displayed text. Usually used in the Thymeleaf html template file.
+     *
+     * @param name  the name of a DataDict
+     * @param value the value of a DataDict
+     * @return the displayed text
+     */
     String getText(String name, String value);
 
+    /**
+     * Gets the displayed text. Usually used in the Thymeleaf html template file.
+     *
+     * @param name          the name of a DataDict
+     * @param value         the value of a DataDict
+     * @param valueIncluded whether includes the value
+     * @return the displayed text
+     */
     String getText(String name, String value, boolean valueIncluded);
 
+    /**
+     * Imports an XML-presented file, which contains menu items.
+     *
+     * @param inputStream the file stream
+     * @throws IOException if failed
+     */
     void imports(InputStream inputStream) throws IOException;
 
+    /**
+     * Exports all data dictionaries to a file for downloading.
+     *
+     * @return the exported file path
+     * @throws IOException if failed
+     */
     Path exports() throws IOException;
 }

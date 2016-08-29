@@ -28,7 +28,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * Created by Administrator on 2016-05-18.
+ * The Auto Configuration class for File Storage related beans.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 @Configuration
 @EnableConfigurationProperties({FssProperties.class})
@@ -39,7 +42,7 @@ public class FssAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean({FileItemManager.class})
-    public FileItemManager fileItemRepository() {
+    public FileItemManager fileItemManager() {
         return new FileItemManagerImpl(properties);
     }
 }

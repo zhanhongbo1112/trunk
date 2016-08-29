@@ -39,7 +39,7 @@ public class DataDicts implements Serializable {
     }
 
     public DataDicts(final List<DataDict> dataDicts) {
-        super();
+        this();
         this.dataDicts = dataDicts;
     }
 

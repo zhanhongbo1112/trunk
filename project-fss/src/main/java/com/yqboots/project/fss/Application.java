@@ -23,7 +23,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by Administrator on 2016-05-18.
+ * The entrance of a project.
+ * it contains a main method to bootstrap the whole project.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 @Controller
 @SpringBootApplication

@@ -7,7 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Created by Administrator on 2016-08-15.
+ * A Spring Converter for converting from String to NIO Path.
+ * <p/>
+ * <p>Used to convert file path related properties.</p>
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 @ConfigurationPropertiesBinding
 public class StringToPathConverter implements Converter<String, Path> {

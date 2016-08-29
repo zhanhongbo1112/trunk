@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2016 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.yqboots.project.fss.core.support;
 
 import com.yqboots.project.fss.core.FileItem;
@@ -13,9 +28,12 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by Administrator on 2016-08-26.
+ * The Consumer for FileItem, to consume the Path.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
-public class FileItemConsumer implements Consumer<Path> {
+public final class FileItemConsumer implements Consumer<Path> {
     private final Path root;
 
     private List<FileItem> items = new ArrayList<>();
@@ -33,7 +51,7 @@ public class FileItemConsumer implements Consumer<Path> {
     @Override
     public void accept(final Path path) {
         final File file = path.toFile();
-        FileItem item = new FileItem();
+        final FileItem item = new FileItem();
         item.setName(file.getName());
         item.setPath(StringUtils.substringAfter(file.getPath(), root.toString()));
         item.setLength(file.length());

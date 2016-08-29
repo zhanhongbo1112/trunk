@@ -30,9 +30,29 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface DataDictRepository extends JpaRepository<DataDict, Long>, JpaSpecificationExecutor<DataDict> {
+    /**
+     * Finds by name, order by text.
+     *
+     * @param name the name
+     * @return list of DataDict
+     */
     List<DataDict> findByNameOrderByText(String name);
 
+    /**
+     * Finds by name and value.
+     *
+     * @param name  the name
+     * @param value the value
+     * @return the DataDict
+     */
     DataDict findByNameAndValue(String name, String value);
 
+    /**
+     * Finds by wildcard name, ignore case and order by name
+     *
+     * @param name     the name
+     * @param pageable the page information
+     * @return paged of DataDict
+     */
     Page<DataDict> findByNameLikeIgnoreCaseOrderByName(String name, Pageable pageable);
 }

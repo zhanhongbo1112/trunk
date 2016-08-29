@@ -11,7 +11,10 @@ import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 
 /**
- * Created by Administrator on 2016-07-09.
+ * The configuration class for the custom thymeleaf templates.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 @Configuration
 @EnableConfigurationProperties(ThymeleafProperties.class)
@@ -20,12 +23,22 @@ public class YQBootsThymeleafAutoConfiguration {
     @Autowired
     private ThymeleafProperties properties;
 
+    /**
+     * Defines the custom Dialect for the framework.
+     *
+     * @return the custom Thymeleaf Dialect
+     */
     @Bean
     @ConditionalOnMissingBean
     public YQBootsDialect yqBootsDialect() {
         return new YQBootsDialect();
     }
 
+    /**
+     * The extra TemplateResolver for resource loading.
+     *
+     * @return SpringResourceTemplateResolver
+     */
     @Bean
     public SpringResourceTemplateResolver springResourceTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();

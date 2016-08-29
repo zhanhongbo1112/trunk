@@ -23,14 +23,26 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016-05-18.
+ * The ConfigurationProperties for Data Dictionary related functions.
+ *
+ * @author Eric H B Zhan
+ * @since 1.0.0
  */
 @ConfigurationProperties(prefix = "yqboots.project.fss")
 public class FssProperties {
+    /**
+     * The root path of file storage. All files will be under this folder.
+     */
     private Path root;
 
+    /**
+     * The directories which are exposed to the web pages to maintain the files in them.
+     */
     private List<Path> directories;
 
+    /**
+     * Filters the files by file types.
+     */
     private String[] fileTypes = new String[]{};
 
     public Path getRoot() {

@@ -15,6 +15,8 @@
  */
 package com.yqboots.project.dict.core;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
@@ -24,7 +26,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.*;
 
 /**
- * The Domain class.
+ * The DataDict domain class.
  *
  * @author Eric H B Zhan
  * @since 1.0.0
@@ -39,17 +41,24 @@ import javax.xml.bind.annotation.*;
 public class DataDict extends AbstractPersistable<Long> {
     @Column(length = 32, nullable = false)
     @XmlElement(required = true)
+    @NotEmpty
+    @Length(max = 32)
     private String name;
 
     @Column(length = 64, nullable = false)
     @XmlElement(required = true)
+    @NotEmpty
+    @Length(max = 64)
     private String text;
 
     @Column(length = 32, nullable = false)
     @XmlElement(required = true)
+    @NotEmpty
+    @Length(max = 32)
     private String value;
 
     @Column(length = 255)
+    @Length(max = 255)
     private String description;
 
     /**

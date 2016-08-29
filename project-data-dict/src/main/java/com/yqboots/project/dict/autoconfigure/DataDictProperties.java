@@ -27,12 +27,24 @@ import java.nio.file.Path;
  */
 @ConfigurationProperties(prefix = "yqboots.project.dict")
 public class DataDictProperties {
+    /**
+     * The location which places the exported file.
+     */
     private Path exportFileLocation;
 
+    /**
+     * The prefix for the name of the exported file.
+     */
     private String exportFileNamePrefix;
 
+    /**
+     * The flag checks whether need import MenuItems after application startup.
+     */
     private boolean importEnabled;
 
+    /**
+     * The location of the importing file after application startup.
+     */
     private String importFileLocation;
 
     public Path getExportFileLocation() {
