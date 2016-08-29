@@ -2,7 +2,6 @@ package com.yqboots.project.fss.core.convert;
 
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,7 +9,6 @@ import java.nio.file.Paths;
 /**
  * Created by Administrator on 2016-08-15.
  */
-@Component
 @ConfigurationPropertiesBinding
 public class StringToPathConverter implements Converter<String, Path> {
     /**

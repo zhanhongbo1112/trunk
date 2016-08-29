@@ -19,17 +19,20 @@ package com.yqboots.project.fss.autoconfigure;
 
 import com.yqboots.project.fss.core.FileItemManager;
 import com.yqboots.project.fss.core.FileItemManagerImpl;
+import com.yqboots.project.fss.core.convert.StringToPathConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * Created by Administrator on 2016-05-18.
  */
 @Configuration
 @EnableConfigurationProperties({FssProperties.class})
+@Import({StringToPathConverter.class})
 public class FssAutoConfiguration {
     @Autowired
     private FssProperties properties;
