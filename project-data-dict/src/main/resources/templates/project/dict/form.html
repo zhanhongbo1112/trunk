@@ -12,6 +12,7 @@
 </div>
 <div layout:fragment="content" class="content content-sm height-600">
   <div class="container">
+    <yq:alert level="danger" />
     <form class="sky-form" action="#" th:action="@{/project/dict/}" th:object="${model}" method="post">
       <input type="hidden" th:field="*{id}"/>
       <header th:text="#{T0018}">Data Dict Form</header>

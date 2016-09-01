@@ -16,20 +16,29 @@
 package com.yqboots.project.dict.web.controller;
 
 import com.yqboots.project.dict.core.DataDict;
-import com.yqboots.project.dict.core.repository.DataDictRepository;
+import com.yqboots.project.dict.core.DataDictExistsException;
+import com.yqboots.project.dict.core.DataDictManager;
+import com.yqboots.project.dict.web.form.FileUploadForm;
+import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * The main Controller for DataDict.
@@ -46,20 +55,23 @@ public class DataDictController {
     private static final String VIEW_FORM = "project/dict/form";
 
     @Autowired
-    private DataDictRepository dataDictRepository;
+    @Qualifier("dataDictManager")
+    private DataDictManager dataDictManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
         return new SearchForm<>();
     }
 
+    @ModelAttribute("fileUploadForm")
+    protected FileUploadForm fileUploadForm() {
+        return new FileUploadForm();
+    }
+
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable, final ModelMap model) {
-        String searchStr = StringUtils.defaultIfEmpty(searchForm.getCriterion(), StringUtils.EMPTY);
-        searchStr = StringUtils.trim(searchStr);
-        Page<DataDict> pagedData = dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
-        model.addAttribute(WebKeys.PAGE, pagedData);
+        model.addAttribute(WebKeys.PAGE, this.dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
@@ -71,7 +83,7 @@ public class DataDictController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, this.dataDictRepository.findOne(id));
+        model.addAttribute(WebKeys.MODEL, this.dataDictManager.getDataDict(id));
         return VIEW_FORM;
     }
 
@@ -82,7 +94,13 @@ public class DataDictController {
             return VIEW_FORM;
         }
 
-        this.dataDictRepository.save(dict);
+        try {
+            this.dataDictManager.update(dict);
+        } catch (DataDictExistsException e) {
+            model.addAttribute("messages", new String[]{"Duplicated, please input another one."});
+            return VIEW_FORM;
+        }
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;
@@ -90,9 +108,30 @@ public class DataDictController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
-        this.dataDictRepository.delete(id);
+        this.dataDictManager.delete(id);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
+    }
+
+    @RequestMapping(value = "/imports", method = RequestMethod.POST)
+    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final BindingResult bindingResult) throws IOException {
+        if (form.getFile().isEmpty()) {
+            bindingResult.addError(new FieldError("fileUploadForm", "file", "should not be empty"));
+            return VIEW_HOME;
+        }
+
+        try (InputStream inputStream = form.getFile().getInputStream()) {
+            dataDictManager.imports(inputStream);
+        }
+
+        return REDIRECT_VIEW_PATH;
+    }
+
+    @RequestMapping(value = "/exports", method = {RequestMethod.GET, RequestMethod.POST})
+    public HttpEntity<byte[]> exports() throws IOException {
+        Path path = dataDictManager.exports();
+
+        return FssWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

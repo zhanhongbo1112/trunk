@@ -15,6 +15,10 @@
  */
 package com.yqboots.project.dict.core;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -27,6 +31,23 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface DataDictManager {
+    /**
+     * Gets the Data Dictionary by its identity.
+     *
+     * @param id the primary key
+     * @return DataDict
+     */
+    DataDict getDataDict(Long id);
+
+    /**
+     * Searches by wildcard name.
+     *
+     * @param wildcardName wildcard name
+     * @param pageable     pageable
+     * @return pages of DataDict
+     */
+    Page<DataDict> getDataDicts(String wildcardName, Pageable pageable);
+
     /**
      * Gets the Data Dictionaries by name.
      *
@@ -53,6 +74,21 @@ public interface DataDictManager {
      * @return the displayed text
      */
     String getText(String name, String value, boolean valueIncluded);
+
+    /**
+     * Updates.
+     *
+     * @param dict the DataDict
+     * @throws DataDictExistsException if the dict exists
+     */
+    void update(DataDict dict) throws DataDictExistsException;
+
+    /**
+     * Deletes.
+     *
+     * @param id the primary key
+     */
+    void delete(Long id);
 
     /**
      * Imports an XML-presented file, which contains menu items.

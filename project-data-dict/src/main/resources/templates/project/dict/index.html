@@ -103,16 +103,18 @@
         </div>
         <div id="import" class="tab-pane fade in">
           <form class="sky-form" action="#" th:action="@{/project/dict/imports}" method="post"
-                enctype="multipart/form-data">
+                enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
               <section>
                 <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
                 <label class="input input-file">
                   <div class="button">
-                    <input name="file" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
+                    <input th:field="*{file}" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
                     <span th:text="#{T0039}">Browse</span>
                   </div><input type="text" readonly="readonly"/>
                 </label>
+
+                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
               </section>
             </fieldset>
             <footer>

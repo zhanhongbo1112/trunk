@@ -22,6 +22,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -61,6 +63,31 @@ public class DataDictManagerImpl implements DataDictManager {
     public DataDictManagerImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
         this.dataDictRepository = dataDictRepository;
         this.properties = properties;
+    }
+
+    /**
+     * Gets the Data Dictionary by its identity.
+     *
+     * @param id the primary key
+     * @return DataDict
+     */
+    @Override
+    public DataDict getDataDict(final Long id) {
+        return dataDictRepository.findOne(id);
+    }
+
+    /**
+     * Searches by wildcard name.
+     *
+     * @param wildcardName wildcard name
+     * @param pageable     pageable
+     * @return pages of DataDict
+     */
+    @Override
+    public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
+        String searchStr = StringUtils.defaultIfEmpty(wildcardName, StringUtils.EMPTY);
+        searchStr = StringUtils.trim(searchStr);
+        return dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
     }
 
     /**
@@ -110,6 +137,41 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         return valueIncluded ? StringUtils.join(new String[]{item.getValue(), item.getText()}, " - ") : item.getText();
+    }
+
+    /**
+     * Updates.
+     *
+     * @param dict the DataDict
+     * @throws DataDictExistsException if the dict exists
+     */
+    @Override
+    @Transactional
+    public void update(final DataDict dict) throws DataDictExistsException {
+        if (!dict.isNew()) {
+            this.dataDictRepository.save(dict);
+            return;
+        }
+
+        DataDict existed = this.dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
+        if (existed != null) {
+            throw new DataDictExistsException("The data has already existed");
+        }
+
+        this.dataDictRepository.save(dict);
+    }
+
+    /**
+     * Deletes.
+     *
+     * @param id the primary key
+     */
+    @Override
+    @Transactional
+    public void delete(final Long id) {
+        if (dataDictRepository.exists(id)) {
+            this.dataDictRepository.delete(id);
+        }
     }
 
     /**
