@@ -19,6 +19,8 @@ package com.yqboots.project.thymeleaf.processor.element;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
 import org.thymeleaf.context.IWebContext;
@@ -93,7 +95,10 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
         // Parse the attribute value as a Thymeleaf Standard Expression
         final String pageAttrValue = element.getAttributeValue(ATTR_PAGE);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
-        final Page<?> page = (Page<?>) expression.execute(configuration, arguments);
+        Page<?> page = (Page<?>) expression.execute(configuration, arguments);
+        if (page == null) {
+            page = new PageImpl<>(new ArrayList<>(), new PageRequest(0, 10), 0);
+        }
 
         final Element container = new Element("ul");
         container.setAttribute("class", "pagination");

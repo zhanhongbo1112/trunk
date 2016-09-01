@@ -31,7 +31,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0021}">Text</label>
             <label class="input">
-              <input type="text" th:field="*{text}" maxlength="64" th:errorclass="state-error"/>
+              <input type="text" th:field="*{text}" maxlength="64"/>
             </label>
 
             <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
@@ -39,7 +39,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0022}">Value</label>
             <label class="input">
-              <input type="text" th:field="*{value}" maxlength="32" th:errorclass="state-error"/>
+              <input type="text" th:field="*{value}" maxlength="32"/>
               <i></i>
             </label>
 
@@ -50,7 +50,7 @@
           <section class="col col-12">
             <label class="label" th:text="#{T0023}">Description</label>
             <label class="textarea">
-              <textarea th:field="*{description}" maxlength="255" rows="5" cols="80" th:errorclass="state-error"/>
+              <textarea th:field="*{description}" maxlength="255" rows="5" cols="80"></textarea>
             </label>
 
             <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>

@@ -18,7 +18,10 @@
 package com.yqboots.project.thymeleaf.processor.attr;
 
 import com.yqboots.project.thymeleaf.i18n.MessageKeys;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
 import org.thymeleaf.dom.Element;
@@ -27,6 +30,8 @@ import org.thymeleaf.standard.expression.IStandardExpression;
 import org.thymeleaf.standard.expression.IStandardExpressionParser;
 import org.thymeleaf.standard.expression.StandardExpressions;
 import org.thymeleaf.standard.processor.attr.StandardTextAttrProcessor;
+
+import java.util.ArrayList;
 
 /**
  * The attribute processor which processes the summary of paged data.
@@ -55,9 +60,17 @@ public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProce
         // Parse the attribute value as a Thymeleaf Standard Expression
         final String pageAttrValue = element.getAttributeValue(attributeName);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
-        final Page<?> page = (Page<?>) expression.execute(configuration, arguments);
+        Page<?> page = (Page<?>) expression.execute(configuration, arguments);
+        if (page == null) {
+            page = new PageImpl<>(new ArrayList<>(), new PageRequest(0, 10), 0);
+        }
 
-        return getMessage(arguments, MessageKeys.PAGE_SUMMARY, new Object[]{page.getSize(), page.getNumber() + 1,
+        // for the first page, fixed "1 of 0 pages" error
+        int pageNumber = page.getNumber() + 1;
+        if (page.getTotalElements() == 0) {
+            pageNumber = page.getNumber();
+        }
+        return getMessage(arguments, MessageKeys.PAGE_SUMMARY, new Object[]{page.getSize(), pageNumber,
                 page.getTotalPages(), page.getTotalElements()});
     }
 }

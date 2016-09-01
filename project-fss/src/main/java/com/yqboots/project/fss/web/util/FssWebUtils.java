@@ -24,7 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Utility methods for web operations..
+ * Utility methods for web operations.
  *
  * @author Eric H B Zhan
  * @since 1.0.0

@@ -1,5 +1,6 @@
 package com.yqboots.project.thymeleaf.processor.element;
 
+import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import com.yqboots.project.thymeleaf.processor.support.AlertLevel;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: describe the class.
- * <p>
+ * The alert message, which contains a hidden button, title and messages.
+ * <p/>
+ * <p/>
  * <div class="alert alert-warning fade in" th:if="${not #arrays.isEmpty(messages)}">
  * <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
  * <h4><i class="glyphicon glyphicon-warning-sign"></i>You got an error!</h4>
@@ -60,7 +62,7 @@ public class AlertElementProcessor extends AbstractMarkupSubstitutionElementProc
         VariablesMap<String, Object> variables = arguments.getContext().getVariables();
         Object _messages = variables.get(attrAttributeValue);
         // messages should be String or String[]
-        if (!variables.containsKey(attrAttributeValue) || (!(_messages instanceof String) && !(_messages instanceof String[]))) {
+        if (_messages == null || (!(_messages instanceof String) && !(_messages instanceof String[]))) {
             return nodes;
         }
 
@@ -75,48 +77,76 @@ public class AlertElementProcessor extends AbstractMarkupSubstitutionElementProc
             return nodes;
         }
 
-        nodes.add(build(messages, levelAttrValue));
+        nodes.add(build(arguments, messages, levelAttrValue));
 
         return nodes;
     }
 
-    private static Node build(final String[] messages, final String level) {
+    /**
+     * Builds the alert node.
+     *
+     * @param arguments the arguments
+     * @param messages the messages displayed
+     * @param level    the alert level
+     * @return the alert node
+     */
+    private Node build(final Arguments arguments, final String[] messages, final String level) {
         final Element container = new Element("div");
         container.setAttribute("class", AlertLevel.getStyleClass(level) + " fade in");
 
         container.addChild(buildHiddenButton());
-        container.addChild(buildTitle());
-        container.addChild(buildMessages(messages));
+        container.addChild(buildTitle(arguments));
+        container.addChild(buildMessages(arguments, messages));
 
         return container;
     }
 
-    private static Node buildMessages(final String[] messages) {
+    /**
+     * Builds message nodes.
+     *
+     * @param arguments the arguments
+     * @param messages the messages displayed
+     * @return the message nodes
+     */
+    private Node buildMessages(final Arguments arguments, final String[] messages) {
         final Element result = new Element("ul");
         result.setAttribute("class", "list-unstyled");
 
         Element li;
         for (String message : messages) {
             li = new Element("li");
-            li.addChild(new Text(message));
+            // the client should control the nls message?
+            li.addChild(new Text(getMessage(arguments, message, new Object[]{})));
             result.addChild(li);
         }
 
         return result;
     }
 
-    private static Node buildTitle() {
+    /**
+     * Builds the title node.
+     *
+     * @param arguments the arguments
+     * @return the title node
+     */
+    private Node buildTitle(final Arguments arguments) {
         final Element result = new Element("h4");
 
         final Element icon = new Element("i");
         icon.setAttribute("class", "glyphicon glyphicon-warning-sign");
 
         result.addChild(icon);
-        result.addChild(new Text("You got messages!"));
+
+        result.addChild(new Text(getMessage(arguments, MessageKeys.ALERT_MESSAGE_TITLE, new Object[]{})));
 
         return result;
     }
 
+    /**
+     * Builds the hidden button node.
+     *
+     * @return the hidden button node
+     */
     private static Node buildHiddenButton() {
         final Element result = new Element("button");
         result.setAttribute("type", "button");

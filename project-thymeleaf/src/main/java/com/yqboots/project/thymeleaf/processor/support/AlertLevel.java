@@ -1,7 +1,7 @@
 package com.yqboots.project.thymeleaf.processor.support;
 
 /**
- * TODO: describe the class.
+ * Alert level.
  *
  * @author Eric H B Zhan
  * @since 1.0.0
@@ -15,6 +15,10 @@ public enum AlertLevel {
         this.level = level;
     }
 
+    /**
+     * @param level the alert level
+     * @return the correspondence style class
+     */
     public static String getStyleClass(String level) {
         return "alert alert-" + level;
     }

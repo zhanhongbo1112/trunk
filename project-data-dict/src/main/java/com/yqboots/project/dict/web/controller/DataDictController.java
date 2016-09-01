@@ -31,8 +31,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -71,7 +69,7 @@ public class DataDictController {
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable, final ModelMap model) {
-        model.addAttribute(WebKeys.PAGE, this.dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
+        model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
@@ -83,7 +81,7 @@ public class DataDictController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, this.dataDictManager.getDataDict(id));
+        model.addAttribute(WebKeys.MODEL, dataDictManager.getDataDict(id));
         return VIEW_FORM;
     }
 
@@ -95,9 +93,9 @@ public class DataDictController {
         }
 
         try {
-            this.dataDictManager.update(dict);
+            dataDictManager.update(dict);
         } catch (DataDictExistsException e) {
-            model.addAttribute("messages", new String[]{"Duplicated, please input another one."});
+            model.addAttribute(WebKeys.MESSAGES, new String[]{"I0001"});
             return VIEW_FORM;
         }
 
@@ -108,16 +106,16 @@ public class DataDictController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
-        this.dataDictManager.delete(id);
+        dataDictManager.delete(id);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
     }
 
     @RequestMapping(value = "/imports", method = RequestMethod.POST)
-    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final BindingResult bindingResult) throws IOException {
+    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final ModelMap model) throws IOException {
         if (form.getFile().isEmpty()) {
-            bindingResult.addError(new FieldError("fileUploadForm", "file", "should not be empty"));
+            model.addAttribute(WebKeys.MESSAGES, "I0002");
             return VIEW_HOME;
         }
 

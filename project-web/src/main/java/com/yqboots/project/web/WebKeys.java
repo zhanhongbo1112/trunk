@@ -35,6 +35,11 @@ public class WebKeys {
     public static final String MODEL = "model";
 
     /**
+     * Used as key for messages displayed on screen.
+     */
+    public static final String MESSAGES = "messages";
+
+    /**
      * Used in the list of paged data.
      */
     public static final String PAGE = "page";

@@ -59,7 +59,7 @@ public class FileItemController {
     private static final String FILE_UPLOAD_FORM = "fileUploadForm";
 
     @Autowired
-    private FileItemManager fileItemRepository;
+    private FileItemManager fileItemManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -73,7 +73,7 @@ public class FileItemController {
 
     @ModelAttribute("directories")
     protected List<String> directories() {
-        return fileItemRepository.getAvailableDirectories();
+        return fileItemManager.getAvailableDirectories();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
@@ -84,7 +84,7 @@ public class FileItemController {
             return VIEW_HOME;
         }
 
-        Page<FileItem> pagedData = fileItemRepository.findByPath(searchForm.getCriterion(), pageable);
+        Page<FileItem> pagedData = fileItemManager.findByPath(searchForm.getCriterion(), pageable);
         model.addAttribute(WebKeys.PAGE, pagedData);
         return VIEW_HOME;
     }
@@ -101,7 +101,7 @@ public class FileItemController {
             return VIEW_HOME;
         }
 
-        Path destination = fileItemRepository.getFullPath(form.getPath());
+        Path destination = fileItemManager.getFullPath(form.getPath());
         destination = Paths.get(destination + File.separator + file.getOriginalFilename());
         if (Files.exists(destination) && form.isOverrideExisting()) {
             file.transferTo(destination.toFile());
@@ -117,7 +117,7 @@ public class FileItemController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam(WebKeys.ID) final String path, final ModelMap model) throws IOException {
-        this.fileItemRepository.delete(path);
+        this.fileItemManager.delete(path);
         model.clear();
 
         return REDIRECT_VIEW_PATH;

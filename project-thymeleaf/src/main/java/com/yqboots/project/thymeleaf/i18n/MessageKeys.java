@@ -28,4 +28,6 @@ public final class MessageKeys {
     public static final String MENU_GROUP = "menu.group.";
     public static final String MENU_ITEM_GROUP = "menu.item.group.";
     public static final String MENU = "menu.";
+
+    public static final String ALERT_MESSAGE_TITLE = "alert.message.title";
 }
