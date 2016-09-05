@@ -96,9 +96,6 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
         final String pageAttrValue = element.getAttributeValue(ATTR_PAGE);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
         Page<?> page = (Page<?>) expression.execute(configuration, arguments);
-        if (page == null) {
-            page = new PageImpl<>(new ArrayList<>(), new PageRequest(0, 10), 0);
-        }
 
         final Element container = new Element("ul");
         container.setAttribute("class", "pagination");

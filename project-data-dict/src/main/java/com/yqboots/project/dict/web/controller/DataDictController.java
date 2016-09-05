@@ -113,9 +113,11 @@ public class DataDictController {
     }
 
     @RequestMapping(value = "/imports", method = RequestMethod.POST)
-    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final ModelMap model) throws IOException {
+    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final ModelMap model,
+                          @PageableDefault final Pageable pageable) throws IOException {
         if (form.getFile().isEmpty()) {
             model.addAttribute(WebKeys.MESSAGES, "I0002");
+            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(null, pageable));
             return VIEW_HOME;
         }
 

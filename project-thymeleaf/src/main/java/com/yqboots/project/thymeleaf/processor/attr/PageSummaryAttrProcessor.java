@@ -61,9 +61,6 @@ public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProce
         final String pageAttrValue = element.getAttributeValue(attributeName);
         final IStandardExpression expression = parser.parseExpression(configuration, arguments, pageAttrValue);
         Page<?> page = (Page<?>) expression.execute(configuration, arguments);
-        if (page == null) {
-            page = new PageImpl<>(new ArrayList<>(), new PageRequest(0, 10), 0);
-        }
 
         // for the first page, fixed "1 of 0 pages" error
         int pageNumber = page.getNumber() + 1;
