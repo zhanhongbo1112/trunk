@@ -22,6 +22,7 @@ import com.yqboots.project.dict.web.form.FileUploadForm;
 import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
@@ -61,14 +62,15 @@ public class DataDictController {
         return new SearchForm<>();
     }
 
-    @ModelAttribute("fileUploadForm")
+    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
     protected FileUploadForm fileUploadForm() {
         return new FileUploadForm();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
-                       @PageableDefault final Pageable pageable, final ModelMap model) {
+                       @PageableDefault final Pageable pageable,
+                       final ModelMap model) {
         model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
@@ -85,9 +87,10 @@ public class DataDictController {
         return VIEW_FORM;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = WebKeys.MAPPING_ROOT, method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final DataDict dict,
-                         final BindingResult bindingResult, final ModelMap model) {
+                         final BindingResult bindingResult,
+                         final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return VIEW_FORM;
         }
@@ -112,23 +115,24 @@ public class DataDictController {
         return REDIRECT_VIEW_PATH;
     }
 
-    @RequestMapping(value = "/imports", method = RequestMethod.POST)
-    public String imports(@ModelAttribute("fileUploadForm") FileUploadForm form, final ModelMap model,
-                          @PageableDefault final Pageable pageable) throws IOException {
-        if (form.getFile().isEmpty()) {
+    @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
+    public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
+                          @PageableDefault final Pageable pageable,
+                          final ModelMap model) throws IOException {
+        if (fileUploadForm.getFile().isEmpty()) {
             model.addAttribute(WebKeys.MESSAGES, "I0002");
-            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(null, pageable));
+            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
-        try (InputStream inputStream = form.getFile().getInputStream()) {
+        try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
             dataDictManager.imports(inputStream);
         }
 
         return REDIRECT_VIEW_PATH;
     }
 
-    @RequestMapping(value = "/exports", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
         Path path = dataDictManager.exports();
 

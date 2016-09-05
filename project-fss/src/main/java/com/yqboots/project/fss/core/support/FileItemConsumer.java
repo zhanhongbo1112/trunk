@@ -34,10 +34,22 @@ import java.util.function.Consumer;
  * @since 1.0.0
  */
 public final class FileItemConsumer implements Consumer<Path> {
+    /**
+     * the root path.
+     */
     private final Path root;
 
+    /**
+     * the list to append the consumed item.
+     */
     private List<FileItem> items = new ArrayList<>();
 
+    /**
+     * Constructs the FileItemConsumer
+     *
+     * @param root  the root path
+     * @param items the list to append the consumed item
+     */
     public FileItemConsumer(final Path root, final List<FileItem> items) {
         this.root = root;
         this.items = items;

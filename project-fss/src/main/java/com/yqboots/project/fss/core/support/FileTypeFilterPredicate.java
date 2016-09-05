@@ -28,8 +28,16 @@ import java.util.function.Predicate;
  * @since 1.0.0
  */
 public class FileTypeFilterPredicate implements Predicate<Path> {
+    /**
+     * the accepted file types.
+     */
     private String[] acceptedFileTypes = new String[]{};
 
+    /**
+     * Constructs the FileTypeFilterPredicate.
+     *
+     * @param acceptedFileTypes the accepted file types
+     */
     public FileTypeFilterPredicate(final String[] acceptedFileTypes) {
         this.acceptedFileTypes = acceptedFileTypes;
     }

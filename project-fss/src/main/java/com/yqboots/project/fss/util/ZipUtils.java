@@ -36,6 +36,13 @@ import java.util.zip.ZipOutputStream;
 public class ZipUtils {
     private static final int BUFFER = 2048;
 
+    /**
+     * Compresses the specified directory to a zip file
+     *
+     * @param dir the directory to compress
+     * @return the compressed file
+     * @throws IOException
+     */
     public static Path compress(Path dir) throws IOException {
         Assert.isTrue(Files.exists(dir), "The directory does not exist: " + dir.toAbsolutePath());
         Assert.isTrue(Files.isDirectory(dir), "Should be a directory: " + dir.toAbsolutePath());

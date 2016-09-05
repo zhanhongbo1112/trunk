@@ -30,6 +30,14 @@ import java.nio.file.Path;
  * @since 1.0.0
  */
 public class FssWebUtils {
+    /**
+     * Downloads the specified file with the specified media type.
+     *
+     * @param file      the file to operate
+     * @param mediaType the media type of the file
+     * @return bytes of the file
+     * @throws IOException
+     */
     public static HttpEntity<byte[]> downloadFile(Path file, MediaType mediaType) throws IOException {
         HttpHeaders header = new HttpHeaders();
         header.setContentType(mediaType);

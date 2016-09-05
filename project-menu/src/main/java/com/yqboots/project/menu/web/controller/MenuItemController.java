@@ -17,20 +17,27 @@
  */
 package com.yqboots.project.menu.web.controller;
 
+import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.menu.core.MenuItem;
-import com.yqboots.project.menu.core.repository.MenuItemRepository;
+import com.yqboots.project.menu.core.MenuItemManager;
+import com.yqboots.project.menu.web.form.FileUploadForm;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * The controller for MenuItem.
@@ -47,21 +54,23 @@ public class MenuItemController {
     private static final String VIEW_FORM = "project/menu/form";
 
     @Autowired
-    private MenuItemRepository menuItemRepository;
+    private MenuItemManager menuItemManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
         return new SearchForm<>();
     }
 
+    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
+    protected FileUploadForm fileUploadForm() {
+        return new FileUploadForm();
+    }
+
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
                        final ModelMap model) {
-        String searchStr = StringUtils.defaultIfEmpty(searchForm.getCriterion(), StringUtils.EMPTY);
-        searchStr = StringUtils.trim(searchStr);
-        model.addAttribute(WebKeys.PAGE, this.menuItemRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%",
-                pageable));
+        model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
@@ -73,11 +82,11 @@ public class MenuItemController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, this.menuItemRepository.findOne(id));
+        model.addAttribute(WebKeys.MODEL, menuItemManager.getMenuItem(id));
         return VIEW_FORM;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = WebKeys.MAPPING_ROOT, method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final MenuItem menuItem,
                          final BindingResult bindingResult,
                          final ModelMap model) {
@@ -85,7 +94,7 @@ public class MenuItemController {
             return VIEW_FORM;
         }
 
-        this.menuItemRepository.save(menuItem);
+        menuItemManager.update(menuItem);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
@@ -93,9 +102,33 @@ public class MenuItemController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
-        this.menuItemRepository.delete(id);
+        menuItemManager.delete(id);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
+    }
+
+    @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
+    public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
+                          @PageableDefault final Pageable pageable,
+                          final ModelMap model) throws IOException {
+        if (fileUploadForm.getFile().isEmpty()) {
+            model.addAttribute(WebKeys.MESSAGES, "I0002");
+            model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(StringUtils.EMPTY, pageable));
+            return VIEW_HOME;
+        }
+
+        try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
+            menuItemManager.imports(inputStream);
+        }
+
+        return REDIRECT_VIEW_PATH;
+    }
+
+    @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
+    public HttpEntity<byte[]> exports() throws IOException {
+        Path path = menuItemManager.exports();
+
+        return FssWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

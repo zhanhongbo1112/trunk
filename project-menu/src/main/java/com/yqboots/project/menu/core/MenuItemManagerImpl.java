@@ -20,8 +20,12 @@ package com.yqboots.project.menu.core;
 import com.yqboots.project.fss.core.support.FileType;
 import com.yqboots.project.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.project.menu.core.repository.MenuItemRepository;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -57,6 +61,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
         jaxb2Marshaller.setClassesToBeBound(MenuItems.class, MenuItem.class);
     }
 
+    /**
+     * Constructs the MenuItemManager.
+     *
+     * @param menuItemRepository MenuItemRepository
+     * @param properties         MenuItemProperties
+     */
     public MenuItemManagerImpl(final MenuItemRepository menuItemRepository, final MenuItemProperties properties) {
         this.menuItemRepository = menuItemRepository;
         this.properties = properties;
@@ -68,9 +78,32 @@ public class MenuItemManagerImpl implements MenuItemManager {
      * @return list of MenuItem
      */
     @Override
-    // TODO: @PostFilter for security
     public List<MenuItem> getMenuItems() {
         return menuItemRepository.findAll();
+    }
+
+    /**
+     * Searches by wildcard name.
+     *
+     * @param wildcardName wildcard name
+     * @param pageable     pageable
+     * @return pages of MenuItem
+     */
+    @Override
+    public Page<MenuItem> getMenuItems(final String wildcardName, final Pageable pageable) {
+        String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
+        return menuItemRepository.findByNameLikeIgnoreCaseOrderByName(searchStr, pageable);
+    }
+
+    /**
+     * Gets MenuItem by its id
+     *
+     * @param id the id of the MenuItem
+     * @return the MenuItem
+     */
+    @Override
+    public MenuItem getMenuItem(final Long id) {
+        return menuItemRepository.findOne(id);
     }
 
     /**
@@ -82,6 +115,37 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @Override
     public MenuItem getMenuItem(final String name) {
         return menuItemRepository.findByName(name);
+    }
+
+    /**
+     * Updates the MenuItem.
+     *
+     * @param entity the entity to save
+     */
+    @Override
+    public void update(final MenuItem entity) {
+        if (!entity.isNew()) {
+            menuItemRepository.save(entity);
+            return;
+        }
+
+        Assert.hasText(entity.getName(), "name is required");
+        MenuItem existed = menuItemRepository.findByName(entity.getName());
+        if (existed != null) {
+            throw new MenuItemExistsException("The MenuItem has already existed");
+        }
+
+        menuItemRepository.save(entity);
+    }
+
+    /**
+     * Deletes.
+     *
+     * @param id the primary key
+     */
+    @Override
+    public void delete(final Long id) {
+        menuItemRepository.delete(id);
     }
 
     /**

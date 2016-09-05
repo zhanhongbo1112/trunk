@@ -17,6 +17,9 @@
  */
 package com.yqboots.project.menu.core;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -37,12 +40,43 @@ public interface MenuItemManager {
     List<MenuItem> getMenuItems();
 
     /**
-     * Gets MenuItem by its name
+     * Searches by wildcard name.
+     *
+     * @param wildcardName wildcard name
+     * @param pageable     pageable
+     * @return pages of MenuItem
+     */
+    Page<MenuItem> getMenuItems(String wildcardName, Pageable pageable);
+
+    /**
+     * Gets MenuItem by its id.
+     *
+     * @param id the id of the MenuItem
+     * @return the MenuItem
+     */
+    MenuItem getMenuItem(Long id);
+
+    /**
+     * Gets MenuItem by its name.
      *
      * @param name the name of the MenuItem
      * @return the MenuItem
      */
     MenuItem getMenuItem(String name);
+
+    /**
+     * Updates.
+     *
+     * @param entity the entity to save
+     */
+    void update(MenuItem entity);
+
+    /**
+     * Deletes.
+     *
+     * @param id the primary key
+     */
+    void delete(Long id);
 
     /**
      * Imports an XML-presented file, which contains menu items.

@@ -25,9 +25,14 @@ package com.yqboots.project.web;
  */
 public class WebKeys {
     /**
-     * Used in the form for searching
+     * Used as the key for searching form
      */
     public static final String SEARCH_FORM = "searchForm";
+
+    /**
+     * Used as the key for file upload form.
+     */
+    public static final String FILE_UPLOAD_FORM = "fileUploadForm";
 
     /**
      * Used in the form for domain creation and update.
@@ -63,4 +68,24 @@ public class WebKeys {
      * Used in the parameter for deleting existing domain.
      */
     public static final String ACTION_DELETE = "action=delete";
+
+    /**
+     * Used for the value of request mapping, for the root.
+     */
+    public static final String MAPPING_ROOT = "/";
+
+    /**
+     * Used for the value of request mapping, for uploading.
+     */
+    public static final String MAPPING_UPLOAD = "/upload";
+
+    /**
+     * Used for the value of request mapping, for exporting.
+     */
+    public static final String MAPPING_EXPORTS = "/exports";
+
+    /**
+     * Used for the value of request mapping, for importing.
+     */
+    public static final String MAPPING_IMPORTS = "/imports";
 }

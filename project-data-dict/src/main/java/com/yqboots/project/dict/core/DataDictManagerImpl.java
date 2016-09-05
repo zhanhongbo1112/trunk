@@ -26,6 +26,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -60,6 +61,12 @@ public class DataDictManagerImpl implements DataDictManager {
         jaxb2Marshaller.setClassesToBeBound(DataDicts.class, DataDict.class);
     }
 
+    /**
+     * Constructs the DataDictManager.
+     *
+     * @param dataDictRepository DataDictRepository
+     * @param properties         DataDictProperties
+     */
     public DataDictManagerImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
         this.dataDictRepository = dataDictRepository;
         this.properties = properties;
@@ -85,8 +92,7 @@ public class DataDictManagerImpl implements DataDictManager {
      */
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
-        String searchStr = StringUtils.defaultIfEmpty(wildcardName, StringUtils.EMPTY);
-        searchStr = StringUtils.trim(searchStr);
+        String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
         return dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
     }
 
@@ -142,23 +148,24 @@ public class DataDictManagerImpl implements DataDictManager {
     /**
      * Updates.
      *
-     * @param dict the DataDict
+     * @param entity the DataDict
      * @throws DataDictExistsException if the dict exists
      */
     @Override
     @Transactional
-    public void update(final DataDict dict) throws DataDictExistsException {
-        if (!dict.isNew()) {
-            this.dataDictRepository.save(dict);
+    public void update(final DataDict entity) throws DataDictExistsException {
+        if (!entity.isNew()) {
+            dataDictRepository.save(entity);
             return;
         }
 
-        DataDict existed = this.dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
+        Assert.hasText(entity.getName(), "name is required");
+        DataDict existed = dataDictRepository.findByNameAndValue(entity.getName(), entity.getValue());
         if (existed != null) {
-            throw new DataDictExistsException("The data has already existed");
+            throw new DataDictExistsException("The DataDict has already existed");
         }
 
-        this.dataDictRepository.save(dict);
+        dataDictRepository.save(entity);
     }
 
     /**

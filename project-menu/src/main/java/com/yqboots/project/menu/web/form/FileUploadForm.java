@@ -1,4 +1,4 @@
-package com.yqboots.project.dict.web.form;
+package com.yqboots.project.menu.web.form;
 
 import org.springframework.web.multipart.MultipartFile;
 

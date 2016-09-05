@@ -24,7 +24,6 @@ import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -56,7 +55,7 @@ public class FileItemController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/project/fss";
     private static final String VIEW_HOME = "project/fss/index";
 
-    private static final String FILE_UPLOAD_FORM = "fileUploadForm";
+    private static final String MODEL_DIRECTORIES = "directories";
 
     @Autowired
     private FileItemManager fileItemManager;
@@ -66,44 +65,48 @@ public class FileItemController {
         return new SearchForm<>();
     }
 
-    @ModelAttribute(FILE_UPLOAD_FORM)
+    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
     protected FileUploadForm fileUploadForm() {
         return new FileUploadForm();
     }
 
-    @ModelAttribute("directories")
+    @ModelAttribute(MODEL_DIRECTORIES)
     protected List<String> directories() {
         return fileItemManager.getAvailableDirectories();
     }
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
-                       @PageableDefault final Pageable pageable, final ModelMap model) throws IOException {
+                       @PageableDefault final Pageable pageable,
+                       final ModelMap model) throws IOException {
         if (StringUtils.isBlank(searchForm.getCriterion())) {
             model.addAttribute(WebKeys.PAGE, new PageImpl<FileItem>(new ArrayList<>(), pageable, 0));
             return VIEW_HOME;
         }
 
-        Page<FileItem> pagedData = fileItemManager.findByPath(searchForm.getCriterion(), pageable);
-        model.addAttribute(WebKeys.PAGE, pagedData);
+        model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(@Valid @ModelAttribute(FILE_UPLOAD_FORM) final FileUploadForm form,
-                         final BindingResult bindingResult, final ModelMap model) throws IOException {
+    @RequestMapping(value = WebKeys.MAPPING_UPLOAD, method = RequestMethod.POST)
+    public String upload(@Valid @ModelAttribute(WebKeys.FILE_UPLOAD_FORM) final FileUploadForm fileUploadForm,
+                         @PageableDefault final Pageable pageable,
+                         final BindingResult bindingResult,
+                         final ModelMap model) throws IOException {
         if (bindingResult.hasErrors()) {
             return VIEW_HOME;
         }
 
-        final MultipartFile file = form.getFile();
-        if (StringUtils.isBlank(file.getName())) {
+        final MultipartFile file = fileUploadForm.getFile();
+        if (fileUploadForm.getFile().isEmpty()) {
+            model.addAttribute(WebKeys.MESSAGES, "I0002");
+            model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
-        Path destination = fileItemManager.getFullPath(form.getPath());
+        Path destination = fileItemManager.getFullPath(fileUploadForm.getPath());
         destination = Paths.get(destination + File.separator + file.getOriginalFilename());
-        if (Files.exists(destination) && form.isOverrideExisting()) {
+        if (Files.exists(destination) && fileUploadForm.isOverrideExisting()) {
             file.transferTo(destination.toFile());
         } else {
             Files.createDirectories(destination.getParent());
@@ -117,7 +120,7 @@ public class FileItemController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam(WebKeys.ID) final String path, final ModelMap model) throws IOException {
-        this.fileItemManager.delete(path);
+        fileItemManager.delete(path);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
