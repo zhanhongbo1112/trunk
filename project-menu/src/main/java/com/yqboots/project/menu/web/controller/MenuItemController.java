@@ -21,6 +21,7 @@ import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.MenuItemManager;
 import com.yqboots.project.menu.web.form.FileUploadForm;
+import com.yqboots.project.menu.web.form.FileUploadFormValidator;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +30,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
+import org.springframework.oxm.XmlMappingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -111,16 +113,26 @@ public class MenuItemController {
     @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
     public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
                           @PageableDefault final Pageable pageable,
+                          final BindingResult bindingResult,
                           final ModelMap model) throws IOException {
-        if (fileUploadForm.getFile().isEmpty()) {
-            model.addAttribute(WebKeys.MESSAGES, "I0002");
+        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
+        if (bindingResult.hasErrors()) {
             model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
         try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
             menuItemManager.imports(inputStream);
+        } catch (XmlMappingException e) {
+            bindingResult.rejectValue(WebKeys.FILE, "I0003");
         }
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(StringUtils.EMPTY, pageable));
+            return VIEW_HOME;
+        }
+
+        model.clear();
 
         return REDIRECT_VIEW_PATH;
     }

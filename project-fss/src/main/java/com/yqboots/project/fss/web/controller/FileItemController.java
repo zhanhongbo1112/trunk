@@ -20,6 +20,7 @@ package com.yqboots.project.fss.web.controller;
 import com.yqboots.project.fss.core.FileItem;
 import com.yqboots.project.fss.core.FileItemManager;
 import com.yqboots.project.fss.web.form.FileUploadForm;
+import com.yqboots.project.fss.web.form.FileUploadFormValidator;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
@@ -93,20 +94,18 @@ public class FileItemController {
                          @PageableDefault final Pageable pageable,
                          final BindingResult bindingResult,
                          final ModelMap model) throws IOException {
+        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            return VIEW_HOME;
-        }
-
-        final MultipartFile file = fileUploadForm.getFile();
-        if (fileUploadForm.getFile().isEmpty()) {
-            model.addAttribute(WebKeys.MESSAGES, "I0002");
             model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
-        Path destination = fileItemManager.getFullPath(fileUploadForm.getPath());
-        destination = Paths.get(destination + File.separator + file.getOriginalFilename());
-        if (Files.exists(destination) && fileUploadForm.isOverrideExisting()) {
+        final MultipartFile file = fileUploadForm.getFile();
+        final String path = fileUploadForm.getPath();
+        final boolean overrideExisting = fileUploadForm.isOverrideExisting();
+
+        final Path destination = Paths.get(fileItemManager.getFullPath(path) + File.separator + file.getOriginalFilename());
+        if (Files.exists(destination) && overrideExisting) {
             file.transferTo(destination.toFile());
         } else {
             Files.createDirectories(destination.getParent());

@@ -17,10 +17,8 @@
  */
 package com.yqboots.project.fss.web.form;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -33,13 +31,11 @@ public class FileUploadForm implements Serializable {
     /**
      * The uploaded file.
      */
-    @NotNull
     private MultipartFile file;
 
     /**
      * The target path where the file puts.
      */
-    @NotBlank
     private String path;
 
     /**

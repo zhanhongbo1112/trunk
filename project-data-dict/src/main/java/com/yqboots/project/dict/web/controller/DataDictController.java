@@ -19,6 +19,8 @@ import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.DataDictExistsException;
 import com.yqboots.project.dict.core.DataDictManager;
 import com.yqboots.project.dict.web.form.FileUploadForm;
+import com.yqboots.project.dict.web.form.FileUploadFormValidator;
+import com.yqboots.project.fss.core.support.FileType;
 import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.web.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
@@ -29,10 +31,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
+import org.springframework.oxm.XmlMappingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -118,16 +122,26 @@ public class DataDictController {
     @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
     public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
                           @PageableDefault final Pageable pageable,
+                          final BindingResult bindingResult,
                           final ModelMap model) throws IOException {
-        if (fileUploadForm.getFile().isEmpty()) {
-            model.addAttribute(WebKeys.MESSAGES, "I0002");
+        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
+        if (bindingResult.hasErrors()) {
             model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
         try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
             dataDictManager.imports(inputStream);
+        } catch (XmlMappingException e) {
+            bindingResult.rejectValue(WebKeys.FILE, "I0003");
         }
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(StringUtils.EMPTY, pageable));
+            return VIEW_HOME;
+        }
+
+        model.clear();
 
         return REDIRECT_VIEW_PATH;
     }

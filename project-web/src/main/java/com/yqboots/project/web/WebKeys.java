@@ -50,6 +50,16 @@ public class WebKeys {
     public static final String PAGE = "page";
 
     /**
+     * Used for the multipart file.
+     */
+    public static final String FILE = "file";
+
+    /**
+     * Used for the file path.
+     */
+    public static final String PATH = "path";
+
+    /**
      * Used in the parameters for the id of domain.
      */
     public static final String ID = "id";
