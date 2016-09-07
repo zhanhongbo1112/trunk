@@ -70,7 +70,7 @@ public class FileUploadFormValidator implements Validator {
         }
 
         if (StringUtils.isBlank(form.getPath())) {
-            errors.rejectValue(WebKeys.PATH, "I0003");
+            errors.rejectValue(WebKeys.PATH, "I0004");
         }
     }
 }
