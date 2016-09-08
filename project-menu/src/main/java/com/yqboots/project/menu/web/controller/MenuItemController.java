@@ -22,7 +22,7 @@ import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.MenuItemManager;
 import com.yqboots.project.menu.web.form.FileUploadForm;
 import com.yqboots.project.menu.web.form.FileUploadFormValidator;
-import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.support.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

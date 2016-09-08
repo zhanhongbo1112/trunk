@@ -19,8 +19,6 @@ package com.yqboots.project.thymeleaf.processor.element;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
 import org.thymeleaf.context.IWebContext;

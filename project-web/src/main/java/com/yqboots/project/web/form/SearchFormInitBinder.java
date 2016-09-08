@@ -17,7 +17,7 @@
  */
 package com.yqboots.project.web.form;
 
-import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.support.WebKeys;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.util.WebUtils;

@@ -19,7 +19,6 @@ package com.yqboots.project.thymeleaf.processor.element;
 
 import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.MenuItemManager;
-import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,7 +93,7 @@ public class BreadcrumbsElementProcessor extends AbstractMarkupSubstitutionEleme
     protected Element buildLeftContent(final Arguments arguments, MenuItem menuItem) {
         final Element h1 = new Element("h1");
         h1.setAttribute("class", "pull-left");
-        h1.addChild(new Text(getMessage(arguments, MessageKeys.MENU + menuItem.getName(), new Object[]{})));
+        h1.addChild(new Text(getMessage(arguments, "S0003." + menuItem.getName(), new Object[]{})));
 
         return h1;
     }
@@ -104,20 +103,20 @@ public class BreadcrumbsElementProcessor extends AbstractMarkupSubstitutionEleme
         ul.setAttribute("class", "pull-right breadcrumb");
 
         final Element menuGroup = new Element("li");
-        menuGroup.addChild(new Text(getMessage(arguments, MessageKeys.MENU_GROUP + menuItem.getMenuGroup(),
+        menuGroup.addChild(new Text(getMessage(arguments, "S0001." + menuItem.getMenuGroup(),
                 new Object[]{})));
         ul.addChild(menuGroup);
 
         if (StringUtils.isNotBlank(menuItem.getMenuItemGroup())) {
             final Element menuItemGroup = new Element("li");
-            menuItemGroup.addChild(new Text(getMessage(arguments, MessageKeys.MENU_ITEM_GROUP + menuItem.getMenuItemGroup(),
+            menuItemGroup.addChild(new Text(getMessage(arguments, "S0002." + menuItem.getMenuItemGroup(),
                     new Object[]{})));
             ul.addChild(menuItemGroup);
         }
 
         final Element leafMenuItem = new Element("li");
         leafMenuItem.setAttribute("class", "active");
-        leafMenuItem.addChild(new Text(getMessage(arguments, MessageKeys.MENU + menuItem.getName(), new Object[]{})));
+        leafMenuItem.addChild(new Text(getMessage(arguments, "S0003." + menuItem.getName(), new Object[]{})));
         ul.addChild(leafMenuItem);
 
         return ul;

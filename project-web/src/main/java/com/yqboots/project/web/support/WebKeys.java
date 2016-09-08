@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.project.web;
+package com.yqboots.project.web.support;
 
 /**
  * The common keys used in the controller class, to unify the key usage.

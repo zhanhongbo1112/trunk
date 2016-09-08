@@ -21,7 +21,6 @@ import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.MenuItemManager;
 import com.yqboots.project.menu.core.convert.MenuGroupsConverter;
 import com.yqboots.project.menu.core.convert.MenuItemGroupsConverter;
-import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import org.thymeleaf.Arguments;
@@ -103,7 +102,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
             result.setAttribute("href", "javascript:void(0);");
             result.setAttribute("class", "dropdown-toggle");
             result.setAttribute("data-toggle", "dropdown");
-            result.addChild(new Text(getMessage(arguments, MessageKeys.MENU_GROUP + menuGroup.getKey(), new Object[]{})));
+            result.addChild(new Text(getMessage(arguments, "S0001." + menuGroup.getKey(), new Object[]{})));
 
             container.addChild(result);
             container.addChild(getMenuItemGroup(menuGroup.getValue()));
@@ -153,13 +152,13 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
             final SpringWebContext context = (SpringWebContext) arguments.getContext();
             final String contextPath = context.getServletContext().getContextPath();
 
-            container.addChild(getTitle(getMessage(arguments, MessageKeys.MENU_ITEM_GROUP + entry.getKey(), new Object[]{})));
+            container.addChild(getTitle(getMessage(arguments, "S0002." + entry.getKey(), new Object[]{})));
             for (final MenuItem item : entry.getValue()) {
                 final Element menuItem = new Element("li");
 
                 final Element link = new Element("a");
                 link.setAttribute("href", StringUtils.join(contextPath, item.getUrl(), StringUtils.EMPTY));
-                link.addChild(new Text(getMessage(arguments, MessageKeys.MENU + item.getName(), new Object[]{})));
+                link.addChild(new Text(getMessage(arguments, "S0003." + item.getName(), new Object[]{})));
                 menuItem.addChild(link);
 
                 container.addChild(menuItem);
@@ -205,7 +204,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
             result.setAttribute("href", "javascript:void(0);");
             result.setAttribute("class", "dropdown-toggle");
             result.setAttribute("data-toggle", "dropdown");
-            result.addChild(new Text(getMessage(arguments, MessageKeys.MENU_GROUP + group.getKey(), new Object[]{})));
+            result.addChild(new Text(getMessage(arguments, "S0001." + group.getKey(), new Object[]{})));
 
             container.addChild(result);
             container.addChild(getMenuItems(group));
@@ -224,7 +223,7 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
 
                 final Element link = new Element("a");
                 link.setAttribute("href", StringUtils.join(contextPath, item.getUrl(), StringUtils.EMPTY));
-                link.addChild(new Text(getMessage(arguments, MessageKeys.MENU + item.getName(), new Object[]{})));
+                link.addChild(new Text(getMessage(arguments, "S0003." + item.getName(), new Object[]{})));
                 menuItem.addChild(link);
 
                 result.addChild(menuItem);

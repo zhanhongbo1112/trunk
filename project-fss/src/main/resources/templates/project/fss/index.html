@@ -33,7 +33,7 @@
               <form action="#" th:action="@{/project/fss}" th:object="${searchForm}" method="post">
                 <div class="input-group">
                   <select th:field="*{criterion}" class="form-control">
-                    <option value="">Please Select</option>
+                    <option value="" th:text="#{T0040}">Please Select</option>
                     <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
                   </select>
                   <span class="input-group-btn">
@@ -101,7 +101,7 @@
                 <label class="label" th:text="#{T0035}">Destination</label>
                 <label class="select">
                   <select th:field="*{path}">
-                    <option value="" selected="selected">Please Select</option>
+                    <option value="" selected="selected" th:text="#{T0040}">Please Select</option>
                     <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
                   </select>
                   <i></i>

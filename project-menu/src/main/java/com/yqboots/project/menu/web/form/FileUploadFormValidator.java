@@ -18,7 +18,7 @@
 package com.yqboots.project.menu.web.form;
 
 import com.yqboots.project.fss.core.support.FileType;
-import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.support.WebKeys;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;

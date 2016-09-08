@@ -21,7 +21,7 @@ import com.yqboots.project.fss.core.FileItem;
 import com.yqboots.project.fss.core.FileItemManager;
 import com.yqboots.project.fss.web.form.FileUploadForm;
 import com.yqboots.project.fss.web.form.FileUploadFormValidator;
-import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.support.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

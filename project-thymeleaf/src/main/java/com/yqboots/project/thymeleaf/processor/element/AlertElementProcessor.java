@@ -17,7 +17,6 @@
  */
 package com.yqboots.project.thymeleaf.processor.element;
 
-import com.yqboots.project.thymeleaf.i18n.MessageKeys;
 import com.yqboots.project.thymeleaf.processor.support.AlertLevel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.BindingResult;
@@ -142,7 +141,7 @@ public class AlertElementProcessor extends AbstractMarkupSubstitutionElementProc
 
         result.addChild(icon);
 
-        result.addChild(new Text(getMessage(arguments, MessageKeys.ALERT_MESSAGE_TITLE, new Object[]{})));
+        result.addChild(new Text(getMessage(arguments, "S0005", new Object[]{})));
 
         return result;
     }

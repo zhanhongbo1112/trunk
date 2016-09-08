@@ -20,9 +20,8 @@ import com.yqboots.project.dict.core.DataDictExistsException;
 import com.yqboots.project.dict.core.DataDictManager;
 import com.yqboots.project.dict.web.form.FileUploadForm;
 import com.yqboots.project.dict.web.form.FileUploadFormValidator;
-import com.yqboots.project.fss.core.support.FileType;
 import com.yqboots.project.fss.web.util.FssWebUtils;
-import com.yqboots.project.web.WebKeys;
+import com.yqboots.project.web.support.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
