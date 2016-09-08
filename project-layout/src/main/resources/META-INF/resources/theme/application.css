@@ -1310,6 +1310,10 @@ img.image-md {
     min-height: 500px !important;
 }
 
+.height-600 {
+    min-height: 600px !important;
+}
+
 /*Spaces
 ------------------------------------*/
 .no-padding {

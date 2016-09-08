@@ -16,7 +16,7 @@ define(['jquery'], function() {
         
         // <img src="assets/img/up.png" style="width:51px; height:42px" />
         // HTML for control, which is auto wrapped in DIV w/ ID="topControl"
-        controlHTML : '<i class="glyphicon glyphicon-eject" style="padding: 5px 0 0 4px;"></i>',
+        controlHTML : '',
 
     	// offset of control relative to right/ bottom of window corner
         controlAttrs : {
