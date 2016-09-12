@@ -13,66 +13,6 @@ a:focus, a:hover, a:active {
     color: #27d7e7;
 }
 
-/* Headers Default
-------------------------------------*/
-.header .navbar-nav > .active > a {
-    color: #27d7e7;
-}
-
-.header .navbar-nav > .active > a {
-    border-color: #27d7e7;
-}
-
-.header .dropdown-menu {
-    border-top: solid 2px #27d7e7;
-}
-
-.header .navbar-nav > li:hover > a {
-    color: #26bac8;
-}
-
-.header .nav > li > .search:hover {
-    border-bottom-color: #26bac8;
-    color: #26bac8;
-}
-
-.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
-    border-bottom-color: #27d7e7;
-}
-
-.header .navbar-toggle {
-    border-color: #26bac8;
-}
-
-.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
-    background: #27d7e7;
-}
-
-.header .navbar-toggle:hover {
-    background: #26bac8 !important;
-}
-
-.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
-    color: #27d7e7;
-}
-
-/* Design for max-width: 991px */
-@media ( max-width: 991px) {
-    .header .navbar-nav > .active > a, .header .navbar-nav > .active > a:hover,
-    .header .navbar-nav > .active > a:focus {
-        background: #27d7e7;
-        color: #fff !important;
-    }
-
-    .header .navbar-nav > .active > a {
-        border-color: #eee;
-    }
-
-    .header .nav > li > .search:hover {
-        background: #27d7e7;
-    }
-}
-
 /* Buttons
 ------------------------------------*/
 .btn-u {
@@ -103,34 +43,12 @@ a:focus, a:hover, a:active {
     background: #26bac8;
 }
 
-i.style-switcher-btn:hover {
-    background: #26bac8;
-}
-
-/* Footer
-------------------------------------*/
-.copyright a, .copyright a:hover {
-    color: #27d7e7;
-}
-
-/* Breadcrumb
-------------------------------------*/
-.breadcrumb li.active, .breadcrumb li a:hover {
-    color: #27d7e7;
-}
-
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
     color: #27d7e7;
 }
 
 .fa-icons li:hover i {
-    background: #27d7e7;
-}
-
-/* Breadcrumbs
-------------------------------------*/
-span.label-u, span.badge-u {
     background: #27d7e7;
 }
 
@@ -145,52 +63,9 @@ i.icon-bg-u {
     background: #27d7e7;
 }
 
-/* Top Control
-------------------------------------*/
-#topControl:hover {
-    background-color: #27d7e7;
-}
-
-/* Cube Portfolio
-------------------------------------*/
-.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
-.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
-    color: #27d7e7;
-}
-
-.cube-portfolio .link-captions li i:hover {
-    color: #fff;
-    background: #27d7e7;
-}
-
-.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
-    background: rgba(39, 215, 231, .9) !important;
-}
-
 /* Heading */
-.headline h2,
-.headline h3,
-.headline h4 {
+.headline h2, .headline h3, .headline h4 {
     border-bottom: 2px solid #27d7e7;
-}
-
-/* Progress Bar
-------------------------------------*/
-.progress-bar-u {
-    background: #27d7e7;
-}
-
-/* Timeline Page
-------------------------------------*/
-/* The icons */
-.timeline > li .cbp_tmicon {
-    background: #27d7e7;
-}
-
-/* Service
-------------------------------------*/
-.service .service-icon {
-    color: #27d7e7;
 }
 
 /* Panel
@@ -210,21 +85,111 @@ i.icon-bg-u {
     border-color: #26bac8;
 }
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
-.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
     border-color: #27d7e7;
     background-color: #27d7e7;
 }
 
-/* Tabs v1 */
+/* Tabs */
 .tab .nav-tabs {
     border-bottom: solid 2px #27d7e7;
 }
-.tab .nav-tabs > .active > a,
-.tab .nav-tabs > .active > a:hover,
-.tab .nav-tabs > .active > a:focus {
+
+.tab .nav-tabs > .active > a, .tab .nav-tabs > .active > a:hover, .tab .nav-tabs > .active > a:focus {
     background: #27d7e7;
 }
+
 .tab .nav-tabs > li > a:hover {
     background: #27d7e7;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker span:hover {
+    color: #27d7e7;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+    color: #27d7e7;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #27d7e7;
+    border-color: #27d7e7;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #27d7e7;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #26bac8;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #27d7e7;
+}
+
+.header .navbar-toggle {
+    border-color: #26bac8;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #27d7e7;
+}
+
+.header .navbar-toggle:hover {
+    background: #26bac8 !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #27d7e7;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a,
+    .header .navbar-nav > .active > a:hover,
+    .header .navbar-nav > .active > a:focus {
+        background: #27d7e7;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    body.dark .header .nav > li.active > a:hover {
+        background: #27d7e7;
+    }
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #27d7e7;
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #27d7e7;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #27d7e7;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #27d7e7;
 }

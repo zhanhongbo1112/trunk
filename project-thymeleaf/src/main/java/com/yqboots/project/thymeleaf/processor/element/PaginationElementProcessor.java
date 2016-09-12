@@ -224,7 +224,8 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
 
         String url;
         if (!page.hasNext()) {
-            url = getPagedParams(contextPath, page.getTotalPages() - 1, page.getSize());
+            int pageNumber = page.getTotalPages() - 1;
+            url = getPagedParams(contextPath, pageNumber < 0 ? 0 : pageNumber, page.getSize());
         } else {
             url = getPagedParams(contextPath, page.getNumber() + 1, page.getSize());
         }

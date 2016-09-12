@@ -13,66 +13,6 @@ a:focus, a:hover, a:active {
     color: #9b6bcc;
 }
 
-/* Headers Default
-------------------------------------*/
-.header .navbar-nav > .active > a {
-    color: #9b6bcc;
-}
-
-.header .navbar-nav > .active > a {
-    border-color: #9b6bcc;
-}
-
-.header .dropdown-menu {
-    border-top: solid 2px #9b6bcc;
-}
-
-.header .navbar-nav > li:hover > a {
-    color: #814fb5;
-}
-
-.header .nav > li > .search:hover {
-    border-bottom-color: #814fb5;
-    color: #814fb5;
-}
-
-.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
-    border-bottom-color: #9b6bcc;
-}
-
-.header .navbar-toggle {
-    border-color: #814fb5;
-}
-
-.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
-    background: #9b6bcc;
-}
-
-.header .navbar-toggle:hover {
-    background: #814fb5 !important;
-}
-
-.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
-    color: #9b6bcc;
-}
-
-/* Design for max-width: 991px */
-@media ( max-width: 991px) {
-    .header .navbar-nav > .active > a, .header .navbar-nav > .active > a:hover,
-    .header .navbar-nav > .active > a:focus {
-        background: #9b6bcc;
-        color: #fff !important;
-    }
-
-    .header .navbar-nav > .active > a {
-        border-color: #eee;
-    }
-
-    .header .nav > li > .search:hover {
-        background: #9b6bcc;
-    }
-}
-
 /* Buttons
 ------------------------------------*/
 .btn-u {
@@ -103,34 +43,12 @@ a:focus, a:hover, a:active {
     background: #814fb5;
 }
 
-i.style-switcher-btn:hover {
-    background: #814fb5;
-}
-
-/* Footer
-------------------------------------*/
-.copyright a, .copyright a:hover {
-    color: #9b6bcc;
-}
-
-/* Breadcrumb
-------------------------------------*/
-.breadcrumb li.active, .breadcrumb li a:hover {
-    color: #9b6bcc;
-}
-
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
     color: #9b6bcc;
 }
 
 .fa-icons li:hover i {
-    background: #9b6bcc;
-}
-
-/* Breadcrumbs
-------------------------------------*/
-span.label-u, span.badge-u {
     background: #9b6bcc;
 }
 
@@ -145,50 +63,9 @@ i.icon-bg-u {
     background: #9b6bcc;
 }
 
-/* Top Control
-------------------------------------*/
-#topControl:hover {
-    background-color: #9b6bcc;
-}
-
-/* Cube Portfolio
-------------------------------------*/
-.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
-.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
-    color: #9b6bcc;
-}
-
-.cube-portfolio .link-captions li i:hover {
-    color: #fff;
-    background: #9b6bcc;
-}
-
-.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
-    background: rgba(155, 107, 204, .9) !important;
-}
-
 /* Heading */
 .headline h2, .headline h3, .headline h4 {
     border-bottom: 2px solid #9b6bcc;
-}
-
-/* Progress Bar
-------------------------------------*/
-.progress-bar-u {
-    background: #9b6bcc;
-}
-
-/* Timeline Page
-------------------------------------*/
-/* The icons */
-.timeline > li .cbp_tmicon {
-    background: #9b6bcc;
-}
-
-/* Service
-------------------------------------*/
-.service .service-icon {
-    color: #9b6bcc;
 }
 
 /* Panel
@@ -208,8 +85,12 @@ i.icon-bg-u {
     border-color: #814fb5;
 }
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
-.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
     border-color: #9b6bcc;
     background-color: #9b6bcc;
 }
@@ -218,11 +99,97 @@ i.icon-bg-u {
 .tab .nav-tabs {
     border-bottom: solid 2px #9b6bcc;
 }
-.tab .nav-tabs > .active > a,
-.tab .nav-tabs > .active > a:hover,
-.tab .nav-tabs > .active > a:focus {
+
+.tab .nav-tabs > .active > a, .tab .nav-tabs > .active > a:hover, .tab .nav-tabs > .active > a:focus {
     background: #9b6bcc;
 }
+
 .tab .nav-tabs > li > a:hover {
     background: #9b6bcc;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker span:hover {
+    color: #9b6bcc;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+    color: #9b6bcc;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #9b6bcc;
+    border-color: #9b6bcc;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #9b6bcc;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #814fb5;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #9b6bcc;
+}
+
+.header .navbar-toggle {
+    border-color: #814fb5;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #9b6bcc;
+}
+
+.header .navbar-toggle:hover {
+    background: #814fb5 !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #9b6bcc;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a,
+    .header .navbar-nav > .active > a:hover,
+    .header .navbar-nav > .active > a:focus {
+        background: #9b6bcc;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    body.dark .header .nav > li.active > a:hover {
+        background: #9b6bcc;
+    }
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #9b6bcc;
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #9b6bcc;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #9b6bcc;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #9b6bcc;
 }
