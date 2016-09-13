@@ -1,3 +1,4 @@
+@DateTimeFormat(pattern="yyyy-MM-dd")
 private LocalDate date;
 
 public LocalDate getDate() {

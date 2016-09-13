@@ -1,0 +1,9 @@
+<section>
+  <label class="label">Select single time</label>
+  <label class="input">
+    <i class="icon-append fa fa-calendar"></i>
+    <input th:field="*{time}" type="text"/>
+  </label>
+
+  <p th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></p>
+</section>
