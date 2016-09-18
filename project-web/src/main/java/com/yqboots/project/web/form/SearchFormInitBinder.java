@@ -34,9 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class SearchFormInitBinder {
     /**
-     * To resolve the issue that different search form objects with the same session key may throw exception
-     *
-     * @param request
+     * {@inheritDoc}
      */
     @InitBinder
     public void initBinder(HttpServletRequest request) {

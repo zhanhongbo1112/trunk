@@ -71,12 +71,18 @@ public class PaginationElementProcessor extends AbstractMarkupSubstitutionElemen
         return sb.toString();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getPrecedence() {
         // process after SpringHrefAttrProcessor
         return SpringHrefAttrProcessor.ATTR_PRECEDENCE + 10;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<Node> getMarkupSubstitutes(final Arguments arguments, final Element element) {
         final List<Node> nodes = new ArrayList<>();

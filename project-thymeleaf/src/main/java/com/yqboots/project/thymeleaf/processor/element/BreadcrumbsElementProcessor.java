@@ -47,11 +47,17 @@ public class BreadcrumbsElementProcessor extends AbstractMarkupSubstitutionEleme
         super("breadcrumbs");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getPrecedence() {
         return 1000;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<Node> getMarkupSubstitutes(final Arguments arguments, final Element element) {
         final List<Node> nodes = new ArrayList<>();

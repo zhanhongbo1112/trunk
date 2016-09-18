@@ -40,12 +40,18 @@ public class PageSummaryAttrProcessor extends AbstractTextChildModifierAttrProce
         super(ATTR_NAME);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getPrecedence() {
         // process after StandardTextAttrProcessor
         return StandardTextAttrProcessor.ATTR_PRECEDENCE + 10;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected String getText(final Arguments arguments, final Element element, final String attributeName) {
         final Configuration configuration = arguments.getConfiguration();

@@ -43,9 +43,7 @@ public class WebAutoConfiguration extends WebMvcConfigurerAdapter {
     private WebMvcProperties mvcProperties = new WebMvcProperties();
 
     /**
-     * Adds new Interceptors to the web request chain.
-     *
-     * @param registry register the interceptors
+     * {@inheritDoc}
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -53,9 +51,7 @@ public class WebAutoConfiguration extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * The default locale resolver.
-     *
-     * @return LocaleResolver
+     * {@inheritDoc}
      */
     @Bean
     public LocaleResolver localeResolver() {

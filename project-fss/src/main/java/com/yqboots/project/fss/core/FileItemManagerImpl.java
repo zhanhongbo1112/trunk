@@ -50,9 +50,7 @@ public class FileItemManagerImpl implements FileItemManager {
     }
 
     /**
-     * Gets available directories which will be maintained in the UI.
-     *
-     * @return list of directories
+     * {@inheritDoc}
      */
     @Override
     public List<String> getAvailableDirectories() {
@@ -68,12 +66,7 @@ public class FileItemManagerImpl implements FileItemManager {
     }
 
     /**
-     * Finds by directory path.
-     *
-     * @param path     the directory to search
-     * @param pageable the paged information
-     * @return paged of FileItem
-     * @throws IOException if failed
+     * {@inheritDoc}
      */
     @Override
     public Page<FileItem> findByPath(final String path, final Pageable pageable) throws IOException {
@@ -91,10 +84,7 @@ public class FileItemManagerImpl implements FileItemManager {
     }
 
     /**
-     * Deletes the file with the specified path.
-     *
-     * @param path the file path, not directory.
-     * @throws IOException
+     * {@inheritDoc}
      */
     @Override
     public void delete(final String path) throws IOException {
@@ -108,10 +98,7 @@ public class FileItemManagerImpl implements FileItemManager {
     }
 
     /**
-     * Gets the full path based on the root directory.
-     *
-     * @param relativePath the relative path to the root
-     * @return the full path
+     * {@inheritDoc}
      */
     @Override
     public Path getFullPath(final String relativePath) {

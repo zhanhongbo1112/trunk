@@ -44,6 +44,9 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
         super("options");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<Node> getMarkupSubstitutes(final Arguments arguments, final Element element) {
         final List<Node> nodes = new ArrayList<>();
@@ -79,6 +82,9 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
         return nodes;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getPrecedence() {
         return 1000 + 10;

@@ -73,9 +73,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Gets all menu items.
-     *
-     * @return list of MenuItem
+     * {@inheritDoc}
      */
     @Override
     public List<MenuItem> getMenuItems() {
@@ -83,11 +81,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Searches by wildcard name.
-     *
-     * @param wildcardName wildcard name
-     * @param pageable     pageable
-     * @return pages of MenuItem
+     * {@inheritDoc}
      */
     @Override
     public Page<MenuItem> getMenuItems(final String wildcardName, final Pageable pageable) {
@@ -96,10 +90,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Gets MenuItem by its id
-     *
-     * @param id the id of the MenuItem
-     * @return the MenuItem
+     * {@inheritDoc}
      */
     @Override
     public MenuItem getMenuItem(final Long id) {
@@ -107,10 +98,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Gets MenuItem by its name
-     *
-     * @param name the name of the MenuItem
-     * @return the MenuItem
+     * {@inheritDoc}
      */
     @Override
     public MenuItem getMenuItem(final String name) {
@@ -118,9 +106,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Updates the MenuItem.
-     *
-     * @param entity the entity to save
+     * {@inheritDoc}
      */
     @Override
     public void update(final MenuItem entity) {
@@ -139,9 +125,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Deletes.
-     *
-     * @param id the primary key
+     * {@inheritDoc}
      */
     @Override
     public void delete(final Long id) {
@@ -149,10 +133,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Imports an XML-presented file, which contains menu items.
-     *
-     * @param inputStream the file stream
-     * @throws IOException if failed
+     * {@inheritDoc}
      */
     @Override
     @Transactional
@@ -173,10 +154,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     }
 
     /**
-     * Exports all menu items to a file for downloading.
-     *
-     * @return the exported file path
-     * @throws IOException if failed
+     * {@inheritDoc}
      */
     @Override
     public Path exports() throws IOException {

@@ -31,18 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public class FileUploadFormValidator implements Validator {
     /**
-     * Can this {@link org.springframework.validation.Validator} {@link #validate(Object, org.springframework.validation.Errors) validate}
-     * instances of the supplied {@code clazz}?
-     * <p>This method is <i>typically</i> implemented like so:
-     * <pre class="code">return Foo.class.isAssignableFrom(clazz);</pre>
-     * (Where {@code Foo} is the class (or superclass) of the actual
-     * object instance that is to be {@link #validate(Object, org.springframework.validation.Errors) validated}.)
-     *
-     * @param clazz the {@link Class} that this {@link org.springframework.validation.Validator} is
-     *              being asked if it can {@link #validate(Object, org.springframework.validation.Errors) validate}
-     * @return {@code true} if this {@link org.springframework.validation.Validator} can indeed
-     * {@link #validate(Object, org.springframework.validation.Errors) validate} instances of the
-     * supplied {@code clazz}
+     * {@inheritDoc}
      */
     @Override
     public boolean supports(final Class<?> clazz) {
@@ -50,15 +39,7 @@ public class FileUploadFormValidator implements Validator {
     }
 
     /**
-     * Validate the supplied {@code target} object, which must be
-     * of a {@link Class} for which the {@link #supports(Class)} method
-     * typically has (or would) return {@code true}.
-     * <p>The supplied {@link org.springframework.validation.Errors errors} instance can be used to report
-     * any resulting validation errors.
-     *
-     * @param target the object that is to be validated (can be {@code null})
-     * @param errors contextual state about the validation process (never {@code null})
-     * @see org.springframework.validation.ValidationUtils
+     * {@inheritDoc}
      */
     @Override
     public void validate(final Object target, final Errors errors) {

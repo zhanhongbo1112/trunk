@@ -56,9 +56,7 @@ public final class FileItemConsumer implements Consumer<Path> {
     }
 
     /**
-     * Performs this operation on the given argument.
-     *
-     * @param path the input argument
+     * {@inheritDoc}
      */
     @Override
     public void accept(final Path path) {

@@ -43,11 +43,7 @@ public class FileTypeFilterPredicate implements Predicate<Path> {
     }
 
     /**
-     * Evaluates this predicate on the given argument.
-     *
-     * @param path the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
+     * {@inheritDoc}
      */
     @Override
     public boolean test(final Path path) {

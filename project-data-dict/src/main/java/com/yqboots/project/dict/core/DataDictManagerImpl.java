@@ -62,10 +62,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Constructs the DataDictManager.
-     *
-     * @param dataDictRepository DataDictRepository
-     * @param properties         DataDictProperties
+     * {@inheritDoc}
      */
     public DataDictManagerImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
         this.dataDictRepository = dataDictRepository;
@@ -73,10 +70,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Gets the Data Dictionary by its identity.
-     *
-     * @param id the primary key
-     * @return DataDict
+     * {@inheritDoc}
      */
     @Override
     public DataDict getDataDict(final Long id) {
@@ -84,11 +78,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Searches by wildcard name.
-     *
-     * @param wildcardName wildcard name
-     * @param pageable     pageable
-     * @return pages of DataDict
+     * {@inheritDoc}
      */
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
@@ -97,10 +87,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Gets the Data Dictionaries by name.
-     *
-     * @param name the name of one DataDict
-     * @return list of DataDict
+     * {@inheritDoc}
      */
     @Override
     public List<DataDict> getDataDicts(final String name) {
@@ -108,11 +95,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Gets the displayed text. Usually used in the Thymeleaf html template file.
-     *
-     * @param name  the name of a DataDict
-     * @param value the value of a DataDict
-     * @return the displayed text
+     * {@inheritDoc}
      */
     @Override
     public String getText(final String name, final String value) {
@@ -120,12 +103,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Gets the displayed text. Usually used in the Thymeleaf html template file.
-     *
-     * @param name          the name of a DataDict
-     * @param value         the value of a DataDict
-     * @param valueIncluded whether includes the value
-     * @return the displayed text
+     * {@inheritDoc}
      */
     @Override
     public String getText(final String name, final String value, boolean valueIncluded) {
@@ -146,10 +124,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Updates.
-     *
-     * @param entity the DataDict
-     * @throws DataDictExistsException if the dict exists
+     * {@inheritDoc}
      */
     @Override
     @Transactional
@@ -169,9 +144,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Deletes.
-     *
-     * @param id the primary key
+     * {@inheritDoc}
      */
     @Override
     @Transactional
@@ -182,10 +155,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Imports an XML-presented file, which contains data dictionaries..
-     *
-     * @param inputStream the file stream
-     * @throws IOException if failed
+     * {@inheritDoc}
      */
     @Override
     @Transactional
@@ -206,10 +176,7 @@ public class DataDictManagerImpl implements DataDictManager {
     }
 
     /**
-     * Exports all data dictionaries to a file for downloading.
-     *
-     * @return the exported file path
-     * @throws IOException if failed
+     * {@inheritDoc}
      */
     @Override
     public Path exports() throws IOException {

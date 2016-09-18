@@ -33,22 +33,7 @@ import java.util.Set;
  */
 public class YQBootsDialect extends AbstractDialect {
     /**
-     * <p>
-     * Returns the default dialect prefix (the one that will be used if none is explicitly
-     * specified during dialect configuration).
-     * </p>
-     * <p>
-     * If <tt>null</tt> is returned, then every attribute
-     * and/or element is considered processable by the processors in the dialect that apply
-     * to that kind of node (elements with their attributes), and not only those that start
-     * with a specific prefix.
-     * </p>
-     * <p>
-     * Prefixes are <b>not</b> exclusive to a dialect: several dialects can declare the same
-     * prefix, effectively acting as an aggregate dialect.
-     * </p>
-     *
-     * @return the dialect prefix.
+     * {@inheritDoc}
      */
     @Override
     public String getPrefix() {
@@ -56,9 +41,7 @@ public class YQBootsDialect extends AbstractDialect {
     }
 
     /**
-     * Gets the processors for the dialect.
-     *
-     * @return list of processors
+     * {@inheritDoc}
      */
     @Override
     public Set<IProcessor> getProcessors() {
