@@ -151,10 +151,6 @@
     background-color: #999;
 }
 
-.sky-form .button {
-    background: #72c02c;
-}
-
 /**/
 /* toggles */
 /**/
@@ -216,10 +212,6 @@
 .sky-form .checkbox input:checked + i,
 .sky-form .toggle input:checked + i {
     border-color: #999;
-}
-
-.sky-form .rating input:checked ~ label {
-    color: #72c02c;
 }
 
 /**/
@@ -300,11 +292,6 @@
 .sky-form .toggle:hover i,
 .sky-form .ui-slider-handle:hover {
     border-color: #999;
-}
-
-.sky-form .rating input + label:hover,
-.sky-form .rating input + label:hover ~ label {
-    color: #72c02c;
 }
 
 .sky-form .icon-append,

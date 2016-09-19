@@ -193,3 +193,22 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
 .service .service-icon {
     color: #72c02c;
 }
+
+/* Sky Form
+------------------------------------*/
+.sky-form .button {
+    background: #72c02c;
+}
+
+.sky-form a {
+    color: #72c02c;
+}
+
+.sky-form .rating input:checked ~ label {
+    color: #72c02c;
+}
+
+.sky-form .rating input + label:hover,
+.sky-form .rating input + label:hover ~ label {
+    color: #72c02c;
+}
