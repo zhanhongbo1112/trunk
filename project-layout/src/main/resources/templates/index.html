@@ -5,6 +5,9 @@
   <title>YuQi</title>
   <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/dojo/jquery/cube-portfolio/css/cubeportfolio.css" th:remove="all"/>
+  <link rel="stylesheet" href="../META-INF/resources/dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css"
+        th:remove="all"/>
 </head>
 <body>
 <div layout:fragment="content" class="content content-md height-600">
@@ -53,6 +56,43 @@
     </div>
     <!-- End Service Blocks -->
   </div>
+  <!--=== Cube-Portfolio ===-->
+  <div class="cube-portfolio container margin-bottom-60">
+    <div class="content-xs">
+      <div id="filters-container" class="cbp-l-filters-text content-xs">
+        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item" th:text="#{T0044}">All</div>
+        |
+        <div data-filter=".projects" class="cbp-filter-item" th:text="#{T0041}">Projects</div>
+      </div>
+      <!--/end Filters Container-->
+    </div>
+
+    <div id="grid-container" class="cbp-l-grid-agency">
+      <div class="cbp-item projects">
+        <div class="cbp-caption margin-bottom-20">
+          <div class="cbp-caption-defaultWrap">
+            <img src="../META-INF/resources/theme/images/demo.jpg" th:alt="#{T0042}"
+                 th:src="@{/theme/images/projects/framework.jpg}"/>
+          </div>
+          <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+              <div class="cbp-l-caption-body">
+                <ul class="link-captions no-bottom-space">
+                  <li><a href="#" th:href="@{/projects/framework}"><i class="rounded-x fa fa-link"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cbp-title-dark">
+          <div class="cbp-l-grid-agency-title" th:text="#{T0042}">YQBoots Framework</div>
+          <div class="cbp-l-grid-agency-desc" th:text="#{T0043}">Build the most common parts of your application</div>
+        </div>
+      </div>
+    </div>
+    <!--/end Grid Container-->
+  </div>
+  <!--=== End Cube-Portfolio ===-->
 </div>
 <script src="../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
 <script src="../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>

@@ -198,3 +198,19 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
 .service .service-icon {
     color: #e67e22;
 }
+
+/* Cube Portfolio
+------------------------------------*/
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
+    color: #e67e22;
+}
+
+.cube-portfolio .link-captions li i:hover {
+    color: #fff;
+    background: #e67e22;
+}
+
+.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
+    background: #e67e22 !important;
+}

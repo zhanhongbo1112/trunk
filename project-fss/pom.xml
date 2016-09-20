@@ -9,7 +9,7 @@
     </parent>
     <artifactId>project-fss</artifactId>
 
-    <name>YuQi Project FSS</name>
+    <name>Project FSS</name>
     <description>Defines the File Storage Service</description>
 
     <dependencies>

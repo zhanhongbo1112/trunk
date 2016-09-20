@@ -40,4 +40,9 @@ public class Application {
     public String home() {
         return "index";
     }
+
+    @RequestMapping(value = "/projects/framework")
+    public String framework() {
+        return "projects/framework/index";
+    }
 }

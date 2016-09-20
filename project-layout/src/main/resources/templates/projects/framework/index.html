@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title>YQBoots Framework</title>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="jumbotron">
+    <div class="container">
+      <h2>YQBoots Framework</h2>
+
+      <p>Spring IO is a cohesive, versioned platform for building modern applications. It is a modular, enterprise-grade
+        distribution that delivers a curated set of dependencies while keeping developers in full control of deploying
+        only the parts they need. Spring IO is 100% open source, lean, and modular.</p>
+
+      <p><a class="btn btn-u" href="#features" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+</div>
+<div layout:fragment="content" class="content content-md height-600">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <p>The Spring IO platform includes Foundation Layer modules and Execution Layer domain-specific runtimes. The
+          Foundation layer represents the core Spring modules and associated third-party dependencies that have been
+          harmonized to ensure a smooth development experience. The DSRs provided by the Spring IO Execution Layer
+          dramatically simplify building production-ready, JVM-based workloads. The first release of Spring IO includes
+          two DSRs: Spring Boot and Grails</p>
+
+        <div class="headline">
+          <h3 id="features">Features</h3>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-u">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-tasks"></i> YQBoots Framework</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Release</th>
+                <th>Release Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1.0.0</td>
+                <td>2016-09-30</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
+<script src="../../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>
+</body>
+</html>

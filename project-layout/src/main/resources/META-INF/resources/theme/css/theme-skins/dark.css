@@ -686,3 +686,33 @@ body.dark .service:hover {
 body.dark .service:hover i {
     color: #999;
 }
+
+/*Cube Portfolio
+------------------------------------*/
+body.dark .cube-portfolio .cbp-l-inline {
+    background: #333;
+}
+
+body.dark .cube-portfolio .cbp-l-inline-title {
+    color: #ccc;
+}
+
+body.dark .cube-portfolio .cbp-l-inline-desc {
+    color: #999;
+}
+
+body.dark .cube-portfolio .cbp-title-dark .cbp-l-grid-agency-title {
+    color: #ccc !important;
+}
+
+body.dark .cube-portfolio .cbp-title-dark .cbp-l-grid-agency-desc {
+    color: #999 !important;
+}
+
+body.dark .cube-portfolio .cbp-l-filters-text {
+    color: #777;
+}
+
+body.dark .jumbotron {
+    background: #1c1c1c;
+}
