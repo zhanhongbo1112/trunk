@@ -14,8 +14,8 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>YuQi Boots Framework</name>
-    <description>Defines the root modules of the projects</description>
+    <name>YQBoots Framework</name>
+    <description>Defines the root modules of the project</description>
 
     <modules>
         <module>project-layout</module>
