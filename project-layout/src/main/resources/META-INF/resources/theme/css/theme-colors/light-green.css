@@ -29,20 +29,6 @@ a:focus, a:hover, a:active {
     border-left: solid 1px #59b795;
 }
 
-/* Bordered Buttons */
-.btn-u.btn-brd {
-    border-color: #79d5b3;
-}
-
-.btn-u.btn-brd:hover {
-    color: #59b795;
-    border-color: #59b795;
-}
-
-.btn-u.btn-brd.btn-brd-hover:hover {
-    background: #59b795;
-}
-
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
     color: #79d5b3;
@@ -106,6 +92,25 @@ i.icon-bg-u {
 
 .tab .nav-tabs > li > a:hover {
     background: #79d5b3;
+}
+
+/* Sky Form
+------------------------------------*/
+.sky-form .button {
+    background: #79d5b3;
+}
+
+.sky-form a {
+    color: #79d5b3;
+}
+
+.sky-form .rating input:checked ~ label {
+    color: #79d5b3;
+}
+
+.sky-form .rating input + label:hover,
+.sky-form .rating input + label:hover ~ label {
+    color: #79d5b3;
 }
 
 /*Date Picker*/
@@ -191,24 +196,5 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
 /* Service
 ------------------------------------*/
 .service .service-icon {
-    color: #79d5b3;
-}
-
-/* Sky Form
-------------------------------------*/
-.sky-form .button {
-    background: #79d5b3;
-}
-
-.sky-form a {
-    color: #79d5b3;
-}
-
-.sky-form .rating input:checked ~ label {
-    color: #79d5b3;
-}
-
-.sky-form .rating input + label:hover,
-.sky-form .rating input + label:hover ~ label {
     color: #79d5b3;
 }

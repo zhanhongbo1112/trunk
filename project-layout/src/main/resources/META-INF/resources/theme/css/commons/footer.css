@@ -3,12 +3,8 @@ footer .link-list li {
     border-top: solid 1px #353535;
 }
 
-footer address, footer .link-list a, footer .link-list i {
+footer .link-list a, footer .link-list i {
     color: #eee;
-}
-
-footer address {
-    line-height: 23px;
 }
 
 /*Copyright*/

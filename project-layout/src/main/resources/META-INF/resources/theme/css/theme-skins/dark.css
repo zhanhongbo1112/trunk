@@ -288,12 +288,6 @@ body.dark .bg-grey {
     border-bottom-color: #222;
 }
 
-/*Bordered Buttons
-------------------------------------*/
-body.dark .btn-u.btn-brd {
-    color: #ddd;
-}
-
 /*Dropdown Buttons
 ------------------------------------*/
 body.dark .btn-group .dropdown-menu {
@@ -325,17 +319,6 @@ body.dark i.icon-bg-dark {
 body.dark i.icon-custom.icon-bg-u {
     color: #fff;
     border: none;
-}
-
-/*Service
-------------------------------------*/
-body.dark .service:hover {
-    box-shadow: none;
-    background: #1e1e1e;
-}
-
-body.dark .service:hover i {
-    color: #999;
 }
 
 /*Dropdown Show
@@ -427,10 +410,6 @@ body.dark .table-bordered > tfoot > tr > td {
 
 /*Map
 ------------------------------------*/
-body.dark .map {
-    border-color: #333;
-}
-
 body.dark footer .link-list a,
 body.dark footer .link-list i {
     color: #999;
@@ -438,14 +417,6 @@ body.dark footer .link-list i {
 
 /*Buttons
 ------------------------------------*/
-body.dark .btn-u.btn-brd.btn-u-dark {
-    border-color: #eee;
-}
-
-body.dark .btn-u.btn-brd.btn-u-dark:hover {
-    border-color: #333;
-}
-
 body.dark li a.btn-u {
     color: #fff;
 }
@@ -703,4 +674,15 @@ body.dark .modal-content {
 body.dark .modal-header,
 body.dark .modal-footer {
     border-color: #303030;
+}
+
+/*Service
+------------------------------------*/
+body.dark .service:hover {
+    box-shadow: none;
+    background: #1e1e1e;
+}
+
+body.dark .service:hover i {
+    color: #999;
 }
