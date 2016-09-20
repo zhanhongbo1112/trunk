@@ -27,7 +27,7 @@
   </div>
   <footer th:replace="layouts/footer :: footer">&nbsp;</footer>
 </div>
-<div th:replace="layouts/styleSwitcher :: styleSwitcher">&nbsp;</div>
+<div th:include="layouts/styleSwitcher">&nbsp;</div>
 <script src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}"
         data-dojo-config="async: true"></script>
 <script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>
