@@ -18,9 +18,10 @@
 @import url(css/plugins/font-awesome/css/font-awesome.css);
 @import url(css/plugins/skyforms/css/sky-forms.css);
 @import url(css/plugins/skyforms/custom/custom-sky-forms.css);
-@import url(css/pages/error.css);
+@import url(css/plugins/style-switcher.css);
 @import url(../dojo/jquery/cube-portfolio/css/cubeportfolio.css);
 @import url(../dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css);
+@import url(css/pages/error.css);
 
 * {
     border-radius: 0;

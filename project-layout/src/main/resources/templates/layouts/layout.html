@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"/>
   <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css"
-        th:href="@{/theme/css/theme-colors/green.css}"/>
+        th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
   <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
         th:href="@{/theme/css/theme-skins/dark.css}"/>
 </head>
@@ -27,6 +27,7 @@
   </div>
   <footer th:replace="layouts/footer :: footer">&nbsp;</footer>
 </div>
+<div th:replace="layouts/styleSwitcher :: styleSwitcher">&nbsp;</div>
 <script src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}"
         data-dojo-config="async: true"></script>
 <script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>

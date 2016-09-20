@@ -214,3 +214,9 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
 .cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
     background: #a10f2b !important;
 }
+
+/* Style Switcher
+-------------------------------------*/
+i.style-switcher-btn:hover {
+    background: #b61332;
+}
