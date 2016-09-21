@@ -122,6 +122,19 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
     color: #95a5a6;
 }
 
+button.ui-datepicker-current,
+button.ui-datepicker-close {
+    background: #95a5a6;
+}
+
+button.ui-datepicker-current:hover,
+button.ui-datepicker-current.btn-u:focus,
+button.ui-datepicker-close:hover,
+button.ui-datepicker-close.btn-u:focus{
+    background: #7f8c8d;
+    color: #fff;
+}
+
 /* Headers Default
 ------------------------------------*/
 .header .navbar-nav > .active > a {

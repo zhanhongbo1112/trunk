@@ -626,6 +626,14 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
     border-color: #555;
 }
 
+body.dark select.ui-timepicker-select,
+body.dark select.ui-timepicker-select:focus{
+    color: #999;
+    box-shadow: none;
+    border-color: #303030;
+    background: #202020;
+}
+
 /*Slider*/
 body.dark .sky-form .ui-slider {
     border-color: #555;

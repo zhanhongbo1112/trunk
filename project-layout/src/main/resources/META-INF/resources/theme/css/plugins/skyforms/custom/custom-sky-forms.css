@@ -347,6 +347,48 @@
     border: 1px solid #bbb;
 }
 
+.ui-datepicker-buttonpane {
+    float: right;
+}
+
+button.ui-datepicker-current {
+    margin-right: 1px;
+}
+
+button.ui-datepicker-close {
+    margin-left: 1px;
+}
+
+button.ui-datepicker-current,
+button.ui-datepicker-close {
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 1px 5px;
+    position: relative;
+    white-space: nowrap;
+    display: inline-block;
+    text-decoration: none;
+}
+
+select.ui-timepicker-select {
+    color: #404040;
+    border: 1px #bbb;
+}
+
+select.ui-timepicker-select:focus {
+    border-color: #bbb;
+    box-shadow: 0 0 2px #c9c9c9;
+}
+
+.ui-datepicker-buttonpane:hover select {
+    border-color: #999;
+}
+
 /**/
 /* bootstrap compatibility */
 /**/
