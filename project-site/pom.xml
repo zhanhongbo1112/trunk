@@ -121,12 +121,12 @@
                                     <goal>run</goal>
                                 </goals>
                                 <configuration>
-                                    <tasks>
+                                    <target>
                                         <ant dir="${project.build.directory}/classes/META-INF" antfile="build.xml"
                                              target="compress">
                                             <property name="build.directory" value="${project.build.directory}"/>
                                         </ant>
-                                    </tasks>
+                                    </target>
                                 </configuration>
                             </execution>
                         </executions>
