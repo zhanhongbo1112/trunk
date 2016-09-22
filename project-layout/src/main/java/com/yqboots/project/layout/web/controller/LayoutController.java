@@ -15,29 +15,21 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.project.layout;
+package com.yqboots.project.layout.web.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * The entrance of a project.
- * it contains a main method to bootstrap the whole project.
+ * Controller for layout
  *
  * @author Eric H B Zhan
  * @since 1.0.0
  */
 @Controller
-@SpringBootApplication
-public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    @RequestMapping(value = "/")
-    public String home() {
-        return "index";
+public class LayoutController {
+    @RequestMapping(value = "/projects/framework")
+    public String framework() {
+        return "projects/framework/index";
     }
 }

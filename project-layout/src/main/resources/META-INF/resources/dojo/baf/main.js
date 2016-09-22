@@ -1,5 +1,5 @@
-define(['baf/_base/StickyHeader', 'baf/_base/MegaMenu', 'baf/_base/StyleSwitcher', 'baf/_base/ScrollToTop', 'baf/_base/dynamicRequire'],
-    function (StickyHeader, MegaMenu, StyleSwitcher, ScrollToTop, dynReq) {
+define(['baf/_base/dynamicRequire', 'baf/_base/StickyHeader', 'baf/_base/MegaMenu', 'baf/_base/ScrollToTop', 'baf/util/StyleSwitcher'],
+    function (dynReq, StickyHeader, MegaMenu, ScrollToTop, StyleSwitcher) {
         // We extend jQuery by method hasAttr
         $.fn.hasAttr = function (name) {
             return this.attr(name) !== undefined;
