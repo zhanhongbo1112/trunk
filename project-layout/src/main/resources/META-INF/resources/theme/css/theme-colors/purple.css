@@ -13,6 +13,15 @@ a:focus, a:hover, a:active {
     color: #9b6bcc;
 }
 
+/* Blockquote
+------------------------------------*/
+blockquote:hover,
+blockquote.text-right:hover,
+body.dark blockquote:hover,
+body.dark blockquote.text-right:hover{
+    border-color: #9b6bcc;
+}
+
 /* Buttons
 ------------------------------------*/
 .btn-u {
