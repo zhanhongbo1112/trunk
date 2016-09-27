@@ -174,6 +174,13 @@ blockquote span {
     line-height: 24px;
 }
 
+.jumbotron a img.fa-code-fork {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    border: 0;
+}
+
 .headline blockquote h2,
 .headline blockquote h3 {
     border-bottom: none;
