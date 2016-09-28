@@ -9,10 +9,10 @@
 <div layout:fragment="breadcrumbs">
   <div class="breadcrumbs">
     <div class="container">
-      <h1 class="pull-left">404 Error</h1>
+      <h1 class="pull-left" th:text="#{T0046}">404 Error</h1>
       <ul class="pull-right breadcrumb">
-        <li><a href="index.html" th:href="@{/}">Home</a></li>
-        <li class="active">404 Error</li>
+        <li><a href="index.html" th:href="@{/}" th:text="#{T0004}">Home</a></li>
+        <li class="active" th:text="#{T0048}">404 Error</li>
       </ul>
     </div>
   </div>
@@ -22,10 +22,10 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="error">
         <span class="error-title">404</span>
-        <span>That's an error!</span>
+        <span th:text="#{T0047}">That's an error!</span>
 
-        <p>The requested URL was not found on this server. That's all we know.</p>
-        <a class="btn-u btn-bordered" href="index.html" th:href="@{/}">Back Home</a>
+        <p th:text="#{T0048}">The requested URL was not found on this server. That's all we know.</p>
+        <a class="btn-u btn-bordered" href="index.html" th:href="@{/}" th:text="#{T0049}">Back to Home</a>
       </div>
     </div>
   </div>

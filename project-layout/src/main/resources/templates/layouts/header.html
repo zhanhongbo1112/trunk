@@ -17,7 +17,7 @@
     <div class="topbar">
       <ul class="loginbar pull-right">
         <!-- remove th:remove if supporting multiple languages th:remove="all" -->
-        <li class="hoverSelector" th:remove="all">
+        <li class="hoverSelector">
           <i class="fa fa-globe"></i>
           <a><span th:text="#{T0005}">Languages</span></a>
           <ul class="languages hoverSelectorBlock">
@@ -25,7 +25,7 @@
             <li><a href="#" th:href="@{?locale=zh_CN}" th:text="#{lang.zh_CN}">Chinese</a></li>
           </ul>
         </li>
-        <li class="topbar-divider" th:remove="all"></li>
+        <li class="topbar-divider"></li>
         <li><a href="http://help.yqboots.com" target="_blank" th:text="#{T0006}">Help</a></li>
       </ul>
     </div>
