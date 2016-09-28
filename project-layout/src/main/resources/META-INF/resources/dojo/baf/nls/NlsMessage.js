@@ -17,7 +17,7 @@ define(['baf/_base/dynamicRequire', 'jquery/jquery-i18n-properties'], function (
                 path: '/dojo/baf/nls/',
                 mode: 'both',
                 language: language,
-                async: true
+                async: false
             });
 
             dynReq.dynamicRequire(['baf/nls/datepicker']).then(function (datepicker) {

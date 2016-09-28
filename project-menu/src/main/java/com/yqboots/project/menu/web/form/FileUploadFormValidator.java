@@ -49,7 +49,7 @@ public class FileUploadFormValidator implements Validator {
             return;
         }
 
-        if (!file.getName().endsWith(FileType.DOT_XML)) {
+        if (!file.getOriginalFilename().endsWith(FileType.DOT_XML)) {
             errors.rejectValue(WebKeys.FILE, "I0003");
         }
     }

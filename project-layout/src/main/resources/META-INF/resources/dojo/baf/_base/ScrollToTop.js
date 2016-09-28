@@ -3,7 +3,7 @@
 //** v1.1 (April 7th, 09'):
 //** 1) Adds ability to scroll to an absolute position (from top of page) or specific element on the page instead.
 //** 2) Fixes scroll animation not working in Opera.
-define(['jquery'], function() {
+define(['jquery', 'jquery/jquery-i18n-properties'], function() {
     return {
         // startLine: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
     	// scrollTo: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
@@ -70,7 +70,7 @@ define(['jquery'], function() {
                 this.keepFixed();
             }
                 
-            this.state.shouldVisible = (scrollTop >= this.setting.startLine) ? true : false;
+            this.state.shouldVisible = (scrollTop >= this.setting.startLine);
             if (this.state.shouldVisible && !this.state.isVisible) {
                 this.$control.stop().animate({
                     opacity : 1
@@ -98,7 +98,7 @@ define(['jquery'], function() {
                 opacity : 0,
                 cursor : 'pointer'
             }).attr({
-                title : 'Scroll Back to Top'
+                title : $.i18n.prop('T0000') //'Scroll Back to Top'
             }).click(function() {
                 _this.scrollUp();
                 return false

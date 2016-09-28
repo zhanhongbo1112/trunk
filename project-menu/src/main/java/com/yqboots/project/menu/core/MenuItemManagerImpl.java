@@ -86,7 +86,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @Override
     public Page<MenuItem> getMenuItems(final String wildcardName, final Pageable pageable) {
         String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
-        return menuItemRepository.findByNameLikeIgnoreCaseOrderByName(searchStr, pageable);
+        return menuItemRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
     }
 
     /**

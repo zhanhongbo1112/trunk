@@ -1,4 +1,4 @@
-define(['baf/nls/datepicker', 'jquery', 'jquery/jquery-ui', 'jquery/jquery-ui-timepicker'], function (dMessages) {
+define(['baf/nls/datepicker', 'jquery', 'jquery/jquery-ui', 'jquery/jquery-ui-timepicker'], function () {
     return {
         'en': {
             prevText: '<i class="fa fa-angle-left"></i>', // Display text for previous month link
