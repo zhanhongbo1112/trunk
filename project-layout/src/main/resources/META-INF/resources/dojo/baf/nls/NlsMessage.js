@@ -20,11 +20,11 @@ define(['baf/_base/dynamicRequire', 'jquery/jquery-i18n-properties'], function (
                 async: true
             });
 
-            dynReq.dynamicRequire(['baf/nls/datepicker']).then(function (datepicker) {debugger;
+            dynReq.dynamicRequire(['baf/nls/datepicker']).then(function (datepicker) {
                 $.datepicker.setDefaults(datepicker[language]);
             });
 
-            dynReq.dynamicRequire(['baf/nls/timepicker']).then(function (timepicker) {debugger;
+            dynReq.dynamicRequire(['baf/nls/timepicker']).then(function (timepicker) {
                 $.timepicker.setDefaults(timepicker[language]);
             });
         }
