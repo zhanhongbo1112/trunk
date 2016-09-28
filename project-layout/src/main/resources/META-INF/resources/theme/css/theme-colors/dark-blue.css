@@ -13,6 +13,10 @@ a:focus, a:hover, a:active {
     color: #4765a0;
 }
 
+code {
+    color: #4765a0;
+}
+
 /* Blockquote
 ------------------------------------*/
 blockquote:hover,
