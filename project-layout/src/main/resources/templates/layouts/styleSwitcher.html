@@ -7,6 +7,7 @@
 <body>
 <div th:fragment="styleSwitcher">
   <i class="style-switcher-btn fa fa-cogs hidden-xs"></i>
+
   <div class="style-switcher animated fadeInRight">
     <div class="style-switcher-header">
       <div class="style-switcher-heading">Style Switcher</div>
@@ -35,10 +36,10 @@
       <div class="style-switcher-heading">Theme Skins</div>
       <div class="row no-col-space margin-bottom-20 skins-section">
         <div class="col-xs-6">
-          <button data-skins="default" class="btn-u btn-u-xs btn-u-dark btn-block handle-skins-btn">Light</button>
+          <button class="btn-u btn-u-xs btn-u-dark btn-block handle-skins-btn" data-skins="default">Light</button>
         </div>
         <div class="col-xs-6">
-          <button data-skins="dark" class="btn-u btn-u-xs btn-u-dark btn-block active-switcher-btn skins-btn">
+          <button class="btn-u btn-u-xs btn-u-dark btn-block active-switcher-btn skins-btn" data-skins="dark">
             Dark
           </button>
         </div>

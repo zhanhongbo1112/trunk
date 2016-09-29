@@ -10,9 +10,8 @@
         th:remove="all"/>
 </head>
 <body>
-<div layout:fragment="content" class="content content-md height-600">
+<div class="content content-md height-600" layout:fragment="content">
   <div class="container">
-    <!-- Service Blocks -->
     <div class="row margin-bottom-30">
       <div class="col-md-4">
         <div class="service">
@@ -54,25 +53,22 @@
         </div>
       </div>
     </div>
-    <!-- End Service Blocks -->
   </div>
-  <!--=== Cube-Portfolio ===-->
   <div class="cube-portfolio container margin-bottom-60">
     <div class="content-xs">
-      <div id="filters-container" class="cbp-l-filters-text content-xs">
-        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item" th:text="#{T0044}">All</div>
+      <div class="cbp-l-filters-text content-xs" id="filters-container">
+        <div class="cbp-filter-item-active cbp-filter-item" data-filter="*" th:text="#{T0044}">All</div>
         |
-        <div data-filter=".projects" class="cbp-filter-item" th:text="#{T0041}">Projects</div>
+        <div class="cbp-filter-item" data-filter=".projects" th:text="#{T0041}">Projects</div>
       </div>
-      <!--/end Filters Container-->
     </div>
 
-    <div id="grid-container" class="cbp-l-grid-agency">
+    <div class="cbp-l-grid-agency" id="grid-container">
       <div class="cbp-item projects">
         <div class="cbp-caption margin-bottom-20">
           <div class="cbp-caption-defaultWrap">
-            <img src="../META-INF/resources/theme/images/demo.jpg" th:alt="#{T0042}"
-                 th:src="@{/theme/images/projects/framework.jpg}"/>
+            <img src="../META-INF/resources/theme/images/demo.jpg" th:src="@{/theme/images/projects/framework.jpg}"
+                 th:alt="#{T0042}"/>
           </div>
           <div class="cbp-caption-activeWrap">
             <div class="cbp-l-caption-alignCenter">
@@ -90,9 +86,7 @@
         </div>
       </div>
     </div>
-    <!--/end Grid Container-->
   </div>
-  <!--=== End Cube-Portfolio ===-->
 </div>
 <script src="../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
 <script src="../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>

@@ -10,17 +10,17 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="PROJECT_MENU_ITEM"/>
 </div>
-<div layout:fragment="content" class="content content-sm height-600">
+<div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
     <form class="sky-form" action="#" th:action="@{/project/menu/}" th:object="${model}" method="post">
-      <input type="hidden" th:field="*{id}"/>
+      <input th:field="*{id}" type="hidden"/>
       <header th:text="#{T0026}">Menu Maintenance Form</header>
       <fieldset>
         <div class="row">
           <section class="col col-4">
             <label class="label" th:text="#{T0020}">Name</label>
             <label class="input">
-              <input type="text" maxlength="32" th:field="*{name}" th:errorclass="state-error"/>
+              <input th:field="*{name}" type="text" maxlength="32"/>
             </label>
 
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
@@ -28,7 +28,7 @@
           <section class="col col-8">
             <label class="label" th:text="#{T0027}">URL</label>
             <label class="input">
-              <input type="text" maxlength="64" th:field="*{url}" th:errorclass="state-error"/>
+              <input th:field="*{url}" type="text" maxlength="64"/>
             </label>
 
             <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></p>
@@ -38,7 +38,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0028}">Menu Group</label>
             <label class="input">
-              <input type="text" maxlength="32" th:field="*{menuGroup}" th:errorclass="state-error"/>
+              <input th:field="*{menuGroup}" type="text" maxlength="32"/>
             </label>
 
             <p th:if="${#fields.hasErrors('menuGroup')}" th:errors="*{menuGroup}"></p>
@@ -46,7 +46,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0029}">Menu Item Group</label>
             <label class="input">
-              <input type="text" maxlength="32" th:field="*{menuItemGroup}" th:errorclass="state-error"/>
+              <input th:field="*{menuItemGroup}" type="text" maxlength="32"/>
             </label>
 
             <p th:if="${#fields.hasErrors('menuItemGroup')}" th:errors="*{menuItemGroup}"></p>
@@ -54,8 +54,8 @@
         </div>
       </fieldset>
       <footer>
-        <button type="submit" class="btn-u" th:text="#{T0012}">Submit</button>
-        <button type="reset" class="btn-u" th:text="#{T0013}">Reset</button>
+        <button class="btn-u" type="submit" th:text="#{T0012}">Submit</button>
+        <button class="btn-u" type="reset" th:text="#{T0013}">Reset</button>
       </footer>
     </form>
   </div>

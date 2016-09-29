@@ -10,29 +10,29 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="PROJECT_MENU_ITEM"/>
 </div>
-<div layout:fragment="content" class="content content-sm height-600">
+<div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
-    <yq:alert level="danger" />
+    <yq:alert level="danger"/>
     <div class="tab">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#list" data-toggle="tab">
+          <a data-toggle="tab" href="#list">
             <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0025}">Domain List</span>
           </a>
         </li>
         <li>
-          <a href="#import" data-toggle="tab">
+          <a data-toggle="tab" href="#import">
             <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
           </a>
         </li>
       </ul>
       <div class="tab-content">
-        <div id="list" class="tab-pane fade in active">
+        <div class="tab-pane fade in active" id="list">
           <div class="row">
             <div class="col-md-4">
               <form action="#" th:action="@{/project/menu}" th:object="${searchForm}" method="post">
                 <div class="input-group">
-                  <input type="text" th:field="*{criterion}" class="form-control" placeholder="Search"
+                  <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
                          th:placeholder="#{T0007}"/>
                   <span class="input-group-btn">
                       <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
@@ -42,17 +42,17 @@
             </div>
             <div class="col-md-8">
               <div class="btn-group pull-right">
-                <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+                <button class="btn-u dropdown-toggle" data-toggle="dropdown" type="button">
                   <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="#" title="New" th:title="#{T0010}" th:href="@{/project/menu(action='new')}">
+                    <a href="#" th:href="@{/project/menu(action='new')}" title="New" th:title="#{T0010}">
                       <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" title="Export" th:title="#{T0016}" th:href="@{/project/menu/exports}">
+                    <a href="#" th:href="@{/project/menu/exports}" title="Export" th:title="#{T0016}">
                       <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
                     </a>
                   </li>
@@ -113,15 +113,16 @@
                   <div class="button">
                     <input th:field="*{file}" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
                     <span th:text="#{T0039}">Browse</span>
-                  </div><input type="text" readonly="readonly"/>
+                  </div>
+                  <input type="text" readonly="readonly"/>
                 </label>
 
                 <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
               </section>
             </fieldset>
             <footer>
-              <button type="submit" class="btn-u" th:text="#{T0012}">Submit</button>
-              <button type="reset" class="btn-u" th:text="#{T0013}">Reset</button>
+              <button class="btn-u" type="submit" th:text="#{T0012}">Submit</button>
+              <button class="btn-u" type="reset" th:text="#{T0013}">Reset</button>
             </footer>
           </form>
         </div>

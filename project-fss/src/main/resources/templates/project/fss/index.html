@@ -10,29 +10,29 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="PROJECT_FSS"/>
 </div>
-<div layout:fragment="content" class="content content-sm height-600">
+<div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
     <yq:alert level="danger" />
     <div class="tab">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="#list" data-toggle="tab">
+          <a data-toggle="tab" href="#list">
             <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0033}">File List</span>
           </a>
         </li>
         <li>
-          <a href="#upload" data-toggle="tab">
+          <a data-toggle="tab" href="#upload">
             <i class="glyphicon glyphicon-upload"></i> <span th:text="#{T0034}">Upload</span>
           </a>
         </li>
       </ul>
       <div class="tab-content">
-        <div id="list" class="tab-pane fade in active">
+        <div class="tab-pane fade in active" id="list">
           <div class="row">
             <div class="col-md-4">
               <form action="#" th:action="@{/project/fss}" th:object="${searchForm}" method="post">
                 <div class="input-group">
-                  <select th:field="*{criterion}" class="form-control">
+                  <select class="form-control" th:field="*{criterion}">
                     <option value="" th:text="#{T0040}">Please Select</option>
                     <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
                   </select>
@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-        <div id="upload" class="tab-pane fade in">
+        <div class="tab-pane fade in" id="upload">
           <form class="sky-form" action="#" th:action="@{/project/fss/upload}" method="post"
                 enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
@@ -116,8 +116,8 @@
               </section>
             </fieldset>
             <footer>
-              <button type="submit" class="btn-u" th:text="#{T0012}">Submit</button>
-              <button type="reset" class="btn-u" th:text="#{T0013}">Reset</button>
+              <button class="btn-u" type="submit" th:text="#{T0012}">Submit</button>
+              <button class="btn-u" type="reset" th:text="#{T0013}">Reset</button>
             </footer>
           </form>
         </div>
