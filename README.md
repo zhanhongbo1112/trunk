@@ -1,5 +1,5 @@
 # YQBoots Framework - Build production-ready Spring application
-YQBoots Framework is a production-ready framework for building modern applications. It is built on [Spring IO Platform](http://spring.io/platform/), and simplifying the initialization of a Spring-powered, production-grade applications and services with minimal effort by using [Spring Boot](https://spring.io/spring-boot).  
+[YQBoots Framework](http://www.yqboots/projects/framework) is a production-ready framework for building modern applications. It is built on [Spring IO Platform](http://spring.io/platform/), and simplifying the initialization of a Spring-powered, production-grade applications and services with minimal effort by using [Spring Boot](https://spring.io/spring-boot).
   
 It also contains a fully responsive user interface, built by [Bootstrap](http://getbootstrap.com/), providing an optimal viewing and interaction experience -- easy reading and navigation with a minimum of resizing, panning, and scrolling-across a wide range of devices (from desktop to mobile phones).
 # Features
