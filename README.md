@@ -12,7 +12,7 @@ It is powered by [Thymeleaf](http://www.thymeleaf.org/), a modern server-side Ja
 ## Quick Start
 It is powered by [Spring Boot](https://spring.io/spring-boot), its spring-based and convention-over-configuration feature rapidly decreases the initialization of your project.  
 
-You can launch the application with http://localhost after you run the command.
+You can launch the application with ```http://localhost``` after you run the command.
 ```
 java -jar project-site-1.0.0.jar --server.port=80 --spring.profiles.active=prd
 ```
