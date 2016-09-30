@@ -42,6 +42,11 @@ body.dark blockquote.text-right:hover{
     border-left: solid 1px #324c80;
 }
 
+/*Badges*/
+span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
+    background: #324c80;
+}
+
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
     color: #4765a0;
