@@ -62,6 +62,10 @@
                 <td th:text="${item.length}">10</td>
                 <td th:text="${{item.lastModifiedDate}}">2016-08-24 10:00:00</td>
                 <td>
+                  <a href="#" th:href="@{/project/fss(id=${item.path},action='download')}" title="Download"
+                     th:title="#{T0051}">
+                    <i class="glyphicon glyphicon-download"></i>
+                  </a>
                   <a href="#" th:href="@{/project/fss(id=${item.path},action='delete')}" title="Delete"
                      th:title="#{T0009}">
                     <i class="glyphicon glyphicon-remove-sign"></i>

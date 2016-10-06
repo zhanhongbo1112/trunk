@@ -21,6 +21,7 @@ import com.yqboots.project.fss.core.FileItem;
 import com.yqboots.project.fss.core.FileItemManager;
 import com.yqboots.project.fss.web.form.FileUploadForm;
 import com.yqboots.project.fss.web.form.FileUploadFormValidator;
+import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.web.support.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +29,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -37,6 +40,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -115,6 +119,11 @@ public class FileItemController {
 
         model.clear();
         return REDIRECT_VIEW_PATH;
+    }
+
+    @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DOWNLOAD}, method = RequestMethod.GET)
+    public HttpEntity<byte[]> download(@RequestParam(WebKeys.ID) final String path) throws IOException {
+        return FssWebUtils.downloadFile(fileItemManager.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
     }
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)

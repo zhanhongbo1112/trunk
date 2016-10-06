@@ -40,11 +40,6 @@ public class WebKeys {
     public static final String MODEL = "model";
 
     /**
-     * Used as key for messages displayed on screen.
-     */
-    public static final String MESSAGES = "messages";
-
-    /**
      * Used in the list of paged data.
      */
     public static final String PAGE = "page";
@@ -78,6 +73,11 @@ public class WebKeys {
      * Used in the parameter for deleting existing domain.
      */
     public static final String ACTION_DELETE = "action=delete";
+
+    /**
+     * Used in the parameter for downloading file..
+     */
+    public static final String ACTION_DOWNLOAD = "action=download";
 
     /**
      * Used for the value of request mapping, for the root.

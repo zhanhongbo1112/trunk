@@ -19,6 +19,7 @@ package com.yqboots.project.menu.web.controller;
 
 import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.menu.core.MenuItem;
+import com.yqboots.project.menu.core.MenuItemExistsException;
 import com.yqboots.project.menu.core.MenuItemManager;
 import com.yqboots.project.menu.web.form.FileUploadForm;
 import com.yqboots.project.menu.web.form.FileUploadFormValidator;
@@ -96,7 +97,13 @@ public class MenuItemController {
             return VIEW_FORM;
         }
 
-        menuItemManager.update(menuItem);
+        try {
+            menuItemManager.update(menuItem);
+        } catch (MenuItemExistsException e) {
+            bindingResult.reject("I0001");
+            return VIEW_FORM;
+        }
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;

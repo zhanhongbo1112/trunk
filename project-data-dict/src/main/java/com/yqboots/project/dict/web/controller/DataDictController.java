@@ -34,6 +34,7 @@ import org.springframework.oxm.XmlMappingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -100,7 +101,7 @@ public class DataDictController {
         try {
             dataDictManager.update(dict);
         } catch (DataDictExistsException e) {
-            model.addAttribute(WebKeys.MESSAGES, new String[]{"I0001"});
+            bindingResult.reject("I0001");
             return VIEW_FORM;
         }
 
