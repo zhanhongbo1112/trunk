@@ -1,8 +1,12 @@
 package com.yqboots.project.fss.core.convert;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -16,6 +20,8 @@ import java.nio.file.Paths;
  */
 @ConfigurationPropertiesBinding
 public class StringToPathConverter implements Converter<String, Path> {
+    private static final Logger LOG = LoggerFactory.getLogger(StringToPathConverter.class);
+
     /**
      * Convert the source object of type {@code S} to target type {@code T}.
      *
@@ -25,6 +31,11 @@ public class StringToPathConverter implements Converter<String, Path> {
      */
     @Override
     public Path convert(final String source) {
-        return Paths.get(source);
+        Path result = Paths.get(source.replace("\\", File.separator));
+        if (!Files.exists(result)) {
+            LOG.error("Path not found [{}]", result);
+        }
+
+        return result;
     }
 }
