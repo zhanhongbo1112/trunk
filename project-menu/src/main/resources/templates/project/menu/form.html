@@ -12,6 +12,7 @@
 </div>
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
+    <yq:alert level="danger" />
     <form class="sky-form" action="#" th:action="@{/project/menu/}" th:object="${model}" method="post">
       <input th:field="*{id}" type="hidden"/>
       <header th:text="#{T0026}">Menu Maintenance Form</header>
