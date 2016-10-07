@@ -19,6 +19,8 @@ package com.yqboots.project.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * The entrance of a project.
@@ -27,9 +29,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
+@Controller
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @RequestMapping(value = "/")
+    public String home() {
+        return "index";
     }
 }
