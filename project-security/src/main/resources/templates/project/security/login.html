@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/content-bottom-layout">
 <head>
-  <title>Login</title>
+  <title th:text="#{T0052}">Login To Your Account</title>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/pages/login.css" th:href="@{/theme/css/pages/login.css}"/>
+  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/pages/login.css"
+        th:href="@{/theme/css/pages/login.css}"/>
 </head>
 <body>
 <div class="content" layout:fragment="content">
@@ -18,37 +19,39 @@
           <img src="../../../META-INF/resources/theme/images/logo-green.png" th:src="@{/theme/images/logo-green.png}"/>
         </a>
 
-        <h2 class="margin-bottom-30">Login To Your Account</h2>
+        <h2 class="margin-bottom-30" th:text="#{T0052}">Login To Your Account</h2>
 
-        <form action="#">
+        <form action="#" th:action="@{/login}" method="post">
           <div class="login-block">
             <div class="input-group margin-bottom-20">
               <span class="input-group-addon rounded-left"><i class="icon-user"></i></span>
-              <input type="text" class="form-control rounded-right" placeholder="Username"/>
+              <input class="form-control rounded-right" name="username" type="text" placeholder="Username"
+                     th:placeholder="#{T0053}"/>
             </div>
 
             <div class="input-group margin-bottom-20">
               <span class="input-group-addon rounded-left"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control rounded-right" placeholder="Password"/>
+              <input class="form-control rounded-right" name="password" type="password" placeholder="Password"
+                     th:placeholder="#{T0054}"/>
             </div>
 
             <div class="checkbox">
               <ul class="list-inline">
                 <li>
                   <label>
-                    <input type="checkbox"/> Remember me
+                    <input name="remember-me" type="checkbox"/> <span th:text="#{T0055}">Remember me</span>
                   </label>
                 </li>
 
                 <li class="pull-right">
-                  <a href="#">Forgot password?</a>
+                  <a href="#" th:text="#{T0056}">Forgot password?</a>
                 </li>
               </ul>
             </div>
 
             <div class="row margin-bottom-70">
               <div class="col-md-12">
-                <button type="submit" class="btn-u btn-u-blue btn-block rounded">Sign In</button>
+                <button class="btn-u btn-block rounded" type="submit" th:text="#{T0057}">Sign In</button>
               </div>
             </div>
           </div>
