@@ -17,15 +17,6 @@
     <name>YQBoots Framework</name>
     <description>Defines the root modules of the project</description>
 
-    <modules>
-        <module>project-layout</module>
-        <module>project-fss</module>
-        <module>project-web</module>
-        <module>project-menu</module>
-        <module>project-data-dict</module>
-        <module>project-thymeleaf</module>
-        <module>project-site</module>
-    </modules>
     <properties>
         <java.version>1.8</java.version>
         <site.url>https://github.com/zhanhongbo1112</site.url>
@@ -131,4 +122,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <modules>
+        <module>project-layout</module>
+        <module>project-fss</module>
+        <module>project-web</module>
+        <module>project-menu</module>
+        <module>project-data-dict</module>
+        <module>project-thymeleaf</module>
+        <module>project-site</module>
+        <module>project-security</module>
+    </modules>
 </project>

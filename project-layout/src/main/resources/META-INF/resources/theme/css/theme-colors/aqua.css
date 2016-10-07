@@ -251,3 +251,9 @@ button.ui-datepicker-close.btn-u:focus{
 i.style-switcher-btn:hover {
     background: #26bac8;
 }
+
+/* Login Page
+-------------------------------------*/
+.login-block i {
+    color: #26bac8;
+}
