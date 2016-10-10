@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:yq="http://www.yqboots.com"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
@@ -27,6 +28,15 @@
         </li>
         <li class="topbar-divider"></li>
         <li><a href="http://help.yqboots.com" target="_blank" th:text="#{T0006}">Help</a></li>
+        <li class="topbar-divider"></li>
+        <li>
+          <span sec:authorize="hasRole('ROLE_USER')">
+            <a href="#" th:href="@{/logout}" th:title="#{T0058}"><i class="fa fa-sign-out"></i></a>
+          </span>
+          <span sec:authorize="hasRole('ROLE_ANONYMOUS')">
+            <a href="#" th:href="@{/project/security/login}"><i class="fa fa-sign-in"></i></a>
+          </span>
+        </li>
       </ul>
     </div>
     <!-- End Topbar -->

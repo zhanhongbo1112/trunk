@@ -30,8 +30,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/project/security")
 public class LoginController {
+    private static final String VIEW_LOGIN = "project/security/login";
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "project/security/login";
+        return VIEW_LOGIN;
     }
 }
