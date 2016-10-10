@@ -30,10 +30,10 @@
         <li><a href="http://help.yqboots.com" target="_blank" th:text="#{T0006}">Help</a></li>
         <li class="topbar-divider"></li>
         <li>
-          <span sec:authorize="hasRole('ROLE_USER')">
+          <span sec:authorize="isAuthenticated()">
             <a href="#" th:href="@{/logout}" th:title="#{T0058}"><i class="fa fa-sign-out"></i></a>
           </span>
-          <span sec:authorize="hasRole('ROLE_ANONYMOUS')">
+          <span sec:authorize="not isAuthenticated()">
             <a href="#" th:href="@{/project/security/login}"><i class="fa fa-sign-in"></i></a>
           </span>
         </li>
