@@ -19,6 +19,8 @@ package com.yqboots.project.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,8 +33,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @SpringBootApplication
+@EnableJpaAuditing
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
 
