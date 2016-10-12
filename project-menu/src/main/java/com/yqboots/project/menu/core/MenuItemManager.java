@@ -19,6 +19,7 @@ package com.yqboots.project.menu.core;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PostFilter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +38,7 @@ public interface MenuItemManager {
      *
      * @return list of MenuItem
      */
+    @PostFilter("hasPermission(filterObject.url, 'read')")
     List<MenuItem> getMenuItems();
 
     /**
