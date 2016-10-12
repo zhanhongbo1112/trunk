@@ -47,7 +47,7 @@ public class Audit extends AbstractPersistable<Long> {
     private Date createdDate;
 
     @Column(name = "CODE", nullable = false)
-    private int code;
+    private int code = 0;
 
     @Lob
     @Column(name = "DESCRIPTION", nullable = true)

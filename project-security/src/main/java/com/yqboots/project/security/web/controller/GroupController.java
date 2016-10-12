@@ -40,7 +40,7 @@ import java.util.List;
  * @since 1.1.0
  */
 @RestController
-@RequestMapping(value = "/security/group")
+@RequestMapping(value = "/project/security/group")
 public class GroupController {
     @Autowired
     private GroupManager groupManager;

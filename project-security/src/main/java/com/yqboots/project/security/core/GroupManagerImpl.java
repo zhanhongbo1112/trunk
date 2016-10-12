@@ -54,6 +54,9 @@ public class GroupManagerImpl implements GroupManager {
     @Autowired
     private RoleRepository roleRepository;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_GROUP)
@@ -67,6 +70,9 @@ public class GroupManagerImpl implements GroupManager {
         groupRepository.save(group);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_USERS_TO_GROUP)
@@ -86,6 +92,9 @@ public class GroupManagerImpl implements GroupManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_GROUP)
@@ -105,6 +114,9 @@ public class GroupManagerImpl implements GroupManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUP)
@@ -123,6 +135,9 @@ public class GroupManagerImpl implements GroupManager {
         groupRepository.save(entity);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_GROUP)
@@ -147,6 +162,9 @@ public class GroupManagerImpl implements GroupManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP)
@@ -168,6 +186,9 @@ public class GroupManagerImpl implements GroupManager {
         groupRepository.save(entity);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUP)
@@ -188,6 +209,9 @@ public class GroupManagerImpl implements GroupManager {
         groupRepository.delete(group);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USERS_FROM_GROUP)
@@ -207,6 +231,9 @@ public class GroupManagerImpl implements GroupManager {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_GROUP)
@@ -226,11 +253,17 @@ public class GroupManagerImpl implements GroupManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasGroup(String path) {
         return groupRepository.exists(path);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Group findGroup(String path) throws GroupNotFoundException {
         Assert.hasText(path);
@@ -243,27 +276,42 @@ public class GroupManagerImpl implements GroupManager {
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Group> findGroups(String pathFilter, Pageable pageable) {
         final String filter = DBUtils.wildcard(pathFilter);
         return groupRepository.findByPathLikeIgnoreCase(filter, pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> findGroupUsers(String path) {
         return userRepository.findByGroupsPath(path);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Role> findAllRoles(Pageable pageable) {
         return roleRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Role> findGroupRoles(String path) {
         return roleRepository.findByGroupsPath(path);

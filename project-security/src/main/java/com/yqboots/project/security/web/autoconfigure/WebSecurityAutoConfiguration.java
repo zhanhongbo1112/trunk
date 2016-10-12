@@ -27,11 +27,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * The web security configuration.
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.1.0
  */
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().anyRequest().authenticated().and().csrf().disable().formLogin()

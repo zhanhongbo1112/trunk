@@ -32,9 +32,11 @@ import java.util.stream.Collectors;
  * @since 1.1.0
  */
 public final class SecurityUtils {
-    private SecurityUtils() {
-    }
-
+    /**
+     * Gets current signed in user.
+     *
+     * @return the user who had bean signed in, null if not found
+     */
     public static User getCurrentUser() {
         User result = null;
 
@@ -50,5 +52,11 @@ public final class SecurityUtils {
         }
 
         return result;
+    }
+
+    /**
+     * Constructs the SecurityUtils.
+     */
+    private SecurityUtils() {
     }
 }

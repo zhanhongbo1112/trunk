@@ -40,7 +40,7 @@ import java.util.List;
  * @since 1.1.0
  */
 @RestController
-@RequestMapping(value = "/security/user")
+@RequestMapping(value = "/project/security/user")
 public class UserController {
     @Autowired
     private UserManager userManager;

@@ -15,40 +15,20 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.project.security.util;
+package com.yqboots.project.security.autoconfigure;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
- * Utility methods.
+ * The Auto Configuration class for Security related beans.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public final class DBUtils {
-    /**
-     * Wildcard string for all.
-     */
-    public static final String WILDCARD_ALL = "%";
-
-    /**
-     * Wildcard the string for DB query.
-     *
-     * @param source source
-     * @return the wildcard string
-     */
-    public static String wildcard(final String source) {
-        String result = WILDCARD_ALL;
-        if (!StringUtils.isEmpty(source)) {
-            result = WILDCARD_ALL + source + WILDCARD_ALL;
-        }
-
-        return result;
-    }
-
-    /**
-     * Constructs the DBUtils.
-     */
-    private DBUtils() {
-    }
+@Configuration
+@EnableConfigurationProperties({SecurityProperties.class})
+@Import({DefaultMethodSecurityConfiguration.class})
+public class SecurityAutoConfiguration {
 }

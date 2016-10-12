@@ -42,7 +42,9 @@ public class UserControllerTest {
 
     @Test
     public void testFind() throws Exception {
-        this.mockMvc.perform(post("/security/user").content("supervisor").param("page", "0").param("size", "15").param("sort", "username,desc")
+        this.mockMvc.perform(post("/project/security/user").content("supervisor").param("page", "0")
+                .param("size", "15")
+                .param("sort", "username,desc")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -75,7 +77,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindAllGroups() throws Exception {
-        this.mockMvc.perform(get("/security/user/groups").param("sort", "path")
+        this.mockMvc.perform(get("/project/security/user/groups").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -83,7 +85,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindGroups() throws Exception {
-        this.mockMvc.perform(post("/security/user/groups/").content("supervisor")
+        this.mockMvc.perform(post("/project/security/user/groups/").content("supervisor")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -91,7 +93,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindAllRoles() throws Exception {
-        this.mockMvc.perform(get("/security/user/roles").param("sort", "path")
+        this.mockMvc.perform(get("/project/security/user/roles").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -99,7 +101,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindRoles() throws Exception {
-        this.mockMvc.perform(post("/security/user/roles/").content("supervisor")
+        this.mockMvc.perform(post("/project/security/user/roles/").content("supervisor")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));

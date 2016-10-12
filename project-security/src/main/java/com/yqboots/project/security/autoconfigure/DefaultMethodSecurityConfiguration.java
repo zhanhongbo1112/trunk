@@ -17,7 +17,6 @@
  */
 package com.yqboots.project.security.autoconfigure;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.expression.DenyAllPermissionEvaluator;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
@@ -30,7 +29,6 @@ import org.springframework.security.config.annotation.method.configuration.Globa
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-@Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
     /**

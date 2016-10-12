@@ -19,6 +19,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.yqboots.project</groupId>
+            <artifactId>project-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -68,6 +73,13 @@
                     </resource>
                     <resource>
                         <directory>../project-fss/src/main/resources</directory>
+                        <excludes>
+                            <exclude>*.sql</exclude>
+                            <exclude>*.properties</exclude>
+                        </excludes>
+                    </resource>
+                    <resource>
+                        <directory>../project-security/src/main/resources</directory>
                         <excludes>
                             <exclude>*.sql</exclude>
                             <exclude>*.properties</exclude>

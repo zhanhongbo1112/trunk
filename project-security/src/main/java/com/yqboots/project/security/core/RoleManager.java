@@ -29,35 +29,139 @@ import java.util.List;
  * @since 1.1.0
  */
 public interface RoleManager {
+    /**
+     * Adds new role.
+     *
+     * @param role role
+     * @throws RoleExistsException throw when the entity exists
+     */
     void addRole(Role role) throws RoleExistsException;
 
+    /**
+     * Adds {@link User}s to the {@link Group}.
+     *
+     * @param path      path
+     * @param usernames usernames
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void addUsers(String path, String... usernames) throws RoleNotFoundException;
 
+    /**
+     * Adds {@link Group}s to the {@link Role}.
+     *
+     * @param path       path
+     * @param groupPaths path of groups
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void addGroups(String path, String... groupPaths) throws RoleNotFoundException;
 
+    /**
+     * Updates the role.
+     *
+     * @param role role
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void updateRole(Role role) throws RoleNotFoundException;
 
+    /**
+     * Updates {@link User}s of the {@link Group}.
+     *
+     * @param path      path
+     * @param usernames usernames
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void updateUsers(String path, String... usernames) throws RoleNotFoundException;
 
+    /**
+     * Updates {@link Group}s of the {@link Role}.
+     *
+     * @param path       path
+     * @param groupPaths path of groups
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void updateGroups(String path, String... groupPaths) throws RoleNotFoundException;
 
+    /**
+     * Removes the role.
+     *
+     * @param path path
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void removeRole(String path) throws RoleNotFoundException;
 
+    /**
+     * Removes the {@link User}s from the {@link Role}.
+     *
+     * @param path      path
+     * @param usernames username of users
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void removeUsers(String path, String... usernames) throws RoleNotFoundException;
 
+    /**
+     * Removes the {@link Group}s from the {@link Role}.
+     *
+     * @param path       path
+     * @param groupPaths path of groups
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     void removeGroups(String path, String... groupPaths) throws RoleNotFoundException;
 
+    /**
+     * Checks if the {@link Role} exists.
+     *
+     * @param path path
+     * @return true when the group with the specified path exists
+     */
     boolean hasRole(String path);
 
+    /**
+     * Finds {@link Role} by path.
+     *
+     * @param path path
+     * @return the role
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
     Role findRole(String path) throws RoleNotFoundException;
 
+    /**
+     * Finds {@link Role}s by wildcard condition.
+     *
+     * @param pathFilter pathFilter
+     * @param pageable   pageable
+     * @return page of groups
+     */
     Page<Role> findRoles(String pathFilter, Pageable pageable);
 
+    /**
+     * Finds all {@link User}s.
+     *
+     * @param pageable pageable
+     * @return page of users
+     */
     Page<User> findAllUsers(Pageable pageable);
 
+    /**
+     * Finds all {@link User}s which belong to the {@link Role}.
+     *
+     * @param path path
+     * @return list of users
+     */
     List<User> findRoleUsers(String path);
 
+    /**
+     * Finds all {@link Group}s.
+     *
+     * @param pageable pageable
+     * @return page of groups
+     */
     Page<Group> findAllGroups(Pageable pageable);
 
+    /**
+     * Finds all {@link Group}s which belong to the {@link Role}.
+     *
+     * @param path path
+     * @return list of groups
+     */
     List<Group> findRoleGroups(String path);
 }

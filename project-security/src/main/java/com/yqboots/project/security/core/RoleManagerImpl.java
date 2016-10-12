@@ -52,6 +52,9 @@ public class RoleManagerImpl implements RoleManager {
     @Autowired
     private RoleRepository roleRepository;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_ROLE)
@@ -65,6 +68,9 @@ public class RoleManagerImpl implements RoleManager {
         roleRepository.save(role);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_USERS_TO_ROLE)
@@ -84,6 +90,9 @@ public class RoleManagerImpl implements RoleManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_GROUPS_TO_ROLE)
@@ -103,6 +112,9 @@ public class RoleManagerImpl implements RoleManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLE)
@@ -121,6 +133,9 @@ public class RoleManagerImpl implements RoleManager {
         roleRepository.save(entity);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_ROLE)
@@ -145,6 +160,9 @@ public class RoleManagerImpl implements RoleManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE)
@@ -169,6 +187,9 @@ public class RoleManagerImpl implements RoleManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLE)
@@ -194,6 +215,9 @@ public class RoleManagerImpl implements RoleManager {
         roleRepository.delete(role);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USERS_FROM_ROLE)
@@ -213,6 +237,9 @@ public class RoleManagerImpl implements RoleManager {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_ROLE)
@@ -232,11 +259,17 @@ public class RoleManagerImpl implements RoleManager {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasRole(String path) {
         return roleRepository.exists(path);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Role findRole(String path) throws RoleNotFoundException {
         Assert.hasText(path);
@@ -249,27 +282,42 @@ public class RoleManagerImpl implements RoleManager {
         return role;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Role> findRoles(String pathFilter, Pageable pageable) {
         final String filter = DBUtils.wildcard(pathFilter);
         return roleRepository.findByPathLikeIgnoreCase(filter, pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<User> findRoleUsers(String path) {
         return userRepository.findByRolesPath(path);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Group> findAllGroups(Pageable pageable) {
         return groupRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Group> findRoleGroups(String path) {
         return groupRepository.findByRolesPath(path);

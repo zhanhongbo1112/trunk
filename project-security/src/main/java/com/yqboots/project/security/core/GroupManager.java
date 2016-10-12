@@ -33,35 +33,139 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public interface GroupManager {
+    /**
+     * Adds new group.
+     *
+     * @param group group
+     * @throws GroupExistsException throw when the entity exists
+     */
     void addGroup(Group group) throws GroupExistsException;
 
+    /**
+     * Adds {@link User}s to the {@link Group}.
+     *
+     * @param path      path
+     * @param usernames usernames
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void addUsers(String path, String... usernames) throws GroupNotFoundException;
 
+    /**
+     * Adds {@link Role}s to the {@link Group}.
+     *
+     * @param path      path
+     * @param rolePaths path of roles
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void addRoles(String path, String... rolePaths) throws GroupNotFoundException;
 
+    /**
+     * Updates the group.
+     *
+     * @param group group
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void updateGroup(Group group) throws GroupNotFoundException;
 
+    /**
+     * Updates {@link User}s of the {@link Group}.
+     *
+     * @param path      path
+     * @param usernames usernames
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void updateUsers(String path, String... usernames) throws GroupNotFoundException;
 
+    /**
+     * Updates {@link Role}s of the {@link Group}.
+     *
+     * @param path      path
+     * @param rolePaths usernames
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void updateRoles(String path, String... rolePaths) throws GroupNotFoundException;
 
+    /**
+     * Removes the group.
+     *
+     * @param path path
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void removeGroup(String path) throws GroupNotFoundException;
 
+    /**
+     * Removes the {@link User}s from the {@link Group}.
+     *
+     * @param path      path
+     * @param usernames username of users
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     void removeUsers(String path, String... usernames) throws GroupNotFoundException;
 
-    void removeRoles(String path, String... roles) throws GroupNotFoundException;
+    /**
+     * Removes the {@link Role}s from the {@link Group}.
+     *
+     * @param path      path
+     * @param rolePaths path of roles
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void removeRoles(String path, String... rolePaths) throws GroupNotFoundException;
 
+    /**
+     * Checks if the {@link Group} exists.
+     *
+     * @param path path
+     * @return true when the group with the specified path exists
+     */
     boolean hasGroup(String path);
 
+    /**
+     * Finds {@link Group} by path.
+     *
+     * @param path path
+     * @return the group
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
     Group findGroup(String path) throws GroupNotFoundException;
 
+    /**
+     * Finds {@link Group}s by wildcard condition.
+     *
+     * @param pathFilter pathFilter
+     * @param pageable   pageable
+     * @return page of groups
+     */
     Page<Group> findGroups(String pathFilter, Pageable pageable);
 
+    /**
+     * Finds all {@link User}s.
+     *
+     * @param pageable pageable
+     * @return page of users
+     */
     Page<User> findAllUsers(Pageable pageable);
 
+    /**
+     * Finds all {@link User}s which belong to the {@link Group}.
+     *
+     * @param path path
+     * @return list of users
+     */
     List<User> findGroupUsers(String path);
 
+    /**
+     * Finds all {@link Role}s.
+     *
+     * @param pageable pageable
+     * @return page of roles
+     */
     Page<Role> findAllRoles(Pageable pageable);
 
+    /**
+     * Finds all {@link Role}s which belong to the {@link Group}.
+     *
+     * @param path path
+     * @return list of roles
+     */
     List<Role> findGroupRoles(String path);
 }

@@ -41,7 +41,7 @@ public class RoleControllerTest {
 
     @Test
     public void testFind() throws Exception {
-        this.mockMvc.perform(post("/security/role").content("/SUPERVISOR").param("page", "0").param("size", "15").param("sort", "path,desc")
+        this.mockMvc.perform(post("/project/security/role").content("/SUPERVISOR").param("page", "0").param("size", "15").param("sort", "path,desc")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -74,7 +74,7 @@ public class RoleControllerTest {
 
     @Test
     public void testFindAllUsers() throws Exception {
-        this.mockMvc.perform(get("/security/role/users").param("sort", "username")
+        this.mockMvc.perform(get("/project/security/role/users").param("sort", "username")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -82,7 +82,7 @@ public class RoleControllerTest {
 
     @Test
     public void testFindUsers() throws Exception {
-        this.mockMvc.perform(post("/security/role/users/").content("/SUPERVISOR")
+        this.mockMvc.perform(post("/project/security/role/users/").content("/SUPERVISOR")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -90,7 +90,7 @@ public class RoleControllerTest {
 
     @Test
     public void testFindAllGroups() throws Exception {
-        this.mockMvc.perform(get("/security/role/groups").param("sort", "path")
+        this.mockMvc.perform(get("/project/security/role/groups").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -98,7 +98,7 @@ public class RoleControllerTest {
 
     @Test
     public void testFindGroups() throws Exception {
-        this.mockMvc.perform(post("/security/role/groups/").content("/SUPERVISOR")
+        this.mockMvc.perform(post("/project/security/role/groups/").content("/SUPERVISOR")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));

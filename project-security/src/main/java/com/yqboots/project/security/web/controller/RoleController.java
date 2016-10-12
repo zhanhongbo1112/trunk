@@ -40,7 +40,7 @@ import java.util.List;
  * @since 1.1.0
  */
 @RestController
-@RequestMapping(value = "/security/role")
+@RequestMapping(value = "/project/security/role")
 public class RoleController {
     @Autowired
     private RoleManager roleManager;

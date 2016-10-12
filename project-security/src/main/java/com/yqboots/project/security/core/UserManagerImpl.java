@@ -17,6 +17,7 @@
  */
 package com.yqboots.project.security.core;
 
+import com.yqboots.project.security.autoconfigure.SecurityProperties;
 import com.yqboots.project.security.core.audit.SecurityAudit;
 import com.yqboots.project.security.core.audit.annotation.Auditable;
 import com.yqboots.project.security.core.repository.GroupRepository;
@@ -25,7 +26,6 @@ import com.yqboots.project.security.core.repository.UserRepository;
 import com.yqboots.project.security.util.DBUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -59,12 +59,12 @@ public class UserManagerImpl implements UserManager {
     @Autowired(required = false)
     private PasswordEncoder passwordEncoder = NoOpPasswordEncoder.getInstance();
 
-    @Value("${yq.security.user.disabled-when-removing}")
-    private boolean disabledWhenRemoving = false;
+    @Autowired
+    private SecurityProperties properties;
 
-    @Value("${yq.security.user.password.default}")
-    private String defaultPassword;
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_USER)
@@ -77,7 +77,7 @@ public class UserManagerImpl implements UserManager {
 
         String password = user.getPassword();
         if (StringUtils.isEmpty(password)) {
-            password = defaultPassword;
+            password = properties.getUser().getPasswordDefault();
         }
         // encrypt the password
         password = passwordEncoder.encode(password);
@@ -86,23 +86,9 @@ public class UserManagerImpl implements UserManager {
         userRepository.save(user);
     }
 
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
-    public void updateUser(User user) throws UserNotFoundException {
-        Assert.isTrue(!user.isNew());
-        Assert.hasText(user.getUsername());
-
-        User entity = userRepository.findByUsername(user.getUsername());
-        if (entity == null) {
-            throw new UserNotFoundException(user.getUsername());
-        }
-
-        entity.setEnabled(user.isEnabled());
-
-        userRepository.save(entity);
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_GROUPS_TO_USER)
@@ -122,6 +108,9 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_USER)
@@ -141,7 +130,29 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
+    public void updateUser(User user) throws UserNotFoundException {
+        Assert.isTrue(!user.isNew());
+        Assert.hasText(user.getUsername());
 
+        User entity = userRepository.findByUsername(user.getUsername());
+        if (entity == null) {
+            throw new UserNotFoundException(user.getUsername());
+        }
+
+        entity.setEnabled(user.isEnabled());
+
+        userRepository.save(entity);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
@@ -163,6 +174,9 @@ public class UserManagerImpl implements UserManager {
         userRepository.save(user);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
@@ -184,6 +198,9 @@ public class UserManagerImpl implements UserManager {
         userRepository.save(user);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
@@ -195,7 +212,7 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        if (disabledWhenRemoving) {
+        if (properties.getUser().isDisabledWhenRemoving()) {
             user.setEnabled(false);
             userRepository.save(user);
         } else {
@@ -203,6 +220,9 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER)
@@ -222,6 +242,9 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
@@ -242,11 +265,17 @@ public class UserManagerImpl implements UserManager {
         userRepository.save(user);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasUser(String username) {
         return userRepository.exists(username);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public User findUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
@@ -259,27 +288,42 @@ public class UserManagerImpl implements UserManager {
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<User> findUsers(String usernameFilter, Pageable pageable) {
         final String filter = DBUtils.wildcard(usernameFilter);
         return userRepository.findByUsernameLikeIgnoreCase(filter, pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Group> findAllGroups(Pageable pageable) {
         return groupRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Group> findUserGroups(String username) {
         return groupRepository.findByUsersUsername(username);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<Role> findAllRoles(Pageable pageable) {
         return roleRepository.findAll(pageable);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Role> findUserRoles(String username) {
         return roleRepository.findByUsersUsername(username);
