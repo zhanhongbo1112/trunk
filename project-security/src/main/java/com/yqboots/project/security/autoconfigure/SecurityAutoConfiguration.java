@@ -17,9 +17,14 @@
  */
 package com.yqboots.project.security.autoconfigure;
 
+import com.yqboots.project.security.access.RoleHierarchyImpl;
+import com.yqboots.project.security.core.repository.RoleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 
 /**
  * The Auto Configuration class for Security related beans.
@@ -29,6 +34,13 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @EnableConfigurationProperties({SecurityProperties.class})
-@Import({DefaultMethodSecurityConfiguration.class})
+@Import({DefaultMethodSecurityConfiguration.class, AclSecurityConfiguration.class})
 public class SecurityAutoConfiguration {
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        return new RoleHierarchyImpl(roleRepository);
+    }
 }

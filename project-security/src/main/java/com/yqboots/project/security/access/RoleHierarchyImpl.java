@@ -77,6 +77,10 @@ public class RoleHierarchyImpl implements RoleHierarchy {
 
         while (StringUtils.isNotBlank(roleStr)) {
             results.add(roleStr);
+            if (!StringUtils.contains(roleStr, "/")) {
+                break;
+            }
+
             roleStr = StringUtils.substringBeforeLast(roleStr, "/");
         }
 

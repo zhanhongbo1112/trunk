@@ -17,7 +17,6 @@
  */
 package com.yqboots.project.security.autoconfigure;
 
-import com.yqboots.project.security.access.AclPermissionEvaluatorImpl;
 import com.yqboots.project.security.access.RoleHierarchyImpl;
 import com.yqboots.project.security.core.repository.RoleRepository;
 import org.apache.commons.lang3.StringUtils;
@@ -51,7 +50,10 @@ import java.util.List;
 @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true, securedEnabled = true)
 public class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleHierarchy roleHierarchy;
+
+    @Autowired
+    private PermissionEvaluator permissionEvaluator;
 
     /**
      * {@inheritDoc}
@@ -60,8 +62,8 @@ public class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConf
     protected MethodSecurityExpressionHandler createExpressionHandler() {
         DefaultMethodSecurityExpressionHandler bean = new DefaultMethodSecurityExpressionHandler();
         bean.setDefaultRolePrefix(StringUtils.EMPTY);
-        bean.setPermissionEvaluator(permissionEvaluator());
-        bean.setRoleHierarchy(roleHierarchy());
+        bean.setPermissionEvaluator(permissionEvaluator);
+        bean.setRoleHierarchy(roleHierarchy);
 
         return bean;
     }
@@ -85,15 +87,6 @@ public class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConf
         return new AffirmativeBased(decisionVoters);
     }
 
-    @Bean
-    public PermissionEvaluator permissionEvaluator() {
-        return new AclPermissionEvaluatorImpl();
-    }
-
-    private RoleHierarchy roleHierarchy() {
-        return new RoleHierarchyImpl(roleRepository);
-    }
-
     private RoleVoter roleVoter() {
         RoleVoter bean = new RoleVoter();
         bean.setRolePrefix(StringUtils.EMPTY);
@@ -101,7 +94,7 @@ public class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConf
     }
 
     private RoleVoter roleHierarchyVoter() {
-        RoleVoter bean = new RoleHierarchyVoter(roleHierarchy());
+        RoleVoter bean = new RoleHierarchyVoter(roleHierarchy);
         bean.setRolePrefix(StringUtils.EMPTY);
         return bean;
     }
