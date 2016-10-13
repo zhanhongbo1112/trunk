@@ -60,11 +60,6 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Group> groups;
 
-    @JsonIgnore
-    @ManyToMany(targetEntity = PermissionInfo.class)
-    @JoinTable(name = "SEC_ROLE_PERMISSIONS", joinColumns = @JoinColumn(name = "ROLE_ID"), inverseJoinColumns = @JoinColumn(name = "PERM_ID"))
-    private Set<Role> roles;
-
     public Role() {
         super();
     }
@@ -117,13 +112,5 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Override
     public String getAuthority() {
         return this.path;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(final Set<Role> roles) {
-        this.roles = roles;
     }
 }
