@@ -75,6 +75,10 @@ public class RoleHierarchyImpl implements RoleHierarchy {
         // /R001/R002/R003 ...
         String roleStr = role.getAuthority();
 
+        if (StringUtils.startsWith(roleStr, "ROLE_") && StringUtils.contains(roleStr, "/")) {
+            roleStr = StringUtils.substringAfter(roleStr, "ROLE_");
+        }
+
         while (StringUtils.isNotBlank(roleStr)) {
             results.add(roleStr);
             if (!StringUtils.contains(roleStr, "/")) {

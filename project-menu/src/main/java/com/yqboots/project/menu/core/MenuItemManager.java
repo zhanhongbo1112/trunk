@@ -38,7 +38,7 @@ public interface MenuItemManager {
      *
      * @return list of MenuItem
      */
-    @PostFilter("hasPermission(filterObject.url, 'read')")
+    @PostFilter("hasPermission(filterObject, 'READ')")
     List<MenuItem> getMenuItems();
 
     /**

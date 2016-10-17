@@ -21,6 +21,8 @@ import com.yqboots.project.menu.context.MenuItemImportListener;
 import com.yqboots.project.menu.core.MenuItemManager;
 import com.yqboots.project.menu.core.MenuItemManagerImpl;
 import com.yqboots.project.menu.core.repository.MenuItemRepository;
+import com.yqboots.project.menu.security.access.MenuItemObjectIdentityRetrieval;
+import com.yqboots.project.security.access.support.ObjectIdentityRetrieval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -51,5 +53,10 @@ public class MenuItemAutoConfiguration {
     @Bean
     public MenuItemManager menuItemManager() {
         return new MenuItemManagerImpl(menuItemRepository, properties);
+    }
+
+    @Bean
+    public ObjectIdentityRetrieval menuItemObjectIdentityRetrieval() {
+        return new MenuItemObjectIdentityRetrieval();
     }
 }

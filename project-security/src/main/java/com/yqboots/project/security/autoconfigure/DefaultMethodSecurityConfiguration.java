@@ -17,11 +17,8 @@
  */
 package com.yqboots.project.security.autoconfigure;
 
-import com.yqboots.project.security.access.RoleHierarchyImpl;
-import com.yqboots.project.security.core.repository.RoleRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.PermissionEvaluator;
