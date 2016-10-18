@@ -21,6 +21,7 @@ import com.yqboots.project.fss.web.util.FssWebUtils;
 import com.yqboots.project.menu.core.MenuItem;
 import com.yqboots.project.menu.core.MenuItemExistsException;
 import com.yqboots.project.menu.core.MenuItemManager;
+import com.yqboots.project.menu.security.access.MenuItemPermissions;
 import com.yqboots.project.menu.web.form.FileUploadForm;
 import com.yqboots.project.menu.web.form.FileUploadFormValidator;
 import com.yqboots.project.web.support.WebKeys;
@@ -70,7 +71,7 @@ public class MenuItemController {
         return new FileUploadForm();
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
+    @PreAuthorize(MenuItemPermissions.READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -79,21 +80,21 @@ public class MenuItemController {
         return VIEW_HOME;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
+    @PreAuthorize(MenuItemPermissions.WRITE)
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, new MenuItem());
         return VIEW_FORM;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
+    @PreAuthorize(MenuItemPermissions.WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, menuItemManager.getMenuItem(id));
         return VIEW_FORM;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
+    @PreAuthorize(MenuItemPermissions.WRITE)
     @RequestMapping(value = WebKeys.MAPPING_ROOT, method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final MenuItem menuItem,
                          final BindingResult bindingResult,
@@ -114,7 +115,7 @@ public class MenuItemController {
         return REDIRECT_VIEW_PATH;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'DELETE')")
+    @PreAuthorize(MenuItemPermissions.DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
         menuItemManager.delete(id);
@@ -123,7 +124,7 @@ public class MenuItemController {
         return REDIRECT_VIEW_PATH;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
+    @PreAuthorize(MenuItemPermissions.WRITE)
     @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
     public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
                           @PageableDefault final Pageable pageable,
@@ -151,7 +152,7 @@ public class MenuItemController {
         return REDIRECT_VIEW_PATH;
     }
 
-    @PreAuthorize("hasPermission('/project/menu', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
+    @PreAuthorize(MenuItemPermissions.READ)
     @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
         Path path = menuItemManager.exports();

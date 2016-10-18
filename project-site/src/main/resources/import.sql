@@ -19,9 +19,22 @@ insert into acl_class (id, class) values (100, 'com.yqboots.project.menu.core.Me
 -- -10005436 (hash code of '/project/menu')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (100, 100, -10005436, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (100, 100, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (101, 100, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (102, 100, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (103, 100, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (104, 100, 5, 101, 16, TRUE, FALSE, FALSE);
 -- -10270053 (hash code of '/project/dict')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (101, 100, -10270053, null, 101, FALSE);
-insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (101, 101, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (105, 101, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (106, 101, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (107, 101, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (108, 101, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (109, 101, 5, 101, 16, TRUE, FALSE, FALSE);
+
 -- 830954945 (hash code of '/project/fss')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (102, 100, 830954945, null, 101, FALSE);
-insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (102, 102, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (110, 102, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (111, 102, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (112, 102, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (113, 102, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (114, 102, 5, 101, 16, TRUE, FALSE, FALSE);

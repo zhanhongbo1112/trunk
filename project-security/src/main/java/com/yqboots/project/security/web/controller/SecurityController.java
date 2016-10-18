@@ -22,14 +22,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Controller for login.
+ * Controller for login and other basic functions.
  *
  * @author Eric H B Zhan
  * @since 1.0.0
  */
 @Controller
 @RequestMapping(value = "/project/security")
-public class LoginController {
+public class SecurityController {
     private static final String VIEW_LOGIN = "project/security/login";
     private static final String VIEW_403 = "project/security/403";
 
