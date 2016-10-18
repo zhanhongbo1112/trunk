@@ -31,6 +31,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -79,6 +80,7 @@ public class FileItemController {
         return fileItemManager.getAvailableDirectories();
     }
 
+    @PreAuthorize("hasPermission('/project/fss', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -92,6 +94,7 @@ public class FileItemController {
         return VIEW_HOME;
     }
 
+    @PreAuthorize("hasPermission('/project/fss', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
     @RequestMapping(value = WebKeys.MAPPING_UPLOAD, method = RequestMethod.POST)
     public String upload(@Valid @ModelAttribute(WebKeys.FILE_UPLOAD_FORM) final FileUploadForm fileUploadForm,
                          @PageableDefault final Pageable pageable,
@@ -120,11 +123,13 @@ public class FileItemController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize("hasPermission('/project/fss', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DOWNLOAD}, method = RequestMethod.GET)
     public HttpEntity<byte[]> download(@RequestParam(WebKeys.ID) final String path) throws IOException {
         return FssWebUtils.downloadFile(fileItemManager.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
     }
 
+    @PreAuthorize("hasPermission('/project/fss', 'com.yqboots.project.menu.core.MenuItem', 'DELETE')")
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam(WebKeys.ID) final String path, final ModelMap model) throws IOException {
         fileItemManager.delete(path);

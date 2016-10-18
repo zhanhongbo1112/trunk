@@ -31,6 +31,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.oxm.XmlMappingException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -69,6 +70,7 @@ public class DataDictController {
         return new FileUploadForm();
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -77,18 +79,21 @@ public class DataDictController {
         return VIEW_HOME;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, new DataDict());
         return VIEW_FORM;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, dataDictManager.getDataDict(id));
         return VIEW_FORM;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
     @RequestMapping(value = WebKeys.MAPPING_ROOT, method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final DataDict dict,
                          final BindingResult bindingResult,
@@ -109,6 +114,7 @@ public class DataDictController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'DELETE')")
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
         dataDictManager.delete(id);
@@ -117,6 +123,7 @@ public class DataDictController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'WRITE')")
     @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
     public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
                           @PageableDefault final Pageable pageable,
@@ -144,6 +151,7 @@ public class DataDictController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize("hasPermission('/project/dict', 'com.yqboots.project.menu.core.MenuItem', 'READ')")
     @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
         Path path = dataDictManager.exports();

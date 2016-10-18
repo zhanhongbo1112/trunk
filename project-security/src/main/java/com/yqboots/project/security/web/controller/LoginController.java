@@ -31,9 +31,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/project/security")
 public class LoginController {
     private static final String VIEW_LOGIN = "project/security/login";
+    private static final String VIEW_403 = "project/security/403";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return VIEW_LOGIN;
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied() {
+        return VIEW_403;
     }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/content-bottom-layout">
+<head>
+  <title>Access Denied</title>
+  <link rel="stylesheet" href="../../resources/theme/application.css" th:remove="all"/>
+  <link rel="stylesheet" href="../../resources/theme/css/theme-colors/green.css" th:remove="all"/>
+</head>
+<body>
+<div layout:fragment="content" class="container content">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="error">
+        <span class="error-title">403</span>
+        <span>Access Denied!</span>
+
+        <p>Access to the specified resource has been forbidden.</p>
+        <a class="btn-u btn-bordered" href="index.html" th:href="@{/}" th:text="#{T0049}">Back to Home</a>
+      </div>
+    </div>
+  </div>
+  <div style="min-height:74px;">&nbsp;</div>
+</div>
+<script src="../../resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}" th:remove="all"></script>
+<script src="../../resources/dojo/bootstrap.js" th:src="@{/dojo/bootstrap.js}" th:remove="all"></script>
+</body>
+</html>
