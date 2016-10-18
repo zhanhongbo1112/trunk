@@ -16,12 +16,10 @@
         <dependency>
             <groupId>com.yqboots.project</groupId>
             <artifactId>project-menu</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.yqboots.project</groupId>
             <artifactId>project-data-dict</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
