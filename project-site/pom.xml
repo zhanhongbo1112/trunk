@@ -16,12 +16,10 @@
         <dependency>
             <groupId>com.yqboots.project</groupId>
             <artifactId>project-thymeleaf</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.yqboots.project</groupId>
             <artifactId>project-security</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

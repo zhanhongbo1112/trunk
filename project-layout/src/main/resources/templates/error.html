@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
+  <title th:text="#{T0046}">404 Error</title>
   <link rel="stylesheet" href="../META-INF/resources/theme/application.css" th:remove="all"/>
   <link rel="stylesheet" href="../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
 </head>
@@ -12,7 +13,7 @@
       <h1 class="pull-left" th:text="#{T0046}">404 Error</h1>
       <ul class="pull-right breadcrumb">
         <li><a href="index.html" th:href="@{/}" th:text="#{T0004}">Home</a></li>
-        <li class="active" th:text="#{T0048}">404 Error</li>
+        <li class="active" th:text="#{T0046}">404 Error</li>
       </ul>
     </div>
   </div>

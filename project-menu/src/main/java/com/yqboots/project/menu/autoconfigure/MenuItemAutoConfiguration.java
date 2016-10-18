@@ -24,6 +24,7 @@ import com.yqboots.project.menu.core.repository.MenuItemRepository;
 import com.yqboots.project.menu.security.access.MenuItemObjectIdentityRetrieval;
 import com.yqboots.project.security.access.support.ObjectIdentityRetrieval;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,8 +56,13 @@ public class MenuItemAutoConfiguration {
         return new MenuItemManagerImpl(menuItemRepository, properties);
     }
 
-    @Bean
-    public ObjectIdentityRetrieval menuItemObjectIdentityRetrieval() {
-        return new MenuItemObjectIdentityRetrieval();
+    @Configuration
+    @ConditionalOnClass(ObjectIdentityRetrieval.class)
+    protected static class MenuItemSecurityConfiguration {
+        @Bean
+        public ObjectIdentityRetrieval menuItemObjectIdentityRetrieval() {
+            return new MenuItemObjectIdentityRetrieval();
+        }
     }
+
 }

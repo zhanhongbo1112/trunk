@@ -62,12 +62,17 @@
         <dependencies>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
+                <artifactId>project-data-dict</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
                 <artifactId>project-fss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
-                <artifactId>project-web</artifactId>
+                <artifactId>project-layout</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -77,12 +82,17 @@
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
-                <artifactId>project-data-dict</artifactId>
+                <artifactId>project-security</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.yqboots.project</groupId>
                 <artifactId>project-thymeleaf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project</groupId>
+                <artifactId>project-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
