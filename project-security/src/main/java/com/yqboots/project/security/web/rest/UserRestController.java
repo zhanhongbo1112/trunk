@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Controller for {@link com.yqboots.project.security.core.User}.
+ * Restful Controller for {@link com.yqboots.project.security.core.User}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0

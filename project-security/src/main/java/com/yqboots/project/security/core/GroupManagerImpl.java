@@ -192,6 +192,29 @@ public class GroupManagerImpl implements GroupManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUP)
+    public void removeGroup(Long id) throws GroupNotFoundException {
+        Assert.notNull(id);
+
+        Group group = groupRepository.findOne(id);
+        if (group == null) {
+            throw new GroupNotFoundException(Long.toString(id));
+        }
+
+        List<User> users = userRepository.findByGroupsPath(group.getPath());
+        for (User user : users) {
+            user.getGroups().remove(group);
+            userRepository.saveAndFlush(user);
+        }
+
+        groupRepository.delete(group);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUP)
     public void removeGroup(String path) throws GroupNotFoundException {
         Assert.hasText(path);
 
@@ -259,6 +282,21 @@ public class GroupManagerImpl implements GroupManager {
     @Override
     public boolean hasGroup(String path) {
         return groupRepository.exists(path);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Group findGroup(Long id) throws GroupNotFoundException {
+        Assert.notNull(id);
+
+        Group result = groupRepository.findOne(id);
+        if (result == null) {
+            throw new GroupNotFoundException(Long.toString(id));
+        }
+
+        return result;
     }
 
     /**

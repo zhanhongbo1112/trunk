@@ -225,6 +225,28 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
+    @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
+    public void removeUser(Long id) throws UserNotFoundException {
+        Assert.notNull(id);
+
+        final User user = userRepository.findOne(id);
+        if (user == null) {
+            throw new UserNotFoundException(Long.toString(id));
+        }
+
+        if (properties.getUser().isDisabledWhenRemoving()) {
+            user.setEnabled(false);
+            userRepository.save(user);
+        } else {
+            userRepository.delete(user);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER)
     public void removeGroups(String username, String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
@@ -271,6 +293,21 @@ public class UserManagerImpl implements UserManager {
     @Override
     public boolean hasUser(String username) {
         return userRepository.exists(username);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public User findUser(Long id) throws UserNotFoundException {
+        Assert.notNull(id);
+
+        User result = userRepository.findOne(id);
+        if (result == null) {
+            throw new UserNotFoundException(Long.toString(id));
+        }
+
+        return result;
     }
 
     /**

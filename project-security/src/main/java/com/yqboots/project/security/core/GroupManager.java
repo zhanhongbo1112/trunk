@@ -88,6 +88,14 @@ public interface GroupManager {
     /**
      * Removes the group.
      *
+     * @param id identity of the group
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void removeGroup(Long id) throws GroupNotFoundException;
+
+    /**
+     * Removes the group.
+     *
      * @param path path
      * @throws GroupNotFoundException throw when the entity is not found
      */
@@ -118,6 +126,15 @@ public interface GroupManager {
      * @return true when the group with the specified path exists
      */
     boolean hasGroup(String path);
+
+    /**
+     * Finds {@link Group} by path.
+     *
+     * @param id identity of the group
+     * @return the group
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    Group findGroup(Long id) throws GroupNotFoundException;
 
     /**
      * Finds {@link Group} by path.

@@ -84,6 +84,14 @@ public interface RoleManager {
     /**
      * Removes the role.
      *
+     * @param id identity of the role
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    void removeRole(Long id) throws RoleNotFoundException;
+
+    /**
+     * Removes the role.
+     *
      * @param path path
      * @throws RoleNotFoundException throw when the entity is not found
      */
@@ -114,6 +122,15 @@ public interface RoleManager {
      * @return true when the group with the specified path exists
      */
     boolean hasRole(String path);
+
+    /**
+     * Finds {@link Role} by path.
+     *
+     * @param id identity of the role
+     * @return the role
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    Role findRole(Long id) throws RoleNotFoundException;
 
     /**
      * Finds {@link Role} by path.

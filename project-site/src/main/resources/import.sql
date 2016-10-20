@@ -33,7 +33,6 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (107, 101, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (108, 101, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (109, 101, 5, 101, 16, TRUE, FALSE, FALSE);
-
 -- 830954945 (hash code of '/project/fss')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (102, 100, 830954945, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (110, 102, 1, 101, 1, TRUE, FALSE, FALSE);
@@ -41,3 +40,27 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (112, 102, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (113, 102, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (114, 102, 5, 101, 16, TRUE, FALSE, FALSE);
+
+-- -37289995 (hash code of '/project/security/user')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (103, 100, -37289995, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (115, 103, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (116, 103, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (117, 103, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (118, 103, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (119, 103, 5, 101, 16, TRUE, FALSE, FALSE);
+
+-- -1168939115 (hash code of '/project/security/group')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (104, 100, -1168939115, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (120, 104, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (121, 104, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (122, 104, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (123, 104, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (124, 104, 5, 101, 16, TRUE, FALSE, FALSE);
+
+-- -37383008 (hash code of '/project/security/role')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (105, 100, -37383008, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (125, 105, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (126, 105, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (127, 105, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (128, 105, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (129, 105, 5, 101, 16, TRUE, FALSE, FALSE);

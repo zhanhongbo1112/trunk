@@ -84,6 +84,14 @@ public interface UserManager {
     /**
      * Removes the user.
      *
+     * @param id identity of the user
+     * @throws UserNotFoundException throw when the entity is not found
+     */
+    void removeUser(Long id) throws UserNotFoundException;
+
+    /**
+     * Removes the user.
+     *
      * @param username username
      * @throws UserNotFoundException throw when the entity is not found
      */
@@ -114,6 +122,15 @@ public interface UserManager {
      * @return true when the group with the specified path exists
      */
     boolean hasUser(String username);
+
+    /**
+     * Finds {@link User} by username.
+     *
+     * @param id identity of the user
+     * @return the role
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    User findUser(Long id) throws UserNotFoundException;
 
     /**
      * Finds {@link User} by username.

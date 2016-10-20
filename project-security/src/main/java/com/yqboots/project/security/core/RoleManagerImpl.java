@@ -193,6 +193,34 @@ public class RoleManagerImpl implements RoleManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLE)
+    public void removeRole(Long id) throws RoleNotFoundException {
+        Assert.notNull(id);
+
+        Role role = roleRepository.findOne(id);
+        if (role == null) {
+            throw new RoleNotFoundException(Long.toString(id));
+        }
+
+        List<User> users = userRepository.findByRolesPath(role.getPath());
+        for (User user : users) {
+            user.getRoles().remove(role);
+            userRepository.saveAndFlush(user);
+        }
+        List<Group> groups = groupRepository.findByRolesPath(role.getPath());
+        for (Group group : groups) {
+            group.getRoles().remove(role);
+            groupRepository.saveAndFlush(group);
+        }
+
+        roleRepository.delete(role);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    @Auditable(code = SecurityAudit.CODE_REMOVE_ROLE)
     public void removeRole(String path) throws RoleNotFoundException {
         Assert.hasText(path);
 
@@ -265,6 +293,21 @@ public class RoleManagerImpl implements RoleManager {
     @Override
     public boolean hasRole(String path) {
         return roleRepository.exists(path);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Role findRole(Long id) throws RoleNotFoundException {
+        Assert.notNull(id);
+
+        Role role = roleRepository.findOne(id);
+        if (role == null) {
+            throw new RoleNotFoundException(Long.toString(id));
+        }
+
+        return role;
     }
 
     /**
