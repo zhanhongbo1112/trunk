@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title>User Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_SECURITY_USER"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger" />
+    <form class="sky-form" action="#" th:action="@{/project/security/user}" th:object="${model}" method="post">
+      <input th:field="*{id}" type="hidden"/>
+      <header>User Maintenance Form</header>
+      <fieldset>
+        <section>
+          <label class="label">Username</label>
+          <label class="input">
+            <input th:field="*{name}" type="text" maxlength="32"/>
+          </label>
+
+          <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+        </section>
+        <section>
+          <label class="label">Enabled</label>
+          <input th:field="*{enabled}" type="checkbox"/>
+          <label th:for="${#ids.prev('enabled')}">Enabled?</label>
+        </section>
+      </fieldset>
+      <footer>
+        <button class="btn-u" type="submit" th:text="#{T0012}">Submit</button>
+        <button class="btn-u" type="reset" th:text="#{T0013}">Reset</button>
+      </footer>
+    </form>
+  </div>
+</div>
+</body>
+</html>

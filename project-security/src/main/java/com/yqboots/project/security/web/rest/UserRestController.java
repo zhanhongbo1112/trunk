@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.project.security.web.controller;
+package com.yqboots.project.security.web.rest;
 
 import com.yqboots.project.security.core.Group;
 import com.yqboots.project.security.core.User;
@@ -40,8 +40,8 @@ import java.util.List;
  * @since 1.1.0
  */
 @RestController
-@RequestMapping(value = "/project/security/user")
-public class UserController {
+@RequestMapping(value = "/rest/security/user")
+public class UserRestController {
     @Autowired
     private UserManager userManager;
 

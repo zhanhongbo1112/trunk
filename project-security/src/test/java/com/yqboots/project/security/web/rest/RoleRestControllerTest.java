@@ -1,4 +1,4 @@
-package com.yqboots.project.security.web.controller;
+package com.yqboots.project.security.web.rest;
 
 import com.yqboots.project.security.Application;
 import org.junit.Before;
@@ -21,14 +21,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Created by Administrator on 2016-02-03.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @WebAppConfiguration
 @WithUserDetails(value = "supervisor")
-public class GroupControllerTest {
+public class RoleRestControllerTest {
     @Autowired
     private WebApplicationContext wac;
 
@@ -41,40 +38,41 @@ public class GroupControllerTest {
 
     @Test
     public void testFind() throws Exception {
-        this.mockMvc.perform(post("/project/security/group").content("/kjjkSUPERVISOR").param("page", "0").param("size", "15").param("sort", "path,desc")
+        this.mockMvc.perform(post("/rest/security/role").content("/SUPERVISOR").param("page", "0")
+                .param("size", "15").param("sort", "path,desc")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
     }
 
-    //@Test
+    // @Test
     public void testUpdate() throws Exception {
         fail("not yet implemented");
     }
 
     // @Test
-    public void testAddUses() throws Exception {
-        fail("not yet implemented");
-    }
-
-    // @Test
-    public void testUpdateUsers() throws Exception {
-        fail("not yet implemented");
-    }
-
-    //@Test
     public void testAddRoles() throws Exception {
         fail("not yet implemented");
     }
 
-    //@Test
+    // @Test
     public void testUpdateRoles() throws Exception {
+        fail("not yet implemented");
+    }
+
+    // @Test
+    public void testAddGroups() throws Exception {
+        fail("not yet implemented");
+    }
+
+    // @Test
+    public void testUpdateGroups() throws Exception {
         fail("not yet implemented");
     }
 
     @Test
     public void testFindAllUsers() throws Exception {
-        this.mockMvc.perform(get("/project/security/group/users").param("sort", "username")
+        this.mockMvc.perform(get("/rest/security/role/users").param("sort", "username")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -82,23 +80,23 @@ public class GroupControllerTest {
 
     @Test
     public void testFindUsers() throws Exception {
-        this.mockMvc.perform(post("/security/group/users/").content("/SUPERVISOR")
+        this.mockMvc.perform(post("/rest/security/role/users/").content("/SUPERVISOR")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
     }
 
     @Test
-    public void testFindAllRoles() throws Exception {
-        this.mockMvc.perform(get("/project/security/group/roles").param("sort", "path")
+    public void testFindAllGroups() throws Exception {
+        this.mockMvc.perform(get("/rest/security/role/groups").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
     }
 
     @Test
-    public void testFindRoles() throws Exception {
-        this.mockMvc.perform(post("/project/security/group/roles/").content("/SUPERVISOR")
+    public void testFindGroups() throws Exception {
+        this.mockMvc.perform(post("/rest/security/role/groups/").content("/SUPERVISOR")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));

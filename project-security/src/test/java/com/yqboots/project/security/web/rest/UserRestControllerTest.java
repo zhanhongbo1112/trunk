@@ -1,4 +1,4 @@
-package com.yqboots.project.security.web.controller;
+package com.yqboots.project.security.web.rest;
 
 import com.yqboots.project.security.Application;
 import org.junit.Before;
@@ -21,14 +21,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Created by Administrator on 2015-12-26.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @WebAppConfiguration
 @WithUserDetails(value = "supervisor")
-public class UserControllerTest {
+public class UserRestControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -42,7 +39,7 @@ public class UserControllerTest {
 
     @Test
     public void testFind() throws Exception {
-        this.mockMvc.perform(post("/project/security/user").content("supervisor").param("page", "0")
+        this.mockMvc.perform(post("/rest/security/user").content("supervisor").param("page", "0")
                 .param("size", "15")
                 .param("sort", "username,desc")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
@@ -77,7 +74,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindAllGroups() throws Exception {
-        this.mockMvc.perform(get("/project/security/user/groups").param("sort", "path")
+        this.mockMvc.perform(get("/rest/security/user/groups").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -85,7 +82,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindGroups() throws Exception {
-        this.mockMvc.perform(post("/project/security/user/groups/").content("supervisor")
+        this.mockMvc.perform(post("/rest/security/user/groups/").content("supervisor")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -93,7 +90,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindAllRoles() throws Exception {
-        this.mockMvc.perform(get("/project/security/user/roles").param("sort", "path")
+        this.mockMvc.perform(get("/rest/security/user/roles").param("sort", "path")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
@@ -101,7 +98,7 @@ public class UserControllerTest {
 
     @Test
     public void testFindRoles() throws Exception {
-        this.mockMvc.perform(post("/project/security/user/roles/").content("supervisor")
+        this.mockMvc.perform(post("/rest/security/user/roles/").content("supervisor")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
