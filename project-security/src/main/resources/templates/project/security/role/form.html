@@ -42,6 +42,76 @@
           <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
         </section>
       </fieldset>
+      <fieldset>
+        <div class="row">
+          <section class="col col-6">
+            <label class="label" th:text="#{T0074}">Selectable Users</label>
+            <label class="select select-multiple">
+              <select multiple="multiple" size="5">
+                <option value="1">USER</option>
+                <option value="2">ADMIN</option>
+              </select>
+            </label>
+
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-double-right"></i> <span th:text="#{T0078}">Add All</span>
+            </button>
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            </button>
+          </section>
+          <section class="col col-6">
+            <label class="label" th:text="#{T0075}">Selected Users</label>
+            <label class="select select-multiple">
+              <select multiple="multiple" size="5">
+                <option value="1">USER</option>
+              </select>
+            </label>
+
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-double-right"></i> <span th:text="#{T0080}">Remove All</span>
+            </button>
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-right"></i> <span th:text="#{T0081}">Remove</span>
+            </button>
+          </section>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="row">
+          <section class="col col-6">
+            <label class="label" th:text="#{T0072}">Selectable Groups</label>
+            <label class="select select-multiple">
+              <select multiple="multiple" size="5">
+                <option value="1">USER</option>
+                <option value="2">ADMIN</option>
+              </select>
+            </label>
+
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-double-right"></i> <span th:text="#{T0078}">Add All</span>
+            </button>
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            </button>
+          </section>
+          <section class="col col-6">
+            <label class="label" th:text="#{T0073}">Selected Groups</label>
+            <label class="select select-multiple">
+              <select multiple="multiple" size="5">
+                <option value="1">USER</option>
+              </select>
+            </label>
+
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-double-right"></i> <span th:text="#{T0080}">Remove All</span>
+            </button>
+            <button class="btn-u" type="button">
+              <i class="fa fa-angle-right"></i> <span th:text="#{T0081}">Remove</span>
+            </button>
+          </section>
+        </div>
+      </fieldset>
       <footer>
         <button class="btn-u" type="submit" th:text="#{T0012}">Submit</button>
         <button class="btn-u" type="reset" th:text="#{T0013}">Reset</button>
