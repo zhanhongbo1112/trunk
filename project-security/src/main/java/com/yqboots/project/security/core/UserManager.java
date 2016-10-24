@@ -38,6 +38,14 @@ public interface UserManager {
     void addUser(User user) throws UserExistsException;
 
     /**
+     * @param username username
+     * @param groupPaths path of groups
+     * @param rolePaths  path of roles
+     * @throws UserNotFoundException
+     */
+    void addUser(String username, List<String> groupPaths, List<String> rolePaths) throws UserExistsException;
+
+    /**
      * Adds {@link Group}s to the {@link User}.
      *
      * @param username   username
@@ -64,6 +72,14 @@ public interface UserManager {
     void updateUser(User user) throws UserNotFoundException;
 
     /**
+     * @param username username
+     * @param groupPaths path of groups
+     * @param rolePaths  path of roles
+     * @throws UserNotFoundException
+     */
+    void updateUser(String username, List<String> groupPaths, List<String> rolePaths) throws UserNotFoundException;
+
+    /**
      * Updates {@link Group}s of the {@link User}.
      *
      * @param username   username
@@ -75,8 +91,8 @@ public interface UserManager {
     /**
      * Updates {@link Role}s of the {@link User}.
      *
-     * @param username  path
-     * @param rolePaths usernames
+     * @param username  username
+     * @param rolePaths paths of role
      * @throws UserNotFoundException throw when the entity is not found
      */
     void updateRoles(String username, String... rolePaths) throws UserNotFoundException;
@@ -124,13 +140,22 @@ public interface UserManager {
     boolean hasUser(String username);
 
     /**
-     * Finds {@link User} by username.
+     * Finds {@link User} by id.
      *
      * @param id identity of the user
-     * @return the role
+     * @return the user
      * @throws RoleNotFoundException throw when the entity is not found
      */
     User findUser(Long id) throws UserNotFoundException;
+
+    /**
+     * Finds {@link User} by username.
+     *
+     * @param id identity of the user
+     * @return the user
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    User findUserWithGroupsAndRoles(Long id) throws UserNotFoundException;
 
     /**
      * Finds {@link User} by username.

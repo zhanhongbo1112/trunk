@@ -19,6 +19,8 @@ package com.yqboots.project.security.web.controller;
 
 import com.yqboots.project.security.core.User;
 import com.yqboots.project.security.core.UserManager;
+import com.yqboots.project.security.web.form.UserForm;
+import com.yqboots.project.security.web.form.UserFormConverter;
 import com.yqboots.project.web.support.WebKeys;
 import com.yqboots.project.web.form.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 /**
  * Controller for {@link com.yqboots.project.security.core.User}.
@@ -63,25 +66,33 @@ public class UserController {
 
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, new User());
+        model.addAttribute(WebKeys.MODEL, new UserForm());
         return VIEW_FORM;
     }
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, userManager.findUser(id));
+        User user = userManager.findUserWithGroupsAndRoles(id);
+
+        model.addAttribute(WebKeys.MODEL, new UserFormConverter().convert(user));
         return VIEW_FORM;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final User domain,
+    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final UserForm domain,
                          final BindingResult bindingResult,
                          final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return VIEW_FORM;
         }
 
-        userManager.addUser(domain);
+        // TODO: exception handling
+        if (!domain.isExisted()) {
+            userManager.addUser(domain.getUsername(), Arrays.asList(domain.getGroups()), Arrays.asList(domain.getRoles()));
+        } else {
+            userManager.updateUser(domain.getUsername(), Arrays.asList(domain.getGroups()), Arrays.asList(domain.getRoles()));
+        }
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;

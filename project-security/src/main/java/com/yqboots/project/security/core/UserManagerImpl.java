@@ -24,6 +24,7 @@ import com.yqboots.project.security.core.repository.GroupRepository;
 import com.yqboots.project.security.core.repository.RoleRepository;
 import com.yqboots.project.security.core.repository.UserRepository;
 import com.yqboots.project.security.util.DBUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -75,13 +76,34 @@ public class UserManagerImpl implements UserManager {
             throw new UserExistsException(user.getUsername());
         }
 
-        String password = user.getPassword();
-        if (StringUtils.isEmpty(password)) {
-            password = properties.getUser().getPasswordDefault();
+        user.setPassword(getPasswordDefault(user.getPassword()));
+
+        userRepository.save(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public void addUser(String username, List<String> groupIds, List<String> roleIds) throws UserExistsException {
+        Assert.hasText(username);
+        if (userRepository.exists(username)) {
+            throw new UserExistsException(username);
         }
-        // encrypt the password
-        password = passwordEncoder.encode(password);
-        user.setPassword(password);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setEnabled(true);
+        user.setPassword(getPasswordDefault(null));
+
+        if (CollectionUtils.isNotEmpty(groupIds)) {
+            user.setGroups(new HashSet<>(groupRepository.findByPathIn(new HashSet<>(groupIds))));
+        }
+
+        if (CollectionUtils.isNotEmpty(roleIds)) {
+            user.setRoles(new HashSet<>(roleRepository.findByPathIn(new HashSet<>(roleIds))));
+        }
 
         userRepository.save(user);
     }
@@ -203,6 +225,28 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
+    public void updateUser(final String username, final List<String> groupPaths, final List<String> rolePaths) throws UserNotFoundException {
+        Assert.hasText(username);
+
+        User entity = userRepository.findByUsername(username);
+        if (entity == null) {
+            throw new UserNotFoundException(username);
+        }
+
+        if (CollectionUtils.isNotEmpty(groupPaths)) {
+            updateGroups(username, groupPaths.toArray(new String[groupPaths.size()]));
+        }
+
+        if (CollectionUtils.isNotEmpty(rolePaths)) {
+            updateRoles(username, rolePaths.toArray(new String[rolePaths.size()]));
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
     public void removeUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
@@ -314,6 +358,20 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
+    public User findUserWithGroupsAndRoles(final Long id) throws UserNotFoundException {
+        Assert.notNull(id);
+
+        User user = findUser(id);
+        user.getGroups();
+        user.getRoles();
+
+        return user;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public User findUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
 
@@ -364,5 +422,15 @@ public class UserManagerImpl implements UserManager {
     @Override
     public List<Role> findUserRoles(String username) {
         return roleRepository.findByUsersUsername(username);
+    }
+
+    private String getPasswordDefault(String password) {
+        String result = password;
+        if (StringUtils.isBlank(result)) {
+            // encrypt the password
+            result = passwordEncoder.encode(properties.getUser().getPasswordDefault());
+        }
+
+        return result;
     }
 }

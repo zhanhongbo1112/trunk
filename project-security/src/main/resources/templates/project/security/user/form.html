@@ -24,11 +24,7 @@
 
             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
           </section>
-          <section class="col col-6">
-            <label class="label" th:text="#{T0067}">Enabled</label>
-            <input th:field="*{enabled}" type="checkbox"/>
-            <label th:for="${#ids.prev('enabled')}" th:text="#{T0067}">Enabled?</label>
-          </section>
+          <section class="col col-6"></section>
         </div>
       </fieldset>
       <fieldset>
@@ -52,7 +48,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0073}">Selected Groups</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
+              <select multiple="multiple" size="5" th:field="*{groups}">
                 <option value="1">USER</option>
               </select>
             </label>
@@ -87,7 +83,7 @@
           <section class="col col-6">
             <label class="label" th:text="#{T0077}">Selected Roles</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
+              <select multiple="multiple" size="5" th:field="*{roles}">
                 <option value="1">USER</option>
               </select>
             </label>
