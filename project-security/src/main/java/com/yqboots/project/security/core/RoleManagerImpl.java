@@ -338,6 +338,22 @@ public class RoleManagerImpl implements RoleManager {
      * {@inheritDoc}
      */
     @Override
+    public Page<Role> findRoles(final Pageable pageable) {
+        return roleRepository.findAll(pageable);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Role> findAllRoles() {
+        return roleRepository.findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Page<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }

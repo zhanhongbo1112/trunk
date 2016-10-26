@@ -17,6 +17,7 @@ package com.yqboots.project.dict.core;
 
 import com.yqboots.project.dict.autoconfigure.DataDictProperties;
 import com.yqboots.project.dict.core.repository.DataDictRepository;
+import com.yqboots.project.dict.core.support.DataDictResolver;
 import com.yqboots.project.fss.core.support.FileType;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -50,6 +51,8 @@ public class DataDictManagerImpl implements DataDictManager {
     private DataDictRepository dataDictRepository;
 
     private DataDictProperties properties;
+
+    private List<DataDictResolver> dataDictResolvers;
 
     /**
      * For marshalling and unmarshalling Data Dictionaries.
@@ -90,8 +93,19 @@ public class DataDictManagerImpl implements DataDictManager {
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(final String name) {
-        return dataDictRepository.findByNameOrderByText(name);
+    public List<DataDict> getDataDicts(final String name, final String... attributes) {
+        Assert.hasText(name, "name is required");
+        List<DataDict> results = dataDictRepository.findByNameOrderByText(name);
+        if (results.isEmpty() && dataDictResolvers != null) {
+            for (DataDictResolver resolver : dataDictResolvers) {
+                if (resolver.supports(name)) {
+                    results = resolver.getDataDicts(attributes);
+                    break;
+                }
+            }
+        }
+
+        return results;
     }
 
     /**
@@ -194,5 +208,9 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         return result;
+    }
+
+    public void setDataDictResolvers(final List<DataDictResolver> dataDictResolvers) {
+        this.dataDictResolvers = dataDictResolvers;
     }
 }

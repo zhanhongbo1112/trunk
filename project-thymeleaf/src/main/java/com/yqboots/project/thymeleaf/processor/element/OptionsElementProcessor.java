@@ -39,6 +39,7 @@ import java.util.List;
 public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
     public static final String ATTR_NAME = "name";
     public static final String ATTR_VALUE_INCLUDED = "valueIncluded";
+    public static final String ATTR_ATTRIBUTES = "attributes";
 
     public OptionsElementProcessor() {
         super("options");
@@ -59,14 +60,12 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
             throw new IllegalArgumentException("name attribute should be set");
         }
 
-        boolean valueIncluded = false;
-        if (element.hasAttribute(ATTR_VALUE_INCLUDED)) {
-            valueIncluded = Boolean.valueOf(element.getAttributeValue(ATTR_VALUE_INCLUDED));
-        }
+        final boolean valueIncluded = Boolean.valueOf(element.getAttributeValue(ATTR_VALUE_INCLUDED));
+        final String attributes = element.getAttributeValue(ATTR_ATTRIBUTES);
 
         Element option;
 
-        final List<DataDict> items = manager.getDataDicts(nameAttrValue);
+        final List<DataDict> items = manager.getDataDicts(nameAttrValue, attributes);
         for (DataDict item : items) {
             option = new Element("option");
             option.setAttribute("value", item.getValue());

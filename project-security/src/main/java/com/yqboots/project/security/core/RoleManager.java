@@ -146,9 +146,22 @@ public interface RoleManager {
      *
      * @param pathFilter pathFilter
      * @param pageable   pageable
-     * @return page of groups
+     * @return page of roles
      */
     Page<Role> findRoles(String pathFilter, Pageable pageable);
+
+    /**
+     * Finds {@link Role}s.
+     *
+     * @param pageable pageable
+     * @return page of roles
+     */
+    Page<Role> findRoles(Pageable pageable);
+
+    /**
+     * @return list of roles
+     */
+    List<Role> findAllRoles();
 
     /**
      * Finds all {@link User}s.
