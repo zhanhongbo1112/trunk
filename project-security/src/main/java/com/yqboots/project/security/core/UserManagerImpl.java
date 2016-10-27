@@ -358,20 +358,6 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public User findUserWithGroupsAndRoles(final Long id) throws UserNotFoundException {
-        Assert.notNull(id);
-
-        User user = findUser(id);
-        user.getGroups();
-        user.getRoles();
-
-        return user;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public User findUser(String username) throws UserNotFoundException {
         Assert.hasText(username);
 

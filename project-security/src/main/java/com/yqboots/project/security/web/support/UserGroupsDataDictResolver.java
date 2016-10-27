@@ -65,9 +65,8 @@ public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
     public List<DataDict> getDataDicts(String... attributes) {
         List<DataDict> results = new ArrayList<>();
 
-        if (ArrayUtils.isNotEmpty(attributes)) {
+        if (ArrayUtils.isNotEmpty(attributes) && attributes[0] != null) {
             // attributes[0] is username
-            Assert.hasText(attributes[0], "username should be set");
             List<Group> groups = userManager.findUserGroups(attributes[0]);
             groups.forEach(new GroupToDataDictConsumer(getName(), results));
         }

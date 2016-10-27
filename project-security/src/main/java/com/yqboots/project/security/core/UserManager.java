@@ -151,15 +151,6 @@ public interface UserManager {
     /**
      * Finds {@link User} by username.
      *
-     * @param id identity of the user
-     * @return the user
-     * @throws RoleNotFoundException throw when the entity is not found
-     */
-    User findUserWithGroupsAndRoles(Long id) throws UserNotFoundException;
-
-    /**
-     * Finds {@link User} by username.
-     *
      * @param username username
      * @return the role
      * @throws RoleNotFoundException throw when the entity is not found

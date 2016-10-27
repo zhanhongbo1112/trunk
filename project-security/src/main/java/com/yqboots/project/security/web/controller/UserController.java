@@ -72,7 +72,7 @@ public class UserController {
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        User user = userManager.findUserWithGroupsAndRoles(id);
+        User user = userManager.findUser(id);
 
         model.addAttribute(WebKeys.MODEL, new UserFormConverter().convert(user));
         return VIEW_FORM;
