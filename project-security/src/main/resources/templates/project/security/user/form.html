@@ -33,6 +33,8 @@
             <label class="select select-multiple">
               <select id="selectableGroups" multiple="multiple" size="5">
                 <yq:options name="ALL_GROUPS" valueIncluded="true"/>
+                <option value="1">Option1</option>
+                <option value="2">Option2</option>
               </select>
             </label>
 
@@ -45,6 +47,9 @@
             <label class="select select-multiple">
               <select multiple="multiple" size="5" th:field="*{groups}">
                 <yq:options name="USER_GROUPS" valueIncluded="true" attributes="*{username}"/>
+                <option value="3">Option3</option>
+                <option value="4">Option4</option>
+                <option value="5">Option5</option>
               </select>
             </label>
 
