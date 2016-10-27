@@ -12,7 +12,6 @@
   <div class="container">
     <yq:alert level="danger" />
     <form class="sky-form" action="#" th:action="@{/project/security/user}" th:object="${model}" method="post">
-      <input th:field="*{id}" type="hidden"/>
       <header th:text="#{T0063}">User Maintenance Form</header>
       <fieldset>
         <div class="row">
@@ -33,8 +32,7 @@
             <label class="label" th:text="#{T0072}">Selectable Groups</label>
             <label class="select select-multiple">
               <select multiple="multiple" size="5">
-                <option value="1">USER</option>
-                <option value="2">ADMIN</option>
+                <yq:options name="ALL_GROUPS" valueIncluded="true"/>
               </select>
             </label>
 
@@ -49,7 +47,7 @@
             <label class="label" th:text="#{T0073}">Selected Groups</label>
             <label class="select select-multiple">
               <select multiple="multiple" size="5" th:field="*{groups}">
-                <option value="1">USER</option>
+                <yq:options name="USER_GROUPS" valueIncluded="true" attributes="*{username}"/>
               </select>
             </label>
 
@@ -68,8 +66,7 @@
             <label class="label" th:text="#{T0076}">Selectable Roles</label>
             <label class="select select-multiple">
               <select multiple="multiple" size="5">
-                <option value="1">USER</option>
-                <option value="2">ADMIN</option>
+                <yq:options name="ALL_ROLES" valueIncluded="true"/>
               </select>
             </label>
 
@@ -84,7 +81,7 @@
             <label class="label" th:text="#{T0077}">Selected Roles</label>
             <label class="select select-multiple">
               <select multiple="multiple" size="5" th:field="*{roles}">
-                <option value="1">USER</option>
+                <yq:options name="USER_ROLES" valueIncluded="true" attributes="*{username}"/>
               </select>
             </label>
 

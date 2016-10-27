@@ -19,9 +19,9 @@ package com.yqboots.project.security.web.support;
 
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.support.AbstractDataDictResolver;
-import com.yqboots.project.security.core.Role;
+import com.yqboots.project.security.core.Group;
 import com.yqboots.project.security.core.UserManager;
-import com.yqboots.project.security.web.support.consumer.RoleToDataDictConsumer;
+import com.yqboots.project.security.web.support.consumer.GroupToDataDictConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -30,17 +30,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link Role}s of a specified {@link com.yqboots.project.security.core.User}<br/>
+ * Resolves {@link Group}s of a specified {@link com.yqboots.project.security.core.User}<br/>
  * <p>for the implementation, the first attribute should be the specified username of the user.</p>
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class UserRolesDataDictResolver extends AbstractDataDictResolver {
+public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
     /**
-     * name key: USER_ROLES
+     * name key: USER_GROUPS
      */
-    private static final String NAME_KEY = "USER_ROLES";
+    private static final String NAME_KEY = "USER_GROUPS";
 
     /**
      * UserManager.
@@ -53,7 +53,7 @@ public class UserRolesDataDictResolver extends AbstractDataDictResolver {
      * @param userManager userManager
      */
     @Autowired
-    public UserRolesDataDictResolver(final UserManager userManager) {
+    public UserGroupsDataDictResolver(final UserManager userManager) {
         super(NAME_KEY);
         this.userManager = userManager;
     }
@@ -68,8 +68,8 @@ public class UserRolesDataDictResolver extends AbstractDataDictResolver {
         if (ArrayUtils.isNotEmpty(attributes)) {
             // attributes[0] is username
             Assert.hasText(attributes[0], "username should be set");
-            List<Role> roles = userManager.findUserRoles(attributes[0]);
-            roles.forEach(new RoleToDataDictConsumer(getName(), results));
+            List<Group> groups = userManager.findUserGroups(attributes[0]);
+            groups.forEach(new GroupToDataDictConsumer(getName(), results));
         }
 
         return results;

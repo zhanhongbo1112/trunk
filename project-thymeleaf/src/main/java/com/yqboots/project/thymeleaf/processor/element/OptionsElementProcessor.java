@@ -20,12 +20,17 @@ package com.yqboots.project.thymeleaf.processor.element;
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.DataDictManager;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
 import org.thymeleaf.Arguments;
+import org.thymeleaf.Configuration;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.dom.Node;
 import org.thymeleaf.dom.Text;
 import org.thymeleaf.processor.element.AbstractMarkupSubstitutionElementProcessor;
 import org.thymeleaf.spring4.context.SpringWebContext;
+import org.thymeleaf.standard.expression.IStandardExpression;
+import org.thymeleaf.standard.expression.IStandardExpressionParser;
+import org.thymeleaf.standard.expression.StandardExpressions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +66,15 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
         }
 
         final boolean valueIncluded = Boolean.valueOf(element.getAttributeValue(ATTR_VALUE_INCLUDED));
-        final String attributes = element.getAttributeValue(ATTR_ATTRIBUTES);
+
+        final Configuration configuration = arguments.getConfiguration();
+        // Obtain the Thymeleaf Standard Expression parser
+        final IStandardExpressionParser parser = StandardExpressions.getExpressionParser(configuration);
+        String attributes = element.getAttributeValue(ATTR_ATTRIBUTES);
+        if (StringUtils.isNotBlank(attributes)) {
+            final IStandardExpression expression = parser.parseExpression(configuration, arguments, attributes);
+            attributes = (String) expression.execute(configuration, arguments);
+        }
 
         Element option;
 

@@ -155,6 +155,19 @@ public interface GroupManager {
     Page<Group> findGroups(String pathFilter, Pageable pageable);
 
     /**
+     * Finds {@link Group}s.
+     *
+     * @param pageable pageable
+     * @return page of groups
+     */
+    Page<Group> findGroups(Pageable pageable);
+
+    /**
+     * @return list of groups
+     */
+    List<Group> findAllGroups();
+
+    /**
      * Finds all {@link User}s.
      *
      * @param pageable pageable

@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(com.yqboots.project.security.Application.class, args);
     }
 
     @RequestMapping(value = "/")

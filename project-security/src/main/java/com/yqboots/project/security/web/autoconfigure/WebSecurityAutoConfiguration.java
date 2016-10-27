@@ -17,11 +17,15 @@
  */
 package com.yqboots.project.security.web.autoconfigure;
 
+import com.yqboots.project.security.web.support.AllGroupsDataDictResolver;
+import com.yqboots.project.security.web.support.AllRolesDataDictResolver;
+import com.yqboots.project.security.web.support.UserGroupsDataDictResolver;
+import com.yqboots.project.security.web.support.UserRolesDataDictResolver;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
@@ -32,6 +36,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@Import({AllRolesDataDictResolver.class, UserRolesDataDictResolver.class, AllGroupsDataDictResolver.class, UserGroupsDataDictResolver.class})
 public class WebSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * {@inheritDoc}

@@ -18,18 +18,18 @@
 package com.yqboots.project.security.web.support.consumer;
 
 import com.yqboots.project.dict.core.DataDict;
-import com.yqboots.project.security.core.Role;
+import com.yqboots.project.security.core.Group;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Consumes {@link Role} and put into {@link DataDict}.
+ * Consumes {@link Group} and put into {@link DataDict}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class RoleToDataDictConsumer implements Consumer<Role> {
+public class GroupToDataDictConsumer implements Consumer<Group> {
     /**
      * The key of the data dictionary.
      */
@@ -41,12 +41,12 @@ public class RoleToDataDictConsumer implements Consumer<Role> {
     private final List<DataDict> dataDicts;
 
     /**
-     * Constructs the <code>RoleToDataDictConsumer</code>
+     * Constructs the <code>GroupToDataDictConsumer</code>
      *
      * @param name      name key
      * @param dataDicts dataDicts
      */
-    public RoleToDataDictConsumer(final String name, final List<DataDict> dataDicts) {
+    public GroupToDataDictConsumer(final String name, final List<DataDict> dataDicts) {
         this.name = name;
         this.dataDicts = dataDicts;
     }
@@ -55,12 +55,12 @@ public class RoleToDataDictConsumer implements Consumer<Role> {
      * {@inheritDoc}
      */
     @Override
-    public void accept(final Role role) {
+    public void accept(final Group group) {
         DataDict dataDict = new DataDict();
         dataDict.setName(getName());
-        dataDict.setText(role.getAlias());
-        dataDict.setValue(role.getPath());
-        dataDict.setDescription(role.getDescription());
+        dataDict.setText(group.getAlias());
+        dataDict.setValue(group.getPath());
+        dataDict.setDescription(group.getDescription());
         dataDicts.add(dataDict);
     }
 

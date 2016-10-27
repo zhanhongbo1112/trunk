@@ -38,7 +38,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.yqboots.project.Application</mainClass>
+                    <mainClass>com.yqboots.project.security.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -327,6 +327,22 @@ public class GroupManagerImpl implements GroupManager {
      * {@inheritDoc}
      */
     @Override
+    public Page<Group> findGroups(final Pageable pageable) {
+        return groupRepository.findAll(pageable);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Group> findAllGroups() {
+        return groupRepository.findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Page<User> findAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }

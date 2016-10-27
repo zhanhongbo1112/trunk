@@ -23,7 +23,6 @@ import com.yqboots.project.security.core.Role;
 import com.yqboots.project.security.core.RoleManager;
 import com.yqboots.project.security.web.support.consumer.RoleToDataDictConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-@Service
 public class AllRolesDataDictResolver extends AbstractDataDictResolver {
     /**
      * name key: ALL_ROLES
