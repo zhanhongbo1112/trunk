@@ -33,13 +33,11 @@
             <label class="select select-multiple">
               <select id="selectableGroups" multiple="multiple" size="5">
                 <yq:options name="ALL_GROUPS" valueIncluded="true"/>
-                <option value="1">Option1</option>
-                <option value="2">Option2</option>
               </select>
             </label>
 
-            <button class="btn-u rounded" id="addGroups" type="button">
-              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            <button class="btn-u rounded" id="addGroups" type="button" th:title="#{T0079}">
+              <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
@@ -47,14 +45,11 @@
             <label class="select select-multiple">
               <select multiple="multiple" size="5" th:field="*{groups}">
                 <yq:options name="USER_GROUPS" valueIncluded="true" attributes="*{username}"/>
-                <option value="3">Option3</option>
-                <option value="4">Option4</option>
-                <option value="5">Option5</option>
               </select>
             </label>
 
-            <button class="btn-u rounded" id="removeGroups" type="button">
-              <i class="fa fa-angle-left"></i> <span th:text="#{T0081}">Remove</span>
+            <button class="btn-u rounded" id="removeGroups" type="button" th:title="#{T0081}">
+              <i class="fa fa-angle-left"></i>
             </button>
           </section>
         </div>
@@ -69,8 +64,8 @@
               </select>
             </label>
 
-            <button class="btn-u rounded" id="addRoles" type="button">
-              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            <button class="btn-u rounded" id="addRoles" type="button" th:title="#{T0079}">
+              <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
@@ -81,15 +76,15 @@
               </select>
             </label>
 
-            <button class="btn-u rounded" id="removeRoles" type="button">
-              <i class="fa fa-angle-left"></i> <span th:text="#{T0081}">Remove</span>
+            <button class="btn-u rounded" id="removeRoles" type="button" th:title="#{T0081}">
+              <i class="fa fa-angle-left"></i>
             </button>
           </section>
         </div>
       </fieldset>
       <footer>
         <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
-        <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+        <button class="btn-u rounded" th:text="#{T0066}">Cancel</button>
       </footer>
     </form>
   </div>
