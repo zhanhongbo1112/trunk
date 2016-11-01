@@ -58,8 +58,8 @@ public class RoleToDataDictConsumer implements Consumer<Role> {
     public void accept(final Role role) {
         DataDict dataDict = new DataDict();
         dataDict.setName(getName());
-        dataDict.setText(role.getAlias());
-        dataDict.setValue(role.getPath());
+        dataDict.setText(role.getPath() + " - " + role.getAlias());
+        dataDict.setValue(Long.toString(role.getId()));
         dataDict.setDescription(role.getDescription());
         dataDicts.add(dataDict);
     }

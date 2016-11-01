@@ -39,11 +39,11 @@ public interface UserManager {
 
     /**
      * @param username username
-     * @param groupPaths path of groups
-     * @param rolePaths  path of roles
+     * @param groupIds ids of groups
+     * @param roleIds  ids of roles
      * @throws UserNotFoundException
      */
-    void addUser(String username, List<String> groupPaths, List<String> rolePaths) throws UserExistsException;
+    void addUser(String username, Long[] groupIds, Long[] roleIds) throws UserExistsException;
 
     /**
      * Adds {@link Group}s to the {@link User}.
@@ -73,29 +73,47 @@ public interface UserManager {
 
     /**
      * @param username username
-     * @param groupPaths path of groups
-     * @param rolePaths  path of roles
+     * @param groupIds ids of groups
+     * @param roleIds  ids of roles
      * @throws UserNotFoundException
      */
-    void updateUser(String username, List<String> groupPaths, List<String> rolePaths) throws UserNotFoundException;
+    void updateUser(String username, Long[] groupIds, Long[] roleIds) throws UserNotFoundException;
 
     /**
      * Updates {@link Group}s of the {@link User}.
      *
      * @param username   username
-     * @param groupPaths path of groups
+     * @param groupPaths paths of groups
      * @throws UserNotFoundException throw when the entity is not found
      */
     void updateGroups(String username, String... groupPaths) throws UserNotFoundException;
 
     /**
+     * Updates {@link Group}s of the {@link User}.
+     *
+     * @param username username
+     * @param groupIds ids of groups
+     * @throws UserNotFoundException throw when the entity is not found
+     */
+    void updateGroups(String username, Long... groupIds) throws UserNotFoundException;
+
+    /**
      * Updates {@link Role}s of the {@link User}.
      *
      * @param username  username
-     * @param rolePaths paths of role
+     * @param rolePaths paths of roles
      * @throws UserNotFoundException throw when the entity is not found
      */
     void updateRoles(String username, String... rolePaths) throws UserNotFoundException;
+
+    /**
+     * Updates {@link Role}s of the {@link User}.
+     *
+     * @param username username
+     * @param roleIds  ids of roles
+     * @throws UserNotFoundException throw when the entity is not found
+     */
+    void updateRoles(String username, Long... roleIds) throws UserNotFoundException;
 
     /**
      * Removes the user.

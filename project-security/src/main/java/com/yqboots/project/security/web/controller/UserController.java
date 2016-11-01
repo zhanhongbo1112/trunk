@@ -88,9 +88,9 @@ public class UserController {
 
         // TODO: exception handling
         if (!domain.isExisted()) {
-            userManager.addUser(domain.getUsername(), Arrays.asList(domain.getGroups()), Arrays.asList(domain.getRoles()));
+            userManager.addUser(domain.getUsername(), domain.getGroups(), domain.getRoles());
         } else {
-            userManager.updateUser(domain.getUsername(), Arrays.asList(domain.getGroups()), Arrays.asList(domain.getRoles()));
+            userManager.updateUser(domain.getUsername(), domain.getGroups(), domain.getRoles());
         }
 
         model.clear();

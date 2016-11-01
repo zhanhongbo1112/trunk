@@ -58,8 +58,8 @@ public class GroupToDataDictConsumer implements Consumer<Group> {
     public void accept(final Group group) {
         DataDict dataDict = new DataDict();
         dataDict.setName(getName());
-        dataDict.setText(group.getAlias());
-        dataDict.setValue(group.getPath());
+        dataDict.setText(group.getPath() + " - " + group.getAlias());
+        dataDict.setValue(Long.toString(group.getId()));
         dataDict.setDescription(group.getDescription());
         dataDicts.add(dataDict);
     }

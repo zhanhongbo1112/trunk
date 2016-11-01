@@ -43,15 +43,20 @@ define(['jquery'], function () {
         },
 
         getSelectedOptions: function (selectNodeId) {
-            return $('#' + selectNodeId + ' option:selected').map(function () {
+            var results = $('#' + selectNodeId + ' option:selected').map(function () {
                 return $(this).val();
             }).get();
+
+            return results || [];
         },
 
         getAllOptions: function (selectNodeId) {
-            return $('#' + selectNodeId + ' option').map(function () {
+            var results = $('#' + selectNodeId + ' option').map(function () {
                 return $(this).val();
             }).get();
+
+
+            return results || [];
         },
 
         sort: function (selectNodeId) {

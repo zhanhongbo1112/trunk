@@ -17,6 +17,9 @@
  */
 package com.yqboots.project.security.web.form;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 
 /**
@@ -26,11 +29,13 @@ import java.io.Serializable;
  * @since 1.1.0
  */
 public class UserForm implements Serializable {
+    @NotEmpty
+    @Length(max = 64)
     private String username;
 
-    private String[] groups;
+    private Long[] groups;
 
-    private String[] roles;
+    private Long[] roles;
 
     private boolean existed;
 
@@ -42,19 +47,19 @@ public class UserForm implements Serializable {
         this.username = username;
     }
 
-    public String[] getGroups() {
+    public Long[] getGroups() {
         return groups;
     }
 
-    public void setGroups(final String[] groups) {
+    public void setGroups(final Long[] groups) {
         this.groups = groups;
     }
 
-    public String[] getRoles() {
+    public Long[] getRoles() {
         return roles;
     }
 
-    public void setRoles(final String[] roles) {
+    public void setRoles(final Long[] roles) {
         this.roles = roles;
     }
 

@@ -50,32 +50,32 @@ public class UserFormConverter implements Converter<User, UserForm> {
     }
 
     /**
-     * Gets the path of groups.
+     * Gets the id of groups.
      *
      * @param groups groups
-     * @return path of groups
+     * @return id of groups
      */
-    private String[] getGroups(Set<Group> groups) {
-        List<String> results = new ArrayList<>();
+    private Long[] getGroups(Set<Group> groups) {
+        List<Long> results = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(groups)) {
-            results.addAll(groups.stream().map(Group::getPath).collect(Collectors.toList()));
+            results.addAll(groups.stream().map(Group::getId).collect(Collectors.toList()));
         }
 
-        return results.toArray(new String[results.size()]);
+        return results.toArray(new Long[results.size()]);
     }
 
     /**
-     * Gets the path of roles.
+     * Gets the id of roles.
      *
      * @param roles roles
-     * @return path of roles
+     * @return id of roles
      */
-    private String[] getRoles(Set<Role> roles) {
-        List<String> results = new ArrayList<>();
+    private Long[] getRoles(Set<Role> roles) {
+        List<Long> results = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(roles)) {
-            results.addAll(roles.stream().map(Role::getPath).collect(Collectors.toList()));
+            results.addAll(roles.stream().map(Role::getId).collect(Collectors.toList()));
         }
 
-        return results.toArray(new String[results.size()]);
+        return results.toArray(new Long[results.size()]);
     }
 }

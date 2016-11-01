@@ -25,6 +25,7 @@ import com.yqboots.project.security.core.repository.RoleRepository;
 import com.yqboots.project.security.core.repository.UserRepository;
 import com.yqboots.project.security.util.DBUtils;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -86,7 +87,7 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-    public void addUser(String username, List<String> groupIds, List<String> roleIds) throws UserExistsException {
+    public void addUser(String username, Long[] groupIds, Long[] roleIds) throws UserExistsException {
         Assert.hasText(username);
         if (userRepository.exists(username)) {
             throw new UserExistsException(username);
@@ -97,12 +98,12 @@ public class UserManagerImpl implements UserManager {
         user.setEnabled(true);
         user.setPassword(getPasswordDefault(null));
 
-        if (CollectionUtils.isNotEmpty(groupIds)) {
-            user.setGroups(new HashSet<>(groupRepository.findByPathIn(new HashSet<>(groupIds))));
+        if (ArrayUtils.isNotEmpty(groupIds)) {
+            user.setGroups(new HashSet<>(groupRepository.findAll(Arrays.asList(groupIds))));
         }
 
-        if (CollectionUtils.isNotEmpty(roleIds)) {
-            user.setRoles(new HashSet<>(roleRepository.findByPathIn(new HashSet<>(roleIds))));
+        if (ArrayUtils.isNotEmpty(roleIds)) {
+            user.setRoles(new HashSet<>(roleRepository.findAll(Arrays.asList(roleIds))));
         }
 
         userRepository.save(user);
@@ -201,6 +202,32 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
+//    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
+    public void updateGroups(String username, Long... groupIds) throws UserNotFoundException {
+        Assert.hasText(username);
+        // Assert.notEmpty(groupIds);
+
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException(username);
+        }
+
+        user.getGroups().clear();
+        if (ArrayUtils.isNotEmpty(groupIds)) {
+            final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
+            if (!groups.isEmpty()) {
+                user.setGroups(new HashSet<>(groups));
+            }
+        }
+
+        userRepository.save(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
     public void updateRoles(String username, String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
@@ -212,7 +239,33 @@ public class UserManagerImpl implements UserManager {
         }
 
         user.getRoles().clear();
-        final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+        if (ArrayUtils.isNotEmpty(rolePaths)) {
+            final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+            if (!roles.isEmpty()) {
+                user.setRoles(new HashSet<>(roles));
+            }
+        }
+
+        userRepository.save(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+//    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
+    public void updateRoles(String username, Long... roleIds) throws UserNotFoundException {
+        Assert.hasText(username);
+        // Assert.notEmpty(roleIds);
+
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException(username);
+        }
+
+        user.getRoles().clear();
+        final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
         if (!roles.isEmpty()) {
             user.setRoles(new HashSet<>(roles));
         }
@@ -225,7 +278,7 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-    public void updateUser(final String username, final List<String> groupPaths, final List<String> rolePaths) throws UserNotFoundException {
+    public void updateUser(final String username, final Long[] groupIds, final Long[] roleIds) throws UserNotFoundException {
         Assert.hasText(username);
 
         User entity = userRepository.findByUsername(username);
@@ -233,13 +286,8 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        if (CollectionUtils.isNotEmpty(groupPaths)) {
-            updateGroups(username, groupPaths.toArray(new String[groupPaths.size()]));
-        }
-
-        if (CollectionUtils.isNotEmpty(rolePaths)) {
-            updateRoles(username, rolePaths.toArray(new String[rolePaths.size()]));
-        }
+        updateGroups(username, groupIds);
+        updateRoles(username, roleIds);
     }
 
     /**
