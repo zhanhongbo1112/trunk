@@ -60,41 +60,64 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Core Modules -->
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-data-dict</artifactId>
+                <groupId>com.yqboots.project.dict</groupId>
+                <artifactId>yqboots-dict-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-fss</artifactId>
+                <groupId>com.yqboots.project.fss</groupId>
+                <artifactId>yqboots-fss-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-layout</artifactId>
+                <groupId>com.yqboots.project.menu</groupId>
+                <artifactId>yqboots-menu-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-menu</artifactId>
+                <groupId>com.yqboots.project.security</groupId>
+                <artifactId>yqboots-security-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- Web Modules -->
+            <dependency>
+                <groupId>com.yqboots.project.dict</groupId>
+                <artifactId>yqboots-dict-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-security</artifactId>
+                <groupId>com.yqboots.project.fss</groupId>
+                <artifactId>yqboots-fss-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-thymeleaf</artifactId>
+                <groupId>com.yqboots.project.menu</groupId>
+                <artifactId>yqboots-menu-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yqboots.project</groupId>
-                <artifactId>project-web</artifactId>
+                <groupId>com.yqboots.project.security</groupId>
+                <artifactId>yqboots-security-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.yqboots.project.web</groupId>
+                <artifactId>yqboots-web-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project.web</groupId>
+                <artifactId>yqboots-web-layout</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yqboots.project.web</groupId>
+                <artifactId>yqboots-web-thymeleaf</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
@@ -142,5 +165,10 @@
         <module>project-thymeleaf</module>
         <module>project-site</module>
         <module>project-security</module>
+        <module>yqboots-dict</module>
+        <module>yqboots-fss</module>
+        <module>yqboots-web</module>
+        <module>yqboots-menu</module>
+        <module>yqboots-security</module>
     </modules>
 </project>
