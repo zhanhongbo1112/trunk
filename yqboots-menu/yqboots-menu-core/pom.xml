@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.yqboots.project.menu</groupId>
+        <groupId>com.yqboots.menu</groupId>
         <artifactId>yqboots-menu</artifactId>
         <version>1.1.0-SNAPSHOT</version>
     </parent>
@@ -11,11 +11,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.yqboots.project.fss</groupId>
+            <groupId>com.yqboots.fss</groupId>
             <artifactId>yqboots-fss-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.yqboots.project.security</groupId>
+            <groupId>com.yqboots.security</groupId>
             <artifactId>yqboots-security-core</artifactId>
         </dependency>
 

@@ -2,13 +2,13 @@
 <menuItems>
     <menuItem>
         <name>PROJECT_MENU_ITEM</name>
-        <url>/project/menu</url>
+        <url>/menu</url>
         <menuGroup>ADMINISTRATION</menuGroup>
         <menuItemGroup>ENVIRONMENT</menuItemGroup>
     </menuItem>
     <menuItem>
         <name>PROJECT_DATA_DICT</name>
-        <url>/project/dict</url>
+        <url>/dict</url>
         <menuGroup>ADMINISTRATION</menuGroup>
         <menuItemGroup>ENVIRONMENT</menuItemGroup>
     </menuItem>
