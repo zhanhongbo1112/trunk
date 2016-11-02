@@ -17,7 +17,6 @@
  */
 package com.yqboots.project.security.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -52,11 +51,9 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Column(length = 255)
     private String description;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<User> users;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Group> groups;
 

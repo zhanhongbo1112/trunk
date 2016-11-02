@@ -157,14 +157,6 @@
     </build>
 
     <modules>
-        <module>project-layout</module>
-        <module>project-fss</module>
-        <module>project-web</module>
-        <module>project-menu</module>
-        <module>project-data-dict</module>
-        <module>project-thymeleaf</module>
-        <module>project-site</module>
-        <module>project-security</module>
         <module>yqboots-dict</module>
         <module>yqboots-fss</module>
         <module>yqboots-web</module>

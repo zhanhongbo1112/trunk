@@ -14,12 +14,21 @@
             <groupId>com.yqboots.project.fss</groupId>
             <artifactId>yqboots-fss-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.web</groupId>
+            <artifactId>yqboots-web-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

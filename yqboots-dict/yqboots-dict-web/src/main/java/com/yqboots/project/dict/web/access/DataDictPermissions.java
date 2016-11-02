@@ -1,4 +1,4 @@
-package com.yqboots.project.dict.security.access;
+package com.yqboots.project.dict.web.access;
 
 /**
  * Permission constants for {@link com.yqboots.project.dict.core.DataDict}.

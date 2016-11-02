@@ -20,6 +20,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * The entrance of a project.
@@ -28,10 +30,21 @@ import org.springframework.context.annotation.Import;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
+@Controller
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @Import({FssAutoConfiguration.class})
 public class Application {
+    /**
+     * The Main method.
+     *
+     * @param args arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @RequestMapping(value = "/")
+    public String home() {
+        return "redirect:project/dict";
     }
 }

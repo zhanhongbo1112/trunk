@@ -14,6 +14,14 @@
             <groupId>com.yqboots.project.dict</groupId>
             <artifactId>yqboots-dict-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.web</groupId>
+            <artifactId>yqboots-web-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.fss</groupId>
+            <artifactId>yqboots-fss-web</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -20,7 +20,6 @@ package com.yqboots.project.thymeleaf.processor.element;
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.DataDictManager;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.domain.Page;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
 import org.thymeleaf.dom.Element;

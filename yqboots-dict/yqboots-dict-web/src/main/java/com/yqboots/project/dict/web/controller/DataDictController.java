@@ -18,7 +18,7 @@ package com.yqboots.project.dict.web.controller;
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.DataDictExistsException;
 import com.yqboots.project.dict.core.DataDictManager;
-import com.yqboots.project.dict.security.access.DataDictPermissions;
+import com.yqboots.project.dict.web.access.DataDictPermissions;
 import com.yqboots.project.dict.web.form.FileUploadForm;
 import com.yqboots.project.dict.web.form.FileUploadFormValidator;
 import com.yqboots.project.fss.web.util.FssWebUtils;

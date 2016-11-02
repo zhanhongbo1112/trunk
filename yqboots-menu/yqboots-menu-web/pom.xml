@@ -14,5 +14,24 @@
             <groupId>com.yqboots.project.menu</groupId>
             <artifactId>yqboots-menu-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.fss</groupId>
+            <artifactId>yqboots-fss-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.web</groupId>
+            <artifactId>yqboots-web-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 </project>

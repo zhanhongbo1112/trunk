@@ -17,7 +17,6 @@
  */
 package com.yqboots.project.security.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -53,11 +52,9 @@ public class Group extends AbstractPersistable<Long> {
 
     @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "SEC_GROUP_ROLES", joinColumns = @JoinColumn(name = "GROUP_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
-    @JsonIgnore
     private Set<Role> roles;
 
     @ManyToMany(mappedBy = "groups", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JsonIgnore
     private Set<User> users;
 
     public Group() {

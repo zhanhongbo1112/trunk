@@ -9,4 +9,33 @@
     </parent>
     <artifactId>yqboots-web-thymeleaf</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.yqboots.project.dict</groupId>
+            <artifactId>yqboots-dict-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yqboots.project.menu</groupId>
+            <artifactId>yqboots-menu-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+    </dependencies>
 </project>
