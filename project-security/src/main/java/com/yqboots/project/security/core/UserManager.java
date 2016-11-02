@@ -38,10 +38,12 @@ public interface UserManager {
     void addUser(User user) throws UserExistsException;
 
     /**
+     * Add new user with groups and roles.
+     *
      * @param username username
      * @param groupIds ids of groups
      * @param roleIds  ids of roles
-     * @throws UserNotFoundException
+     * @throws UserExistsException
      */
     void addUser(String username, Long[] groupIds, Long[] roleIds) throws UserExistsException;
 
@@ -72,6 +74,8 @@ public interface UserManager {
     void updateUser(User user) throws UserNotFoundException;
 
     /**
+     * Updates user with groups and roles.
+     *
      * @param username username
      * @param groupIds ids of groups
      * @param roleIds  ids of roles
@@ -183,6 +187,19 @@ public interface UserManager {
      * @return page of users
      */
     Page<User> findUsers(String usernameFilter, Pageable pageable);
+
+    /**
+     * Finds {@link User}s.
+     *
+     * @param pageable pageable
+     * @return page of users
+     */
+    Page<User> findUsers(Pageable pageable);
+
+    /**
+     * @return list of users.
+     */
+    List<User> findAllUsers();
 
     /**
      * Finds all {@link Group}s.

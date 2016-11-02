@@ -38,6 +38,16 @@ public interface RoleManager {
     void addRole(Role role) throws RoleExistsException;
 
     /**
+     * Add new role with users and groups.
+     *
+     * @param path     path
+     * @param userIds  ids of users
+     * @param groupIds ids of groups
+     * @throws RoleExistsException
+     */
+    void addRole(String path, Long[] userIds, Long[] groupIds) throws RoleExistsException;
+
+    /**
      * Adds {@link User}s to the {@link Group}.
      *
      * @param path      path
@@ -64,6 +74,25 @@ public interface RoleManager {
     void updateRole(Role role) throws RoleNotFoundException;
 
     /**
+     * Update role with users and groups.
+     *
+     * @param path     path
+     * @param userIds  ids of users
+     * @param groupIds ids of groups
+     * @throws RoleNotFoundException
+     */
+    void updateRole(String path, Long[] userIds, Long[] groupIds) throws RoleNotFoundException;
+
+    /**
+     * Updates {@link User}s of the {@link Role}.
+     *
+     * @param path    path
+     * @param userIds id of users
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    void updateUsers(String path, Long... userIds) throws RoleNotFoundException;
+
+    /**
      * Updates {@link User}s of the {@link Group}.
      *
      * @param path      path
@@ -71,6 +100,15 @@ public interface RoleManager {
      * @throws RoleNotFoundException throw when the entity is not found
      */
     void updateUsers(String path, String... usernames) throws RoleNotFoundException;
+
+    /**
+     * Updates {@link Group}s of the {@link Role}.
+     *
+     * @param path     path
+     * @param groupIds id of groups
+     * @throws RoleNotFoundException throw when the entity is not found
+     */
+    void updateGroups(String path, Long... groupIds) throws RoleNotFoundException;
 
     /**
      * Updates {@link Group}s of the {@link Role}.

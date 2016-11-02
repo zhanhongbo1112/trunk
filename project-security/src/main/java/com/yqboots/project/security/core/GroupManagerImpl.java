@@ -75,6 +75,31 @@ public class GroupManagerImpl implements GroupManager {
      */
     @Override
     @Transactional
+    public void addGroup(final String path, final Long[] userIds, final Long[] roleIds) throws GroupExistsException {
+        Assert.hasText(path);
+        if (groupRepository.exists(path)) {
+            throw new GroupExistsException(path);
+        }
+
+        Group group = new Group();
+        group.setPath(path);
+
+        if (ArrayUtils.isNotEmpty(userIds)) {
+            group.setUsers(new HashSet<>(userRepository.findAll(Arrays.asList(userIds))));
+        }
+
+        if (ArrayUtils.isNotEmpty(roleIds)) {
+            group.setRoles(new HashSet<>(roleRepository.findAll(Arrays.asList(roleIds))));
+        }
+
+        groupRepository.save(group);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_USERS_TO_GROUP)
     public void addUsers(String path, String... usernames) throws GroupNotFoundException {
         Assert.hasText(path);
@@ -135,6 +160,46 @@ public class GroupManagerImpl implements GroupManager {
         groupRepository.save(entity);
     }
 
+    @Override
+    @Transactional
+    public void updateGroup(final String path, final Long[] userIds, final Long[] roleIds) throws GroupNotFoundException {
+        Assert.hasText(path);
+
+        Group entity = groupRepository.findByPath(path);
+        if (entity == null) {
+            throw new GroupNotFoundException(path);
+        }
+
+        updateUsers(path, userIds);
+        updateRoles(path, roleIds);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public void updateUsers(String path, Long... userIds) throws GroupNotFoundException {
+        Assert.hasText(path);
+        Assert.notEmpty(userIds);
+
+        Group entity = groupRepository.findByPath(path);
+        if (entity == null) {
+            throw new GroupNotFoundException(path);
+        }
+
+        for (User user : entity.getUsers()) {
+            user.getGroups().remove(entity);
+            userRepository.saveAndFlush(user);
+        }
+
+        List<User> users = userRepository.findAll(Arrays.asList(userIds));
+        for (User user : users) {
+            user.getGroups().add(entity);
+            userRepository.save(user);
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -160,6 +225,32 @@ public class GroupManagerImpl implements GroupManager {
             user.getGroups().add(entity);
             userRepository.save(user);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public void updateRoles(String path, Long... roleIds) throws GroupNotFoundException {
+        Assert.hasText(path);
+        Assert.notNull(roleIds);
+
+        Group entity = groupRepository.findByPath(path);
+        if (entity == null) {
+            throw new GroupNotFoundException(path);
+        }
+
+        entity.getRoles().clear();
+
+        if (ArrayUtils.isNotEmpty(roleIds)) {
+            final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
+            if (!roles.isEmpty()) {
+                entity.setRoles(new HashSet<>(roles));
+            }
+        }
+
+        groupRepository.save(entity);
     }
 
     /**

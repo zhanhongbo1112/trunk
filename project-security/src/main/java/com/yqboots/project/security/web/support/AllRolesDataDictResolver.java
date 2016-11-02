@@ -45,7 +45,7 @@ public class AllRolesDataDictResolver extends AbstractDataDictResolver {
     private final RoleManager roleManager;
 
     /**
-     * Constructs <code>UserRolesDataDictResolver</code>.
+     * Constructs <code>AllRolesDataDictResolver</code>.
      *
      * @param roleManager roleManager
      */

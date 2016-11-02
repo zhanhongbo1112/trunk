@@ -35,7 +35,7 @@ import javax.validation.Valid;
 import java.util.Arrays;
 
 /**
- * Controller for {@link com.yqboots.project.security.core.User}.
+ * Controller for {@link User}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0

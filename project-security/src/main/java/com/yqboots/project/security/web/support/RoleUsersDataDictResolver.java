@@ -19,10 +19,10 @@ package com.yqboots.project.security.web.support;
 
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.support.AbstractDataDictResolver;
+import com.yqboots.project.security.core.RoleManager;
 import com.yqboots.project.security.core.Role;
 import com.yqboots.project.security.core.User;
-import com.yqboots.project.security.core.UserManager;
-import com.yqboots.project.security.web.support.consumer.RoleToDataDictConsumer;
+import com.yqboots.project.security.web.support.consumer.UserToDataDictConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,32 +30,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link Role}s of a specified {@link User}<br/>
- * <p>for the implementation, the first attribute should be the specified username of the user.</p>
+ * Resolves {@link User}s of a specified {@link Role}<br/>
+ * <p>for the implementation, the first attribute should be the specified path of the role.</p>
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class UserRolesDataDictResolver extends AbstractDataDictResolver {
+public class RoleUsersDataDictResolver extends AbstractDataDictResolver {
     /**
-     * name key: USER_ROLES
+     * name key: ROLE_USERS
      */
-    private static final String NAME_KEY = "USER_ROLES";
+    private static final String NAME_KEY = "ROLE_USERS";
 
     /**
-     * UserManager.
+     * RoleManager.
      */
-    private final UserManager userManager;
+    private final RoleManager roleManager;
 
     /**
-     * Constructs <code>UserRolesDataDictResolver</code>.
+     * Constructs <code>RoleUsersDataDictResolver</code>.
      *
-     * @param userManager userManager
+     * @param roleManager roleManager
      */
     @Autowired
-    public UserRolesDataDictResolver(final UserManager userManager) {
+    public RoleUsersDataDictResolver(final RoleManager roleManager) {
         super(NAME_KEY);
-        this.userManager = userManager;
+        this.roleManager = roleManager;
     }
 
     /**
@@ -66,9 +66,9 @@ public class UserRolesDataDictResolver extends AbstractDataDictResolver {
         List<DataDict> results = new ArrayList<>();
 
         if (ArrayUtils.isNotEmpty(attributes) && attributes[0] != null) {
-            // attributes[0] is username
-            List<Role> roles = userManager.findUserRoles(attributes[0]);
-            roles.forEach(new RoleToDataDictConsumer(getName(), results));
+            // attributes[0] is path
+            List<User> users = roleManager.findRoleUsers(attributes[0]);
+            users.forEach(new UserToDataDictConsumer(getName(), results));
         }
 
         return results;

@@ -42,6 +42,16 @@ public interface GroupManager {
     void addGroup(Group group) throws GroupExistsException;
 
     /**
+     * Add new group with users and roles.
+     *
+     * @param path    path
+     * @param userIds ids of users
+     * @param roleIds ids of roles
+     * @throws GroupExistsException
+     */
+    void addGroup(String path, Long[] userIds, Long[] roleIds) throws GroupExistsException;
+
+    /**
      * Adds {@link User}s to the {@link Group}.
      *
      * @param path      path
@@ -68,6 +78,25 @@ public interface GroupManager {
     void updateGroup(Group group) throws GroupNotFoundException;
 
     /**
+     * Update group with users and roles.
+     *
+     * @param path    path
+     * @param userIds ids of users
+     * @param roleIds ids of roles
+     * @throws GroupNotFoundException
+     */
+    void updateGroup(String path, Long[] userIds, Long[] roleIds) throws GroupNotFoundException;
+
+    /**
+     * Updates {@link User}s of the {@link Group}.
+     *
+     * @param path    path
+     * @param userIds id of users
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void updateUsers(String path, Long... userIds) throws GroupNotFoundException;
+
+    /**
      * Updates {@link User}s of the {@link Group}.
      *
      * @param path      path
@@ -75,6 +104,15 @@ public interface GroupManager {
      * @throws GroupNotFoundException throw when the entity is not found
      */
     void updateUsers(String path, String... usernames) throws GroupNotFoundException;
+
+    /**
+     * Updates {@link Role}s of the {@link Group}.
+     *
+     * @param path    path
+     * @param roleIds id of roles
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void updateRoles(String path, Long... roleIds) throws GroupNotFoundException;
 
     /**
      * Updates {@link Role}s of the {@link Group}.

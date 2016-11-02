@@ -45,7 +45,7 @@ public class AllGroupsDataDictResolver extends AbstractDataDictResolver {
     private final GroupManager groupManager;
 
     /**
-     * Constructs <code>UserRolesDataDictResolver</code>.
+     * Constructs <code>AllGroupsDataDictResolver</code>.
      *
      * @param groupManager groupManager
      */

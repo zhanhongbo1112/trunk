@@ -19,6 +19,8 @@ package com.yqboots.project.security.web.controller;
 
 import com.yqboots.project.security.core.Role;
 import com.yqboots.project.security.core.RoleManager;
+import com.yqboots.project.security.web.form.RoleForm;
+import com.yqboots.project.security.web.form.RoleFormConverter;
 import com.yqboots.project.web.form.SearchForm;
 import com.yqboots.project.web.support.WebKeys;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,25 +65,33 @@ public class RoleController {
 
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, new Role());
+        model.addAttribute(WebKeys.MODEL, new RoleForm());
         return VIEW_FORM;
     }
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, roleManager.findRole(id));
+        Role role = roleManager.findRole(id);
+
+        model.addAttribute(WebKeys.MODEL, new RoleFormConverter().convert(role));
         return VIEW_FORM;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final Role domain,
+    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final RoleForm domain,
                          final BindingResult bindingResult,
                          final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return VIEW_FORM;
         }
 
-        roleManager.addRole(domain);
+        // TODO: exception handling
+        if (!domain.isExisted()) {
+            roleManager.addRole(domain.getPath(), domain.getUsers(), domain.getGroups());
+        } else {
+            roleManager.updateRole(domain.getPath(), domain.getUsers(), domain.getGroups());
+        }
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;

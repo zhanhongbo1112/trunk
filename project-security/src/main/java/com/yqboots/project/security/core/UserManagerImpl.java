@@ -430,6 +430,22 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
+    public Page<User> findUsers(final Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Page<Group> findAllGroups(Pageable pageable) {
         return groupRepository.findAll(pageable);
     }

@@ -11,15 +11,15 @@
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
     <yq:alert level="danger"/>
-    <form class="sky-form" action="#" th:action="@{/project/security/role}" th:object="${model}" method="post">
-      <input th:field="*{id}" type="hidden"/>
+    <form class="sky-form" action="#" th:action="@{/project/security/role/}" th:object="${model}" method="post">
+      <input th:field="*{existed}" type="hidden"/>
       <header th:text="#{T0065}">Role Maintenance Form</header>
       <fieldset>
         <div class="row">
           <section class="col col-6">
             <label class="label" th:text="#{T0030}">Path</label>
-            <label class="input">
-              <input th:field="*{path}" type="text" maxlength="255"/>
+            <label class="input" th:classappend="*{existed}? 'state-disabled'">
+              <input th:field="*{path}" type="text" maxlength="255" th:readonly="*{existed}"/>
             </label>
 
             <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
@@ -45,28 +45,27 @@
       <fieldset>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0074}">Selectable Users</label>
+            <label class="label" th:text="#{T0075}">Selected Users</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
-                <option value="1">USER</option>
-                <option value="2">ADMIN</option>
+              <select th:field="*{users}" multiple="multiple" size="5">
+                <yq:options name="ROLE_USERS" attributes="*{path}"/>
               </select>
             </label>
 
-            <button class="btn-u rounded" type="button">
-              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            <button class="btn-u rounded" id="removeUsers" type="button" th:title="#{T0081}">
+              <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0075}">Selected Users</label>
+            <label class="label" th:text="#{T0074}">Selectable Users</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
-                <option value="1">USER</option>
+              <select id="selectableUsers" multiple="multiple" size="5">
+                <yq:options name="ALL_USERS" />
               </select>
             </label>
 
-            <button class="btn-u rounded" type="button">
-              <i class="fa fa-angle-left"></i> <span th:text="#{T0081}">Remove</span>
+            <button class="btn-u rounded" id="addUsers" type="button" th:title="#{T0079}">
+              <i class="fa fa-angle-left"></i>
             </button>
           </section>
         </div>
@@ -74,35 +73,34 @@
       <fieldset>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0072}">Selectable Groups</label>
+            <label class="label" th:text="#{T0073}">Selected Groups</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
-                <option value="1">USER</option>
-                <option value="2">ADMIN</option>
+              <select th:field="*{groups}" multiple="multiple" size="5">
+                <yq:options name="ROLE_GROUPS" attributes="*{path}"/>
               </select>
             </label>
 
-            <button class="btn-u rounded" type="button">
-              <i class="fa fa-angle-right"></i> <span th:text="#{T0079}">Add</span>
+            <button class="btn-u rounded" id="removeGroups" type="button" th:title="#{T0081}">
+              <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0073}">Selected Groups</label>
+            <label class="label" th:text="#{T0072}">Selectable Groups</label>
             <label class="select select-multiple">
-              <select multiple="multiple" size="5">
-                <option value="1">USER</option>
+              <select id="selectableGroups" multiple="multiple" size="5">
+                <yq:options name="ALL_GROUPS" />
               </select>
             </label>
 
-            <button class="btn-u rounded" type="button">
-              <i class="fa fa-angle-left"></i> <span th:text="#{T0081}">Remove</span>
+            <button class="btn-u rounded" id="addGroups" type="button" th:title="#{T0079}">
+              <i class="fa fa-angle-left"></i>
             </button>
           </section>
         </div>
       </fieldset>
       <footer>
-        <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
-        <button class="btn-u rounded" th:text="#{T0066}">Cancel</button>
+        <button class="btn-u rounded" id="submit" type="submit" th:text="#{T0012}">Submit</button>
+        <button class="btn-u rounded" id="cancel" type="button" th:text="#{T0066}">Cancel</button>
       </footer>
     </form>
   </div>

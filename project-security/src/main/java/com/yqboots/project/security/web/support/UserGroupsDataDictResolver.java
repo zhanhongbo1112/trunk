@@ -20,17 +20,17 @@ package com.yqboots.project.security.web.support;
 import com.yqboots.project.dict.core.DataDict;
 import com.yqboots.project.dict.core.support.AbstractDataDictResolver;
 import com.yqboots.project.security.core.Group;
+import com.yqboots.project.security.core.User;
 import com.yqboots.project.security.core.UserManager;
 import com.yqboots.project.security.web.support.consumer.GroupToDataDictConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link Group}s of a specified {@link com.yqboots.project.security.core.User}<br/>
+ * Resolves {@link Group}s of a specified {@link User}<br/>
  * <p>for the implementation, the first attribute should be the specified username of the user.</p>
  *
  * @author Eric H B Zhan
@@ -48,7 +48,7 @@ public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
     private final UserManager userManager;
 
     /**
-     * Constructs <code>UserRolesDataDictResolver</code>.
+     * Constructs <code>UserGroupsDataDictResolver</code>.
      *
      * @param userManager userManager
      */

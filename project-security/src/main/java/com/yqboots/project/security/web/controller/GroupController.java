@@ -2,6 +2,8 @@ package com.yqboots.project.security.web.controller;
 
 import com.yqboots.project.security.core.Group;
 import com.yqboots.project.security.core.GroupManager;
+import com.yqboots.project.security.web.form.GroupForm;
+import com.yqboots.project.security.web.form.GroupFormConverter;
 import com.yqboots.project.web.form.SearchForm;
 import com.yqboots.project.web.support.WebKeys;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,25 +48,33 @@ public class GroupController {
 
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, new Group());
+        model.addAttribute(WebKeys.MODEL, new GroupForm());
         return VIEW_FORM;
     }
 
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, groupManager.findGroup(id));
+        Group group = groupManager.findGroup(id);
+
+        model.addAttribute(WebKeys.MODEL, new GroupFormConverter().convert(group));
         return VIEW_FORM;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final Group domain,
+    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final GroupForm domain,
                          final BindingResult bindingResult,
                          final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return VIEW_FORM;
         }
 
-        groupManager.addGroup(domain);
+        // TODO: exception handling
+        if (!domain.isExisted()) {
+            groupManager.addGroup(domain.getPath(), domain.getUsers(), domain.getRoles());
+        } else {
+            groupManager.updateGroup(domain.getPath(), domain.getUsers(), domain.getRoles());
+        }
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;
