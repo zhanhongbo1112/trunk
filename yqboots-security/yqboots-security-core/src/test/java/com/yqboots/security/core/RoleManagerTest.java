@@ -59,36 +59,6 @@ public class RoleManagerTest {
     }
 
     @Test
-    public void testAddUsers() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 and ROLE_ID=1");
-        assertTrue(count == 1);
-
-        String[] inUsers = new String[]{"user"}; // USER_ID = 2
-        roleManager.addUsers("/ADMINS", inUsers);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 and ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2 and ROLE_ID=1");
-        assertTrue(count == 1);
-    }
-
-    @Test
-    public void testAddGroups() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 and ROLE_ID=1");
-        assertTrue(count == 0);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 and ROLE_ID=1");
-        assertTrue(count == 1);
-
-        String[] inGroups = new String[]{"/USERS"}; // GROUP_ID = 2
-        roleManager.addGroups("/ADMINS", inGroups);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 and ROLE_ID=1");
-        assertTrue(count == 1);
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 and ROLE_ID=1");
-        assertTrue(count == 1);
-    }
-
-    @Test
     public void testUpdateRole() throws Exception {
         Role role = roleManager.findRole("/ADMINS");
         assertEquals(role.getAlias(), "ADMINS");

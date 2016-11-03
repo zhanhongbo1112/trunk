@@ -69,7 +69,7 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_ADD_USER)
-    public void addUser(User user) throws UserExistsException {
+    public void addUser(final User user) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
         if (userRepository.exists(user.getUsername())) {
@@ -86,79 +86,8 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-    public void addUser(String username, Long[] groupIds, Long[] roleIds) throws UserExistsException {
-        Assert.hasText(username);
-        if (userRepository.exists(username)) {
-            throw new UserExistsException(username);
-        }
-
-        User user = new User();
-        user.setUsername(username);
-        user.setEnabled(true);
-        user.setPassword(getPasswordDefault(null));
-
-        if (ArrayUtils.isNotEmpty(groupIds)) {
-            user.setGroups(new HashSet<>(groupRepository.findAll(Arrays.asList(groupIds))));
-        }
-
-        if (ArrayUtils.isNotEmpty(roleIds)) {
-            user.setRoles(new HashSet<>(roleRepository.findAll(Arrays.asList(roleIds))));
-        }
-
-        userRepository.save(user);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_GROUPS_TO_USER)
-    public void addGroups(String username, String... groupPaths) throws UserNotFoundException {
-        Assert.hasText(username);
-        Assert.notEmpty(groupPaths);
-
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UserNotFoundException(username);
-        }
-
-        List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        if (!groups.isEmpty()) {
-            user.getGroups().addAll(groups);
-            userRepository.save(user);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    @Auditable(code = SecurityAudit.CODE_ADD_ROLES_TO_USER)
-    public void addRoles(String username, String... rolePaths) throws UserNotFoundException {
-        Assert.hasText(username);
-        Assert.notEmpty(rolePaths);
-
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UserNotFoundException(username);
-        }
-
-        List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
-        if (!roles.isEmpty()) {
-            user.getRoles().addAll(roles);
-            userRepository.save(user);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_USER)
-    public void updateUser(User user) throws UserNotFoundException {
+    public void updateUser(final User user) throws UserNotFoundException {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
 
@@ -178,19 +107,21 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
-    public void updateGroups(String username, String... groupPaths) throws UserNotFoundException {
+    public void updateGroups(final String username, final String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notEmpty(groupPaths);
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
 
+        // if groupPaths is empty, will remove all
         user.getGroups().clear();
-        final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        if (!groups.isEmpty()) {
-            user.setGroups(new HashSet<>(groups));
+        if (ArrayUtils.isNotEmpty(groupPaths)) {
+            final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+            if (!groups.isEmpty()) {
+                user.setGroups(new HashSet<>(groups));
+            }
         }
 
         userRepository.save(user);
@@ -201,10 +132,9 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-//    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
-    public void updateGroups(String username, Long... groupIds) throws UserNotFoundException {
+    @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_USER)
+    public void updateGroups(final String username, final Long... groupIds) throws UserNotFoundException {
         Assert.hasText(username);
-        // Assert.notEmpty(groupIds);
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -228,9 +158,8 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
-    public void updateRoles(String username, String... rolePaths) throws UserNotFoundException {
+    public void updateRoles(final String username, final String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notEmpty(rolePaths);
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -253,10 +182,9 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-//    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
-    public void updateRoles(String username, Long... roleIds) throws UserNotFoundException {
+    @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
+    public void updateRoles(final String username, Long... roleIds) throws UserNotFoundException {
         Assert.hasText(username);
-        // Assert.notEmpty(roleIds);
 
         User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -264,9 +192,11 @@ public class UserManagerImpl implements UserManager {
         }
 
         user.getRoles().clear();
-        final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
-        if (!roles.isEmpty()) {
-            user.setRoles(new HashSet<>(roles));
+        if (ArrayUtils.isNotEmpty(roleIds)) {
+            final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
+            if (!roles.isEmpty()) {
+                user.setRoles(new HashSet<>(roles));
+            }
         }
 
         userRepository.save(user);
@@ -277,25 +207,8 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
-    public void updateUser(final String username, final Long[] groupIds, final Long[] roleIds) throws UserNotFoundException {
-        Assert.hasText(username);
-
-        User entity = userRepository.findByUsername(username);
-        if (entity == null) {
-            throw new UserNotFoundException(username);
-        }
-
-        updateGroups(username, groupIds);
-        updateRoles(username, roleIds);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
-    public void removeUser(String username) throws UserNotFoundException {
+    public void removeUser(final String username) throws UserNotFoundException {
         Assert.hasText(username);
 
         final User user = userRepository.findByUsername(username);
@@ -307,6 +220,7 @@ public class UserManagerImpl implements UserManager {
             user.setEnabled(false);
             userRepository.save(user);
         } else {
+            // TODO: test if remove all related groups and roles
             userRepository.delete(user);
         }
     }
@@ -317,7 +231,7 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_USER)
-    public void removeUser(Long id) throws UserNotFoundException {
+    public void removeUser(final Long id) throws UserNotFoundException {
         Assert.notNull(id);
 
         final User user = userRepository.findOne(id);
@@ -329,6 +243,7 @@ public class UserManagerImpl implements UserManager {
             user.setEnabled(false);
             userRepository.save(user);
         } else {
+            // TODO: test if remove all related groups and roles
             userRepository.delete(user);
         }
     }
@@ -339,7 +254,7 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER)
-    public void removeGroups(String username, String... groupPaths) throws UserNotFoundException {
+    public void removeGroups(final String username, final String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notEmpty(groupPaths);
 
@@ -360,8 +275,30 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     @Transactional
+    @Auditable(code = SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER)
+    public void removeGroups(final String username, final Long... groupIds) throws UserNotFoundException {
+        Assert.hasText(username);
+        Assert.notEmpty(groupIds);
+
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException(username);
+        }
+
+        final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
+        if (!groups.isEmpty()) {
+            user.getGroups().removeAll(groups);
+            userRepository.save(user);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
-    public void removeRoles(String username, String... rolePaths) throws UserNotFoundException {
+    public void removeRoles(final String username, final String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
         Assert.notNull(rolePaths);
 
@@ -370,9 +307,9 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        final List<Role> inRoles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
-        if (!inRoles.isEmpty()) {
-            user.getRoles().removeAll(inRoles);
+        final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
+        if (!roles.isEmpty()) {
+            user.getRoles().removeAll(roles);
         }
 
         userRepository.save(user);
@@ -382,7 +319,30 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public boolean hasUser(String username) {
+    @Transactional
+    @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
+    public void removeRoles(final String username, final Long... roleIds) throws UserNotFoundException {
+        Assert.hasText(username);
+        Assert.notNull(roleIds);
+
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException(username);
+        }
+
+        final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
+        if (!roles.isEmpty()) {
+            user.getRoles().removeAll(roles);
+        }
+
+        userRepository.save(user);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean hasUser(final String username) {
         return userRepository.exists(username);
     }
 
@@ -390,7 +350,7 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public User findUser(Long id) throws UserNotFoundException {
+    public User findUser(final Long id) throws UserNotFoundException {
         Assert.notNull(id);
 
         User result = userRepository.findOne(id);
@@ -405,7 +365,7 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public User findUser(String username) throws UserNotFoundException {
+    public User findUser(final String username) throws UserNotFoundException {
         Assert.hasText(username);
 
         User result = userRepository.findByUsername(username);
@@ -420,17 +380,9 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public Page<User> findUsers(String usernameFilter, Pageable pageable) {
+    public Page<User> findUsers(final String usernameFilter, final Pageable pageable) {
         final String filter = DBUtils.wildcard(usernameFilter);
         return userRepository.findByUsernameLikeIgnoreCase(filter, pageable);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Page<User> findUsers(final Pageable pageable) {
-        return userRepository.findAll(pageable);
     }
 
     /**
@@ -445,15 +397,7 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public Page<Group> findAllGroups(Pageable pageable) {
-        return groupRepository.findAll(pageable);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Group> findUserGroups(String username) {
+    public List<Group> findUserGroups(final String username) {
         return groupRepository.findByUsersUsername(username);
     }
 
@@ -461,19 +405,17 @@ public class UserManagerImpl implements UserManager {
      * {@inheritDoc}
      */
     @Override
-    public Page<Role> findAllRoles(Pageable pageable) {
-        return roleRepository.findAll(pageable);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Role> findUserRoles(String username) {
+    public List<Role> findUserRoles(final String username) {
         return roleRepository.findByUsersUsername(username);
     }
 
-    private String getPasswordDefault(String password) {
+    /**
+     * Gets the default password from configuration.
+     *
+     * @param password the password to set
+     * @return the encoded password
+     */
+    private String getPasswordDefault(final String password) {
         String result = password;
         if (StringUtils.isBlank(result)) {
             // encrypt the password

@@ -17,6 +17,7 @@
  */
 package com.yqboots.security.core;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -36,8 +37,8 @@ import java.util.Set;
 @Table(name = "SEC_GROUP", uniqueConstraints = {@UniqueConstraint(name = "UN_GROUP_PATH", columnNames = {"PATH"})})
 public class Group extends AbstractPersistable<Long> {
     @NotEmpty
-    @Length(max = 255)
-    @Column(unique = true, length = 255, nullable = false)
+    @Length(max = 254)
+    @Column(unique = true, length = 254, nullable = false)
     @NaturalId
     private String path;
 
@@ -46,8 +47,8 @@ public class Group extends AbstractPersistable<Long> {
     @Column(length = 64)
     private String alias;
 
-    @Length(max = 255)
-    @Column(length = 255)
+    @Length(max = 254)
+    @Column(length = 254)
     private String description;
 
     @ManyToMany(targetEntity = Role.class)
@@ -104,5 +105,16 @@ public class Group extends AbstractPersistable<Long> {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("path", path)
+                .append("alias", alias)
+                .append("description", description)
+                .append("roles", roles)
+                .append("users", users)
+                .toString();
     }
 }

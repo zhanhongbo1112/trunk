@@ -18,9 +18,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Administrator on 2015-12-26.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @Sql(scripts = "00_init.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
@@ -29,7 +26,7 @@ import static org.junit.Assert.*;
 @Sql(scripts = "01_destroy.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
 )
-@WithUserDetails(value="supervisor")
+@WithUserDetails(value = "admin")
 public class UserManagerTest {
     @Autowired
     private UserManager userManager;
@@ -51,30 +48,6 @@ public class UserManagerTest {
 
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user1'");
         assertTrue(count == 1);
-    }
-
-    @Test
-    public void testAddGroups() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2");
-        assertTrue(count == 1);
-
-        String[] inGroups = new String[]{"/ADMINS"};
-        userManager.addGroups("user", inGroups);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2");
-        assertTrue(count == 2);
-    }
-
-    @Test
-    public void testAddRoles() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2");
-        assertTrue(count == 1);
-
-        String[] inRoles = new String[]{"/ADMINS"};
-        userManager.addRoles("user", inRoles);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=2");
-        assertTrue(count == 2);
     }
 
     @Test
@@ -148,7 +121,7 @@ public class UserManagerTest {
     }
 
     @Test
-    public void testRemoveGroups() throws Exception {
+    public void testRemoveGroupsByPath() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1");
         assertTrue(count == 2);
 
@@ -168,7 +141,27 @@ public class UserManagerTest {
     }
 
     @Test
-    public void testRemoveRoles() throws Exception {
+    public void testRemoveGroupsById() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1");
+        assertTrue(count == 2);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=1");
+        assertTrue(count == 1);
+
+        userManager.removeGroups("admin", 2L);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=1");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    public void testRemoveRolesByPath() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1");
         assertTrue(count == 2);
 
@@ -179,6 +172,26 @@ public class UserManagerTest {
         assertTrue(count == 1);
 
         userManager.removeRoles("admin", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=2");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    public void testRemoveRolesById() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1");
+        assertTrue(count == 2);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 1);
+
+        userManager.removeRoles("admin", 2L);
 
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=1 AND ROLE_ID=2");
         assertTrue(count == 0);
@@ -214,27 +227,14 @@ public class UserManagerTest {
     }
 
     @Test
-    public void testFindAllGroups() throws Exception {
-        Page<Group> groups = userManager.findAllGroups(new PageRequest(0, 10));
-        assertTrue(!groups.getContent().isEmpty());
-    }
-
-    @Test
     public void testFindUserGroups() throws Exception {
-        List<Group> groups = userManager.findUserGroups("supervisor");
+        List<Group> groups = userManager.findUserGroups("admin");
         assertTrue(!groups.isEmpty());
     }
 
     @Test
-    public void testFindAllRoles() throws Exception {
-        Page<Role> roles = userManager.findAllRoles(new PageRequest(0, 10));
-        assertTrue(!roles.getContent().isEmpty());
-    }
-
-    @Test
     public void testFindUserRoles() throws Exception {
-        List<Role> roles = userManager.findUserRoles("supervisor");
-        assertTrue(roles.isEmpty());
+        List<Role> roles = userManager.findUserRoles("admin");
+        assertTrue(!roles.isEmpty());
     }
-
 }

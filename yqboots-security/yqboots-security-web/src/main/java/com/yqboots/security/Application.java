@@ -23,6 +23,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * The entrance of a project.
@@ -43,5 +44,15 @@ public class Application {
     @RequestMapping(value = "/")
     public String home() {
         return "index";
+    }
+
+    @RequestMapping(value = "/security/login", method = RequestMethod.GET)
+    public String login() {
+        return "security/login";
+    }
+
+    @RequestMapping(value = "/security/403", method = RequestMethod.GET)
+    public String accessDenied() {
+        return "security/403";
     }
 }

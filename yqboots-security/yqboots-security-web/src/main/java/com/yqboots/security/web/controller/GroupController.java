@@ -1,7 +1,26 @@
+/*
+ *
+ *  * Copyright 2015-2016 the original author or authors.
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ */
 package com.yqboots.security.web.controller;
 
 import com.yqboots.security.core.Group;
+import com.yqboots.security.core.GroupExistsException;
 import com.yqboots.security.core.GroupManager;
+import com.yqboots.security.core.GroupNotFoundException;
 import com.yqboots.security.web.form.GroupForm;
 import com.yqboots.security.web.form.GroupFormConverter;
 import com.yqboots.web.form.SearchForm;
@@ -32,6 +51,11 @@ public class GroupController {
 
     @Autowired
     private GroupManager groupManager;
+
+    @ExceptionHandler(value = {GroupExistsException.class, GroupNotFoundException.class})
+    protected void handleException(Exception ex, BindingResult bindingResult) {
+        bindingResult.reject(ex.getMessage());
+    }
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -68,12 +92,21 @@ public class GroupController {
             return VIEW_FORM;
         }
 
-        // TODO: exception handling
         if (!domain.isExisted()) {
-            groupManager.addGroup(domain.getPath(), domain.getUsers(), domain.getRoles());
+            Group group = new Group();
+            group.setPath(domain.getPath());
+            group.setAlias(domain.getAlias());
+            group.setDescription(domain.getDescription());
+            groupManager.addGroup(group);
         } else {
-            groupManager.updateGroup(domain.getPath(), domain.getUsers(), domain.getRoles());
+            Group group = groupManager.findGroup(domain.getPath());
+            group.setAlias(domain.getAlias());
+            group.setDescription(domain.getDescription());
+            groupManager.updateGroup(group);
         }
+
+        groupManager.updateUsers(domain.getPath(), domain.getUsers());
+        groupManager.updateRoles(domain.getPath(), domain.getRoles());
 
         model.clear();
 

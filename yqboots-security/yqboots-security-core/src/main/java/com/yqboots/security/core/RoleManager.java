@@ -38,34 +38,6 @@ public interface RoleManager {
     void addRole(Role role) throws RoleExistsException;
 
     /**
-     * Add new role with users and groups.
-     *
-     * @param path     path
-     * @param userIds  ids of users
-     * @param groupIds ids of groups
-     * @throws RoleExistsException
-     */
-    void addRole(String path, Long[] userIds, Long[] groupIds) throws RoleExistsException;
-
-    /**
-     * Adds {@link User}s to the {@link Group}.
-     *
-     * @param path      path
-     * @param usernames usernames
-     * @throws RoleNotFoundException throw when the entity is not found
-     */
-    void addUsers(String path, String... usernames) throws RoleNotFoundException;
-
-    /**
-     * Adds {@link Group}s to the {@link Role}.
-     *
-     * @param path       path
-     * @param groupPaths path of groups
-     * @throws RoleNotFoundException throw when the entity is not found
-     */
-    void addGroups(String path, String... groupPaths) throws RoleNotFoundException;
-
-    /**
      * Updates the role.
      *
      * @param role role

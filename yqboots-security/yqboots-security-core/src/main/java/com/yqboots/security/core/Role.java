@@ -37,8 +37,8 @@ import java.util.Set;
 @Table(name = "SEC_ROLE", uniqueConstraints = {@UniqueConstraint(name = "UN_ROLE_PATH", columnNames = {"PATH"})})
 public class Role extends AbstractPersistable<Long> implements GrantedAuthority {
     @NotEmpty
-    @Length(max = 255)
-    @Column(unique = true, length = 255, nullable = false)
+    @Length(max = 254)
+    @Column(unique = true, length = 254, nullable = false)
     @NaturalId
     private String path;
 
@@ -47,8 +47,8 @@ public class Role extends AbstractPersistable<Long> implements GrantedAuthority 
     @Column(length = 64)
     private String alias;
 
-    @Length(max = 255)
-    @Column(length = 255)
+    @Length(max = 254)
+    @Column(length = 254)
     private String description;
 
     @ManyToMany(mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.MERGE})

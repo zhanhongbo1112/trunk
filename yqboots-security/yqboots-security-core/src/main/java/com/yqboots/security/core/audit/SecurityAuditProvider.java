@@ -132,13 +132,11 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                     audit.setTarget(user.getUsername());
                     sb.append("enabled", user.isEnabled());
                     break;
-                case SecurityAudit.CODE_ADD_GROUPS_TO_USER:
                 case SecurityAudit.CODE_UPDATE_GROUPS_OF_USER:
                 case SecurityAudit.CODE_REMOVE_GROUPS_FROM_USER:
                     audit.setTarget(arguments[0].toString());
                     sb.append("groups", arguments[1]);
                     break;
-                case SecurityAudit.CODE_ADD_ROLES_TO_USER:
                 case SecurityAudit.CODE_UPDATE_ROLES_OF_USER:
                 case SecurityAudit.CODE_REMOVE_ROLES_FROM_USER:
                     audit.setTarget(arguments[0].toString());
@@ -184,13 +182,11 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                     audit.setTarget(group.getPath());
                     sb.append("alias", group.getAlias()).append("description", group.getDescription());
                     break;
-                case SecurityAudit.CODE_ADD_USERS_TO_GROUP:
                 case SecurityAudit.CODE_UPDATE_USERS_OF_GROUP:
                 case SecurityAudit.CODE_REMOVE_USERS_FROM_GROUP:
                     audit.setTarget(arguments[0].toString());
                     sb.append("users", arguments[1]);
                     break;
-                case SecurityAudit.CODE_ADD_ROLES_TO_GROUP:
                 case SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP:
                 case SecurityAudit.CODE_REMOVE_ROLES_FROM_GROUP:
                     audit.setTarget(arguments[0].toString());
@@ -236,13 +232,11 @@ public class SecurityAuditProvider extends AuditProviderSupport {
                     audit.setTarget(role.getPath());
                     sb.append("alias", role.getAlias()).append("description", role.getDescription());
                     break;
-                case SecurityAudit.CODE_ADD_USERS_TO_ROLE:
                 case SecurityAudit.CODE_UPDATE_USERS_OF_ROLE:
                 case SecurityAudit.CODE_REMOVE_USERS_FROM_ROLE:
                     audit.setTarget(arguments[0].toString());
                     sb.append("users", arguments[1]);
                     break;
-                case SecurityAudit.CODE_ADD_GROUPS_TO_ROLE:
                 case SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE:
                 case SecurityAudit.CODE_REMOVE_GROUPS_FROM_ROLE:
                     audit.setTarget(arguments[0].toString());

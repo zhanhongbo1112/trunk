@@ -18,7 +18,9 @@
 package com.yqboots.security.web.controller;
 
 import com.yqboots.security.core.User;
+import com.yqboots.security.core.UserExistsException;
 import com.yqboots.security.core.UserManager;
+import com.yqboots.security.core.UserNotFoundException;
 import com.yqboots.security.web.form.UserForm;
 import com.yqboots.security.web.form.UserFormConverter;
 import com.yqboots.web.support.WebKeys;
@@ -49,6 +51,11 @@ public class UserController {
 
     @Autowired
     private UserManager userManager;
+
+    @ExceptionHandler(value = {UserExistsException.class, UserNotFoundException.class})
+    protected void handleException(Exception ex, BindingResult bindingResult) {
+        bindingResult.reject(ex.getMessage());
+    }
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -85,12 +92,15 @@ public class UserController {
             return VIEW_FORM;
         }
 
-        // TODO: exception handling
+        // create new
         if (!domain.isExisted()) {
-            userManager.addUser(domain.getUsername(), domain.getGroups(), domain.getRoles());
-        } else {
-            userManager.updateUser(domain.getUsername(), domain.getGroups(), domain.getRoles());
+            User user = new User();
+            user.setUsername(domain.getUsername());
+            userManager.addUser(user);
         }
+
+        userManager.updateGroups(domain.getUsername(), domain.getGroups());
+        userManager.updateRoles(domain.getUsername(), domain.getRoles());
 
         model.clear();
 

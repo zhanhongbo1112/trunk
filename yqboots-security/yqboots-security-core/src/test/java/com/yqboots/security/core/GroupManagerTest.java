@@ -59,30 +59,6 @@ public class GroupManagerTest {
     }
 
     @Test
-    public void testAddUsers() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=1 and USER_ID=2");
-        assertTrue(count == 0);
-
-        String[] inUsers = new String[]{"user"}; // USER_ID = 2
-        groupManager.addUsers("/ADMINS", inUsers);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=1 and USER_ID=2");
-        assertTrue(count == 1);
-    }
-
-    @Test
-    public void testAddRoles() throws Exception {
-        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 and ROLE_ID=1");
-        assertTrue(count == 0);
-
-        String[] inRoles = new String[]{"/ADMINS"}; // ROLE_ID = 1
-        groupManager.addRoles("/USERS", inRoles);
-
-        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=2 and ROLE_ID=1");
-        assertTrue(count == 1);
-    }
-
-    @Test
     public void testUpdateGroup() throws Exception {
         Group group = groupManager.findGroup("/ADMINS");
         assertEquals(group.getAlias(), "ADMINS");

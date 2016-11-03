@@ -18,7 +18,9 @@
 package com.yqboots.security.web.controller;
 
 import com.yqboots.security.core.Role;
+import com.yqboots.security.core.RoleExistsException;
 import com.yqboots.security.core.RoleManager;
+import com.yqboots.security.core.RoleNotFoundException;
 import com.yqboots.security.web.form.RoleForm;
 import com.yqboots.security.web.form.RoleFormConverter;
 import com.yqboots.web.form.SearchForm;
@@ -49,6 +51,11 @@ public class RoleController {
 
     @Autowired
     private RoleManager roleManager;
+
+    @ExceptionHandler(value = {RoleExistsException.class, RoleNotFoundException.class})
+    protected void handleException(Exception ex, BindingResult bindingResult) {
+        bindingResult.reject(ex.getMessage());
+    }
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -85,12 +92,21 @@ public class RoleController {
             return VIEW_FORM;
         }
 
-        // TODO: exception handling
         if (!domain.isExisted()) {
-            roleManager.addRole(domain.getPath(), domain.getUsers(), domain.getGroups());
+            Role role = new Role();
+            role.setPath(domain.getPath());
+            role.setAlias(domain.getAlias());
+            role.setDescription(domain.getDescription());
+            roleManager.addRole(role);
         } else {
-            roleManager.updateRole(domain.getPath(), domain.getUsers(), domain.getGroups());
+            Role role = roleManager.findRole(domain.getPath());
+            role.setAlias(domain.getAlias());
+            role.setDescription(domain.getDescription());
+            roleManager.updateRole(role);
         }
+
+        roleManager.updateUsers(domain.getPath(), domain.getUsers());
+        roleManager.updateGroups(domain.getPath(), domain.getGroups());
 
         model.clear();
 

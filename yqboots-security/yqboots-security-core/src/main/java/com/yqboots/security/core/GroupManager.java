@@ -42,34 +42,6 @@ public interface GroupManager {
     void addGroup(Group group) throws GroupExistsException;
 
     /**
-     * Add new group with users and roles.
-     *
-     * @param path    path
-     * @param userIds ids of users
-     * @param roleIds ids of roles
-     * @throws GroupExistsException
-     */
-    void addGroup(String path, Long[] userIds, Long[] roleIds) throws GroupExistsException;
-
-    /**
-     * Adds {@link User}s to the {@link Group}.
-     *
-     * @param path      path
-     * @param usernames usernames
-     * @throws GroupNotFoundException throw when the entity is not found
-     */
-    void addUsers(String path, String... usernames) throws GroupNotFoundException;
-
-    /**
-     * Adds {@link Role}s to the {@link Group}.
-     *
-     * @param path      path
-     * @param rolePaths path of roles
-     * @throws GroupNotFoundException throw when the entity is not found
-     */
-    void addRoles(String path, String... rolePaths) throws GroupNotFoundException;
-
-    /**
      * Updates the group.
      *
      * @param group group

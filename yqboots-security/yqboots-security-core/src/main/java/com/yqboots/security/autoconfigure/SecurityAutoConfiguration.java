@@ -71,7 +71,7 @@ public class SecurityAutoConfiguration {
         return new RoleHierarchyImpl(roleRepository);
     }
 
-    @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true, securedEnabled = true)
+    @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = false, securedEnabled = true)
     protected static class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
         @Autowired
         private RoleHierarchy roleHierarchy;

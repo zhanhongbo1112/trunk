@@ -17,6 +17,7 @@
  */
 package com.yqboots.security.core;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -51,7 +52,7 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
     private String password;
 
     @Column(nullable = false)
-    private boolean enabled;
+    private boolean enabled = true;
 
     @ManyToMany(targetEntity = Role.class)
     @JoinTable(name = "SEC_USER_ROLES", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
@@ -144,5 +145,15 @@ public class User extends AbstractPersistable<Long> implements UserDetails, Cred
     @Override
     public void eraseCredentials() {
         this.password = null;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("username", username)
+                .append("enabled", enabled)
+                .append("roles", roles)
+                .append("groups", groups)
+                .toString();
     }
 }

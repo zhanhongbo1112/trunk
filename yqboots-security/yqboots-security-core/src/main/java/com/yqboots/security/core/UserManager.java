@@ -38,50 +38,12 @@ public interface UserManager {
     void addUser(User user) throws UserExistsException;
 
     /**
-     * Add new user with groups and roles.
-     *
-     * @param username username
-     * @param groupIds ids of groups
-     * @param roleIds  ids of roles
-     * @throws UserExistsException
-     */
-    void addUser(String username, Long[] groupIds, Long[] roleIds) throws UserExistsException;
-
-    /**
-     * Adds {@link Group}s to the {@link User}.
-     *
-     * @param username   username
-     * @param groupPaths path of groups
-     * @throws UserNotFoundException throw when the entity is not found
-     */
-    void addGroups(String username, String... groupPaths) throws UserNotFoundException;
-
-    /**
-     * Adds {@link Role}s to the {@link User}.
-     *
-     * @param username  username
-     * @param rolePaths path of roles
-     * @throws UserNotFoundException throw when the entity is not found
-     */
-    void addRoles(String username, String... rolePaths) throws UserNotFoundException;
-
-    /**
      * Updates the user.
      *
      * @param user user
      * @throws UserNotFoundException throw when the entity is not found
      */
     void updateUser(User user) throws UserNotFoundException;
-
-    /**
-     * Updates user with groups and roles.
-     *
-     * @param username username
-     * @param groupIds ids of groups
-     * @param roleIds  ids of roles
-     * @throws UserNotFoundException
-     */
-    void updateUser(String username, Long[] groupIds, Long[] roleIds) throws UserNotFoundException;
 
     /**
      * Updates {@link Group}s of the {@link User}.
@@ -145,19 +107,37 @@ public interface UserManager {
     void removeGroups(String username, String... groupPaths) throws UserNotFoundException;
 
     /**
+     * Removes the {@link Group}s from the {@link User}.
+     *
+     * @param username username
+     * @param groupIds id of groups
+     * @throws UserNotFoundException throw when the entity is not found
+     */
+    void removeGroups(String username, Long... groupIds) throws UserNotFoundException;
+
+    /**
      * Removes the {@link Role}s from the {@link User}.
      *
      * @param username  username
      * @param rolePaths path of roles
-     * @throws GroupNotFoundException throw when the entity is not found
+     * @throws UserNotFoundException throw when the entity is not found
      */
     void removeRoles(String username, String... rolePaths) throws UserNotFoundException;
+
+    /**
+     * Removes the {@link Role}s from the {@link User}.
+     *
+     * @param username username
+     * @param roleIds  id of roles
+     * @throws UserNotFoundException throw when the entity is not found
+     */
+    void removeRoles(String username, Long... roleIds) throws UserNotFoundException;
 
     /**
      * Checks if the {@link User} exists.
      *
      * @param username username
-     * @return true when the group with the specified path exists
+     * @return true when the user with the specified username exists
      */
     boolean hasUser(String username);
 
@@ -166,7 +146,7 @@ public interface UserManager {
      *
      * @param id identity of the user
      * @return the user
-     * @throws RoleNotFoundException throw when the entity is not found
+     * @throws UserNotFoundException throw when the entity is not found
      */
     User findUser(Long id) throws UserNotFoundException;
 
@@ -175,7 +155,7 @@ public interface UserManager {
      *
      * @param username username
      * @return the role
-     * @throws RoleNotFoundException throw when the entity is not found
+     * @throws UserNotFoundException throw when the entity is not found
      */
     User findUser(String username) throws UserNotFoundException;
 
@@ -189,25 +169,11 @@ public interface UserManager {
     Page<User> findUsers(String usernameFilter, Pageable pageable);
 
     /**
-     * Finds {@link User}s.
+     * Finds all {@link User}s.
      *
-     * @param pageable pageable
-     * @return page of users
-     */
-    Page<User> findUsers(Pageable pageable);
-
-    /**
      * @return list of users.
      */
     List<User> findAllUsers();
-
-    /**
-     * Finds all {@link Group}s.
-     *
-     * @param pageable pageable
-     * @return page of groups
-     */
-    Page<Group> findAllGroups(Pageable pageable);
 
     /**
      * Finds all {@link Group}s which belong to the {@link User}.
@@ -216,14 +182,6 @@ public interface UserManager {
      * @return list of groups
      */
     List<Group> findUserGroups(String username);
-
-    /**
-     * Finds all {@link Role}s.
-     *
-     * @param pageable pageable
-     * @return page of roles
-     */
-    Page<Role> findAllRoles(Pageable pageable);
 
     /**
      * Finds all {@link Role}s which belong to the {@link User}.
