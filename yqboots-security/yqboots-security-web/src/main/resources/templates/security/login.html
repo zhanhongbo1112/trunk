@@ -3,10 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/content-bottom-layout">
 <head>
   <title th:text="#{T0052}">Login To Your Account</title>
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/application.css" th:remove="all"/>
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/theme-colors/green.css" th:remove="all"/>
-  <link rel="stylesheet" href="../../../META-INF/resources/theme/css/pages/login.css"
-        th:href="@{/theme/css/pages/login.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/pages/login.css}"/>
 </head>
 <body>
 <div class="content" layout:fragment="content">
@@ -16,7 +13,7 @@
 
       <div class="col-md-6 col-sm-6 form-block equal-height-column">
         <a class="logo" th:href="@{/}">
-          <img src="../../../META-INF/resources/theme/images/logo-green.png" th:src="@{/theme/images/logo-green.png}"/>
+          <img th:src="@{/theme/images/logo-green.png}"/>
         </a>
 
         <h2 class="margin-bottom-30" th:text="#{T0052}">Login To Your Account</h2>
@@ -62,7 +59,5 @@
     </div>
   </div>
 </div>
-<script src="../../../META-INF/resources/dojo/jquery.js" th:remove="all"></script>
-<script src="../../../META-INF/resources/dojo/bootstrap.js" th:remove="all"></script>
 </body>
 </html>

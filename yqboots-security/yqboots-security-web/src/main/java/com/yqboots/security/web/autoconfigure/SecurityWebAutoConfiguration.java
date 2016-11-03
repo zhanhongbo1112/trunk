@@ -17,10 +17,8 @@
  */
 package com.yqboots.security.web.autoconfigure;
 
-import com.yqboots.security.web.support.*;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -33,11 +31,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-@Import({AllRolesDataDictResolver.class, UserRolesDataDictResolver.class, GroupRolesDataDictResolver.class,
-        AllGroupsDataDictResolver.class, UserGroupsDataDictResolver.class, RoleGroupsDataDictResolver.class,
-        AllUsersDataDictResolver.class, GroupUsersDataDictResolver.class, RoleUsersDataDictResolver.class
-})
-public class WebSecurityAutoConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
     /**
      * {@inheritDoc}
      */

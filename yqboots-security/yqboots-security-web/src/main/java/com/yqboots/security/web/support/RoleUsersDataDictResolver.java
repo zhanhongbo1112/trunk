@@ -24,6 +24,7 @@ import com.yqboots.security.core.User;
 import com.yqboots.security.web.support.consumer.UserToDataDictConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
+@Component
 public class RoleUsersDataDictResolver extends AbstractDataDictResolver {
     /**
      * name key: ROLE_USERS

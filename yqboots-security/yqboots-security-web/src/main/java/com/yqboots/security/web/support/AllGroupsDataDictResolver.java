@@ -23,6 +23,7 @@ import com.yqboots.security.core.Group;
 import com.yqboots.security.core.GroupManager;
 import com.yqboots.security.web.support.consumer.GroupToDataDictConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
+@Component
 public class AllGroupsDataDictResolver extends AbstractDataDictResolver {
     /**
      * name key: ALL_GROUPS
