@@ -109,6 +109,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
      * {@inheritDoc}
      */
     @Override
+    @Transactional
     public void update(final MenuItem entity) {
         if (!entity.isNew()) {
             menuItemRepository.save(entity);
@@ -128,6 +129,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
      * {@inheritDoc}
      */
     @Override
+    @Transactional
     public void delete(final Long id) {
         menuItemRepository.delete(id);
     }
