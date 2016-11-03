@@ -12,8 +12,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>yqboots-web-core</module>
         <module>yqboots-web-layout</module>
         <module>yqboots-web-thymeleaf</module>
-        <module>yqboots-web-core</module>
+        <module>yqboots-web-site</module>
     </modules>
 </project>

@@ -28,10 +28,6 @@ import java.io.Serializable;
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
 )
 public class PermissionEvaluatorTest {
-    public static void main(String[] args) {
-        System.out.print("/menu".hashCode());
-    }
-
     @Autowired
     private AclService aclService;
 
@@ -62,7 +58,7 @@ public class PermissionEvaluatorTest {
         @Override
         public ObjectIdentity retrieve(final Object domainObject) {
             TestMenuItem testMenuItem = (TestMenuItem) domainObject;
-            return new ObjectIdentityImpl(TestMenuItem.class, Long.valueOf(testMenuItem.getUrl().hashCode()));
+            return new ObjectIdentityImpl(TestMenuItem.class, (long) testMenuItem.getUrl().hashCode());
         }
 
         @Override
