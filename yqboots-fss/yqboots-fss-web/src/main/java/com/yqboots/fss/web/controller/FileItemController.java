@@ -19,10 +19,10 @@ package com.yqboots.fss.web.controller;
 
 import com.yqboots.fss.core.FileItem;
 import com.yqboots.fss.core.FileItemManager;
-import com.yqboots.fss.security.access.FileItemPermissions;
+import com.yqboots.fss.web.access.FileItemPermissions;
 import com.yqboots.fss.web.form.FileUploadForm;
 import com.yqboots.fss.web.form.FileUploadFormValidator;
-import com.yqboots.fss.web.util.FssWebUtils;
+import com.yqboots.web.util.FileWebUtils;
 import com.yqboots.web.support.WebKeys;
 import com.yqboots.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
@@ -127,7 +127,7 @@ public class FileItemController {
     @PreAuthorize(FileItemPermissions.READ)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DOWNLOAD}, method = RequestMethod.GET)
     public HttpEntity<byte[]> download(@RequestParam(WebKeys.ID) final String path) throws IOException {
-        return FssWebUtils.downloadFile(fileItemManager.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
+        return FileWebUtils.downloadFile(fileItemManager.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
     }
 
     @PreAuthorize(FileItemPermissions.DELETE)

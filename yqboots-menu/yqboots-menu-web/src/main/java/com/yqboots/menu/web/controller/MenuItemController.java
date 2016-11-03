@@ -17,9 +17,9 @@
  */
 package com.yqboots.menu.web.controller;
 
-import com.yqboots.fss.web.util.FssWebUtils;
+import com.yqboots.web.util.FileWebUtils;
 import com.yqboots.menu.core.MenuItem;
-import com.yqboots.menu.security.access.MenuItemPermissions;
+import com.yqboots.menu.web.access.MenuItemPermissions;
 import com.yqboots.menu.web.form.FileUploadFormValidator;
 import com.yqboots.menu.core.MenuItemExistsException;
 import com.yqboots.menu.core.MenuItemManager;
@@ -157,6 +157,6 @@ public class MenuItemController {
     public HttpEntity<byte[]> exports() throws IOException {
         Path path = menuItemManager.exports();
 
-        return FssWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
+        return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

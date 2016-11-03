@@ -16,7 +16,7 @@
 package com.yqboots.dict.web.controller;
 
 import com.yqboots.dict.web.access.DataDictPermissions;
-import com.yqboots.fss.web.util.FssWebUtils;
+import com.yqboots.web.util.FileWebUtils;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
 import com.yqboots.dict.core.DataDictManager;
@@ -157,6 +157,6 @@ public class DataDictController {
     public HttpEntity<byte[]> exports() throws IOException {
         Path path = dataDictManager.exports();
 
-        return FssWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
+        return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

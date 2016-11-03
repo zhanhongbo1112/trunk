@@ -176,7 +176,8 @@ public class DataDictManagerImpl implements DataDictManager {
     public void imports(final InputStream inputStream) throws IOException {
         final DataDicts dataDicts = (DataDicts) jaxb2Marshaller.unmarshal(new StreamSource(inputStream));
         for (DataDict dict : dataDicts.getDataDicts()) {
-            LOGGER.debug("importing data dict with name \"{}\" and value \"{}\"", dict.getName(), dict.getValue());
+            LOGGER.debug("importing data dict with name \"{}\", text \"{}\" and value \"{}\"",
+                    dict.getName(), dict.getText(), dict.getValue());
             DataDict existOne = dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
             if (existOne == null) {
                 dataDictRepository.save(dict);

@@ -16,11 +16,19 @@
         </dependency>
         <dependency>
             <groupId>com.yqboots.fss</groupId>
-            <artifactId>yqboots-fss-web</artifactId>
+            <artifactId>yqboots-fss-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.yqboots.web</groupId>
             <artifactId>yqboots-web-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yqboots.web</groupId>
+            <artifactId>yqboots-web-layout</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yqboots.web</groupId>
+            <artifactId>yqboots-web-thymeleaf</artifactId>
         </dependency>
 
         <dependency>
@@ -34,4 +42,21 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.yqboots.menu.Application</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

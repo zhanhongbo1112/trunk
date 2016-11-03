@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>yqboots-web</artifactId>
         <groupId>com.yqboots.web</groupId>
+        <artifactId>yqboots-web</artifactId>
         <version>1.1.0-SNAPSHOT</version>
     </parent>
     <artifactId>yqboots-web-layout</artifactId>
@@ -35,7 +35,7 @@
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
-                            <mainClass>com.yqboots.layout.Application</mainClass>
+                            <mainClass>com.yqboots.web.layout.Application</mainClass>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -49,7 +49,7 @@
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
-                            <mainClass>com.yqboots.layout.Application</mainClass>
+                            <mainClass>com.yqboots.web.layout.Application</mainClass>
                         </configuration>
                     </plugin>
                     <plugin>

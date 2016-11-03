@@ -15,13 +15,10 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.menu;
+package com.yqboots.web.layout;
 
-import com.yqboots.fss.autoconfigure.FssAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,8 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @since 1.0.0
  */
 @Controller
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@Import({FssAutoConfiguration.class})
+@SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -42,6 +38,11 @@ public class Application {
 
     @RequestMapping(value = "/")
     public String home() {
-        return "redirect:/menu";
+        return "index";
+    }
+
+    @RequestMapping(value = "/projects/framework")
+    public String framework() {
+        return "projects/framework/index";
     }
 }

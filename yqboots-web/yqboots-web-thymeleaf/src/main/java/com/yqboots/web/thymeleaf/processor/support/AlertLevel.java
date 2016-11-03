@@ -15,30 +15,28 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.fss;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+package com.yqboots.web.thymeleaf.processor.support;
 
 /**
- * The entrance of a project.
- * it contains a main method to bootstrap the whole project.
+ * Alert level.
  *
  * @author Eric H B Zhan
  * @since 1.0.0
  */
-@Controller
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+public enum AlertLevel {
+    SUCCESS("success"), INFO("info"), WARNING("warning"), ERROR("danger");
+
+    private final String level;
+
+    private AlertLevel(final String level) {
+        this.level = level;
     }
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "redirect:/fss";
+    /**
+     * @param level the alert level
+     * @return the correspondence style class
+     */
+    public static String getStyleClass(String level) {
+        return "alert alert-" + level;
     }
 }
