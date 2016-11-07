@@ -17,6 +17,7 @@
  */
 package com.yqboots.menu.core;
 
+import com.yqboots.core.util.DBUtils;
 import com.yqboots.fss.core.support.FileType;
 import com.yqboots.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.menu.core.repository.MenuItemRepository;
@@ -86,7 +87,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @Override
     public Page<MenuItem> getMenuItems(final String wildcardName, final Pageable pageable) {
         String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
-        return menuItemRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
+        return menuItemRepository.findByNameLikeIgnoreCaseOrderByName(DBUtils.wildcard(searchStr), pageable);
     }
 
     /**

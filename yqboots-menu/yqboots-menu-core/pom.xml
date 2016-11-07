@@ -11,6 +11,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.yqboots.core</groupId>
+            <artifactId>yqboots-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.yqboots.fss</groupId>
             <artifactId>yqboots-fss-core</artifactId>
         </dependency>

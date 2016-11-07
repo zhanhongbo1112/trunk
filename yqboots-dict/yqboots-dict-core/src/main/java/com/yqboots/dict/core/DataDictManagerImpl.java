@@ -15,6 +15,7 @@
  */
 package com.yqboots.dict.core;
 
+import com.yqboots.core.util.DBUtils;
 import com.yqboots.dict.autoconfigure.DataDictProperties;
 import com.yqboots.dict.core.repository.DataDictRepository;
 import com.yqboots.dict.core.support.DataDictResolver;
@@ -86,7 +87,7 @@ public class DataDictManagerImpl implements DataDictManager {
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
         String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
-        return dataDictRepository.findByNameLikeIgnoreCaseOrderByName("%" + searchStr + "%", pageable);
+        return dataDictRepository.findByNameLikeIgnoreCaseOrderByName(DBUtils.wildcard(searchStr), pageable);
     }
 
     /**

@@ -12,6 +12,10 @@
     <dependencies>
         <!-- Core Modules -->
         <dependency>
+            <groupId>com.yqboots.core</groupId>
+            <artifactId>yqboots-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.yqboots.dict</groupId>
             <artifactId>yqboots-dict-core</artifactId>
         </dependency>
@@ -81,6 +85,7 @@
                             <mainClass>com.yqboots.Application</mainClass>
                             <!-- included by the shade plugin -->
                             <excludeArtifactIds>
+                                yqboots-core,
                                 yqboots-dict-core,yqboots-dict-web,
                                 yqboots-menu-core,yqboots-menu-web,
                                 yqboots-fss-core,yqboots-fss-web,
@@ -103,6 +108,7 @@
                                     <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
                                     <artifactSet>
                                         <includes>
+                                            <include>com.yqboots.core:yqboots-core</include>
                                             <include>com.yqboots.dict:yqboots-dict-core</include>
                                             <include>com.yqboots.dict:yqboots-dict-web</include>
                                             <include>com.yqboots.menu:yqboots-menu-core</include>

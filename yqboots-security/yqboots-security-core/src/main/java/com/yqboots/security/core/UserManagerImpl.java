@@ -17,13 +17,13 @@
  */
 package com.yqboots.security.core;
 
+import com.yqboots.core.util.DBUtils;
 import com.yqboots.security.autoconfigure.SecurityProperties;
 import com.yqboots.security.core.audit.SecurityAudit;
 import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
-import com.yqboots.security.util.DBUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -381,8 +381,7 @@ public class UserManagerImpl implements UserManager {
      */
     @Override
     public Page<User> findUsers(final String usernameFilter, final Pageable pageable) {
-        final String filter = DBUtils.wildcard(usernameFilter);
-        return userRepository.findByUsernameLikeIgnoreCase(filter, pageable);
+        return userRepository.findByUsernameLikeIgnoreCase(DBUtils.wildcard(usernameFilter), pageable);
     }
 
     /**

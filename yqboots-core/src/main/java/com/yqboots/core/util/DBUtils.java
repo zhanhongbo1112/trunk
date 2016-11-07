@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.security.util;
+package com.yqboots.core.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -39,7 +39,7 @@ public final class DBUtils {
      */
     public static String wildcard(final String source) {
         String result = WILDCARD_ALL;
-        if (!StringUtils.isEmpty(source)) {
+        if (StringUtils.isNotEmpty(source)) {
             result = WILDCARD_ALL + source + WILDCARD_ALL;
         }
 

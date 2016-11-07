@@ -17,12 +17,12 @@
  */
 package com.yqboots.security.core;
 
+import com.yqboots.core.util.DBUtils;
 import com.yqboots.security.core.audit.SecurityAudit;
 import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
-import com.yqboots.security.util.DBUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,7 +32,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -353,8 +352,7 @@ public class RoleManagerImpl implements RoleManager {
      */
     @Override
     public Page<Role> findRoles(String pathFilter, Pageable pageable) {
-        final String filter = DBUtils.wildcard(pathFilter);
-        return roleRepository.findByPathLikeIgnoreCase(filter, pageable);
+        return roleRepository.findByPathLikeIgnoreCase(DBUtils.wildcard(pathFilter), pageable);
     }
 
     /**
