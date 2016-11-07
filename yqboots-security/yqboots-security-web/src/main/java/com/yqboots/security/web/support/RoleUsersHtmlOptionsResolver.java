@@ -17,60 +17,63 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.dict.core.support.AbstractDataDictResolver;
-import com.yqboots.dict.core.DataDict;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
+import com.yqboots.security.core.RoleManager;
 import com.yqboots.security.core.Role;
 import com.yqboots.security.core.User;
-import com.yqboots.security.core.UserManager;
-import com.yqboots.security.web.support.consumer.RoleToDataDictConsumer;
+import com.yqboots.security.web.support.consumer.UserToHtmlOptionConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link com.yqboots.security.core.Role}s of a specified {@link User}<br/>
- * <p>for the implementation, the first attribute should be the specified username of the user.</p>
+ * Resolves {@link User}s of a specified {@link Role}<br/>
+ * <p>for the implementation, the first attribute should be the specified path of the role.</p>
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @Component
-public class UserRolesDataDictResolver extends AbstractDataDictResolver {
+@Order(Ordered.LOWEST_PRECEDENCE - 100)
+public class RoleUsersHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
-     * name key: USER_ROLES
+     * name key: ROLE_USERS
      */
-    private static final String NAME_KEY = "USER_ROLES";
+    private static final String NAME_KEY = "ROLE_USERS";
 
     /**
-     * UserManager.
+     * RoleManager.
      */
-    private final UserManager userManager;
+    private final RoleManager roleManager;
 
     /**
-     * Constructs <code>UserRolesDataDictResolver</code>.
+     * Constructs {@link RoleUsersHtmlOptionsResolver}.
      *
-     * @param userManager userManager
+     * @param roleManager roleManager
      */
     @Autowired
-    public UserRolesDataDictResolver(final UserManager userManager) {
+    public RoleUsersHtmlOptionsResolver(final RoleManager roleManager) {
         super(NAME_KEY);
-        this.userManager = userManager;
+        this.roleManager = roleManager;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(String... attributes) {
-        List<DataDict> results = new ArrayList<>();
+    public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
+        List<HtmlOption> results = new ArrayList<>();
 
         if (ArrayUtils.isNotEmpty(attributes) && attributes[0] != null) {
-            // attributes[0] is username
-            List<Role> roles = userManager.findUserRoles(attributes[0]);
-            roles.forEach(new RoleToDataDictConsumer(getName(), results));
+            // attributes[0] is path
+            List<User> users = roleManager.findRoleUsers(attributes[0]);
+            users.forEach(new UserToHtmlOptionConsumer(name, results));
         }
 
         return results;

@@ -51,10 +51,9 @@ public interface DataDictManager {
      * Gets the Data Dictionaries by name.
      *
      * @param name       the name of one DataDict
-     * @param attributes extra attributes
      * @return list of DataDict
      */
-    List<DataDict> getDataDicts(String name, String... attributes);
+    List<DataDict> getDataDicts(String name);
 
     /**
      * Gets the displayed text. Usually used in the Thymeleaf html template file.

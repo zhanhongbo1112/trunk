@@ -19,14 +19,11 @@ import com.yqboots.dict.context.DataDictImportListener;
 import com.yqboots.dict.core.DataDictManager;
 import com.yqboots.dict.core.DataDictManagerImpl;
 import com.yqboots.dict.core.repository.DataDictRepository;
-import com.yqboots.dict.core.support.DataDictResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import java.util.List;
 
 /**
  * The Auto Configuration class for Data Dictionary related beans.
@@ -44,18 +41,8 @@ public class DataDictAutoConfiguration {
     @Autowired
     private DataDictProperties properties;
 
-    @Autowired(required = false)
-    private List<DataDictResolver> dataDictResolvers;
-
-    /**
-     * the name "dicts" is used in the thymeleaf html template file as #dicts.
-     *
-     * @return the DataDictManager
-     */
-    @Bean(name = {"dicts", "dataDictManager"})
+    @Bean
     public DataDictManager dataDictManager() {
-        DataDictManagerImpl bean = new DataDictManagerImpl(dataDictRepository, properties);
-        bean.setDataDictResolvers(dataDictResolvers);
-        return bean;
+        return new DataDictManagerImpl(dataDictRepository, properties);
     }
 }

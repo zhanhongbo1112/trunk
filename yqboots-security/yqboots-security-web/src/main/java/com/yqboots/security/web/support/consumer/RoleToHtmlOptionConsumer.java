@@ -17,57 +17,56 @@
  */
 package com.yqboots.security.web.support.consumer;
 
+import com.yqboots.core.html.HtmlOption;
 import com.yqboots.dict.core.DataDict;
-import com.yqboots.security.core.User;
+import com.yqboots.security.core.Role;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Consumes {@link User} and put into {@link DataDict}.
+ * Consumes {@link com.yqboots.security.core.Role} and put into {@link DataDict}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class UserToDataDictConsumer implements Consumer<User> {
+public class RoleToHtmlOptionConsumer implements Consumer<Role> {
     /**
      * The key of the data dictionary.
      */
     private final String name;
 
     /**
-     * The container of the data dictionaries.
+     * The container of the data options.
      */
-    private final List<DataDict> dataDicts;
+    private final List<HtmlOption> options;
 
     /**
-     * Constructs the <code>UserToDataDictConsumer</code>
+     * Constructs the {@link RoleToHtmlOptionConsumer}.
      *
-     * @param name      name key
-     * @param dataDicts dataDicts
+     * @param name    name key
+     * @param options options
      */
-    public UserToDataDictConsumer(final String name, final List<DataDict> dataDicts) {
+    public RoleToHtmlOptionConsumer(final String name, final List<HtmlOption> options) {
         this.name = name;
-        this.dataDicts = dataDicts;
+        this.options = options;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void accept(final User user) {
-        DataDict dataDict = new DataDict();
-        dataDict.setName(getName());
-        dataDict.setText(user.getUsername());
-        dataDict.setValue(Long.toString(user.getId()));
-        dataDict.setDescription(user.getUsername());
-        dataDicts.add(dataDict);
+    public void accept(final Role role) {
+        HtmlOption options = new HtmlOption();
+        options.setText(role.getPath() + " - " + role.getAlias());
+        options.setValue(Long.toString(role.getId()));
+        this.options.add(options);
     }
 
     /**
      * Gets the name key.
      *
-     * @return the key of the data dictionary
+     * @return the key of the data option
      */
     public String getName() {
         return name;

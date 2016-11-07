@@ -17,12 +17,14 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.dict.core.DataDict;
-import com.yqboots.dict.core.support.AbstractDataDictResolver;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
 import com.yqboots.security.core.User;
 import com.yqboots.security.core.UserManager;
-import com.yqboots.security.web.support.consumer.UserToDataDictConsumer;
+import com.yqboots.security.web.support.consumer.UserToHtmlOptionConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -35,7 +37,8 @@ import java.util.List;
  * @since 1.1.0
  */
 @Component
-public class AllUsersDataDictResolver extends AbstractDataDictResolver {
+@Order(Ordered.LOWEST_PRECEDENCE - 100)
+public class AllUsersHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
      * name key: ALL_USERS
      */
@@ -47,12 +50,12 @@ public class AllUsersDataDictResolver extends AbstractDataDictResolver {
     private final UserManager userManager;
 
     /**
-     * Constructs <code>AllUsersDataDictResolver</code>.
+     * Constructs {@link AllUsersHtmlOptionsResolver}.
      *
      * @param userManager userManager
      */
     @Autowired
-    public AllUsersDataDictResolver(final UserManager userManager) {
+    public AllUsersHtmlOptionsResolver(final UserManager userManager) {
         super(NAME_KEY);
         this.userManager = userManager;
     }
@@ -61,11 +64,11 @@ public class AllUsersDataDictResolver extends AbstractDataDictResolver {
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(String... attributes) {
-        final List<DataDict> results = new ArrayList<>();
+    public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
+        final List<HtmlOption> results = new ArrayList<>();
 
         List<User> groups = userManager.findAllUsers();
-        groups.forEach(new UserToDataDictConsumer(getName(), results));
+        groups.forEach(new UserToHtmlOptionConsumer(name, results));
 
         return results;
     }

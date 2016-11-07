@@ -11,8 +11,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.yqboots.dict</groupId>
-            <artifactId>yqboots-dict-core</artifactId>
+            <groupId>com.yqboots.core</groupId>
+            <artifactId>yqboots-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.yqboots.menu</groupId>

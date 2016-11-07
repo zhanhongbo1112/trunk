@@ -17,32 +17,35 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.dict.core.DataDict;
-import com.yqboots.dict.core.support.AbstractDataDictResolver;
-import com.yqboots.security.core.Group;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
+import com.yqboots.security.core.Role;
 import com.yqboots.security.core.User;
 import com.yqboots.security.core.UserManager;
-import com.yqboots.security.web.support.consumer.GroupToDataDictConsumer;
+import com.yqboots.security.web.support.consumer.RoleToHtmlOptionConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link Group}s of a specified {@link User}<br/>
+ * Resolves {@link Role}s of a specified {@link User}<br/>
  * <p>for the implementation, the first attribute should be the specified username of the user.</p>
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @Component
-public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
+@Order(Ordered.LOWEST_PRECEDENCE - 100)
+public class UserRolesHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
-     * name key: USER_GROUPS
+     * name key: USER_ROLES
      */
-    private static final String NAME_KEY = "USER_GROUPS";
+    private static final String NAME_KEY = "USER_ROLES";
 
     /**
      * UserManager.
@@ -50,12 +53,12 @@ public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
     private final UserManager userManager;
 
     /**
-     * Constructs <code>UserGroupsDataDictResolver</code>.
+     * Constructs {@link UserRolesHtmlOptionsResolver}.
      *
      * @param userManager userManager
      */
     @Autowired
-    public UserGroupsDataDictResolver(final UserManager userManager) {
+    public UserRolesHtmlOptionsResolver(final UserManager userManager) {
         super(NAME_KEY);
         this.userManager = userManager;
     }
@@ -64,13 +67,13 @@ public class UserGroupsDataDictResolver extends AbstractDataDictResolver {
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(String... attributes) {
-        List<DataDict> results = new ArrayList<>();
+    public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
+        List<HtmlOption> results = new ArrayList<>();
 
         if (ArrayUtils.isNotEmpty(attributes) && attributes[0] != null) {
             // attributes[0] is username
-            List<Group> groups = userManager.findUserGroups(attributes[0]);
-            groups.forEach(new GroupToDataDictConsumer(getName(), results));
+            List<Role> roles = userManager.findUserRoles(attributes[0]);
+            roles.forEach(new RoleToHtmlOptionConsumer(name, results));
         }
 
         return results;

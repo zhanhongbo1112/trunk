@@ -17,57 +17,56 @@
  */
 package com.yqboots.security.web.support.consumer;
 
+import com.yqboots.core.html.HtmlOption;
 import com.yqboots.dict.core.DataDict;
-import com.yqboots.security.core.Group;
+import com.yqboots.security.core.User;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Consumes {@link Group} and put into {@link DataDict}.
+ * Consumes {@link User} and put into {@link DataDict}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class GroupToDataDictConsumer implements Consumer<Group> {
+public class UserToHtmlOptionConsumer implements Consumer<User> {
     /**
      * The key of the data dictionary.
      */
     private final String name;
 
     /**
-     * The container of the data dictionaries.
+     * The container of the data options.
      */
-    private final List<DataDict> dataDicts;
+    private final List<HtmlOption> options;
 
     /**
-     * Constructs the <code>GroupToDataDictConsumer</code>
+     * Constructs the {@link UserToHtmlOptionConsumer}.
      *
-     * @param name      name key
-     * @param dataDicts dataDicts
+     * @param name    name key
+     * @param options options
      */
-    public GroupToDataDictConsumer(final String name, final List<DataDict> dataDicts) {
+    public UserToHtmlOptionConsumer(final String name, final List<HtmlOption> options) {
         this.name = name;
-        this.dataDicts = dataDicts;
+        this.options = options;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void accept(final Group group) {
-        DataDict dataDict = new DataDict();
-        dataDict.setName(getName());
-        dataDict.setText(group.getPath() + " - " + group.getAlias());
-        dataDict.setValue(Long.toString(group.getId()));
-        dataDict.setDescription(group.getDescription());
-        dataDicts.add(dataDict);
+    public void accept(final User user) {
+        HtmlOption options = new HtmlOption();
+        options.setText(user.getUsername());
+        options.setValue(Long.toString(user.getId()));
+        this.options.add(options);
     }
 
     /**
      * Gets the name key.
      *
-     * @return the key of the data dictionary
+     * @return the key of the data option
      */
     public String getName() {
         return name;

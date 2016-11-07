@@ -17,8 +17,9 @@
  */
 package com.yqboots.web.thymeleaf.processor.element;
 
-import com.yqboots.dict.core.DataDictManager;
-import com.yqboots.dict.core.DataDict;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.HtmlOptionsSupport;
+import com.yqboots.core.html.support.HtmlOptionsResolver;
 import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
@@ -57,7 +58,8 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
         final List<Node> nodes = new ArrayList<>();
 
         final SpringWebContext context = (SpringWebContext) arguments.getContext();
-        final DataDictManager manager = context.getApplicationContext().getBean(DataDictManager.class);
+        @SuppressWarnings({"uncheck"})
+        final HtmlOptionsSupport htmlOptionsSupport = context.getApplicationContext().getBean(HtmlOptionsSupport.class);
 
         final String nameAttrValue = element.getAttributeValue(ATTR_NAME);
         if (StringUtils.isBlank(nameAttrValue)) {
@@ -77,17 +79,26 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
 
         Element option;
 
-        final List<DataDict> items = manager.getDataDicts(nameAttrValue, attributes);
-        for (DataDict item : items) {
-            option = new Element("option");
-            option.setAttribute("value", item.getValue());
-            if (valueIncluded) {
-                option.addChild(new Text(StringUtils.join(new String[]{item.getValue(), item.getText()}, " - ")));
-            } else {
-                option.addChild(new Text(item.getText()));
+        List<HtmlOption> items = null;
+        for (final HtmlOptionsResolver resolver : htmlOptionsSupport.getResolvers()) {
+            if (resolver.supports(nameAttrValue)) {
+                items = resolver.getHtmlOptions(attributes);
+                break;
             }
+        }
 
-            nodes.add(option);
+        if (items != null) {
+            for (HtmlOption item : items) {
+                option = new Element("option");
+                option.setAttribute("value", item.getValue());
+                if (valueIncluded) {
+                    option.addChild(new Text(StringUtils.join(new String[]{item.getValue(), item.getText()}, " - ")));
+                } else {
+                    option.addChild(new Text(item.getText()));
+                }
+
+                nodes.add(option);
+            }
         }
 
         return nodes;

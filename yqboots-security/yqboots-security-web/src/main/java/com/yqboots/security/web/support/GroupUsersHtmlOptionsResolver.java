@@ -17,60 +17,63 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.dict.core.DataDict;
-import com.yqboots.dict.core.support.AbstractDataDictResolver;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
 import com.yqboots.security.core.Group;
-import com.yqboots.security.core.RoleManager;
-import com.yqboots.security.core.Role;
-import com.yqboots.security.web.support.consumer.GroupToDataDictConsumer;
+import com.yqboots.security.core.GroupManager;
+import com.yqboots.security.core.User;
+import com.yqboots.security.web.support.consumer.UserToHtmlOptionConsumer;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Resolves {@link Group}s of a specified {@link Role}<br/>
- * <p>for the implementation, the first attribute should be the specified path of the role.</p>
+ * Resolves {@link User}s of a specified {@link Group}<br/>
+ * <p>for the implementation, the first attribute should be the specified path of the group.</p>
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @Component
-public class RoleGroupsDataDictResolver extends AbstractDataDictResolver {
+@Order(Ordered.LOWEST_PRECEDENCE - 100)
+public class GroupUsersHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
-     * name key: GROUP_ROLES
+     * name key: GROUP_USERS
      */
-    private static final String NAME_KEY = "GROUP_ROLES";
+    private static final String NAME_KEY = "GROUP_USERS";
 
     /**
-     * RoleManager.
+     * GroupManager.
      */
-    private final RoleManager roleManager;
+    private final GroupManager groupManager;
 
     /**
-     * Constructs <code>RoleGroupsDataDictResolver</code>.
+     * Constructs {@link GroupUsersHtmlOptionsResolver}.
      *
-     * @param roleManager roleManager
+     * @param groupManager groupManager
      */
     @Autowired
-    public RoleGroupsDataDictResolver(final RoleManager roleManager) {
+    public GroupUsersHtmlOptionsResolver(final GroupManager groupManager) {
         super(NAME_KEY);
-        this.roleManager = roleManager;
+        this.groupManager = groupManager;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(String... attributes) {
-        List<DataDict> results = new ArrayList<>();
+    public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
+        List<HtmlOption> results = new ArrayList<>();
 
         if (ArrayUtils.isNotEmpty(attributes) && attributes[0] != null) {
             // attributes[0] is path
-            List<Group> groups = roleManager.findRoleGroups(attributes[0]);
-            groups.forEach(new GroupToDataDictConsumer(getName(), results));
+            List<User> users = groupManager.findGroupUsers(attributes[0]);
+            users.forEach(new UserToHtmlOptionConsumer(name, results));
         }
 
         return results;

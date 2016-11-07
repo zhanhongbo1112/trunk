@@ -17,12 +17,14 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.dict.core.support.AbstractDataDictResolver;
-import com.yqboots.dict.core.DataDict;
+import com.yqboots.core.html.HtmlOption;
+import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
 import com.yqboots.security.core.Group;
 import com.yqboots.security.core.GroupManager;
-import com.yqboots.security.web.support.consumer.GroupToDataDictConsumer;
+import com.yqboots.security.web.support.consumer.GroupToHtmlOptionConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -35,7 +37,8 @@ import java.util.List;
  * @since 1.1.0
  */
 @Component
-public class AllGroupsDataDictResolver extends AbstractDataDictResolver {
+@Order(Ordered.LOWEST_PRECEDENCE - 100)
+public class AllGroupsHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
      * name key: ALL_GROUPS
      */
@@ -47,12 +50,12 @@ public class AllGroupsDataDictResolver extends AbstractDataDictResolver {
     private final GroupManager groupManager;
 
     /**
-     * Constructs <code>AllGroupsDataDictResolver</code>.
+     * Constructs {@link AllGroupsHtmlOptionsResolver}.
      *
      * @param groupManager groupManager
      */
     @Autowired
-    public AllGroupsDataDictResolver(final GroupManager groupManager) {
+    public AllGroupsHtmlOptionsResolver(final GroupManager groupManager) {
         super(NAME_KEY);
         this.groupManager = groupManager;
     }
@@ -61,11 +64,11 @@ public class AllGroupsDataDictResolver extends AbstractDataDictResolver {
      * {@inheritDoc}
      */
     @Override
-    public List<DataDict> getDataDicts(String... attributes) {
-        final List<DataDict> results = new ArrayList<>();
+    public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
+        final List<HtmlOption> results = new ArrayList<>();
 
         List<Group> groups = groupManager.findAllGroups();
-        groups.forEach(new GroupToDataDictConsumer(getName(), results));
+        groups.forEach(new GroupToHtmlOptionConsumer(name, results));
 
         return results;
     }

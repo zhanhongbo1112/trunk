@@ -1,5 +1,7 @@
 package com.yqboots.web.thymeleaf.autoconfigure;
 
+import com.yqboots.core.html.support.HtmlOptionsResolver;
+import com.yqboots.core.html.support.HtmlOptionsSupport;
 import com.yqboots.web.thymeleaf.dialect.YQBootsDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -10,6 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The configuration class for the custom thymeleaf templates.
  *
@@ -19,9 +24,12 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 @Configuration
 @EnableConfigurationProperties(ThymeleafProperties.class)
 @ConditionalOnClass({YQBootsDialect.class})
-public class YQBootsThymeleafAutoConfiguration {
+public class ThymeleafAutoConfiguration {
     @Autowired
     private ThymeleafProperties properties;
+
+    @Autowired(required = false)
+    private List<HtmlOptionsResolver> htmlOptionsResolvers = new ArrayList<>();
 
     /**
      * Defines the custom Dialect for the framework.
@@ -55,5 +63,10 @@ public class YQBootsThymeleafAutoConfiguration {
         }
 
         return resolver;
+    }
+
+    @Bean
+    public HtmlOptionsSupport htmlOptionsSupport() {
+        return new HtmlOptionsSupport(htmlOptionsResolvers);
     }
 }

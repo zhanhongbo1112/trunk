@@ -17,57 +17,56 @@
  */
 package com.yqboots.security.web.support.consumer;
 
+import com.yqboots.core.html.HtmlOption;
 import com.yqboots.dict.core.DataDict;
-import com.yqboots.security.core.Role;
+import com.yqboots.security.core.Group;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Consumes {@link com.yqboots.security.core.Role} and put into {@link DataDict}.
+ * Consumes {@link Group} and put into {@link DataDict}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public class RoleToDataDictConsumer implements Consumer<Role> {
+public class GroupToHtmlOptionConsumer implements Consumer<Group> {
     /**
      * The key of the data dictionary.
      */
     private final String name;
 
     /**
-     * The container of the data dictionaries.
+     * The container of the data options.
      */
-    private final List<DataDict> dataDicts;
+    private final List<HtmlOption> options;
 
     /**
-     * Constructs the <code>RoleToDataDictConsumer</code>
+     * Constructs the {@link GroupToHtmlOptionConsumer}.
      *
-     * @param name      name key
-     * @param dataDicts dataDicts
+     * @param name    name key
+     * @param options options
      */
-    public RoleToDataDictConsumer(final String name, final List<DataDict> dataDicts) {
+    public GroupToHtmlOptionConsumer(final String name, final List<HtmlOption> options) {
         this.name = name;
-        this.dataDicts = dataDicts;
+        this.options = options;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void accept(final Role role) {
-        DataDict dataDict = new DataDict();
-        dataDict.setName(getName());
-        dataDict.setText(role.getPath() + " - " + role.getAlias());
-        dataDict.setValue(Long.toString(role.getId()));
-        dataDict.setDescription(role.getDescription());
-        dataDicts.add(dataDict);
+    public void accept(final Group group) {
+        HtmlOption options = new HtmlOption();
+        options.setText(group.getPath() + " - " + group.getAlias());
+        options.setValue(Long.toString(group.getId()));
+        this.options.add(options);
     }
 
     /**
      * Gets the name key.
      *
-     * @return the key of the data dictionary
+     * @return the key of the data option
      */
     public String getName() {
         return name;
