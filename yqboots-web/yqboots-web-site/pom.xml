@@ -73,131 +73,50 @@
         <profile>
             <id>production</id>
             <build>
-                <resources>
-                    <resource>
-                        <directory>../yqboots-web-layout/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../yqboots-web-thymeleaf/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-dict/yqboots-dict-core/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-dict/yqboots-dict-web/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-menu/yqboots-menu-core/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-menu/yqboots-menu-web/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-fss/yqboots-fss-core/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-fss/yqboots-fss-web/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-security/yqboots-security-core/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>../../yqboots-security/yqboots-security-web/src/main/resources</directory>
-                        <excludes>
-                            <exclude>*.sql</exclude>
-                            <exclude>*.properties</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                    </resource>
-                </resources>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>copy</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>com.google.javascript</groupId>
-                                            <artifactId>closure-compiler</artifactId>
-                                            <version>v20160619</version>
-                                            <type>jar</type>
-                                            <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}/compressor</outputDirectory>
-                                            <destFileName>closure-compiler.jar</destFileName>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>com.yahoo.platform.yui</groupId>
-                                            <artifactId>yuicompressor</artifactId>
-                                            <!-- there is a bug in 2.4.8-->
-                                            <version>2.4.7</version>
-                                            <type>jar</type>
-                                            <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}/compressor</outputDirectory>
-                                            <destFileName>yuicompressor.jar</destFileName>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.yqboots.Application</mainClass>
+                            <!-- included by the shade plugin -->
+                            <excludeArtifactIds>
+                                yqboots-dict-core,yqboots-dict-web,
+                                yqboots-menu-core,yqboots-menu-web,
+                                yqboots-fss-core,yqboots-fss-web,
+                                yqboots-security-core,yqboots-security-web,
+                                yqboots-web-core,yqboots-web-layout,yqboots-web-thymeleaf
+                            </excludeArtifactIds>
+                            <excludeDevtools>true</excludeDevtools>
+                        </configuration>
                     </plugin>
                     <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
+                        <artifactId>maven-shade-plugin</artifactId>
                         <executions>
                             <execution>
-                                <phase>prepare-package</phase>
+                                <phase>package</phase>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>shade</goal>
                                 </goals>
                                 <configuration>
-                                    <target>
-                                        <ant dir="${project.build.directory}/classes/META-INF" antfile="build.xml"
-                                             target="compress">
-                                            <property name="build.directory" value="${project.build.directory}"/>
-                                        </ant>
-                                    </target>
+                                    <createSourcesJar>false</createSourcesJar>
+                                    <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+                                    <artifactSet>
+                                        <includes>
+                                            <include>com.yqboots.dict:yqboots-dict-core</include>
+                                            <include>com.yqboots.dict:yqboots-dict-web</include>
+                                            <include>com.yqboots.menu:yqboots-menu-core</include>
+                                            <include>com.yqboots.menu:yqboots-menu-web</include>
+                                            <include>com.yqboots.fss:yqboots-fss-core</include>
+                                            <include>com.yqboots.fss:yqboots-fss-web</include>
+                                            <include>com.yqboots.security:yqboots-security-core</include>
+                                            <include>com.yqboots.security:yqboots-security-web</include>
+                                            <include>com.yqboots.web:yqboots-web-core</include>
+                                            <include>com.yqboots.web:yqboots-web-layout</include>
+                                            <include>com.yqboots.web:yqboots-web-thymeleaf</include>
+                                        </includes>
+                                    </artifactSet>
+                                    <transformers/>
                                 </configuration>
                             </execution>
                         </executions>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="project-site" default="compress" basedir=".">
+<project name="yqboots-web-layout" default="compress" basedir=".">
     <description>Compress JS and CSS</description>
     <property name="yuicompressor" value="../../compressor/yuicompressor.jar"/>
     <property name="closure-compiler" value="../../compressor/closure-compiler.jar"/>
