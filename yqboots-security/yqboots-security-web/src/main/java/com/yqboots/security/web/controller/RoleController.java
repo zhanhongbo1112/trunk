@@ -21,6 +21,7 @@ import com.yqboots.security.core.Role;
 import com.yqboots.security.core.RoleExistsException;
 import com.yqboots.security.core.RoleManager;
 import com.yqboots.security.core.RoleNotFoundException;
+import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.RoleForm;
 import com.yqboots.security.web.form.RoleFormConverter;
 import com.yqboots.web.form.SearchForm;
@@ -28,6 +29,7 @@ import com.yqboots.web.support.WebKeys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -62,6 +64,7 @@ public class RoleController {
         return new SearchForm<>();
     }
 
+    @PreAuthorize(SecurityPermissions.ROLE_READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -70,12 +73,14 @@ public class RoleController {
         return VIEW_HOME;
     }
 
+    @PreAuthorize(SecurityPermissions.ROLE_WRITE)
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, new RoleForm());
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.ROLE_WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
         Role role = roleManager.findRole(id);
@@ -84,6 +89,7 @@ public class RoleController {
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.ROLE_WRITE)
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final RoleForm domain,
                          final BindingResult bindingResult,
@@ -114,6 +120,7 @@ public class RoleController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize(SecurityPermissions.ROLE_DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
         roleManager.removeRole(id);

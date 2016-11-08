@@ -21,6 +21,7 @@ import com.yqboots.security.core.Group;
 import com.yqboots.security.core.GroupExistsException;
 import com.yqboots.security.core.GroupManager;
 import com.yqboots.security.core.GroupNotFoundException;
+import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.GroupForm;
 import com.yqboots.security.web.form.GroupFormConverter;
 import com.yqboots.web.form.SearchForm;
@@ -28,6 +29,7 @@ import com.yqboots.web.support.WebKeys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -62,6 +64,7 @@ public class GroupController {
         return new SearchForm<>();
     }
 
+    @PreAuthorize(SecurityPermissions.GROUP_READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -70,12 +73,14 @@ public class GroupController {
         return VIEW_HOME;
     }
 
+    @PreAuthorize(SecurityPermissions.GROUP_WRITE)
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, new GroupForm());
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.GROUP_WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
         Group group = groupManager.findGroup(id);
@@ -84,6 +89,7 @@ public class GroupController {
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.GROUP_WRITE)
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final GroupForm domain,
                          final BindingResult bindingResult,
@@ -113,6 +119,7 @@ public class GroupController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize(SecurityPermissions.GROUP_DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
         groupManager.removeGroup(id);

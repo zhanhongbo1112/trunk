@@ -21,6 +21,7 @@ import com.yqboots.security.core.User;
 import com.yqboots.security.core.UserExistsException;
 import com.yqboots.security.core.UserManager;
 import com.yqboots.security.core.UserNotFoundException;
+import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.UserForm;
 import com.yqboots.security.web.form.UserFormConverter;
 import com.yqboots.web.support.WebKeys;
@@ -28,6 +29,7 @@ import com.yqboots.web.form.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -62,6 +64,7 @@ public class UserController {
         return new SearchForm<>();
     }
 
+    @PreAuthorize(SecurityPermissions.USER_READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
@@ -70,12 +73,14 @@ public class UserController {
         return VIEW_HOME;
     }
 
+    @PreAuthorize(SecurityPermissions.USER_WRITE)
     @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
     public String preAdd(final ModelMap model) {
         model.addAttribute(WebKeys.MODEL, new UserForm());
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.USER_WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
         User user = userManager.findUser(id);
@@ -84,6 +89,7 @@ public class UserController {
         return VIEW_FORM;
     }
 
+    @PreAuthorize(SecurityPermissions.USER_WRITE)
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute(WebKeys.MODEL) final UserForm domain,
                          final BindingResult bindingResult,
@@ -107,6 +113,7 @@ public class UserController {
         return REDIRECT_VIEW_PATH;
     }
 
+    @PreAuthorize(SecurityPermissions.USER_DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
         userManager.removeUser(id);
