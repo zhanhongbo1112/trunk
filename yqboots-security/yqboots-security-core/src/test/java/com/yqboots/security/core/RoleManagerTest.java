@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 @Sql(scripts = "01_destroy.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
 )
-@WithUserDetails(value="supervisor")
+@WithUserDetails(value="admin")
 public class RoleManagerTest {
     @Autowired
     private RoleManager roleManager;
@@ -165,17 +165,5 @@ public class RoleManagerTest {
     public void testFindRoles() throws Exception {
         Page<Role> roles = roleManager.findRoles("nonexistedrole", new PageRequest(0, 10));
         assertFalse(roles.hasContent());
-    }
-
-    @Test
-    public void testFindAllUsers() throws Exception {
-        Page<User> users = roleManager.findAllUsers(new PageRequest(0, 10));
-        assertTrue(!users.getContent().isEmpty());
-    }
-
-    @Test
-    public void testFindAllGroups() throws Exception {
-        Page<Group> groups = roleManager.findAllGroups(new PageRequest(0, 10));
-        assertTrue(!groups.getContent().isEmpty());
     }
 }

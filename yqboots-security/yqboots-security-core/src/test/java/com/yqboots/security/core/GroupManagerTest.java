@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 @Sql(scripts = "01_destroy.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD
 )
-@WithUserDetails(value="supervisor")
+@WithUserDetails(value = "admin")
 public class GroupManagerTest {
     @Autowired
     private GroupManager groupManager;
@@ -112,13 +112,32 @@ public class GroupManagerTest {
 
     @Test
     public void testRemoveGroup() throws Exception {
+        Group group = groupManager.findGroup("/USERS");
+
+        Long groupId = group.getId();
+
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP", "PATH='/USERS'");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=" + groupId);
+        assertTrue(count == 2);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=" + groupId);
         assertTrue(count == 1);
 
         groupManager.removeGroup("/USERS");
 
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP", "PATH='/USERS'");
         assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=" + groupId);
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=" + groupId);
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=1");
+        assertTrue(count == 1);
     }
 
     @Test
@@ -170,17 +189,5 @@ public class GroupManagerTest {
     public void testFindGroups() throws Exception {
         Page<Group> groups = groupManager.findGroups("nonexistedgroup", new PageRequest(0, 10));
         assertFalse(groups.hasContent());
-    }
-
-    @Test
-    public void testFindAllUsers() throws Exception {
-        Page<User> users = groupManager.findAllUsers(new PageRequest(0, 10));
-        assertTrue(!users.getContent().isEmpty());
-    }
-
-    @Test
-    public void testFindAllRoles() throws Exception {
-        Page<Role> roles = groupManager.findAllRoles(new PageRequest(0, 10));
-        assertTrue(!roles.getContent().isEmpty());
     }
 }

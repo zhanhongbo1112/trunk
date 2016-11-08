@@ -107,17 +107,43 @@ public class UserManagerTest {
         User user = userManager.findUser("user");
         assertTrue(user.isEnabled());
 
+        Long userId = user.getId();
+
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user'");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=" + userId);
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=" + userId);
         assertTrue(count == 1);
 
         userManager.removeUser("user");
 
-        // yq.security.user.disabled-when-removing=true
+        // yq.security.user.disabled-when-removing=false
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user'");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=" + userId);
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=" + userId);
+        assertTrue(count == 0);
+
+        // yq.security.user.disabled-when-removing=true
+        /**
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER", "USERNAME='user'");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=" + userId);
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_ROLES", "USER_ID=" + userId);
         assertTrue(count == 1);
 
         user = userManager.findUser("user");
         assertFalse(user.isEnabled());
+         */
     }
 
     @Test

@@ -243,7 +243,7 @@ public class UserManagerImpl implements UserManager {
             user.setEnabled(false);
             userRepository.save(user);
         } else {
-            // TODO: test if remove all related groups and roles
+            // remove physically
             userRepository.delete(user);
         }
     }
@@ -264,10 +264,8 @@ public class UserManagerImpl implements UserManager {
         }
 
         final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        if (!groups.isEmpty()) {
-            user.getGroups().removeAll(groups);
-            userRepository.save(user);
-        }
+        groups.stream().filter(group -> ArrayUtils.contains(groupPaths, group.getPath()))
+                .forEach(group -> user.getGroups().remove(group));
     }
 
     /**
@@ -286,10 +284,8 @@ public class UserManagerImpl implements UserManager {
         }
 
         final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
-        if (!groups.isEmpty()) {
-            user.getGroups().removeAll(groups);
-            userRepository.save(user);
-        }
+        groups.stream().filter(group -> ArrayUtils.contains(groupIds, group.getId()))
+                .forEach(group -> user.getGroups().remove(group));
     }
 
     /**
@@ -308,11 +304,8 @@ public class UserManagerImpl implements UserManager {
         }
 
         final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
-        if (!roles.isEmpty()) {
-            user.getRoles().removeAll(roles);
-        }
-
-        userRepository.save(user);
+        roles.stream().filter(role -> ArrayUtils.contains(rolePaths, role.getPath()))
+                .forEach(role -> user.getRoles().remove(role));
     }
 
     /**
@@ -331,11 +324,8 @@ public class UserManagerImpl implements UserManager {
         }
 
         final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
-        if (!roles.isEmpty()) {
-            user.getRoles().removeAll(roles);
-        }
-
-        userRepository.save(user);
+        roles.stream().filter(role -> ArrayUtils.contains(roleIds, role.getId()))
+                .forEach(role -> user.getRoles().remove(role));
     }
 
     /**

@@ -50,16 +50,6 @@ public interface GroupManager {
     void updateGroup(Group group) throws GroupNotFoundException;
 
     /**
-     * Update group with users and roles.
-     *
-     * @param path    path
-     * @param userIds ids of users
-     * @param roleIds ids of roles
-     * @throws GroupNotFoundException
-     */
-    void updateGroup(String path, Long[] userIds, Long[] roleIds) throws GroupNotFoundException;
-
-    /**
      * Updates {@link User}s of the {@link Group}.
      *
      * @param path    path
@@ -114,11 +104,29 @@ public interface GroupManager {
     /**
      * Removes the {@link User}s from the {@link Group}.
      *
+     * @param path    path
+     * @param userIds id of users
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void removeUsers(String path, Long... userIds) throws GroupNotFoundException;
+
+    /**
+     * Removes the {@link User}s from the {@link Group}.
+     *
      * @param path      path
      * @param usernames username of users
      * @throws GroupNotFoundException throw when the entity is not found
      */
     void removeUsers(String path, String... usernames) throws GroupNotFoundException;
+
+    /**
+     * Removes the {@link Role}s from the {@link Group}.
+     *
+     * @param path    path
+     * @param roleIds id of roles
+     * @throws GroupNotFoundException throw when the entity is not found
+     */
+    void removeRoles(String path, Long... roleIds) throws GroupNotFoundException;
 
     /**
      * Removes the {@link Role}s from the {@link Group}.
@@ -178,28 +186,12 @@ public interface GroupManager {
     List<Group> findAllGroups();
 
     /**
-     * Finds all {@link User}s.
-     *
-     * @param pageable pageable
-     * @return page of users
-     */
-    Page<User> findAllUsers(Pageable pageable);
-
-    /**
      * Finds all {@link User}s which belong to the {@link Group}.
      *
      * @param path path
      * @return list of users
      */
     List<User> findGroupUsers(String path);
-
-    /**
-     * Finds all {@link Role}s.
-     *
-     * @param pageable pageable
-     * @return page of roles
-     */
-    Page<Role> findAllRoles(Pageable pageable);
 
     /**
      * Finds all {@link Role}s which belong to the {@link Group}.
