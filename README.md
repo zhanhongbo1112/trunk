@@ -11,8 +11,10 @@ It also contains a fully responsive user interface, built by [Bootstrap](http://
 A fully responsive, HTML5 + CSS3 user interface, no need to build different user interface for different devices.  
 
 Thanks to the HTML5 nature, it supports almost all modern browsers, such as Internet Explorer 10+, Microsoft Edge, Google Chrome, Mozilla Firefox, etc.
+
 ## Rapid Prototyping
 It is powered by [Thymeleaf](http://www.thymeleaf.org/), a modern server-side Java template engine, which can bring elegant nature templates to your development flow — HTML that can be correctly displayed in browsers and also work as static prototypes, allowing for stronger collaboration in development teams.
+
 ## Quick Start
 It is powered by [Spring Boot](https://spring.io/spring-boot), its spring-based and convention-over-configuration feature rapidly decreases the initialization of your project.  
 
@@ -20,8 +22,11 @@ You can launch the application with ```http://localhost``` after you run the com
 ```
 java -jar yqboots-web-site-1.1.0-SNAPSHOT.jar --server.port=80 --spring.profiles.active=prd
 ```
+
 ## Security
 It provides the RBAC (Role-Based Access Control) model to protected your web sites, which has an ACL (Access Control List) strategy to protected your URL, methods, and even domains.
+
+For the audit requirement, it can log any actions you take to the specified domains.
 
 ## Modularization and Internationalization
 It divides the functionality of your application into independent, interchangeable modules, so that each contains everything necessary to execute only one aspect of the desired functionality.  
