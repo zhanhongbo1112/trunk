@@ -96,7 +96,6 @@ public class RoleManagerImpl implements RoleManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_ROLE)
     public void updateUsers(final String path, final Long... userIds) throws RoleNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(userIds);
 
         final Role role = roleRepository.findByPath(path);
         if (role == null) {
@@ -104,9 +103,10 @@ public class RoleManagerImpl implements RoleManager {
         }
 
         role.getUsers().stream().forEach(user -> user.getRoles().remove(role));
-
-        final List<User> users = userRepository.findAll(Arrays.asList(userIds));
-        users.stream().forEach(user -> user.getRoles().add(role));
+        if (ArrayUtils.isNotEmpty(userIds)) {
+            final List<User> users = userRepository.findAll(Arrays.asList(userIds));
+            users.stream().forEach(user -> user.getRoles().add(role));
+        }
     }
 
     /**
@@ -117,7 +117,6 @@ public class RoleManagerImpl implements RoleManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_ROLE)
     public void updateUsers(final String path, final String... usernames) throws RoleNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(usernames);
 
         final Role role = roleRepository.findByPath(path);
         if (role == null) {
@@ -125,9 +124,10 @@ public class RoleManagerImpl implements RoleManager {
         }
 
         role.getUsers().stream().forEach(user -> user.getRoles().remove(role));
-
-        final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
-        users.stream().forEach(user -> user.getRoles().add(role));
+        if (ArrayUtils.isNotEmpty(usernames)) {
+            final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
+            users.stream().forEach(user -> user.getRoles().add(role));
+        }
     }
 
     /**
@@ -138,7 +138,6 @@ public class RoleManagerImpl implements RoleManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE)
     public void updateGroups(final String path, final Long... groupIds) throws RoleNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(groupIds);
 
         final Role role = roleRepository.findByPath(path);
         if (role == null) {
@@ -146,9 +145,10 @@ public class RoleManagerImpl implements RoleManager {
         }
 
         role.getGroups().stream().forEach(group -> group.getRoles().remove(role));
-
-        final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
-        groups.stream().forEach(group -> group.getRoles().add(role));
+        if (ArrayUtils.isNotEmpty(groupIds)) {
+            final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
+            groups.stream().forEach(group -> group.getRoles().add(role));
+        }
     }
 
     /**
@@ -159,7 +159,6 @@ public class RoleManagerImpl implements RoleManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_GROUPS_OF_ROLE)
     public void updateGroups(final String path, final String... groupPaths) throws RoleNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(groupPaths);
 
         final Role role = roleRepository.findByPath(path);
         if (role == null) {
@@ -167,9 +166,10 @@ public class RoleManagerImpl implements RoleManager {
         }
 
         role.getGroups().stream().forEach(group -> group.getRoles().remove(role));
-
-        final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
-        groups.stream().forEach(group -> group.getRoles().add(role));
+        if (ArrayUtils.isNotEmpty(groupPaths)) {
+            final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
+            groups.stream().forEach(group -> group.getRoles().add(role));
+        }
     }
 
     /**

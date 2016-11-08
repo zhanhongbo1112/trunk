@@ -97,7 +97,6 @@ public class GroupManagerImpl implements GroupManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_GROUP)
     public void updateUsers(final String path, final Long... userIds) throws GroupNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(userIds);
 
         final Group group = groupRepository.findByPath(path);
         if (group == null) {
@@ -105,9 +104,10 @@ public class GroupManagerImpl implements GroupManager {
         }
 
         group.getUsers().stream().forEach(user -> user.getGroups().remove(group));
-
-        final List<User> users = userRepository.findAll(Arrays.asList(userIds));
-        users.stream().forEach(user -> user.getGroups().add(group));
+        if (ArrayUtils.isNotEmpty(userIds)) {
+            final List<User> users = userRepository.findAll(Arrays.asList(userIds));
+            users.stream().forEach(user -> user.getGroups().add(group));
+        }
     }
 
     /**
@@ -118,7 +118,6 @@ public class GroupManagerImpl implements GroupManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_USERS_OF_GROUP)
     public void updateUsers(final String path, final String... usernames) throws GroupNotFoundException {
         Assert.hasText(path);
-        Assert.notEmpty(usernames);
 
         final Group group = groupRepository.findByPath(path);
         if (group == null) {
@@ -126,9 +125,10 @@ public class GroupManagerImpl implements GroupManager {
         }
 
         group.getUsers().stream().forEach(user -> user.getGroups().remove(group));
-
-        final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
-        users.stream().forEach(user -> user.getGroups().add(group));
+        if (ArrayUtils.isNotEmpty(usernames)) {
+            final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
+            users.stream().forEach(user -> user.getGroups().add(group));
+        }
     }
 
     /**
@@ -139,7 +139,6 @@ public class GroupManagerImpl implements GroupManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP)
     public void updateRoles(final String path, final Long... roleIds) throws GroupNotFoundException {
         Assert.hasText(path);
-        Assert.notNull(roleIds);
 
         final Group group = groupRepository.findByPath(path);
         if (group == null) {
@@ -153,8 +152,6 @@ public class GroupManagerImpl implements GroupManager {
                 group.setRoles(new HashSet<>(roles));
             }
         }
-
-        groupRepository.save(group);
     }
 
     /**
@@ -179,8 +176,6 @@ public class GroupManagerImpl implements GroupManager {
                 group.setRoles(new HashSet<>(roles));
             }
         }
-
-        groupRepository.save(group);
     }
 
     /**

@@ -43,9 +43,9 @@ import java.util.List;
 @Order(Ordered.LOWEST_PRECEDENCE - 100)
 public class RoleGroupsHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     /**
-     * name key: GROUP_ROLES
+     * name key: ROLE_GROUPS
      */
-    private static final String NAME_KEY = "GROUP_ROLES";
+    private static final String NAME_KEY = "ROLE_GROUPS";
 
     /**
      * RoleManager.

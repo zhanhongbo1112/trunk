@@ -82,7 +82,7 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
         List<HtmlOption> items = null;
         for (final HtmlOptionsResolver resolver : htmlOptionsSupport.getResolvers()) {
             if (resolver.supports(nameAttrValue)) {
-                items = resolver.getHtmlOptions(attributes);
+                items = resolver.getHtmlOptions(nameAttrValue, attributes);
                 break;
             }
         }
