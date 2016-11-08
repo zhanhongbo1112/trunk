@@ -17,6 +17,7 @@
  */
 package com.yqboots.security.core.audit;
 
+import com.yqboots.security.core.User;
 import com.yqboots.security.util.SecurityUtils;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
@@ -28,12 +29,12 @@ import org.springframework.stereotype.Component;
  * @since 1.1.0
  */
 @Component
-public class SecurityContextAuditorAware implements AuditorAware<String> {
+public class SecurityContextAuditorAware implements AuditorAware<User> {
     /**
      * {@inheritDoc}
      */
     @Override
-    public String getCurrentAuditor() {
-        return SecurityUtils.getCurrentUser().getUsername();
+    public User getCurrentAuditor() {
+        return SecurityUtils.getCurrentUser();
     }
 }

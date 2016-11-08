@@ -100,6 +100,7 @@ public class RoleController {
             roleManager.addRole(role);
         } else {
             Role role = roleManager.findRole(domain.getPath());
+            role.setPath(domain.getPath());
             role.setAlias(domain.getAlias());
             role.setDescription(domain.getDescription());
             roleManager.updateRole(role);

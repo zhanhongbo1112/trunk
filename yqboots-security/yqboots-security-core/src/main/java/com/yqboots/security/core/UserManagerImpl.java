@@ -72,6 +72,7 @@ public class UserManagerImpl implements UserManager {
     public void addUser(final User user) throws UserExistsException {
         Assert.isTrue(user.isNew());
         Assert.hasText(user.getUsername());
+
         if (userRepository.exists(user.getUsername())) {
             throw new UserExistsException(user.getUsername());
         }
@@ -91,14 +92,12 @@ public class UserManagerImpl implements UserManager {
         Assert.isTrue(!user.isNew());
         Assert.hasText(user.getUsername());
 
-        User entity = userRepository.findByUsername(user.getUsername());
+        final User entity = userRepository.findByUsername(user.getUsername());
         if (entity == null) {
             throw new UserNotFoundException(user.getUsername());
         }
 
         entity.setEnabled(user.isEnabled());
-
-        userRepository.save(entity);
     }
 
     /**
@@ -110,7 +109,7 @@ public class UserManagerImpl implements UserManager {
     public void updateGroups(final String username, final String... groupPaths) throws UserNotFoundException {
         Assert.hasText(username);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -123,8 +122,6 @@ public class UserManagerImpl implements UserManager {
                 user.setGroups(new HashSet<>(groups));
             }
         }
-
-        userRepository.save(user);
     }
 
     /**
@@ -136,7 +133,7 @@ public class UserManagerImpl implements UserManager {
     public void updateGroups(final String username, final Long... groupIds) throws UserNotFoundException {
         Assert.hasText(username);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -148,8 +145,6 @@ public class UserManagerImpl implements UserManager {
                 user.setGroups(new HashSet<>(groups));
             }
         }
-
-        userRepository.save(user);
     }
 
     /**
@@ -161,7 +156,7 @@ public class UserManagerImpl implements UserManager {
     public void updateRoles(final String username, final String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -173,8 +168,6 @@ public class UserManagerImpl implements UserManager {
                 user.setRoles(new HashSet<>(roles));
             }
         }
-
-        userRepository.save(user);
     }
 
     /**
@@ -183,10 +176,10 @@ public class UserManagerImpl implements UserManager {
     @Override
     @Transactional
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_USER)
-    public void updateRoles(final String username, Long... roleIds) throws UserNotFoundException {
+    public void updateRoles(final String username, final Long... roleIds) throws UserNotFoundException {
         Assert.hasText(username);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -198,8 +191,6 @@ public class UserManagerImpl implements UserManager {
                 user.setRoles(new HashSet<>(roles));
             }
         }
-
-        userRepository.save(user);
     }
 
     /**
@@ -258,7 +249,7 @@ public class UserManagerImpl implements UserManager {
         Assert.hasText(username);
         Assert.notEmpty(groupPaths);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -298,7 +289,7 @@ public class UserManagerImpl implements UserManager {
         Assert.hasText(username);
         Assert.notNull(rolePaths);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }
@@ -318,7 +309,7 @@ public class UserManagerImpl implements UserManager {
         Assert.hasText(username);
         Assert.notNull(roleIds);
 
-        User user = userRepository.findByUsername(username);
+        final User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UserNotFoundException(username);
         }

@@ -16,9 +16,6 @@ import org.springframework.test.jdbc.JdbcTestUtils;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Administrator on 2016-01-17.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @Sql(scripts = "00_init.sql", config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED),
@@ -94,6 +91,26 @@ public class GroupManagerTest {
     }
 
     @Test
+    public void testUpdateUsersByUserIds() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "GROUP_ID=2");
+        assertTrue(count == 2);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        groupManager.updateUsers("/USERS", 1L);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 AND GROUP_ID=2");
+        assertTrue(count == 0);
+    }
+
+    @Test
     public void testUpdateRoles() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
         assertTrue(count == 1);
@@ -102,6 +119,23 @@ public class GroupManagerTest {
         assertTrue(count == 0);
 
         groupManager.updateRoles("/ADMINS", "/USERS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=2");
+        assertTrue(count == 1);
+    }
+
+    @Test
+    public void testUpdateRolesByRoleIds() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=2");
+        assertTrue(count == 0);
+
+        groupManager.updateRoles("/ADMINS", 2L);
 
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
         assertTrue(count == 0);
@@ -158,11 +192,39 @@ public class GroupManagerTest {
     }
 
     @Test
+    public void testRemoveUsersByUserIds() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 1);
+
+        groupManager.removeUsers("/USERS", 2L);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=2 AND GROUP_ID=2");
+        assertTrue(count == 0);
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_USER_GROUPS", "USER_ID=1 AND GROUP_ID=2");
+        assertTrue(count == 1);
+    }
+
+    @Test
     public void testRemoveRoles() throws Exception {
         int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
         assertTrue(count == 1);
 
         groupManager.removeRoles("/ADMINS", "/ADMINS");
+
+        count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 0);
+    }
+
+    @Test
+    public void testRemoveRolesByRoleIds() throws Exception {
+        int count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
+        assertTrue(count == 1);
+
+        groupManager.removeRoles("/ADMINS", 1L);
 
         count = JdbcTestUtils.countRowsInTableWhere(jdbcTemplate, "SEC_GROUP_ROLES", "GROUP_ID=1 AND ROLE_ID=1");
         assertTrue(count == 0);
