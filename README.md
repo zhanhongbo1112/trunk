@@ -18,7 +18,7 @@ It is powered by [Spring Boot](https://spring.io/spring-boot), its spring-based 
 
 You can launch the application with ```http://localhost``` after you run the command.
 ```
-java -jar project-site-1.0.0.jar --server.port=80 --spring.profiles.active=prd
+java -jar yqboots-web-site-1.1.0-SNAPSHOT.jar --server.port=80 --spring.profiles.active=prd
 ```
 ## Modularization and Internationalization
 It divides the functionality of your application into independent, interchangeable modules, so that each contains everything necessary to execute only one aspect of the desired functionality.  
