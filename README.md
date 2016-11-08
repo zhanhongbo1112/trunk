@@ -1,5 +1,5 @@
 # YQBoots Framework
-[YQBoots Framework](http://www.yqboots/projects/framework) is a production-ready framework for building modern applications. It is built on [Spring IO Platform](http://spring.io/platform/), and simplifying the initialization of a Spring-powered, production-grade applications and services with minimal effort by using [Spring Boot](https://spring.io/spring-boot).
+[YQBoots Framework](http://www.yqboots.com/projects/framework) is a production-ready framework for building modern applications. It is built on [Spring IO Platform](http://spring.io/platform/), and simplifying the initialization of a Spring-powered, production-grade applications and services with minimal effort by using [Spring Boot](https://spring.io/spring-boot).
   
 It also contains a fully responsive user interface, built by [Bootstrap](http://getbootstrap.com/), providing an optimal viewing and interaction experience -- easy reading and navigation with a minimum of resizing, panning, and scrolling-across a wide range of devices (from desktop to mobile phones).
 
@@ -20,10 +20,13 @@ You can launch the application with ```http://localhost``` after you run the com
 ```
 java -jar yqboots-web-site-1.1.0-SNAPSHOT.jar --server.port=80 --spring.profiles.active=prd
 ```
+## Security
+It provides the RBAC (Role-Based Access Control) model to protected your web sites, which has an ACL (Access Control List) strategy to protected your URL, methods, and even domains.
+
 ## Modularization and Internationalization
 It divides the functionality of your application into independent, interchangeable modules, so that each contains everything necessary to execute only one aspect of the desired functionality.  
 
 It also supports multiple languages, and switch between them.
 
 # License
-The [YQBoots Framework](http://www.yqboots/projects/framework) is released under version 2.0 of [the Apache License](http://www.apache.org/licenses/LICENSE-2.0).
+The [YQBoots Framework](http://www.yqboots.com/projects/framework) is released under version 2.0 of [the Apache License](http://www.apache.org/licenses/LICENSE-2.0).
