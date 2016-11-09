@@ -17,30 +17,23 @@
  */
 package com.yqboots.security.core;
 
-import javax.persistence.*;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 /**
- * Permission entity.
+ * PermissionId
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-@SuppressWarnings("serial")
-@Entity
-@Table(name = "SEC_PERMISSIONS")
-@IdClass(PermissionId.class)
-public class Permission implements Serializable {
-    @Id
+public class PermissionId implements Serializable {
     private String securityIdentity;
 
-    @Id
     private long objectIdIdentity;
 
-    @Id
     private String objectIdClass;
 
-    @Id
     private int mask;
 
     public String getSecurityIdentity() {
@@ -73,5 +66,41 @@ public class Permission implements Serializable {
 
     public void setMask(final int mask) {
         this.mask = mask;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        final PermissionId that = (PermissionId) o;
+
+        if (mask != that.mask) return false;
+        if (objectIdIdentity != that.objectIdIdentity) return false;
+        if (objectIdClass != null ? !objectIdClass.equals(that.objectIdClass) : that.objectIdClass != null)
+            return false;
+        if (securityIdentity != null ? !securityIdentity.equals(that.securityIdentity) : that.securityIdentity != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = securityIdentity != null ? securityIdentity.hashCode() : 0;
+        result = 31 * result + (int) (objectIdIdentity ^ (objectIdIdentity >>> 32));
+        result = 31 * result + (objectIdClass != null ? objectIdClass.hashCode() : 0);
+        result = 31 * result + mask;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("securityIdentity", securityIdentity)
+                .append("objectIdIdentity", objectIdIdentity)
+                .append("objectIdClass", objectIdClass)
+                .append("mask", mask)
+                .toString();
     }
 }

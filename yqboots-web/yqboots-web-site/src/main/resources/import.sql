@@ -21,6 +21,7 @@ INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (3,
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (4, 'PROJECT_SECURITY_USER', '/security/user', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (5, 'PROJECT_SECURITY_GROUP', '/security/group', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (6, 'PROJECT_SECURITY_ROLE', '/security/role', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (7, 'PROJECT_SECURITY_PERMISSION', '/security/permission', 'ADMINISTRATION', 'SECURITY');
 
 insert into acl_sid (id, principal, sid) values (100, FALSE, '/USER');
 insert into acl_sid (id, principal, sid) values (101, FALSE, '/USER/ADMIN');
@@ -46,7 +47,6 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (112, 102, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (113, 102, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (114, 102, 5, 101, 16, TRUE, FALSE, FALSE);
-
 -- 1260081515 (hash code of '/security/user')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (103, 100, 1260081515, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (115, 103, 1, 101, 1, TRUE, FALSE, FALSE);
@@ -54,7 +54,6 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (117, 103, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (118, 103, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (119, 103, 5, 101, 16, TRUE, FALSE, FALSE);
-
 -- 394872031 (hash code of '/security/group')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (104, 100, 394872031, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (120, 104, 1, 101, 1, TRUE, FALSE, FALSE);
@@ -62,11 +61,19 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (122, 104, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (123, 104, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (124, 104, 5, 101, 16, TRUE, FALSE, FALSE);
-
--- -37383008 (hash code of '/security/role')
+-- 1259988502 (hash code of '/security/role')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (105, 100, 1259988502, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (125, 105, 1, 101, 1, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (126, 105, 2, 101, 2, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (127, 105, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (128, 105, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (129, 105, 5, 101, 16, TRUE, FALSE, FALSE);
+-- 1448047471 (hash code of '/security/permission')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (106, 100, 1448047471, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (130, 106, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (131, 106, 2, 101, 2, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (132, 106, 3, 101, 4, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (133, 106, 4, 101, 8, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (134, 106, 5, 101, 16, TRUE, FALSE, FALSE);
+-- insert record from the view for in-memory test
+insert into sec_permissions (security_identity, object_id_identity, object_id_class, mask) select sid.sid, aoi.object_id_identity, ac.class as object_id_class, ae.mask from acl_sid as sid, acl_class ac, acl_object_identity aoi left outer join acl_entry ae on ae.acl_object_identity = aoi.id and ae.sid = sid.id where sid.id = aoi.owner_sid and ac.id = aoi.object_id_class order by sid.sid, aoi.object_id_identity, ac.class, ae.ace_order;

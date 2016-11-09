@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -27,7 +29,7 @@ public class PermissionManagerTest {
 
     @Test
     public void testFindRolePermissions() throws Exception {
-        List<Permission> permissions = permissionManager.findRolePermissions("/USER/ADMIN");
-        assertTrue(!permissions.isEmpty());
+        Page<Permission> permissions = permissionManager.findPermissions("/USER/ADMIN", new PageRequest(0, 10));
+        assertTrue(permissions.hasContent());
     }
 }

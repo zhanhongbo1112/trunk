@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0082}">Permission Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_SECURITY_PERMISSION"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger"/>
+    <div class="row">
+      <div class="col-md-4">
+        <form action="#" th:action="@{/security/permission}" th:object="${searchForm}" method="post">
+          <div class="input-group">
+            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
+                   th:placeholder="#{T0007}"/>
+            <span class="input-group-btn">
+                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8"></div>
+    </div>
+    <div class="divider divider-blank"></div>
+    <div class="panel">
+      <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+          <th th:text="#{T0083}">Security Identity</th>
+          <th th:text="#{T0084}">Object Identity</th>
+          <th th:text="#{T0085}">Object Class</th>
+          <th th:text="#{T0086}">Permission Mask</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${page}">
+          <td th:text="${item.securityIdentity}">NAME 1</td>
+          <td th:text="${item.objectIdIdentity}">/menu</td>
+          <td th:text="${item.objectIdClass}">false</td>
+          <td th:text="${item.mask}">false</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="8">
+            <div yq:pageSummary="${page}"></div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="panel-footer text-center">
+        <yq:pagination page="${page}" th:href="@{/security/permission}"/>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

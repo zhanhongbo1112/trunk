@@ -18,11 +18,10 @@
 package com.yqboots.security.core.repository;
 
 import com.yqboots.security.core.Permission;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.yqboots.security.core.PermissionId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Repository for permission.
@@ -30,26 +29,13 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-@Repository
-public class PermissionRepository {
-    private static final String PERMISSIONS_BY_ROLE_SQL = "select sid.sid, aoi.object_id_identity, ac.class, ae.mask\n" +
-            "from acl_sid as sid, acl_class ac, acl_object_identity aoi\n" +
-            "left outer join acl_entry ae\n" +
-            "on ae.acl_object_identity = aoi.id and ae.sid = sid.id\n" +
-            "where sid.sid=? and sid.id = aoi.owner_sid and ac.id = aoi.object_id_class";
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    public List<Permission> findBySid(final String sid) {
-        return jdbcTemplate.query(PERMISSIONS_BY_ROLE_SQL, ps -> ps.setString(1, sid), (rs, rowNum) -> {
-            Permission result = new Permission();
-            result.setSid(rs.getString(1));
-            result.setPath(rs.getLong(2));
-            result.setClazz(rs.getString(3));
-            result.setMask(rs.getInt(4));
-
-            return result;
-        });
-    }
+public interface PermissionRepository extends JpaRepository<Permission, PermissionId> {
+    /**
+     * Finds permissions.
+     *
+     * @param sidFilter wildcard securityIdentity
+     * @param pageable  pageable
+     * @return page of {@link Permission}
+     */
+    Page<Permission> findBySecurityIdentityLike(String sidFilter, Pageable pageable);
 }

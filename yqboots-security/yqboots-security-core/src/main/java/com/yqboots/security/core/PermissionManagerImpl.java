@@ -17,12 +17,13 @@
  */
 package com.yqboots.security.core;
 
+import com.yqboots.core.util.DBUtils;
 import com.yqboots.security.core.repository.PermissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Permission manager implementation.
@@ -40,7 +41,7 @@ public class PermissionManagerImpl implements PermissionManager {
      * {@inheritDoc}
      */
     @Override
-    public List<Permission> findRolePermissions(final String rolePath) {
-        return permissionRepository.findBySid(rolePath);
+    public Page<Permission> findPermissions(final String sidFilter, final Pageable pageable) {
+        return permissionRepository.findBySecurityIdentityLike(DBUtils.wildcard(sidFilter), pageable);
     }
 }

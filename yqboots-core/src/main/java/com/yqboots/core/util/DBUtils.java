@@ -39,7 +39,7 @@ public final class DBUtils {
      */
     public static String wildcard(final String source) {
         String result = WILDCARD_ALL;
-        if (StringUtils.isNotEmpty(source)) {
+        if (StringUtils.isNotBlank(source)) {
             result = WILDCARD_ALL + source + WILDCARD_ALL;
         }
 

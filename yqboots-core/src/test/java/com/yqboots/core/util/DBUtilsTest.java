@@ -11,5 +11,6 @@ public class DBUtilsTest {
         System.out.println("/security/user".hashCode());
         System.out.println("/security/group".hashCode());
         System.out.println("/security/role".hashCode());
+        System.out.println("/security/permission".hashCode());
     }
 }

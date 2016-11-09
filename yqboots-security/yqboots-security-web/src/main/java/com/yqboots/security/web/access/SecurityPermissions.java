@@ -99,4 +99,9 @@ public abstract class SecurityPermissions {
      * ADMINISTRATION permission expression for {@link com.yqboots.security.core.Role}.
      */
     public static final String ROLE_ADMINISTRATION = "hasPermission('/security/role', 'com.yqboots.menu.core.MenuItem', 'ADMINISTRATION')";
+
+    /**
+     * READ permission expression for {@link com.yqboots.security.core.Permission}.
+     */
+    public static final String PERMISSION_READ = "hasPermission('/security/permission', 'com.yqboots.menu.core.MenuItem', 'READ')";
 }

@@ -17,7 +17,8 @@
  */
 package com.yqboots.security.core;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Permission Manager.
@@ -26,5 +27,12 @@ import java.util.List;
  * @since 1.1.0
  */
 public interface PermissionManager {
-    List<Permission> findRolePermissions(String rolePath);
+    /**
+     * Finds permissions.
+     *
+     * @param sidFilter wildcard securityIdentity
+     * @param pageable  pageable
+     * @return page of {@link Permission}
+     */
+    Page<Permission> findPermissions(String sidFilter, Pageable pageable);
 }

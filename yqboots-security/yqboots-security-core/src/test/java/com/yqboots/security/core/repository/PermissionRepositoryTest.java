@@ -6,12 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +29,7 @@ public class PermissionRepositoryTest {
 
     @Test
     public void testFindBySid() throws Exception {
-        List<Permission> permissions = permissionRepository.findBySid("/USER/ADMIN");
-        assertTrue(!permissions.isEmpty());
+        Page<Permission> permissions = permissionRepository.findBySecurityIdentityLike("/USER/ADMIN", new PageRequest(0, 10));
+        assertTrue(permissions.hasContent());
     }
 }
