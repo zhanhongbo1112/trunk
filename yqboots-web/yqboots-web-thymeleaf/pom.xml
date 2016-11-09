@@ -18,6 +18,10 @@
             <groupId>com.yqboots.menu</groupId>
             <artifactId>yqboots-menu-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yqboots.dict</groupId>
+            <artifactId>yqboots-dict-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

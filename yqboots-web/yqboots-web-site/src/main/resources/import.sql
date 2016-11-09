@@ -77,3 +77,17 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (134, 106, 5, 101, 16, TRUE, FALSE, FALSE);
 -- insert record from the view for in-memory test
 insert into sec_permissions (security_identity, object_id_identity, object_id_class, mask) select sid.sid, aoi.object_id_identity, ac.class as object_id_class, ae.mask from acl_sid as sid, acl_class ac, acl_object_identity aoi left outer join acl_entry ae on ae.acl_object_identity = aoi.id and ae.sid = sid.id where sid.id = aoi.owner_sid and ac.id = aoi.object_id_class order by sid.sid, aoi.object_id_identity, ac.class, ae.ace_order;
+
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/menu', '46753294', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/dict', '46488677', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/fss', '1501879', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/user', '1260081515', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/group', '394872031', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/role', '1259988502', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/permission', '1448047471', 'For Object Id Identity in Permission');
+
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'read', '1', 'For Permission Mask 1');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'write', '2', 'For Permission Mask 2');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'create', '4', 'For Permission Mask 4');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'delete', '8', 'For Permission Mask 8');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'administration', '16', 'For Permission Mask 16');

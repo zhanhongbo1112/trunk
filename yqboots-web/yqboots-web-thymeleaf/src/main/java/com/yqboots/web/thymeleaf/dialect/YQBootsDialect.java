@@ -17,7 +17,7 @@
  */
 package com.yqboots.web.thymeleaf.dialect;
 
-import com.yqboots.web.thymeleaf.processor.attr.PageSummaryAttrProcessor;
+import com.yqboots.web.thymeleaf.processor.attr.*;
 import com.yqboots.web.thymeleaf.processor.element.*;
 import org.thymeleaf.dialect.AbstractDialect;
 import org.thymeleaf.processor.IProcessor;
@@ -52,6 +52,7 @@ public class YQBootsDialect extends AbstractDialect {
         processors.add(new OptionsElementProcessor());
         processors.add(new BreadcrumbsElementProcessor());
         processors.add(new AlertElementProcessor());
+        processors.add(new DataDictTextAttrProcessor());
         return processors;
     }
 }

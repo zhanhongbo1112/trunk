@@ -39,9 +39,9 @@
         <tbody>
         <tr th:each="item : ${page}">
           <td th:text="${item.securityIdentity}">NAME 1</td>
-          <td th:text="${item.objectIdIdentity}">/menu</td>
+          <td th:text="${item.objectIdIdentity}" yq:dict="PERMISSION_OBJECT_ID_IDENTITY">/menu</td>
           <td th:text="${item.objectIdClass}">false</td>
-          <td th:text="${item.mask}">false</td>
+          <td th:text="${item.mask}" yq:dict="PERMISSION_MASK">read</td>
         </tr>
         </tbody>
         <tfoot>
