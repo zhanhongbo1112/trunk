@@ -23,6 +23,7 @@ import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,7 @@ import org.springframework.util.Assert;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Group manager implementation.
@@ -103,7 +105,11 @@ public class GroupManagerImpl implements GroupManager {
             throw new GroupNotFoundException(path);
         }
 
-        group.getUsers().stream().forEach(user -> user.getGroups().remove(group));
+        final Set<User> groupUsers = group.getUsers();
+        if (CollectionUtils.isNotEmpty(groupUsers)) {
+            groupUsers.stream().forEach(user -> user.getGroups().remove(group));
+        }
+
         if (ArrayUtils.isNotEmpty(userIds)) {
             final List<User> users = userRepository.findAll(Arrays.asList(userIds));
             users.stream().forEach(user -> user.getGroups().add(group));
@@ -124,7 +130,11 @@ public class GroupManagerImpl implements GroupManager {
             throw new GroupNotFoundException(path);
         }
 
-        group.getUsers().stream().forEach(user -> user.getGroups().remove(group));
+        final Set<User> groupUsers = group.getUsers();
+        if (CollectionUtils.isNotEmpty(groupUsers)) {
+            groupUsers.stream().forEach(user -> user.getGroups().remove(group));
+        }
+
         if (ArrayUtils.isNotEmpty(usernames)) {
             final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
             users.stream().forEach(user -> user.getGroups().add(group));
@@ -145,7 +155,11 @@ public class GroupManagerImpl implements GroupManager {
             throw new GroupNotFoundException(path);
         }
 
-        group.getRoles().clear();
+        final Set<Role> groupRoles = group.getRoles();
+        if (CollectionUtils.isNotEmpty(groupRoles)) {
+            groupRoles.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(roleIds)) {
             final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
             if (!roles.isEmpty()) {
@@ -162,14 +176,17 @@ public class GroupManagerImpl implements GroupManager {
     @Auditable(code = SecurityAudit.CODE_UPDATE_ROLES_OF_GROUP)
     public void updateRoles(final String path, final String... rolePaths) throws GroupNotFoundException {
         Assert.hasText(path);
-        Assert.notNull(rolePaths);
 
         final Group group = groupRepository.findByPath(path);
         if (group == null) {
             throw new GroupNotFoundException(path);
         }
 
-        group.getRoles().clear();
+        final Set<Role> groupRoles = group.getRoles();
+        if (CollectionUtils.isNotEmpty(groupRoles)) {
+            groupRoles.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(rolePaths)) {
             final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
             if (!roles.isEmpty()) {
@@ -187,7 +204,7 @@ public class GroupManagerImpl implements GroupManager {
     public void removeGroup(final Long id) throws GroupNotFoundException {
         Assert.notNull(id);
 
-        Group group = groupRepository.findOne(id);
+        final Group group = groupRepository.findOne(id);
         if (group == null) {
             throw new GroupNotFoundException(Long.toString(id));
         }

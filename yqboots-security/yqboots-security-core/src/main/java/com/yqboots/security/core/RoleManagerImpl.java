@@ -23,6 +23,7 @@ import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +34,7 @@ import org.springframework.util.Assert;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Role manager implementation.
@@ -102,7 +104,11 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        role.getUsers().stream().forEach(user -> user.getRoles().remove(role));
+        final Set<User> roleUsers = role.getUsers();
+        if (CollectionUtils.isNotEmpty(roleUsers)) {
+            roleUsers.stream().forEach(user -> user.getRoles().remove(role));
+        }
+
         if (ArrayUtils.isNotEmpty(userIds)) {
             final List<User> users = userRepository.findAll(Arrays.asList(userIds));
             users.stream().forEach(user -> user.getRoles().add(role));
@@ -123,7 +129,11 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        role.getUsers().stream().forEach(user -> user.getRoles().remove(role));
+        final Set<User> roleUsers = role.getUsers();
+        if (CollectionUtils.isNotEmpty(roleUsers)) {
+            roleUsers.stream().forEach(user -> user.getRoles().remove(role));
+        }
+
         if (ArrayUtils.isNotEmpty(usernames)) {
             final List<User> users = userRepository.findByUsernameIn(Arrays.asList(usernames));
             users.stream().forEach(user -> user.getRoles().add(role));
@@ -144,7 +154,11 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        role.getGroups().stream().forEach(group -> group.getRoles().remove(role));
+        final Set<Group> roleGroups = role.getGroups();
+        if (CollectionUtils.isNotEmpty(roleGroups)) {
+            roleGroups.stream().forEach(group -> group.getRoles().remove(role));
+        }
+
         if (ArrayUtils.isNotEmpty(groupIds)) {
             final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
             groups.stream().forEach(group -> group.getRoles().add(role));
@@ -165,7 +179,11 @@ public class RoleManagerImpl implements RoleManager {
             throw new RoleNotFoundException(path);
         }
 
-        role.getGroups().stream().forEach(group -> group.getRoles().remove(role));
+        final Set<Group> roleGroups = role.getGroups();
+        if (CollectionUtils.isNotEmpty(roleGroups)) {
+            roleGroups.stream().forEach(group -> group.getRoles().remove(role));
+        }
+
         if (ArrayUtils.isNotEmpty(groupPaths)) {
             final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
             groups.stream().forEach(group -> group.getRoles().add(role));

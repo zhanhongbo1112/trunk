@@ -34,8 +34,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @SpringBootApplication
-// @EnableJpaAuditing
-// @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableJpaAuditing
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

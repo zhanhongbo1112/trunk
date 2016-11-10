@@ -17,11 +17,18 @@
  */
 package com.yqboots.security.web.autoconfigure;
 
+import com.yqboots.security.authentication.UserDetailsServiceImpl;
+import com.yqboots.security.core.repository.GroupRepository;
+import com.yqboots.security.core.repository.RoleRepository;
+import com.yqboots.security.core.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * The web security configuration.
@@ -32,6 +39,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
     /**
      * {@inheritDoc}
      */
@@ -40,5 +56,27 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated().and().csrf().disable().formLogin()
                 .loginPage("/security/login").loginProcessingUrl("/login").and().rememberMe().and().exceptionHandling()
                 .accessDeniedPage("/security/403");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UserDetailsService userDetailsService() {
+        // TODO: why executes 2 times
+        UserDetailsServiceImpl bean = new UserDetailsServiceImpl();
+        bean.setUserRepository(userRepository);
+        bean.setGroupRepository(groupRepository);
+        bean.setRoleRepository(roleRepository);
+
+        return bean;
     }
 }

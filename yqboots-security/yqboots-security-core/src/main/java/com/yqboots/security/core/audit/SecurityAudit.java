@@ -18,8 +18,8 @@
 package com.yqboots.security.core.audit;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Audit for security related entities.
@@ -29,8 +29,8 @@ import javax.persistence.Entity;
  */
 @SuppressWarnings("serial")
 @Entity
-@DiscriminatorValue("SECURITY")
-public class SecurityAudit extends Audit {
+@Table(name = "SEC_AUDIT")
+public class SecurityAudit extends AbstractAudit {
     public static final int CODE_ADD_USER = 1;
     public static final int CODE_UPDATE_USER = 2;
     public static final int CODE_UPDATE_GROUPS_OF_USER = 20;

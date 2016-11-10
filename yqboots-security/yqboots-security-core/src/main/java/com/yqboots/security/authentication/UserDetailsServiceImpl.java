@@ -25,11 +25,9 @@ import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.*;
@@ -41,7 +39,6 @@ import java.util.stream.Collectors;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     /**
      * The LOGGER.
@@ -51,31 +48,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     /**
      * Checks if enabling authorities.
      */
-    @Autowired(required = false)
     private boolean enableAuthorities = true;
 
     /**
      * Checks if enabling groups.
      */
-    @Autowired(required = false)
     private boolean enableGroups = true;
 
     /**
      * userRepository
      */
-    @Autowired
     private UserRepository userRepository;
 
     /**
      * groupRepository
      */
-    @Autowired
     private GroupRepository groupRepository;
 
     /**
      * roleRepository
      */
-    @Autowired
     private RoleRepository roleRepository;
 
     /**
@@ -160,5 +152,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @param authorities authorities
      */
     protected void addCustomAuthorities(String username, Collection<Role> authorities) {
+    }
+
+    public void setEnableAuthorities(final boolean enableAuthorities) {
+        this.enableAuthorities = enableAuthorities;
+    }
+
+    public void setEnableGroups(final boolean enableGroups) {
+        this.enableGroups = enableGroups;
+    }
+
+    public void setUserRepository(final UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void setGroupRepository(final GroupRepository groupRepository) {
+        this.groupRepository = groupRepository;
+    }
+
+    public void setRoleRepository(final RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 }

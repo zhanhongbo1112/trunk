@@ -17,7 +17,9 @@
  */
 package com.yqboots.security.core.audit.repository;
 
-import com.yqboots.security.core.audit.Audit;
+import com.yqboots.security.core.audit.SecurityAudit;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -27,5 +29,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author Eric H B Zhan
  * @since 1.1.0
  */
-public interface AuditRepository extends JpaRepository<Audit, Long>, JpaSpecificationExecutor<Audit> {
+public interface SecurityAuditRepository extends JpaRepository<SecurityAudit, Long>,
+        JpaSpecificationExecutor<SecurityAudit> {
+    Page<SecurityAudit> findByTarget(String target, Pageable pageable);
 }

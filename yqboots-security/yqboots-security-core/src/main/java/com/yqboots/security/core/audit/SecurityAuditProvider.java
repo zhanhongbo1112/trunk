@@ -20,7 +20,7 @@ package com.yqboots.security.core.audit;
 import com.yqboots.security.core.*;
 import com.yqboots.security.core.audit.interceptor.AuditAttribute;
 import com.yqboots.security.core.audit.interceptor.AuditAttributeSource;
-import com.yqboots.security.core.audit.repository.AuditRepository;
+import com.yqboots.security.core.audit.repository.SecurityAuditRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -56,10 +56,10 @@ public class SecurityAuditProvider extends AuditProviderSupport {
     private AuditAttributeSource auditAttributeSource;
 
     /**
-     * auditRepository
+     * securityAuditRepository
      */
     @Autowired
-    private AuditRepository auditRepository;
+    private SecurityAuditRepository securityAuditRepository;
 
     /**
      * {@inheritDoc}
@@ -97,12 +97,12 @@ public class SecurityAuditProvider extends AuditProviderSupport {
     }
 
     /**
-     * Sets the {@link AuditRepository}.
+     * Sets the {@link com.yqboots.security.core.audit.repository.SecurityAuditRepository}.
      *
-     * @param auditRepository auditRepository
+     * @param securityAuditRepository securityAuditRepository
      */
-    public void setAuditRepository(AuditRepository auditRepository) {
-        this.auditRepository = auditRepository;
+    public void setSecurityAuditRepository(SecurityAuditRepository securityAuditRepository) {
+        this.securityAuditRepository = securityAuditRepository;
     }
 
     private class UserAuditProvider extends AuditProviderSupport {
@@ -151,7 +151,7 @@ public class SecurityAuditProvider extends AuditProviderSupport {
             }
             audit.setDescription(StringUtils.remove(sb.toString(), "<null>"));
 
-            auditRepository.save(audit);
+            securityAuditRepository.save(audit);
         }
     }
 
@@ -201,7 +201,7 @@ public class SecurityAuditProvider extends AuditProviderSupport {
             }
             audit.setDescription(StringUtils.remove(sb.toString(), "<null>"));
 
-            auditRepository.save(audit);
+            securityAuditRepository.save(audit);
         }
     }
 
@@ -251,7 +251,7 @@ public class SecurityAuditProvider extends AuditProviderSupport {
             }
             audit.setDescription(StringUtils.remove(sb.toString(), "<null>"));
 
-            auditRepository.save(audit);
+            securityAuditRepository.save(audit);
         }
     }
 }

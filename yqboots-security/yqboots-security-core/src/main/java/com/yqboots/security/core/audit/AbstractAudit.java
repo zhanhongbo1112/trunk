@@ -26,18 +26,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Audit entity.
+ * Audit super class. Audit entity should extend this class for the audit needs.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @SuppressWarnings("serial")
-@Entity
-@Table(name = "SEC_AUDIT")
-@Inheritance
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("DEFAULT")
-public class Audit extends AbstractPersistable<Long> {
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class AbstractAudit extends AbstractPersistable<Long> {
     @CreatedBy
     @ManyToOne(optional = false)
     @JoinColumn(name = "CREATED_BY", nullable = false)
@@ -55,11 +52,11 @@ public class Audit extends AbstractPersistable<Long> {
     @Column(name = "DESCRIPTION", nullable = true)
     private String description;
 
-    public Audit() {
+    public AbstractAudit() {
         super();
     }
 
-    public Audit(int code) {
+    public AbstractAudit(int code) {
         super();
         this.code = code;
     }

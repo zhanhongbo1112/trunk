@@ -24,6 +24,7 @@ import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ import org.springframework.util.Assert;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * User manager implementation.
@@ -115,7 +117,11 @@ public class UserManagerImpl implements UserManager {
         }
 
         // if groupPaths is empty, will remove all
-        user.getGroups().clear();
+        final Set<Group> userGroups = user.getGroups();
+        if (CollectionUtils.isNotEmpty(userGroups)) {
+            userGroups.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(groupPaths)) {
             final List<Group> groups = groupRepository.findByPathIn(Arrays.asList(groupPaths));
             if (!groups.isEmpty()) {
@@ -138,7 +144,11 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        user.getGroups().clear();
+        final Set<Group> userGroups = user.getGroups();
+        if (CollectionUtils.isNotEmpty(userGroups)) {
+            userGroups.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(groupIds)) {
             final List<Group> groups = groupRepository.findAll(Arrays.asList(groupIds));
             if (!groups.isEmpty()) {
@@ -161,7 +171,11 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        user.getRoles().clear();
+        final Set<Role> userRoles = user.getRoles();
+        if (CollectionUtils.isNotEmpty(userRoles)) {
+            userRoles.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(rolePaths)) {
             final List<Role> roles = roleRepository.findByPathIn(Arrays.asList(rolePaths));
             if (!roles.isEmpty()) {
@@ -184,7 +198,11 @@ public class UserManagerImpl implements UserManager {
             throw new UserNotFoundException(username);
         }
 
-        user.getRoles().clear();
+        final Set<Role> userRoles = user.getRoles();
+        if (CollectionUtils.isNotEmpty(userRoles)) {
+            userRoles.clear();
+        }
+
         if (ArrayUtils.isNotEmpty(roleIds)) {
             final List<Role> roles = roleRepository.findAll(Arrays.asList(roleIds));
             if (!roles.isEmpty()) {
@@ -287,7 +305,7 @@ public class UserManagerImpl implements UserManager {
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
     public void removeRoles(final String username, final String... rolePaths) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(rolePaths);
+        Assert.notEmpty(rolePaths);
 
         final User user = userRepository.findByUsername(username);
         if (user == null) {
@@ -307,7 +325,7 @@ public class UserManagerImpl implements UserManager {
     @Auditable(code = SecurityAudit.CODE_REMOVE_ROLES_FROM_USER)
     public void removeRoles(final String username, final Long... roleIds) throws UserNotFoundException {
         Assert.hasText(username);
-        Assert.notNull(roleIds);
+        Assert.notEmpty(roleIds);
 
         final User user = userRepository.findByUsername(username);
         if (user == null) {

@@ -15,6 +15,12 @@ INSERT INTO SEC_GROUP (ID, PATH, ALIAS, DESCRIPTION) VALUES (2, 'ADMINS', 'ADMIN
 INSERT INTO SEC_ROLE (ID, PATH, ALIAS, DESCRIPTION) VALUES (1, '/USER', 'USER', 'USER');
 INSERT INTO SEC_ROLE (ID, PATH, ALIAS, DESCRIPTION) VALUES (2, '/USER/ADMIN', 'ADMIN', 'ADMIN');
 
+INSERT INTO SEC_USER_GROUPS (USER_ID, GROUP_ID) VALUES (1, 2);
+INSERT INTO SEC_USER_GROUPS (USER_ID, GROUP_ID) VALUES (2, 1);
+
+INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (2, 2);
+INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (1, 1);
+
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (1, 'PROJECT_DATA_DICT', '/dict', 'ADMINISTRATION', 'ENVIRONMENT');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (2, 'PROJECT_MENU_ITEM', '/menu', 'ADMINISTRATION', 'ENVIRONMENT');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (3, 'PROJECT_FSS', '/fss', 'ADMINISTRATION', 'ENVIRONMENT');
@@ -22,6 +28,7 @@ INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (4,
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (5, 'PROJECT_SECURITY_GROUP', '/security/group', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (6, 'PROJECT_SECURITY_ROLE', '/security/role', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (7, 'PROJECT_SECURITY_PERMISSION', '/security/permission', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (ID, NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES (8, 'PROJECT_SECURITY_AUDIT', '/security/audit', 'ADMINISTRATION', 'SECURITY');
 
 insert into acl_sid (id, principal, sid) values (100, FALSE, '/USER');
 insert into acl_sid (id, principal, sid) values (101, FALSE, '/USER/ADMIN');
@@ -75,6 +82,10 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (132, 106, 3, 101, 4, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (133, 106, 4, 101, 8, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (134, 106, 5, 101, 16, TRUE, FALSE, FALSE);
+-- 389409339 (hash code of '/security/audit')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (107, 100, 389409339, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (135, 107, 1, 101, 1, TRUE, FALSE, FALSE);
+
 -- insert record from the view for in-memory test
 insert into sec_permissions (security_identity, object_id_identity, object_id_class, mask) select sid.sid, aoi.object_id_identity, ac.class as object_id_class, ae.mask from acl_sid as sid, acl_class ac, acl_object_identity aoi left outer join acl_entry ae on ae.acl_object_identity = aoi.id and ae.sid = sid.id where sid.id = aoi.owner_sid and ac.id = aoi.object_id_class order by sid.sid, aoi.object_id_identity, ac.class, ae.ace_order;
 
@@ -88,9 +99,32 @@ insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_O
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/group', '394872031', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/role', '1259988502', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/permission', '1448047471', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit', '389409339', 'For Object Id Identity in Permission');
 
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'read', '1', 'For Permission Mask 1');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'write', '2', 'For Permission Mask 2');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'create', '4', 'For Permission Mask 4');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'delete', '8', 'For Permission Mask 8');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'administration', '16', 'For Permission Mask 16');
+
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'ADD USER', '1', 'CODE_ADD_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE USER', '2', 'CODE_UPDATE_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE GROUPS OF USER', '20', 'CODE_UPDATE_GROUPS_OF_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE ROLES OF USER', '21', 'CODE_UPDATE_ROLES_OF_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE_USER', '3', 'CODE_REMOVE_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE GROUPS FROM USER', '30', 'CODE_REMOVE_GROUPS_FROM_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE ROLES FROM USER', '31', 'CODE_REMOVE_ROLES_FROM_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'ADD GROUP', '4', 'CODE_ADD_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE GROUP', '5', 'CODE_UPDATE_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE USERS OF GROUP', '50', 'CODE_UPDATE_USERS_OF_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE ROLES OF GROUP', '51', 'CODE_UPDATE_ROLES_OF_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE GROUP', '6', 'CODE_REMOVE_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE USERS FROM GROUP', '60', 'CODE_REMOVE_USERS_FROM_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE ROLES FROM GROUP', '61', 'CODE_REMOVE_ROLES_FROM_GROUP');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'ADD ROLE', '7', 'CODE_ADD_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE ROLE', '8', 'CODE_UPDATE_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE USERS OF ROLE', '80', 'CODE_UPDATE_USERS_OF_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE GROUPS OF ROLE', '81', 'CODE_UPDATE_GROUPS_OF_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE ROLE', '9', 'CODE_REMOVE_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE USERS FROM ROLE', '90', 'CODE_REMOVE_USERS_FROM_ROLE');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE GROUPS FROM ROLE', '91', 'CODE_REMOVE_GROUPS_FROM_ROLE');
