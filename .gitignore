@@ -1,5 +1,19 @@
 *.class
 
+# Maven
+target/
+
+# Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
