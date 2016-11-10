@@ -46,7 +46,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The controller for FileItem.
@@ -61,8 +60,6 @@ public class FileItemController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/fss";
     private static final String VIEW_HOME = "fss/index";
 
-    private static final String MODEL_DIRECTORIES = "directories";
-
     @Autowired
     private FileItemManager fileItemManager;
 
@@ -74,11 +71,6 @@ public class FileItemController {
     @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
     protected FileUploadForm fileUploadForm() {
         return new FileUploadForm();
-    }
-
-    @ModelAttribute(MODEL_DIRECTORIES)
-    protected List<String> directories() {
-        return fileItemManager.getAvailableDirectories();
     }
 
     @PreAuthorize(FileItemPermissions.READ)

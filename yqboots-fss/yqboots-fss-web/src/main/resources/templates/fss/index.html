@@ -32,7 +32,7 @@
                 <div class="input-group">
                   <select class="form-control" th:field="*{criterion}">
                     <option value="" th:text="#{T0040}">Please Select</option>
-                    <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
+                    <yq:options name="FSS_AVAILABLE_DIRS" />
                   </select>
                   <span class="input-group-btn">
                       <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
@@ -103,8 +103,8 @@
                 <label class="label" th:text="#{T0035}">Destination</label>
                 <label class="select">
                   <select th:field="*{path}">
-                    <option value="" selected="selected" th:text="#{T0040}">Please Select</option>
-                    <option th:each="dir : ${directories}" th:value="${dir}" th:text="${dir}">/path</option>
+                    <option value="" th:text="#{T0040}">Please Select</option>
+                    <yq:options name="FSS_AVAILABLE_DIRS" />
                   </select>
                   <i></i>
                 </label>

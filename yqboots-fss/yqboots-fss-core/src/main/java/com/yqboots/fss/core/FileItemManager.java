@@ -20,7 +20,6 @@ import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 
 /**
  * The interface that manages the FileItem..
@@ -29,13 +28,6 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface FileItemManager {
-    /**
-     * Gets available directories which will be maintained in the UI.
-     *
-     * @return list of directories
-     */
-    List<String> getAvailableDirectories();
-
     /**
      * Finds by directory path.
      *

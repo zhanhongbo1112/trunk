@@ -84,7 +84,7 @@ public class DataDictManagerImpl implements DataDictManager {
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
         String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
-        return dataDictRepository.findByNameLikeIgnoreCaseOrderByName(DBUtils.wildcard(searchStr), pageable);
+        return dataDictRepository.findByNameLikeIgnoreCase(DBUtils.wildcard(searchStr), pageable);
     }
 
     /**

@@ -18,17 +18,14 @@ package com.yqboots.fss.core;
 import com.yqboots.fss.autoconfigure.FssProperties;
 import com.yqboots.fss.core.support.FileItemConsumer;
 import com.yqboots.fss.core.support.FileTypeFilterPredicate;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.util.CollectionUtils;
 
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * The service implementation that manages the FileItem..
@@ -47,22 +44,6 @@ public class FileItemManagerImpl implements FileItemManager {
     public FileItemManagerImpl(final FssProperties properties) {
         this.properties = properties;
         this.root = properties.getRoot();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<String> getAvailableDirectories() {
-        final List<String> results = new ArrayList<>();
-
-        final List<Path> paths = this.properties.getDirectories();
-        if (!CollectionUtils.isEmpty(paths)) {
-            results.addAll(paths.stream().map(path -> StringUtils.substringAfter(path.toString(),
-                    root.toString())).collect(Collectors.toList()));
-        }
-
-        return results;
     }
 
     /**

@@ -48,11 +48,11 @@ public interface DataDictRepository extends JpaRepository<DataDict, Long>, JpaSp
     DataDict findByNameAndValue(String name, String value);
 
     /**
-     * Finds by wildcard name, ignore case and order by name
+     * Finds by wildcard name, ignore case
      *
      * @param name     the name
      * @param pageable the page information
      * @return paged of DataDict
      */
-    Page<DataDict> findByNameLikeIgnoreCaseOrderByName(String name, Pageable pageable);
+    Page<DataDict> findByNameLikeIgnoreCase(String name, Pageable pageable);
 }

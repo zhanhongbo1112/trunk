@@ -20,7 +20,6 @@ package com.yqboots.fss.autoconfigure;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.nio.file.Path;
-import java.util.List;
 
 /**
  * The ConfigurationProperties for Data Dictionary related functions.
@@ -36,11 +35,6 @@ public class FssProperties {
     private Path root;
 
     /**
-     * The directories which are exposed to the web pages to maintain the files in them.
-     */
-    private List<Path> directories;
-
-    /**
      * Filters the files by file types.
      */
     private String[] fileTypes = new String[]{};
@@ -51,14 +45,6 @@ public class FssProperties {
 
     public void setRoot(Path root) {
         this.root = root;
-    }
-
-    public List<Path> getDirectories() {
-        return directories;
-    }
-
-    public void setDirectories(final List<Path> directories) {
-        this.directories = directories;
     }
 
     public String[] getFileTypes() {

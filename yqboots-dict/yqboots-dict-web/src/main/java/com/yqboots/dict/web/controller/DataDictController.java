@@ -26,7 +26,6 @@ import com.yqboots.web.support.WebKeys;
 import com.yqboots.web.form.SearchForm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
@@ -58,7 +57,6 @@ public class DataDictController {
     private static final String VIEW_FORM = "dict/form";
 
     @Autowired
-    @Qualifier("dataDictManager")
     private DataDictManager dataDictManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
@@ -74,7 +72,7 @@ public class DataDictController {
     @PreAuthorize(DataDictPermissions.READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
-                       @PageableDefault final Pageable pageable,
+                       @PageableDefault(sort = {"name", "text", "value"}) final Pageable pageable,
                        final ModelMap model) {
         model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
