@@ -42,6 +42,10 @@ public class SecurityProperties {
 
         private String passwordDefault = "password";
 
+        private boolean enableAuthorities = true;
+
+        private boolean enableGroups = true;
+
         public boolean isDisabledWhenRemoving() {
             return disabledWhenRemoving;
         }
@@ -56,6 +60,22 @@ public class SecurityProperties {
 
         public void setPasswordDefault(final String passwordDefault) {
             this.passwordDefault = passwordDefault;
+        }
+
+        public boolean isEnableAuthorities() {
+            return enableAuthorities;
+        }
+
+        public void setEnableAuthorities(final boolean enableAuthorities) {
+            this.enableAuthorities = enableAuthorities;
+        }
+
+        public boolean isEnableGroups() {
+            return enableGroups;
+        }
+
+        public void setEnableGroups(final boolean enableGroups) {
+            this.enableGroups = enableGroups;
         }
     }
 }

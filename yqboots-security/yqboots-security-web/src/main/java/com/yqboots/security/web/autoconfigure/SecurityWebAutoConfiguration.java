@@ -17,14 +17,11 @@
  */
 package com.yqboots.security.web.autoconfigure;
 
-import com.yqboots.security.authentication.UserDetailsServiceImpl;
-import com.yqboots.security.core.repository.GroupRepository;
-import com.yqboots.security.core.repository.RoleRepository;
-import com.yqboots.security.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -40,22 +37,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserRepository userRepository;
+    private UserDetailsService userDetailsService;
 
     @Autowired
-    private GroupRepository groupRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
+    private AuthenticationProvider authenticationProvider;
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().csrf().disable().formLogin()
-                .loginPage("/security/login").loginProcessingUrl("/login").and().rememberMe().and().exceptionHandling()
-                .accessDeniedPage("/security/403");
+        http.authorizeRequests().anyRequest().authenticated()
+                .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")
+                .and().rememberMe().userDetailsService(userDetailsService)
+                .and().exceptionHandling().accessDeniedPage("/security/403");
     }
 
     /**
@@ -63,20 +58,6 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public UserDetailsService userDetailsService() {
-        // TODO: why executes 2 times
-        UserDetailsServiceImpl bean = new UserDetailsServiceImpl();
-        bean.setUserRepository(userRepository);
-        bean.setGroupRepository(groupRepository);
-        bean.setRoleRepository(roleRepository);
-
-        return bean;
+        auth.authenticationProvider(authenticationProvider);
     }
 }

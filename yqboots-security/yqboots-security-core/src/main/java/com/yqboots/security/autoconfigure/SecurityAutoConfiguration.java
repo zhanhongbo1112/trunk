@@ -20,7 +20,10 @@ package com.yqboots.security.autoconfigure;
 import com.yqboots.security.access.RoleHierarchyImpl;
 import com.yqboots.security.access.support.DelegatingObjectIdentityRetrievalStrategy;
 import com.yqboots.security.access.support.ObjectIdentityRetrieval;
+import com.yqboots.security.authentication.UserDetailsServiceImpl;
+import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
+import com.yqboots.security.core.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -35,6 +38,7 @@ import org.springframework.security.access.expression.method.DefaultMethodSecuri
 import org.springframework.security.access.expression.method.ExpressionBasedPreInvocationAdvice;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper;
 import org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.AuthenticatedVoter;
@@ -46,9 +50,13 @@ import org.springframework.security.acls.jdbc.BasicLookupStrategy;
 import org.springframework.security.acls.jdbc.JdbcAclService;
 import org.springframework.security.acls.jdbc.LookupStrategy;
 import org.springframework.security.acls.model.*;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -64,11 +72,44 @@ import java.util.List;
 @EnableConfigurationProperties({SecurityProperties.class})
 public class SecurityAutoConfiguration {
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
+
+    @Autowired
     private RoleRepository roleRepository;
 
     @Bean
     public RoleHierarchy roleHierarchy() {
         return new RoleHierarchyImpl(roleRepository);
+    }
+
+    @Bean
+    public GrantedAuthoritiesMapper grantedAuthoritiesMapper() {
+        return new RoleHierarchyAuthoritiesMapper(roleHierarchy());
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetailsServiceImpl bean = new UserDetailsServiceImpl();
+        bean.setUserRepository(userRepository);
+        bean.setGroupRepository(groupRepository);
+        bean.setRoleRepository(roleRepository);
+
+        return bean;
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider bean = new DaoAuthenticationProvider();
+        bean.setUserDetailsService(userDetailsService());
+        bean.setAuthoritiesMapper(grantedAuthoritiesMapper());
+        // TODO: set SaltSourrce and PasswordEncoder
+        // bean.setSaltSource();
+        // bean.setPasswordEncoder(new PlaintextPasswordEncoder());
+
+        return bean;
     }
 
     @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = false, securedEnabled = true)
