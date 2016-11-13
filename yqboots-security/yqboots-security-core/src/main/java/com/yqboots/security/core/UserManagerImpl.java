@@ -19,6 +19,7 @@ package com.yqboots.security.core;
 
 import com.yqboots.core.util.DBUtils;
 import com.yqboots.security.autoconfigure.SecurityProperties;
+import com.yqboots.security.context.UserRemovedEvent;
 import com.yqboots.security.core.audit.SecurityAudit;
 import com.yqboots.security.core.audit.annotation.Auditable;
 import com.yqboots.security.core.repository.GroupRepository;
@@ -28,6 +29,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -49,7 +52,7 @@ import java.util.Set;
  */
 @Service
 @Transactional(readOnly = true)
-public class UserManagerImpl implements UserManager {
+public class UserManagerImpl implements UserManager, ApplicationEventPublisherAware {
     @Autowired
     private UserRepository userRepository;
 
@@ -64,6 +67,8 @@ public class UserManagerImpl implements UserManager {
 
     @Autowired
     private SecurityProperties properties;
+
+    private ApplicationEventPublisher applicationEventPublisher;
 
     /**
      * {@inheritDoc}
@@ -226,11 +231,9 @@ public class UserManagerImpl implements UserManager {
         }
 
         if (properties.getUser().isDisabledWhenRemoving()) {
-            user.setEnabled(false);
-            userRepository.save(user);
+            disableUser(user);
         } else {
-            // TODO: test if remove all related groups and roles
-            userRepository.delete(user);
+            removeUser(user);
         }
     }
 
@@ -249,11 +252,9 @@ public class UserManagerImpl implements UserManager {
         }
 
         if (properties.getUser().isDisabledWhenRemoving()) {
-            user.setEnabled(false);
-            userRepository.save(user);
+            disableUser(user);
         } else {
-            // remove physically
-            userRepository.delete(user);
+            removeUser(user);
         }
     }
 
@@ -407,6 +408,11 @@ public class UserManagerImpl implements UserManager {
         return roleRepository.findByUsersUsername(username);
     }
 
+    @Override
+    public void setApplicationEventPublisher(final ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
+    }
+
     /**
      * Gets the default password from configuration.
      *
@@ -421,5 +427,28 @@ public class UserManagerImpl implements UserManager {
         }
 
         return result;
+    }
+
+    /**
+     * Removes the user physically.
+     *
+     * @param user the removing user
+     */
+    private void removeUser(final User user) {
+        // remove physically
+        final String username = user.getUsername();
+        userRepository.delete(user);
+
+        applicationEventPublisher.publishEvent(new UserRemovedEvent(this, username));
+    }
+
+    /**
+     * Disabled the user.
+     *
+     * @param user the disabling user
+     */
+    private void disableUser(final User user) {
+        user.setEnabled(false);
+        userRepository.save(user);
     }
 }

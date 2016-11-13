@@ -72,6 +72,9 @@ import java.util.List;
 @EnableConfigurationProperties({SecurityProperties.class})
 public class SecurityAutoConfiguration {
     @Autowired
+    private SecurityProperties properties;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -96,6 +99,8 @@ public class SecurityAutoConfiguration {
         bean.setUserRepository(userRepository);
         bean.setGroupRepository(groupRepository);
         bean.setRoleRepository(roleRepository);
+        bean.setEnableAuthorities(properties.getUser().isEnableAuthorities());
+        bean.setEnableGroups(properties.getUser().isEnableGroups());
 
         return bean;
     }

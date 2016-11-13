@@ -38,7 +38,7 @@ public class SecurityProperties {
     }
 
     public static class UserProperties {
-        private boolean disabledWhenRemoving = false;
+        private boolean disabledWhenRemoving = true;
 
         private String passwordDefault = "password";
 
