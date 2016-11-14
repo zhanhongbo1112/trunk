@@ -17,8 +17,8 @@
  */
 package com.yqboots.security.web.controller;
 
-import com.yqboots.security.core.audit.SecurityAudit;
-import com.yqboots.security.core.audit.repository.SecurityAuditRepository;
+import com.yqboots.security.core.audit.LoginHistory;
+import com.yqboots.security.core.audit.repository.LoginHistoryRepository;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.WebKeys;
@@ -39,36 +39,36 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.ArrayList;
 
 /**
- * Controller for {@link com.yqboots.security.core.audit.SecurityAudit}.
+ * Controller for {@link com.yqboots.security.core.audit.LoginHistory}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @Controller
-@RequestMapping(value = "/security/audit")
+@RequestMapping(value = "/security/audit/history")
 @SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class AuditController {
-    private static final String VIEW_HOME = "security/audit/index";
+public class LoginHistoryController {
+    private static final String VIEW_HOME = "security/audit/history";
 
     @Autowired
-    private SecurityAuditRepository securityAuditRepository;
+    private LoginHistoryRepository loginHistoryRepository;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
         return new SearchForm<>();
     }
 
-    @PreAuthorize(SecurityPermissions.AUDIT_READ)
+    @PreAuthorize(SecurityPermissions.LOGIN_HISTORY_READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
-                       @PageableDefault(sort = {"createdDate"}, direction = Sort.Direction.DESC) final Pageable pageable,
+                       @PageableDefault(sort = {"loginTime"}, direction = Sort.Direction.DESC) final Pageable pageable,
                        final ModelMap model) {
         if (StringUtils.isBlank(searchForm.getCriterion())) {
-            model.addAttribute(WebKeys.PAGE, securityAuditRepository.findAll(pageable));
+            model.addAttribute(WebKeys.PAGE, loginHistoryRepository.findAll(pageable));
             return VIEW_HOME;
         }
 
-        model.addAttribute(WebKeys.PAGE, securityAuditRepository.findByTarget(searchForm.getCriterion(), pageable));
+        model.addAttribute(WebKeys.PAGE, loginHistoryRepository.findByUsername(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 }

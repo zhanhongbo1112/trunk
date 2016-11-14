@@ -109,4 +109,9 @@ public abstract class SecurityPermissions {
      * READ permission expression for {@link com.yqboots.security.core.audit.SecurityAudit}.
      */
     public static final String AUDIT_READ = "hasPermission('/security/audit', 'com.yqboots.menu.core.MenuItem', 'READ')";
+
+    /**
+     * READ permission expression for {@link com.yqboots.security.core.audit.SecurityAudit}.
+     */
+    public static final String LOGIN_HISTORY_READ = "hasPermission('/security/audit/history', 'com.yqboots.menu.core.MenuItem', 'READ')";
 }
