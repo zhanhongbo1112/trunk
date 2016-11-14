@@ -16,6 +16,12 @@
           <img th:src="@{/theme/images/logo-green.png}"/>
         </a>
 
+        <div class="alert alert-danger fade in" th:if="${session.SPRING_SECURITY_LAST_EXCEPTION} neq null">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><span th:text="#{T0092}">Authentication Error!</span></h4>
+          <p><span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">Login Failed Message!</span></p>
+        </div>
+
         <h2 class="margin-bottom-30" th:text="#{T0052}">Login To Your Account</h2>
 
         <form action="#" th:action="@{/login}" method="post">

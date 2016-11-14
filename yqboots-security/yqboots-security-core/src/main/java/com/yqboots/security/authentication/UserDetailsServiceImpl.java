@@ -25,6 +25,8 @@ import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.support.MessageSourceAccessor;
+import org.springframework.security.core.SpringSecurityMessageSource;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -70,6 +72,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      */
     private RoleRepository roleRepository;
 
+    protected final MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
+
     /**
      * {@inheritDoc}
      */
@@ -79,7 +83,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username);
         if (user == null) {
             LOGGER.info("Query returned no results for user {}", username);
-            throw new UsernameNotFoundException("DefaultUserDetailsService.notFound");
+            throw new UsernameNotFoundException(messages.getMessage("JdbcDaoImpl.notFound", new String[]{username}));
         }
 
         Set<Role> allAuthorities = new HashSet<>();
@@ -95,7 +99,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (allAuthorities.size() == 0) {
             LOGGER.info("User {} has no authorities and will be treated as 'not found'", username);
-            throw new UsernameNotFoundException("DefaultUserDetailsService.noAuthority");
+            throw new UsernameNotFoundException(messages.getMessage("JdbcDaoImpl.notFound", new String[]{username}));
         }
 
         return createUserDetails(user, allAuthorities);
