@@ -21,7 +21,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-public class Application extends AbstractSecurityWebApplicationInitializer {
+public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
@@ -55,10 +54,5 @@ public class Application extends AbstractSecurityWebApplicationInitializer {
     @RequestMapping(value = "/security/403", method = RequestMethod.GET)
     public String accessDenied() {
         return "security/403";
-    }
-
-    @Override
-    protected boolean enableHttpSessionEventPublisher() {
-        return true;
     }
 }
