@@ -83,7 +83,7 @@ public class DataDictManagerImpl implements DataDictManager {
      */
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
-        String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
+        final String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
         return dataDictRepository.findByNameLikeIgnoreCase(DBUtils.wildcard(searchStr), pageable);
     }
 
@@ -110,11 +110,10 @@ public class DataDictManagerImpl implements DataDictManager {
      */
     @Override
     public String getText(final String name, final String value, boolean valueIncluded) {
-        // TODO: add cache
         final List<DataDict> all = getDataDicts(name);
 
         final DataDict item = (DataDict) CollectionUtils.find(all, o -> {
-            DataDict dict = (DataDict) o;
+            final DataDict dict = (DataDict) o;
             return StringUtils.equals(dict.getValue(), value);
         });
 
@@ -138,7 +137,7 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         Assert.hasText(entity.getName(), "name is required");
-        DataDict existed = dataDictRepository.findByNameAndValue(entity.getName(), entity.getValue());
+        final DataDict existed = dataDictRepository.findByNameAndValue(entity.getName(), entity.getValue());
         if (existed != null) {
             throw new DataDictExistsException("The DataDict has already existed");
         }
@@ -164,10 +163,14 @@ public class DataDictManagerImpl implements DataDictManager {
     @Transactional
     public void imports(final InputStream inputStream) throws IOException {
         final DataDicts dataDicts = (DataDicts) jaxb2Marshaller.unmarshal(new StreamSource(inputStream));
-        for (DataDict dict : dataDicts.getDataDicts()) {
+        if (dataDicts == null) {
+            return;
+        }
+
+        for (final DataDict dict : dataDicts.getDataDicts()) {
             LOGGER.debug("importing data dict with name \"{}\", text \"{}\" and value \"{}\"",
                     dict.getName(), dict.getText(), dict.getValue());
-            DataDict existOne = dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
+            final DataDict existOne = dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
             if (existOne == null) {
                 dataDictRepository.save(dict);
                 continue;
@@ -192,7 +195,7 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         final Path result = Paths.get(exportFileLocation + File.separator + fileName);
-        try (FileWriter writer = new FileWriter(result.toFile())) {
+        try (final FileWriter writer = new FileWriter(result.toFile())) {
             final List<DataDict> dataDicts = dataDictRepository.findAll();
             jaxb2Marshaller.marshal(new DataDicts(dataDicts), new StreamResult(writer));
         }

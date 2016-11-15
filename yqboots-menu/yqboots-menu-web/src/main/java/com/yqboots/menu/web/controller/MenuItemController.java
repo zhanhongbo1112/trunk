@@ -136,7 +136,7 @@ public class MenuItemController {
             return VIEW_HOME;
         }
 
-        try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
+        try (final InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
             menuItemManager.imports(inputStream);
         } catch (XmlMappingException e) {
             bindingResult.rejectValue(WebKeys.FILE, "I0003");
@@ -155,7 +155,7 @@ public class MenuItemController {
     @PreAuthorize(MenuItemPermissions.READ)
     @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
-        Path path = menuItemManager.exports();
+        final Path path = menuItemManager.exports();
 
         return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }

@@ -109,9 +109,10 @@
                 <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
                 <label class="input input-file">
                   <div class="button">
-                    <input th:field="*{file}" type="file" onchange="this.parentNode.nextSibling.value = this.value"/>
+                    <input th:field="*{file}" type="file"/>
                     <span th:text="#{T0039}">Browse</span>
-                  </div><input type="text" readonly="readonly"/>
+                  </div>
+                  <input type="text" readonly="readonly"/>
                 </label>
 
                 <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>

@@ -134,7 +134,7 @@ public class DataDictController {
             return VIEW_HOME;
         }
 
-        try (InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
+        try (final InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
             dataDictManager.imports(inputStream);
         } catch (XmlMappingException e) {
             bindingResult.rejectValue(WebKeys.FILE, "I0003");
@@ -153,7 +153,7 @@ public class DataDictController {
     @PreAuthorize(DataDictPermissions.READ)
     @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
-        Path path = dataDictManager.exports();
+        final Path path = dataDictManager.exports();
 
         return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }

@@ -86,7 +86,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
      */
     @Override
     public Page<MenuItem> getMenuItems(final String wildcardName, final Pageable pageable) {
-        String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
+        final String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
         return menuItemRepository.findByNameLikeIgnoreCaseOrderByName(DBUtils.wildcard(searchStr), pageable);
     }
 
@@ -118,7 +118,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
         }
 
         Assert.hasText(entity.getName(), "name is required");
-        MenuItem existed = menuItemRepository.findByName(entity.getName());
+        final MenuItem existed = menuItemRepository.findByName(entity.getName());
         if (existed != null) {
             throw new MenuItemExistsException("The MenuItem has already existed");
         }
@@ -141,9 +141,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @Override
     @Transactional
     public void imports(final InputStream inputStream) throws IOException {
-        MenuItems menuItems = (MenuItems) jaxb2Marshaller.unmarshal(new StreamSource(inputStream));
-        for (MenuItem item : menuItems.getMenuItems()) {
-            MenuItem existOne = menuItemRepository.findByName(item.getName());
+        final MenuItems menuItems = (MenuItems) jaxb2Marshaller.unmarshal(new StreamSource(inputStream));
+        if (menuItems == null) {
+            return;
+        }
+        for (final MenuItem item : menuItems.getMenuItems()) {
+            final MenuItem existOne = menuItemRepository.findByName(item.getName());
             if (existOne == null) {
                 menuItemRepository.save(item);
                 continue;
