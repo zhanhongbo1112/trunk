@@ -17,56 +17,74 @@
  */
 package com.yqboots.security.web.controller;
 
-import com.yqboots.security.core.audit.repository.SecurityAuditRepository;
+import com.yqboots.security.core.User;
+import com.yqboots.security.core.UserManager;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.WebKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 /**
- * Controller for {@link com.yqboots.security.core.audit.SecurityAudit}.
+ * Controller for {@link org.springframework.security.core.session.SessionInformation}.
  *
  * @author Eric H B Zhan
  * @since 1.1.0
  */
 @Controller
-@RequestMapping(value = "/security/audit")
+@RequestMapping(value = "/security/audit/session")
 @SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class AuditController {
-    private static final String VIEW_HOME = "security/audit/index";
+public class SessionController {
+    private static final String REDIRECT_VIEW_PATH = "redirect:/security/audit/session";
+    private static final String VIEW_HOME = "security/audit/session";
 
     @Autowired
-    private SecurityAuditRepository securityAuditRepository;
+    private SessionRegistry sessionRegistry;
+
+    @Autowired
+    private UserManager userManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
         return new SearchForm<>();
     }
 
-    @PreAuthorize(SecurityPermissions.AUDIT_READ)
+    @PreAuthorize(SecurityPermissions.SESSION_READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
-                       @PageableDefault(sort = {"createdDate"}, direction = Sort.Direction.DESC) final Pageable pageable,
+                       @PageableDefault final Pageable pageable,
                        final ModelMap model) {
         if (StringUtils.isBlank(searchForm.getCriterion())) {
-            model.addAttribute(WebKeys.PAGE, securityAuditRepository.findAll(pageable));
+            model.addAttribute(WebKeys.PAGE, new PageImpl<SessionInformation>(new ArrayList<>(), pageable, 0));
             return VIEW_HOME;
         }
 
-        model.addAttribute(WebKeys.PAGE, securityAuditRepository.findByTarget(searchForm.getCriterion(), pageable));
+        final User user = userManager.findUser(searchForm.getCriterion());
+        model.addAttribute(WebKeys.PAGE, new PageImpl<>(sessionRegistry.getAllSessions(user, true)));
         return VIEW_HOME;
+    }
+
+    @PreAuthorize(SecurityPermissions.SESSION_DELETE)
+    @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
+    public String delete(@RequestParam final String id, final ModelMap model) {
+        SessionInformation sessionInformation = sessionRegistry.getSessionInformation(id);
+        if (!sessionInformation.isExpired()) {
+            sessionInformation.expireNow();
+        }
+        // sessionRegistry.removeSessionInformation(id);
+        model.clear();
+
+        return REDIRECT_VIEW_PATH;
     }
 }

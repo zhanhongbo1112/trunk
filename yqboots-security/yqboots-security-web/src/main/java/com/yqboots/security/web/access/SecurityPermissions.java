@@ -114,4 +114,14 @@ public abstract class SecurityPermissions {
      * READ permission expression for {@link com.yqboots.security.core.audit.SecurityAudit}.
      */
     public static final String LOGIN_HISTORY_READ = "hasPermission('/security/audit/history', 'com.yqboots.menu.core.MenuItem', 'READ')";
+
+    /**
+     * READ permission expression for {@link org.springframework.security.core.session.SessionInformation}.
+     */
+    public static final String SESSION_READ = "hasPermission('/security/audit/session', 'com.yqboots.menu.core.MenuItem', 'READ')";
+
+    /**
+     * DELETE permission expression for {@link org.springframework.security.core.session.SessionInformation}.
+     */
+    public static final String SESSION_DELETE = "hasPermission('/security/audit/session', 'com.yqboots.menu.core.MenuItem', 'DELETE')";
 }

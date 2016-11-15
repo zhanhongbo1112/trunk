@@ -17,14 +17,12 @@
  */
 package com.yqboots.security.web.controller;
 
-import com.yqboots.security.core.audit.LoginHistory;
 import com.yqboots.security.core.audit.repository.LoginHistoryRepository;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.WebKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -35,8 +33,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.util.ArrayList;
 
 /**
  * Controller for {@link com.yqboots.security.core.audit.LoginHistory}.

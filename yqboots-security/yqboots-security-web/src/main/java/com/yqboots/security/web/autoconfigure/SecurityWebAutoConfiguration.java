@@ -19,6 +19,8 @@ package com.yqboots.security.web.autoconfigure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,8 +28,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 /**
  * The web security configuration.
@@ -52,7 +56,8 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated()
                 .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")
                 .and().rememberMe().userDetailsService(userDetailsService)
-                .and().sessionManagement().sessionFixation().migrateSession().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .and().sessionManagement().maximumSessions(3).expiredUrl("/security/login").sessionRegistry(sessionRegistry())
+                .and().sessionFixation().migrateSession().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and().exceptionHandling().accessDeniedPage("/security/403");
     }
 
@@ -62,5 +67,15 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider);
+    }
+
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    @Bean
+    public ServletListenerRegistrationBean httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
     }
 }

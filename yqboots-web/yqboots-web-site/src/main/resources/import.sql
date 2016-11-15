@@ -30,6 +30,7 @@ INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJE
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_PERMISSION', '/security/permission', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_AUDIT', '/security/audit', 'ADMINISTRATION', 'SECURITY');
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_LOGIN_HISTORY', '/security/audit/history', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_SESSION', '/security/audit/session', 'ADMINISTRATION', 'SECURITY');
 
 insert into acl_sid (id, principal, sid) values (100, FALSE, '/USER');
 insert into acl_sid (id, principal, sid) values (101, FALSE, '/USER/ADMIN');
@@ -89,6 +90,10 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 -- 352886976 (hash code of '/security/audit/history')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (108, 100, 352886976, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (136, 108, 1, 101, 1, TRUE, FALSE, FALSE);
+-- 1410940610 (hash code of '/security/audit/session')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (109, 100, 1410940610, null, 101, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (137, 109, 1, 101, 1, TRUE, FALSE, FALSE);
+insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (138, 109, 2, 101, 8, TRUE, FALSE, FALSE);
 
 -- insert record from the view for in-memory test
 insert into sec_permissions (security_identity, object_id_identity, object_id_class, mask) select sid.sid, aoi.object_id_identity, ac.class as object_id_class, ae.mask from acl_sid as sid, acl_class ac, acl_object_identity aoi left outer join acl_entry ae on ae.acl_object_identity = aoi.id and ae.sid = sid.id where sid.id = aoi.owner_sid and ac.id = aoi.object_id_class order by sid.sid, aoi.object_id_identity, ac.class, ae.ace_order;
@@ -105,6 +110,7 @@ insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_O
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/permission', '1448047471', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit', '389409339', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit/history', '352886976', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit/session', '1410940610', 'For Object Id Identity in Permission');
 
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'read', '1', 'For Permission Mask 1');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'write', '2', 'For Permission Mask 2');
