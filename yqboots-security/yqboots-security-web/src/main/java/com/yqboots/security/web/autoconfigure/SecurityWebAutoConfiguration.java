@@ -25,7 +25,9 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 
 /**
  * The web security configuration.
@@ -50,6 +52,7 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated()
                 .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")
                 .and().rememberMe().userDetailsService(userDetailsService)
+                .and().sessionManagement().sessionFixation().migrateSession().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and().exceptionHandling().accessDeniedPage("/security/403");
     }
 

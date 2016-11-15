@@ -110,7 +110,7 @@ public class SecurityAutoConfiguration {
         DaoAuthenticationProvider bean = new DaoAuthenticationProvider();
         bean.setUserDetailsService(userDetailsService());
         bean.setAuthoritiesMapper(grantedAuthoritiesMapper());
-        // TODO: set SaltSourrce and PasswordEncoder
+        // TODO: set SaltSource and PasswordEncoder
         // bean.setSaltSource();
         // bean.setPasswordEncoder(new PlaintextPasswordEncoder());
 

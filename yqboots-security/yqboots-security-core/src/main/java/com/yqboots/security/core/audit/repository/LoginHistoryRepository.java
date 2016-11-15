@@ -37,4 +37,12 @@ public interface LoginHistoryRepository extends JpaRepository<LoginHistory, Long
      * @return page of {@link LoginHistory}
      */
     Page<LoginHistory> findByUsername(String username, Pageable pageable);
+
+    /**
+     * Finds by session id.
+     *
+     * @param sessionId http session id
+     * @return {@link LoginHistory}
+     */
+    LoginHistory findBySessionId(String sessionId);
 }

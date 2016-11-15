@@ -44,6 +44,9 @@ public class LoginHistoryOnAuthenticationSuccessListener implements ApplicationL
     @Autowired
     private LoginHistoryRepository loginHistoryRepository;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onApplicationEvent(final InteractiveAuthenticationSuccessEvent event) {
         Authentication auth = event.getAuthentication();
@@ -58,7 +61,7 @@ public class LoginHistoryOnAuthenticationSuccessListener implements ApplicationL
                 history.setUsername(token.getName());
                 history.setSessionId(details.getSessionId());
                 history.setIpAddress(details.getRemoteAddress());
-                history.setLoginTime(new Timestamp(System.currentTimeMillis()));
+                history.setLoginTime(new Timestamp(event.getTimestamp()));
 
                 loginHistoryRepository.save(history);
             }
