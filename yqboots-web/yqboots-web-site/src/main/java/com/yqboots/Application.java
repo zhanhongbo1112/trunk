@@ -21,9 +21,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * The entrance of a project.
@@ -32,32 +29,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
-@Controller
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-    }
-
-    @RequestMapping(value = "/")
-    public String home() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/security/login", method = RequestMethod.GET)
-    public String login() {
-        return "security/login";
-    }
-
-    @RequestMapping(value = "/security/403", method = RequestMethod.GET)
-    public String accessDenied() {
-        return "security/403";
-    }
-
-    @RequestMapping(value = "/projects/framework")
-    public String framework() {
-        return "projects/framework/index";
     }
 }

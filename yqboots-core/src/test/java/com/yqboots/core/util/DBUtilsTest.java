@@ -5,6 +5,8 @@ import org.junit.Test;
 public class DBUtilsTest {
     @Test
     public void generateHashCode() {
+        System.out.println("/".hashCode());
+        System.out.println("/projects/framework".hashCode());
         System.out.println("/menu".hashCode());
         System.out.println("/dict".hashCode());
         System.out.println("/fss".hashCode());

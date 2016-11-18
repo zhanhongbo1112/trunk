@@ -53,7 +53,9 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated()
+        http.authorizeRequests().antMatchers("/", "/security/login", "/projects/**").permitAll()
+                .and().authorizeRequests().anyRequest().authenticated()
+                .and().anonymous().authorities("/USER")
                 .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")
                 .and().rememberMe().userDetailsService(userDetailsService)
                 .and().sessionManagement().maximumSessions(3).expiredUrl("/security/login").sessionRegistry(sessionRegistry())
