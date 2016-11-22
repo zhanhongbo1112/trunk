@@ -22,9 +22,10 @@ import com.yqboots.fss.core.FileItemManager;
 import com.yqboots.fss.web.access.FileItemPermissions;
 import com.yqboots.fss.web.form.FileUploadForm;
 import com.yqboots.fss.web.form.FileUploadFormValidator;
-import com.yqboots.web.util.FileWebUtils;
-import com.yqboots.web.support.WebKeys;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
+import com.yqboots.web.support.WebKeys;
+import com.yqboots.web.util.FileWebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -36,7 +37,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -55,8 +59,7 @@ import java.util.ArrayList;
  */
 @Controller
 @RequestMapping(value = "/fss")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class FileItemController {
+public class FileItemController extends AbstractController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/fss";
     private static final String VIEW_HOME = "fss/index";
 

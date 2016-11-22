@@ -20,6 +20,7 @@ package com.yqboots.security.web.controller;
 import com.yqboots.security.core.audit.repository.LoginHistoryRepository;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Controller for {@link com.yqboots.security.core.audit.LoginHistory}.
@@ -42,8 +42,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @RequestMapping(value = "/security/audit/history")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class LoginHistoryController {
+public class LoginHistoryController extends AbstractController {
     private static final String VIEW_HOME = "security/audit/history";
 
     @Autowired

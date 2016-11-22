@@ -25,7 +25,10 @@ import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.GroupForm;
 import com.yqboots.security.web.form.GroupFormConverter;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -33,7 +36,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -45,19 +51,15 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/security/group")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class GroupController {
+public class GroupController extends AbstractController {
+    private static final Logger LOG = LoggerFactory.getLogger(GroupController.class);
+
     private static final String REDIRECT_VIEW_PATH = "redirect:/security/group";
     private static final String VIEW_HOME = "security/group/index";
     private static final String VIEW_FORM = "security/group/form";
 
     @Autowired
     private GroupManager groupManager;
-
-    @ExceptionHandler(value = {GroupExistsException.class, GroupNotFoundException.class})
-    protected void handleException(Exception ex, BindingResult bindingResult) {
-        bindingResult.reject(ex.getMessage());
-    }
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -98,21 +100,33 @@ public class GroupController {
             return VIEW_FORM;
         }
 
-        if (!domain.isExisted()) {
-            Group group = new Group();
-            group.setPath(domain.getPath());
-            group.setAlias(domain.getAlias());
-            group.setDescription(domain.getDescription());
-            groupManager.addGroup(group);
-        } else {
-            Group group = groupManager.findGroup(domain.getPath());
-            group.setAlias(domain.getAlias());
-            group.setDescription(domain.getDescription());
-            groupManager.updateGroup(group);
+        try {
+            if (!domain.isExisted()) {
+                Group group = new Group();
+                group.setPath(domain.getPath());
+                group.setAlias(domain.getAlias());
+                group.setDescription(domain.getDescription());
+                groupManager.addGroup(group);
+            } else {
+                Group group = groupManager.findGroup(domain.getPath());
+                group.setAlias(domain.getAlias());
+                group.setDescription(domain.getDescription());
+                groupManager.updateGroup(group);
+            }
+
+            groupManager.updateUsers(domain.getPath(), domain.getUsers());
+            groupManager.updateRoles(domain.getPath(), domain.getRoles());
+        } catch (final GroupNotFoundException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0010");
+        } catch (final GroupExistsException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0007");
         }
 
-        groupManager.updateUsers(domain.getPath(), domain.getUsers());
-        groupManager.updateRoles(domain.getPath(), domain.getRoles());
+        if (bindingResult.hasErrors()) {
+            return VIEW_FORM;
+        }
 
         model.clear();
 

@@ -20,6 +20,7 @@ package com.yqboots.security.web.controller;
 import com.yqboots.security.core.PermissionManager;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +31,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Controller for {@link com.yqboots.security.core.Permission}.
@@ -40,8 +40,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @RequestMapping(value = "/security/permission")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class PermissionController {
+public class PermissionController extends AbstractController {
     // private static final String REDIRECT_VIEW_PATH = "redirect:/security/permission";
     private static final String VIEW_HOME = "security/permission/index";
 

@@ -24,8 +24,11 @@ import com.yqboots.security.core.UserNotFoundException;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.UserForm;
 import com.yqboots.security.web.form.UserFormConverter;
-import com.yqboots.web.support.WebKeys;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
+import com.yqboots.web.support.WebKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -33,7 +36,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -45,19 +51,15 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/security/user")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class UserController {
+public class UserController extends AbstractController {
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+
     private static final String REDIRECT_VIEW_PATH = "redirect:/security/user";
     private static final String VIEW_HOME = "security/user/index";
     private static final String VIEW_FORM = "security/user/form";
 
     @Autowired
     private UserManager userManager;
-
-    @ExceptionHandler(value = {UserExistsException.class, UserNotFoundException.class})
-    protected void handleException(Exception ex, BindingResult bindingResult) {
-        bindingResult.reject(ex.getMessage());
-    }
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -98,15 +100,27 @@ public class UserController {
             return VIEW_FORM;
         }
 
-        // create new
-        if (!domain.isExisted()) {
-            User user = new User();
-            user.setUsername(domain.getUsername());
-            userManager.addUser(user);
+        try {
+            // create new
+            if (!domain.isExisted()) {
+                User user = new User();
+                user.setUsername(domain.getUsername());
+                userManager.addUser(user);
+            }
+
+            userManager.updateGroups(domain.getUsername(), domain.getGroups());
+            userManager.updateRoles(domain.getUsername(), domain.getRoles());
+        } catch (UserNotFoundException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0009");
+        } catch (UserExistsException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0006");
         }
 
-        userManager.updateGroups(domain.getUsername(), domain.getGroups());
-        userManager.updateRoles(domain.getUsername(), domain.getRoles());
+        if (bindingResult.hasErrors()) {
+            return VIEW_FORM;
+        }
 
         model.clear();
 

@@ -17,15 +17,16 @@
  */
 package com.yqboots.menu.web.controller;
 
-import com.yqboots.web.util.FileWebUtils;
 import com.yqboots.menu.core.MenuItem;
-import com.yqboots.menu.web.access.MenuItemPermissions;
-import com.yqboots.menu.web.form.FileUploadFormValidator;
 import com.yqboots.menu.core.MenuItemExistsException;
 import com.yqboots.menu.core.MenuItemManager;
+import com.yqboots.menu.web.access.MenuItemPermissions;
 import com.yqboots.menu.web.form.FileUploadForm;
-import com.yqboots.web.support.WebKeys;
+import com.yqboots.menu.web.form.FileUploadFormValidator;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
+import com.yqboots.web.support.WebKeys;
+import com.yqboots.web.util.FileWebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -37,7 +38,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -52,8 +56,7 @@ import java.nio.file.Path;
  */
 @Controller
 @RequestMapping(value = "/menu")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class MenuItemController {
+public class MenuItemController extends AbstractController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/menu";
     private static final String VIEW_HOME = "menu/index";
     private static final String VIEW_FORM = "menu/form";

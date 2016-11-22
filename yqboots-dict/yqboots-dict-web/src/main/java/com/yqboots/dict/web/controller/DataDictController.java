@@ -15,15 +15,16 @@
  */
 package com.yqboots.dict.web.controller;
 
-import com.yqboots.dict.web.access.DataDictPermissions;
-import com.yqboots.web.util.FileWebUtils;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
 import com.yqboots.dict.core.DataDictManager;
+import com.yqboots.dict.web.access.DataDictPermissions;
 import com.yqboots.dict.web.form.FileUploadForm;
 import com.yqboots.dict.web.form.FileUploadFormValidator;
-import com.yqboots.web.support.WebKeys;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
+import com.yqboots.web.support.WebKeys;
+import com.yqboots.web.util.FileWebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -35,7 +36,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -50,8 +54,7 @@ import java.nio.file.Path;
  */
 @Controller
 @RequestMapping(value = "/dict")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class DataDictController {
+public class DataDictController extends AbstractController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/dict";
     private static final String VIEW_HOME = "dict/index";
     private static final String VIEW_FORM = "dict/form";

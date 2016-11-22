@@ -21,6 +21,7 @@ import com.yqboots.security.core.User;
 import com.yqboots.security.core.UserManager;
 import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,10 @@ import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -44,8 +48,7 @@ import java.util.ArrayList;
  */
 @Controller
 @RequestMapping(value = "/security/audit/session")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class SessionController {
+public class SessionController extends AbstractController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/security/audit/session";
     private static final String VIEW_HOME = "security/audit/session";
 
@@ -82,7 +85,7 @@ public class SessionController {
         if (!sessionInformation.isExpired()) {
             sessionInformation.expireNow();
         }
-        // sessionRegistry.removeSessionInformation(id);
+
         model.clear();
 
         return REDIRECT_VIEW_PATH;

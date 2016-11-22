@@ -25,7 +25,10 @@ import com.yqboots.security.web.access.SecurityPermissions;
 import com.yqboots.security.web.form.RoleForm;
 import com.yqboots.security.web.form.RoleFormConverter;
 import com.yqboots.web.form.SearchForm;
+import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -45,8 +48,9 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "/security/role")
-@SessionAttributes(names = {WebKeys.SEARCH_FORM})
-public class RoleController {
+public class RoleController extends AbstractController {
+    private static final Logger LOG = LoggerFactory.getLogger(RoleController.class);
+
     private static final String REDIRECT_VIEW_PATH = "redirect:/security/role";
     private static final String VIEW_HOME = "security/role/index";
     private static final String VIEW_FORM = "security/role/form";
@@ -98,22 +102,34 @@ public class RoleController {
             return VIEW_FORM;
         }
 
-        if (!domain.isExisted()) {
-            Role role = new Role();
-            role.setPath(domain.getPath());
-            role.setAlias(domain.getAlias());
-            role.setDescription(domain.getDescription());
-            roleManager.addRole(role);
-        } else {
-            Role role = roleManager.findRole(domain.getPath());
-            role.setPath(domain.getPath());
-            role.setAlias(domain.getAlias());
-            role.setDescription(domain.getDescription());
-            roleManager.updateRole(role);
+        try {
+            if (!domain.isExisted()) {
+                Role role = new Role();
+                role.setPath(domain.getPath());
+                role.setAlias(domain.getAlias());
+                role.setDescription(domain.getDescription());
+                roleManager.addRole(role);
+            } else {
+                Role role = roleManager.findRole(domain.getPath());
+                role.setPath(domain.getPath());
+                role.setAlias(domain.getAlias());
+                role.setDescription(domain.getDescription());
+                roleManager.updateRole(role);
+            }
+
+            roleManager.updateUsers(domain.getPath(), domain.getUsers());
+            roleManager.updateGroups(domain.getPath(), domain.getGroups());
+        } catch (RoleNotFoundException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0011");
+        } catch (RoleExistsException e) {
+            LOG.error(e.getMessage(), e);
+            bindingResult.reject("I0008");
         }
 
-        roleManager.updateUsers(domain.getPath(), domain.getUsers());
-        roleManager.updateGroups(domain.getPath(), domain.getGroups());
+        if (bindingResult.hasErrors()) {
+            return VIEW_FORM;
+        }
 
         model.clear();
 
