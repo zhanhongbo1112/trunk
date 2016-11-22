@@ -10,13 +10,11 @@
   <meta content="Eric H B Zhan" name="author"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../../META-INF/resources/favicon.ico" th:href="@{/favicon.ico}"/>
+  <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
 
-  <link rel="stylesheet" href="../../META-INF/resources/theme/application.css" th:href="@{/theme/application.css}"/>
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-colors/green.css"
-        th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
-  <link rel="stylesheet" href="../../META-INF/resources/theme/css/theme-skins/dark.css"
-        th:href="@{/theme/css/theme-skins/dark.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/application.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
+  <link rel="stylesheet" th:href="@{/theme/css/theme-skins/dark.css}"/>
 </head>
 <body class="dark header-fixed header-fixed-space-default">
 <div class="wrapper">
@@ -29,9 +27,8 @@
   <footer th:replace="layouts/footer :: footer">&nbsp;</footer>
 </div>
 <div th:include="layouts/styleSwitcher">&nbsp;</div>
-<script src="../../META-INF/resources/dojo/dojo/dojo.js" th:src="@{/dojo/dojo/dojo.js}"
-        data-dojo-config="async: true"></script>
-<script src="../../META-INF/resources/dojo/jquery.js" th:src="@{/dojo/jquery.js}"></script>
+<script th:src="@{/dojo/dojo/dojo.js}" data-dojo-config="async: true"></script>
+<script th:src="@{/dojo/jquery.js}"></script>
 <script th:inline="javascript">
   /*<![CDATA[*/
   require(['baf/main', 'jquery', 'jquery/migrate', 'bootstrap', 'dojo/domReady!'],
