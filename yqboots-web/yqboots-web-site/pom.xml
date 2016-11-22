@@ -75,66 +75,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.yqboots.Application</mainClass>
+                    <excludeDevtools>true</excludeDevtools>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>production</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.yqboots.Application</mainClass>
-                            <!-- included by the shade plugin -->
-                            <excludeArtifactIds>
-                                yqboots-core,
-                                yqboots-dict-core,yqboots-dict-web,
-                                yqboots-menu-core,yqboots-menu-web,
-                                yqboots-fss-core,yqboots-fss-web,
-                                yqboots-security-core,yqboots-security-web,
-                                yqboots-web-core,yqboots-web-layout,yqboots-web-thymeleaf
-                            </excludeArtifactIds>
-                            <excludeDevtools>true</excludeDevtools>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <createSourcesJar>false</createSourcesJar>
-                                    <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
-                                    <artifactSet>
-                                        <includes>
-                                            <include>com.yqboots.core:yqboots-core</include>
-                                            <include>com.yqboots.dict:yqboots-dict-core</include>
-                                            <include>com.yqboots.dict:yqboots-dict-web</include>
-                                            <include>com.yqboots.menu:yqboots-menu-core</include>
-                                            <include>com.yqboots.menu:yqboots-menu-web</include>
-                                            <include>com.yqboots.fss:yqboots-fss-core</include>
-                                            <include>com.yqboots.fss:yqboots-fss-web</include>
-                                            <include>com.yqboots.security:yqboots-security-core</include>
-                                            <include>com.yqboots.security:yqboots-security-web</include>
-                                            <include>com.yqboots.web:yqboots-web-core</include>
-                                            <include>com.yqboots.web:yqboots-web-layout</include>
-                                            <include>com.yqboots.web:yqboots-web-thymeleaf</include>
-                                        </includes>
-                                    </artifactSet>
-                                    <transformers/>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
