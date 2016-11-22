@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0087}">Security Audit Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_SECURITY_AUDIT"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger"/>
+    <div class="row">
+      <div class="col-md-4">
+        <form action="#" th:action="@{/security/audit}" th:object="${searchForm}" method="post">
+          <div class="input-group">
+            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
+                   th:placeholder="#{T0007}"/>
+            <span class="input-group-btn">
+                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8"></div>
+    </div>
+    <div class="divider divider-blank"></div>
+    <div class="panel">
+      <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+          <th th:text="#{T0088}">Target</th>
+          <th th:text="#{T0089}">Action</th>
+          <th th:text="#{T0090}">Created By</th>
+          <th th:text="#{T0091}">Created Time</th>
+          <th th:text="#{T0023}">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${page}">
+          <td th:text="${item.target}">NAME 1</td>
+          <td th:text="${item.code}" yq:dict="SECURITY_AUDIT_CODES">1</td>
+          <td th:text="${item.createdBy.username}">false</td>
+          <td th:text="${item.createdDate}">2016-11-10 21:35:00</td>
+          <td th:text="${item.description}">description</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="8">
+            <div yq:pageSummary="${page}"></div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="panel-footer text-center">
+        <yq:pagination page="${page}" th:href="@{/security/audit}"/>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

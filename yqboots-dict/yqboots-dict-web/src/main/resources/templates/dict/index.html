@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0017}">Data Dict Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_DATA_DICT"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger" />
+    <div class="tab">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#list">
+            <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0019}">Domain List</span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#import">
+            <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="list">
+          <div class="row">
+            <div class="col-md-4">
+              <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
+                <div class="input-group">
+                  <input class="form-control" type="text" th:field="*{criterion}" placeholder="Search"
+                         th:placeholder="#{T0007}"/>
+                  <span class="input-group-btn">
+                      <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-8">
+              <div class="btn-group pull-right">
+                <button class="btn-u rounded dropdown-toggle" data-toggle="dropdown" type="button">
+                  <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="#" th:href="@{/dict(action='new')}" title="New" th:title="#{T0010}">
+                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" th:href="@{/dict/exports}" title="Export" th:title="#{T0016}">
+                      <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="divider divider-blank"></div>
+          <div class="panel">
+            <table class="table table-hover table-responsive">
+              <thead>
+              <tr>
+                <th th:text="#{T0020}">Name</th>
+                <th th:text="#{T0021}">Text</th>
+                <th th:text="#{T0022}">Value</th>
+                <th th:text="#{T0023}">Description</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item : ${page}">
+                <td th:text="${item.name}">NAME 1</td>
+                <td th:text="${item.text}">Text 1</td>
+                <td th:text="${item.value}">1</td>
+                <td th:text="${item.description}">Description 1</td>
+                <td>
+                  <a href="#" th:href="@{/dict(id=${item.id},action='update')}" title="Update"
+                     th:title="#{T0008}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                  <a href="#" th:href="@{/dict(id=${item.id},action='delete')}" title="Delete"
+                     th:title="#{T0009}">
+                    <i class="glyphicon glyphicon-remove-sign"></i>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <th colspan="8">
+                  <div yq:pageSummary="${page}"/>
+                </th>
+              </tr>
+              </tfoot>
+            </table>
+            <div class="panel-footer text-center">
+              <yq:pagination page="${page}" th:href="@{/dict}"/>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade in" id="import">
+          <form class="sky-form" action="#" th:action="@{/dict/imports}" method="post"
+                enctype="multipart/form-data" th:object="${fileUploadForm}">
+            <fieldset>
+              <section>
+                <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
+                <label class="input input-file">
+                  <div class="button">
+                    <input th:field="*{file}" type="file"/>
+                    <span th:text="#{T0039}">Browse</span>
+                  </div>
+                  <input type="text" readonly="readonly"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
+              </section>
+            </fieldset>
+            <footer>
+              <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
+              <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

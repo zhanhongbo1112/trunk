@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0017}">Data Dict Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_DATA_DICT"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger" />
+    <form class="sky-form" action="#" th:action="@{/dict/}" th:object="${model}" method="post">
+      <input th:field="*{id}" type="hidden"/>
+      <header th:text="#{T0018}">Data Dict Form</header>
+      <fieldset>
+        <div class="row">
+          <section class="col col-12">
+            <label class="label" th:text="#{T0020}">Name</label>
+            <label class="input">
+              <input th:field="*{name}" type="text" maxlength="32"/>
+            </label>
+
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col col-6">
+            <label class="label" th:text="#{T0021}">Text</label>
+            <label class="input">
+              <input th:field="*{text}" type="text" maxlength="64"/>
+            </label>
+
+            <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
+          </section>
+          <section class="col col-6">
+            <label class="label" th:text="#{T0022}">Value</label>
+            <label class="input">
+              <input th:field="*{value}" type="text" maxlength="32"/>
+              <i></i>
+            </label>
+
+            <p th:if="${#fields.hasErrors('value')}" th:errors="*{value}"></p>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col col-12">
+            <label class="label" th:text="#{T0023}">Description</label>
+            <label class="textarea">
+              <textarea th:field="*{description}" maxlength="255" rows="5" cols="80"></textarea>
+            </label>
+
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+          </section>
+        </div>
+      </fieldset>
+      <footer>
+        <button class="btn-u rounded" id="submit" type="submit" th:text="#{T0012}">Submit</button>
+        <button class="btn-u rounded" id="cancel" type="button" th:text="#{T0066}">Cancel</button>
+      </footer>
+    </form>
+  </div>
+</div>
+</body>
+</html>

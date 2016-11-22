@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0045}">Bootstrap your application simply, quickly and efficiently</title>
+</head>
+<body>
+<div class="content content-md height-600" layout:fragment="content">
+  <div class="container">
+    <div class="row margin-bottom-30">
+      <div class="col-md-4">
+        <div class="service">
+          <i class="fa fa-compress service-icon"></i>
+
+          <div class="desc">
+            <h4>Fully Responsive</h4>
+
+            <p>Provide an optimal viewing and interaction experience -- easy reading and navigation with a minimum of
+              resizing, panning, and scrolling-across a wide range of devices (from desktop to mobile phones). </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service">
+          <i class="fa fa-cogs service-icon"></i>
+
+          <div class="desc">
+            <h4>HTML5 + CSS3</h4>
+
+            <p>HTML5 and CSS3 are not only the new Web technical standards, but also represent the next generation of
+              HTML and CSS Technology.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service">
+          <i class="fa fa-rocket service-icon"></i>
+
+          <div class="desc">
+            <h4>Launch Ready</h4>
+
+            <p>Powered by <a href="http://maven.apache.org" target="_blank">Maven</a>, <a
+                href="http://www.thymeleaf.org/" target="_blank">Thymeleaf</a>,
+              <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a
+                  href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a>, launch your
+              applications as quickly as possible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cube-portfolio container margin-bottom-60">
+    <div class="content-xs">
+      <div class="cbp-l-filters-text content-xs" id="filters-container">
+        <div class="cbp-filter-item-active cbp-filter-item" data-filter="*" th:text="#{T0044}">All</div>
+        |
+        <div class="cbp-filter-item" data-filter=".projects" th:text="#{T0041}">Projects</div>
+      </div>
+    </div>
+
+    <div class="cbp-l-grid-agency" id="grid-container">
+      <div class="cbp-item projects">
+        <div class="cbp-caption margin-bottom-20">
+          <div class="cbp-caption-defaultWrap">
+            <img th:src="@{/theme/images/projects/framework.jpg}" th:alt="#{T0042}"/>
+          </div>
+          <div class="cbp-caption-activeWrap">
+            <div class="cbp-l-caption-alignCenter">
+              <div class="cbp-l-caption-body">
+                <ul class="link-captions no-bottom-space">
+                  <li><a href="#" th:href="@{/projects/framework}"><i class="rounded-x fa fa-link"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cbp-title-dark">
+          <div class="cbp-l-grid-agency-title" th:text="#{T0042}">YQBoots Framework</div>
+          <div class="cbp-l-grid-agency-desc" th:text="#{T0043}">Build the most common parts of your application</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

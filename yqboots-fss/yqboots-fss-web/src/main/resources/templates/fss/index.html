@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0050}">File Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_FSS"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger" />
+    <div class="tab">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#list">
+            <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0033}">File List</span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#upload">
+            <i class="glyphicon glyphicon-upload"></i> <span th:text="#{T0034}">Upload</span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="list">
+          <div class="row">
+            <div class="col-md-4">
+              <form action="#" th:action="@{/fss}" th:object="${searchForm}" method="post">
+                <div class="input-group">
+                  <select class="form-control" th:field="*{criterion}">
+                    <option value="" th:text="#{T0040}">Please Select</option>
+                    <yq:options name="FSS_AVAILABLE_DIRS" />
+                  </select>
+                  <span class="input-group-btn">
+                      <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-8"></div>
+          </div>
+          <div class="divider divider-blank"></div>
+          <div class="panel">
+            <table class="table table-hover table-responsive">
+              <thead>
+              <tr>
+                <th th:text="#{T0020}">Name</th>
+                <th th:text="#{T0030}">Path</th>
+                <th th:text="#{T0031}">Length</th>
+                <th th:text="#{T0032}">Last Modified Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item : ${page}">
+                <td th:text="${item.name}">NAME 1</td>
+                <td th:text="${item.path}">Path 1</td>
+                <td th:text="${item.length}">10</td>
+                <td th:text="${{item.lastModifiedDate}}">2016-08-24 10:00:00</td>
+                <td>
+                  <a href="#" th:href="@{/fss(id=${item.path},action='download')}" title="Download"
+                     th:title="#{T0051}">
+                    <i class="glyphicon glyphicon-download"></i>
+                  </a>
+                  <a href="#" th:href="@{/fss(id=${item.path},action='delete')}" title="Delete"
+                     th:title="#{T0009}">
+                    <i class="glyphicon glyphicon-remove-sign"></i>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr>
+                <th colspan="8">
+                  <div yq:pageSummary="${page}"/>
+                </th>
+              </tr>
+              </tfoot>
+            </table>
+            <div class="panel-footer text-center">
+              <yq:pagination page="${page}" th:href="@{/fss}"/>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade in" id="upload">
+          <form class="sky-form" action="#" th:action="@{/fss/upload}" method="post"
+                enctype="multipart/form-data" th:object="${fileUploadForm}">
+            <fieldset>
+              <section>
+                <label class="label" th:text="#{T0038}">Input a File</label>
+                <label class="input input-file">
+                  <div class="button">
+                    <input th:field="*{file}" type="file"/>
+                    <span th:text="#{T0039}">Browse</span>
+                  </div>
+                  <input type="text" readonly="readonly"/>
+                </label>
+
+                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
+              </section>
+              <section>
+                <label class="label" th:text="#{T0035}">Destination</label>
+                <label class="select">
+                  <select th:field="*{path}">
+                    <option value="" th:text="#{T0040}">Please Select</option>
+                    <yq:options name="FSS_AVAILABLE_DIRS" />
+                  </select>
+                  <i></i>
+                </label>
+
+                <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
+              </section>
+              <section>
+                <label class="label" th:text="#{T0036}">Override</label>
+                <input th:field="*{overrideExisting}" type="checkbox"/>
+                <label th:for="${#ids.prev('overrideExisting')}" th:text="#{T0037}">Override Existing?</label>
+              </section>
+            </fieldset>
+            <footer>
+              <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
+              <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

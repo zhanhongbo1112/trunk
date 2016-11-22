@@ -1,0 +1,52 @@
+/* Form block */
+.form-block {
+    padding: 0 120px;
+}
+
+.form-block img {
+    margin-bottom: 80px;
+}
+
+/* Form Header */
+.form-block h2 {
+    text-transform: uppercase;
+}
+
+@media (max-width: 1138px) {
+    .form-block {
+        padding-right: 85px;
+        padding-left: 85px;
+    }
+}
+
+@media (min-width: 992px) {
+    .login-block {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 991px) {
+    .form-block {
+        padding: 70px 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 418px) {
+    .login-block .checkbox {
+        margin-bottom: 30px;
+    }
+
+    .login-block .checkbox ul li:first-child {
+        margin-bottom: 10px;
+    }
+
+    .login-block .checkbox ul li:last-child {
+        float: none !important;
+    }
+}

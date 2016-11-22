@@ -1,0 +1,259 @@
+/*
+* Version: 1.8
+* Teal Color: #18ba9b;
+* Teal Hover Color: #2cd5b6;
+* Additional color: #d9efeb;
+* rgba(24, 186, 155, 1);
+*/
+a {
+    color: #18ba9b;
+}
+
+a:focus, a:hover, a:active {
+    color: #18ba9b;
+}
+
+code {
+    color: #18ba9b;
+}
+
+/* Blockquote
+------------------------------------*/
+blockquote:hover,
+blockquote.text-right:hover,
+body.dark blockquote:hover,
+body.dark blockquote.text-right:hover{
+    border-color: #18ba9b;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-u {
+    background: #18ba9b;
+}
+
+.btn-u:hover, .btn-u:focus, .btn-u:active, .btn-u.active, .open .dropdown-toggle.btn-u {
+    background: #2cd5b6;
+    color: #fff;
+}
+
+/* Buttons Color */
+.btn-u-split.dropdown-toggle {
+    border-left: solid 1px #2cd5b6;
+}
+
+/*Badges*/
+span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
+    background: #2cd5b6;
+}
+
+/* Font Awesome Icon Page Style */
+.fa-icons li:hover {
+    color: #18ba9b;
+}
+
+.fa-icons li:hover i {
+    background: #18ba9b;
+}
+
+/* Icons Background Color
+------------------------------------*/
+i.icon-color-u {
+    color: #18ba9b;
+    border: solid 1px #18ba9b;
+}
+
+i.icon-bg-u {
+    background: #18ba9b;
+}
+
+/* Heading */
+.headline h2, .headline h3, .headline h4 {
+    border-bottom: 2px solid #18ba9b;
+}
+
+/* Panel
+------------------------------------*/
+.panel {
+    border-color: #18ba9b;
+}
+
+.panel > .panel-heading {
+    background: #18ba9b;
+}
+
+/* Pagination
+------------------------------------*/
+.pagination li a:hover {
+    background: #2cd5b6;
+    border-color: #2cd5b6;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    border-color: #18ba9b;
+    background-color: #18ba9b;
+}
+
+/* Tabs */
+.tab .nav-tabs {
+    border-bottom: solid 2px #18ba9b;
+}
+
+.tab .nav-tabs > .active > a, .tab .nav-tabs > .active > a:hover, .tab .nav-tabs > .active > a:focus {
+    background: #18ba9b;
+}
+
+.tab .nav-tabs > li > a:hover {
+    background: #18ba9b;
+}
+
+/* Sky Form
+------------------------------------*/
+.sky-form .button {
+    background: #18ba9b;
+}
+
+.sky-form a {
+    color: #18ba9b;
+}
+
+.sky-form .rating input:checked ~ label {
+    color: #18ba9b;
+}
+
+.sky-form .rating input + label:hover,
+.sky-form .rating input + label:hover ~ label {
+    color: #18ba9b;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker span:hover {
+    color: #18ba9b;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+    color: #18ba9b;
+}
+
+button.ui-datepicker-current,
+button.ui-datepicker-close {
+    background: #18ba9b;
+}
+
+button.ui-datepicker-current:hover,
+button.ui-datepicker-current.btn-u:focus,
+button.ui-datepicker-close:hover,
+button.ui-datepicker-close.btn-u:focus{
+    background: #2cd5b6;
+    color: #fff;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #18ba9b;
+    border-color: #18ba9b;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #18ba9b;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #2cd5b6;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #18ba9b;
+}
+
+.header .navbar-toggle {
+    border-color: #2cd5b6;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #18ba9b;
+}
+
+.header .navbar-toggle:hover {
+    background: #2cd5b6 !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #18ba9b;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a,
+    .header .navbar-nav > .active > a:hover,
+    .header .navbar-nav > .active > a:focus {
+        background: #18ba9b;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    body.dark .header .nav > li.active > a:hover {
+        background: #18ba9b;
+    }
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #18ba9b;
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #18ba9b;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #18ba9b;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #18ba9b;
+}
+
+/* Cube Portfolio
+------------------------------------*/
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
+    color: #18ba9b;
+}
+
+.cube-portfolio .link-captions li i:hover {
+    color: #fff;
+    background: #18ba9b;
+}
+
+.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
+    background: #18ba9b !important;
+}
+
+/* Style Switcher
+-------------------------------------*/
+i.style-switcher-btn:hover {
+    background: #2cd5b6;
+}
+
+/* Login Page
+-------------------------------------*/
+.login-block i {
+    color: #2cd5b6;
+}

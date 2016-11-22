@@ -1,0 +1,259 @@
+/*
+* Version: 1.8
+* Light Color: #95a5a6;
+* Light Hover Color: #7f8c8d;
+* Additional color: #f0f0f0;
+* rgba(149, 165, 166, 1);
+*/
+a {
+    color: #95a5a6;
+}
+
+a:focus, a:hover, a:active {
+    color: #95a5a6;
+}
+
+code {
+    color: #95a5a6;
+}
+
+/* Blockquote
+------------------------------------*/
+blockquote:hover,
+blockquote.text-right:hover,
+body.dark blockquote:hover,
+body.dark blockquote.text-right:hover{
+    border-color: #95a5a6;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-u {
+    background: #95a5a6;
+}
+
+.btn-u:hover, .btn-u:focus, .btn-u:active, .btn-u.active, .open .dropdown-toggle.btn-u {
+    background: #7f8c8d;
+    color: #fff;
+}
+
+/* Buttons Color */
+.btn-u-split.dropdown-toggle {
+    border-left: solid 1px #7f8c8d;
+}
+
+/*Badges*/
+span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
+    background: #7f8c8d;
+}
+
+/* Font Awesome Icon Page Style */
+.fa-icons li:hover {
+    color: #95a5a6;
+}
+
+.fa-icons li:hover i {
+    background: #95a5a6;
+}
+
+/* Icons Background Color
+------------------------------------*/
+i.icon-color-u {
+    color: #95a5a6;
+    border: solid 1px #95a5a6;
+}
+
+i.icon-bg-u {
+    background: #95a5a6;
+}
+
+/* Heading */
+.headline h2, .headline h3, .headline h4 {
+    border-bottom: 2px solid #95a5a6;
+}
+
+/* Panel
+------------------------------------*/
+.panel {
+    border-color: #95a5a6;
+}
+
+.panel > .panel-heading {
+    background: #95a5a6;
+}
+
+/* Pagination
+------------------------------------*/
+.pagination li a:hover {
+    background: #7f8c8d;
+    border-color: #7f8c8d;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    border-color: #95a5a6;
+    background-color: #95a5a6;
+}
+
+/* Tabs */
+.tab .nav-tabs {
+    border-bottom: solid 2px #95a5a6;
+}
+
+.tab .nav-tabs > .active > a, .tab .nav-tabs > .active > a:hover, .tab .nav-tabs > .active > a:focus {
+    background: #95a5a6;
+}
+
+.tab .nav-tabs > li > a:hover {
+    background: #95a5a6;
+}
+
+/* Sky Form
+------------------------------------*/
+.sky-form .button {
+    background: #95a5a6;
+}
+
+.sky-form a {
+    color: #95a5a6;
+}
+
+.sky-form .rating input:checked ~ label {
+    color: #95a5a6;
+}
+
+.sky-form .rating input + label:hover,
+.sky-form .rating input + label:hover ~ label {
+    color: #95a5a6;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker span:hover {
+    color: #95a5a6;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+    color: #95a5a6;
+}
+
+button.ui-datepicker-current,
+button.ui-datepicker-close {
+    background: #95a5a6;
+}
+
+button.ui-datepicker-current:hover,
+button.ui-datepicker-current.btn-u:focus,
+button.ui-datepicker-close:hover,
+button.ui-datepicker-close.btn-u:focus{
+    background: #7f8c8d;
+    color: #fff;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #95a5a6;
+    border-color: #95a5a6;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #95a5a6;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #7f8c8d;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #95a5a6;
+}
+
+.header .navbar-toggle {
+    border-color: #7f8c8d;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #95a5a6;
+}
+
+.header .navbar-toggle:hover {
+    background: #7f8c8d !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #95a5a6;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a,
+    .header .navbar-nav > .active > a:hover,
+    .header .navbar-nav > .active > a:focus {
+        background: #95a5a6;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    body.dark .header .nav > li.active > a:hover {
+        background: #95a5a6;
+    }
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #95a5a6;
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #95a5a6;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #95a5a6;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #95a5a6;
+}
+
+/* Cube Portfolio
+------------------------------------*/
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
+    color: #95a5a6;
+}
+
+.cube-portfolio .link-captions li i:hover {
+    color: #fff;
+    background: #95a5a6;
+}
+
+.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
+    background: #95a5a6 !important;
+}
+
+/* Style Switcher
+-------------------------------------*/
+i.style-switcher-btn:hover {
+    background: #7f8c8d;
+}
+
+/* Login Page
+-------------------------------------*/
+.login-block i {
+    color: #7f8c8d;
+}

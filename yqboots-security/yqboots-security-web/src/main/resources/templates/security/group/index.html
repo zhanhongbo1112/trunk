@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0061}">Group Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="PROJECT_SECURITY_GROUP"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger"/>
+    <div class="row">
+      <div class="col-md-4">
+        <form action="#" th:action="@{/security/group}" th:object="${searchForm}" method="post">
+          <div class="input-group">
+            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
+                   th:placeholder="#{T0007}"/>
+            <span class="input-group-btn">
+                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8">
+        <div class="btn-group pull-right">
+          <button class="btn-u rounded dropdown-toggle" data-toggle="dropdown" type="button">
+            <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="#" th:href="@{/security/group(action='new')}" title="New" th:title="#{T0010}">
+                <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="divider divider-blank"></div>
+    <div class="panel">
+      <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+          <th th:text="#{T0030}">Path</th>
+          <th th:text="#{T0071}">Alias</th>
+          <th th:text="#{T0023}">Description</th>
+          <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${page}">
+          <td th:text="${item.path}">/USER/ADMIN</td>
+          <td th:text="${item.alias}">Admin</td>
+          <td th:text="${item.description}">the Admin</td>
+          <td>
+            <a href="#" th:href="@{/security/group(id=${item.id},action='update')}" title="Update"
+               th:title="#{T0008}">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a href="#" th:href="@{/security/group(id=${item.id},action='delete')}" title="Delete"
+               th:title="#{T0009}">
+              <i class="glyphicon glyphicon-remove-sign"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="8">
+            <div yq:pageSummary="${page}"></div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="panel-footer text-center">
+        <yq:pagination page="${page}" th:href="@{/security/group}"/>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

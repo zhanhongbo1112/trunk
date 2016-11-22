@@ -1,0 +1,259 @@
+/*
+* Version: 1.8
+* Orange Color: #e67e22;
+* Orange Hover Color: #d35400;
+* Additional color: #fcf2de;
+* rgba(230, 126, 34, 1);
+*/
+a {
+    color: #e67e22;
+}
+
+a:focus, a:hover, a:active {
+    color: #e67e22;
+}
+
+code {
+    color: #e67e22;
+}
+
+/* Blockquote
+------------------------------------*/
+blockquote:hover,
+blockquote.text-right:hover,
+body.dark blockquote:hover,
+body.dark blockquote.text-right:hover{
+    border-color: #e67e22;
+}
+
+/* Buttons
+------------------------------------*/
+.btn-u {
+    background: #e67e22;
+}
+
+.btn-u:hover, .btn-u:focus, .btn-u:active, .btn-u.active, .open .dropdown-toggle.btn-u {
+    background: #d35400;
+    color: #fff;
+}
+
+/* Buttons Color */
+.btn-u-split.dropdown-toggle {
+    border-left: solid 1px #d35400;
+}
+
+/*Badges*/
+span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
+    background: #d35400;
+}
+
+/* Font Awesome Icon Page Style */
+.fa-icons li:hover {
+    color: #e67e22;
+}
+
+.fa-icons li:hover i {
+    background: #e67e22;
+}
+
+/* Icons Background Color
+------------------------------------*/
+i.icon-color-u {
+    color: #e67e22;
+    border: solid 1px #e67e22;
+}
+
+i.icon-bg-u {
+    background: #e67e22;
+}
+
+/* Heading */
+.headline h2, .headline h3, .headline h4 {
+    border-bottom: 2px solid #e67e22;
+}
+
+/* Panel
+------------------------------------*/
+.panel {
+    border-color: #e67e22;
+}
+
+.panel > .panel-heading {
+    background: #e67e22;
+}
+
+/* Pagination
+------------------------------------*/
+.pagination li a:hover {
+    background: #d35400;
+    border-color: #d35400;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    border-color: #e67e22;
+    background-color: #e67e22;
+}
+
+/* Tabs */
+.tab .nav-tabs {
+    border-bottom: solid 2px #e67e22;
+}
+
+.tab .nav-tabs > .active > a, .tab .nav-tabs > .active > a:hover, .tab .nav-tabs > .active > a:focus {
+    background: #e67e22;
+}
+
+.tab .nav-tabs > li > a:hover {
+    background: #e67e22;
+}
+
+/* Sky Form
+------------------------------------*/
+.sky-form .button {
+    background: #e67e22;
+}
+
+.sky-form a {
+    color: #e67e22;
+}
+
+.sky-form .rating input:checked ~ label {
+    color: #e67e22;
+}
+
+.sky-form .rating input + label:hover,
+.sky-form .rating input + label:hover ~ label {
+    color: #e67e22;
+}
+
+/*Date Picker*/
+body.dark .ui-datepicker span:hover {
+    color: #e67e22;
+}
+
+body.dark .ui-datepicker-calendar .ui-state-active:hover {
+    color: #e67e22;
+}
+
+button.ui-datepicker-current,
+button.ui-datepicker-close {
+    background: #e67e22;
+}
+
+button.ui-datepicker-current:hover,
+button.ui-datepicker-current.btn-u:focus,
+button.ui-datepicker-close:hover,
+button.ui-datepicker-close.btn-u:focus{
+    background: #d35400;
+    color: #fff;
+}
+
+/* Headers Default
+------------------------------------*/
+.header .navbar-nav > .active > a {
+    color: #e67e22;
+    border-color: #e67e22;
+}
+
+.header .dropdown-menu {
+    border-top: solid 2px #e67e22;
+}
+
+.header .navbar-nav > li:hover > a {
+    color: #d35400;
+}
+
+.header .navbar-nav > li > a:hover, .header .navbar-nav > .active > a {
+    border-bottom-color: #e67e22;
+}
+
+.header .navbar-toggle {
+    border-color: #d35400;
+}
+
+.header .navbar-toggle, .header .navbar-toggle:hover, .header .navbar-toggle:focus {
+    background: #e67e22;
+}
+
+.header .navbar-toggle:hover {
+    background: #d35400 !important;
+}
+
+.header .navbar-nav > .open > a, .header .navbar-nav > .open > a:hover, .header .navbar-nav > .open > a:focus {
+    color: #e67e22;
+}
+
+/* Design for max-width: 991px */
+@media ( max-width: 991px) {
+    .header .navbar-nav > .active > a,
+    .header .navbar-nav > .active > a:hover,
+    .header .navbar-nav > .active > a:focus {
+        background: #e67e22;
+        color: #fff !important;
+    }
+
+    .header .navbar-nav > .active > a {
+        border-color: #eee;
+    }
+
+    body.dark .header .nav > li.active > a:hover {
+        background: #e67e22;
+    }
+}
+
+/* Breadcrumb
+------------------------------------*/
+.breadcrumb li.active, .breadcrumb li a:hover {
+    color: #e67e22;
+}
+
+/* Footer
+------------------------------------*/
+.copyright a, .copyright a:hover {
+    color: #e67e22;
+}
+
+/* Top Control
+------------------------------------*/
+#topControl:hover {
+    background-color: #e67e22;
+}
+
+/* Service
+------------------------------------*/
+.service .service-icon {
+    color: #e67e22;
+}
+
+/* Cube Portfolio
+------------------------------------*/
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item.cbp-filter-item-active,
+.cube-portfolio .cbp-l-filters-text .cbp-filter-item:hover {
+    color: #e67e22;
+}
+
+.cube-portfolio .link-captions li i:hover {
+    color: #fff;
+    background: #e67e22;
+}
+
+.cube-portfolio .cbp-caption-activeWrap.default-transparent-hover {
+    background: #e67e22 !important;
+}
+
+/* Style Switcher
+-------------------------------------*/
+i.style-switcher-btn:hover {
+    background: #d35400;
+}
+
+/* Login Page
+-------------------------------------*/
+.login-block i {
+    color: #d35400;
+}
