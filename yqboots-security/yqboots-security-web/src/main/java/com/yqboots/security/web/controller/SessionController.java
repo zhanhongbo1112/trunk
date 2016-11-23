@@ -68,20 +68,21 @@ public class SessionController extends AbstractController {
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
                        final ModelMap model) {
-        if (StringUtils.isBlank(searchForm.getCriterion())) {
+        if (StringUtils.isBlank(searchForm.getCriterion()) || !userManager.hasUser(searchForm.getCriterion())) {
             model.addAttribute(WebKeys.PAGE, new PageImpl<SessionInformation>(new ArrayList<>(), pageable, 0));
             return VIEW_HOME;
         }
 
         final User user = userManager.findUser(searchForm.getCriterion());
         model.addAttribute(WebKeys.PAGE, new PageImpl<>(sessionRegistry.getAllSessions(user, true)));
+
         return VIEW_HOME;
     }
 
     @PreAuthorize(SecurityPermissions.SESSION_DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final String id, final ModelMap model) {
-        SessionInformation sessionInformation = sessionRegistry.getSessionInformation(id);
+        final SessionInformation sessionInformation = sessionRegistry.getSessionInformation(id);
         if (!sessionInformation.isExpired()) {
             sessionInformation.expireNow();
         }
