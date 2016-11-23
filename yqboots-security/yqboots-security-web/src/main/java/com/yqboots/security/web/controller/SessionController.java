@@ -82,11 +82,7 @@ public class SessionController extends AbstractController {
     @PreAuthorize(SecurityPermissions.SESSION_DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final String id, final ModelMap model) {
-<<<<<<< HEAD
         final SessionInformation sessionInformation = sessionRegistry.getSessionInformation(id);
-=======
-        SessionInformation sessionInformation = sessionRegistry.getSessionInformation(id);
->>>>>>> master
         if (!sessionInformation.isExpired()) {
             sessionInformation.expireNow();
         }
