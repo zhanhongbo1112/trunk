@@ -63,7 +63,9 @@ public final class FileItemConsumer implements Consumer<Path> {
         final File file = path.toFile();
         final FileItem item = new FileItem();
         item.setName(file.getName());
-        item.setPath(StringUtils.substringAfter(file.getPath(), root.toString()));
+
+        String relativePath = StringUtils.substringAfter(file.getPath(), root.toString());
+        item.setPath(relativePath.replace("\\", "/"));
         item.setLength(file.length());
         item.setLastModifiedDate(LocalDateTime.ofInstant(new Date(file.lastModified()).toInstant(),
                 ZoneId.systemDefault()));

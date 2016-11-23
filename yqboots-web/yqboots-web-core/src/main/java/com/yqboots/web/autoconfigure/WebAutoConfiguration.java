@@ -20,14 +20,20 @@ package com.yqboots.web.autoconfigure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.web.WebMvcProperties;
+import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.context.web.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 import java.util.TimeZone;
 
 /**
@@ -50,9 +56,6 @@ public class WebAutoConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new LocaleChangeInterceptor());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Bean
     public LocaleResolver localeResolver() {
         final SessionLocaleResolver bean = new SessionLocaleResolver();
@@ -60,5 +63,15 @@ public class WebAutoConfiguration extends WebMvcConfigurerAdapter {
         bean.setDefaultTimeZone(TimeZone.getDefault());
 
         return bean;
+    }
+
+    @Bean
+    public FilterRegistrationBean errorPageFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        ErrorPageFilter errorPageFilter = new ErrorPageFilter();
+        errorPageFilter.addErrorPages(new ErrorPage(MultipartException.class, "/error"));
+        registration.setFilter(errorPageFilter);
+        registration.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
+        return registration;
     }
 }

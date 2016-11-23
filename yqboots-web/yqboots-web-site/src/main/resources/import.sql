@@ -105,8 +105,8 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 -- insert record from the view for in-memory test
 insert into sec_permissions (security_identity, object_id_identity, object_id_class, mask) select sid.sid, aoi.object_id_identity, ac.class as object_id_class, ae.mask from acl_sid as sid, acl_class ac, acl_object_identity aoi left outer join acl_entry ae on ae.acl_object_identity = aoi.id and ae.sid = sid.id where sid.id = aoi.owner_sid and ac.id = aoi.object_id_class order by sid.sid, aoi.object_id_identity, ac.class, ae.ace_order;
 
-insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABLE_DIRS', '\dict', '\dict', '');
-insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABLE_DIRS', '\menu', '\menu', '');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABLE_DIRS', '/dict', '/dict', '');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABLE_DIRS', '/menu', '/menu', '');
 
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/', '47', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/projects/framework', '1665790232', 'For Object Id Identity in Permission');
