@@ -22,16 +22,16 @@ INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (2, 2);
 INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (1, 1);
 
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECTS_FRAMEWORK', '/projects/framework', 'PROJECTS', 'OPEN_SOURCE');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_DATA_DICT', '/dict', 'ADMINISTRATION', 'ENVIRONMENT');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_MENU_ITEM', '/menu', 'ADMINISTRATION', 'ENVIRONMENT');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_FSS', '/fss', 'ADMINISTRATION', 'ENVIRONMENT');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_USER', '/security/user', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_GROUP', '/security/group', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_ROLE', '/security/role', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_PERMISSION', '/security/permission', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_AUDIT', '/security/audit', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_LOGIN_HISTORY', '/security/audit/history', 'ADMINISTRATION', 'SECURITY');
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECT_SECURITY_SESSION', '/security/audit/session', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('DATA_DICT', '/dict', 'ADMINISTRATION', 'ENVIRONMENT');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('MENU_ITEM', '/menu', 'ADMINISTRATION', 'ENVIRONMENT');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('FSS', '/fss', 'ADMINISTRATION', 'ENVIRONMENT');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_USER', '/security/user', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_GROUP', '/security/group', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_ROLE', '/security/role', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_PERMISSION', '/security/permission', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_AUDIT', '/security/audit', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_LOGIN_HISTORY', '/security/history', 'ADMINISTRATION', 'SECURITY');
+INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('SECURITY_SESSION', '/security/session', 'ADMINISTRATION', 'SECURITY');
 
 insert into acl_sid (id, principal, sid) values (100, FALSE, '/USER');
 insert into acl_sid (id, principal, sid) values (101, FALSE, '/USER/ADMIN');
@@ -94,11 +94,11 @@ insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, 
 -- 389409339 (hash code of '/security/audit')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (107, 100, 389409339, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (135, 107, 1, 101, 1, TRUE, FALSE, FALSE);
--- 352886976 (hash code of '/security/audit/history')
-insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (108, 100, 352886976, null, 101, FALSE);
+-- -2146559244 (hash code of '/security/history')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (108, 100, -2146559244, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (136, 108, 1, 101, 1, TRUE, FALSE, FALSE);
--- 1410940610 (hash code of '/security/audit/session')
-insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (109, 100, 1410940610, null, 101, FALSE);
+-- -1088505610 (hash code of '/security/session')
+insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (109, 100, -1088505610, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (137, 109, 1, 101, 1, TRUE, FALSE, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (138, 109, 2, 101, 8, TRUE, FALSE, FALSE);
 
@@ -118,8 +118,8 @@ insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_O
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/role', '1259988502', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/permission', '1448047471', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit', '389409339', 'For Object Id Identity in Permission');
-insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit/history', '352886976', 'For Object Id Identity in Permission');
-insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/audit/session', '1410940610', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/history', '-2146559244', 'For Object Id Identity in Permission');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/security/session', '-1088505610', 'For Object Id Identity in Permission');
 
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'read', '1', 'For Permission Mask 1');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_MASK', 'write', '2', 'For Permission Mask 2');

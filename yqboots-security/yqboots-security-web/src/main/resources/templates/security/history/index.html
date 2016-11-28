@@ -6,19 +6,18 @@
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-  <yq:breadcrumbs menu="PROJECT_SECURITY_LOGIN_HISTORY"/>
+  <yq:breadcrumbs menu="SECURITY_LOGIN_HISTORY"/>
 </div>
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
     <yq:alert level="danger"/>
     <div class="row">
       <div class="col-md-4">
-        <form action="#" th:action="@{/security/audit/history}" th:object="${searchForm}" method="post">
+        <form action="#" th:action="@{/security/history}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
-                   th:placeholder="#{T0007}"/>
+            <input class="form-control" th:field="*{criterion}" type="text" th:placeholder="#{T0007}"/>
             <span class="input-group-btn">
-                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
             </span>
           </div>
         </form>
@@ -53,7 +52,7 @@
         </tfoot>
       </table>
       <div class="panel-footer text-center">
-        <yq:pagination page="${page}" th:href="@{/security/audit/history}"/>
+        <yq:pagination page="${page}" th:href="@{/security/history}"/>
       </div>
     </div>
   </div>

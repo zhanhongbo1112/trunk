@@ -47,10 +47,10 @@ import java.util.ArrayList;
  * @since 1.1.0
  */
 @Controller
-@RequestMapping(value = "/security/audit/session")
+@RequestMapping(value = "/security/session")
 public class SessionController extends AbstractController {
-    private static final String REDIRECT_VIEW_PATH = "redirect:/security/audit/session";
-    private static final String VIEW_HOME = "security/audit/session";
+    private static final String REDIRECT_VIEW_PATH = "redirect:/security/session";
+    private static final String VIEW_HOME = "security/session/index";
 
     @Autowired
     private SessionRegistry sessionRegistry;

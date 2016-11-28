@@ -24,26 +24,14 @@ import com.yqboots.security.authentication.UserDetailsServiceImpl;
 import com.yqboots.security.core.repository.GroupRepository;
 import com.yqboots.security.core.repository.RoleRepository;
 import com.yqboots.security.core.repository.UserRepository;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.AccessDecisionManager;
-import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.PermissionEvaluator;
-import org.springframework.security.access.annotation.Jsr250Voter;
-import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
-import org.springframework.security.access.expression.method.ExpressionBasedPreInvocationAdvice;
-import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyAuthoritiesMapper;
-import org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter;
-import org.springframework.security.access.vote.AffirmativeBased;
-import org.springframework.security.access.vote.AuthenticatedVoter;
-import org.springframework.security.access.vote.RoleHierarchyVoter;
-import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.*;
 import org.springframework.security.acls.jdbc.BasicLookupStrategy;
@@ -52,14 +40,11 @@ import org.springframework.security.acls.jdbc.LookupStrategy;
 import org.springframework.security.acls.model.*;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -115,59 +100,6 @@ public class SecurityAutoConfiguration {
         // bean.setPasswordEncoder(new PlaintextPasswordEncoder());
 
         return bean;
-    }
-
-    @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = false, securedEnabled = true)
-    protected static class DefaultMethodSecurityConfiguration extends GlobalMethodSecurityConfiguration {
-        @Autowired
-        private RoleHierarchy roleHierarchy;
-
-        @Autowired
-        private PermissionEvaluator permissionEvaluator;
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected MethodSecurityExpressionHandler createExpressionHandler() {
-            DefaultMethodSecurityExpressionHandler bean = new DefaultMethodSecurityExpressionHandler();
-            bean.setDefaultRolePrefix(StringUtils.EMPTY);
-            bean.setPermissionEvaluator(permissionEvaluator);
-            bean.setRoleHierarchy(roleHierarchy);
-
-            return bean;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected AccessDecisionManager accessDecisionManager() {
-            List<AccessDecisionVoter<? extends Object>> decisionVoters = new ArrayList<>();
-
-            ExpressionBasedPreInvocationAdvice expressionAdvice = new ExpressionBasedPreInvocationAdvice();
-            expressionAdvice.setExpressionHandler(getExpressionHandler());
-            decisionVoters.add(new PreInvocationAuthorizationAdviceVoter(expressionAdvice));
-
-            // decisionVoters.add(new RoleVoter());
-            decisionVoters.add(roleVoter());
-            decisionVoters.add(new Jsr250Voter());
-            decisionVoters.add(new AuthenticatedVoter());
-            decisionVoters.add(roleHierarchyVoter());
-            return new AffirmativeBased(decisionVoters);
-        }
-
-        private RoleVoter roleVoter() {
-            RoleVoter bean = new RoleVoter();
-            bean.setRolePrefix(StringUtils.EMPTY);
-            return bean;
-        }
-
-        private RoleVoter roleHierarchyVoter() {
-            RoleVoter bean = new RoleHierarchyVoter(roleHierarchy);
-            bean.setRolePrefix(StringUtils.EMPTY);
-            return bean;
-        }
     }
 
     @Configuration

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-  <yq:breadcrumbs menu="PROJECT_FSS"/>
+  <yq:breadcrumbs menu="FSS"/>
 </div>
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
@@ -35,7 +35,7 @@
                     <yq:options name="FSS_AVAILABLE_DIRS" />
                   </select>
                   <span class="input-group-btn">
-                      <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                      <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
                   </span>
                 </div>
               </form>
@@ -60,12 +60,10 @@
                 <td th:text="${item.length}">10</td>
                 <td th:text="${{item.lastModifiedDate}}">2016-08-24 10:00:00</td>
                 <td>
-                  <a href="#" th:href="@{/fss(id=${item.path},action='download')}" title="Download"
-                     th:title="#{T0051}">
+                  <a th:href="@{/fss(id=${item.path},action='download')}" th:title="#{T0051}">
                     <i class="glyphicon glyphicon-download"></i>
                   </a>
-                  <a href="#" th:href="@{/fss(id=${item.path},action='delete')}" title="Delete"
-                     th:title="#{T0009}">
+                  <a th:href="@{/fss(id=${item.path},action='delete')}" th:title="#{T0009}">
                     <i class="glyphicon glyphicon-remove-sign"></i>
                   </a>
                 </td>

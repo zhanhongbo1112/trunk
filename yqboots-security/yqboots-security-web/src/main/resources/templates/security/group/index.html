@@ -6,7 +6,7 @@
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-  <yq:breadcrumbs menu="PROJECT_SECURITY_GROUP"/>
+  <yq:breadcrumbs menu="SECURITY_GROUP"/>
 </div>
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
@@ -15,28 +15,25 @@
       <div class="col-md-4">
         <form action="#" th:action="@{/security/group}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
-                   th:placeholder="#{T0007}"/>
+            <input class="form-control" type="text" th:field="*{criterion}" th:placeholder="#{T0007}"/>
             <span class="input-group-btn">
-                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
+                <button class="btn-u dropdown-toggle" type="button" th:title="#{T0011}"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a th:href="@{/security/group(action='new')}" th:title="#{T0010}">
+                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                    </a>
+                  </li>
+                </ul>
             </span>
           </div>
         </form>
       </div>
-      <div class="col-md-8">
-        <div class="btn-group pull-right">
-          <button class="btn-u rounded dropdown-toggle" data-toggle="dropdown" type="button">
-            <span th:text="#{T0011}">Action</span> <i class="fa fa-angle-down"></i>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="#" th:href="@{/security/group(action='new')}" title="New" th:title="#{T0010}">
-                <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div class="col-md-8"></div>
     </div>
     <div class="divider divider-blank"></div>
     <div class="panel">
@@ -55,11 +52,11 @@
           <td th:text="${item.alias}">Admin</td>
           <td th:text="${item.description}">the Admin</td>
           <td>
-            <a href="#" th:href="@{/security/group(id=${item.id},action='update')}" title="Update"
+            <a th:href="@{/security/group(id=${item.id},action='update')}" title="Update"
                th:title="#{T0008}">
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            <a href="#" th:href="@{/security/group(id=${item.id},action='delete')}" title="Delete"
+            <a th:href="@{/security/group(id=${item.id},action='delete')}" title="Delete"
                th:title="#{T0009}">
               <i class="glyphicon glyphicon-remove-sign"></i>
             </a>

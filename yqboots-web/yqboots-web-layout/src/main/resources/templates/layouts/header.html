@@ -18,8 +18,8 @@
           <i class="fa fa-globe"></i>
           <a><span th:text="#{T0005}">Languages</span></a>
           <ul class="languages hoverSelectorBlock">
-            <li><a href="#" th:href="@{?locale=en}" th:text="#{lang.en}">English</a></li>
-            <li><a href="#" th:href="@{?locale=zh_CN}" th:text="#{lang.zh_CN}">Chinese</a></li>
+            <li><a th:href="@{?locale=en}" th:text="#{lang.en}">English</a></li>
+            <li><a th:href="@{?locale=zh_CN}" th:text="#{lang.zh_CN}">Chinese</a></li>
           </ul>
         </li>
         <li class="topbar-divider"></li>
@@ -27,10 +27,10 @@
         <li class="topbar-divider"></li>
         <li>
           <span sec:authorize="isAuthenticated() and not isAnonymous()">
-            <a href="#" th:href="@{/logout}" th:title="#{T0058}"><i class="fa fa-sign-out"></i></a>
+            <a th:href="@{/logout}" th:title="#{T0058}"><i class="fa fa-sign-out"></i></a>
           </span>
           <span sec:authorize="isAnonymous() or not isAuthenticated()">
-            <a href="#" th:href="@{/security/login}"><i class="fa fa-sign-in"></i></a>
+            <a th:href="@{/security/login}"><i class="fa fa-sign-in"></i></a>
           </span>
         </li>
         <li>&nbsp;</li>

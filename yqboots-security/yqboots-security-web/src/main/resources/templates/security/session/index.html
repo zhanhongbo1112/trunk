@@ -6,19 +6,18 @@
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-  <yq:breadcrumbs menu="PROJECT_SECURITY_SESSION"/>
+  <yq:breadcrumbs menu="SECURITY_SESSION"/>
 </div>
 <div class="content content-sm height-600" layout:fragment="content">
   <div class="container">
     <yq:alert level="danger"/>
     <div class="row">
       <div class="col-md-4">
-        <form action="#" th:action="@{/security/audit/session}" th:object="${searchForm}" method="post">
+        <form action="#" th:action="@{/security/session}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input class="form-control" th:field="*{criterion}" type="text" placeholder="Search"
-                   th:placeholder="#{T0007}"/>
+            <input class="form-control" type="text" th:field="*{criterion}" th:placeholder="#{T0007}"/>
             <span class="input-group-btn">
-                <button class="btn-u rounded" type="submit" th:text="#{T0007}">Search</button>
+                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
             </span>
           </div>
         </form>
@@ -44,8 +43,7 @@
           <td th:text="${item.lastRequest}">2016-11-15 20:30:30.000</td>
           <td th:text="${item.expired}">true</td>
           <td>
-            <a href="#" th:href="@{/security/audit/session(id=${item.sessionId},action='delete')}" title="Delete"
-               th:title="#{T0009}">
+            <a th:href="@{/security/session(id=${item.sessionId},action='delete')}" th:title="#{T0009}">
               <i class="glyphicon glyphicon-remove-sign"></i>
             </a>
           </td>
@@ -60,7 +58,7 @@
         </tfoot>
       </table>
       <div class="panel-footer text-center">
-        <yq:pagination page="${page}" th:href="@{/security/audit/session}"/>
+        <yq:pagination page="${page}" th:href="@{/security/session}"/>
       </div>
     </div>
   </div>

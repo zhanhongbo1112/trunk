@@ -41,9 +41,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 1.1.0
  */
 @Controller
-@RequestMapping(value = "/security/audit/history")
+@RequestMapping(value = "/security/history")
 public class LoginHistoryController extends AbstractController {
-    private static final String VIEW_HOME = "security/audit/history";
+    private static final String VIEW_HOME = "security/history/index";
 
     @Autowired
     private LoginHistoryRepository loginHistoryRepository;

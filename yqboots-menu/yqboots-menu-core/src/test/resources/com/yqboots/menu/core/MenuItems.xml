@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <menuItems>
     <menuItem>
-        <name>PROJECT_MENU_ITEM</name>
+        <name>MENU_ITEM</name>
         <url>/menu</url>
         <menuGroup>ADMINISTRATION</menuGroup>
         <menuItemGroup>ENVIRONMENT</menuItemGroup>
     </menuItem>
     <menuItem>
-        <name>PROJECT_DATA_DICT</name>
+        <name>DATA_DICT</name>
         <url>/dict</url>
         <menuGroup>ADMINISTRATION</menuGroup>
         <menuItemGroup>ENVIRONMENT</menuItemGroup>
