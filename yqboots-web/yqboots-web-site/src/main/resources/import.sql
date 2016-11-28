@@ -131,7 +131,7 @@ insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUD
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE USER', '2', 'CODE_UPDATE_USER');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE GROUPS OF USER', '20', 'CODE_UPDATE_GROUPS_OF_USER');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'UPDATE ROLES OF USER', '21', 'CODE_UPDATE_ROLES_OF_USER');
-insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE_USER', '3', 'CODE_REMOVE_USER');
+insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE USER', '3', 'CODE_REMOVE_USER');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE GROUPS FROM USER', '30', 'CODE_REMOVE_GROUPS_FROM_USER');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'REMOVE ROLES FROM USER', '31', 'CODE_REMOVE_ROLES_FROM_USER');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('SECURITY_AUDIT_CODES', 'ADD GROUP', '4', 'CODE_ADD_GROUP');
