@@ -27,17 +27,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "yqboots.security")
 public class SecurityProperties {
-    private UserProperties user;
+    private User user = new User();
 
-    public UserProperties getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(final UserProperties user) {
+    public void setUser(final User user) {
         this.user = user;
     }
 
-    public static class UserProperties {
+    public static class User {
         private boolean disabledWhenRemoving = true;
 
         private String passwordDefault = "password";
