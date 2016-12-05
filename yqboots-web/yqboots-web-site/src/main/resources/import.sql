@@ -21,7 +21,6 @@ INSERT INTO SEC_USER_GROUPS (USER_ID, GROUP_ID) VALUES (2, 1);
 INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (2, 2);
 INSERT INTO SEC_GROUP_ROLES (GROUP_ID, ROLE_ID) VALUES (1, 1);
 
-INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('PROJECTS_FRAMEWORK', '/projects/framework', 'PROJECTS', 'OPEN_SOURCE');
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('DATA_DICT', '/dict', 'ADMINISTRATION', 'ENVIRONMENT');
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('MENU_ITEM', '/menu', 'ADMINISTRATION', 'ENVIRONMENT');
 INSERT INTO PRJ_MENUITEM (NAME, URL, MENU_GROUP, MENU_ITEM_GROUP) VALUES ('FSS', '/fss', 'ADMINISTRATION', 'ENVIRONMENT');
@@ -39,9 +38,6 @@ insert into acl_class (id, class) values (100, 'com.yqboots.menu.core.MenuItem')
 -- 47 (hash code of '/')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (1, 100, 47, null, 100, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (1, 1, 1, 100, 1, TRUE, FALSE, FALSE);
--- 1665790232 (hash code of '/projects/framework')
-insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (2, 100, 1665790232, null, 100, FALSE);
-insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (2, 2, 1, 100, 1, TRUE, FALSE, FALSE);
 -- 46753294 (hash code of '/menu')
 insert into acl_object_identity (id, object_id_class, object_id_identity, parent_object, owner_sid, entries_inheriting) values (100, 100, 46753294, null, 101, FALSE);
 insert into acl_entry (id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure) values (100, 100, 1, 101, 1, TRUE, FALSE, FALSE);
@@ -109,7 +105,6 @@ insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABL
 insert into PRJ_DATA_DICT (name, text, value, description) values ('FSS_AVAILABLE_DIRS', '/menu', '/menu', '');
 
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/', '47', 'For Object Id Identity in Permission');
-insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/projects/framework', '1665790232', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/menu', '46753294', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/dict', '46488677', 'For Object Id Identity in Permission');
 insert into PRJ_DATA_DICT (name, text, value, description) values ('PERMISSION_OBJECT_ID_IDENTITY', '/fss', '1501879', 'For Object Id Identity in Permission');

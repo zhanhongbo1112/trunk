@@ -45,10 +45,4 @@ public class HomeController {
     public String home() {
         return "index";
     }
-
-    @PreAuthorize("hasPermission('/projects/framework', 'com.yqboots.menu.core.MenuItem', 'READ')")
-    @RequestMapping(value = "/projects/framework")
-    public String framework() {
-        return "projects/framework/index";
-    }
 }

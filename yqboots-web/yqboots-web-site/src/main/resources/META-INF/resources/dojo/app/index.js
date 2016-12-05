@@ -1,7 +1,5 @@
-define(['baf/util/CubePortfolioCreator', 'jquery'], function (CubePortfolioCreator) {
+define([], function () {
     return {
-        startup: function () {
-            CubePortfolioCreator.startup($('#grid-container'), $('#filters-container'));
-        }
+
     };
 });
