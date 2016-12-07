@@ -11,8 +11,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.yqboots.web</groupId>
+            <artifactId>yqboots-web-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,7 +28,7 @@
 
     <profiles>
         <profile>
-            <id>test</id>
+            <id>development</id>
             <build>
                 <plugins>
                     <plugin>
