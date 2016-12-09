@@ -49,4 +49,22 @@ public class Html2PdfGenerator {
 		renderer.layout();
 		renderer.createPDF(new FileOutputStream(output.toString()));
 	}
+	
+	private void toPDF(String inputHtmls[], Path output) throws Exception {
+		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		ITextRenderer renderer = new ITextRenderer();
+
+		ITextFontResolver fontResolver = renderer.getFontResolver();
+		fontResolver.addFont("C:/Windows/Fonts/simsun.ttc", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+		fontResolver.addFont("C:/Windows/Fonts/simhei.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+		
+		renderer.createPDF(new FileOutputStream(output.toString()));
+		for(int i=1; i< inputHtmls.length; i++) {
+			Document doc = builder.parse(new ByteArrayInputStream(inputHtml[i].getBytes("UTF-8")));
+			renderer.setDocument(doc, null);
+			renderer.layout();
+			renderer.writeNextDocument();
+		}
+		renderer.finishPDF();
+	}
 }
