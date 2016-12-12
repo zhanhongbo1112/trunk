@@ -1,8 +1,26 @@
+/*
+ *
+ *  * Copyright 2015-2016 the original author or authors.
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ */
 package com.yqboots.web.thymeleaf.autoconfigure;
 
 import com.yqboots.core.html.support.HtmlOptionsResolver;
 import com.yqboots.core.html.support.HtmlOptionsSupport;
 import com.yqboots.web.thymeleaf.dialect.YQBootsDialect;
+import com.yqboots.web.thymeleaf.support.Html2PdfGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -10,7 +28,9 @@ import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
+import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +42,17 @@ import java.util.List;
  * @since 1.0.0
  */
 @Configuration
-@EnableConfigurationProperties(ThymeleafProperties.class)
+@EnableConfigurationProperties({ThymeleafProperties.class, ThymeleafExtensionProperties.class})
 @ConditionalOnClass({YQBootsDialect.class})
 public class ThymeleafAutoConfiguration {
     @Autowired
     private ThymeleafProperties properties;
+
+    @Autowired
+    private ThymeleafExtensionProperties customProperties;
+
+    @Autowired
+    private TemplateEngine templateEngine;
 
     @Autowired(required = false)
     private List<HtmlOptionsResolver> htmlOptionsResolvers = new ArrayList<>();
@@ -68,5 +94,11 @@ public class ThymeleafAutoConfiguration {
     @Bean
     public HtmlOptionsSupport htmlOptionsSupport() {
         return new HtmlOptionsSupport(htmlOptionsResolvers);
+    }
+
+    @Bean
+    @ConditionalOnClass({ITextRenderer.class})
+    public Html2PdfGenerator html2PdfGenerator() {
+        return new Html2PdfGenerator(templateEngine, customProperties.getFonts());
     }
 }

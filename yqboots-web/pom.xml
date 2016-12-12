@@ -11,6 +11,17 @@
     <artifactId>yqboots-web</artifactId>
     <packaging>pom</packaging>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.xhtmlrenderer</groupId>
+                <artifactId>flying-saucer-pdf-itext5</artifactId>
+                <version>9.1.1</version>
+                <optional>true</optional>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>yqboots-web-core</module>
         <module>yqboots-web-layout</module>
