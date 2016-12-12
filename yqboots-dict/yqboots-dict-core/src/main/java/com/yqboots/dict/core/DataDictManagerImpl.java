@@ -23,6 +23,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -37,6 +38,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Manages the Data Dictionary the project has.
@@ -84,6 +86,7 @@ public class DataDictManagerImpl implements DataDictManager {
     @Override
     public Page<DataDict> getDataDicts(final String wildcardName, final Pageable pageable) {
         final String searchStr = StringUtils.trim(StringUtils.defaultString(wildcardName));
+
         return dataDictRepository.findByNameLikeIgnoreCase(DBUtils.wildcard(searchStr), pageable);
     }
 
@@ -94,7 +97,23 @@ public class DataDictManagerImpl implements DataDictManager {
     public List<DataDict> getDataDicts(final String name) {
         Assert.hasText(name, "name is required");
 
-        return dataDictRepository.findByNameOrderByText(name);
+        return getDataDicts(name, LocaleContextHolder.getLocale());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<DataDict> getDataDicts(final String name, final Locale locale) {
+        Assert.hasText(name, "name is required");
+        Assert.notNull(locale, "locale is required");
+
+        List<DataDict> results = dataDictRepository.findByNameOrderByText(name + "_" + locale.toString());
+        if (results.isEmpty()) { // fall back to default
+            results = dataDictRepository.findByNameOrderByText(name);
+        }
+
+        return results;
     }
 
     /**
@@ -110,7 +129,7 @@ public class DataDictManagerImpl implements DataDictManager {
      */
     @Override
     public String getText(final String name, final String value, boolean valueIncluded) {
-        final List<DataDict> all = getDataDicts(name);
+        final List<DataDict> all = getDataDicts(name, LocaleContextHolder.getLocale());
 
         final DataDict item = (DataDict) CollectionUtils.find(all, o -> {
             final DataDict dict = (DataDict) o;

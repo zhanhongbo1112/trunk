@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * The Interface class for Data Dictionary.
@@ -50,10 +51,19 @@ public interface DataDictManager {
     /**
      * Gets the Data Dictionaries by name.
      *
-     * @param name       the name of one DataDict
+     * @param name the name of one DataDict
      * @return list of DataDict
      */
     List<DataDict> getDataDicts(String name);
+
+    /**
+     * Gets the Data Dictionaries by name and locale.
+     *
+     * @param name   the name of one DataDict
+     * @param locale the locale
+     * @return list of DataDict
+     */
+    List<DataDict> getDataDicts(String name, Locale locale);
 
     /**
      * Gets the displayed text. Usually used in the Thymeleaf html template file.

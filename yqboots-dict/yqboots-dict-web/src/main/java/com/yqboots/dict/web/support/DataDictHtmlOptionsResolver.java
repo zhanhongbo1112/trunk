@@ -22,6 +22,7 @@ import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -60,9 +61,9 @@ public class DataDictHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
      */
     @Override
     public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
-        List<HtmlOption> results = new ArrayList<>();
+        final List<HtmlOption> results = new ArrayList<>();
 
-        List<DataDict> dataDicts = dataDictManager.getDataDicts(name);
+        final List<DataDict> dataDicts = dataDictManager.getDataDicts(name, LocaleContextHolder.getLocale());
         dataDicts.forEach(new DataDictConsumer(results));
 
         return results;
@@ -83,7 +84,7 @@ public class DataDictHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
          */
         @Override
         public void accept(final DataDict dataDict) {
-            HtmlOption options = new HtmlOption();
+            final HtmlOption options = new HtmlOption();
             options.setText(dataDict.getText());
             options.setValue(dataDict.getValue());
             this.options.add(options);
