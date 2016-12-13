@@ -22,10 +22,7 @@ import com.yqboots.fss.core.support.FileType;
 import com.yqboots.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.menu.core.repository.MenuItemRepository;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -33,6 +30,7 @@ import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
@@ -43,7 +41,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * It Manages the MenuItem related functions.
@@ -51,12 +52,15 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
-@CacheConfig(cacheNames = {"menus"})
 @Transactional(readOnly = true)
 public class MenuItemManagerImpl implements MenuItemManager {
+    private static final String CACHE_NAME = "menus";
+
     private final MenuItemRepository menuItemRepository;
 
     private final MenuItemProperties properties;
+
+    private final ConcurrentMapCache cache = new ConcurrentMapCache(CACHE_NAME, false);
 
     /**
      * For marshalling and unmarshalling Data Dictionaries.
@@ -66,6 +70,14 @@ public class MenuItemManagerImpl implements MenuItemManager {
     static {
         jaxb2Marshaller = new Jaxb2Marshaller();
         jaxb2Marshaller.setClassesToBeBound(MenuItems.class, MenuItem.class);
+    }
+
+    @PostConstruct
+    protected void initialize() {
+        final List<MenuItem> menuItems = menuItemRepository.findAll();
+        for (final MenuItem menuItem : menuItems) {
+            cache.put(menuItem.getName(), menuItem);
+        }
     }
 
     /**
@@ -85,7 +97,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @PostFilter("hasPermission(filterObject, 'READ')")
     @Override
     public List<MenuItem> getMenuItems() {
-        return menuItemRepository.findAll();
+        final List<MenuItem> results = new ArrayList<>();
+
+        final Map<Object, Object> nativeCache = cache.getNativeCache();
+        results.addAll(nativeCache.values().stream().map(value -> (MenuItem) value).collect(Collectors.toList()));
+
+        return results;
     }
 
     /**
@@ -108,30 +125,39 @@ public class MenuItemManagerImpl implements MenuItemManager {
     /**
      * {@inheritDoc}
      */
-    @Cacheable
     @Override
     public MenuItem getMenuItem(final String name) {
-        return menuItemRepository.findByName(name);
+        MenuItem result = (MenuItem) cache.get(name);
+        if (result == null) {
+            result = menuItemRepository.findByName(name);
+        }
+
+        return result;
     }
 
     /**
      * {@inheritDoc}
      */
-    @CachePut(key = "#entity.name")
     @Override
     @Transactional
     public MenuItem update(final MenuItem entity) {
-        if (!entity.isNew()) {
-            return menuItemRepository.save(entity);
-        }
-
         Assert.hasText(entity.getName(), "name is required");
-        final MenuItem existed = menuItemRepository.findByName(entity.getName());
-        if (existed != null) {
-            throw new MenuItemExistsException("The MenuItem has already existed");
+
+        MenuItem result;
+        if (!entity.isNew()) {
+            result = menuItemRepository.save(entity);
+        } else {
+            final MenuItem existed = menuItemRepository.findByName(entity.getName());
+            if (existed != null) {
+                throw new MenuItemExistsException("The MenuItem has already existed");
+            }
+
+            result = menuItemRepository.save(entity);
         }
 
-        return menuItemRepository.save(entity);
+        cache.putIfAbsent(result.getName(), result);
+
+        return result;
     }
 
     /**
@@ -140,7 +166,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
     @Override
     @Transactional
     public void delete(final Long id) {
-        menuItemRepository.delete(id);
+        final MenuItem menuItem = menuItemRepository.findOne(id);
+        if (menuItem != null) {
+            final String name = menuItem.getName();
+            menuItemRepository.delete(menuItem);
+            cache.evict(name);
+        }
     }
 
     /**
@@ -156,14 +187,16 @@ public class MenuItemManagerImpl implements MenuItemManager {
         for (final MenuItem item : menuItems.getMenuItems()) {
             final MenuItem existOne = menuItemRepository.findByName(item.getName());
             if (existOne == null) {
-                menuItemRepository.save(item);
+                final MenuItem result = menuItemRepository.save(item);
+                cache.putIfAbsent(result.getName(), result);
                 continue;
             }
 
             existOne.setUrl(item.getUrl());
             existOne.setMenuGroup(item.getMenuGroup());
             existOne.setMenuItemGroup(item.getMenuItemGroup());
-            menuItemRepository.save(existOne);
+            final MenuItem result = menuItemRepository.save(existOne);
+            cache.putIfAbsent(result.getName(), result);
         }
     }
 
