@@ -19,7 +19,6 @@ package com.yqboots.menu.core;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PostFilter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,7 +37,6 @@ public interface MenuItemManager {
      *
      * @return list of MenuItem
      */
-    @PostFilter("hasPermission(filterObject, 'READ')")
     List<MenuItem> getMenuItems();
 
     /**
@@ -71,7 +69,7 @@ public interface MenuItemManager {
      *
      * @param entity the entity to save
      */
-    void update(MenuItem entity);
+    MenuItem update(MenuItem entity);
 
     /**
      * Deletes.

@@ -17,6 +17,7 @@
  */
 package com.yqboots.menu.autoconfigure;
 
+import com.yqboots.menu.context.MenuItemCacheInitializer;
 import com.yqboots.menu.context.MenuItemImportListener;
 import com.yqboots.menu.core.MenuItemManagerImpl;
 import com.yqboots.menu.core.MenuItemManager;
@@ -38,7 +39,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @EnableConfigurationProperties(MenuItemProperties.class)
-@Import({MenuItemImportListener.class})
+@Import({MenuItemImportListener.class, MenuItemCacheInitializer.class})
 public class MenuItemAutoConfiguration {
     @Autowired
     private MenuItemRepository menuItemRepository;

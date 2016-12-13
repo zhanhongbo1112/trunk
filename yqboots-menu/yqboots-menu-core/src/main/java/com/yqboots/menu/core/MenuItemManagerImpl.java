@@ -22,9 +22,14 @@ import com.yqboots.fss.core.support.FileType;
 import com.yqboots.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.menu.core.repository.MenuItemRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -46,6 +51,7 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
+@CacheConfig(cacheNames = {"menus"})
 @Transactional(readOnly = true)
 public class MenuItemManagerImpl implements MenuItemManager {
     private final MenuItemRepository menuItemRepository;
@@ -76,6 +82,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     /**
      * {@inheritDoc}
      */
+    @PostFilter("hasPermission(filterObject, 'READ')")
     @Override
     public List<MenuItem> getMenuItems() {
         return menuItemRepository.findAll();
@@ -101,6 +108,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
     /**
      * {@inheritDoc}
      */
+    @Cacheable
     @Override
     public MenuItem getMenuItem(final String name) {
         return menuItemRepository.findByName(name);
@@ -109,12 +117,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
     /**
      * {@inheritDoc}
      */
+    @CachePut(key = "#entity.name")
     @Override
     @Transactional
-    public void update(final MenuItem entity) {
+    public MenuItem update(final MenuItem entity) {
         if (!entity.isNew()) {
-            menuItemRepository.save(entity);
-            return;
+            return menuItemRepository.save(entity);
         }
 
         Assert.hasText(entity.getName(), "name is required");
@@ -123,7 +131,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
             throw new MenuItemExistsException("The MenuItem has already existed");
         }
 
-        menuItemRepository.save(entity);
+        return menuItemRepository.save(entity);
     }
 
     /**

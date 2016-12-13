@@ -66,7 +66,6 @@ public class MenuElementProcessor extends AbstractMarkupSubstitutionElementProce
     protected List<Node> getMarkupSubstitutes(final Arguments arguments, final Element element) {
         final List<Node> nodes = new ArrayList<>();
 
-        // TODO: cache the nodes
         final SpringWebContext context = (SpringWebContext) arguments.getContext();
         final MenuItemManager manager = context.getApplicationContext().getBean(MenuItemManager.class);
         final List<MenuItem> menuItems = manager.getMenuItems();

@@ -23,6 +23,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,6 +48,7 @@ import java.util.Locale;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
+@CacheConfig(cacheNames = {"dicts"})
 @Transactional(readOnly = true)
 public class DataDictManagerImpl implements DataDictManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(DataDictManagerImpl.class);
@@ -103,6 +106,7 @@ public class DataDictManagerImpl implements DataDictManager {
     /**
      * {@inheritDoc}
      */
+    @Cacheable
     @Override
     public List<DataDict> getDataDicts(final String name, final Locale locale) {
         Assert.hasText(name, "name is required");
