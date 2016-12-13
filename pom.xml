@@ -86,6 +86,11 @@
                 <artifactId>yqboots-security-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.yqboots.security</groupId>
+                <artifactId>yqboots-security-support</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- Web Modules -->
             <dependency>
                 <groupId>com.yqboots.dict</groupId>

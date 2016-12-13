@@ -11,10 +11,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.yqboots.core</groupId>
-            <artifactId>yqboots-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.yqboots.menu</groupId>
             <artifactId>yqboots-menu-core</artifactId>
         </dependency>
@@ -38,10 +34,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.xhtmlrenderer</groupId>
             <artifactId>flying-saucer-pdf-itext5</artifactId>
         </dependency>
@@ -49,6 +41,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

@@ -31,6 +31,10 @@
             <groupId>com.yqboots.security</groupId>
             <artifactId>yqboots-security-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yqboots.security</groupId>
+            <artifactId>yqboots-security-support</artifactId>
+        </dependency>
         <!-- Web Modules -->
         <dependency>
             <groupId>com.yqboots.dict</groupId>

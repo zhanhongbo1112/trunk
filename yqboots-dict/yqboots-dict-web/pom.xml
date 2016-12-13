@@ -15,10 +15,6 @@
             <artifactId>yqboots-dict-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.yqboots.fss</groupId>
-            <artifactId>yqboots-fss-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.yqboots.web</groupId>
             <artifactId>yqboots-web-layout</artifactId>
         </dependency>

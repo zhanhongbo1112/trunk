@@ -13,6 +13,7 @@
 
     <modules>
         <module>yqboots-security-core</module>
+        <module>yqboots-security-support</module>
         <module>yqboots-security-web</module>
     </modules>
 </project>
