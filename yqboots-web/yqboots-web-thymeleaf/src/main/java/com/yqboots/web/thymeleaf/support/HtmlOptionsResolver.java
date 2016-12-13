@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.core.html.support;
+package com.yqboots.web.thymeleaf.support;
 
-import com.yqboots.core.html.HtmlOption;
+import com.yqboots.web.thymeleaf.support.HtmlOption;
 
 import java.util.List;
 

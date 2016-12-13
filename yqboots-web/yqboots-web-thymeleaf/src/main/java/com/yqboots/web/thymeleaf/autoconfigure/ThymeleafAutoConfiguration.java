@@ -17,11 +17,12 @@
  */
 package com.yqboots.web.thymeleaf.autoconfigure;
 
-import com.yqboots.core.html.support.HtmlOptionsResolver;
-import com.yqboots.core.html.support.HtmlOptionsSupport;
 import com.yqboots.web.thymeleaf.dialect.YQBootsDialect;
 import com.yqboots.web.thymeleaf.support.Html2PdfGenerator;
+import com.yqboots.web.thymeleaf.support.HtmlOptionsResolver;
+import com.yqboots.web.thymeleaf.support.HtmlOptionsSupport;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
@@ -42,6 +43,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @Configuration
+@AutoConfigureAfter(value = {org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration.class})
 @EnableConfigurationProperties({ThymeleafProperties.class, ThymeleafExtensionProperties.class})
 @ConditionalOnClass({YQBootsDialect.class})
 public class ThymeleafAutoConfiguration {

@@ -17,9 +17,9 @@
  */
 package com.yqboots.web.thymeleaf.processor.element;
 
-import com.yqboots.core.html.HtmlOption;
-import com.yqboots.core.html.support.HtmlOptionsSupport;
-import com.yqboots.core.html.support.HtmlOptionsResolver;
+import com.yqboots.web.thymeleaf.support.HtmlOption;
+import com.yqboots.web.thymeleaf.support.HtmlOptionsSupport;
+import com.yqboots.web.thymeleaf.support.HtmlOptionsResolver;
 import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;

@@ -17,12 +17,12 @@
  */
 package com.yqboots.security.web.support;
 
-import com.yqboots.core.html.HtmlOption;
-import com.yqboots.core.html.support.AbstractHtmlOptionsResolver;
 import com.yqboots.security.core.Role;
 import com.yqboots.security.core.User;
 import com.yqboots.security.core.UserManager;
 import com.yqboots.security.web.support.consumer.RoleToHtmlOptionConsumer;
+import com.yqboots.web.thymeleaf.support.HtmlOption;
+import com.yqboots.web.thymeleaf.support.AbstractHtmlOptionsResolver;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;

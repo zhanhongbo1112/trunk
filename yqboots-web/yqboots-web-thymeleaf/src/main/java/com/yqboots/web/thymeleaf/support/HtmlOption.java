@@ -1,4 +1,4 @@
-package com.yqboots.core.html;
+package com.yqboots.web.thymeleaf.support;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

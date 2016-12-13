@@ -1,4 +1,4 @@
-package com.yqboots.core.html.support;
+package com.yqboots.web.thymeleaf.support;
 
 import java.util.ArrayList;
 import java.util.List;

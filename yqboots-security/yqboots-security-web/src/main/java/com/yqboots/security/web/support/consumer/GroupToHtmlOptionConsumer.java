@@ -17,9 +17,9 @@
  */
 package com.yqboots.security.web.support.consumer;
 
-import com.yqboots.core.html.HtmlOption;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.security.core.Group;
+import com.yqboots.web.thymeleaf.support.HtmlOption;
 
 import java.util.List;
 import java.util.function.Consumer;
