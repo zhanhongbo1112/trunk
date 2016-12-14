@@ -22,6 +22,7 @@ import com.yqboots.fss.core.support.FileType;
 import com.yqboots.menu.autoconfigure.MenuItemProperties;
 import com.yqboots.menu.core.repository.MenuItemRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +43,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -101,6 +103,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
 
         final Map<Object, Object> nativeCache = cache.getNativeCache();
         results.addAll(nativeCache.values().stream().map(value -> (MenuItem) value).collect(Collectors.toList()));
+        results.sort(new Comparator<MenuItem>() {
+            @Override
+            public int compare(final MenuItem o1, final MenuItem o2) {
+                return o1.getSequentialOrder().compareTo(o2.getSequentialOrder());
+            }
+        });
 
         return results;
     }
@@ -127,12 +135,12 @@ public class MenuItemManagerImpl implements MenuItemManager {
      */
     @Override
     public MenuItem getMenuItem(final String name) {
-        MenuItem result = (MenuItem) cache.get(name);
-        if (result == null) {
-            result = menuItemRepository.findByName(name);
+        final Cache.ValueWrapper wrapper = cache.get(name);
+        if (wrapper != null) {
+            return (MenuItem) wrapper.get();
         }
 
-        return result;
+        return menuItemRepository.findByName(name);
     }
 
     /**
@@ -155,7 +163,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
             result = menuItemRepository.save(entity);
         }
 
-        cache.putIfAbsent(result.getName(), result);
+        cache.put(result.getName(), result);
 
         return result;
     }
@@ -188,7 +196,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
             final MenuItem existOne = menuItemRepository.findByName(item.getName());
             if (existOne == null) {
                 final MenuItem result = menuItemRepository.save(item);
-                cache.putIfAbsent(result.getName(), result);
+                cache.put(result.getName(), result);
                 continue;
             }
 
@@ -196,7 +204,7 @@ public class MenuItemManagerImpl implements MenuItemManager {
             existOne.setMenuGroup(item.getMenuGroup());
             existOne.setMenuItemGroup(item.getMenuItemGroup());
             final MenuItem result = menuItemRepository.save(existOne);
-            cache.putIfAbsent(result.getName(), result);
+            cache.put(result.getName(), result);
         }
     }
 

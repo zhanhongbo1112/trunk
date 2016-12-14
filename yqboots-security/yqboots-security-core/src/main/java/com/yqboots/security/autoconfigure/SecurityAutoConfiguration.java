@@ -70,7 +70,7 @@ public class SecurityAutoConfiguration {
 
     @Bean
     public RoleHierarchy roleHierarchy() {
-        return new RoleHierarchyImpl(roleRepository);
+        return new RoleHierarchyImpl();
     }
 
     @Bean

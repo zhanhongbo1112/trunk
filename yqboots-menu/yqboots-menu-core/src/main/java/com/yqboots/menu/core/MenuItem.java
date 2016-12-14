@@ -21,10 +21,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -61,6 +59,9 @@ public class MenuItem extends AbstractPersistable<Long> {
     @Column(length = 32)
     @Length(max = 32)
     private String menuItemGroup;
+
+    @Max(value = 100)
+    private Integer sequentialOrder = 0;
 
     /**
      * Sets the id of the entity.
@@ -102,5 +103,13 @@ public class MenuItem extends AbstractPersistable<Long> {
 
     public void setMenuItemGroup(final String menuItemGroup) {
         this.menuItemGroup = menuItemGroup;
+    }
+
+    public Integer getSequentialOrder() {
+        return sequentialOrder;
+    }
+
+    public void setSequentialOrder(final Integer sequentialOrder) {
+        this.sequentialOrder = sequentialOrder;
     }
 }

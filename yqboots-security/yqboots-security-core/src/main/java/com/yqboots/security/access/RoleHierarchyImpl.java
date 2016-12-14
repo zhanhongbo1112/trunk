@@ -17,10 +17,10 @@
  */
 package com.yqboots.security.access;
 
-import com.yqboots.security.core.repository.RoleRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.util.Assert;
 
 import java.util.Collection;
@@ -35,20 +35,6 @@ import java.util.Set;
  */
 public class RoleHierarchyImpl implements RoleHierarchy {
     /**
-     * roleRepository.
-     */
-    private RoleRepository roleRepository;
-
-    /**
-     * Constructs the {@link RoleHierarchyImpl}.
-     *
-     * @param roleRepository roleRepository
-     */
-    public RoleHierarchyImpl(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -56,12 +42,12 @@ public class RoleHierarchyImpl implements RoleHierarchy {
             Collection<? extends GrantedAuthority> authorities) {
         Assert.notEmpty(authorities);
 
-        Set<String> roles = new HashSet<>();
-        for (GrantedAuthority role : authorities) {
-            roles.addAll(retrieveHierarchyRoles(role));
+        final Set<GrantedAuthority> results = new HashSet<>();
+        for (final GrantedAuthority role : authorities) {
+            results.addAll(retrieveHierarchyRoles(role));
         }
 
-        return roleRepository.findByPathIn(roles);
+        return results;
     }
 
     /**
@@ -70,8 +56,8 @@ public class RoleHierarchyImpl implements RoleHierarchy {
      * @param role the granted authority
      * @return the roles from hierarchy
      */
-    protected Collection<? extends String> retrieveHierarchyRoles(GrantedAuthority role) {
-        Set<String> results = new HashSet<>();
+    protected Collection<? extends GrantedAuthority> retrieveHierarchyRoles(GrantedAuthority role) {
+        final Set<GrantedAuthority> results = new HashSet<>();
         // /R001/R002/R003 ...
         String roleStr = role.getAuthority();
 
@@ -80,7 +66,7 @@ public class RoleHierarchyImpl implements RoleHierarchy {
         }
 
         while (StringUtils.isNotBlank(roleStr)) {
-            results.add(roleStr);
+            results.add(new SimpleGrantedAuthority(roleStr));
             if (!StringUtils.contains(roleStr, "/")) {
                 break;
             }
