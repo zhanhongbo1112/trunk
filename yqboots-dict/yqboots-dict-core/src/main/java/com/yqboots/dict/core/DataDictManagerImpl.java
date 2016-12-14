@@ -23,8 +23,8 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.Cache;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +32,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
@@ -39,8 +40,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Predicate;
 
 /**
  * Manages the Data Dictionary the project has.
@@ -48,14 +52,15 @@ import java.util.Locale;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
-@CacheConfig(cacheNames = {"dicts"})
 @Transactional(readOnly = true)
 public class DataDictManagerImpl implements DataDictManager {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DataDictManagerImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DataDictManagerImpl.class);
 
-    private DataDictRepository dataDictRepository;
+    private final DataDictRepository dataDictRepository;
 
-    private DataDictProperties properties;
+    private final DataDictProperties properties;
+
+    private final DataDictCache cache = new DefaultDataDictCache();
 
     /**
      * For marshalling and unmarshalling Data Dictionaries.
@@ -65,6 +70,14 @@ public class DataDictManagerImpl implements DataDictManager {
     static {
         jaxb2Marshaller = new Jaxb2Marshaller();
         jaxb2Marshaller.setClassesToBeBound(DataDicts.class, DataDict.class);
+    }
+
+    @PostConstruct
+    protected void initialize() {
+        final List<String> names = dataDictRepository.findAllDataDictNames();
+        for (final String name : names) {
+            cache.initialize(name, dataDictRepository.findByNameOrderByText(name));
+        }
     }
 
     /**
@@ -106,14 +119,19 @@ public class DataDictManagerImpl implements DataDictManager {
     /**
      * {@inheritDoc}
      */
-    @Cacheable
     @Override
     public List<DataDict> getDataDicts(final String name, final Locale locale) {
         Assert.hasText(name, "name is required");
         Assert.notNull(locale, "locale is required");
 
-        List<DataDict> results = dataDictRepository.findByNameOrderByText(name + "_" + locale.toString());
+        List<DataDict> results = cache.get(name, locale);
+        if (!results.isEmpty()) {
+            return results;
+        }
+
+        results = dataDictRepository.findByNameOrderByText(getCachedKey(name, locale));
         if (results.isEmpty()) { // fall back to default
+            LOG.warn("data dicts for the specified locale {} of name {} did not set", locale, name);
             results = dataDictRepository.findByNameOrderByText(name);
         }
 
@@ -141,7 +159,7 @@ public class DataDictManagerImpl implements DataDictManager {
         });
 
         if (item == null) {
-            LOGGER.warn("No data dict for {} with value [{}]", name, value);
+            LOG.warn("No data dict for {} with value [{}]", name, value);
             return value;
         }
 
@@ -153,10 +171,14 @@ public class DataDictManagerImpl implements DataDictManager {
      */
     @Override
     @Transactional
-    public void update(final DataDict entity) throws DataDictExistsException {
+    public DataDict update(final DataDict entity) throws DataDictExistsException {
+        DataDict result;
         if (!entity.isNew()) {
-            dataDictRepository.save(entity);
-            return;
+            result = dataDictRepository.save(entity);
+
+            cache.put(result);
+
+            return result;
         }
 
         Assert.hasText(entity.getName(), "name is required");
@@ -165,7 +187,9 @@ public class DataDictManagerImpl implements DataDictManager {
             throw new DataDictExistsException("The DataDict has already existed");
         }
 
-        dataDictRepository.save(entity);
+        result = dataDictRepository.save(entity);
+        cache.put(result);
+        return result;
     }
 
     /**
@@ -174,8 +198,10 @@ public class DataDictManagerImpl implements DataDictManager {
     @Override
     @Transactional
     public void delete(final Long id) {
-        if (dataDictRepository.exists(id)) {
-            this.dataDictRepository.delete(id);
+        DataDict dict = dataDictRepository.findOne(id);
+        if (dict != null) {
+            dataDictRepository.delete(dict);
+            cache.evict(dict);
         }
     }
 
@@ -191,17 +217,20 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         for (final DataDict dict : dataDicts.getDataDicts()) {
-            LOGGER.debug("importing data dict with name \"{}\", text \"{}\" and value \"{}\"",
+            LOG.debug("importing data dict with name \"{}\", text \"{}\" and value \"{}\"",
                     dict.getName(), dict.getText(), dict.getValue());
             final DataDict existOne = dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
             if (existOne == null) {
-                dataDictRepository.save(dict);
+                DataDict result = dataDictRepository.save(dict);
+                cache.put(result);
                 continue;
             }
 
             existOne.setText(dict.getText());
             existOne.setDescription(dict.getDescription());
-            dataDictRepository.save(existOne);
+            final DataDict result = dataDictRepository.save(existOne);
+
+            cache.put(result);
         }
     }
 
@@ -224,5 +253,125 @@ public class DataDictManagerImpl implements DataDictManager {
         }
 
         return result;
+    }
+
+
+    /**
+     * Gets the cached key.
+     * @param name name
+     * @param locale locale
+     * @return the caching key
+     */
+    private static String getCachedKey(final String name, final Locale locale) {
+        return name + "_" + locale.toString();
+    }
+
+    private static interface DataDictCache {
+        /**
+         * Initialize the cache.
+         * @param key the caching key
+         * @param dataDicts list of data dict for the key
+         */
+        void initialize(String key, List<DataDict> dataDicts);
+
+        /**
+         * Puts to the cache.
+         * @param dataDict data dict
+         */
+        void put(DataDict dataDict);
+
+        /**
+         * Evicts from the cache.
+         * @param dataDict data dict
+         */
+        void evict(DataDict dataDict);
+
+        /**
+         * Gets from cache.
+         * @param name actual name
+         * @param locale locale
+         * @return list of data dict
+         */
+        List<DataDict> get(String name, Locale locale);
+    }
+
+    @SuppressWarnings({"unchecked"})
+    private static class DefaultDataDictCache implements DataDictCache {
+        private static final String CACHE_NAME = "dicts";
+
+        private final ConcurrentMapCache cache = new ConcurrentMapCache(CACHE_NAME, false);
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void initialize(final String key, final List<DataDict> dicts) {
+            cache.put(key, dicts);
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void put(final DataDict entity) {
+            final Cache.ValueWrapper wrapper = cache.get(entity.getName());
+            if (wrapper == null) {
+                final List<DataDict> dicts = new ArrayList<>();
+                dicts.add(entity);
+                cache.put(entity.getName(), dicts);
+            } else {
+                final List<DataDict> dicts = (List<DataDict>) wrapper.get();
+                dicts.removeIf(new DataDictEqualsPredicate(entity));
+                dicts.add(entity);
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void evict(final DataDict entity) {
+            final Cache.ValueWrapper wrapper = cache.get(entity.getName());
+            if (wrapper != null) {
+                final List<DataDict> dicts = (List<DataDict>) wrapper.get();
+                dicts.removeIf(new DataDictEqualsPredicate(entity));
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public List<DataDict> get(final String name, final Locale locale) {
+            List<DataDict> results = new ArrayList<>();
+
+            Cache.ValueWrapper wrapper = cache.get(getCachedKey(name, locale));
+            if (wrapper != null) {
+                results = (List<DataDict>) wrapper.get();
+            } else {// fall back to name
+                wrapper = cache.get(name);
+                if (wrapper != null) {
+                    results = (List<DataDict>) wrapper.get();
+                }
+            }
+
+            return results;
+        }
+    }
+
+    private static class DataDictEqualsPredicate implements Predicate<DataDict> {
+        private final DataDict dataDict;
+
+        public DataDictEqualsPredicate(final DataDict dataDict) {
+            this.dataDict = dataDict;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean test(final DataDict dict) {
+            return Objects.equals(dataDict.getId(), dict.getId());
+        }
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -37,6 +38,14 @@ public interface DataDictRepository extends JpaRepository<DataDict, Long>, JpaSp
      * @return list of DataDict
      */
     List<DataDict> findByNameOrderByText(String name);
+
+    /**
+     * Finds all names of dictionary.
+     *
+     * @return different names of dictionary
+     */
+    @Query("select distinct name from #{#entityName}")
+    List<String> findAllDataDictNames();
 
     /**
      * Finds by name and value.

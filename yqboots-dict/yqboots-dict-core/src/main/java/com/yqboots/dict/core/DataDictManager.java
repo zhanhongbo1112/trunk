@@ -90,7 +90,7 @@ public interface DataDictManager {
      * @param dict the DataDict
      * @throws DataDictExistsException if the dict exists
      */
-    void update(DataDict dict) throws DataDictExistsException;
+    DataDict update(DataDict dict) throws DataDictExistsException;
 
     /**
      * Deletes.
