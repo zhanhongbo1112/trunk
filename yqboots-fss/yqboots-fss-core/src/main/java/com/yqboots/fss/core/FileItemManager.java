@@ -53,4 +53,11 @@ public interface FileItemManager {
      * @return the full path
      */
     Path getFullPath(String relativePath);
+
+    /**
+     * Gets the root path.
+     *
+     * @return the root path
+     */
+    Path getRootPath();
 }

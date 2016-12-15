@@ -85,4 +85,12 @@ public class FileItemManagerImpl implements FileItemManager {
     public Path getFullPath(final String relativePath) {
         return Paths.get(this.root + relativePath);
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Path getRootPath() {
+        return this.root;
+    }
 }

@@ -15,15 +15,13 @@
  */
 package com.yqboots.web.thymeleaf.support;
 
-import java.util.List;
-
 /**
  * Resolve html options from other entities or objects.
  *
  * @author Eric H B Zhan
- * @since 1.1.0
+ * @since 1.1.1
  */
-public interface HtmlOptionsResolver {
+public interface HtmlTreeResolver {
     /**
      * Checks if the resolver supports the name key.
      *
@@ -33,11 +31,11 @@ public interface HtmlOptionsResolver {
     boolean supports(String name);
 
     /**
-     * Gets {@link HtmlOption}s.
+     * Gets {@link com.yqboots.web.thymeleaf.support.HtmlTree}s.
      *
      * @param name       name
      * @param attributes attributes
-     * @return list of HtmlOption
+     * @return HtmlTree
      */
-    List<HtmlOption> getHtmlOptions(String name, String... attributes);
+    HtmlTree getHtmlTree(String name, String... attributes);
 }

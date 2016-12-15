@@ -1,6 +1,7 @@
-define(['dojo/_base/lang'], function (lang) {
+define(['dojo/_base/lang', 'jquery/jstree/jstree'], function (lang) {
     return {
         startup: function () {
+            $('#tree').jstree();
             $('#file').change(lang.hitch(this, '_onChangeFile'));
         },
 

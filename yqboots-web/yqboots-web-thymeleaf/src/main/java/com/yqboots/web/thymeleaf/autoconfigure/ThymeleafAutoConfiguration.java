@@ -20,7 +20,8 @@ package com.yqboots.web.thymeleaf.autoconfigure;
 import com.yqboots.web.thymeleaf.dialect.YQBootsDialect;
 import com.yqboots.web.thymeleaf.support.Html2PdfGenerator;
 import com.yqboots.web.thymeleaf.support.HtmlOptionsResolver;
-import com.yqboots.web.thymeleaf.support.HtmlOptionsSupport;
+import com.yqboots.web.thymeleaf.support.HtmlElementResolvers;
+import com.yqboots.web.thymeleaf.support.HtmlTreeResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -59,6 +60,9 @@ public class ThymeleafAutoConfiguration {
     @Autowired(required = false)
     private List<HtmlOptionsResolver> htmlOptionsResolvers = new ArrayList<>();
 
+    @Autowired(required = false)
+    private List<HtmlTreeResolver> htmlTreeResolvers = new ArrayList<>();
+
     /**
      * Defines the custom Dialect for the framework.
      *
@@ -94,8 +98,11 @@ public class ThymeleafAutoConfiguration {
     }
 
     @Bean
-    public HtmlOptionsSupport htmlOptionsSupport() {
-        return new HtmlOptionsSupport(htmlOptionsResolvers);
+    public HtmlElementResolvers htmlElementResolvers() {
+        HtmlElementResolvers bean = new HtmlElementResolvers();
+        bean.setHtmlOptionsResolvers(htmlOptionsResolvers);
+        bean.setHtmlTreeResolvers(htmlTreeResolvers);
+        return bean;
     }
 
     @Bean

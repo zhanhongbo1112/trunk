@@ -32,7 +32,7 @@ public abstract class AbstractHtmlOptionsResolver implements HtmlOptionsResolver
     /**
      * Constructs {@link AbstractHtmlOptionsResolver}
      */
-    public AbstractHtmlOptionsResolver() {
+    protected AbstractHtmlOptionsResolver() {
         super();
     }
 

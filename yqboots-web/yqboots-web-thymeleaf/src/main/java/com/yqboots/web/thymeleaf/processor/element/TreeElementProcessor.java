@@ -17,9 +17,11 @@
  */
 package com.yqboots.web.thymeleaf.processor.element;
 
-import com.yqboots.web.thymeleaf.support.HtmlOption;
 import com.yqboots.web.thymeleaf.support.HtmlElementResolvers;
-import com.yqboots.web.thymeleaf.support.HtmlOptionsResolver;
+import com.yqboots.web.thymeleaf.support.HtmlTree;
+import com.yqboots.web.thymeleaf.support.HtmlTreeNode;
+import com.yqboots.web.thymeleaf.support.HtmlTreeResolver;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.Configuration;
@@ -36,18 +38,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The element processor which processes the list of DataDict by the name.
+ * The element processor which generates tree view.
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.1.1
  */
-public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
+public class TreeElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
     public static final String ATTR_NAME = "name";
-    public static final String ATTR_VALUE_INCLUDED = "valueIncluded";
     public static final String ATTR_ATTRIBUTES = "attributes";
 
-    public OptionsElementProcessor() {
-        super("options");
+    public TreeElementProcessor() {
+        super("tree");
     }
 
     /**
@@ -57,16 +58,16 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
     protected List<Node> getMarkupSubstitutes(final Arguments arguments, final Element element) {
         final List<Node> nodes = new ArrayList<>();
 
+        // Obtain the attribute value
         final SpringWebContext context = (SpringWebContext) arguments.getContext();
         @SuppressWarnings({"uncheck"})
         final HtmlElementResolvers htmlElementResolvers = context.getApplicationContext().getBean(HtmlElementResolvers.class);
 
+        // Parse the attribute value as a Thymeleaf Standard Expression
         final String nameAttrValue = element.getAttributeValue(ATTR_NAME);
         if (StringUtils.isBlank(nameAttrValue)) {
             throw new IllegalArgumentException("name attribute should be set");
         }
-
-        final boolean valueIncluded = Boolean.valueOf(element.getAttributeValue(ATTR_VALUE_INCLUDED));
 
         final Configuration configuration = arguments.getConfiguration();
         // Obtain the Thymeleaf Standard Expression parser
@@ -77,38 +78,60 @@ public class OptionsElementProcessor extends AbstractMarkupSubstitutionElementPr
             attributes = (String) expression.execute(configuration, arguments);
         }
 
-        Element option;
-
-        List<HtmlOption> items = null;
-        for (final HtmlOptionsResolver resolver : htmlElementResolvers.getHtmlOptionsResolvers()) {
-            if (resolver.supports(nameAttrValue)) {
-                items = resolver.getHtmlOptions(nameAttrValue, attributes);
+        HtmlTree tree = null;
+        for (HtmlTreeResolver htmlTreeResolver : htmlElementResolvers.getHtmlTreeResolvers()) {
+            if (htmlTreeResolver.supports(nameAttrValue)) {
+                tree = htmlTreeResolver.getHtmlTree(nameAttrValue, attributes);
                 break;
             }
         }
 
-        if (items != null) {
-            for (HtmlOption item : items) {
-                option = new Element("option");
-                option.setAttribute("value", item.getValue());
-                if (valueIncluded) {
-                    option.addChild(new Text(StringUtils.join(new String[]{item.getValue(), item.getText()}, " - ")));
-                } else {
-                    option.addChild(new Text(item.getText()));
-                }
+        if (tree != null && CollectionUtils.isNotEmpty(tree.getNodes())) {
+            final Element root = new Element("ul");
 
-                nodes.add(option);
-            }
+            final Element li = new Element("li");
+            li.setAttribute("id", tree.getId());
+            li.addChild(new Text(tree.getText()));
+            li.addChild(buildTree(tree));
+
+            root.addChild(li);
+
+            nodes.add(root);
         }
 
         return nodes;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    private Element buildTree(final HtmlTree tree) {
+        final Element container = new Element("ul");
+
+        for (HtmlTreeNode node : tree.getNodes()) {
+            container.addChild(buildTreeNode(node));
+        }
+
+        return container;
+    }
+
+    private Element buildTreeNode(final HtmlTreeNode node) {
+        final Element li = new Element("li");
+        li.setAttribute("id", node.getId());
+        li.addChild(new Text(node.getText()));
+
+        if (!node.isLeaf() || CollectionUtils.isNotEmpty(node.getChildren())) {
+            final Element subNode = new Element("ul");
+
+            for (HtmlTreeNode child : node.getChildren()) {
+                subNode.addChild(buildTreeNode(child));
+            }
+
+            li.addChild(subNode);
+        }
+
+        return li;
+    }
+
     @Override
     public int getPrecedence() {
-        return 1000 + 10;
+        return 2000;
     }
 }
