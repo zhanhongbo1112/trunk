@@ -1,13 +1,19 @@
 define(['dojo/_base/lang', 'jquery/jstree/jstree'], function (lang) {
     return {
         startup: function () {
-            $('#tree').jstree();
-            $('#file').change(lang.hitch(this, '_onChangeFile'));
-        },
+            $('#tree').on('loaded.jstree', function(e) {
+                $(this).show();
+                $('#treeLoading').hide();
+            }).on('changed.jstree', function (e, data) {
+                $('#criterion').val(data.selected[0]);
+                $('#searchBtn').click();
+            }).jstree();
 
-        _onChangeFile : function(e) {
-            var inputFile = $(e.target);
-            inputFile.parent().next().val(inputFile.val());
+            $('#homeBtn').on('click', function(e) {
+                e.preventDefault();
+                $('#criterion').val('/');
+                $('#searchBtn').click();
+            })
         }
     };
 });

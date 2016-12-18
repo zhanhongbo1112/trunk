@@ -19,6 +19,7 @@ import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
 import com.yqboots.dict.core.DataDictManager;
 import com.yqboots.dict.web.access.DataDictPermissions;
+import com.yqboots.dict.web.form.DataDictSearchForm;
 import com.yqboots.dict.web.form.FileUploadForm;
 import com.yqboots.dict.web.form.FileUploadFormValidator;
 import com.yqboots.web.form.SearchForm;
@@ -63,8 +64,10 @@ public class DataDictController extends AbstractController {
     private DataDictManager dataDictManager;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
-    protected SearchForm<String> searchForm() {
-        return new SearchForm<>();
+    protected SearchForm<DataDictSearchForm> searchForm() {
+        SearchForm<DataDictSearchForm> result = new SearchForm<>();
+        result.setCriterion(new DataDictSearchForm());
+        return result;
     }
 
     @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
@@ -74,10 +77,17 @@ public class DataDictController extends AbstractController {
 
     @PreAuthorize(DataDictPermissions.READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
+    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<DataDictSearchForm> searchForm,
                        @PageableDefault(sort = {"name", "text", "value"}) final Pageable pageable,
                        final ModelMap model) {
-        model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(searchForm.getCriterion(), pageable));
+        final DataDictSearchForm _searchForm = searchForm.getCriterion();
+
+        String criterion = _searchForm.getName();
+        if (StringUtils.isNotBlank(_searchForm.getLocale())) {
+            criterion = _searchForm.getName() + "_" + _searchForm.getLocale();
+        }
+
+        model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(criterion, pageable));
         return VIEW_HOME;
     }
 

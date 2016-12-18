@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -65,7 +66,7 @@ public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {
         final HtmlTree result = new HtmlTree();
 
         final Path root = fileItemManager.getRootPath();
-        result.setId(root.toString());
+        result.setId("/");
         result.setText(root.getFileName().toString());
         result.setNodes(getHtmlTreeNodes(root));
 
@@ -75,7 +76,7 @@ public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {
     private static List<HtmlTreeNode> getHtmlTreeNodes(final Path path) {
         final List<HtmlTreeNode> results = new ArrayList<>();
         try {
-            Files.list(path).filter(new DirectoryPredicate()).forEach(new DirectoryConsumer(results));
+            Files.list(path).filter(new DirectoryPredicate()).forEach(new DirectoryConsumer(results, path));
         } catch (IOException e) {
             LOG.error(e.getMessage(), e);
         }
@@ -85,15 +86,19 @@ public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {
 
     private static class DirectoryConsumer implements Consumer<Path> {
         private final List<HtmlTreeNode> nodes;
+        private final Path root;
 
-        public DirectoryConsumer(final List<HtmlTreeNode> nodes) {
+        public DirectoryConsumer(final List<HtmlTreeNode> nodes, final Path root) {
             this.nodes = nodes;
+            this.root = root;
         }
 
         @Override
         public void accept(final Path path) {
             final HtmlTreeNode node = new HtmlTreeNode();
-            node.setId(path.toString());
+
+            final String subStr = StringUtils.substringAfter(path.toString(), root.toString());
+            node.setId(StringUtils.replace(subStr, "\\", "/"));
             node.setText(path.getFileName().toString());
             node.setChildren(getHtmlTreeNodes(path));
             nodes.add(node);

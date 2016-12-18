@@ -27,13 +27,13 @@
       <div class="tab-content">
         <div class="tab-pane fade in active" id="list">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
               <form action="#" th:action="@{/menu}" th:object="${searchForm}" method="post">
                 <div class="input-group">
                   <input class="form-control" th:field="*{criterion}" type="text" th:placeholder="#{T0007}"/>
                   <span class="input-group-btn">
                       <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
-                      <button class="btn-u dropdown-toggle" type="button" th:title="#{T0011}"
+                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{T0011}"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-angle-down"></i>
                       </button>
@@ -53,7 +53,6 @@
                 </div>
               </form>
             </div>
-            <div class="col-md-8"></div>
           </div>
           <div class="divider divider-blank"></div>
           <div class="panel">

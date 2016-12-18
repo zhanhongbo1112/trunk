@@ -17,6 +17,7 @@
  */
 package com.yqboots.fss.web.controller;
 
+import com.yqboots.dict.core.DataDict;
 import com.yqboots.fss.core.FileItem;
 import com.yqboots.fss.core.FileItemManager;
 import com.yqboots.fss.web.access.FileItemPermissions;
@@ -62,6 +63,7 @@ import java.util.ArrayList;
 public class FileItemController extends AbstractController {
     private static final String REDIRECT_VIEW_PATH = "redirect:/fss";
     private static final String VIEW_HOME = "fss/index";
+    private static final String VIEW_FORM = "fss/form";
 
     @Autowired
     private FileItemManager fileItemManager;
@@ -71,7 +73,7 @@ public class FileItemController extends AbstractController {
         return new SearchForm<>();
     }
 
-    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
+    @ModelAttribute(WebKeys.MODEL)
     protected FileUploadForm fileUploadForm() {
         return new FileUploadForm();
     }
@@ -91,20 +93,27 @@ public class FileItemController extends AbstractController {
     }
 
     @PreAuthorize(FileItemPermissions.WRITE)
-    @RequestMapping(value = WebKeys.MAPPING_UPLOAD, method = RequestMethod.POST)
-    public String upload(@Valid @ModelAttribute(WebKeys.FILE_UPLOAD_FORM) final FileUploadForm fileUploadForm,
+    @RequestMapping(params = {WebKeys.ACTION_NEW}, method = RequestMethod.GET)
+    public String preAdd(final ModelMap model) {
+        model.addAttribute(WebKeys.MODEL, new FileUploadForm());
+        return VIEW_FORM;
+    }
+
+    @PreAuthorize(FileItemPermissions.WRITE)
+    @RequestMapping(value = WebKeys.MAPPING_ROOT, method = RequestMethod.POST)
+    public String update(@Valid @ModelAttribute(WebKeys.MODEL) final FileUploadForm form,
                          @PageableDefault final Pageable pageable,
                          final BindingResult bindingResult,
                          final ModelMap model) throws IOException {
-        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
+        new FileUploadFormValidator().validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
-        final MultipartFile file = fileUploadForm.getFile();
-        final String path = fileUploadForm.getPath();
-        final boolean overrideExisting = fileUploadForm.isOverrideExisting();
+        final MultipartFile file = form.getFile();
+        final String path = form.getPath();
+        final boolean overrideExisting = form.isOverrideExisting();
 
         final Path destination = Paths.get(fileItemManager.getFullPath(path) + File.separator + file.getOriginalFilename());
         if (Files.exists(destination) && overrideExisting) {

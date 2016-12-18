@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
+<head>
+  <title th:text="#{T0050}">File Management</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <yq:breadcrumbs menu="FSS"/>
+</div>
+<div class="content content-sm height-600" layout:fragment="content">
+  <div class="container">
+    <yq:alert level="danger" />
+    <form class="sky-form" action="#" th:action="@{/fss/}" th:object="${model}" method="post"
+          enctype="multipart/form-data">
+      <header th:text="#{T0034}">FSS Form</header>
+      <fieldset>
+        <section>
+          <label class="label" th:text="#{T0038}">Input a File</label>
+          <label class="input input-file">
+            <div class="button">
+              <input th:field="*{file}" type="file"/>
+              <span th:text="#{T0039}">Browse</span>
+            </div>
+            <input type="text" readonly="readonly"/>
+          </label>
+
+          <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
+        </section>
+        <section>
+          <label class="label" th:text="#{T0035}">Destination</label>
+          <label class="select">
+            <select th:field="*{path}">
+              <option value="" th:text="#{T0040}">Please Select</option>
+              <yq:options name="FSS_AVAILABLE_DIRS"/>
+            </select>
+            <i></i>
+          </label>
+
+          <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
+        </section>
+        <section>
+          <label class="label" th:text="#{T0036}">Override</label>
+          <input th:field="*{overrideExisting}" type="checkbox"/>
+          <label th:for="${#ids.prev('overrideExisting')}" th:text="#{T0037}">Override Existing?</label>
+        </section>
+      </fieldset>
+      <footer>
+        <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
+        <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+      </footer>
+    </form>
+  </div>
+</div>
+</body>
+</html>
