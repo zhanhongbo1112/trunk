@@ -83,6 +83,12 @@ i.icon-bg-u {
     background: #a10f2b;
 }
 
+/*Progress Bar
+------------------------------------*/
+.progress-bar-u {
+    background: #a10f2b;
+}
+
 /* Pagination
 ------------------------------------*/
 .pagination li a:hover {

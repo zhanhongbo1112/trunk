@@ -54,6 +54,7 @@ public class YQBootsDialect extends AbstractDialect {
         processors.add(new AlertElementProcessor());
         processors.add(new DataDictTextAttrProcessor());
         processors.add(new TreeElementProcessor());
+        processors.add(new ProgressElementProcessor());
         return processors;
     }
 }

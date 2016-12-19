@@ -1102,3 +1102,98 @@ h3.heading-xs {
 .panel .table {
     margin-bottom: 0;
 }
+
+/*Progress Bar
+------------------------------------*/
+.progress {
+    border-radius: 0;
+}
+
+.progress-u {
+    box-shadow: none;
+}
+
+.progress-u .progress-bar {
+    box-shadow: none;
+}
+
+/*Progress Bar
+------------------------------------*/
+.progress {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.progress-u {
+    box-shadow: none;
+}
+
+.progress-u .progress-bar {
+    box-shadow: none;
+}
+
+/*progress-bar (sizes)*/
+.progress-lg {
+    height: 25px;
+}
+
+.progress-lg p {
+    padding-top: 3px;
+}
+
+.progress-sm {
+    height: 12px;
+}
+
+.progress-xs {
+    height: 7px;
+}
+
+.progress-xxs {
+    height: 3px;
+}
+
+/*progress-bar (colors)*/
+.progress {
+    background: #e5e5e5;
+}
+
+/*Progress Bar Animation
+------------------------------------*/
+.progress {
+    position: relative;
+}
+
+.progress .progress-bar {
+    overflow: hidden;
+    line-height: 20px;
+}
+
+.progress-box .progress-bar {
+    transition: all 3s ease-in;
+}
+
+/*Vertical Progress Bar*/
+.progress.vertical {
+    float: left;
+    width: 100%;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.progress.vertical.bottom {
+    position: relative;
+}
+
+.progress.vertical .progress-bar {
+    height: 0;
+    width: 100%;
+    transition: height 3s ease;
+}
+
+.progress.vertical.bottom .progress-bar {
+    bottom: 0;
+    position: absolute;
+}
+
+
