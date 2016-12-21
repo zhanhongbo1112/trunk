@@ -85,6 +85,12 @@
 
 /*Tabs
 ------------------------------------*/
+.nav-tabs > li > a,
+.nav-pills > li > a,
+.nav-tabs.nav-justified > li > a {
+    border-radius: 0;
+}
+
 .tab .nav-tabs {
     border: none;
     background: none;

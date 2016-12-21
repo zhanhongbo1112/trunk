@@ -118,6 +118,11 @@ i.icon-bg-u {
     background: #e67e22;
 }
 
+.tab .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background: #e67e22;
+}
+
+
 /* Sidebar Menu
 ------------------------------------*/
 .sidebar-nav ul li:hover a,
