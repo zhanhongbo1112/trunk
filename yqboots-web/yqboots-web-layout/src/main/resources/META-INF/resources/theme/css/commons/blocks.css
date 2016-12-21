@@ -123,6 +123,99 @@
     margin-top: 7px;
 }
 
+/* Sidebar List Toggle
+------------------------------------*/
+.list-group-item:first-child,
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-toggle:after {
+    top: 7px;
+    right: 10px;
+    color: #777;
+    font-size: 14px;
+    content: "\f105";
+    position: absolute;
+    font-weight: normal;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+
+.list-toggle.active:after {
+    color: #fff;
+    content: "\f107";
+}
+
+/* Sidebar Menu
+------------------------------------*/
+.sidebar-nav li {
+    padding: 0;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 8px 30px 8px 10px;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+}
+
+.sidebar-nav > li.active,
+.sidebar-nav > li.active:hover {
+    background: #717984;
+}
+
+.sidebar-nav > li.active,
+.sidebar-nav > li.active:hover,
+.sidebar-nav > li.active:focus {
+    border-color: #ddd;
+}
+
+.sidebar-nav > li.active > a {
+    color: #fff;
+}
+
+/*Sidebar Sub Navigation*/
+.sidebar-nav li ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li ul,
+.sidebar-nav li.active ul a {
+    background: #f8f8f8;
+}
+
+.sidebar-nav li ul a {
+    color: #555;
+    font-size: 12px;
+    border-top: solid 1px #ddd;
+    padding: 6px 30px 6px 17px;
+}
+
+/*Sidebar Badges*/
+.list-group-item li > .badge {
+    float: right;
+}
+
+.sidebar-nav span.badge {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+.sidebar-nav .list-toggle > span.badge {
+    margin-right: 25px;
+}
+
+.sidebar-nav ul li span.badge {
+    margin-top: 8px;
+    font-size: 11px;
+    padding: 3px 5px;
+    margin-right: 10px;
+}
+
 /*--------------------------------------------------
 	Tree
 ----------------------------------------------------*/

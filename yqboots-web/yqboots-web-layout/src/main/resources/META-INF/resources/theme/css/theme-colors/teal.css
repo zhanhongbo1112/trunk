@@ -118,6 +118,17 @@ i.icon-bg-u {
     background: #18ba9b;
 }
 
+/* Sidebar Menu
+------------------------------------*/
+.sidebar-nav ul li:hover a,
+.sidebar-nav ul li.active a {
+    color: #18ba9b;
+}
+
+body.dark .sidebar-nav > li.active > a:hover {
+    color: #18ba9b
+}
+
 /* Sky Form
 ------------------------------------*/
 .sky-form .button {

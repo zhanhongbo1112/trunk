@@ -18,7 +18,7 @@ body.dark .wrapper p {
     color: #999;
 }
 
-body.dark p, body.dark li, body.dark li a {
+body.dark p, body.dark li {
     color: #999;
 }
 
@@ -182,6 +182,33 @@ body.dark .list-toggle a:focus {
 
 body.dark .list-toggle:after {
     color: #999;
+}
+
+/* Sidebar Menu
+------------------------------------*/
+body.dark .sidebar-nav > li.active > a {
+    color: #ccc;
+    background: #292929;
+}
+
+body.dark .sidebar-nav > li.active,
+body.dark .sidebar-nav > li.active:hover {
+    background: #202020;
+}
+
+body.dark .sidebar-nav li ul,
+body.dark .sidebar-nav li.active ul a {
+    color: #999;
+    background: #222;
+}
+
+body.dark .sidebar-nav li ul a {
+    border-top-color: #303030;
+}
+
+body.dark .sidebar-nav li ul a:hover,
+body.dark .sidebar-nav ul li.active a {
+    color: #ccc;
 }
 
 /*Bootstrap Features
