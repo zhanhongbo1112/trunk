@@ -8,6 +8,7 @@ public class DBUtilsTest {
         System.out.println("/".hashCode());
         System.out.println("/projects/framework".hashCode());
         System.out.println("/projects/initializer".hashCode());
+        System.out.println("/projects/actuator".hashCode());
         System.out.println("/menu".hashCode());
         System.out.println("/dict".hashCode());
         System.out.println("/fss".hashCode());
