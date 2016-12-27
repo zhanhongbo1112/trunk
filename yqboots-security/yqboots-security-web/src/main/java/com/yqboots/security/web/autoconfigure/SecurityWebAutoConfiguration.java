@@ -32,6 +32,7 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * The web security configuration.
@@ -57,6 +58,7 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and().anonymous().authorities("/USER")
                 .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")
+                .and().httpBasic().realmName("YQBoots")
                 .and().rememberMe().userDetailsService(userDetailsService)
                 .and().sessionManagement().maximumSessions(3).expiredUrl("/security/login").sessionRegistry(sessionRegistry())
                 .and().sessionFixation().migrateSession().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
@@ -68,7 +70,7 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider);
+        auth.eraseCredentials(true).authenticationProvider(authenticationProvider);
     }
 
     @Bean
