@@ -32,7 +32,6 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * The web security configuration.
