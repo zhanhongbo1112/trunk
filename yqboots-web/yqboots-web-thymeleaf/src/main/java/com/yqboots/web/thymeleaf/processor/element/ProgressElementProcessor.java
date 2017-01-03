@@ -35,7 +35,7 @@ import java.util.List;
  * Progress Bar.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public class ProgressElementProcessor extends AbstractMarkupSubstitutionElementProcessor {
     public static final String ATTR_VALUE = "value";

@@ -39,7 +39,7 @@ import java.util.function.Consumer;
  * Resolves the available directories in the system, which apply permission controls.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 @Component
 public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {

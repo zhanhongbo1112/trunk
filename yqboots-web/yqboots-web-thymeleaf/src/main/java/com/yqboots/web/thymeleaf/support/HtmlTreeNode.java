@@ -24,7 +24,7 @@ import java.util.List;
  * Tree node in the {@link HtmlTree}.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public class HtmlTreeNode implements Serializable {
     private String id;

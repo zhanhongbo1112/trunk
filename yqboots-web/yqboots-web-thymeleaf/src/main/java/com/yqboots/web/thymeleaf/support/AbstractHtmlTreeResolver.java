@@ -23,7 +23,7 @@ import org.apache.commons.lang3.StringUtils;
  * The default implementation that resolves html tree by name.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public abstract class AbstractHtmlTreeResolver implements HtmlTreeResolver {
     /**

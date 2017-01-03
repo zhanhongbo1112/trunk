@@ -19,7 +19,7 @@ package com.yqboots.web.thymeleaf.support;
  * Resolve html options from other entities or objects.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public interface HtmlTreeResolver {
     /**

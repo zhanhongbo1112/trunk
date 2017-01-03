@@ -25,7 +25,7 @@ import java.util.function.Predicate;
  * Predicates the {@link Path} is a directory.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public class DirectoryPredicate implements Predicate<Path> {
     /**

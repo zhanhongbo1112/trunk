@@ -44,7 +44,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
  * TODO: chinese fonts can not be displayed.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public class Html2PdfGenerator {
     private static final Logger LOG = LoggerFactory.getLogger(Html2PdfGenerator.class);

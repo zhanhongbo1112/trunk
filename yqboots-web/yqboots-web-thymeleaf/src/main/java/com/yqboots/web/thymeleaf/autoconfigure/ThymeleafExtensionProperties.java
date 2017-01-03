@@ -23,7 +23,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Custom Thymeleaf properties.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 @ConfigurationProperties("yqboots.thymeleaf")
 public class ThymeleafExtensionProperties {

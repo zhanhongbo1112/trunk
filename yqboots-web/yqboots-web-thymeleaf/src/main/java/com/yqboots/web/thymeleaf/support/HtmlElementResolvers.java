@@ -24,7 +24,7 @@ import java.util.List;
  * The container for all registered {@link HtmlOptionsResolver}.
  *
  * @author Eric H B Zhan
- * @since 1.1.1
+ * @since 1.2.0
  */
 public class HtmlElementResolvers {
     private List<HtmlOptionsResolver> htmlOptionsResolvers = new ArrayList<>();
