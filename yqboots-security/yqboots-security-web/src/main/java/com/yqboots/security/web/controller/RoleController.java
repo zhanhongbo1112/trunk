@@ -121,10 +121,10 @@ public class RoleController extends AbstractController {
             roleManager.updateGroups(domain.getPath(), domain.getGroups());
         } catch (RoleNotFoundException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0011");
+            bindingResult.reject("SECI006");
         } catch (RoleExistsException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0008");
+            bindingResult.reject("SECI003");
         }
 
         if (bindingResult.hasErrors()) {

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0050}">File Management</title>
+  <title th:text="#{FSS0001}">File Management</title>
   <link rel="stylesheet" th:href="@{/dojo/jquery/jstree/css/jstree.css}"/>
 </head>
 <body>
@@ -14,10 +14,10 @@
     <div class="col-md-3 md-margin-bottom-40">
       <div class="panel panel-u">
         <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-folder"></i> All Files</h3>
+          <h3 class="panel-title"><i class="fa fa-folder"></i> <span th:text="#{FSS0002}">All Files</span></h3>
         </div>
         <div class="panel-body">
-          <div id="treeLoading" th:text="#{T0100}">Loading...</div>
+          <div id="treeLoading" th:text="#{FSS0003}">Loading...</div>
           <div id="tree" class="tree dp-none">
             <yq:tree name="FSS_AVAILABLE_DIRS"/>
           </div>
@@ -36,14 +36,14 @@
               <input id="criterion" class="form-control" th:field="*{criterion}"/>
               <span class="input-group-btn">
                 <button id="searchBtn" class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{T0011}"
+                <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{FSS0004}"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a th:href="@{/fss(action='new')}" th:title="#{T0034}">
-                      <i class="glyphicon glyphicon-upload"></i> <span th:text="#{T0034}">Upload</span>
+                    <a th:href="@{/fss(action='new')}">
+                      <i class="glyphicon glyphicon-upload"></i> <span th:text="#{FSS0005}">Upload</span>
                     </a>
                   </li>
                 </ul>
@@ -57,10 +57,10 @@
         <table class="table table-hover table-responsive">
           <thead>
           <tr>
-            <th th:text="#{T0020}">Name</th>
-            <th th:text="#{T0030}">Path</th>
-            <th th:text="#{T0031}">Length</th>
-            <th th:text="#{T0032}">Last Modified Date</th>
+            <th th:text="#{FSS0006}">Name</th>
+            <th th:text="#{FSS0007}">Path</th>
+            <th th:text="#{FSS0008}">Length</th>
+            <th th:text="#{FSS0009}">Last Modified Date</th>
           </tr>
           </thead>
           <tbody>
@@ -70,10 +70,10 @@
             <td th:text="${item.length}">10</td>
             <td th:text="${{item.lastModifiedDate}}">2016-08-24 10:00:00</td>
             <td>
-              <a th:href="@{/fss(id=${item.path},action='download')}" th:title="#{T0051}">
+              <a th:href="@{/fss(id=${item.path},action='download')}" th:title="#{FSS0010}">
                 <i class="glyphicon glyphicon-download"></i>
               </a>
-              <a th:href="@{/fss(id=${item.path},action='delete')}" th:title="#{T0009}">
+              <a th:href="@{/fss(id=${item.path},action='delete')}" th:title="#{FSS0011}">
                 <i class="glyphicon glyphicon-remove-sign"></i>
               </a>
             </td>

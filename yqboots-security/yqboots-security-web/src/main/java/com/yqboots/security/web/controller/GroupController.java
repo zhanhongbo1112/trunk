@@ -118,10 +118,10 @@ public class GroupController extends AbstractController {
             groupManager.updateRoles(domain.getPath(), domain.getRoles());
         } catch (final GroupNotFoundException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0010");
+            bindingResult.reject("SECI005");
         } catch (final GroupExistsException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0007");
+            bindingResult.reject("SECI002");
         }
 
         if (bindingResult.hasErrors()) {

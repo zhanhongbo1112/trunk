@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0050}">File Management</title>
+  <title th:text="#{FSS0001}">File Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -13,14 +13,14 @@
     <yq:alert level="danger" />
     <form class="sky-form" action="#" th:action="@{/fss/}" th:object="${model}" method="post"
           enctype="multipart/form-data">
-      <header th:text="#{T0034}">FSS Form</header>
+      <header th:text="#{FSS0012}">FSS Form</header>
       <fieldset>
         <section>
-          <label class="label" th:text="#{T0038}">Input a File</label>
+          <label class="label" th:text="#{FSS0013}">Input a File</label>
           <label class="input input-file">
             <div class="button">
               <input th:field="*{file}" type="file"/>
-              <span th:text="#{T0039}">Browse</span>
+              <span th:text="#{FSS0014}">Browse</span>
             </div>
             <input type="text" readonly="readonly"/>
           </label>
@@ -28,10 +28,10 @@
           <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
         </section>
         <section>
-          <label class="label" th:text="#{T0035}">Destination</label>
+          <label class="label" th:text="#{FSS0015}">Destination</label>
           <label class="select">
             <select th:field="*{path}">
-              <option value="" th:text="#{T0040}">Please Select</option>
+              <option value="" th:text="#{FSS0016}">Please Select</option>
               <yq:options name="FSS_AVAILABLE_DIRS"/>
             </select>
             <i></i>
@@ -40,14 +40,14 @@
           <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
         </section>
         <section>
-          <label class="label" th:text="#{T0036}">Override</label>
+          <label class="label" th:text="#{FSS0017}">Override</label>
           <input th:field="*{overrideExisting}" type="checkbox"/>
-          <label th:for="${#ids.prev('overrideExisting')}" th:text="#{T0037}">Override Existing?</label>
+          <label th:for="${#ids.prev('overrideExisting')}" th:text="#{FSS0018}">Override Existing?</label>
         </section>
       </fieldset>
       <footer>
-        <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
-        <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+        <button class="btn-u rounded" type="submit" th:text="#{FSS0019}">Submit</button>
+        <button class="btn-u rounded" id="cancel" type="reset" th:text="#{FSS0020}">Reset</button>
       </footer>
     </form>
   </div>

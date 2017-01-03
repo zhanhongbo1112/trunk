@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0061}">Group Management</title>
+  <title th:text="#{SEC0029}">Group Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -13,11 +13,11 @@
     <yq:alert level="danger"/>
     <form class="sky-form" action="#" th:action="@{/security/group/}" th:object="${model}" method="post">
       <input th:field="*{existed}" type="hidden"/>
-      <header th:text="#{T0064}">Group Maintenance Form</header>
+      <header th:text="#{SEC0033}">Form</header>
       <fieldset>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0030}">Path</label>
+            <label class="label" th:text="#{SEC0030}">Path</label>
             <label class="input" th:classappend="*{existed}? 'state-disabled'">
               <input th:field="*{path}" type="text" maxlength="254" th:readonly="*{existed}"/>
             </label>
@@ -25,7 +25,7 @@
             <p th:if="${#fields.hasErrors('path')}" th:errors="*{path}"></p>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0071}">Alias</label>
+            <label class="label" th:text="#{SEC0031}">Alias</label>
             <label class="input">
               <input th:field="*{alias}" type="text" maxlength="64"/>
             </label>
@@ -34,7 +34,7 @@
           </section>
         </div>
         <section>
-          <label class="label" th:text="#{T0023}">Description</label>
+          <label class="label" th:text="#{SEC0032}">Description</label>
           <label class="textarea">
             <textarea th:field="*{description}" rows="3" maxlength="254"></textarea>
           </label>
@@ -45,26 +45,26 @@
       <fieldset>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0075}">Selected Users</label>
+            <label class="label" th:text="#{SEC0034}">Selected Users</label>
             <label class="select select-multiple">
               <select th:field="*{users}" multiple="multiple" size="5">
                 <yq:options name="GROUP_USERS" attributes="*{path}"/>
               </select>
             </label>
 
-            <button class="btn-u rounded" id="removeUsers" type="button" th:title="#{T0081}">
+            <button class="btn-u rounded" id="removeUsers" type="button" th:title="#{SEC0023}">
               <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0074}">Selectable Users</label>
+            <label class="label" th:text="#{SEC0035}">Selectable Users</label>
             <label class="select select-multiple">
               <select id="selectableUsers" multiple="multiple" size="5">
                 <yq:options name="ALL_USERS" />
               </select>
             </label>
 
-            <button class="btn-u rounded" id="addUsers" type="button" th:title="#{T0079}">
+            <button class="btn-u rounded" id="addUsers" type="button" th:title="#{SEC0024}">
               <i class="fa fa-angle-left"></i>
             </button>
           </section>
@@ -73,34 +73,34 @@
       <fieldset>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0077}">Selected Roles</label>
+            <label class="label" th:text="#{SEC0025}">Selected Roles</label>
             <label class="select select-multiple">
               <select th:field="*{roles}" multiple="multiple" size="5">
                 <yq:options name="GROUP_ROLES" attributes="*{path}"/>
               </select>
             </label>
 
-            <button class="btn-u rounded" id="removeRoles" type="button" th:title="#{T0081}">
+            <button class="btn-u rounded" id="removeRoles" type="button" th:title="#{SEC0023}">
               <i class="fa fa-angle-right"></i>
             </button>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0076}">Selectable Roles</label>
+            <label class="label" th:text="#{SEC0026}">Selectable Roles</label>
             <label class="select select-multiple">
               <select id="selectableRoles" multiple="multiple" size="5">
                 <yq:options name="ALL_ROLES" />
               </select>
             </label>
 
-            <button class="btn-u rounded" id="addRoles" type="button" th:title="#{T0079}">
+            <button class="btn-u rounded" id="addRoles" type="button" th:title="#{SEC0024}">
               <i class="fa fa-angle-left"></i>
             </button>
           </section>
         </div>
       </fieldset>
       <footer>
-        <button class="btn-u rounded" id="submit" type="submit" th:text="#{T0012}">Submit</button>
-        <button class="btn-u rounded" id="cancel" type="button" th:text="#{T0066}">Cancel</button>
+        <button class="btn-u rounded" id="submit" type="submit" th:text="#{SEC0027}">Submit</button>
+        <button class="btn-u rounded" id="cancel" type="button" th:text="#{SEC0028}">Cancel</button>
       </footer>
     </form>
   </div>

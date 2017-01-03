@@ -19,5 +19,6 @@ public class DBUtilsTest {
         System.out.println("/security/audit".hashCode());
         System.out.println("/security/history".hashCode());
         System.out.println("/security/session".hashCode());
+        System.out.println("/actuator/application".hashCode());
     }
 }

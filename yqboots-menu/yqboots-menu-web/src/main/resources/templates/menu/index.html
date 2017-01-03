@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0024}">Menu Item Management</title>
+  <title th:text="#{MNU0001}">Menu Item Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -15,12 +15,12 @@
       <ul class="nav nav-tabs">
         <li class="active">
           <a data-toggle="tab" href="#list">
-            <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0025}">Domain List</span>
+            <i class="glyphicon glyphicon-list"></i> <span th:text="#{MNU0002}">Domain List</span>
           </a>
         </li>
         <li>
           <a data-toggle="tab" href="#import">
-            <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
+            <i class="glyphicon glyphicon-import"></i> <span th:text="#{MNU0004}">Import</span>
           </a>
         </li>
       </ul>
@@ -30,22 +30,22 @@
             <div class="col-md-12">
               <form action="#" th:action="@{/menu}" th:object="${searchForm}" method="post">
                 <div class="input-group">
-                  <input class="form-control" th:field="*{criterion}" type="text" th:placeholder="#{T0007}"/>
+                  <input class="form-control" th:field="*{criterion}" type="text"/>
                   <span class="input-group-btn">
-                      <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
-                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{T0011}"
+                      <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{MNU0005}"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-angle-down"></i>
                       </button>
                       <ul class="dropdown-menu" role="menu">
                         <li>
-                          <a th:href="@{/menu(action='new')}" th:title="#{T0010}">
-                            <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                          <a th:href="@{/menu(action='new')}">
+                            <i class="glyphicon glyphicon-plus"></i> <span th:text="#{MNU0006}">New</span>
                           </a>
                         </li>
                         <li>
-                          <a th:href="@{/menu/exports}" th:title="#{T0016}">
-                            <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
+                          <a th:href="@{/menu/exports}">
+                            <i class="glyphicon glyphicon-export"></i> <span th:text="#{MNU0007}">Export</span>
                           </a>
                         </li>
                       </ul>
@@ -59,10 +59,10 @@
             <table class="table table-hover table-responsive">
               <thead>
               <tr>
-                <th th:text="#{T0020}">Name</th>
-                <th th:text="#{T0027}">URL</th>
-                <th th:text="#{T0028}">Menu Group</th>
-                <th th:text="#{T0029}">Menu Item Group</th>
+                <th th:text="#{MNU0008}">Name</th>
+                <th th:text="#{MNU0009}">URL</th>
+                <th th:text="#{MNU0010}">Menu Group</th>
+                <th th:text="#{MNU0011}">Menu Item Group</th>
                 <th>&nbsp;</th>
               </tr>
               </thead>
@@ -73,10 +73,10 @@
                 <td th:text="${item.menuGroup}">Group 1</td>
                 <td th:text="${item.menuItemGroup}">Item Group 1</td>
                 <td>
-                  <a th:href="@{/menu(id=${item.id},action='update')}" th:title="#{T0008}">
+                  <a th:href="@{/menu(id=${item.id},action='update')}" th:title="#{MNU0012}">
                     <i class="glyphicon glyphicon-pencil"></i>
                   </a>
-                  <a th:href="@{/menu(id=${item.id},action='delete')}" th:title="#{T0009}">
+                  <a th:href="@{/menu(id=${item.id},action='delete')}" th:title="#{MNU0013}">
                     <i class="glyphicon glyphicon-remove-sign"></i>
                   </a>
                 </td>
@@ -100,11 +100,11 @@
                 enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
               <section>
-                <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
+                <label class="label" th:text="#{MNU0014}">Input a File (XML Format)</label>
                 <label class="input input-file">
                   <div class="button">
                     <input th:field="*{file}" type="file"/>
-                    <span th:text="#{T0039}">Browse</span>
+                    <span th:text="#{MNU0015}">Browse</span>
                   </div>
                   <input type="text" readonly="readonly"/>
                 </label>
@@ -113,8 +113,8 @@
               </section>
             </fieldset>
             <footer>
-              <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
-              <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+              <button class="btn-u rounded" type="submit" th:text="#{MNU0016}">Submit</button>
+              <button class="btn-u rounded" type="reset" th:text="#{MNU0017}">Reset</button>
             </footer>
           </form>
         </div>

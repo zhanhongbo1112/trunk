@@ -112,10 +112,10 @@ public class UserController extends AbstractController {
             userManager.updateRoles(domain.getUsername(), domain.getRoles());
         } catch (UserNotFoundException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0009");
+            bindingResult.reject("SECI004");
         } catch (UserExistsException e) {
             LOG.error(e.getMessage(), e);
-            bindingResult.reject("I0006");
+            bindingResult.reject("SECI001");
         }
 
         if (bindingResult.hasErrors()) {

@@ -19,8 +19,11 @@ package com.yqboots.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +36,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 1.1.0
  */
 @Controller
-@SpringBootApplication
+@ComponentScan(basePackages = {"com.yqboots"})
+@EntityScan(basePackages = {"com.yqboots"})
+@EnableJpaRepositories(basePackages = {"com.yqboots"})
+@SpringBootApplication(scanBasePackages = {"com.yqboots"})
 @EnableJpaAuditing
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Application {

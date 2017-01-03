@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0061}">Group Management</title>
+  <title th:text="#{SEC0029}">Group Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -15,17 +15,17 @@
       <div class="col-md-12">
         <form action="#" th:action="@{/security/group}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input class="form-control" type="text" th:field="*{criterion}" th:placeholder="#{T0007}"/>
+            <input class="form-control" type="text" th:field="*{criterion}"/>
             <span class="input-group-btn">
-                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
-                <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{T0011}"
+                <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{SEC0012}"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <i class="fa fa-angle-down"></i>
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a th:href="@{/security/group(action='new')}" th:title="#{T0010}">
-                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                    <a th:href="@{/security/group(action='new')}">
+                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{SEC0013}">New</span>
                     </a>
                   </li>
                 </ul>
@@ -39,9 +39,9 @@
       <table class="table table-hover table-responsive">
         <thead>
         <tr>
-          <th th:text="#{T0030}">Path</th>
-          <th th:text="#{T0071}">Alias</th>
-          <th th:text="#{T0023}">Description</th>
+          <th th:text="#{SEC0030}">Path</th>
+          <th th:text="#{SEC0031}">Alias</th>
+          <th th:text="#{SEC0032}">Description</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
@@ -51,12 +51,10 @@
           <td th:text="${item.alias}">Admin</td>
           <td th:text="${item.description}">the Admin</td>
           <td>
-            <a th:href="@{/security/group(id=${item.id},action='update')}" title="Update"
-               th:title="#{T0008}">
+            <a th:href="@{/security/group(id=${item.id},action='update')}" th:title="#{SEC0018}">
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
-            <a th:href="@{/security/group(id=${item.id},action='delete')}" title="Delete"
-               th:title="#{T0009}">
+            <a th:href="@{/security/group(id=${item.id},action='delete')}" th:title="#{SEC0019}">
               <i class="glyphicon glyphicon-remove-sign"></i>
             </a>
           </td>

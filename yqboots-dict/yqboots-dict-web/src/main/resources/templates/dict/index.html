@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0017}">Data Dict Management</title>
+  <title th:text="#{DCT0001}">Data Dict Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -15,12 +15,12 @@
       <ul class="nav nav-tabs">
         <li class="active">
           <a data-toggle="tab" href="#list">
-            <i class="glyphicon glyphicon-list"></i> <span th:text="#{T0019}">Domain List</span>
+            <i class="glyphicon glyphicon-list"></i> <span th:text="#{DCT0003}">Domain List</span>
           </a>
         </li>
         <li>
           <a data-toggle="tab" href="#import">
-            <i class="glyphicon glyphicon-import"></i> <span th:text="#{T0015}">Import</span>
+            <i class="glyphicon glyphicon-import"></i> <span th:text="#{DCT0004}">Import</span>
           </a>
         </li>
       </ul>
@@ -30,27 +30,28 @@
             <div class="col-md-12">
               <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
                 <div class="input-group">
-                  <input class="form-control" type="text" th:field="*{criterion.name}" th:placeholder="#{T0020}"
-                         th:title="#{T0020}" style="width: 50%"/>
-                  <select class="form-control" type="select" th:field="*{criterion.locale}" th:title="#{T0005}" style="width: 50%">
-                    <option value="" th:text="#{T0040}"></option>
-                    <yq:options name="SUPPORTED_LOCALES" />
+                  <input class="form-control" type="text" th:field="*{criterion.name}" th:placeholder="#{DCT0005}"
+                         th:title="#{DCT0005}" style="width: 50%"/>
+                  <select class="form-control" type="select" th:field="*{criterion.locale}" th:title="#{DCT0012}"
+                          style="width: 50%">
+                    <option value="" th:text="#{DCT0011}"></option>
+                    <yq:options name="SUPPORTED_LOCALES"/>
                   </select>
                   <span class="input-group-btn">
-                      <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
-                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{T0011}"
+                      <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{DCT0014}"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-angle-down"></i>
                       </button>
                       <ul class="dropdown-menu" role="menu">
                         <li>
-                          <a th:href="@{/dict(action='new')}" th:title="#{T0010}">
-                            <i class="glyphicon glyphicon-plus"></i> <span th:text="#{T0010}">New</span>
+                          <a th:href="@{/dict(action='new')}">
+                            <i class="glyphicon glyphicon-plus"></i> <span th:text="#{DCT0015}">New</span>
                           </a>
                         </li>
                         <li>
-                          <a th:href="@{/dict/exports}" th:title="#{T0016}">
-                            <i class="glyphicon glyphicon-export"></i> <span th:text="#{T0016}">Export</span>
+                          <a th:href="@{/dict/exports}">
+                            <i class="glyphicon glyphicon-export"></i> <span th:text="#{DCT0016}">Export</span>
                           </a>
                         </li>
                       </ul>
@@ -64,10 +65,10 @@
             <table class="table table-hover table-responsive">
               <thead>
               <tr>
-                <th th:text="#{T0020}">Name</th>
-                <th th:text="#{T0021}">Text</th>
-                <th th:text="#{T0022}">Value</th>
-                <th th:text="#{T0023}">Description</th>
+                <th th:text="#{DCT0005}">Name</th>
+                <th th:text="#{DCT0006}">Text</th>
+                <th th:text="#{DCT0007}">Value</th>
+                <th th:text="#{DCT0008}">Description</th>
               </tr>
               </thead>
               <tbody>
@@ -77,10 +78,10 @@
                 <td th:text="${item.value}">1</td>
                 <td th:text="${item.description}">Description 1</td>
                 <td>
-                  <a th:href="@{/dict(id=${item.id},action='update')}" th:title="#{T0008}">
+                  <a th:href="@{/dict(id=${item.id},action='update')}" th:title="#{DCT0020}">
                     <i class="glyphicon glyphicon-pencil"></i>
                   </a>
-                  <a th:href="@{/dict(id=${item.id},action='delete')}" th:title="#{T0009}">
+                  <a th:href="@{/dict(id=${item.id},action='delete')}" th:title="#{DCT0021}">
                     <i class="glyphicon glyphicon-remove-sign"></i>
                   </a>
                 </td>
@@ -104,11 +105,11 @@
                 enctype="multipart/form-data" th:object="${fileUploadForm}">
             <fieldset>
               <section>
-                <label class="label" th:text="#{T0014}">Input a File (XML Format)</label>
+                <label class="label" th:text="#{DCT0017}">Input a File (XML Format)</label>
                 <label class="input input-file">
                   <div class="button">
                     <input th:field="*{file}" type="file"/>
-                    <span th:text="#{T0039}">Browse</span>
+                    <span th:text="#{DCT0018}">Browse</span>
                   </div>
                   <input type="text" readonly="readonly"/>
                 </label>
@@ -117,8 +118,8 @@
               </section>
             </fieldset>
             <footer>
-              <button class="btn-u rounded" type="submit" th:text="#{T0012}">Submit</button>
-              <button class="btn-u rounded" type="reset" th:text="#{T0013}">Reset</button>
+              <button class="btn-u rounded" type="submit" th:text="#{DCT0009}">Submit</button>
+              <button class="btn-u rounded" type="reset" th:text="#{DCT0019}">Reset</button>
             </footer>
           </form>
         </div>

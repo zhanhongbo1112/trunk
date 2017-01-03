@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/content-bottom-layout">
 <head>
-  <title th:text="#{T0059}">Access Denied!</title>
+  <title th:text="#{SEC0008}">Access Denied!</title>
 </head>
 <body>
 <div layout:fragment="content" class="container content">
@@ -15,10 +15,10 @@
           </a>
         </div>
         <span class="error-title">403</span>
-        <span th:text="#{T0059}">Access Denied!</span>
+        <span th:text="#{SEC0008}">Access Denied!</span>
 
-        <p th:text="#{I0005}">Access to the specified resource has been forbidden.</p>
-        <a class="btn-u rounded btn-bordered" href="index.html" th:href="@{/}" th:text="#{T0049}">Back to Home</a>
+        <p th:text="#{SEC0009}">Access to the specified resource has been forbidden.</p>
+        <a class="btn-u rounded btn-bordered" href="index.html" th:href="@{/}" th:text="#{SEC0010}">Back to Home</a>
       </div>
     </div>
   </div>

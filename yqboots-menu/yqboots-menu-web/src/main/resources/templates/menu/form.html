@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0024}">Menu Item Management</title>
+  <title th:text="#{MNU0001}">Menu Item Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -13,11 +13,11 @@
     <yq:alert level="danger" />
     <form class="sky-form" action="#" th:action="@{/menu/}" th:object="${model}" method="post">
       <input th:field="*{id}" type="hidden"/>
-      <header th:text="#{T0026}">Menu Maintenance Form</header>
+      <header th:text="#{MNU0003}">Form</header>
       <fieldset>
         <div class="row">
           <section class="col col-4">
-            <label class="label" th:text="#{T0020}">Name</label>
+            <label class="label" th:text="#{MNU0008}">Name</label>
             <label class="input">
               <input th:field="*{name}" type="text" maxlength="32"/>
             </label>
@@ -25,7 +25,7 @@
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
           </section>
           <section class="col col-8">
-            <label class="label" th:text="#{T0027}">URL</label>
+            <label class="label" th:text="#{MNU0009}">URL</label>
             <label class="input">
               <input th:field="*{url}" type="text" maxlength="64"/>
             </label>
@@ -35,7 +35,7 @@
         </div>
         <div class="row">
           <section class="col col-6">
-            <label class="label" th:text="#{T0028}">Menu Group</label>
+            <label class="label" th:text="#{MNU0010}">Menu Group</label>
             <label class="input">
               <input th:field="*{menuGroup}" type="text" maxlength="32"/>
             </label>
@@ -43,7 +43,7 @@
             <p th:if="${#fields.hasErrors('menuGroup')}" th:errors="*{menuGroup}"></p>
           </section>
           <section class="col col-6">
-            <label class="label" th:text="#{T0029}">Menu Item Group</label>
+            <label class="label" th:text="#{MNU0011}">Menu Item Group</label>
             <label class="input">
               <input th:field="*{menuItemGroup}" type="text" maxlength="32"/>
             </label>
@@ -53,8 +53,8 @@
         </div>
       </fieldset>
       <footer>
-        <button class="btn-u rounded" id="submit" type="submit" th:text="#{T0012}">Submit</button>
-        <button class="btn-u rounded" id="cancel" type="button" th:text="#{T0066}">Cancel</button>
+        <button class="btn-u rounded" id="submit" type="submit" th:text="#{MNU0016}">Submit</button>
+        <button class="btn-u rounded" id="cancel" type="button" th:text="#{MNU0018}">Cancel</button>
       </footer>
     </form>
   </div>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:yq="http://www.yqboots.com" xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
-  <title th:text="#{T0097}">Session Management</title>
+  <title th:text="#{SEC0043}">Session Management</title>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -15,9 +15,9 @@
       <div class="col-md-12">
         <form action="#" th:action="@{/security/session}" th:object="${searchForm}" method="post">
           <div class="input-group">
-            <input class="form-control" type="text" th:field="*{criterion}" th:placeholder="#{T0007}"/>
+            <input class="form-control" type="text" th:field="*{criterion}"/>
             <span class="input-group-btn">
-                <button class="btn-u" type="submit" th:text="#{T0007}">Search</button>
+                <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </span>
           </div>
         </form>
@@ -28,10 +28,10 @@
       <table class="table table-hover table-responsive">
         <thead>
         <tr>
-          <th th:text="#{T0053}">Username</th>
-          <th th:text="#{T0094}">Session ID</th>
-          <th th:text="#{T0098}">Last Request</th>
-          <th th:text="#{T0099}">Expired?</th>
+          <th th:text="#{SEC0003}">Username</th>
+          <th th:text="#{SEC0044}">Session ID</th>
+          <th th:text="#{SEC0045}">Last Request</th>
+          <th th:text="#{SEC0046}">Expired?</th>
           <th>&nbsp;</th>
         </tr>
         </thead>
@@ -42,7 +42,7 @@
           <td th:text="${item.lastRequest}">2016-11-15 20:30:30.000</td>
           <td th:text="${item.expired}">true</td>
           <td>
-            <a th:href="@{/security/session(id=${item.sessionId},action='delete')}" th:title="#{T0009}">
+            <a th:href="@{/security/session(id=${item.sessionId},action='delete')}" th:title="#{SEC0019}">
               <i class="glyphicon glyphicon-remove-sign"></i>
             </a>
           </td>
