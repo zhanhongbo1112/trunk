@@ -278,3 +278,21 @@ i.style-switcher-btn:hover {
 .login-block i {
     color: #5fb611;
 }
+
+/*Testimonials*/
+.testimonials-bg-default .item p {
+    background: #5fb611;
+}
+
+.testimonials.testimonials-bg-default .item p:after,
+.testimonials.testimonials-bg-default .item p:after {
+    border-top-color: #5fb611;
+}
+
+.testimonials-bg-default .carousel-arrow i {
+    background: #5fb611;
+}
+
+.testimonials.testimonials-bg-default .carousel-arrow i:hover {
+    background: #5fb611;
+}

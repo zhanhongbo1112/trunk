@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.1
@@ -7,7 +6,6 @@
  *
  * Copyright (c) 2016 Daniel Eden
  */
-
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -25,7 +23,10 @@
     animation-duration: 2s;
 }
 
-.animated.flipOutX, .animated.flipOutY, .animated.bounceIn, .animated.bounceOut {
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
     -webkit-animation-duration: .75s;
     animation-duration: .75s;
 }
@@ -119,6 +120,7 @@
 }
 
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
 @-webkit-keyframes pulse {
     from {
         -webkit-transform: scale3d(1, 1, 1);
@@ -2628,6 +2630,7 @@
 }
 
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
 @-webkit-keyframes rollIn {
     from {
         opacity: 0;
@@ -2662,6 +2665,7 @@
 }
 
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
 @-webkit-keyframes rollOut {
     from {
         opacity: 1;
