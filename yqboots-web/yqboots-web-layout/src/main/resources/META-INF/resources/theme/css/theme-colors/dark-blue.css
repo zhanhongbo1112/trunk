@@ -122,17 +122,6 @@ i.icon-bg-u {
     background: #4765a0;
 }
 
-/* Sidebar Menu
-------------------------------------*/
-.sidebar-nav ul li:hover a,
-.sidebar-nav ul li.active a {
-    color: #4765a0;
-}
-
-body.dark .sidebar-nav > li.active > a:hover {
-    color: #4765a0
-}
-
 /* Sky Form
 ------------------------------------*/
 .sky-form .button {
@@ -277,22 +266,4 @@ i.style-switcher-btn:hover {
 -------------------------------------*/
 .login-block i {
     color: #324c80;
-}
-
-/*Testimonials*/
-.testimonials-bg-default .item p {
-    background: #324c80;
-}
-
-.testimonials.testimonials-bg-default .item p:after,
-.testimonials.testimonials-bg-default .item p:after {
-    border-top-color: #324c80;
-}
-
-.testimonials-bg-default .carousel-arrow i {
-    background: #324c80;
-}
-
-.testimonials.testimonials-bg-default .carousel-arrow i:hover {
-    background: #324c80;
 }
