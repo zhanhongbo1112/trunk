@@ -53,7 +53,7 @@ public class SecurityWebAutoConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/security/login", "/projects/**", "/features/**").permitAll()
+        http.authorizeRequests().antMatchers("/", "/security/login", "/projects/**", "/showcase/**").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and().anonymous().authorities("/USER")
                 .and().csrf().disable().formLogin().loginPage("/security/login").loginProcessingUrl("/login")

@@ -40,4 +40,9 @@ public class Application {
     public String home() {
         return "index";
     }
+
+    @RequestMapping(value = "/showcase")
+    public String showcase() {
+        return "showcase/index";
+    }
 }

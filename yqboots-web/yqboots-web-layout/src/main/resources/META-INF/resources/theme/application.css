@@ -1,26 +1,13 @@
-/*
- * Template Name: Unify - Responsive Bootstrap Template
- * Description: Business, Corporate, Portfolio, E-commerce, Blog and One Page Template.
- * Version: 1.9.2
- * Author: @htmlstream
- * Website: http://htmlstream.com
-*/
-/*Import Global Bootstrap CSS FIle*/
 @import url(css/bootstrap.css);
-/*Import Global Compulsory CSS Files*/
 @import url(css/commons/blocks.css);
-/*Import CSS Plugins*/
 @import url(css/commons/header.css);
 @import url(css/commons/footer.css);
-@import url(css/plugins/style-switcher.css);
 @import url(css/plugins/animate.css);
 @import url(css/plugins/line-icons/line-icons.css);
 @import url(css/plugins/font-awesome/css/font-awesome.css);
 @import url(css/plugins/skyforms/css/sky-forms.css);
 @import url(css/plugins/skyforms/custom/custom-sky-forms.css);
 @import url(css/plugins/style-switcher.css);
-@import url(../dojo/jquery/cube-portfolio/css/cubeportfolio.css);
-@import url(../dojo/jquery/cube-portfolio/custom/custom-cubeportfolio.css);
 @import url(css/pages/error.css);
 
 * {
