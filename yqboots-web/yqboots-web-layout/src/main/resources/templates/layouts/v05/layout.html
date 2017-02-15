@@ -4,7 +4,6 @@
 <head>
   <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE" th:text="#{T0000}">YuQi</title>
   <meta charset="UTF-8"/>
-  <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta content="YuQi Projects" name="description"/>
   <meta content="Eric H B Zhan" name="author"/>
@@ -12,9 +11,9 @@
   <!-- Favicon -->
   <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
 
-  <link rel="stylesheet" th:href="@{/theme/application.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/green.css}" id="style_color"/>
-  <link rel="stylesheet" th:href="@{/theme/css/theme-skins/dark.css}"/>
+  <link rel="stylesheet" th:href="@{/META-INF/resources/theme/application.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/theme-colors/green.css}"/>
+  <link rel="stylesheet" th:href="@{/META-INF/resources/theme/css/theme-skins/dark.css}"/>
 </head>
 <body class="dark header-fixed header-fixed-space-default">
 <div class="wrapper">
@@ -26,7 +25,6 @@
   </div>
   <footer th:replace="layouts/footer :: footer">&nbsp;</footer>
 </div>
-<div th:include="layouts/styleSwitcher">&nbsp;</div>
 <script th:src="@{/dojo/dojo/dojo.js}" data-dojo-config="async: true"></script>
 <script th:src="@{/dojo/jquery.js}"></script>
 <script th:inline="javascript">
