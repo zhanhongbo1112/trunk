@@ -45,4 +45,24 @@ public class Application {
     public String showcase() {
         return "showcase/index";
     }
+
+    @RequestMapping(value = "/showcase/pages/login-v1")
+    public String login_v1() {
+        return "showcase/pages/login/login-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/login-v2")
+    public String login_v2() {
+        return "showcase/pages/login/login-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/registration-v1")
+    public String registration_v1() {
+        return "showcase/pages/registration/registration-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/registration-v2")
+    public String registration_v2() {
+        return "showcase/pages/registration/registration-v2";
+    }
 }
