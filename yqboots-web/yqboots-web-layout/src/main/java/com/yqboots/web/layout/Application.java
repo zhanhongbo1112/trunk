@@ -65,4 +65,9 @@ public class Application {
     public String registration_v2() {
         return "showcase/pages/registration/registration-v2";
     }
+
+    @RequestMapping(value = "/showcase/pages/404/404-v1")
+    public String _404_v1() {
+        return "showcase/pages/404/404-v1";
+    }
 }
