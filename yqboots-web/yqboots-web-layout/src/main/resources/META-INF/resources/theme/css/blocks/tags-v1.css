@@ -1,0 +1,18 @@
+.tags-v1 li {
+	margin: 0;
+	padding: 0;
+}
+
+.tags-v1 li a {
+	font-size: 13px;
+	padding: 4px 8px;
+	line-height: 32px;
+	border: solid 2px #eee;
+	border-radius: 20px !important;
+	transition: all 0.2s ease-in-out;
+}
+
+.tags-v1 li a:hover {
+	text-decoration: none;
+	border-color: #e0e0e0;
+}

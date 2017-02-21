@@ -1,0 +1,32 @@
+.service-block-v8 {
+  padding: 25px;
+  background: #fff;
+}
+
+.service-block-v8 i {
+  color: #555;
+  float: left;
+  font-size: 22px;
+  margin: 5px 25px 0 0;
+}
+
+.service-block-v8 .service-block-desc {
+  overflow: hidden;
+}
+
+.service-block-v8 .service-block-desc h3 {
+  font-size: 18px;
+  margin: 0 0 30px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.service-block-v8 .service-block-desc h3:after {
+  left: 0;
+  top: 40px;
+  height: 1px;
+  width: 30px;
+  content: " ";
+  position: absolute;
+  background: #72c02c;
+}

@@ -1,0 +1,29 @@
+.breadcrumbs-v2 {
+  text-align: center;
+  position: relative;
+  background: url(../img/bg/11.jpg) no-repeat center;
+}
+
+.breadcrumbs-v2-in {
+  padding: 80px 0;
+  position: relative;
+}
+
+.breadcrumbs-v2 h1 {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.breadcrumb-v2 li a,
+.breadcrumb-v2 li.active {
+  color: #fff;
+}
+
+.breadcrumb-v2 li i {
+  color: #fff;
+  min-width: 19px;
+  padding: 3px 7px;
+  margin-right: 5px;
+  text-align: center;
+  border: 1px solid #fff;
+}

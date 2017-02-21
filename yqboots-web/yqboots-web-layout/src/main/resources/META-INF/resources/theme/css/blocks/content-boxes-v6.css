@@ -1,0 +1,42 @@
+.content-boxes-v6 {
+	padding-top: 25px;
+	text-align: center;
+}
+
+.content-boxes-v6 i {
+	color: #fff;
+	width: 90px;
+	height: 90px;
+	padding: 30px;
+	font-size: 30px;
+	line-height: 30px;
+	position: relative;
+	text-align: center;
+	background: #dedede;
+	margin-bottom: 25px;
+	display: inline-block;
+}
+
+.content-boxes-v6 i:after {
+	top: -8px;
+	left: -8px;
+	right: -8px;
+	bottom: -8px;
+	content: " ";
+	position: absolute;
+	border: 1px solid #dedede;
+	border-radius: 50% !important;
+}
+
+.content-boxes-v6:hover i,
+.content-boxes-v6:hover i:after {
+	transition: all 0.3s ease-in-out;
+}
+
+.content-boxes-v6:hover i {
+	background: #72c02c;
+}
+
+.content-boxes-v6:hover i:after {
+	border-color: #72c02c;
+}

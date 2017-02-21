@@ -1,0 +1,86 @@
+.team-v2 {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.team-v2 img {
+  width: 100%;
+}
+
+.team-v2 .inner-team {
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.team-v2 .inner-team h3 {
+  margin: 0;
+}
+
+.team-v2 .inner-team small {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.team-v2 .inner-team p {
+  font-size: 13px;
+}
+
+.team-v2 .inner-team hr {
+  margin: 10px 0 15px;
+}
+
+/*Team-Social (Temporary)*/
+.team-social {
+  margin-bottom: 0;
+}
+
+.team-social li {
+  padding: 0 2px;
+}
+
+.team-social li a {
+  font-size: 14px;
+  padding: 6px 4px;
+  text-align: center;
+  border-radius: 50% !important;
+}
+
+.team-social li i {
+  min-width: 20px;
+}
+
+.team-social li a.fb {
+  color: #4862a3;
+  border: 1px solid #4862a3;
+}
+
+.team-social li a.tw {
+  color: #159ceb;
+  border: 1px solid #159ceb;
+}
+
+.team-social li a.gp {
+  color: #dc4a38;
+  border: 1px solid #dc4a38;
+}
+
+.team-social li a:hover {
+  text-decoration: none;
+}
+
+.team-social li a.fb:hover {
+  color: #fff;
+  background: #4862a3;
+}
+
+.team-social li a.tw:hover {
+  color: #fff;
+  background: #159ceb;
+}
+
+.team-social li a.gp:hover {
+  color: #fff;
+  background: #dc4a38;
+}

@@ -1,0 +1,35 @@
+.content-boxes-v2-o span {
+	display: block;
+	overflow: hidden;
+}
+
+.content-boxes-v2-o small {
+	display: block;
+	line-height: 1.6;
+}
+
+.content-boxes-v2-o .icon-md + span {
+	margin-top: 9px;
+}
+
+.content-boxes-v2-o .icon-lg + span {
+	margin-top: 11px;
+}
+
+.content-boxes-v2-o .icon-custom {
+	float: left;
+	margin-top: 3px;
+	margin-right: 15px;
+}
+
+@media (max-width: 992px) {
+	.content-boxes-v2,
+	.content-boxes-v2 .text-justify {
+		text-align: center;
+	}
+
+	.content-boxes-v2 span {
+		display: block;
+		margin-top: 5px;
+	}
+}

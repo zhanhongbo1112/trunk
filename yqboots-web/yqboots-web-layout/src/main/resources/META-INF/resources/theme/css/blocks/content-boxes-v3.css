@@ -1,0 +1,41 @@
+.content-boxes-v3 i.icon-custom {
+	top: 8px;
+	float: left;
+	position: relative;
+}
+
+.content-boxes-v3 .content-boxes-in-v3 {
+	padding: 0 20px;
+	overflow: hidden;
+}
+
+.content-boxes-v3 .content-boxes-in-v3 h3 {
+	font-size: 18px;
+	line-height: 22px;
+	margin-bottom: 3px;
+	text-transform: capitalize;
+}
+
+.content-boxes-v3 .content-boxes-in-v3 h3 a {
+	color: #555;
+}
+
+/*Content Boxes Right v3*/
+.content-boxes-v3.content-boxes-v3-right {
+	text-align: right;
+}
+
+.content-boxes-v3.content-boxes-v3-right i.icon-custom {
+	float: right;
+}
+
+@media (max-width: 768px){
+	.content-boxes-v3.content-boxes-v3-right {
+		text-align: inherit;
+	}
+
+	.content-boxes-v3.content-boxes-v3-right i.icon-custom {
+		float: left;
+		margin-left: 0;
+	}
+}

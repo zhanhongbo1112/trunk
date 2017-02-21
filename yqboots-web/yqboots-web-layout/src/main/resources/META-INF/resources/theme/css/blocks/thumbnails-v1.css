@@ -1,0 +1,19 @@
+.thumbnails-v1 .thumbnail-img {
+  margin-bottom: 12px;
+}
+
+.thumbnails-v1 h3 {
+  margin-bottom: 5px;
+}
+
+.thumbnails-v1 h3 a {
+  color: #555;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.thumbnails-v1 .read-more {
+  color: #72c02c;
+  font-size: 12px;
+  text-transform: uppercase;
+}

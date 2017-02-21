@@ -1,0 +1,19 @@
+.owl-carousel-v2 .owl-slider-v2 {
+  margin-bottom: 20px;
+}
+
+.owl-carousel-v2 .item {
+  margin: 0 15px;
+}
+
+.owl-carousel-v2 .item img {
+  text-align: center;
+}
+
+.owl-carousel-v2 .owl-navigation {
+  text-align: center;
+}
+
+.owl-carousel-v2 .owl-pagination {
+  display: none;
+}

@@ -1,0 +1,100 @@
+/*Default Breadcrumbs*/
+.breadcrumbs {
+  overflow: hidden;
+  padding: 10px 0 6px;
+  border-bottom: solid 1px #eee;
+  background: url(../../img/patterns/breadcrumbs.png) repeat;
+}
+
+.video-business-img1 {
+  background: url(../../video/youtube-business/video-business-img1.jpg) no-repeat center;
+  background-size: cover; /*Scales the background image to be as large as possible*/
+}
+
+.breadcrumbs h1 {
+  color: #666;
+  font-size: 22px;
+  margin-top: 8px;
+}
+
+.breadcrumb {
+  top: 10px;
+  z-index: 1;
+  padding-right: 0;
+  background: none;
+  position: relative;
+}
+
+.breadcrumb a {
+  color: #777;
+}
+
+.breadcrumb li.active,
+.breadcrumb li a:hover {
+  color: #72c02c;
+  text-decoration: none;
+}
+
+@media (max-width: 550px) {
+  .breadcrumbs h1.pull-left,
+  .breadcrumbs ul.pull-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .breadcrumbs h1.pull-left {
+    margin-bottom: 0;
+  }
+
+  .breadcrumbs .breadcrumb {
+    top: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/*Breadcrumbs Dark and Light*/
+.breadcrumbs.breadcrumbs-dark,
+.breadcrumbs.breadcrumbs-light {
+  background: #222;
+  padding: 30px 0 20px;
+  border-bottom: solid 3px #777;
+}
+
+.breadcrumbs.breadcrumbs-light {
+  background: #f7f7f7;
+  border-bottom: 1px solid #eee;
+}
+
+.breadcrumbs.breadcrumbs-dark h1,
+.breadcrumbs.breadcrumbs-dark a,
+.breadcrumbs.breadcrumbs-light h1,
+.breadcrumbs.breadcrumbs-light a {
+  color: #fff;
+  font-weight: 200;
+}
+
+.breadcrumbs.breadcrumbs-light h1,
+.breadcrumbs.breadcrumbs-light a {
+  color: #555;
+}
+
+.breadcrumbs.breadcrumbs-dark h1 {
+  font-size: 24px;
+}
+
+.breadcrumbs.breadcrumbs-light h1 {
+  font-size: 26px;
+}
+
+/*Breadcrumbs Sizes*/
+.breadcrumbs-sm {
+  padding: 50px 0;
+}
+
+.breadcrumbs-md {
+  padding: 100px 0;
+}
+
+.breadcrumbs-lg {
+  padding: 200px 0;
+}

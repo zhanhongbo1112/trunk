@@ -1,0 +1,53 @@
+.owl-work-v1 .owl-navigation {
+  top: 3px;
+  position: relative;
+}
+
+.owl-work-v1 .owl-navigation {
+  margin-bottom: 10px;
+}
+
+.owl-work-v1 .item a {
+  text-align: center;
+}
+
+.owl-work-v1 .item a:hover {
+  text-decoration: none;
+}
+
+.owl-work-v1 .item a:hover strong {
+  color: #555;
+}
+
+.owl-work-v1 .item em.overflow-hidden {
+  display: block;
+}
+
+.owl-work-v1 .item a span {
+  display: block;
+  padding: 10px;
+  border-bottom: solid 2px #eee;
+}
+
+.owl-work-v1 .item a strong {
+  color: #555;
+  display: block;
+}
+
+.owl-work-v1 .item a i {
+  color: #777;
+}
+
+.owl-work-v1 .item a img {
+	transition: all 0.8s ease-in-out;
+}
+
+.owl-work-v1 .item a:hover img {
+	opacity: 0.8;
+	transform: scale(1.2) rotate(3deg);
+}
+
+.owl-work-v1 .item a:hover span {
+	border-bottom: solid 2px #72c02c;
+	transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,57 @@
+.news-v2 .news-v2-badge {
+  overflow: hidden;
+  position: relative;
+}
+
+.news-v2 .news-v2-badge p {
+  left: 0;
+  top: 20px;
+  background: #fff;
+  padding: 5px 15px;
+  text-align: center;
+  position: absolute;
+}
+
+.news-v2 .news-v2-badge span {
+  color: #555;
+  display: block;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.news-v2 .news-v2-badge small {
+  color: #555;
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/*News Description*/
+.news-v2 .news-v2-desc {
+  padding: 20px;
+  background: #fff;
+}
+
+.news-v2 .news-v2-desc h3 {
+  margin: 0 0 3px;
+  font-size: 16px;
+}
+
+.news-v2 .news-v2-desc h3 a {
+  color: #555;
+}
+
+.news-v2 .news-v2-desc h3 a:hover {
+  color: #72c02c;
+}
+
+.news-v2 .news-v2-desc small {
+  color: #555;
+  display: block;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.news-v2 .news-v2-desc p {
+  color: #555;
+}

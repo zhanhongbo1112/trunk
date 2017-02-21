@@ -1,0 +1,18 @@
+.blog-trending li {
+  margin-bottom: 20px;
+}
+
+.blog-trending h3 {
+  font-size: 14px;
+  margin: 0 0 5px;
+  line-height: 17px;
+}
+
+.blog-trending small,
+.blog-trending small a {
+  color: #777;
+}
+
+.blog-trending small a:hover {
+  color: #72c02c;
+}

@@ -1,0 +1,85 @@
+/*Portfolio Box*/
+@media (min-width: 991px) and (max-width: 1199px) {
+  .portfolio-box {
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .portfolio-box {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-box {
+    margin-bottom: 60px;
+  }
+}
+
+.portfolio-box a.fancybox {
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-box a.fancybox:after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+  position: absolute;
+}
+
+.portfolio-box a.fancybox:hover:after {
+  background: rgba(0,0,0,0.5);
+}
+
+.portfolio-box a.fancybox img {
+  transition: all .5s ease;
+}
+
+.portfolio-box a.fancybox:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-box .portfolio-box-in {
+	visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  color: #fff;
+	background: #72c02c;
+	font-size: 20px;
+	text-align: center;
+	line-height: 53px;
+	width: 50px;
+	height: 50px;
+  margin-top: -25px;
+  margin-left: -25px;
+}
+
+.portfolio-box a.fancybox:hover .portfolio-box-in {
+  visibility: visible;
+}
+
+/*Project Tag*/
+.portfolio-box small.project-tag {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.portfolio-box small.project-tag,
+.portfolio-box small.project-tag a {
+  color: #999;
+}
+
+.portfolio-box small.project-tag i {
+  margin-right: 5px;
+}
+
+.portfolio-box small.project-tag a:hover {
+  color: #72c02c;
+}
