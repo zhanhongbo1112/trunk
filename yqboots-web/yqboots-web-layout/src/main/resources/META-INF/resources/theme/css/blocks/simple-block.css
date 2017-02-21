@@ -1,0 +1,33 @@
+.simple-block {
+    margin-bottom: 20px;
+}
+
+.simple-block img {
+    width: 100%;
+}
+
+.simple-block p {
+    text-align: center;
+}
+
+.simple-block .carousel-indicators {
+    top: 10px;
+    left: 65%;
+    text-align: right;
+}
+
+.simple-block .carousel-indicators .active {
+    background: #555;
+}
+
+.simple-block .carousel-indicators li {
+    border-color: #555;
+}
+
+.simple-block .carousel-inner > .item {
+    margin: 0;
+}
+
+.simple-block .responsive-video {
+    margin-bottom: 3px;
+}

@@ -1,0 +1,43 @@
+.carousel-v1 .carousel-caption {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 7px 15px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-v1 .carousel-caption p {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.carousel-v1 .carousel-arrow a.carousel-control {
+    opacity: 1;
+    font-size: 30px;
+    height: inherit;
+    width: inherit;
+    background: none;
+    text-shadow: none;
+    position: inherit;
+}
+
+.carousel-v1 .carousel-arrow a i {
+    top: 50%;
+    opacity: 0.6;
+    background: #000;
+    margin-top: -18px;
+    padding: 2px 12px;
+    position: absolute;
+}
+
+.carousel-v1 .carousel-arrow a i:hover {
+    opacity: 0.8;
+}
+
+.carousel-v1 .carousel-arrow a.left i {
+    left: 0;
+}
+
+.carousel-v1 .carousel-arrow a.right i {
+    right: 0;
+}

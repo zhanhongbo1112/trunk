@@ -70,4 +70,9 @@ public class Application {
     public String _404_v1() {
         return "showcase/pages/404/404-v1";
     }
+
+    @RequestMapping(value = "/showcase/pages/about/about-v1")
+    public String about_v1() {
+        return "showcase/pages/about/about-v1";
+    }
 }
