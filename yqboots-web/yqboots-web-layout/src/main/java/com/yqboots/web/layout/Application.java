@@ -105,4 +105,19 @@ public class Application {
     public String about_me_v3() {
         return "showcase/pages/about-me/about-me-v3";
     }
+
+    @RequestMapping(value = "/showcase/pages/about-our-team/about-our-team-v1")
+    public String about_our_team_v1() {
+        return "showcase/pages/about-our-team/about-our-team-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/about-our-team/about-our-team-v2")
+    public String about_our_team_v2() {
+        return "showcase/pages/about-our-team/about-our-team-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/about-our-team/about-our-team-v3")
+    public String about_our_team_v3() {
+        return "showcase/pages/about-our-team/about-our-team-v3";
+    }
 }

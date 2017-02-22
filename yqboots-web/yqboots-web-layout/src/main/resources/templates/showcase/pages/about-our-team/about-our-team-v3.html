@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Our Team</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v5.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v6.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/headline-center.css}"/>
+  <link rel="stylesheet" th:href="@{/css/blocks/call-action-v2.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">About Our Team</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li>Pages</li>
+      <li class="active">About Our Team</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content">
+  <!--=== Team v5 ===-->
+  <div class="container">
+    <div class="headline-center margin-bottom-60">
+      <h2>ACCOUNT DIRECTORS</h2>
+      <p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br/>
+        Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet
+        fringilla </p>
+    </div>
+
+    <div class="row team-v5 margin-bottom-30">
+      <div class="col-sm-4 sm-margin-bottom-50">
+        <div class="team-img">
+          <img class="img-responsive" th:src="@{/img/team/img1-md.jpg}"/>
+          <div class="team-hover">
+            <ul class="list-inline team-social-v5">
+              <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <span>Marketing</span>
+        <small>Technical Director</small>
+        <p>Pellentesque habitant morbi tristique senectus netus et malesuada fames ac turpis egestas.</p>
+      </div>
+      <div class="col-sm-4 sm-margin-bottom-50">
+        <div class="team-img">
+          <img class="img-responsive" th:src="@{/img/team/img5-md.jpg}"/>
+          <div class="team-hover">
+            <ul class="list-inline team-social-v5">
+              <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <span>Sara Lisbon</span>
+        <small>Developer</small>
+        <p>Pellentesque habitant morbi tristique senectus netus et malesuada fames ac turpis egestas.</p>
+      </div>
+      <div class="col-sm-4">
+        <div class="team-img">
+          <img class="img-responsive" th:src="@{/img/team/img3-md.jpg}"/>
+          <div class="team-hover">
+            <ul class="list-inline team-social-v5">
+              <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <span>John Doe</span>
+        <small>Designer</small>
+        <p>Pellentesque habitant morbi tristique senectus netus et malesuada fames ac turpis egestas.</p>
+      </div>
+    </div><!--/end team v5-->
+  </div>
+  <!--=== End Team v5 ===-->
+
+  <hr class="margin-bottom-60"/>
+
+  <!--=== Team v6 ===-->
+  <div class="container">
+    <div class="headline-center margin-bottom-60">
+      <h2>OTHER MEMBERS</h2>
+      <p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br/>
+        Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet
+        fringilla </p>
+    </div>
+
+    <div class="row team-v6 margin-bottom-60">
+      <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img6-md.jpg}"/>
+        <span>Marketing</span>
+        <small>Graphic Designer</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img4-md.jpg}"/>
+        <span>Sara Lisbon</span>
+        <small>Community</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 sm-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img2-md.jpg}"/>
+        <span>John Doe</span>
+        <small>Support</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <img class="img-responsive" th:src="@{/img/team/img1-md.jpg}"/>
+        <span>Alice Williams</span>
+        <small>Marketing</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+    </div><!--/end team v6-->
+
+    <div class="row team-v6 margin-bottom-60">
+      <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img3-md.jpg}"/>
+        <span>Marketing</span>
+        <small>Graphic Designer</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img7-md.jpg}"/>
+        <span>Sara Lisbon</span>
+        <small>Community</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6 sm-margin-bottom-50">
+        <img class="img-responsive" th:src="@{/img/team/img1-md.jpg}"/>
+        <span>John Doe</span>
+        <small>Support</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <img class="img-responsive" th:src="@{/img/team/img5-md.jpg}"/>
+        <span>Alice Williams</span>
+        <small>Marketing</small>
+        <ul class="list-inline social-icons-v1">
+          <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+    </div><!--/end team v6-->
+  </div>
+  <!--=== End Team v6 ===-->
+
+  <!--=== Call To Action v2 ===-->
+  <div class="call-action-v2 parallaxBg">
+    <div class="container">
+      <h2>We are Hiring!</h2>
+      <p>Curabitur hendrerit, lectus in bibendum pellentesque, lacus eros rutrum ligula</p>
+      <a href="#" class="btn-u">Join Now</a>
+    </div>
+  </div>
+  <!--=== End Call To Action v2 ===-->
+</div>
+</body>
+</html>
