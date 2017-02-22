@@ -75,4 +75,9 @@ public class Application {
     public String about_v1() {
         return "showcase/pages/about/about-v1";
     }
+
+    @RequestMapping(value = "/showcase/pages/about/about-v2")
+    public String about_v2() {
+        return "showcase/pages/about/about-v2";
+    }
 }
