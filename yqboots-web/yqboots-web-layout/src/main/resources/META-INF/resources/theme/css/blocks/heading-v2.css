@@ -1,0 +1,7 @@
+.heading-v2 h2:before,
+.heading-v2 h2:after {
+    top: 15px;
+    height: 6px;
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+}

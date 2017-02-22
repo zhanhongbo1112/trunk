@@ -1,0 +1,5 @@
+.heading-v6 h2:before,
+.heading-v6 h2:after {
+    top: 17px;
+    border-bottom-style: dotted;
+}
