@@ -1,0 +1,51 @@
+.team ul.team-socail {
+    text-align: right;
+}
+
+.team ul.team-socail li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.team ul.team-socail li a,
+.team ul.team-socail li a:hover {
+    text-decoration: none;
+}
+
+.team ul.team-socail li i {
+    color: #aaa;
+    padding: 6px 7px;
+    min-width: 30px;
+    font-size: 18px;
+    text-align: center;
+    background: #f7f7f7;
+    display: inline-block;
+}
+
+.team ul.team-socail li i:hover {
+    color: #fff;
+    background: #72c02c;
+    transition: all 0.2s ease-in-out;
+}
+
+.team .thumbnail-style {
+    padding: 12px;
+}
+
+.team .thumbnail-style img {
+    margin-bottom: 7px;
+}
+
+.team .thumbnail-style h3 {
+    margin-bottom: 5px;
+}
+
+.team .thumbnail-style:hover h3 a {
+    color: #72c02c !important;
+}
+
+.team .thumbnail-style small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
