@@ -90,4 +90,19 @@ public class Application {
     public String about_v4() {
         return "showcase/pages/about/about-v4";
     }
+
+    @RequestMapping(value = "/showcase/pages/about-me/about-me-v1")
+    public String about_me_v1() {
+        return "showcase/pages/about-me/about-me-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/about-me/about-me-v2")
+    public String about_me_v2() {
+        return "showcase/pages/about-me/about-me-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/about-me/about-me-v3")
+    public String about_me_v3() {
+        return "showcase/pages/about-me/about-me-v3";
+    }
 }

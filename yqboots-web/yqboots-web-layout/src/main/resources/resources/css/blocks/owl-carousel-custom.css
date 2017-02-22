@@ -79,7 +79,7 @@
   height: 100%;
   content: " ";
   position: absolute;
-  background: url(../img/patterns/gridtile.png) repeat;
+  background: url(../../img/patterns/gridtile.png) repeat;
 }
 
 .parallax-twitter-in {
@@ -150,7 +150,7 @@
   height: 100%;
   content: " ";
   position: absolute;
-  background: url(../img/patterns/gridtile.png) repeat;
+  background: url(../../img/patterns/gridtile.png) repeat;
 }
 
 .clients-section .title-v1 p,
