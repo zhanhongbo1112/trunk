@@ -145,4 +145,24 @@ public class Application {
     public String faq_v2() {
         return "showcase/pages/faq/faq-v2";
     }
+
+    @RequestMapping(value = "/showcase/pages/services/services-v1")
+    public String services_v1() {
+        return "showcase/pages/services/services-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/services/services-v2")
+    public String services_v2() {
+        return "showcase/pages/services/services-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/services/services-v3")
+    public String services_v3() {
+        return "showcase/pages/services/services-v3";
+    }
+
+    @RequestMapping(value = "/showcase/pages/services/services-v4")
+    public String services_v4() {
+        return "showcase/pages/services/services-v4";
+    }
 }
