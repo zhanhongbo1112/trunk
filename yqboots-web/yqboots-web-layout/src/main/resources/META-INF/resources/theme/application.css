@@ -1282,4 +1282,27 @@ h3.heading-xs {
     color: #72c02c;
 }
 
+/*Choose Block*/
+.who li {
+    margin-bottom: 6px;
+}
+
+.who li i {
+    color: #72c02c;
+    font-size: 13px;
+    min-width: 15px;
+    margin-right: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.who li:hover i,
+.who li:hover a {
+    color: #777;
+}
+
+.who li:hover a:hover {
+    text-decoration: none;
+}
+
 

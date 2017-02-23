@@ -120,4 +120,19 @@ public class Application {
     public String about_our_team_v3() {
         return "showcase/pages/about-our-team/about-our-team-v3";
     }
+
+    @RequestMapping(value = "/showcase/pages/contact/contact-v1")
+    public String contact_v1() {
+        return "showcase/pages/contact/contact-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/contact/contact-v2")
+    public String contact_v2() {
+        return "showcase/pages/contact/contact-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/contact/contact-v3")
+    public String contact_v3() {
+        return "showcase/pages/contact/contact-v3";
+    }
 }
