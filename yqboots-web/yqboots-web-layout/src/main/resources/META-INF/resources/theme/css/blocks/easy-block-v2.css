@@ -1,0 +1,22 @@
+.easy-block-v2 {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.easy-block-v2 img {
+    width: 100%;
+}
+
+.easy-block-v2 .easy-bg-v2 {
+    top: 5px;
+    color: #fff;
+    width: 100px;
+    padding: 5px;
+    right: -32px;
+    font-size: 13px;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 2px;
+    transform: rotate(45deg);
+}

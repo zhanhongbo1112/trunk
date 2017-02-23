@@ -457,6 +457,18 @@ body.dark .panel .panel-body, body.dark .panel .panel-footer {
     background: #222;
 }
 
+/*Accordion
+------------------------------------*/
+body.dark .panel-default {
+    border-color: #303030;
+}
+
+body.dark .panel-group .panel-heading + .panel-collapse .panel-body {
+    color: #999;
+    background: #222;
+    border-top-color: #555;
+}
+
 /*Pagination
 ------------------------------------*/
 body.dark .pagination > li > a {

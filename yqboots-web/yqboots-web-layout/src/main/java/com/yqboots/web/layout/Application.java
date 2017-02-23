@@ -135,4 +135,14 @@ public class Application {
     public String contact_v3() {
         return "showcase/pages/contact/contact-v3";
     }
+
+    @RequestMapping(value = "/showcase/pages/faq/faq-v1")
+    public String faq_v1() {
+        return "showcase/pages/faq/faq-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/faq/faq-v2")
+    public String faq_v2() {
+        return "showcase/pages/faq/faq-v2";
+    }
 }
