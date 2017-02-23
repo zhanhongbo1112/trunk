@@ -26,3 +26,19 @@
 	background: #fafafa;
 	border: solid 1px #eee;
 }
+
+body.dark .tab-v3 .nav-pills li a:hover,
+body.dark .tab-v3 .nav-pills li.active a {
+	color: #fff;
+}
+
+body.dark .tab-v3 .nav-pills li a {
+	color: #999;
+	border-color: #303030;
+	background: #202020;
+}
+
+body.dark .tab-v3 .tab-content {
+	border-color: #303030;
+	background: #202020;
+}
