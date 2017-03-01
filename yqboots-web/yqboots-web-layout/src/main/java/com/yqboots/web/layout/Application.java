@@ -210,4 +210,9 @@ public class Application {
     public String terms_v1() {
         return "showcase/pages/miscs/terms-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/animation/animation-v1")
+    public String features_animation_v1() {
+        return "showcase/features/animation/animation-v1";
+    }
 }
