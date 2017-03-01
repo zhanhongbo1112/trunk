@@ -212,7 +212,17 @@ public class Application {
     }
 
     @RequestMapping(value = "/showcase/features/animation/animation-v1")
-    public String features_animation_v1() {
+    public String animation_v1() {
         return "showcase/features/animation/animation-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-blocks/parallax-blocks-v1")
+    public String parallax_blocks_v1() {
+        return "showcase/features/parallax-blocks/parallax-blocks-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-blocks/parallax-blocks-v2")
+    public String parallax_blocks_v2() {
+        return "showcase/features/parallax-blocks/parallax-blocks-v2";
     }
 }

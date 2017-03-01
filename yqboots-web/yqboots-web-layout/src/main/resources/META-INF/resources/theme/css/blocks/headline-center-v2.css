@@ -57,3 +57,17 @@
 .headline-center-v2.headline-center-v2-dark span.bordered-icon:after {
     background: #666;
 }
+
+body.dark .headline-center-v2 h2,
+body.dark .headline-center-v2 p{
+    color: #555;
+}
+
+body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon {
+    color: #666;
+}
+
+body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon:before,
+body.dark .headline-center-v2.headline-center-v2-dark span.bordered-icon:after {
+    background: #666;
+}
