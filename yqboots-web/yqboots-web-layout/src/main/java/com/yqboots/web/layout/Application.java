@@ -245,4 +245,24 @@ public class Application {
     public String funny_boxes_v3() {
         return "showcase/features/funny-boxes/funny-boxes-v3";
     }
+
+    @RequestMapping(value = "/showcase/features/gallery/gallery-v1")
+    public String gallery_v1() {
+        return "showcase/features/gallery/gallery-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/gallery/gallery-v2")
+    public String gallery_v2() {
+        return "showcase/features/gallery/gallery-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/gallery/gallery-v3")
+    public String gallery_v3() {
+        return "showcase/features/gallery/gallery-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/gallery/gallery-v4")
+    public String gallery_v4() {
+        return "showcase/features/gallery/gallery-v4";
+    }
 }

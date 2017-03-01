@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Gallery (TWO COLUMNS)</title>
+  <link rel="stylesheet" th:href="@{/theme/css/plugins/fancybox/fancybox.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/title-v2.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Gallery (TWO COLUMNS)</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Gallery</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-sm">
+  <div class="text-center margin-bottom-50">
+    <h2 class="title-v2 title-center">TWO COLUMNS</h2>
+
+    <p class="space-lg-hor">If you are going to use a <span class="color-green">passage of Lorem Ipsum</span>, you
+      need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
+      on the Internet tend to repeat predefined chunks as necessary, making <span
+        class="color-green">this the first</span> true generator on the Internet.</p>
+  </div>
+
+  <div class="row margin-bottom-30">
+    <div class="col-sm-6 sm-margin-bottom-30">
+      <a th:href="@{/img/main/img12.jpg}" rel="gallery" class="fancybox img-hover-v1" title="Image 1">
+        <span><img class="img-responsive" th:src="@{/img/main/img12.jpg}"/></span>
+      </a>
+    </div>
+    <div class="col-sm-6 sm-margin-bottom-30">
+      <a th:href="@{/img/main/img1.jpg}" rel="gallery" class="fancybox img-hover-v1" title="Image 2">
+        <span><img class="img-responsive" th:src="@{/img/main/img1.jpg}"/></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 sm-margin-bottom-30">
+      <a th:href="@{/img/main/img16.jpg}" rel="gallery" class="fancybox img-hover-v1" title="Image 3">
+        <span><img class="img-responsive" th:src="@{/img/main/img16.jpg}"/></span>
+      </a>
+    </div>
+    <div class="col-sm-6 sm-margin-bottom-30">
+      <a th:href="@{/img/main/img3.jpg}" rel="gallery" class="fancybox img-hover-v1" title="Image 4">
+        <span><img class="img-responsive" th:src="@{/img/main/img3.jpg}"/></span>
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
