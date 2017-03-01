@@ -325,8 +325,98 @@ body.dark i.icon-bg-dark {
     border-color: #fff;
 }
 
-/*Icons Background Color*/
-body.dark i.icon-custom.icon-bg-u {
+/*Icons Color*/
+body.dark i.icon-custom.icon-color-u {
+    color: #72c02c;
+    border: solid 1px #72c02c;
+}
+
+body.dark i.icon-custom.icon-color-blue {
+    color: #3498db;
+    border: solid 1px #3498db;
+}
+
+body.dark i.icon-custom.icon-color-red {
+    color: #e74c3c;
+    border: solid 1px #e74c3c;
+}
+
+body.dark i.icon-custom.icon-color-sea {
+    color: #1abc9c;
+    border: solid 1px #1abc9c;
+}
+
+body.dark i.icon-custom.icon-color-green {
+    color: #2ecc71;
+    border: solid 1px #2ecc71;
+}
+
+body.dark i.icon-custom.icon-color-yellow {
+    color: #f1c40f;
+    border: solid 1px #f1c40f;
+}
+
+body.dark i.icon-custom.icon-color-orange {
+    color: #e67e22;
+    border: solid 1px #e67e22;
+}
+
+body.dark i.icon-custom.icon-color-grey {
+    color: #95a5a6;
+    border: solid 1px #95a5a6;
+}
+
+body.dark i.icon-custom.icon-color-purple {
+    color: #9b6bcc;
+    border: solid 1px #9b6bcc;
+}
+
+body.dark i.icon-custom.icon-color-aqua {
+    color: #27d7e7;
+    border: solid 1px #27d7e7;
+}
+
+body.dark i.icon-custom.icon-color-brown {
+    color: #9c8061;
+    border: solid 1px #9c8061;
+}
+
+body.dark i.icon-custom.icon-color-dark-blue {
+    color: #4765a0;
+    border: solid 1px #4765a0;
+}
+
+body.dark i.icon-custom.icon-color-light-green {
+    color: #79d5b3;
+    border: solid 1px #79d5b3;
+}
+
+body.dark i.icon-custom.icon-color-light {
+    color: #fff;
+    border: solid 1px #fff;
+}
+
+body.dark i.icon-custom.icon-color-light-grey {
+    color: #585f69;
+    border: solid 1px #585f69;
+}
+
+/*Icons Backgroun Color*/
+body.dark i.icon-custom.icon-bg-u,
+body.dark i.icon-custom.icon-bg-red,
+body.dark i.icon-custom.icon-bg-sea,
+body.dark i.icon-custom.icon-bg-dark,
+body.dark i.icon-custom.icon-bg-grey,
+body.dark i.icon-custom.icon-bg-blue,
+body.dark i.icon-custom.icon-bg-green,
+body.dark i.icon-custom.icon-bg-yellow,
+body.dark i.icon-custom.icon-bg-orange,
+body.dark i.icon-custom.icon-bg-purple,
+body.dark i.icon-custom.icon-bg-aqua,
+body.dark i.icon-custom.icon-bg-brown,
+body.dark i.icon-custom.icon-bg-dark-blue,
+body.dark i.icon-custom.icon-bg-light-grey,
+body.dark i.icon-custom.icon-bg-light-green {
     color: #fff;
     border: none;
 }
@@ -649,7 +739,7 @@ body.dark .ui-datepicker-calendar .ui-state-active:hover {
 }
 
 body.dark select.ui-timepicker-select,
-body.dark select.ui-timepicker-select:focus{
+body.dark select.ui-timepicker-select:focus {
     color: #999;
     box-shadow: none;
     border-color: #303030;

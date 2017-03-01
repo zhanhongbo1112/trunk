@@ -265,4 +265,54 @@ public class Application {
     public String gallery_v4() {
         return "showcase/features/gallery/gallery-v4";
     }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v1")
+    public String icon_blocks_v1() {
+        return "showcase/features/icon-blocks/icon-blocks-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v2")
+    public String icon_blocks_v2() {
+        return "showcase/features/icon-blocks/icon-blocks-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v3")
+    public String icon_blocks_v3() {
+        return "showcase/features/icon-blocks/icon-blocks-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v4")
+    public String icon_blocks_v4() {
+        return "showcase/features/icon-blocks/icon-blocks-v4";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v5")
+    public String icon_blocks_v5() {
+        return "showcase/features/icon-blocks/icon-blocks-v5";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v6")
+    public String icon_blocks_v6() {
+        return "showcase/features/icon-blocks/icon-blocks-v6";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v7")
+    public String icon_blocks_v7() {
+        return "showcase/features/icon-blocks/icon-blocks-v7";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v8")
+    public String icon_blocks_v8() {
+        return "showcase/features/icon-blocks/icon-blocks-v8";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v9")
+    public String icon_blocks_v9() {
+        return "showcase/features/icon-blocks/icon-blocks-v9";
+    }
+
+    @RequestMapping(value = "/showcase/features/icon-blocks/icon-blocks-v10")
+    public String icon_blocks_v10() {
+        return "showcase/features/icon-blocks/icon-blocks-v10";
+    }
 }
