@@ -1,56 +1,56 @@
 .funny-boxes {
-	background: #f7f7f7;
-	padding: 20px 20px 15px;
-	transition:all 0.3s ease-in-out;
+    background: #f7f7f7;
+    padding: 20px 20px 15px;
+    transition: all 0.3s ease-in-out;
 }
 
 .funny-boxes h2 {
-	margin-top: 0;
-	font-size: 18px;
-	line-height: 20px;
+    margin-top: 0;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .funny-boxes h2 a {
-	color: #555;
+    color: #555;
 }
 
 .funny-boxes p a {
-	color: #72c02c;
+    color: #72c02c;
 }
 
 .funny-boxes .funny-boxes-img li {
-	font-size: 12px;
-	margin-bottom: 2px;
+    font-size: 12px;
+    margin-bottom: 2px;
 }
 
 .funny-boxes .funny-boxes-img li i {
-	color: #72c02c;
-	font-size: 12px;
-	margin-right: 5px;
+    color: #72c02c;
+    font-size: 12px;
+    margin-right: 5px;
 }
 
 @media (max-width: 992px) {
-	.funny-boxes .funny-boxes-img li {
-		display: inline-block;
-	}
+    .funny-boxes .funny-boxes-img li {
+        display: inline-block;
+    }
 }
 
 .funny-boxes .funny-boxes-img img {
-	margin: 5px 10px 15px 0;
+    margin: 5px 10px 15px 0;
 }
 
 .funny-boxes ul.funny-boxes-rating li {
-	display: inline-block;
+    display: inline-block;
 }
 
 .funny-boxes ul.funny-boxes-rating li i {
-	color: #f8be2c;
-	cursor: pointer;
-	font-size: 14px;
+    color: #f8be2c;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .funny-boxes ul.funny-boxes-rating li i:hover {
-	color: #f8be2c;
+    color: #f8be2c;
 }
 
 /*Funny Colored Boxes*/
@@ -58,102 +58,149 @@
 .funny-boxes-colored h2 a,
 .funny-boxes-colored .funny-boxes-img li,
 .funny-boxes-colored .funny-boxes-img li i {
-	color: #fff;
+    color: #fff;
 }
 
 /*Red Funny Box*/
 .funny-boxes-red {
-	background: #e74c3c;
+    background: #e74c3c;
 }
 
 /*Dark Red Funny Box*/
 .funny-boxes-purple {
-	background: #9b6bcc;
+    background: #9b6bcc;
 }
 
 /*Blue Funny Box*/
 .funny-boxes-blue {
-	background: #3498db;
+    background: #3498db;
 }
 
 /*Grey Funny Box*/
 .funny-boxes-grey {
-	background: #95a5a6;
+    background: #95a5a6;
 }
 
 /*Turquoise Funny Box*/
 .funny-boxes-sea {
-	background: #1abc9c;
+    background: #1abc9c;
 }
 
 /*Turquoise Top Bordered Funny Box*/
 .funny-boxes-top-sea {
-	border-top: solid 2px #1abc9c;
+    border-top: solid 2px #1abc9c;
 }
 
 .funny-boxes-top-sea:hover {
-	border-top-color: #16a085;
+    border-top-color: #16a085;
 }
 
 /*Yellow Top Bordered Funny Box**/
 .funny-boxes-top-yellow {
-	border-top: solid 2px #f1c40f;
+    border-top: solid 2px #f1c40f;
 }
 
 .funny-boxes-top-yellow:hover {
-	border-top-color: #f39c12;
+    border-top-color: #f39c12;
 }
 
 /*Red Top Bordered Funny Box**/
 .funny-boxes-top-red {
-	border-top: solid 2px #e74c3c;
+    border-top: solid 2px #e74c3c;
 }
 
 .funny-boxes-top-red:hover {
-	border-top-color: #c0392b;
+    border-top-color: #c0392b;
 }
 
 /*Purple Top Bordered Funny Box**/
 .funny-boxes-top-purple {
-	border-top: solid 2px #9b6bcc;
+    border-top: solid 2px #9b6bcc;
 }
 
 .funny-boxes-top-purple:hover {
-	border-top-color: #814fb5;
+    border-top-color: #814fb5;
+}
+
+.funny-boxes-top-green {
+    border-top: solid 2px #72c02c;
+}
+
+.funny-boxes-top-green:hover {
+    border-top-color: #72c02c;
 }
 
 /*Orange Left Bordered Funny Box**/
 .funny-boxes-left-orange {
-	border-left: solid 2px #e67e22;
+    border-left: solid 2px #e67e22;
 }
 
 .funny-boxes-left-orange:hover {
-	border-left-color: #d35400;
+    border-left-color: #d35400;
 }
 
 /*Green Left Bordered Funny Box**/
 .funny-boxes-left-green {
-	border-left: solid 2px #72c02c;
+    border-left: solid 2px #72c02c;
 }
 
 .funny-boxes-left-green:hover {
-	border-left-color: #5fb611;
+    border-left-color: #5fb611;
 }
 
 /*Blue Left Bordered Funny Box**/
 .funny-boxes-left-blue {
-	border-left: solid 2px #3498db;
+    border-left: solid 2px #3498db;
 }
 
 .funny-boxes-left-blue:hover {
-	border-left-color: #2980b9;
+    border-left-color: #2980b9;
 }
 
 /*Dark Left Bordered Funny Box**/
 .funny-boxes-left-dark {
-	border-left: solid 2px #555;
+    border-left: solid 2px #555;
 }
 
 .funny-boxes-left-dark:hover {
-	border-left-color: #333;
+    border-left-color: #333;
+}
+
+body.dark .funny-boxes {
+    background: #292929 !important;
+}
+
+body.dark .funny-boxes h2 a {
+    color: #ccc;
+}
+
+/*Red Funny Box*/
+body.dark .funny-boxes.funny-boxes-red {
+    background: #e74c3c;
+}
+
+/*Blue Funny Box*/
+body.dark .funny-boxes.funny-boxes-blue {
+    background: #3498db;
+}
+
+/*Grey Funny Box*/
+body.dark .funny-boxes.funny-boxes-grey {
+    background: #95a5a6;
+}
+
+/*Turquoise Funny Box*/
+body.dark .funny-boxes.funny-boxes-sea {
+    background: #1abc9c;
+}
+
+body.dark .funny-boxes.funny-boxes-red h2 a,
+body.dark .funny-boxes.funny-boxes-blue h2 a,
+body.dark .funny-boxes.funny-boxes-grey h2 a,
+body.dark .funny-boxes.funny-boxes-sea h2 a,
+body.dark .funny-boxes.funny-boxes-red p,
+body.dark .funny-boxes.funny-boxes-blue p,
+body.dark .funny-boxes.funny-boxes-grey p,
+body.dark .funny-boxes.funny-boxes-sea p {
+    color: #fff;
 }

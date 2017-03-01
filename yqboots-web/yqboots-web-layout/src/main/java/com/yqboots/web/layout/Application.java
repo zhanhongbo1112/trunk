@@ -230,4 +230,19 @@ public class Application {
     public String call_action_v2() {
         return "showcase/features/call-action/call-action-v2";
     }
+
+    @RequestMapping(value = "/showcase/features/funny-boxes/funny-boxes-v1")
+    public String funny_boxes_v1() {
+        return "showcase/features/funny-boxes/funny-boxes-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/funny-boxes/funny-boxes-v2")
+    public String funny_boxes_v2() {
+        return "showcase/features/funny-boxes/funny-boxes-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/funny-boxes/funny-boxes-v3")
+    public String funny_boxes_v3() {
+        return "showcase/features/funny-boxes/funny-boxes-v3";
+    }
 }
