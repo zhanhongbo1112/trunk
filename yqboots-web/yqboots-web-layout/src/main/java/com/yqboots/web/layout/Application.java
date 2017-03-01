@@ -165,4 +165,39 @@ public class Application {
     public String services_v4() {
         return "showcase/pages/services/services-v4";
     }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v1")
+    public String search_v1() {
+        return "showcase/pages/search/search-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v2")
+    public String search_v2() {
+        return "showcase/pages/search/search-v2";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v3")
+    public String search_v3() {
+        return "showcase/pages/search/search-v3";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v4")
+    public String search_v4() {
+        return "showcase/pages/search/search-v4";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v5")
+    public String search_v5() {
+        return "showcase/pages/search/search-v5";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v6")
+    public String search_v6() {
+        return "showcase/pages/search/search-v6";
+    }
+
+    @RequestMapping(value = "/showcase/pages/search/search-v7")
+    public String search_v7() {
+        return "showcase/pages/search/search-v7";
+    }
 }

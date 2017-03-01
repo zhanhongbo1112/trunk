@@ -1,0 +1,13 @@
+.blog-photos li {
+    display: inline;
+}
+
+.blog-photos li img {
+    width: 58px;
+    height: 58px;
+    margin: 0 2px 8px;
+}
+
+.blog-photos li img:hover {
+    box-shadow: 0 0 0 2px #72c02c;
+}
