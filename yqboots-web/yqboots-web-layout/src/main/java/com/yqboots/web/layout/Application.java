@@ -200,4 +200,14 @@ public class Application {
     public String search_v7() {
         return "showcase/pages/search/search-v7";
     }
+
+    @RequestMapping(value = "/showcase/pages/miscs/privacy-v1")
+    public String privacy_v1() {
+        return "showcase/pages/miscs/privacy-v1";
+    }
+
+    @RequestMapping(value = "/showcase/pages/miscs/terms-v1")
+    public String terms_v1() {
+        return "showcase/pages/miscs/terms-v1";
+    }
 }
