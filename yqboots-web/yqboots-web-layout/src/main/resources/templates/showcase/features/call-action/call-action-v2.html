@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Call To Actions</title>
+  <link rel="stylesheet" th:href="@{/css/blocks/call-action-v2.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Call To Action</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Features</a></li>
+      <li class="active">Call to action</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="call-action-v2">
+  <div class="container">
+    <h2>Hire Me!</h2>
+
+    <p>Nulla ipsum dolor sit amet, consectetur adipiscing elitut eleifend nisl. In hac habitasse platea dictumst.
+      Curabitur hendrerit, Proin et augue vel nisi rhoncus tincidunt lectus in bibendum pellentesque, lacus eros
+      rutrum ligula.</p>
+    <a href="#" class="btn-u">Get In Touch</a>
+  </div>
+</div>
+</body>
+</html>

@@ -2,3 +2,7 @@
 	border: solid 1px #eee;
 	border-top: solid 2px #72c02c;
 }
+
+body.dark .tag-box-v1 {
+	border-color: #303030;
+}

@@ -221,8 +221,13 @@ public class Application {
         return "showcase/features/parallax-blocks/parallax-blocks-v1";
     }
 
-    @RequestMapping(value = "/showcase/features/parallax-blocks/parallax-blocks-v2")
-    public String parallax_blocks_v2() {
-        return "showcase/features/parallax-blocks/parallax-blocks-v2";
+    @RequestMapping(value = "/showcase/features/call-action/call-action-v1")
+    public String call_action_v1() {
+        return "showcase/features/call-action/call-action-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/call-action/call-action-v2")
+    public String call_action_v2() {
+        return "showcase/features/call-action/call-action-v2";
     }
 }

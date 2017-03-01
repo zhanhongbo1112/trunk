@@ -1,4 +1,8 @@
 .tag-box-v6 {
-	background: #fafafa;
-	border: solid 1px #eee;
+    background: #fafafa;
+    border: solid 1px #eee;
+}
+
+body.dark .tag-box-v6 {
+    border-color: #303030;
 }

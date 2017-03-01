@@ -9,3 +9,7 @@
 	font-size: 28px;
 	margin-bottom: 0;
 }
+
+body.dark .tag-box-v5 {
+	border-color: #303030;
+}

@@ -16,3 +16,7 @@
 .tag-box.tag-text-space p {
 	margin-bottom: 10px;
 }
+
+body.dark .tag-box {
+	background: #202020;
+}
