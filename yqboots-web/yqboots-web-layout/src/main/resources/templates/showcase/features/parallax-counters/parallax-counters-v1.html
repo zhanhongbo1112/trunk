@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Parallax Counters</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/title-v2.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/counters.css}"/>
+  <link rel="stylesheet" th:href="@{/css/blocks/parallax-counter-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Parallax Counters</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Pages</a></li>
+      <li class="active">Counters</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="parallax-counter-v1 height-600">
+  <div class="container">
+    <h2 class="title-v2 title-light title-center">SOME FACTS AND SERVICES</h2>
+    <p class="space-xlg-hor text-center color-light">If you are going to use a passage of Lorem Ipsum, you need to be
+      sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the
+      Internet tend to repeat predefined chunks as necessary.</p>
+
+    <div class="margin-bottom-40"></div>
+
+    <div class="row margin-bottom-10">
+      <div class="col-sm-3 col-xs-6">
+        <div class="counters">
+          <span class="counter">10629</span>
+          <h4>Users</h4>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="counters">
+          <span class="counter">277</span>
+          <h4>Projects</h4>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="counters">
+          <span class="counter">78</span>
+          <h4>Team Members</h4>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="counters">
+          <span class="counter">109</span>
+          <h4>Awards</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

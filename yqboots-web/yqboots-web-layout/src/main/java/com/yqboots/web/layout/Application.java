@@ -315,4 +315,29 @@ public class Application {
     public String icon_blocks_v10() {
         return "showcase/features/icon-blocks/icon-blocks-v10";
     }
+
+    @RequestMapping(value = "/showcase/features/parallax-counters/parallax-counters-v1")
+    public String parallax_counters_v1() {
+        return "showcase/features/parallax-counters/parallax-counters-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-counters/parallax-counters-v2")
+    public String parallax_counters_v2() {
+        return "showcase/features/parallax-counters/parallax-counters-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-counters/parallax-counters-v3")
+    public String parallax_counters_v3() {
+        return "showcase/features/parallax-counters/parallax-counters-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-counters/parallax-counters-v4")
+    public String parallax_counters_v4() {
+        return "showcase/features/parallax-counters/parallax-counters-v4";
+    }
+
+    @RequestMapping(value = "/showcase/features/parallax-counters/parallax-counters-v5")
+    public String parallax_counters_v5() {
+        return "showcase/features/parallax-counters/parallax-counters-v5";
+    }
 }
