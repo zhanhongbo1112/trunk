@@ -410,4 +410,14 @@ public class Application {
     public String team_blocks_v9() {
         return "showcase/features/team-blocks/team-blocks-v9";
     }
+
+    @RequestMapping(value = "/showcase/features/timeline/timeline-v1")
+    public String timeline_v1() {
+        return "showcase/features/timeline/timeline-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/timeline/timeline-v2")
+    public String timeline_v2() {
+        return "showcase/features/timeline/timeline-v2";
+    }
 }
