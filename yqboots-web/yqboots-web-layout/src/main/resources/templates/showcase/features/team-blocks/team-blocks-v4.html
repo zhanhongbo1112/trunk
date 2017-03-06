@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Team Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v4.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Team Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Team Blocks</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-sm">
+  <div class="row team-v4">
+    <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+      <img class="img-responsive" th:src="@{/img/team/img20-md.jpg}"/>
+      <span>Daniel Wearne</span>
+      <small>- Technica Director -</small>
+      <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit, sed a nulla non</p>
+      <ul class="list-inline team-social-v4">
+        <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+      <img class="img-responsive" th:src="@{/img/team/img30-md.jpg}"/>
+      <span>Sara Lisbon</span>
+      <small>- UI Designer -</small>
+      <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit, sed a nulla non</p>
+      <ul class="list-inline team-social-v4">
+        <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 col-sm-6 sm-margin-bottom-50">
+      <img class="img-responsive" th:src="@{/img/team/img22-md.jpg}"/>
+      <span>John Doe</span>
+      <small>- Backend Developer -</small>
+      <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit, sed a nulla non</p>
+      <ul class="list-inline team-social-v4">
+        <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <img class="img-responsive" th:src="@{/img/team/img19-md.jpg}"/>
+      <span>Alice Williams</span>
+      <small>- Customer Support -</small>
+      <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit, sed a nulla non</p>
+      <ul class="list-inline team-social-v4">
+        <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

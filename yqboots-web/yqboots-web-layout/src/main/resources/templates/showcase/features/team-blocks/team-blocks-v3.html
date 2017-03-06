@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Team Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v3.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Team Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Team Blocks</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <div class="row team-v3">
+    <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img21-md.jpg}"/>
+        <div class="team-hover">
+          <span>Daniel Wearne</span>
+          <small>Technical Director</small>
+          <p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+          <ul class="list-inline team-social-v3">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 md-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img17-md.jpg}"/>
+        <div class="team-hover">
+          <span>Sara Lisbon</span>
+          <small>Designer</small>
+          <p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+          <ul class="list-inline team-social-v3">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 sm-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img16-md.jpg}"/>
+        <div class="team-hover">
+          <span>John Doe</span>
+          <small>Developer</small>
+          <p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+          <ul class="list-inline team-social-v3">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img18-md.jpg}"/>
+        <div class="team-hover">
+          <span>Alice Williams</span>
+          <small>Support</small>
+          <p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+          <ul class="list-inline team-social-v3">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Team Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/about-me.css}"/>
+  <link rel="stylesheet" th:href="@{/css/blocks/social-icons.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Team Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Team Blocks</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <div class="row about-me">
+    <div class="col-sm-4 shadow-wrapper md-margin-bottom-40">
+      <div class="box-shadow shadow-effect-2">
+        <img class="img-responsive img-bordered full-width" th:src="@{/img/team/img32-md.jpg}"/>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="overflow-h">
+        <div class="pull-left">
+          <h2>John Watson</h2>
+          <span>CEO, Director</span>
+        </div>
+        <ul class="social-icons pull-right">
+          <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+          <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+          <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+          <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+        </ul>
+      </div>
+      <p>Nulla fermentum blandit dolor eu dictum. Nulla faucibus libero eget mi tempus, quis laoreet ante congue.
+        Nullam sed tortor vitae magna auctor vestibulum. Fusce gravida, mauris at vulputate aliquet, arcu nunc
+        scelerisque mi, pellentesque mollis lectus mauris in urna.</p>
+
+      <p>Suspendisse non magna sed justo tincidunt pellentesque. Proin sit amet ligula vel orci tempus viverra.
+        Donec massa justo, sodales in leo pretium, adipiscing dictum mi. Nullam sed eleifend purus. Sed eget lacus
+        eget urna venenatis hendrerit sed sit amet dui. Suspendisse lorem velit, tincidunt nec mattis ut, gravida
+        adipiscing sapien.</p><br/>
+
+      <div class="row">
+        <!-- Smallest Progress Bar -->
+        <div class="col-md-6 md-margin-bottom-40">
+          <h3 class="heading-xs">Web Design - 88%</h3>
+
+          <div class="progress progress-u progress-sm">
+            <div class="progress-bar progress-bar-dark" role="progressbar" aria-valuenow="88" aria-valuemin="0"
+                 aria-valuemax="100" style="width: 88%">
+            </div>
+          </div>
+
+          <h3 class="heading-xs">jQuery - 93%</h3>
+
+          <div class="progress progress-u progress-sm">
+            <div class="progress-bar progress-bar-dark" role="progressbar" aria-valuenow="93" aria-valuemin="0"
+                 aria-valuemax="100" style="width: 93%">
+            </div>
+          </div>
+        </div>
+        <!-- End Smallest Progress Bar -->
+
+        <!-- Smallest Progress Bar -->
+        <div class="col-md-6 md-margin-bottom-40">
+          <h3 class="heading-xs">PHP/WordPress - 76%</h3>
+
+          <div class="progress progress-u progress-sm">
+            <div class="progress-bar progress-bar-dark" role="progressbar" aria-valuenow="76" aria-valuemin="0"
+                 aria-valuemax="100" style="width: 76%">
+            </div>
+          </div>
+
+          <h3 class="heading-xs">JavaScript - 97%</h3>
+
+          <div class="progress progress-u progress-sm">
+            <div class="progress-bar progress-bar-dark" role="progressbar" aria-valuenow="97" aria-valuemin="0"
+                 aria-valuemax="100" style="width: 97%">
+            </div>
+          </div>
+        </div>
+        <!-- End Smallest Progress Bar -->
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

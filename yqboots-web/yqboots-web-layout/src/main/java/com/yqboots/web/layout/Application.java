@@ -365,4 +365,49 @@ public class Application {
     public String news_blocks_v5() {
         return "showcase/features/news-blocks/news-blocks-v5";
     }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v1")
+    public String team_blocks_v1() {
+        return "showcase/features/team-blocks/team-blocks-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v2")
+    public String team_blocks_v2() {
+        return "showcase/features/team-blocks/team-blocks-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v3")
+    public String team_blocks_v3() {
+        return "showcase/features/team-blocks/team-blocks-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v4")
+    public String team_blocks_v4() {
+        return "showcase/features/team-blocks/team-blocks-v4";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v5")
+    public String team_blocks_v5() {
+        return "showcase/features/team-blocks/team-blocks-v5";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v6")
+    public String team_blocks_v6() {
+        return "showcase/features/team-blocks/team-blocks-v6";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v7")
+    public String team_blocks_v7() {
+        return "showcase/features/team-blocks/team-blocks-v7";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v8")
+    public String team_blocks_v8() {
+        return "showcase/features/team-blocks/team-blocks-v8";
+    }
+
+    @RequestMapping(value = "/showcase/features/team-blocks/team-blocks-v9")
+    public String team_blocks_v9() {
+        return "showcase/features/team-blocks/team-blocks-v9";
+    }
 }

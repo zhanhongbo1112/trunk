@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Team Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v5.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Team Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Team Blocks</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <div class="row team-v5">
+    <div class="col-sm-3 sm-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img35-md.jpg}"/>
+        <div class="team-hover">
+          <ul class="list-inline team-social-v5">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <span>Marketing</span>
+      <small>Technical Director</small>
+      <p>Pellentesque habitant morbi tristique senectus netus et.</p>
+    </div>
+
+    <div class="col-sm-3 sm-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img34-md.jpg}"/>
+        <div class="team-hover">
+          <ul class="list-inline team-social-v5">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <span>Sara Lisbon</span>
+      <small>Developer</small>
+      <p>Pellentesque habitant morbi tristique senectus netus et.</p>
+    </div>
+
+    <div class="col-sm-3 sm-margin-bottom-50">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img36-md.jpg}"/>
+        <div class="team-hover">
+          <ul class="list-inline team-social-v5">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <span>John Doe</span>
+      <small>Designer</small>
+      <p>Pellentesque habitant morbi tristique senectus netus et.</p>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="team-img">
+        <img class="img-responsive" th:src="@{/img/team/img33-md.jpg}"/>
+        <div class="team-hover">
+          <ul class="list-inline team-social-v5">
+            <li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <span>Sara Lisbon</span>
+      <small>Developer</small>
+      <p>Pellentesque habitant morbi tristique senectus netus et.</p>
+    </div>
+  </div><!--/end team v5-->
+</div>
+</body>
+</html>
