@@ -340,4 +340,29 @@ public class Application {
     public String parallax_counters_v5() {
         return "showcase/features/parallax-counters/parallax-counters-v5";
     }
+
+    @RequestMapping(value = "/showcase/features/news-blocks/news-blocks-v1")
+    public String news_blocks_v1() {
+        return "showcase/features/news-blocks/news-blocks-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/news-blocks/news-blocks-v2")
+    public String news_blocks_v2() {
+        return "showcase/features/news-blocks/news-blocks-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/news-blocks/news-blocks-v3")
+    public String news_blocks_v3() {
+        return "showcase/features/news-blocks/news-blocks-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/news-blocks/news-blocks-v4")
+    public String news_blocks_v4() {
+        return "showcase/features/news-blocks/news-blocks-v4";
+    }
+
+    @RequestMapping(value = "/showcase/features/news-blocks/news-blocks-v5")
+    public String news_blocks_v5() {
+        return "showcase/features/news-blocks/news-blocks-v5";
+    }
 }

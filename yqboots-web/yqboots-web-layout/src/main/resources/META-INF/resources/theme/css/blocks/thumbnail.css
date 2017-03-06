@@ -1,0 +1,89 @@
+.thumbnail {
+    border-radius: 0;
+}
+
+a.thumbnail {
+    padding: 0;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.thumbnail-style {
+    padding: 7px;
+    margin-bottom: 20px;
+}
+
+.thumbnail-style:hover {
+    box-shadow: 0 0 8px #ddd;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.thumbnail h3,
+.thumbnail-style h3 {
+    margin: 6px 0 8px 0;
+}
+
+.thumbnail h3 a,
+.thumbnail-style h3 a {
+    color: #585f69;
+    font-size: 18px;
+}
+
+.thumbnail h3 a:hover,
+.thumbnail-style h3 a:hover {
+    color: #72c02c;
+    text-decoration: none;
+}
+
+.thumbnail-style .thumbnail-img {
+    position: relative;
+    margin-bottom: 11px;
+}
+
+.thumbnail-style a.btn-more {
+    right: -10px;
+    bottom: 10px;
+    color: #fff;
+    padding: 1px 6px;
+    position: absolute;
+    background: #72c02c;
+    display: inline-block;
+}
+
+.thumbnail-style a.btn-more:hover {
+    text-decoration: none;
+    box-shadow: 0 0 0 2px #5fb611;
+}
+
+.thumbnail-style:hover a.btn-more {
+    right: 10px;
+}
+
+.thumbnail-kenburn img {
+    left: 10px;
+    margin-left: -10px;
+    position: relative;
+    transition: all 0.8s ease-in-out;
+}
+
+.thumbnail-kenburn:hover img {
+    transform: scale(1.2) rotate(2deg);
+}
+
+body.dark .thumbnail {
+    border: none;
+    background: none;
+}
+
+body.dark .thumbnail-style:hover {
+    box-shadow: none;
+}
+
+body.dark .thumbnail h3 a,
+body.dark .thumbnail-style h3 a {
+    color: #ccc;
+}
+
+body.dark .thumbnail .caption {
+    background: #202020;
+}

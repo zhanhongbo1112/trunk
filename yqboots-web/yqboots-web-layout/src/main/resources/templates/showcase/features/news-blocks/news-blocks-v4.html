@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>News Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/thumbnail.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/portfolio-box.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/headline-left.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/plugins/fancybox/fancybox.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">News Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Blank Page</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <ul class="list-unstyled row portfolio-box">
+    <li class="col-sm-4 md-margin-bottom-50">
+      <a class="thumbnail fancybox" data-rel="gallery" title="Project One" th:href="@{/img/main/img9.jpg}">
+        <img class="full-width img-responsive" th:src="@{/img/main/img9.jpg}"/>
+        <span class="portfolio-box-in">
+          <i class="rounded-x icon-magnifier-add"></i>
+        </span>
+      </a>
+      <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Project One</h3></div>
+      <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Technology</a>, <a href="#">Business</a></small>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+    </li>
+    <li class="col-sm-4 md-margin-bottom-50">
+      <a class="thumbnail fancybox" data-rel="gallery" title="Project Two" th:href="@{/img/main/img22.jpg}">
+        <img class="full-width img-responsive" th:src="@{/img/main/img22.jpg}"/>
+        <span class="portfolio-box-in">
+          <i class="rounded-x icon-magnifier-add"></i>
+        </span>
+      </a>
+      <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Project Two</h3></div>
+      <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Technology</a>, <a href="#">Business</a></small>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+    </li>
+    <li class="col-sm-4">
+      <a class="thumbnail fancybox" data-rel="gallery" title="Project Three" th:href="@{/img/main/img18.jpg}">
+        <img class="full-width img-responsive" th:src="@{/img/main/img18.jpg}"/>
+        <span class="portfolio-box-in">
+          <i class="rounded-x icon-magnifier-add"></i>
+        </span>
+      </a>
+      <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Project Three</h3></div>
+      <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Technology</a>, <a href="#">Business</a></small>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>News Blocks</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/news-v3.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">News Blocks</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Blank Page</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <div class="row">
+    <div class="col-sm-5 sm-margin-bottom-20">
+      <img class="img-responsive" th:src="@{/img/main/img12.jpg}"/>
+    </div>
+    <div class="col-sm-7 news-v3">
+      <div class="news-v3-in-sm no-padding">
+        <ul class="list-inline posted-info">
+          <li>By Alexander Jenni</li>
+          <li>In <a href="#">Design</a></li>
+          <li>Posted January 24, 2015</li>
+        </ul>
+        <h2><a href="#">Incredible standard post “IMAGE”</a></h2>
+        <p>Nullam elementum tincidunt massa, a pulvinar leo ultricies ut. Ut fringilla lectus tellus, imperdiet
+          molestie est volutpat at. Sed viverra cursus nibh, sed consectetur ipsum sollicitudin non metus inmi
+          efficitur...</p>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+          atque corrupti quos dolores.</p>
+        <ul class="post-shares">
+          <li>
+            <a href="#">
+              <i class="rounded-x icon-speech"></i>
+              <span>5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="rounded-x icon-share"></i>
+              <span>9</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="rounded-x icon-heart"></i>
+              <span>0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
