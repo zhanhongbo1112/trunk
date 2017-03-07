@@ -420,4 +420,25 @@ public class Application {
     public String timeline_v2() {
         return "showcase/features/timeline/timeline-v2";
     }
+
+    @RequestMapping(value = "/showcase/features/thumbnail/thumbnail-v1")
+    public String thumbnail_v1() {
+        return "showcase/features/thumbnail/thumbnail-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/thumbnail/thumbnail-v2")
+    public String thumbnail_v2() {
+        return "showcase/features/thumbnail/thumbnail-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/thumbnail/thumbnail-v3")
+    public String thumbnail_v3() {
+        return "showcase/features/thumbnail/thumbnail-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/thumbnail/thumbnail-v4")
+    public String thumbnail_v4() {
+        return "showcase/features/thumbnail/thumbnail-v4";
+    }
+
 }
