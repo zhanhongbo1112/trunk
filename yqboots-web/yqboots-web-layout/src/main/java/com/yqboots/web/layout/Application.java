@@ -470,4 +470,9 @@ public class Application {
     public String chart_v2() {
         return "showcase/features/chart/chart-v2";
     }
+
+    @RequestMapping(value = "/showcase/features/count-down/count-down-v1")
+    public String count_down_v1() {
+        return "showcase/features/count-down/count-down-v1";
+    }
 }
