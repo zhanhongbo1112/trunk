@@ -460,4 +460,14 @@ public class Application {
     public String carousel_v4() {
         return "showcase/features/carousel/carousel-v4";
     }
+
+    @RequestMapping(value = "/showcase/features/chart/chart-v1")
+    public String chart_v1() {
+        return "showcase/features/chart/chart-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/chart/chart-v2")
+    public String chart_v2() {
+        return "showcase/features/chart/chart-v2";
+    }
 }
