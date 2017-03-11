@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+    <title>Carousel</title>
+    <link rel="stylesheet" th:href="@{/theme/css/plugins/owl-carousel/owl.carousel.css}"/>
+    <link rel="stylesheet" th:href="@{/theme/css/blocks/owl-carousel-style-v2.css}"/>
+    <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
+    <link rel="stylesheet" th:href="@{/css/blocks/owl-carousel-custom.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Carousel</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Features</a></li>
+            <li class="active">Carousel</li>
+        </ul>
+    </div>
+</div>
+<div layout:fragment="content" class="container content">
+    <div class="heading heading-v1 margin-bottom-40">
+        <h2>Responsive Carousel</h2>
+        <p><strong>OWL Carousel</strong> is touch enabled jQuery plugin that lets you create beautiful responsive
+            carousel sliders. You can find more detailed information from the offecial plugin website
+            <a target="_blank" href="http://owlgraphic.com/owlcarousel">http://owlgraphic.com/owlcarousel</a>
+        </p>
+    </div>
+
+    <div class="owl-carousel-style-v2 margin-bottom-50">
+        <h3 class="heading-md">Classic style and auto play</h3>
+        <p>You should just add an additional class <code>.owl-carousel-style-v2</code> to make classic style. For auto
+            play you may use <code>.owl-slider-v3</code> class.</p><br/>
+
+        <div class="owl-slider-v3">
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/baderbrau.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/fddw.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/inspiring.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/ea-canada.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/marianos.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/bellfield.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/national-geographic.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/emirates.png}"/>
+            </div>
+            <div class="item">
+                <img class="img-responsive" th:src="@{/img/clients2/co-wheels.png}"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

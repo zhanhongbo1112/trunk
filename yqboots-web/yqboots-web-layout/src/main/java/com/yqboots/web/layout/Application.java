@@ -441,4 +441,23 @@ public class Application {
         return "showcase/features/thumbnail/thumbnail-v4";
     }
 
+    @RequestMapping(value = "/showcase/features/carousel/carousel-v1")
+    public String carousel_v1() {
+        return "showcase/features/carousel/carousel-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/carousel/carousel-v2")
+    public String carousel_v2() {
+        return "showcase/features/carousel/carousel-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/carousel/carousel-v3")
+    public String carousel_v3() {
+        return "showcase/features/carousel/carousel-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/carousel/carousel-v4")
+    public String carousel_v4() {
+        return "showcase/features/carousel/carousel-v4";
+    }
 }
