@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Paginations</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Paginations</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Paginations</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <p>At nissimos ducimus voluptatum praesentium voluptatum deleniti atque corrupti quos dolores et quas
+    molestias excepturi sint occaecati cupiditate non provident deleniti atque corrupti quos dolores et</p>
+  <ul class="pager">
+    <li class="previous"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+
+  <p>Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
+    molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpaid est blanditiis
+    ducimus qui blanditiis.</p>
+
+  <ul class="pager">
+    <li class="previous"><a class="rounded" href="#">&larr; Older</a></li>
+    <li class="next"><a class="rounded" href="#">Newer &rarr;</a></li>
+  </ul>
+
+  <p>At nissimos ducimus voluptatum praesentium voluptatum deleniti atque corrupti quos dolores et quas
+    molestias excepturi sint occaecati cupiditate non provident deleniti atque corrupti quos dolores et</p>
+
+  <ul class="pager">
+    <li class="previous"><a class="rounded-4x" href="#">&larr; Older</a></li>
+    <li class="next"><a class="rounded-4x" href="#">Newer &rarr;</a></li>
+  </ul>
+
+  <hr/>
+
+  <p class="text-center">Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+    dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpaid est
+    blanditiis ducimus qui blanditiis.</p>
+  <ul class="pager">
+    <li><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+
+  <p class="text-center">At nissimos ducimus voluptatum praesentium voluptatum deleniti atque corrupti quos
+    dolores et quas molestias excepturi sint occaecati cupiditate non provident deleniti atque corrupti quos
+    dolores et</p>
+
+  <ul class="pager">
+    <li><a class="rounded" href="#">Previous</a></li>
+    <li><a class="rounded" href="#">Next</a></li>
+  </ul>
+
+  <p class="text-center">Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+    dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpaid est
+    blanditiis ducimus qui blanditiis.</p>
+
+  <ul class="pager">
+    <li><a class="rounded-4x" href="#">Previous</a></li>
+    <li><a class="rounded-4x" href="#">Next</a></li>
+  </ul>
+</div>
+<!--End Pager Examples-->
+</body>
+</html>

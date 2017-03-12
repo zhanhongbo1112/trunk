@@ -500,4 +500,14 @@ public class Application {
     public String message_v1() {
         return "showcase/features/message/message-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/pagination/pagination-v1")
+    public String pagination_v1() {
+        return "showcase/features/pagination/pagination-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/pagination/pagination-v2")
+    public String pagination_v2() {
+        return "showcase/features/pagination/pagination-v2";
+    }
 }

@@ -599,6 +599,20 @@ body.dark .pagination > .disabled > a:focus {
     border-color: #555;
 }
 
+body.dark .pager li > a,
+body.dark .pager li > span {
+    color: #999;
+    border-color: #303030;
+    background: #202020;
+}
+
+body.dark .pager li > a:hover,
+body.dark .pager li > span:hover {
+    color: #fff;
+    background: #222;
+    border-color: #555;
+}
+
 /*Sky Forms
 ------------------------------------*/
 body.dark .sky-form {

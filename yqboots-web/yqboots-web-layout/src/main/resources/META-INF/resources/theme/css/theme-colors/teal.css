@@ -105,6 +105,14 @@ i.icon-bg-u {
     background-color: #18ba9b;
 }
 
+/*Pager
+------------------------------------*/
+.pager li > a:hover,
+.pager li > a:focus {
+    background: #18ba9b;
+    border-color: #18ba9b;
+}
+
 /* Tabs */
 .tab .nav-tabs {
     border-bottom: solid 2px #18ba9b;
