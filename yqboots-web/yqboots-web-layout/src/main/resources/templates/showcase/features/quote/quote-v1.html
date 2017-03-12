@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Testimonials and Quotes</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/quote-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Testimonials and Quotes</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Testimonials</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content height-500">
+  <div class="quote-v1">
+    <div class="container">
+      <p>Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever
+        as you can be when you write it, how will you ever debug it.</p>
+      <span>Jimmy Howell, <a href="#">CEO, Director</a></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

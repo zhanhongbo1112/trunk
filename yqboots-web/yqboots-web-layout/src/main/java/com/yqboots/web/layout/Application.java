@@ -580,4 +580,14 @@ public class Application {
     public String testimonial_v6() {
         return "showcase/features/testimonial/testimonial-v6";
     }
+
+    @RequestMapping(value = "/showcase/features/quote/quote-v1")
+    public String quote_v1() {
+        return "showcase/features/quote/quote-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/quote/quote-v2")
+    public String quote_v2() {
+        return "showcase/features/quote/quote-v2";
+    }
 }
