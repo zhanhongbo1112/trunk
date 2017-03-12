@@ -434,6 +434,28 @@ span.label {
     padding: 4px 7px;
 }
 
+/*Badge Lists*/
+.badge-lists li {
+    position: relative;
+}
+
+.badge-lists span.badge {
+    top: -10px;
+    right: -6px;
+    position: absolute;
+}
+
+/*Badge Icons*/
+.badge-lists.badge-icons span.badge {
+    min-width: 12px;
+    padding: 3px 6px;
+}
+
+.badge-lists.badge-icons i {
+    font-size: 18px;
+    min-width: 25px;
+}
+
 /*Font Awesome Icon Styles*/
 i.icon-custom {
     color: #555;

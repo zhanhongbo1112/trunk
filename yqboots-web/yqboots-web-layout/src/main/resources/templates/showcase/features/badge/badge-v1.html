@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Labels &amp; Badges</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/badge-box-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/badge-box-v2.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/sidebar-nav-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Labels &amp; Badges</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Labels &amp; Badges</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <div class="headline"><h2 class="heading-sm">Badges</h2></div>
+  <!-- Default Badges -->
+  <div class="margin-bottom-35">
+    <p>Default Badges: Easily highlight new or unread items by adding a <code>&lt;span class="badge
+      badge-*"&gt;</code>
+      to links, Bootstrap navs, and more.</p>
+    <span class="badge badge-u">1</span>
+    <span class="badge badge-u">2</span>
+    <span class="badge badge-u">3</span>
+    <span class="badge badge-u">4</span>
+    <span class="badge badge-u">5</span>
+    <span class="badge badge-u">6</span>
+    <span class="badge badge-u">7</span>
+    <span class="badge badge-u">8</span>
+    <span class="badge badge-u">9</span>
+    <span class="badge badge-u">10</span>
+    <span class="badge badge-u">11</span>
+    <span class="badge badge-u">12</span>
+    <span class="badge badge-u">13</span>
+    <span class="badge badge-u">14</span>
+  </div>
+  <hr/>
+  <div class="margin-bottom-35">
+    <p>Rounded Corner Badges: You should add an extra class <code>.rounded</code> into <code>
+      &lt;span&gt;</code> tag to do cornerd badges.</p>
+    <span class="badge rounded badge-u">1</span>
+    <span class="badge rounded badge-u">2</span>
+    <span class="badge rounded badge-u">3</span>
+    <span class="badge rounded badge-u">4</span>
+    <span class="badge rounded badge-u">5</span>
+    <span class="badge rounded badge-u">6</span>
+    <span class="badge rounded badge-u">7</span>
+    <span class="badge rounded badge-u">8</span>
+    <span class="badge rounded badge-u">9</span>
+    <span class="badge rounded badge-u">10</span>
+    <span class="badge rounded badge-u">11</span>
+    <span class="badge rounded badge-u">12</span>
+    <span class="badge rounded badge-u">13</span>
+    <span class="badge rounded badge-u">14</span>
+  </div>
+  <hr/>
+  <div class="margin-bottom-35">
+    <p>Rounded Corner Badges: You should add an extra class <code>.rounded-2x</code> into <code>
+      &lt;span&gt;</code> tag to do circle badges.</p>
+    <span class="badge rounded-2x badge-u">1</span>
+    <span class="badge rounded-2x badge-u">2</span>
+    <span class="badge rounded-2x badge-u">3</span>
+    <span class="badge rounded-2x badge-u">4</span>
+    <span class="badge rounded-2x badge-u">5</span>
+    <span class="badge rounded-2x badge-u">6</span>
+    <span class="badge rounded-2x badge-u">7</span>
+    <span class="badge rounded-2x badge-u">8</span>
+    <span class="badge rounded-2x badge-u">9</span>
+    <span class="badge rounded-2x badge-u">10</span>
+    <span class="badge rounded-2x badge-u">11</span>
+    <span class="badge rounded-2x badge-u">12</span>
+    <span class="badge rounded-2x badge-u">13</span>
+    <span class="badge rounded-2x badge-u">14</span>
+  </div>
+  <!-- End Default Badges -->
+
+  <hr/>
+
+  <!-- Different Usages -->
+  <h3 class="heading-sm margin-bottom-15">Different Usages</h3>
+  <div class="margin-bottom-30">
+    <ul class="list-unstyled list-inline">
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+      <li><span class="badge badge-u">Old</span></li>
+    </ul>
+    <ul class="list-unstyled list-inline">
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+      <li><span class="badge badge-u rounded">New</span></li>
+    </ul>
+    <ul class="list-unstyled list-inline">
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+      <li><span class="badge badge-u rounded-2x">Archive</span></li>
+    </ul>
+  </div>
+  <!-- End Different Usages -->
+
+  <hr/>
+
+  <div class="margin-bottom-30">
+    <!-- Badges With Links -->
+    <ul class="list-inline badge-lists margin-bottom-30">
+      <li>
+        <a class="btn-u btn-u-xs btn-u-default" href="#">Info</a>
+        <span class="badge badge-u">7</span>
+      </li>
+      <li>
+        <a class="btn-u btn-u-xs btn-u-dark" href="#">Notifications</a>
+        <span class="badge badge-u rounded-2x">9</span>
+      </li>
+      <li>
+        <a class="btn-u btn-u-xs btn-u-default" href="#">Messages</a>
+        <span class="badge badge-u rounded">12</span>
+      </li>
+      <li>
+        <a class="btn-u btn-u-xs btn-u-dark rounded" href="#">Tasks</a>
+        <span class="badge badge-u rounded-2x">12</span>
+      </li>
+    </ul>
+    <!-- End Badges With Links -->
+
+    <hr/>
+
+    <!-- Badges With Icons -->
+    <ul class="list-inline badge-lists badge-icons margin-bottom-30">
+      <li>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+        <span class="badge badge-u rounded-x">2</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-cog"></i></a>
+        <span class="badge badge-u rounded">9</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-gift"></i></a>
+        <span class="badge badge-u rounded-x">4</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-exclamation-triangle"></i></a>
+        <span class="badge badge-u rounded">3</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-comments"></i></a>
+        <span class="badge badge-u">3</span>
+      </li>
+    </ul>
+    <!-- End Badges With Icons -->
+
+    <hr/>
+
+    <!-- Badges With Icons -->
+    <ul class="list-inline badge-lists badge-box-v1 margin-bottom-30">
+      <li>
+        <a href="#"><i class="fa fa-envelope"></i></a>
+        <span class="badge badge-u rounded-x">3</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-cog"></i></a>
+        <span class="badge badge-u rounded">8</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-gift"></i></a>
+        <span class="badge badge-u rounded-x">3</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-exclamation-triangle"></i></a>
+        <span class="badge badge-u rounded">2</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-comments"></i></a>
+        <span class="badge badge-u rounded-x">5</span>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-code"></i></a>
+        <span class="badge badge-u">7</span>
+      </li>
+    </ul>
+
+    <hr/>
+
+    <ul class="list-inline badge-lists badge-box-v2 margin-bottom-30">
+      <li>
+        <a href="#"><i class="fa fa-envelope"></i>Inbox</a>
+        <span class="badge badge-u rounded-x">3</span>
+      </li>
+      <li>
+        <a class="rounded" href="#"><i class="fa fa-cog"></i>Settings</a>
+        <span class="badge badge-u">7</span>
+      </li>
+      <li>
+        <a class="rounded-2x" href="#"><i class="fa fa-gift"></i>Bounces</a>
+        <span class="badge badge-u rounded-x">5</span>
+      </li>
+      <li>
+        <a class="rounded-3x" href="#"><i class="fa fa-exclamation-triangle"></i>Alerts</a>
+        <span class="badge badge-u rounded">2</span>
+      </li>
+    </ul>
+    <!-- End Badges With Icons -->
+
+    <hr/>
+
+    <!-- List Groups -->
+    <div class="row margin-bottom-20">
+      <div>
+        <ul class="list-group sidebar-nav-v1" id="sidebar-nav-1">
+          <li class="list-group-item list-toggle">
+            <span class="badge rounded-x badge-u">8</span>
+            <a data-toggle="collapse" data-parent="#sidebar-nav-1" href="#collapse-demo-1">Typography</a>
+            <ul id="collapse-demo-1" class="collapse">
+              <li><a href="#"><i class="fa fa-sort-alpha-asc"></i> General
+                Typography</a></li>
+              <li>
+                <span class="badge badge-u">New</span>
+                <a href="#"><i class="fa fa-magic"></i> Headings</a>
+              </li>
+              <li>
+                <span class="badge badge-u">New</span>
+                <a href="#"><i class="fa fa-ellipsis-h"></i> Dividers</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="list-group-item list-toggle">
+            <span class="badge rounded badge-u">2</span>
+            <a data-toggle="collapse" data-parent="#sidebar-nav-1" href="#collapse-demo-2">Buttons</a>
+            <ul id="collapse-demo-2" class="collapse">
+              <li><a href="shortcode_btn_general.html"><i class="fa fa-flask"></i> General Buttons</a></li>
+              <li>
+                <span class="badge badge-u">New</span>
+                <a href="shortcode_btn_brands.html"><i class="fa fa-html5"></i> Brand &amp; Social Buttons</a>
+              </li>
+              <li>
+                <span class="badge badge-u">New</span>
+                <a href="shortcode_btn_effects.html"><i class="fa fa-bolt"></i> Loading &amp; Hover
+                  Effects</a>
+              </li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <span class="badge badge-u">New</span>
+            <a href="shortcode_icon_general.html">Icons</a>
+          </li>
+          <li class="list-group-item">
+            <span class="badge badge-u rounded-2x">New</span>
+            <a href="shortcode_accordion_and_tabs.html">Accordion &amp; Tabs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End List Groups -->
+
+    <!-- Badges With Dropdown/Navigation  -->
+    <div class="row">
+      <!-- Dropdown With Badge -->
+      <div class="col-md-6">
+        <ul class="dropdown-menu dropdown-show" role="menu">
+          <li>
+            <a href="#">Action <span class="badge badge-u rounded-x">7</span></a>
+          </li>
+          <li><a href="#">Another action <span class="badge badge-u rounded">5</span></a></li>
+          <li><a href="#">Others <span class="badge badge-u rounded-2x">16</span></a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link <span class="badge badge-u">3</span></a></li>
+        </ul>
+      </div>
+      <!-- End Dropdown With Badge-->
+
+      <!-- Badges With Navigation  -->
+      <div class="col-md-6">
+        <ul class="nav nav-pills nav-stacked" style="max-width: 260px;">
+          <li class="active">
+            <a href="#">
+              <span class="badge pull-right rounded-x">7</span>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="badge pull-right rounded-2x">37</span>
+              Messages
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="badge pull-right rounded">3</span>
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="badge pull-right">37</span>
+              Archive
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- End Badges With Navigation  -->
+    </div>
+    <!-- End Badges With Dropdown/Navigation  -->
+  </div>
+</div>
+</body>
+</html>

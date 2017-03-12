@@ -480,4 +480,9 @@ public class Application {
     public String accordion_v1() {
         return "showcase/features/accordion/accordion-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/badge/badge-v1")
+    public String badge_v1() {
+        return "showcase/features/badge/badge-v1";
+    }
 }
