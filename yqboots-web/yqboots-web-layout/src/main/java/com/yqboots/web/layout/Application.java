@@ -520,4 +520,19 @@ public class Application {
     public String progress_bar_v1() {
         return "showcase/features/progress-bar/progress-bar-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/tab/tab-v1")
+    public String tab_v1() {
+        return "showcase/features/tab/tab-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/tab/tab-v2")
+    public String tab_v2() {
+        return "showcase/features/tab/tab-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/tab/tab-v3")
+    public String tab_v3() {
+        return "showcase/features/tab/tab-v3";
+    }
 }
