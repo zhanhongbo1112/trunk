@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Tables</title>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Tables</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Tables</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <!--Basic Table Option (Spacing)-->
+  <div class="panel panel-red margin-bottom-40">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-user"></i> Basic Table Option (with space)</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th class="hidden-sm">Last Name</th>
+          <th>Username</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td class="hidden-sm">Otto</td>
+          <td>@mdo</td>
+          <td>
+            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jacob</td>
+          <td class="hidden-sm">Thornton</td>
+          <td>@fat</td>
+          <td>
+            <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Larry</td>
+          <td class="hidden-sm">the Bird</td>
+          <td>@twitter</td>
+          <td>
+            <button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>htmlstream</td>
+          <td class="hidden-sm">Web Design</td>
+          <td>@htmlstream</td>
+          <td>
+            <button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--End Basic Table-->
+
+  <!--Striped and Hover Rows-->
+  <div class="row">
+    <!--Striped Rows-->
+    <div class="col-md-6">
+      <div class="panel panel-sea margin-bottom-40">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-edit"></i> Striped Rows</h3>
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td>
+              <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td>
+              <button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Larry</td>
+            <td>
+              <button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>htmlstream</td>
+            <td>
+              <button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--End Striped Rows-->
+
+    <!--Hover Rows-->
+    <div class="col-md-6">
+      <div class="panel panel-yellow margin-bottom-40">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-gear"></i> Hover rows</h3>
+        </div>
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>1</td>
+            <td>Mark</td>
+            <td><a class="btn btn-danger btn-xs">Pending</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jacob</td>
+            <td><a class="btn btn-warning btn-xs">Demo Link</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Larry</td>
+            <td><a class="btn btn-info btn-xs">Share Info</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>htmlstream</td>
+            <td><a class="btn btn-success btn-xs">Testing Box</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--End Hover Rows-->
+  </div>
+  <!--End Striped and Hover Rows-->
+</div>
+</body>
+</html>
