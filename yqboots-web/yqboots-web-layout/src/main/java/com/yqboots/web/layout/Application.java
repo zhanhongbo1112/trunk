@@ -485,4 +485,9 @@ public class Application {
     public String badge_v1() {
         return "showcase/features/badge/badge-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/label/label-v1")
+    public String label_v1() {
+        return "showcase/features/label/label-v1";
+    }
 }
