@@ -515,4 +515,9 @@ public class Application {
     public String panel_v1() {
         return "showcase/features/panel/panel-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/progress-bar/progress-bar-v1")
+    public String progress_bar_v1() {
+        return "showcase/features/progress-bar/progress-bar-v1";
+    }
 }

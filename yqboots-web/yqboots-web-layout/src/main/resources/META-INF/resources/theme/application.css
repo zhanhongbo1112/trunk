@@ -1434,21 +1434,6 @@ h3.heading-xs {
     box-shadow: none;
 }
 
-/*Progress Bar
-------------------------------------*/
-.progress {
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.progress-u {
-    box-shadow: none;
-}
-
-.progress-u .progress-bar {
-    box-shadow: none;
-}
-
 /*progress-bar (sizes)*/
 .progress-lg {
     height: 25px;
