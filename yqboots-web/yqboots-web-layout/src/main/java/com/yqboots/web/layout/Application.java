@@ -510,4 +510,9 @@ public class Application {
     public String pagination_v2() {
         return "showcase/features/pagination/pagination-v2";
     }
+
+    @RequestMapping(value = "/showcase/features/panel/panel-v1")
+    public String panel_v1() {
+        return "showcase/features/panel/panel-v1";
+    }
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Paginations</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Panels</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Panels</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <div class="heading heading-v1 margin-bottom-40">
+    <h2>Panels</h2>
+    <p>Like other components, easily make a panel more meaningful to a particular context by adding any of the
+      contextual state classes. You are able to find our more detailed info here
+      <a target="_blank" href="http://getbootstrap.com/components/#panel">http://getbootstrap.com/components/#panel</a>
+    </p>
+  </div>
+
+  <div class="row margin-bottom-20">
+    <div class="col-md-12">
+      <!-- Green Panel -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Green Panel</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Accusamus et iusto odio</h4>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+            fuga.</p>
+        </div>
+      </div>
+      <!-- End Green Panel -->
+    </div>
+  </div>
+
+  <div class="row margin-bottom-20">
+    <div class="col-md-6">
+      <!-- Info Panel -->
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Info Panel</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Info Bootstrap Panel</h4>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+            fuga.</p>
+        </div>
+      </div>
+      <!-- End Info Panel -->
+    </div>
+    <div class="col-md-6">
+      <!-- Success Panel -->
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Success Panel</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Success Bootstrap Panel</h4>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+            fuga.</p>
+        </div>
+      </div>
+      <!-- End Success Panel -->
+    </div>
+  </div>
+
+  <div class="row margin-bottom-20">
+    <div class="col-md-6">
+      <!-- Warning Panel -->
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Warning Panel</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Warning Bootstrap Panel</h4>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+            fuga.</p>
+        </div>
+      </div>
+      <!-- End Warning Panel -->
+    </div>
+    <div class="col-md-6">
+      <!-- Danger Panel -->
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Danger Panel</h3>
+        </div>
+        <div class="panel-body">
+          <h4>Danger Bootstrap Panel</h4>
+          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+            fuga.</p>
+        </div>
+      </div>
+      <!-- End Danger Panel -->
+    </div>
+  </div>
+</div>
+</body>
+</html>
