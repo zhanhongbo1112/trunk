@@ -475,4 +475,9 @@ public class Application {
     public String count_down_v1() {
         return "showcase/features/count-down/count-down-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/accordion/accordion-v1")
+    public String accordion_v1() {
+        return "showcase/features/accordion/accordion-v1";
+    }
 }
