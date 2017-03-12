@@ -495,4 +495,9 @@ public class Application {
     public String media_v1() {
         return "showcase/features/media/media-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/message/message-v1")
+    public String message_v1() {
+        return "showcase/features/message/message-v1";
+    }
 }
