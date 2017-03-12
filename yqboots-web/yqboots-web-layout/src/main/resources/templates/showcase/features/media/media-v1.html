@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Audio/Videos &amp; Images</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/box-shadow.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tab-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Audio/Videos &amp; Images</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Audio/Videos &amp; Images</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <!-- Image Examples -->
+  <div class="heading heading-v1 margin-bottom-40">
+    <h2>Image Examples</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+      scrambled.</p>
+  </div>
+
+  <div class="row margin-bottom-50">
+    <div class="col-md-6 shadow-wrapper md-margin-bottom-40">
+      <div class="box-shadow shadow-effect-2">
+        <img class="img-responsive" th:src="@{/img/main/img4.jpg}"/>
+      </div>
+    </div>
+    <div class="col-md-6 shadow-wrapper">
+      <div class="box-shadow shadow-effect-2">
+        <img class="img-responsive img-bordered" th:src="@{/img/main/img3.jpg}"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-v1 margin-bottom-40">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab-img-1" data-toggle="tab">Default Examples</a></li>
+      <li><a href="#tab-img-2" data-toggle="tab">Box Shadows</a></li>
+    </ul>
+    <div class="tab-content">
+      <!-- Default Image Examples -->
+      <div class="tab-pane fade in fade in active" id="tab-img-1">
+        <div class="row margin-bottom-10">
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <img class="img-responsive" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <img class="img-responsive rounded-2x" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <img class="img-responsive rounded-3x" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <img class="img-responsive rounded-4x" th:src="@{/img/demo.jpg}"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <img class="img-responsive img-bordered" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <img class="img-responsive img-bordered rounded-2x" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <img class="img-responsive rounded-x" th:src="@{/img/demo.jpg}"/>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <img class="img-responsive img-bordered rounded-x" th:src="@{/img/demo.jpg}"/>
+          </div>
+        </div>
+      </div>
+      <!-- End Default Image Examples -->
+
+      <!-- Image Box Shadows -->
+      <div class="tab-pane fade in" id="tab-img-2">
+        <div class="row margin-bottom-20">
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-1">
+              <img class="img-responsive" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-6 shadow-wrapper md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-2">
+              <img class="img-responsive" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-1">
+              <img class="img-responsive img-bordered" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-6 shadow-wrapper md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-2">
+              <img class="img-responsive img-bordered" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-bottom-20">
+          <div class="col-sm-3 col-xs-6 md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-1">
+              <img class="img-responsive rounded" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-6 shadow-wrapper md-margin-bottom-20">
+            <div class="box-shadow shadow-effect-2 rounded-2x">
+              <img class="img-responsive rounded-2x" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 shadow-wrapper col-xs-6">
+            <div class="box-shadow shadow-effect-2 rounded">
+              <img class="img-responsive rounded img-bordered" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+          <div class="col-sm-3 shadow-wrapper col-xs-6">
+            <div class="box-shadow shadow-effect-2 rounded-2x">
+              <img class="img-responsive rounded-2x img-bordered" th:src="@{/img/demo.jpg}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Image Box Shadows -->
+    </div>
+  </div>
+  <!-- End Image Examples -->
+</div>
+</body>
+</html>

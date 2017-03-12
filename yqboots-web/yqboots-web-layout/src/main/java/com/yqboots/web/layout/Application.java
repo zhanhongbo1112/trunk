@@ -490,4 +490,9 @@ public class Application {
     public String label_v1() {
         return "showcase/features/label/label-v1";
     }
+
+    @RequestMapping(value = "/showcase/features/media/media-v1")
+    public String media_v1() {
+        return "showcase/features/media/media-v1";
+    }
 }
