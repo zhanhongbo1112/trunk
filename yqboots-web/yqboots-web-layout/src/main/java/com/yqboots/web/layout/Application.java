@@ -550,4 +550,34 @@ public class Application {
     public String table_v3() {
         return "showcase/features/table/table-v3";
     }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v1")
+    public String testimonial_v1() {
+        return "showcase/features/testimonial/testimonial-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v2")
+    public String testimonial_v2() {
+        return "showcase/features/testimonial/testimonial-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v3")
+    public String testimonial_v3() {
+        return "showcase/features/testimonial/testimonial-v3";
+    }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v4")
+    public String testimonial_v4() {
+        return "showcase/features/testimonial/testimonial-v4";
+    }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v5")
+    public String testimonial_v5() {
+        return "showcase/features/testimonial/testimonial-v5";
+    }
+
+    @RequestMapping(value = "/showcase/features/testimonial/testimonial-v6")
+    public String testimonial_v6() {
+        return "showcase/features/testimonial/testimonial-v6";
+    }
 }

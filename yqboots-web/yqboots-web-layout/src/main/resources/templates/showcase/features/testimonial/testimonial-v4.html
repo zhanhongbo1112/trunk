@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Testimonials and Quotes</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/headline-center.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/testimonials.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/testimonials-v4.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Testimonials and Quotes</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Testimonials</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-md">
+  <div class="headline-center margin-bottom-60">
+    <h2>WHAT PEOPLE SAY</h2>
+    <p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br/>
+      Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet
+      fringilla </p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="testimonials-v4 md-margin-bottom-50">
+        <div class="testimonials-v4-in">
+          <p>The best programs are written so that computing machines can perform them quickly and so that human
+            beings can understand them clearly. A programmer is ideally an essayist who works with traditional
+            aesthetic and literary forms as well as mathematical concepts.</p>
+        </div>
+        <img class="rounded-x" th:src="@{/img/testimonials/img5.jpg}" alt="thumb"/>
+        <span class="testimonials-author">
+          Jeremy Asigner<br/>
+          <em>Web Developer, <a href="#">Google Inc.</a></em>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="testimonials-v4">
+        <div class="testimonials-v4-in">
+          <p>We see a lot of feature-driven product design in which the cost of features is not properly accounted.
+            Features can have a negative value to customers because they make the products more difficult to
+            understand and use. We are finding that people like products that just work.</p>
+        </div>
+        <img class="rounded-x" th:src="@{/img/testimonials/img4.jpg}" alt="thumb"/>
+        <span class="testimonials-author">
+          John Davenport<br/>
+          <em>UX/UI Designer, <a href="#">Apple Inc.</a></em>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
