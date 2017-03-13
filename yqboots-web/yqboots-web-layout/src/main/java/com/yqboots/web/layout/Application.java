@@ -590,4 +590,44 @@ public class Application {
     public String quote_v2() {
         return "showcase/features/quote/quote-v2";
     }
+
+    @RequestMapping(value = "/showcase/forms/form-v1")
+    public String form_v1() {
+        return "showcase/forms/form-v1";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v2")
+    public String form_v2() {
+        return "showcase/forms/form-v2";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v3")
+    public String form_v3() {
+        return "showcase/forms/form-v3";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v4")
+    public String form_v4() {
+        return "showcase/forms/form-v4";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v5")
+    public String form_v5() {
+        return "showcase/forms/form-v5";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v6")
+    public String form_v6() {
+        return "showcase/forms/form-v6";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v7")
+    public String form_v7() {
+        return "showcase/forms/form-v7";
+    }
+
+    @RequestMapping(value = "/showcase/forms/form-v8")
+    public String form_v8() {
+        return "showcase/forms/form-v8";
+    }
 }

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Advanced Forms</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tab-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Advanced Forms</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Advanced Forms</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <!-- Tabs -->
+  <div class="tab-v1">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home-1" data-toggle="tab">Datepicker Forms</a></li>
+      <li><a href="#profile-1" data-toggle="tab">Validation Forms</a></li>
+      <li><a href="#messages-1" data-toggle="tab">Masking Forms</a></li>
+    </ul>
+    <div class="tab-content">
+      <!-- Datepicker Forms -->
+      <div class="tab-pane fade in active" id="home-1">
+        <form action="#" id="sky-form" class="sky-form">
+          <header>Datepicker</header>
+
+          <fieldset>
+            <section>
+              <label class="label">Select single date</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="date" id="date"/>
+              </label>
+            </section>
+
+            <label class="label">Select date range</label>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">
+                  <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="start" id="start" placeholder="Start date"/>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">
+                  <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="finish" id="finish" placeholder="Expected finish date"/>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <section>
+              <label class="label">Select single date with inline datepicker</label>
+              <div id="inline"></div>
+            </section>
+
+            <label class="label">Select date range with inline datepickers</label>
+            <div class="row">
+              <section class="col col-6">
+                <div id="inline-start"></div>
+              </section>
+              <section class="col col-6">
+                <div id="inline-finish"></div>
+              </section>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <!-- End Datepicker Forms -->
+
+      <!-- Validation Forms -->
+      <div class="tab-pane fade" id="profile-1">
+        <form action="#" id="sky-form1" class="sky-form">
+          <header>Available validation rules</header>
+
+          <fieldset>
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">Required field</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="required"/>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="label">Email validation</label>
+                <label class="input">
+                  <i class="icon-append fa fa-envelope"></i>
+                  <input type="email" name="email"/>
+                </label>
+              </section>
+            </div>
+
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">URL validation</label>
+                <label class="input">
+                  <i class="icon-append fa fa-globe"></i>
+                  <input type="url" name="url"/>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="label">Date validation</label>
+                <label class="input">
+                  <i class="icon-append fa fa-calendar"></i>
+                  <input type="text" name="date"/>
+                </label>
+              </section>
+            </div>
+
+            <div class="row">
+              <section class="col col-4">
+                <label class="label">Minimum length</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="min"/>
+                </label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Maximum length</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="max"/>
+                </label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Range length</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="range"/>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="row">
+              <section class="col col-6">
+                <label class="label">Digits validation</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="digits"/>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="label">Decimal number validation</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="number"/>
+                </label>
+              </section>
+            </div>
+
+            <div class="row">
+              <section class="col col-4">
+                <label class="label">Minimum value</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="minVal"/>
+                </label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Maximum value</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="maxVal"/>
+                </label>
+              </section>
+              <section class="col col-4">
+                <label class="label">Range value</label>
+                <label class="input">
+                  <i class="icon-append fa fa-asterisk"></i>
+                  <input type="text" name="rangeVal"/>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn-u btn-u-default">Submit</button>
+            <button type="button" class="btn-u" onclick="window.history.back();">Back</button>
+          </footer>
+        </form>
+      </div>
+      <!-- End Validation Forms -->
+
+      <!-- Masking Forms -->
+      <div class="tab-pane fade" id="messages-1">
+        <form action="#" id="sky-form2" class="sky-form">
+          <header>Available masking rules</header>
+
+          <fieldset>
+            <section>
+              <label class="label">Date masking</label>
+              <label class="input">
+                <i class="icon-append fa fa-calendar"></i>
+                <input type="text" name="date" id="date1"/>
+              </label>
+            </section>
+
+            <section>
+              <label class="label">Phone masking</label>
+              <label class="input">
+                <i class="icon-append fa fa-phone"></i>
+                <input type="tel" name="phone" id="phone"/>
+              </label>
+            </section>
+
+            <section>
+              <label class="label">Credit card masking</label>
+              <label class="input">
+                <i class="icon-append fa fa-credit-card"></i>
+                <input type="text" name="card" id="card"/>
+              </label>
+            </section>
+
+            <section>
+              <label class="label">Serial number masking</label>
+              <label class="input">
+                <i class="icon-append fa fa-asterisk"></i>
+                <input type="text" name="serial" id="serial"/>
+              </label>
+            </section>
+
+            <section>
+              <label class="label">Tax ID masking</label>
+              <label class="input">
+                <i class="icon-append fa fa-briefcase"></i>
+                <input type="text" name="tax" id="tax"/>
+              </label>
+            </section>
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn-u btn-u-default">Submit</button>
+            <button type="button" class="btn-u" onclick="window.history.back();">Back</button>
+          </footer>
+        </form>
+      </div>
+      <!-- End Masking Forms -->
+    </div>
+  </div>
+  <!-- End Tabs-->
+</div>
+</body>
+</html>
