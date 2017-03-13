@@ -591,6 +591,21 @@ public class Application {
         return "showcase/features/quote/quote-v2";
     }
 
+    @RequestMapping(value = "/showcase/features/button/button-v1")
+    public String button_v1() {
+        return "showcase/features/button/button-v1";
+    }
+
+    @RequestMapping(value = "/showcase/features/button/button-v2")
+    public String button_v2() {
+        return "showcase/features/button/button-v2";
+    }
+
+    @RequestMapping(value = "/showcase/features/button/button-v3")
+    public String button_v3() {
+        return "showcase/features/button/button-v3";
+    }
+
     @RequestMapping(value = "/showcase/forms/form-v1")
     public String form_v1() {
         return "showcase/forms/form-v1";

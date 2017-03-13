@@ -413,6 +413,18 @@ blockquote.text-right:hover {
     }
 }
 
+.btn-u.btn-u-default:hover,
+.btn-u.btn-u-default:focus,
+.btn-u.btn-u-default:active,
+.btn-u.btn-u-default.active,
+.open .dropdown-toggle.btn-u.btn-u-default {
+    background: #7f8c8d;
+}
+
+.btn-u.btn-u-split-default.dropdown-toggle {
+    border-left: solid 1px #7f8c8d;
+}
+
 /*Dropdown Buttons
 ------------------------------------*/
 .dropdown-show {
@@ -1700,6 +1712,12 @@ h3.heading-xs {
 
 .who li:hover a:hover {
     text-decoration: none;
+}
+
+/*Brand Page
+------------------------------------*/
+.brand-page .btn {
+    margin-bottom: 10px;
 }
 
 
