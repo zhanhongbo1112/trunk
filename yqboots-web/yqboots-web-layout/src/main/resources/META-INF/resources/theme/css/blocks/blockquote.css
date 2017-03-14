@@ -1,0 +1,154 @@
+blockquote {
+    padding: 5px 15px;
+    border-left-width: 2px;
+}
+
+blockquote p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+blockquote h1,
+blockquote h2,
+blockquote span {
+    font-size: 18px;
+    margin: 0 0 8px;
+    line-height: 24px;
+}
+
+/*Blockquote Styles*/
+blockquote.bq-text-lg p,
+blockquote.bq-text-lg small {
+    text-transform: uppercase;
+}
+
+blockquote.bq-text-lg p {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+blockquote.text-right,
+blockquote.hero.text-right {
+    border-left: none;
+    border-right: 2px solid #eee;
+}
+
+blockquote.hero.text-right,
+blockquote.hero.text-right:hover {
+    border-color: #555;
+}
+
+blockquote:hover,
+blockquote.text-right:hover {
+    border-color: #72c02c;
+    transition: all 0.4s ease-in-out;
+}
+
+blockquote.bq-dark,
+blockquote.bq-dark:hover {
+    border-color: #585f69;
+}
+
+blockquote.bq-green {
+    border-color: #72c02c;
+}
+
+/*Blockquote Hero Styles*/
+blockquote.hero {
+    border: none;
+    padding: 18px;
+    font-size: 16px;
+    background: #f3f3f3;
+    border-left: solid 2px #666;
+}
+
+blockquote.hero:hover {
+    background: #eee;
+    border-left-color: #666;
+}
+
+blockquote.hero.hero-dark,
+blockquote.hero.hero-default {
+    border: none;
+}
+
+blockquote.hero.hero-dark {
+    background: #444;
+}
+
+blockquote.hero.hero-dark:hover {
+    background: #555;
+}
+
+blockquote.hero.hero-default {
+    background: #72c02c;
+}
+
+blockquote.hero.hero-default:hover {
+    background: #5fb611;
+}
+
+blockquote.hero.hero-dark p,
+blockquote.hero.hero-dark h2,
+blockquote.hero.hero-dark small,
+blockquote.hero.hero-default p,
+blockquote.hero.hero-default h2,
+blockquote.hero.hero-default small {
+    color: #fff;
+    font-weight: 200;
+}
+
+body.dark blockquote,
+body.dark blockquote.hero {
+    border-left-color: #555;
+}
+
+body.dark blockquote.text-right,
+body.dark blockquote.hero.text-right {
+    border-right-color: #555;
+}
+
+/*Hero Blockquote*/
+body.dark blockquote.hero {
+    background: #222;
+}
+
+body.dark blockquote.hero:hover {
+    background: #252525;
+    border-color: #555 !important;
+}
+
+/*Hero Default Blockquote*/
+body.dark blockquote.hero.hero-default {
+    background: #72c02c;
+}
+
+body.dark blockquote.hero.hero-default:hover {
+    background: #5fb611;
+}
+
+body.dark blockquote.hero.hero-default p {
+    color: #fff;
+}
+
+/*Hero Dark Blockquote*/
+body.dark blockquote.hero.hero-dark {
+    background: #444;
+}
+
+body.dark blockquote.hero.hero-dark:hover {
+    background: #555;
+}
+
+/*Dark Blockquote*/
+body.dark blockquote.bq-dark,
+body.dark blockquote.bq-dark:hover {
+    border-color: #303030 !important;
+}
+
+body.dark blockquote.hero.hero-dark p,
+body.dark blockquote.hero.hero-dark small,
+body.dark blockquote.hero.hero-default small {
+    color: #fff;
+}

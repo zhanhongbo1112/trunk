@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Blockquote</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/blockquote.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Blockquote</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Blockquote</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <div class="heading heading-v1 margin-bottom-40">
+    <h2>Blockquote Examples</h2>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+      scramble.</p>
+  </div>
+
+  <hr/>
+
+  <blockquote>
+    <h2>Blockquote Example</h2>
+    <p>Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is
+      living with the results of other people's thinking. Don't let the noise of others' opinions drown out your
+      own inner voice. And most important, have the courage to follow your heart and intuition.</p>
+  </blockquote>
+
+  <hr/>
+
+  <blockquote>
+    <p><em>"If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know
+      when you find it. And, like any great relationship, it just gets better and better as the years roll
+      on"</em></p>
+    <small><em>Just another example</em></small>
+  </blockquote>
+
+  <hr/>
+
+  <blockquote class="text-right bq-green">
+    <h2>Border Colored Example</h2>
+    <p>A lot of companies have chosen to downsize, and maybe that was the right thing for them. We chose a
+      different path. Our belief was that if we kept putting great products in front of customers, they would
+      continue to open their wallets.</p>
+  </blockquote>
+
+  <hr/>
+
+  <blockquote class="text-right bq-dark margin-bottom-50">
+    <p><em>"That's been one of my mantras - focus and simplicity. Simple can be harder than complex: You have to
+      work hard to get your thinking clean to make it simple. But it's worth it in the end because once you get
+      there, you can move mountains"</em></p>
+    <small><em>Dark bordered blockquote example</em></small>
+  </blockquote>
+
+  <hr/>
+
+  <div class="row margin-bottom-50">
+    <div class="col-md-6">
+      <blockquote class="bq-text-lg">
+        <p>The best ideas come as jokes. Make your thinking as funny as possible.</p>
+        <small><em>Anoterh Example</em></small>
+      </blockquote>
+    </div>
+    <div class="col-md-6">
+      <blockquote class="bq-text-lg text-right">
+        <p>The best ideas come as jokes. Make your thinking as funny as possible.</p>
+        <small><em>Anoterh Example</em></small>
+      </blockquote>
+    </div>
+  </div>
+
+  <blockquote class="hero">
+    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere
+      erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet,
+      consectetur adipiscing"</em></p>
+    <small><em>Etiam porta sem malesuada</em></small>
+  </blockquote>
+
+  <blockquote class="hero hero-dark text-center">
+    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere
+      erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet,
+      consectetur adipiscing"</em></p>
+    <small><em>Etiam porta sem malesuada</em></small>
+  </blockquote>
+
+  <blockquote class="hero hero-default text-right">
+    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere
+      erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet,
+      consectetur adipiscing"</em></p>
+    <small><em>Etiam porta sem malesuada</em></small>
+  </blockquote>
+</div>
+</body>
+</html>

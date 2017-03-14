@@ -47,6 +47,16 @@ span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
     background: #7f8c8d;
 }
 
+/*Text Dropcap*/
+.dropcap {
+    color: #7f8c8d;
+}
+
+.dropcap-bg {
+    color: #fff;
+    background: #7f8c8d;
+}
+
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {
     color: #95a5a6;

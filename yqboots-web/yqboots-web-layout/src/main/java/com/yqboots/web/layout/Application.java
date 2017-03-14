@@ -645,4 +645,39 @@ public class Application {
     public String form_v8() {
         return "showcase/forms/form-v8";
     }
+
+    @RequestMapping(value = "/showcase/features/miscs/blockquote")
+    public String blockquote_v1() {
+        return "showcase/features/miscs/blockquote";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/box-shadow")
+    public String box_shadow_v1() {
+        return "showcase/features/miscs/box-shadow";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/divider")
+    public String divider_v1() {
+        return "showcase/features/miscs/divider";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/general")
+    public String general_v1() {
+        return "showcase/features/miscs/general";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/grid")
+    public String grid_v1() {
+        return "showcase/features/miscs/grid";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/heading")
+    public String heading_v1() {
+        return "showcase/features/miscs/heading";
+    }
+
+    @RequestMapping(value = "/showcase/features/miscs/tag-box")
+    public String tag_box_v1() {
+        return "showcase/features/miscs/tag-box";
+    }
 }

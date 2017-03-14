@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Dividers</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box-v3.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v4.css}"/>
+
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Dividers</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Features</a></li>
+      <li class="active">Dividers</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <div class="tag-box tag-box-v3">
+    <div class="heading heading-v4">
+      <h2>3 Single Line Dividers</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it.</p>
+    </div>
+
+    <hr class="divider divider-dotted"/>
+
+    <p><span class="dropcap dropcap-bg bg-color-dark">A</span>t is a long established fact that a reader will be
+      distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
+      that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
+      making it look like readable English. Many desktop publishing packages and web page editors now use.</p>
+
+    <hr class="divider divider-dashed"/>
+
+    <p><span class="dropcap dropcap-bg rounded bg-color-dark">B</span>t is a long established fact that a reader
+      will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
+      Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop publishing packages and web page editors
+      now use.</p>
+
+    <hr/>
+
+    <p><span class="dropcap dropcap-bg rounded-2x bg-color-dark">C</span>t is a long established fact that a
+      reader will be distracted by the readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop publishing packages and web page editors
+      now use.</p>
+  </div>
+
+  <div class="tag-box tag-box-v3">
+    <div class="heading heading-v1">
+      <h2>3 Double Line Dividers</h2>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled it.</p>
+    </div>
+
+    <hr class="divider divider-db"/>
+
+    <p><span class="dropcap dropcap-bg rounded-x bg-color-grey">D</span>It is a long established fact that a
+      reader will be distracted by the readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop publishing packages and web page editors
+      now use.</p>
+
+    <hr class="divider divider-db-dotted"/>
+
+    <p><span class="dropcap dropcap-bg rounded-x bg-color-grey">E</span>It is a long established fact that a
+      reader will be distracted by the readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop publishing packages and web page editors
+      now use.</p>
+
+    <hr class="divider divider-db-dashed"/>
+
+    <p><span class="dropcap dropcap-bg rounded-x bg-color-grey">F</span>It is a long established fact that a
+      reader will be distracted by the readable content of a page when looking at its layout. The point of using
+      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop publishing packages and web page editors
+      now use.</p>
+  </div>
+</div>
+</body>
+</html>
