@@ -680,4 +680,114 @@ public class Application {
     public String tag_box_v1() {
         return "showcase/features/miscs/tag-box";
     }
+
+    @RequestMapping(value = "/showcase/icons/general")
+    public String icons_general() {
+        return "showcase/icons/general";
+    }
+
+    @RequestMapping(value = "/showcase/icons/fa")
+    public String icons_fa() {
+        return "showcase/icons/fa";
+    }
+
+    @RequestMapping(value = "/showcase/icons/glyph")
+    public String icons_glyph() {
+        return "showcase/icons/glyph";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/christmas")
+    public String icons_line_christmas() {
+        return "showcase/icons/line/christmas";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/clothes")
+    public String icons_line_clothes() {
+        return "showcase/icons/line/clothes";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/common")
+    public String icons_line_common() {
+        return "showcase/icons/line/common";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/communication")
+    public String icons_line_communication() {
+        return "showcase/icons/line/communication";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/education")
+    public String icons_line_education() {
+        return "showcase/icons/line/education";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/electronics")
+    public String icons_line_electronics() {
+        return "showcase/icons/line/electronics";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/finance")
+    public String icons_line_finance() {
+        return "showcase/icons/line/finance";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/food")
+    public String icons_line_food() {
+        return "showcase/icons/line/food";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/furniture")
+    public String icons_line_furniture() {
+        return "showcase/icons/line/furniture";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/hotel-restaurant")
+    public String icons_line_hotel_restaurant() {
+        return "showcase/icons/line/hotel-restaurant";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/media")
+    public String icons_line_media() {
+        return "showcase/icons/line/media";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/medical")
+    public String icons_line_medical() {
+        return "showcase/icons/line/medical";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/music")
+    public String icons_line_music() {
+        return "showcase/icons/line/music";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/real-estate")
+    public String icons_line_real_estate() {
+        return "showcase/icons/line/real-estate";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/science")
+    public String icons_line_science() {
+        return "showcase/icons/line/science";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/sport")
+    public String icons_line_sport() {
+        return "showcase/icons/line/sport";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/transport")
+    public String icons_line_transport() {
+        return "showcase/icons/line/transport";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/travel")
+    public String icons_line_travel() {
+        return "showcase/icons/line/travel";
+    }
+
+    @RequestMapping(value = "/showcase/icons/line/weather")
+    public String icons_line_weather() {
+        return "showcase/icons/line/weather";
+    }
 }

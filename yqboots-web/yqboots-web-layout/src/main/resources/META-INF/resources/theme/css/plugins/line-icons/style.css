@@ -221,26 +221,6 @@ a:focus {
 		color: #0e8a65;
 }
 
-.item-box {
-	display: inline-block;
-	font-family: consolas, monospace;
-	font-size: 1.2em;
-	margin: 0 -0.22em 1em 0;
-	padding-left: 1em;
-	width: 100%;
-
-}
-
-.item {
-	background-color: #fff;
-	color: #33383e;
-	border-radius: 8px;
-	display: inline-block;
-	padding: 0.5em;
-	width: 100%;
-}
-
-
 .colophon .group {
 	font-size: 1.5em;
 	text-transform: uppercase;
@@ -258,66 +238,5 @@ a:focus {
 	top: 0;
 	bottom: 0;
 	left: 0;
-}
-
-
-
-@media only screen and (min-width: 768px) {
-	section:after,
-	.masthead:after {
-		bottom: -3em;
-		width: 6em;
-		height: 6em;
-	}
-
-	section header {
-		position: relative;
-	}
-
-	.masthead {
-		padding: 6em;
-	}
-
-	.colophon {
-		padding: 9em 6em;
-	}
-
-	.masthead h1 {
-		font-size: 4.5em;
-	}
-
-	.glyphs, 
-	.classes {
-		padding: 9em 6em;
-	}
-
-	.glyphs header,
-	.classes header {
-		margin-bottom: 4.5em;
-		padding-bottom: 4.5em;
-	}
-
-	.glyphs h1,
-	.classes h1 {
-		font-size: 4.5em;
-	}
-
-
-	.mega {
-		font-size: 6em;
-	}
-
-    
-    .glyph {
-		width: 16.66666666666667%;
-    }
-
-    .item-box {
-		width: 33.333%;
-    }
-    
-    .colophon .group {
-    	padding: 6em;
-    }
 }
 

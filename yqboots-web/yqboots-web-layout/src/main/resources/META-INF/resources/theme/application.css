@@ -1744,4 +1744,60 @@ h3.heading-xs {
     margin-bottom: 10px;
 }
 
+@media only screen and (min-width: 768px) {
+    section:after,
+    .masthead:after {
+        bottom: -3em;
+        width: 6em;
+        height: 6em;
+    }
+
+    section header {
+        position: relative;
+    }
+
+    .masthead {
+        padding: 6em;
+    }
+
+    .colophon {
+        padding: 9em 6em;
+    }
+
+    .masthead h1 {
+        font-size: 4.5em;
+    }
+
+    .glyphs,
+    .classes {
+        padding: 9em 6em;
+    }
+
+    .glyphs header,
+    .classes header {
+        margin-bottom: 4.5em;
+        padding-bottom: 4.5em;
+    }
+
+    .glyphs h1,
+    .classes h1 {
+        font-size: 4.5em;
+    }
+
+    .mega {
+        font-size: 6em;
+    }
+
+    .glyph {
+        width: 16.66666666666667%;
+    }
+
+    .item-box {
+        width: 33.333%;
+    }
+
+    .colophon .group {
+        padding: 6em;
+    }
+}
 
