@@ -45,3 +45,27 @@
 .easy-block-v3 .inner-faq-b p {
     color: #fff;
 }
+
+body.dark .easy-block-v3 {
+    background: #333;
+}
+
+body.dark .easy-block-v3.second {
+    background: #353535;
+}
+
+body.dark .easy-block-v3.third {
+    background: #383838;
+}
+
+body.dark .easy-block-v3 .inner-faq-b h3 {
+    color: #fff;
+}
+
+body.dark .easy-block-v3 .inner-faq-b p {
+    color: #eee;
+}
+
+body.dark .easy-block-v3 i {
+    color: #ccc;
+}

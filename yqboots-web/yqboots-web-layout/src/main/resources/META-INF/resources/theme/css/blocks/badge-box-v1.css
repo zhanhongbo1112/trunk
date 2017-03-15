@@ -20,10 +20,6 @@
     transition: all 0.2s ease-in-out;
 }
 
-body.dark .badge-sidebar {
-    border-color: #303030;
-}
-
 body.dark .badge-box-v1 a {
     border-color: #303030;
 }

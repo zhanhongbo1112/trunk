@@ -91,3 +91,7 @@
     font-weight: normal;
     -webkit-backface-visibility: hidden; /*For Chrome*/
 }
+
+body.dark .portfolio-box-v1-in p {
+    color: #eee;
+}

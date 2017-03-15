@@ -45,3 +45,13 @@
         font-size: 16px;
     }
 }
+
+body.dark .purchase {
+    background: #252525;
+    border-bottom-color: #2b2b2b;
+}
+
+body.dark .purchase span {
+    color: #ccc;
+    font-weight: 200;
+}

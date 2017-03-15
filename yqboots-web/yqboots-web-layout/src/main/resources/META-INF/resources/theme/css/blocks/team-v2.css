@@ -31,6 +31,10 @@
     margin: 10px 0 15px;
 }
 
+body.dark .team-v2 .inner-team {
+    background: #202020;
+}
+
 /*Team-Social (Temporary)*/
 .team-social {
     margin-bottom: 0;

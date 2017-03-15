@@ -134,3 +134,13 @@
     background: #72c02c;
     transition: background 0.4s ease-in-out;
 }
+
+body.dark .testimonials-v3 .owl-buttons .owl-prev,
+body.dark .testimonials-v3 .owl-buttons .owl-next {
+    background: #333;
+}
+
+body.dark .testimonials-v3 .owl-buttons .owl-prev:hover,
+body.dark .testimonials-v3 .owl-buttons .owl-next:hover {
+    background: #444;
+}

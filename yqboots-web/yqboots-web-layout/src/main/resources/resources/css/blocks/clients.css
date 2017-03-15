@@ -38,3 +38,11 @@
 .clients li img:hover {
     filter: none;
 }
+
+body.dark .clients li {
+    background: #292929;
+}
+
+body.dark .clients li:hover {
+    background: #303030;
+}

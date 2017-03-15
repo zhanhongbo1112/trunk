@@ -22,3 +22,7 @@
     padding: 4px 10px;
     position: absolute;
 }
+
+body.dark .easy-block-v1 i {
+    color: #ccc;
+}

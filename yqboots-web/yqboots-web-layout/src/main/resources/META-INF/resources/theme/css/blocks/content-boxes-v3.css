@@ -39,3 +39,11 @@
         margin-left: 0;
     }
 }
+
+body.dark .content-boxes-v3 .content-boxes-in-v3 h3 a {
+    color: #ccc;
+}
+
+body.dark .content-boxes-v3 .icon-bg-darker {
+    border: transparent;
+}

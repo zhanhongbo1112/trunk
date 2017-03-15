@@ -140,6 +140,12 @@ i.icon-bg-u {
     background: #4765a0;
 }
 
+/* Owl Carousel
+------------------------------------*/
+.owl-btn:hover {
+    background: #4765a0;
+}
+
 /* Sky Form
 ------------------------------------*/
 .sky-form .button {

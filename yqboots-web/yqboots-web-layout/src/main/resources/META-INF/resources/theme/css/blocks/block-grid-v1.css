@@ -70,3 +70,13 @@
     border: solid 2px #eee;
     border-radius: 3px !important;
 }
+
+body.dark .block-grid-v1 {
+    background: #202020;
+    border-bottom-color: #292929;
+}
+
+body.dark .block-grid-v1-add-info,
+body.dark .block-grid-v1-add-info li a {
+    border-color: #292929;
+}

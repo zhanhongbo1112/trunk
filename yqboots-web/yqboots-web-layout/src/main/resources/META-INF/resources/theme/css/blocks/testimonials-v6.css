@@ -41,3 +41,11 @@
         padding-right: 0;
     }
 }
+
+body.dark .testimonials-v6 .testimonials-info {
+    background: #333;
+}
+
+body.dark .testimonials-v6 .testimonials-info {
+    border-color: #252525;
+}

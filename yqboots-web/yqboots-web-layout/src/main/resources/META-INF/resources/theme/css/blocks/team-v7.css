@@ -101,3 +101,15 @@
         height: auto !important;
     }
 }
+
+body.dark .team-v7 .team-v7-name {
+    color: #ccc;
+}
+
+body.dark .team-v7 .team-arrow-left:before {
+    border-color: transparent #252525 transparent transparent;
+}
+
+body.dark .team-v7 .team-arrow-right:before {
+    border-color: transparent transparent transparent #252525;
+}

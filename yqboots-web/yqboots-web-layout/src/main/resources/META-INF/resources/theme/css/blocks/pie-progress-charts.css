@@ -17,3 +17,11 @@
         margin-bottom: 40px;
     }
 }
+
+body.dark .pie-progress-charts .circle {
+    color: #ccc;
+}
+
+body.dark .circles-text-wrp {
+    color: #999;
+}

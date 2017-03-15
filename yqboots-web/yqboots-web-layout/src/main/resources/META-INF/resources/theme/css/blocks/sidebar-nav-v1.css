@@ -93,3 +93,28 @@
     color: #fff;
     content: "\f107";
 }
+
+body.dark .sidebar-nav-v1 > li.active > a {
+    color: #ccc;
+    background: #292929;
+}
+
+body.dark .sidebar-nav-v1 > li.active,
+body.dark .sidebar-nav-v1 > li.active:hover {
+    background: #202020;
+}
+
+body.dark .sidebar-nav-v1 li ul,
+body.dark .sidebar-nav-v1 li.active ul a {
+    color: #999;
+    background: #222;
+}
+
+body.dark .sidebar-nav-v1 li ul a {
+    border-top-color: #303030;
+}
+
+body.dark .sidebar-nav-v1 li ul a:hover,
+body.dark .sidebar-nav-v1 ul li.active a {
+    color: #ccc;
+}

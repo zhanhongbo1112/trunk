@@ -1,6 +1,6 @@
 .flat-bg-block-v1 {
     padding: 40px 0;
-    background: url(../img/patterns/16.png) repeat;
+    background: url(../../img/patterns/16.png) repeat;
 }
 
 .flat-bg-block-v1 .checked-list.first-child {
@@ -35,4 +35,8 @@
     .flat-bg-block-v1 img.img-over {
         position: static;
     }
+}
+
+body.dark .flat-bg-block-v1 {
+    background: #202020 url(../../img/patterns/5.png) repeat;
 }

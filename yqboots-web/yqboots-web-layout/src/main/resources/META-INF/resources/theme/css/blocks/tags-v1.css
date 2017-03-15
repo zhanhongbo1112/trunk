@@ -16,3 +16,12 @@
     text-decoration: none;
     border-color: #e0e0e0;
 }
+
+body.dark .tags-v1 li a {
+    color: #777;
+    border: solid 2px #555;
+}
+
+body.dark .tags-v1 li a:hover {
+    color: #999;
+}

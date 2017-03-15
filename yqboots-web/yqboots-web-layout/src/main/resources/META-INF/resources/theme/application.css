@@ -853,6 +853,16 @@ i.icon-bg-light-grey {
     margin-bottom: 8px;
 }
 
+/*Contextual Backgrounds*/
+.context-bg p {
+    opacity: 0.8;
+    padding: 8px 10px;
+}
+
+.context-bg p:hover {
+    opacity: 1;
+}
+
 /*Lists
 ------------------------------------*/
 .list-row {

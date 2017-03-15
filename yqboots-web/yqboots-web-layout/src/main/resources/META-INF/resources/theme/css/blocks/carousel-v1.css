@@ -41,3 +41,12 @@
 .carousel-v1 .carousel-arrow a.right i {
     right: 0;
 }
+
+/*Owl Button*/
+body.dark .owl-btn {
+    background: #303030;
+}
+
+body.dark .owl-btn:hover {
+    background: #444;
+}

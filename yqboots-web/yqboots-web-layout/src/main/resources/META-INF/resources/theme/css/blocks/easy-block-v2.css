@@ -20,3 +20,7 @@
     letter-spacing: 2px;
     transform: rotate(45deg);
 }
+
+body.dark .easy-block-v2 i {
+    color: #ccc;
+}

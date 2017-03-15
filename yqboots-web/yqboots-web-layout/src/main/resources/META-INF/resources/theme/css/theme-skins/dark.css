@@ -30,6 +30,18 @@ body.dark .header {
 }
 
 /*Topbar*/
+body.dark .topbar ul.loginbar li i.fa {
+    color: #999;
+}
+
+body.dark .topbar ul.loginbar > li > a {
+    color: #999;
+}
+
+body.dark .topbar ul.loginbar > li > a:hover {
+    color: #fff;
+}
+
 body.dark .topbar ul.languages {
     background: #333;
 }
@@ -66,6 +78,23 @@ body.dark .header .nav > li > a:focus {
     background: inherit;
 }
 
+/*Search*/
+body.dark .header .nav > li > .search {
+    color: #999;
+    background: #292929;
+    border-bottom-color: #555;
+}
+
+body.dark .header .nav > li > .search:hover {
+    background: #303030;
+}
+
+body.dark .header .search-open {
+    background: #222;
+    box-shadow: none;
+    border-top-color: #333;
+}
+
 /*Dropdown Menu*/
 body.dark .header .dropdown-menu {
     background: #222;
@@ -85,8 +114,12 @@ body.dark .header .dropdown-menu li > a:hover {
 
 /*Responsive Navbar*/
 @media ( max-width: 991px) {
+    body.dark .navbar-collapse {
+        background: #333;
+    }
+
     /*Header Navbar*/
-    body.dark .navbar-form, body.dark .navbar-collapse {
+    body.dark .navbar-form {
         border-color: #555;
     }
 
@@ -101,10 +134,6 @@ body.dark .header .dropdown-menu li > a:hover {
     }
 
     /*Dropdown Menu*/
-    body.dark .navbar-nav .open .dropdown-menu > li > a {
-        color: #999;
-    }
-
     body.dark .navbar-nav .open .dropdown-menu > li > a,
     body.dark .navbar-nav .open .dropdown-menu > .active > a,
     body.dark .navbar-nav .open .dropdown-menu > .active > a:hover,
@@ -146,6 +175,11 @@ body.dark .header .dropdown-menu li > a:hover {
 ------------------------------------*/
 body.dark.header-fixed .header.header-fixed-shrink {
     box-shadow: 0 0 3px #000;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+body.dark.header-fixed .header.header-fixed-shrink .search-open {
+    box-shadow: none;
     background: rgba(0, 0, 0, 0.9);
 }
 
@@ -261,6 +295,29 @@ body.dark .alert code {
     background: #444;
 }
 
+/*Address
+------------------------------------*/
+body.dark address {
+    color: #999;
+}
+
+/*Badge
+------------------------------------*/
+body.dark .badge-sidebar {
+    border-color: #303030;
+}
+
+/*Heading
+------------------------------------*/
+body.dark .heading h2:before,
+body.dark .heading h2:after {
+    border-color: #555;
+}
+
+body.dark .headline-left .headline-brd {
+    color: #ccc;
+}
+
 /*Divider
 ------------------------------------*/
 body.dark .divider.divider-dotted,
@@ -296,6 +353,42 @@ body.dark .bg-grey {
     background: #222;
     border-top-color: #222;
     border-bottom-color: #222;
+}
+
+/*Context Background
+------------------------------------*/
+body.dark .context-bg p.bg-info,
+body.dark .context-bg p.bg-danger,
+body.dark .context-bg p.bg-warning,
+body.dark .context-bg p.bg-primary,
+body.dark .context-bg p.bg-success {
+    background-color: #333;
+}
+
+body.dark .context-bg p.bg-info {
+    color: #27d7e7;
+}
+
+body.dark .context-bg p.bg-danger {
+    color: #e74c3c;
+}
+
+body.dark .context-bg p.bg-warning {
+    color: #e67e22;
+}
+
+body.dark .context-bg p.bg-primary {
+    color: #3498db;
+}
+
+body.dark .context-bg p.bg-success {
+    color: #72c02c;
+}
+
+/*Bordered Buttons
+------------------------------------*/
+body.dark .btn-u.btn-brd {
+    color: #ddd;
 }
 
 /*Dropdown Buttons
@@ -401,7 +494,7 @@ body.dark i.icon-custom.icon-color-light-grey {
     border: solid 1px #585f69;
 }
 
-/*Icons Backgroun Color*/
+/*Icons Background Color*/
 body.dark i.icon-custom.icon-bg-u,
 body.dark i.icon-custom.icon-bg-red,
 body.dark i.icon-custom.icon-bg-sea,
@@ -440,6 +533,16 @@ body.dark .dropdown-menu .divider {
 body.dark .dropdown-menu > li > a:hover, body.dark .dropdown-menu > li > a:focus {
     color: #ccc;
     background: #777;
+}
+
+/*Progress Bar
+------------------------------------*/
+body.dark .progress {
+    background: #777777;
+}
+
+body.dark .progress-bar-dark {
+    background: #555555;
 }
 
 /*Image Bordered
@@ -517,6 +620,14 @@ body.dark footer .link-list i {
 
 /*Buttons
 ------------------------------------*/
+body.dark .btn-u.btn-brd.btn-u-dark {
+    border-color: #eee;
+}
+
+body.dark .btn-u.btn-brd.btn-u-dark:hover {
+    border-color: #333;
+}
+
 body.dark li a.btn-u {
     color: #fff;
 }

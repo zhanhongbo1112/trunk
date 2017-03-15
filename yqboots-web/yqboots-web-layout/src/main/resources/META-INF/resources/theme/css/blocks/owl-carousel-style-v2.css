@@ -19,3 +19,13 @@
 .owl-carousel-style-v2 .owl-pagination {
     display: none;
 }
+
+body.dark .owl-carousel-style-v2 .item {
+    background: #292929;
+    border-color: #303030;
+}
+
+body.dark .owl-carousel-style-v2 .item:hover {
+    border-color: #555;
+    background: #303030;
+}

@@ -30,3 +30,8 @@
     padding: 2px;
     font-size: 16px;
 }
+
+body.dark .block-grid-v2-info {
+    background: #202020;
+    border-color: #292929;
+}
