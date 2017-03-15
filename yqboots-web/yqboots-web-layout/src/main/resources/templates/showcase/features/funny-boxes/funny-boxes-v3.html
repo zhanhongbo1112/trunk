@@ -10,16 +10,16 @@
   <div class="container">
     <h1 class="pull-left">Funny Boxes</h1>
     <ul class="pull-right breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="">Pages</a></li>
+      <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
+      <li>Pages</li>
       <li class="active">Funny Boxes</li>
     </ul>
   </div>
 </div>
-<div layout:fragment="content" class="container content-sm">
+<div layout:fragment="content" class="container content height-500">
   <div class="row">
     <div class="col-sm-6 sm-margin-bottom-40">
-      <div class="funny-boxes funny-boxes-colored funny-boxes-purple">
+      <div class="funny-boxes funny-boxes-colored">
         <div class="row">
           <div class="col-md-4 funny-boxes-img">
             <img class="img-responsive" th:src="@{/img/main/img26.jpg}"/>
@@ -46,7 +46,7 @@
     </div>
 
     <div class="col-sm-6">
-      <div class="funny-boxes funny-boxes-colored bg-color-brown">
+      <div class="funny-boxes funny-boxes-colored">
         <div class="row">
           <div class="col-md-4 funny-boxes-img">
             <img class="img-responsive" th:src="@{/img/main/img19.jpg}"/>

@@ -6,14 +6,12 @@
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-  <div class="breadcrumbs">
-    <div class="container">
-      <h1 class="pull-left" th:text="#{T0008}">404 Error</h1>
-      <ul class="pull-right breadcrumb">
-        <li><a href="index.html" th:href="@{/}" th:text="#{T0004}">Home</a></li>
-        <li class="active" th:text="#{T0008}">404 Error</li>
-      </ul>
-    </div>
+  <div class="container">
+    <h1 class="pull-left" th:text="#{T0008}">404 Error</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html" th:href="@{/}" th:text="#{T0004}">Home</a></li>
+      <li class="active" th:text="#{T0008}">404 Error</li>
+    </ul>
   </div>
 </div>
 <div layout:fragment="content" class="container content">

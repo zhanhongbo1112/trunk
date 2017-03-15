@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Testimonials and Quotes</title>
+  <title>Testimonials</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/headline-center-v2.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/testimonial-bs.css}"/>
   <link rel="stylesheet" th:href="@{/css/blocks/bg-image-v2.css}"/>
@@ -10,10 +10,10 @@
 <body>
 <div layout:fragment="breadcrumbs">
   <div class="container">
-    <h1 class="pull-left">Testimonials and Quotes</h1>
+    <h1 class="pull-left">Testimonials</h1>
     <ul class="pull-right breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="">Features</a></li>
+      <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
+      <li>Features</li>
       <li class="active">Testimonials</li>
     </ul>
   </div>
@@ -48,7 +48,7 @@
               <h2>What Our Clients Say About Us</h2>
               <span class="bordered-icon"><i class="fa fa-th-large"></i></span>
               <p>Donec quis lorem sit amet nibh tempor porttitor non eu justo. Fusce iaculis scelerisque nibh at
-                rhoncus. Aliquam blandit. Unify is an incredibly beautiful responsive Bootstrap Template for corporate
+                rhoncus. Aliquam blandit. YQBoots is an incredibly beautiful responsive Bootstrap Template for corporate
                 and creative professionals. It works on all major web browsers, tablets and phone.</p>
               <span class="author">Ashtyn Franklin, <a href="#">CEO</a></span>
             </div>

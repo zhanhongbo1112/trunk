@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Paginations</title>
+  <title>Panels</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
 </head>
 <body>
@@ -10,8 +10,8 @@
   <div class="container">
     <h1 class="pull-left">Panels</h1>
     <ul class="pull-right breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="">Features</a></li>
+      <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
+      <li>Features</li>
       <li class="active">Panels</li>
     </ul>
   </div>
