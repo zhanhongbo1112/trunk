@@ -18,3 +18,7 @@
 .owl-carousel-v6 .owl-controls .owl-page span {
     margin: 5px 3px !important;
 }
+
+body.dark .owl-carousel-v6 .owl-carousel-item {
+    border-color: #555;
+}

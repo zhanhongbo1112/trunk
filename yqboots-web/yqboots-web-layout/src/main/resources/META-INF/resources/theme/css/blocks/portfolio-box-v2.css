@@ -72,3 +72,7 @@
 .portfolio-box-v2 .portfolio-box-v2-in i:hover {
     background: #72c02c;
 }
+
+body.dark .portfolio-box-v2 li:hover:after {
+    background: rgba(0, 0, 0, 0.6);
+}

@@ -25,3 +25,7 @@
 .service-block-v1 p {
     margin-bottom: 20px;
 }
+
+body.dark .service-block-v1 {
+    border-color: #555;
+}

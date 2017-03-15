@@ -268,3 +268,8 @@
         background-size: 24px 24px; /*The size of the normal image, half the size of the hi-res image*/
     }
 }
+
+body.dark .fancybox-skin {
+    color: #999;
+    background: #333;
+}

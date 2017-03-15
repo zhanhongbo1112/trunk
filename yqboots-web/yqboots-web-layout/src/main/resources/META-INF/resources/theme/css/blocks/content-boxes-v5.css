@@ -16,3 +16,7 @@
     color: #fff;
     background: #72c02c;
 }
+
+body.dark .content-boxes-v5 i {
+    background: #333;
+}

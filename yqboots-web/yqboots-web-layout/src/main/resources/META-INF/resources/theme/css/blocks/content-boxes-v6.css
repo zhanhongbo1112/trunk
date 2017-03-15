@@ -40,3 +40,11 @@
 .content-boxes-v6:hover i:after {
     border-color: #72c02c;
 }
+
+body.dark .content-boxes-v6 i {
+    background: #333;
+}
+
+body.dark .content-boxes-v6 i:after {
+    border-color: #555;
+}
