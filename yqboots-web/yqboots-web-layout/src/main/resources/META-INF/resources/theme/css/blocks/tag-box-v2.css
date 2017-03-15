@@ -1,9 +1,9 @@
 .tag-box-v2 {
-	background: #fafafa;
-	border: solid 1px #eee;
-	border-left: solid 2px #72c02c;
+    background: #fafafa;
+    border: solid 1px #eee;
+    border-left: solid 2px #72c02c;
 }
 
 body.dark .tag-box-v2 {
-	border-color: #303030;
+    border-color: #303030;
 }

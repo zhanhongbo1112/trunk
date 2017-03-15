@@ -1,47 +1,47 @@
 .purchase {
-	padding: 25px 0 30px;
-	border-bottom: solid 1px #eee;
-	background: url(../img/patterns/breadcrumbs.png) repeat;
+    padding: 25px 0 30px;
+    border-bottom: solid 1px #eee;
+    background: url(../img/patterns/breadcrumbs.png) repeat;
 }
 
 .purchase p {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .purchase span {
-	color: #666;
-	display: block;
-	font-size: 24px;
-	line-height: 35px;
-	font-weight: normal;
-	margin-bottom: 12px;
-	font-family: "Open Sans", Arial, sans-serif;
+    color: #666;
+    display: block;
+    font-size: 24px;
+    line-height: 35px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    font-family: "Open Sans", Arial, sans-serif;
 }
 
 .purchase .btn-buy {
-	text-align: center;
+    text-align: center;
 }
 
 .purchase .btn-buy a {
-	margin-top: 27px;
+    margin-top: 27px;
 }
 
 .purchase .btn-buy a i {
-	margin-right: 5px;
+    margin-right: 5px;
 }
 
 @media (max-width: 992px) {
-	.purchase {
-		text-align: center;
-	}
+    .purchase {
+        text-align: center;
+    }
 
-	.purchase span {
-		font-size: 22px;
-		line-height: 29px;
-	}
+    .purchase span {
+        font-size: 22px;
+        line-height: 29px;
+    }
 
-	.purchase .btn-buy a {
-		margin-top: 25px;
-		font-size: 16px;
-	}
+    .purchase .btn-buy a {
+        margin-top: 25px;
+        font-size: 16px;
+    }
 }

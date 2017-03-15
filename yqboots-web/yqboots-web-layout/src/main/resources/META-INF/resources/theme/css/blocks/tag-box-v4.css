@@ -1,7 +1,7 @@
 .tag-box-v4 {
-	border: dashed 1px #bbb;
+    border: dashed 1px #bbb;
 }
 
 body.dark .tag-box-v4 {
-	border-color: #303030;
+    border-color: #303030;
 }

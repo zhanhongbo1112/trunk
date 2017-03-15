@@ -1,7 +1,7 @@
 .tag-box-v3 {
-	border: solid 2px #eee;
+    border: solid 2px #eee;
 }
 
 body.dark .tag-box-v3 {
-	border-color: #303030;
+    border-color: #303030;
 }

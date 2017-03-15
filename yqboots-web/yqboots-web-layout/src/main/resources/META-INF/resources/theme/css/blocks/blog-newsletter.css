@@ -1,12 +1,12 @@
 .blog-newsletter p {
-  color: #555;
-  margin-bottom: 15px;
+    color: #555;
+    margin-bottom: 15px;
 }
 
 .blog-newsletter .form-control {
-  border: none;
+    border: none;
 }
 
 .blog-newsletter .form-control:focus {
-  box-shadow: none;
+    box-shadow: none;
 }

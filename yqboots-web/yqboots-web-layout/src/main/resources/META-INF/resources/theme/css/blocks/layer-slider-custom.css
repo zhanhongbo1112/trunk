@@ -1,7 +1,7 @@
 .layer_slider {
- overflow: hidden;
+    overflow: hidden;
 }
 
 .ls-ct-half, .ls-ct-center {
- border-radius: 100px !important;
+    border-radius: 100px !important;
 }

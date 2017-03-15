@@ -1,103 +1,103 @@
 .team-v7 .team-v7-in {
-  padding: 0 50px;
+    padding: 0 50px;
 }
 
 .team-v7 .team-v7-name {
-  color: #555;
-  display: block;
-  font-size: 18px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
+    color: #555;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
 .team-v7 .team-v7-position {
-  display: block;
-  color: #72c02c;
-  font-style: normal;
-  margin-bottom: 15px;
+    display: block;
+    color: #72c02c;
+    font-style: normal;
+    margin-bottom: 15px;
 }
 
 .team-v7 p {
-  font-size: 14px;
-  line-height: 24px;
-  margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 20px;
 }
 
 /*Team Space*/
 .team-v7 .team-v7-name {
-  margin-top: 60px;
+    margin-top: 60px;
 }
 
 .team-v7 .social-icons-v1 {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 /*Team Image*/
 .team-v7 .team-v7-img {
-  position: relative;
+    position: relative;
 }
 
 .team-v7 .team-v7-img:after {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: " ";
-  position: absolute;
-  background: rgba(0,0,0,0.1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /*Team Info*/
 .team-v7 .team-arrow-right,
 .team-v7 .team-arrow-left {
-  position: relative;
+    position: relative;
 }
 
 .team-v7 .team-arrow-left:before,
 .team-v7 .team-arrow-right:before {
-  width: 0;
-  height: 0;
-  top: 50%;
-  margin-top: -25px;
-  z-index: 2;
-  content: " ";
-  position: absolute;
-  border-style: solid;
+    width: 0;
+    height: 0;
+    top: 50%;
+    margin-top: -25px;
+    z-index: 2;
+    content: " ";
+    position: absolute;
+    border-style: solid;
 }
 
 .team-v7 .team-arrow-right:before {
-  right: -25px;
-  border-width: 20px 0 20px 25px;
-  border-color: transparent transparent transparent #fff;
+    right: -25px;
+    border-width: 20px 0 20px 25px;
+    border-color: transparent transparent transparent #fff;
 }
 
 .team-v7 .team-arrow-left:before {
-  left: -25px;
-  border-width: 20px 25px 20px 0;
-  border-color: transparent #fff transparent transparent;
+    left: -25px;
+    border-width: 20px 25px 20px 0;
+    border-color: transparent #fff transparent transparent;
 }
 
 /*Team Info Media Queries*/
 @media (max-width: 991px) {
-  /*Team Arrows*/
-  .team-v7 .team-arrow-left:before,
-  .team-v7 .team-arrow-right:before {
-    top: auto;
-    left: 70px;
-    bottom: -25px;
-    border-width: 25px 20px 0 20px;
-    border-color: #fff transparent transparent transparent;
-  }
+    /*Team Arrows*/
+    .team-v7 .team-arrow-left:before,
+    .team-v7 .team-arrow-right:before {
+        top: auto;
+        left: 70px;
+        bottom: -25px;
+        border-width: 25px 20px 0 20px;
+        border-color: #fff transparent transparent transparent;
+    }
 
-  .team-v7 .team-arrow-left:before,
-  .team-v7 .team-arrow-right:before {
-    left: 70px;
-    bottom: -25px;
-    border-width: 25px 20px 0 20px;
-  }
+    .team-v7 .team-arrow-left:before,
+    .team-v7 .team-arrow-right:before {
+        left: 70px;
+        bottom: -25px;
+        border-width: 25px 20px 0 20px;
+    }
 
-  /*Equal Height Columns*/
-  .team-v7 .equal-height-column {
-    height: auto !important;
-  }
+    /*Equal Height Columns*/
+    .team-v7 .equal-height-column {
+        height: auto !important;
+    }
 }

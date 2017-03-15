@@ -1,31 +1,31 @@
 .blog-latest-posts li {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #ddd;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
 }
 
 .blog-latest-posts li:first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
 }
 
 .blog-latest-posts h3 {
-  font-size: 14px;
-  margin: 0 0 3px;
-  line-height: 20px;
+    font-size: 14px;
+    margin: 0 0 3px;
+    line-height: 20px;
 }
 
 .blog-latest-posts small,
 .blog-latest-posts small a {
-  color: #777;
+    color: #777;
 }
 
 .blog-latest-posts small {
-  margin-bottom: 8px;
-  display: inline-block;
+    margin-bottom: 8px;
+    display: inline-block;
 }
 
 .blog-latest-posts p {
-  font-size: 12px;
+    font-size: 12px;
 }

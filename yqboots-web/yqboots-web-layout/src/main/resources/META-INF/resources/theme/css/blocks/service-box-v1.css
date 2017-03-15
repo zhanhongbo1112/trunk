@@ -1,41 +1,41 @@
 .service-box-v1 .service-block {
-  background: #fff;
-  padding-top: 30px;
-  padding-bottom: 20px;
+    background: #fff;
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .service-box-v1 p {
-  position: relative;
-  margin-bottom: 50px;
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .service-box-v1 p:after {
-  content: " ";
-  left: 50%;
-  height: 1px;
-  width: 50px;
-  bottom: -15px;
-  position: absolute;
-  margin-left: -25px;
-  background: #72c02c;
+    content: " ";
+    left: 50%;
+    height: 1px;
+    width: 50px;
+    bottom: -15px;
+    position: absolute;
+    margin-left: -25px;
+    background: #72c02c;
 }
 
 .service-box-v1 ul {
-  padding: 0 40px;
+    padding: 0 40px;
 }
 
 .service-box-v1 li {
-  margin: 8px 0;
-  font-size: 15px;
-  padding-top: 8px;
-  border-top: dotted 1px #72c02c;
+    margin: 8px 0;
+    font-size: 15px;
+    padding-top: 8px;
+    border-top: dotted 1px #72c02c;
 }
 
 .service-box-v1 li:hover {
-  color: #72c02c;
+    color: #72c02c;
 }
 
 .service-box-v1 li:first-child {
-  padding-top: 0;
-  border-top: none;
+    padding-top: 0;
+    border-top: none;
 }
