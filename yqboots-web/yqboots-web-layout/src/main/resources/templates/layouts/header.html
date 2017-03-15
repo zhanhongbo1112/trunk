@@ -23,8 +23,6 @@
           </ul>
         </li>
         <li class="topbar-divider"></li>
-        <li><a th:href="@{/showcase}" target="_blank" th:text="#{T0012}">Online Showcase</a></li>
-        <li class="topbar-divider"></li>
         <li><a href="http://help.yqboots.com" target="_blank" th:text="#{T0006}">Help</a></li>
         <li class="topbar-divider"></li>
         <li>
@@ -58,6 +56,11 @@
         <li>
           <a href="javascript:void(0);" th:href="@{/}">
             <i class="glyphicon glyphicon-home"></i> <span th:text="#{T0004}">HOME</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" th:href="@{/showcase}">
+            <i class="glyphicon glyphicon-th"></i> <span th:text="#{T0012}">SHOWCASE</span>
           </a>
         </li>
         <yq:menus layout="full-width"/>

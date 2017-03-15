@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/layout">
 <head>
   <title>YQBoots Showcases</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/tab-v2.css}"/>
@@ -10,302 +10,470 @@
   <div class="container">
     <h1 class="pull-left">Showcase</h1>
     <ul class="pull-right breadcrumb">
-      <li><a href="#">Home</a></li>
+      <li><a target="_blank">Home</a></li>
       <li class="active">Showcase</li>
     </ul>
   </div>
 </div>
-<div layout:fragment="content" class="container content">
+<div layout:fragment="content" class="container content height-600">
   <div class="tab-v2">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#showcase-features" data-toggle="tab">Features</a></li>
-      <li><a href="#showcase-forms" data-toggle="tab">Forms</a></li>
-      <li><a href="#showcase-icons" data-toggle="tab">Icons</a></li>
-      <li><a href="#showcase-pages" data-toggle="tab">Pages</a></li>
+      <li class="active"><a href="#features" data-toggle="tab">Features</a></li>
+      <li><a href="#forms" data-toggle="tab">Forms</a></li>
+      <li><a href="#icons" data-toggle="tab">Icons</a></li>
+      <li><a href="#pages" data-toggle="tab">Pages</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade in active" id="showcase-features">
-        <div class="headline"><h4>Accordions</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Accordion v1</a></li>
-        </ul>
-        <div class="headline"><h4>Animations</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Animation v1</a></li>
-        </ul>
-        <div class="headline"><h4>Badges</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Badge v1</a></li>
-        </ul>
-        <div class="headline"><h4>Buttons</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Button v1</a></li>
-          <li><a href="#">Button v2</a></li>
-          <li><a href="#">Button v3</a></li>
-        </ul>
-        <div class="headline"><h4>Call Actions</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Call Action v1</a></li>
-          <li><a href="#">Call Action v2</a></li>
-        </ul>
-        <div class="headline"><h4>Carousels</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Carousel v1</a></li>
-          <li><a href="#">Carousel v2</a></li>
-          <li><a href="#">Carousel v3</a></li>
-          <li><a href="#">Carousel v4</a></li>
-        </ul>
-        <div class="headline"><h4>Charts</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Chart v1</a></li>
-          <li><a href="#">Chart v2</a></li>
-        </ul>
-        <div class="headline"><h4>Count Downs</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Count Down v1</a></li>
-        </ul>
-        <div class="headline"><h4>Funny Boxes</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Funny Box v1</a></li>
-          <li><a href="#">Funny Box v2</a></li>
-          <li><a href="#">Funny Box v3</a></li>
-        </ul>
-        <div class="headline"><h4>Galleries</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Gallery v1</a></li>
-          <li><a href="#">Gallery v2</a></li>
-          <li><a href="#">Gallery v3</a></li>
-          <li><a href="#">Gallery v4</a></li>
-        </ul>
-        <div class="headline"><h4>Icon Blocks</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Icon Block v1</a></li>
-          <li><a href="#">Icon Block v2</a></li>
-          <li><a href="#">Icon Block v3</a></li>
-          <li><a href="#">Icon Block v4</a></li>
-          <li><a href="#">Icon Block v5</a></li>
-          <li><a href="#">Icon Block v6</a></li>
-          <li><a href="#">Icon Block v7</a></li>
-          <li><a href="#">Icon Block v8</a></li>
-          <li><a href="#">Icon Block v9</a></li>
-          <li><a href="#">Icon Block v10</a></li>
-        </ul>
-        <div class="headline"><h4>Labels</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Label v1</a></li>
-        </ul>
-        <div class="headline"><h4>Medias</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Media v1</a></li>
-        </ul>
-        <div class="headline"><h4>Messages</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Message v1</a></li>
-        </ul>
-        <div class="headline"><h4>Miscs</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Blockquote</a></li>
-          <li><a href="#">Box Shadow</a></li>
-          <li><a href="#">Divider</a></li>
-          <li><a href="#">General</a></li>
-          <li><a href="#">Grid</a></li>
-          <li><a href="#">Heading</a></li>
-          <li><a href="#">Tag Box</a></li>
-        </ul>
-        <div class="headline"><h4>News Blocks</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">News Block v1</a></li>
-          <li><a href="#">News Block v2</a></li>
-          <li><a href="#">News Block v3</a></li>
-          <li><a href="#">News Block v4</a></li>
-          <li><a href="#">News Block v5</a></li>
-        </ul>
-        <div class="headline"><h4>Paginations</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Pagination v1</a></li>
-          <li><a href="#">Pagination v2</a></li>
-        </ul>
-        <div class="headline"><h4>Panels</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Panel v1</a></li>
-        </ul>
-        <div class="headline"><h4>Parallax Blocks</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Parallax Block v1</a></li>
-        </ul>
-        <div class="headline"><h4>Parallax Counters</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Parallax Counter v1</a></li>
-          <li><a href="#">Parallax Counter v2</a></li>
-          <li><a href="#">Parallax Counter v3</a></li>
-          <li><a href="#">Parallax Counter v4</a></li>
-          <li><a href="#">Parallax Counter v5</a></li>
-        </ul>
-        <div class="headline"><h4>Progress Bars</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Progress Bar v1</a></li>
-        </ul>
-        <div class="headline"><h4>Quotes</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Quote v1</a></li>
-          <li><a href="#">Quote v2</a></li>
-        </ul>
-        <div class="headline"><h4>Tabs</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Tab v1</a></li>
-          <li><a href="#">Tab v2</a></li>
-          <li><a href="#">Tab v3</a></li>
-        </ul>
-        <div class="headline"><h4>Tables</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Table v1</a></li>
-          <li><a href="#">Table v2</a></li>
-          <li><a href="#">Table v3</a></li>
-        </ul>
-        <div class="headline"><h4>Team Blocks</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Team Block v1</a></li>
-          <li><a href="#">Team Block v2</a></li>
-          <li><a href="#">Team Block v3</a></li>
-          <li><a href="#">Team Block v4</a></li>
-          <li><a href="#">Team Block v5</a></li>
-          <li><a href="#">Team Block v6</a></li>
-          <li><a href="#">Team Block v7</a></li>
-          <li><a href="#">Team Block v8</a></li>
-          <li><a href="#">Team Block v9</a></li>
-        </ul>
-        <div class="headline"><h4>Testimonials</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Testimonial v1</a></li>
-          <li><a href="#">Testimonial v2</a></li>
-          <li><a href="#">Testimonial v3</a></li>
-          <li><a href="#">Testimonial v4</a></li>
-          <li><a href="#">Testimonial v5</a></li>
-          <li><a href="#">Testimonial v6</a></li>
-        </ul>
-        <div class="headline"><h4>Thumbnails</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Thumbnail v1</a></li>
-          <li><a href="#">Thumbnail v2</a></li>
-          <li><a href="#">Thumbnail v3</a></li>
-          <li><a href="#">Thumbnail v4</a></li>
-        </ul>
-        <div class="headline"><h4>Timelines</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Timeline v1</a></li>
-          <li><a href="#">Timeline v2</a></li>
-        </ul>
+      <div class="tab-pane fade in active" id="features">
+        <div class="row">
+          <div class="col-md-2">Accordions:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/accordion/accordion-v1}">Accordion v1</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Animations:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/animation/animation-v1}">Animation v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Badges:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/badge/badge-v1}">Badge v1</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Buttons:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/button/button-v1}">Button v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/button/button-v2}">Button v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/button/button-v3}">Button v3</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Call Actions:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/call-action/call-action-v1}">Call Action v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/call-action/call-action-v2}">Call Action v2</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Carousels:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/carousel/carousel-v1}">Carousel v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/carousel/carousel-v2}">Carousel v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/carousel/carousel-v3}">Carousel v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/carousel/carousel-v4}">Carousel v4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Charts:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/chart/chart-v1}">Chart v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/chart/chart-v2}">Chart v2</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Count Downs:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/count-down/count-down-v1}">Count Down v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Funny Boxes:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/funny-boxes/funny-boxes-v1}">Funny Box v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/funny-boxes/funny-boxes-v2}">Funny Box v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/funny-boxes/funny-boxes-v3}">Funny Box v3</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Galleries:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/gallery/gallery-v1}">Gallery v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/gallery/gallery-v2}">Gallery v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/gallery/gallery-v3}">Gallery v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/gallery/gallery-v4}">Gallery v4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Icon Blocks:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v1}">Icon Block v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v2}">Icon Block v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v3}">Icon Block v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v4}">Icon Block v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v5}">Icon Block v5</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v6}">Icon Block v6</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v7}">Icon Block v7</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v8}">Icon Block v8</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v9}">Icon Block v9</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/icon-blocks/icon-blocks-v10}">Icon Block v10</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Labels:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/label/label-v1}">Label v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Medias:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/media/media-v1}">Media v1</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Messages:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/message/message-v1}">Message v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Miscs:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/blockquote}">Blockquote</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/box-shadow}">Box Shadow</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/divider}">Divider</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/general}">General</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/grid}">Grid</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/heading}">Heading</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/miscs/tag-box}">Tag Box</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">News Blocks:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/news-blocks/news-blocks-v1}">News Block v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/news-blocks/news-blocks-v2}">News Block v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/news-blocks/news-blocks-v3}">News Block v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/news-blocks/news-blocks-v4}">News Block v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/news-blocks/news-blocks-v5}">News Block v5</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Paginations:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/pagination/pagination-v1}">Pagination v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/pagination/pagination-v2}">Pagination v2</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Panels:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/panel/panel-v1}">Panel v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Parallax Blocks:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-blocks/parallax-blocks-v1}">
+                  Parallax Block v1
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2">Parallax Counters:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-counters/parallax-counters-v1}">
+                  Parallax Counter v1
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-counters/parallax-counters-v2}">
+                  Parallax Counter v2
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-counters/parallax-counters-v3}">
+                  Parallax Counter v3
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-counters/parallax-counters-v4}">
+                  Parallax Counter v4
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/parallax-counters/parallax-counters-v5}">
+                  Parallax Counter v5
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Progress Bars:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li>
+                <a target="_blank" th:href="@{/showcase/features/progress-bar/progress-bar-v1}">
+                  Progress Bar v1
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2">Quotes:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/quote/quote-v1}">Quote v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/quote/quote-v2}">Quote v2</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Tabs:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/tab/tab-v1}">Tab v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/tab/tab-v2}">Tab v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/tab/tab-v3}">Tab v3</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Tables:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/table/table-v1}">Table v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/table/table-v2}">Table v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/table/table-v3}">Table v3</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Team Blocks:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v1}">Team Block v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v2}">Team Block v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v3}">Team Block v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v4}">Team Block v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v5}">Team Block v5</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v6}">Team Block v6</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v7}">Team Block v7</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v8}">Team Block v8</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/team-blocks/team-blocks-v9}">Team Block v9</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Testimonials:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v1}">Testimonial v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v2}">Testimonial v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v3}">Testimonial v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v4}">Testimonial v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v5}">Testimonial v5</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/testimonial/testimonial-v6}">Testimonial v6</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Thumbnails:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/thumbnail/thumbnail-v1}">Thumbnail v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/thumbnail/thumbnail-v2}">Thumbnail v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/thumbnail/thumbnail-v3}">Thumbnail v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/thumbnail/thumbnail-v4}">Thumbnail v4</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Timelines:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/features/timeline/timeline-v1}">Timeline v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/features/timeline/timeline-v2}">Timeline v2</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="tab-pane fade" id="showcase-forms">
-        <div class="headline"><h4>Forms</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Form v1</a></li>
-          <li><a href="#">Form v2</a></li>
-          <li><a href="#">Form v3</a></li>
-          <li><a href="#">Form v4</a></li>
-          <li><a href="#">Form v5</a></li>
-          <li><a href="#">Form v6</a></li>
-          <li><a href="#">Form v7</a></li>
-          <li><a href="#">Form v8</a></li>
-        </ul>
+      <div class="tab-pane fade" id="forms">
+        <div class="row">
+          <div class="col-md-2">Forms:</div>
+          <div class="col-md-10">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v1}">Form v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v2}">Form v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v3}">Form v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v4}">Form v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v5}">Form v5</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v6}">Form v6</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v7}">Form v7</a></li>
+              <li><a target="_blank" th:href="@{/showcase/forms/form-v8}">Form v8</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="tab-pane fade" id="showcase-icons">
-        <div class="headline"><h4>Icons</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">fa</a></li>
-          <li><a href="#">General</a></li>
-          <li><a href="#">Glyphicons</a></li>
-        </ul>
-        <div class="headline"><h4>Line Icons</h4></div>
-        <ul class="list-inline">
-          <li><a href="#">Common</a></li>
-          <li><a href="#">Christmas</a></li>
-          <li><a href="#">Clothes</a></li>
-          <li><a href="#">Communication</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Electronics</a></li>
-          <li><a href="#">Finance</a></li>
-          <li><a href="#">Food</a></li>
-          <li><a href="#">Furniture</a></li>
-          <li><a href="#">Hotel and Restaurant</a></li>
-          <li><a href="#">Media</a></li>
-          <li><a href="#">Medical</a></li>
-          <li><a href="#">Music</a></li>
-          <li><a href="#">Real Estate</a></li>
-          <li><a href="#">Science</a></li>
-          <li><a href="#">Sport</a></li>
-          <li><a href="#">Transport</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Weather</a></li>
-        </ul>
+      <div class="tab-pane fade" id="icons">
+        <div class="row">
+          <div class="col-md-2">Icons:</div>
+          <div class="col-md-10">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/icons/fa}">fa</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/general}">General</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/glyph}">Glyphicons</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Line Icons:</div>
+          <div class="col-md-10">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/icons/line/common}">Common</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/christmas}">Christmas</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/clothes}">Clothes</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/communication}">Communication</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/education}">Education</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/electronics}">Electronics</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/finance}">Finance</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/food}">Food</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/furniture}">Furniture</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/hotel-restaurant}">Hotel and Restaurant</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/media}">Media</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/medical}">Medical</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/music}">Music</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/real-estate}">Real Estate</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/science}">Science</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/sport}">Sport</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/transport}">Transport</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/travel}">Travel</a></li>
+              <li><a target="_blank" th:href="@{/showcase/icons/line/weather}">Weather</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="tab-pane fade" id="showcase-pages">
-        <div class="headline"><h2>404</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">404 v1</a></li>
-        </ul>
-        <div class="headline"><h2>About</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">About v1</a></li>
-          <li><a href="#">About v2</a></li>
-          <li><a href="#">About v3</a></li>
-          <li><a href="#">About v4</a></li>
-        </ul>
-        <div class="headline"><h2>About Me</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">About Me v1</a></li>
-          <li><a href="#">About Me v2</a></li>
-          <li><a href="#">About Me v3</a></li>
-        </ul>
-        <div class="headline"><h2>About Our Team</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">About Our Team v1</a></li>
-          <li><a href="#">About Our Team v2</a></li>
-          <li><a href="#">About Our Team v3</a></li>
-        </ul>
-        <div class="headline"><h2>Contact</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Contact v1</a></li>
-          <li><a href="#">Contact v2</a></li>
-          <li><a href="#">Contact v3</a></li>
-        </ul>
-        <div class="headline"><h2>FAQ</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">FAQ v1</a></li>
-          <li><a href="#">FAQ v2</a></li>
-        </ul>
-        <div class="headline"><h2>Login</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Login v1</a></li>
-          <li><a href="#">Login v2</a></li>
-        </ul>
-        <div class="headline"><h2>Miscs</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Privacy v1</a></li>
-          <li><a href="#">Terms v1</a></li>
-        </ul>
-        <div class="headline"><h2>Registration</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Registration v1</a></li>
-          <li><a href="#">Registration v2</a></li>
-        </ul>
-        <div class="headline"><h2>Search</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Search v1</a></li>
-          <li><a href="#">Search v2</a></li>
-          <li><a href="#">Search v3</a></li>
-          <li><a href="#">Search v4</a></li>
-          <li><a href="#">Search v5</a></li>
-          <li><a href="#">Search v6</a></li>
-          <li><a href="#">Search v7</a></li>
-        </ul>
-        <div class="headline"><h2>Services</h2></div>
-        <ul class="list-inline">
-          <li><a href="#">Services v1</a></li>
-          <li><a href="#">Services v2</a></li>
-          <li><a href="#">Services v3</a></li>
-          <li><a href="#">Services v4</a></li>
-        </ul>
+      <div class="tab-pane fade" id="pages">
+        <div class="row">
+          <div class="col-md-2">404:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/404/404-v1}">404 v1</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">About:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/about/about-v1}">About v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/about/about-v2}">About v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/about/about-v3}">About v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/about/about-v4}">About v4</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">About Me:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/about-me/about-me-v1}">About Me v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/about-me/about-me-v2}">About Me v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/about-me/about-me-v3}">About Me v3</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">About Our Team:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li>
+                <a target="_blank" th:href="@{/showcase/pages/about-our-team/about-our-team-v1}">
+                  About Our Team v1
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/pages/about-our-team/about-our-team-v2}">
+                  About Our Team v2
+                </a>
+              </li>
+              <li>
+                <a target="_blank" th:href="@{/showcase/pages/about-our-team/about-our-team-v3}">
+                  About Our Team v3
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Contact:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/contact/contact-v1}">Contact v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/contact/contact-v2}">Contact v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/contact/contact-v3}">Contact v3</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">FAQ:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/faq/faq-v1}">FAQ v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/faq/faq-v2}">FAQ v2</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Login:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/login-v1}">Login v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/login-v2}">Login v2</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Miscs:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/miscs/privacy-v1}">Privacy v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/miscs/terms-v1}">Terms v1</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Registration:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/registration-v1}">Registration v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/registration-v2}">Registration v2</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">Search:</div>
+          <div class="col-md-4">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v1}">Search v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v2}">Search v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v3}">Search v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v4}">Search v4</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v5}">Search v5</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v6}">Search v6</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/search/search-v7}">Search v7</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">Services:</div>
+          <div class="col-md-10">
+            <ul class="list-inline">
+              <li><a target="_blank" th:href="@{/showcase/pages/services/services-v1}">Services v1</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/services/services-v2}">Services v2</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/services/services-v3}">Services v3</a></li>
+              <li><a target="_blank" th:href="@{/showcase/pages/services/services-v4}">Services v4</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
