@@ -37,6 +37,20 @@ body.dark blockquote.text-right:hover{
     color: #fff;
 }
 
+/*Bordered Buttons*/
+.btn-u.btn-brd {
+    border-color: #18ba9b;
+}
+
+.btn-u.btn-brd:hover {
+    color: #2cd5b6;
+    border-color: #2cd5b6;
+}
+
+.btn-u.btn-brd.btn-brd-hover:hover {
+    background: #2cd5b6;
+}
+
 /* Buttons Color */
 .btn-u-split.dropdown-toggle {
     border-left: solid 1px #2cd5b6;
@@ -55,6 +69,20 @@ span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
 .dropcap-bg {
     color: #fff;
     background: #2cd5b6;
+}
+
+/*Text Highlights*/
+.text-highlights {
+    background: #18ba9b;
+}
+
+.text-border {
+    border-color: #18ba9b;
+}
+
+/*Count Stars*/
+.stars-existing {
+    color: #18ba9b;
 }
 
 /* Font Awesome Icon Page Style */

@@ -38,6 +38,20 @@ body.dark blockquote.text-right:hover{
     color: #fff;
 }
 
+/*Bordered Buttons*/
+.btn-u.btn-brd {
+    border-color: #79d5b3;
+}
+
+.btn-u.btn-brd:hover {
+    color: #59b795;
+    border-color: #59b795;
+}
+
+.btn-u.btn-brd.btn-brd-hover:hover {
+    background: #59b795;
+}
+
 /* Buttons Color */
 .btn-u-split.dropdown-toggle {
     border-left: solid 1px #59b795;
@@ -57,6 +71,21 @@ span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
     color: #fff;
     background: #59b795;
 }
+
+/*Text Highlights*/
+.text-highlights {
+    background: #79d5b3;
+}
+
+.text-border {
+    border-color: #79d5b3;
+}
+
+/*Count Stars*/
+.stars-existing {
+    color: #79d5b3;
+}
+
 
 /* Font Awesome Icon Page Style */
 .fa-icons li:hover {

@@ -17,7 +17,6 @@ code {
     color: #9b6bcc;
 }
 
-
 /* Blockquote
 ------------------------------------*/
 blockquote:hover,
@@ -38,6 +37,20 @@ body.dark blockquote.text-right:hover{
     color: #fff;
 }
 
+/*Bordered Buttons*/
+.btn-u.btn-brd {
+    border-color: #9b6bcc;
+}
+
+.btn-u.btn-brd:hover {
+    color: #814fb5;
+    border-color: #814fb5;
+}
+
+.btn-u.btn-brd.btn-brd-hover:hover {
+    background: #814fb5;
+}
+
 /* Buttons Color */
 .btn-u-split.dropdown-toggle {
     border-left: solid 1px #814fb5;
@@ -56,6 +69,20 @@ span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
 .dropcap-bg {
     color: #fff;
     background: #814fb5;
+}
+
+/*Text Highlights*/
+.text-highlights {
+    background: #9b6bcc;
+}
+
+.text-border {
+    border-color: #9b6bcc;
+}
+
+/*Count Stars*/
+.stars-existing {
+    color: #9b6bcc;
 }
 
 /* Font Awesome Icon Page Style */

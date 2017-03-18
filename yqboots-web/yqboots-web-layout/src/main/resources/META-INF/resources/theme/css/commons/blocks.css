@@ -164,8 +164,23 @@
     overflow: auto
 }
 
+/*remove padding from "Col-"*/
+.no-space {
+    padding: 0;
+}
+
+.no-space-left {
+    padding-left: 0;
+    padding-right: 15px !important;
+}
+
+.no-space-right {
+    padding-right: 0;
+    padding-left: 15px !important;
+}
+
 /*--------------------------------------------------
-	[44. Back To Top]
+	[Back To Top]
 ----------------------------------------------------*/
 #topControl {
     color: #fff;

@@ -1,0 +1,10 @@
+.lists-v2 li {
+    margin-bottom: 10px;
+}
+
+.lists-v2 i {
+    color: #72c02c;
+    font-size: 13px;
+    margin-right: 7px;
+    display: inline-block;
+}

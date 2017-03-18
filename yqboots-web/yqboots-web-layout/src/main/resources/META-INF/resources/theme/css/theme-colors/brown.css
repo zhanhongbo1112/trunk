@@ -37,6 +37,20 @@ body.dark blockquote.text-right:hover{
     color: #fff;
 }
 
+/*Bordered Buttons*/
+.btn-u.btn-brd {
+    border-color: #9c8061;
+}
+
+.btn-u.btn-brd:hover {
+    color: #81674b;
+    border-color: #81674b;
+}
+
+.btn-u.btn-brd.btn-brd-hover:hover {
+    background: #81674b;
+}
+
 /* Buttons Color */
 .btn-u-split.dropdown-toggle {
     border-left: solid 1px #81674b;
@@ -49,12 +63,26 @@ span.label-u, span.badge-u, .list-group-item.active > .badge.badge-u {
 
 /*Text Dropcap*/
 .dropcap {
-    color: #81674b;
+    color: #9c8061;
 }
 
 .dropcap-bg {
     color: #fff;
-    background: #81674b;
+    background: #9c8061;
+}
+
+/*Text Highlights*/
+.text-highlights {
+    background: #9c8061;
+}
+
+.text-border {
+    border-color: #9c8061;
+}
+
+/*Count Stars*/
+.stars-existing {
+    color: #9c8061;
 }
 
 /* Font Awesome Icon Page Style */

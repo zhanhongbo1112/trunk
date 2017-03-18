@@ -1,0 +1,21 @@
+.three-blocks {
+    text-align: center;
+}
+
+.three-blocks-in {
+    margin-bottom: 30px;
+}
+
+.three-blocks-in i {
+    color: #777;
+    padding: 9px 6px;
+    font-size: 20px;
+    min-width: 40px;
+    margin-bottom: 10px;
+    border: 1px solid #777;
+}
+
+.three-blocks-in h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
