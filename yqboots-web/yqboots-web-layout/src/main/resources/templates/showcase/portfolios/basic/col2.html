@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Portfolio 2 Columns</title>
+  <link rel="stylesheet" th:href="@{/css/blocks/portfolio-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Portfolio 2 Columns</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li>Portfolio</li>
+      <li class="active">Portfolio 2 Columns</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content-sm height-500">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="view view-tenth">
+        <img class="img-responsive" th:src="@{/img/main/img9.jpg}"/>
+        <div class="mask">
+          <h2>Portfolio Item</h2>
+          <p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati
+            cupiditate non provident.</p>
+          <a href="#" class="info">Read More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="view view-tenth">
+        <img class="img-responsive" th:src="@{/img/main/img10.jpg}"/>
+        <div class="mask">
+          <h2>Portfolio Item</h2>
+          <p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati
+            cupiditate non provident.</p>
+          <a href="#" class="info">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div><!--/row-->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="view view-tenth no-margin-bottom">
+        <img class="img-responsive" th:src="@{/img/main/img12.jpg}"/>
+        <div class="mask">
+          <h2>Portfolio Item</h2>
+          <p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati
+            cupiditate non provident.</p>
+          <a href="#" class="info">Read More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="view view-tenth no-margin-bottom">
+        <img class="img-responsive" th:src="@{/img/main/img24.jpg}"/>
+        <div class="mask">
+          <h2>Portfolio Item</h2>
+          <p>At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati
+            cupiditate non provident.</p>
+          <a href="#" class="info">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div><!--/row-->
+</div>
+</body>
+</html>

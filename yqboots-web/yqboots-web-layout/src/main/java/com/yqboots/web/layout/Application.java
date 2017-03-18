@@ -790,4 +790,164 @@ public class Application {
     public String icons_line_weather() {
         return "showcase/icons/line/weather";
     }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-boxed/col2")
+    public String no_space_boxed_col2() {
+        return "showcase/portfolios/no-space-boxed/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-boxed/col3")
+    public String no_space_boxed_col3() {
+        return "showcase/portfolios/no-space-boxed/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-boxed/col4")
+    public String no_space_boxed_col4() {
+        return "showcase/portfolios/no-space-boxed/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-boxed/col2")
+    public String grid_boxed_col2() {
+        return "showcase/portfolios/grid-boxed/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-boxed/col3")
+    public String grid_boxed_col3() {
+        return "showcase/portfolios/grid-boxed/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-boxed/col4")
+    public String grid_boxed_col4() {
+        return "showcase/portfolios/grid-boxed/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-boxed/col2")
+    public String grid_text_boxed_col2() {
+        return "showcase/portfolios/grid-text-boxed/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-boxed/col3")
+    public String grid_text_boxed_col3() {
+        return "showcase/portfolios/grid-text-boxed/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-boxed/col4")
+    public String grid_text_boxed_col4() {
+        return "showcase/portfolios/grid-text-boxed/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-full-width/col2")
+    public String no_space_full_width_col2() {
+        return "showcase/portfolios/no-space-full-width/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-full-width/col3")
+    public String no_space_full_width_col3() {
+        return "showcase/portfolios/no-space-full-width/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-full-width/col4")
+    public String no_space_full_width_col4() {
+        return "showcase/portfolios/no-space-full-width/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-full-width/col5")
+    public String no_space_full_width_col5() {
+        return "showcase/portfolios/no-space-full-width/col5";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/no-space-full-width/col6")
+    public String no_space_full_width_col6() {
+        return "showcase/portfolios/no-space-full-width/col6";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-full-width/col2")
+    public String grid_full_width_col2() {
+        return "showcase/portfolios/grid-full-width/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-full-width/col3")
+    public String grid_full_width_col3() {
+        return "showcase/portfolios/grid-full-width/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-full-width/col4")
+    public String grid_full_width_col4() {
+        return "showcase/portfolios/grid-full-width/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-full-width/col5")
+    public String grid_full_width_col5() {
+        return "showcase/portfolios/grid-full-width/col5";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-full-width/col6")
+    public String grid_full_width_col6() {
+        return "showcase/portfolios/grid-full-width/col6";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-full-width/col2")
+    public String grid_text_full_width_col2() {
+        return "showcase/portfolios/grid-text-full-width/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-full-width/col3")
+    public String grid_text_full_width_col3() {
+        return "showcase/portfolios/grid-text-full-width/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-full-width/col4")
+    public String grid_text_full_width_col4() {
+        return "showcase/portfolios/grid-text-full-width/col4";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-full-width/col5")
+    public String grid_text_full_width_col5() {
+        return "showcase/portfolios/grid-text-full-width/col5";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/grid-text-full-width/col6")
+    public String grid_text_full_width_col6() {
+        return "showcase/portfolios/grid-text-full-width/col6";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/hover-colors")
+    public String basic_hover_colors() {
+        return "showcase/portfolios/basic/hover-colors";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/item-v1")
+    public String basic_item_v1() {
+        return "showcase/portfolios/basic/item-v1";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/item-v2")
+    public String basic_item_v2() {
+        return "showcase/portfolios/basic/item-v2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/item-v3")
+    public String basic_item_v3() {
+        return "showcase/portfolios/basic/item-v3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/grid-text")
+    public String basic_grid_text() {
+        return "showcase/portfolios/basic/grid-text";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/col2")
+    public String basic_col2() {
+        return "showcase/portfolios/basic/col2";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/col3")
+    public String basic_col3() {
+        return "showcase/portfolios/basic/col3";
+    }
+
+    @RequestMapping(value = "/showcase/portfolios/basic/col4")
+    public String basic_col4() {
+        return "showcase/portfolios/basic/col4";
+    }
 }
