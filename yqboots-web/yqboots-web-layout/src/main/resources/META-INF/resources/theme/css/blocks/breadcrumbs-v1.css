@@ -9,7 +9,6 @@
 .breadcrumbs-v1 {
     padding: 100px 0;
     position: relative;
-    background: url(../img/breadcrumbs/img1.jpg) center no-repeat;
     background-size: cover; /*Scales the background image to be as large as possible*/
 }
 

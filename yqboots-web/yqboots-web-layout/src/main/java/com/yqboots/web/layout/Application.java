@@ -950,4 +950,84 @@ public class Application {
     public String basic_col4() {
         return "showcase/portfolios/basic/col4";
     }
+
+    @RequestMapping(value = "/showcase/blogs/v01/index")
+    public String blog_v01() {
+        return "showcase/blogs/v01/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v01/item")
+    public String blog_v01_item() {
+        return "showcase/blogs/v01/item";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v02/index")
+    public String blog_v02() {
+        return "showcase/blogs/v02/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v02/item")
+    public String blog_v02_item() {
+        return "showcase/blogs/v02/item";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v03/index")
+    public String blog_v03() {
+        return "showcase/blogs/v03/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v03/item")
+    public String blog_v03_item() {
+        return "showcase/blogs/v03/item";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v04/index")
+    public String blog_v04() {
+        return "showcase/blogs/v04/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v04/item")
+    public String blog_v04_item() {
+        return "showcase/blogs/v04/item";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v05/index")
+    public String blog_v05() {
+        return "showcase/blogs/v05/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v05/item")
+    public String blog_v05_item() {
+        return "showcase/blogs/v05/item";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v06/index")
+    public String blog_v06() {
+        return "showcase/blogs/v06/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v07/index")
+    public String blog_v07() {
+        return "showcase/blogs/v07/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v08/index")
+    public String blog_v08() {
+        return "showcase/blogs/v08/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v09/index")
+    public String blog_v09() {
+        return "showcase/blogs/v09/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v10/index")
+    public String blog_v10() {
+        return "showcase/blogs/v10/index";
+    }
+
+    @RequestMapping(value = "/showcase/blogs/v11/index")
+    public String blog_v11() {
+        return "showcase/blogs/v11/index";
+    }
 }
