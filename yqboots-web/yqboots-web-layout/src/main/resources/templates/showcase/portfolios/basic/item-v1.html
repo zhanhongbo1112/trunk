@@ -2,177 +2,211 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Single Item</title>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/carousel-v2.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/css/cubeportfolio.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/custom/custom-cubeportfolio.css}"/>
+  <title>Portfolio Item 1</title>
+  <link rel="stylesheet" th:href="@{/theme/css/plugins/owl-carousel/owl.carousel.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/carousel-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/owl-carousel-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/owl-work-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/css/blocks/portfolio-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/css/blocks/owl-carousel-custom.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
   <div class="container">
-    <h1 class="pull-left">Single Item</h1>
+    <h1 class="pull-left">Portfolio Item 1</h1>
     <ul class="pull-right breadcrumb">
       <li><a href="#">Home</a></li>
       <li>Portfolio</li>
-      <li class="active">Single Item</li>
+      <li class="active">Portfolio Item 1</li>
     </ul>
   </div>
 </div>
 <div layout:fragment="content" class="container content height-500">
-  <!-- Magazine Slider -->
-  <div class="carousel slide carousel-v2 margin-bottom-40" id="portfolio-carousel">
-    <ol class="carousel-indicators">
-      <li class="active rounded-x" data-target="#portfolio-carousel" data-slide-to="0"></li>
-      <li class="rounded-x" data-target="#portfolio-carousel" data-slide-to="1"></li>
-      <li class="rounded-x" data-target="#portfolio-carousel" data-slide-to="2"></li>
-    </ol>
+  <div class="row portfolio-item margin-bottom-50">
+    <!-- Carousel -->
+    <div class="col-md-7">
+      <div class="carousel slide carousel-v1" id="myCarousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img th:src="@{/img/main/img11.jpg}"/>
+            <div class="carousel-caption">
+              <p>Facilisis odio, dapibus ac justo acilisis gestinas.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img th:src="@{/img/main/img12.jpg}"/>
+            <div class="carousel-caption">
+              <p>Cras justo odio, dapibus ac facilisis into egestas.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img th:src="@{/img/main/img13.jpg}"/>
+            <div class="carousel-caption">
+              <p>Justo cras odio apibus ac afilisis lingestas de.</p>
+            </div>
+          </div>
+        </div>
 
-    <div class="carousel-inner">
-      <div class="item active">
-        <img class="full-width img-responsive" th:src="@{/img/mockup/img2.jpg}"/>
-      </div>
-      <div class="item">
-        <img class="full-width img-responsive" th:src="@{/img/mockup/img1.jpg}"/>
-      </div>
-      <div class="item">
-        <img class="full-width img-responsive" th:src="@{/img/mockup/img4.jpg}"/>
+        <div class="carousel-arrow">
+          <a data-slide="prev" href="#myCarousel" class="left carousel-control">
+            <i class="fa fa-angle-left"></i>
+          </a>
+          <a data-slide="next" href="#myCarousel" class="right carousel-control">
+            <i class="fa fa-angle-right"></i>
+          </a>
+        </div>
       </div>
     </div>
+    <!-- End Carousel -->
 
-    <a class="left carousel-control rounded-x" href="#portfolio-carousel" role="button" data-slide="prev">
-      <i class="fa fa-angle-left arrow-prev"></i>
-    </a>
-    <a class="right carousel-control rounded-x" href="#portfolio-carousel" role="button" data-slide="next">
-      <i class="fa fa-angle-right arrow-next"></i>
-    </a>
-  </div>
-  <!-- End Magazine Slider -->
-
-  <div class="row margin-bottom-60">
-    <div class="col-sm-8">
-      <div class="headline"><h2>Product Description</h2></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in urna nec risus maximus ultricies. Nam
-        nisi mauris, congue non lacus iaculis, interdum luctus dolor. Maecenas pellentesque sapien nec mauris
-        dictum, et mollis lorem eleifend. In hac habitasse platea dictumst. Fusce nec elit et metus blandit posuere
-        eget id ante. Integer fermentum auctor neque eu venenatis. Praesent diam eros, mollis a mattis sit amet,
-        scelerisque sit amet dui. Morbi sed lectus ut lorem vehicula interdum a nec dui. Nam at placerat risus.
-        Mauris eget faucibus tortor. Sed sed iaculis ligula. Aliquam porttitor viverra sagittis.</p>
-    </div>
-    <div class="col-sm-4">
-      <div class="headline"><h2>Product Details</h2></div>
-      <ul class="list-unstyled project-details">
-        <li><b>Client:</b> Web Design</li>
-        <li><b>Date:</b> 17 October 2014</li>
-        <li><b>Categories:</b> <a href="#">Web Design,</a> <a href="#">Graphic</a></li>
-        <li><b>Website:</b> <a href="#">https://htmlstream.com</a></li>
+    <!-- Content Info -->
+    <div class="col-md-5">
+      <h2>Portfolio Item Information</h2>
+      <p>At vero eos et accusamus et iusto odio dignissimos <a href="#">ducimus qui blanditiis</a> praesentium
+        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+        provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et
+        harum quidem rerum Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.</p>
+      <p>Molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+        mollitia animi, id est laborum et dolorum fuga. Ut non libero consectetur adipiscing elit magna. Sed et quam
+        lacus.</p>
+      <ul class="list-unstyled">
+        <li><i class="fa fa-user color-green"></i> Jack Baur</li>
+        <li><i class="fa fa-calendar color-green"></i> 14,2003 February</li>
+        <li><i class="fa fa-tags color-green"></i> Websites, Google, HTML5/CSS3</li>
       </ul>
+      <a href="#" class="btn-u btn-u-large">VISIT THE PROJECT</a>
     </div>
-  </div>
+    <!-- End Content Info -->
+  </div><!--/row-->
 
-  <div class="cube-portfolio">
-    <div id="grid-container" class="cbp-l-grid-agency">
-      <div class="cbp-item">
-        <div class="cbp-caption margin-bottom-20">
-          <div class="cbp-caption-defaultWrap">
-            <img th:src="@{/img/portfolio/07.jpg}"/>
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignCenter">
-              <div class="cbp-l-caption-body">
-                <ul class="link-captions no-bottom-space">
-                  <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
-                  <li>
-                    <a th:href="@{/img/portfolio/07.jpg}" class="cbp-lightbox" data-title="Design Object">
-                      <i class="rounded-x fa fa-search"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+  <div class="margin-bottom-20 clearfix"></div>
+
+  <!-- Recent Works -->
+  <div class="owl-carousel-v1 owl-work-v1 margin-bottom-40">
+    <div class="headline"><h2 class="pull-left">Recent Works</h2>
+      <div class="owl-navigation">
+        <div class="customNavigation">
+          <a class="owl-btn prev-v2"><i class="fa fa-angle-left"></i></a>
+          <a class="owl-btn next-v2"><i class="fa fa-angle-right"></i></a>
         </div>
-        <div class="cbp-title-dark">
-          <div class="cbp-l-grid-agency-title">Dashboard</div>
-          <div class="cbp-l-grid-agency-desc">Web Design / Graphic</div>
-        </div>
+      </div><!--/navigation-->
+    </div>
+
+    <div class="owl-recent-works-v1">
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img1.jpg}"/>
+          </em>
+          <span>
+            <b>Happy New Year</b>
+            <i>Anim pariatur cliche reprehenderit</i>
+          </span>
+        </a>
       </div>
-      <div class="cbp-item">
-        <div class="cbp-caption margin-bottom-20">
-          <div class="cbp-caption-defaultWrap">
-            <img th:src="@{/img/portfolio/08.jpg}"/>
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignCenter">
-              <div class="cbp-l-caption-body">
-                <ul class="link-captions no-bottom-space">
-                  <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
-                  <li>
-                    <a th:href="@{/img/portfolio/08.jpg}" class="cbp-lightbox" data-title="Design Object">
-                      <i class="rounded-x fa fa-search"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cbp-title-dark">
-          <div class="cbp-l-grid-agency-title">World Clock Widget</div>
-          <div class="cbp-l-grid-agency-desc">Logo / Web Design</div>
-        </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img2.jpg}"/>
+          </em>
+          <span>
+            <b>Award Winning Agency</b>
+            <i>Responsive Bootstrap Template</i>
+          </span>
+        </a>
       </div>
-      <div class="cbp-item">
-        <div class="cbp-caption margin-bottom-20">
-          <div class="cbp-caption-defaultWrap">
-            <img th:src="@{/img/portfolio/09.jpg}"/>
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignCenter">
-              <div class="cbp-l-caption-body">
-                <ul class="link-captions no-bottom-space">
-                  <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
-                  <li>
-                    <a th:href="@{/img/portfolio/09.jpg}" class="cbp-lightbox" data-title="Design Object">
-                      <i class="rounded-x fa fa-search"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cbp-title-dark">
-          <div class="cbp-l-grid-agency-title">To-Do Dashboard</div>
-          <div class="cbp-l-grid-agency-desc">Graphic / Logo</div>
-        </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img3.jpg}"/>
+          </em>
+          <span>
+            <b>Wolf Moon Officia</b>
+            <i>Pariatur prehe cliche reprehrit</i>
+          </span>
+        </a>
       </div>
-      <div class="cbp-item">
-        <div class="cbp-caption margin-bottom-20">
-          <div class="cbp-caption-defaultWrap">
-            <img th:src="@{/img/portfolio/10.jpg}"/>
-          </div>
-          <div class="cbp-caption-activeWrap">
-            <div class="cbp-l-caption-alignCenter">
-              <div class="cbp-l-caption-body">
-                <ul class="link-captions no-bottom-space">
-                  <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
-                  <li>
-                    <a th:href="@{/img/portfolio/10.jpg}" class="cbp-lightbox" data-title="Design Object">
-                      <i class="rounded-x fa fa-search"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cbp-title-dark">
-          <div class="cbp-l-grid-agency-title">Events and More</div>
-          <div class="cbp-l-grid-agency-desc">Web Design / Graphic</div>
-        </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img4.jpg}"/>
+          </em>
+          <span>
+            <b>Food Truck Quinoa Nesciunt</b>
+            <i>Craft labore wes anderson cred</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img5.jpg}"/>
+          </em>
+          <span>
+            <b>Happy New Year</b>
+            <i>Anim pariatur cliche reprehenderit</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img1.jpg}"/>
+          </em>
+          <span>
+            <b>Happy New Year</b>
+            <i>Anim pariatur cliche reprehenderit</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img2.jpg}"/>
+          </em>
+          <span>
+            <b>Award Winning Agency</b>
+            <i>Responsive Bootstrap Template</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img3.jpg}"/>
+          </em>
+          <span>
+            <b>Wolf Moon Officia</b>
+            <i>Pariatur prehe cliche reprehrit</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img4.jpg}"/>
+          </em>
+          <span>
+            <b>Food Truck Quinoa Nesciunt</b>
+            <i>Craft labore wes anderson cred</i>
+          </span>
+        </a>
+      </div>
+      <div class="item">
+        <a href="#">
+          <em class="overflow-hidden">
+            <img class="img-responsive" th:src="@{/img/main/img5.jpg}"/>
+          </em>
+          <span>
+            <b>Happy New Year</b>
+            <i>Anim pariatur cliche reprehenderit</i>
+          </span>
+        </a>
       </div>
     </div>
   </div>
+  <!-- End Recent Works -->
 </div>
 </body>
 </html>

@@ -3,9 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
   <title>Portfolio 2 Columns Grid No Space</title>
-
-  <link rel="stylesheet" th:href="@{/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css}"/>
-  <link rel="stylesheet" th:href="@{/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/css/cubeportfolio.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/custom/custom-cubeportfolio.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -18,7 +17,7 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content" class="cube-portfolio container margin-bottom-60">
+<div layout:fragment="content" class="cube-portfolio container height-500">
   <div class="content-xs">
     <div id="filters-container" class="cbp-l-filters-text content-xs">
       <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"> All</div>
@@ -30,7 +29,7 @@
       <div data-filter=".graphic" class="cbp-filter-item"> Graphic</div>
       |
       <div data-filter=".logos" class="cbp-filter-item"> Logo</div>
-    </div><!--/end Filters Container-->
+    </div>
   </div>
 
   <div id="grid-container" class="cbp-l-grid-agency">
@@ -43,7 +42,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img12.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -63,7 +62,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img18.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -83,7 +82,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img7.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -103,7 +102,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img4.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -123,7 +122,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img3.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -143,7 +142,7 @@
           <div class="cbp-l-caption-alignCenter">
             <div class="cbp-l-caption-body">
               <ul class="link-captions">
-                <li><a href="portfolio_single_item.html"><i class="rounded-x fa fa-link"></i></a></li>
+                <li><a href="#"><i class="rounded-x fa fa-link"></i></a></li>
                 <li><a th:href="@{/img/main/img6.jpg}" class="cbp-lightbox" data-title="Design Object"><i
                     class="rounded-x fa fa-search"></i></a></li>
               </ul>
@@ -154,12 +153,7 @@
         </div>
       </div>
     </div>
-  </div><!--/end Grid Container-->
-</div>
-<div layout:fragment="script">
-  <script type="text/javascript"
-          th:src="@{/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js}"></script>
-  <script type="text/javascript" th:src="@{/js/plugins/cube-portfolio/cube-portfolio-2-ns.js}"></script>
+  </div>
 </div>
 </body>
 </html>

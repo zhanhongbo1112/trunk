@@ -916,6 +916,11 @@ public class Application {
         return "showcase/portfolios/basic/hover-colors";
     }
 
+    @RequestMapping(value = "/showcase/portfolios/basic/single-item")
+    public String basic_single_item() {
+        return "showcase/portfolios/basic/single-item";
+    }
+
     @RequestMapping(value = "/showcase/portfolios/basic/item-v1")
     public String basic_item_v1() {
         return "showcase/portfolios/basic/item-v1";
@@ -924,11 +929,6 @@ public class Application {
     @RequestMapping(value = "/showcase/portfolios/basic/item-v2")
     public String basic_item_v2() {
         return "showcase/portfolios/basic/item-v2";
-    }
-
-    @RequestMapping(value = "/showcase/portfolios/basic/item-v3")
-    public String basic_item_v3() {
-        return "showcase/portfolios/basic/item-v3";
     }
 
     @RequestMapping(value = "/showcase/portfolios/basic/grid-text")
