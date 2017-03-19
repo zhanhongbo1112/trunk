@@ -29,3 +29,7 @@
 .blog-author .blog-author-desc p {
     color: #555;
 }
+
+body.dark .blog-author {
+    background: #333;
+}

@@ -29,3 +29,11 @@
 .blog-latest-posts p {
     font-size: 12px;
 }
+
+body.dark .blog-latest-posts li {
+    border-top-color: #777;
+}
+
+body.dark .blog-latest-posts h3 a:hover {
+    color: #72c02c;
+}

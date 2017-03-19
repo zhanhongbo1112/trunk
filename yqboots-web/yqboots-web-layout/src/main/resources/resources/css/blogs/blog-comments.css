@@ -58,3 +58,19 @@
         border-color: transparent transparent #fff transparent;
     }
 }
+
+body.dark .blog-comments .comments-itself {
+    background: #333;
+}
+
+body.dark .blog-comments .comments-itself:before {
+    border-color: transparent #333 transparent transparent;
+}
+
+body.dark .blog-comments .comments-itself span {
+    color: #999;
+}
+
+body.dark .sky-form.comment-style fieldset {
+    background: inherit;
+}

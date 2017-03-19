@@ -3,8 +3,6 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="showcase/blogs/layouts/layout-v2">
 <head>
   <title>Blog Large Right Sidebar</title>
-  <link rel="stylesheet" th:href="@{/css/blogs/blog.css}"/>
-  <link rel="stylesheet" th:href="@{/css/blogs/blog-magazine.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -17,9 +15,10 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content">
-  <div class="blog margin-bottom-40">
-    <h2><a href="item.html">Unify is an incredibly beautiful and fully responsive Bootstrap 3 Template</a></h2>
+<div layout:fragment="content" class="blog">
+  <div class="margin-bottom-40">
+    <h2><a th:href="@{/showcase/blogs/v03/item}">Unify is an incredibly beautiful and fully responsive Bootstrap 3
+      Template</a></h2>
     <div class="blog-post-tags">
       <ul class="list-unstyled list-inline blog-info">
         <li><i class="fa fa-calendar"></i> February 02, 2013</li>
@@ -46,12 +45,13 @@
       consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
       Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
       non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
-    <p><a class="btn-u btn-u-small" href="item.html"><i class="fa fa-plus-sign"></i> Read More</a>
+    <p><a class="btn-u btn-u-small" th:href="@{/showcase/blogs/v03/item}"><i class="fa fa-plus-sign"></i> Read More</a>
     </p>
   </div>
   <!--Blog Post-->
-  <div class="blog margin-bottom-40">
-    <h2><a href="item.html">Template comes with developer friendly and easy to customizable code</a></h2>
+  <div class="margin-bottom-40">
+    <h2><a th:href="@{/showcase/blogs/v03/item}">Template comes with developer friendly and easy to customizable
+      code</a></h2>
     <div class="blog-post-tags">
       <ul class="list-unstyled list-inline blog-info">
         <li><i class="fa fa-calendar"></i> February 02, 2013</li>
@@ -81,14 +81,15 @@
       consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
       Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
       non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
-    <p><a class="btn-u btn-u-small" href="item.html"><i class="fa fa-plus-sign"></i> Read More</a>
+    <p><a class="btn-u btn-u-small" th:href="@{/showcase/blogs/v03/item}"><i class="fa fa-plus-sign"></i> Read More</a>
     </p>
   </div>
   <!--End Blog Post-->
 
   <!--Blog Post-->
-  <div class="blog margin-bottom-20">
-    <h2><a href="item.html">Unify Template works on all main web browsers, tablets and phones.</a></h2>
+  <div class="margin-bottom-20">
+    <h2><a th:href="@{/showcase/blogs/v03/item}">Unify Template works on all main web browsers, tablets and phones.</a>
+    </h2>
     <div class="blog-post-tags">
       <ul class="list-unstyled list-inline blog-info">
         <li><i class="fa fa-calendar"></i> February 02, 2013</li>
@@ -145,7 +146,8 @@
       consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
       Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
       non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
-    <p><a class="btn-u btn-u-small" href="item.html"><i class="fa fa-plus-sign"></i> Read More</a></p>
+    <p><a class="btn-u btn-u-small" th:href="@{/showcase/blogs/v03/item}"><i class="fa fa-plus-sign"></i> Read More</a>
+    </p>
   </div>
   <!--End Blog Post-->
 

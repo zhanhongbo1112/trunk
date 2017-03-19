@@ -3,19 +3,20 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
   <title>Blog Full Width Item 1</title>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/breadcrumbs-v1.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/news-v2.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/news-v3.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/pager-v2.css}"/>
   <link rel="stylesheet" th:href="@{/css/blogs/blog.css}"/>
-  <link rel="stylesheet" th:href="@{/css/blogs/blog-author.css}"/>
-  <link rel="stylesheet" th:href="@{/css/blogs/blog-comments.css}"/>
 </head>
 <body>
-<div layout:fragment="breadcrumbs" class="breadcrumbs-v1 text-center">
+<div layout:fragment="breadcrumbs">
   <div class="container">
-    <span>Blog Item Page</span>
-    <h1>Basic Item Page</h1>
+    <h1 class="pull-left">Blog Item</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Blog</a></li>
+      <li class="active">Blog Item</li>
+    </ul>
   </div>
 </div>
 <div layout:fragment="content" class="container content-sm">

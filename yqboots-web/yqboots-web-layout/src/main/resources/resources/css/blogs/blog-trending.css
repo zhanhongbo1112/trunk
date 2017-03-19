@@ -16,3 +16,7 @@
 .blog-trending small a:hover {
     color: #72c02c;
 }
+
+body.dark .blog-trending h3 a:hover {
+    color: #72c02c;
+}
