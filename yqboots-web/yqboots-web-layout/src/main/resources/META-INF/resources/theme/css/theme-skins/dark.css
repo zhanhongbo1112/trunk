@@ -309,13 +309,13 @@ body.dark .badge-sidebar {
 
 /*Heading
 ------------------------------------*/
+body.dark .headline {
+    border-bottom: 1px dotted #555;
+}
+
 body.dark .heading h2:before,
 body.dark .heading h2:after {
     border-color: #555;
-}
-
-body.dark .headline-left .headline-brd {
-    color: #ccc;
 }
 
 /*Divider

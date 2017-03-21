@@ -19,3 +19,7 @@
     position: absolute;
     background: #72c02c;
 }
+
+body.dark .headline-left .headline-brd {
+    color: #ccc;
+}

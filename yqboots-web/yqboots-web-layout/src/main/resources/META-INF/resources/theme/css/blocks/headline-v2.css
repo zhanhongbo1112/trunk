@@ -11,3 +11,8 @@
     font-size: 20px;
     font-weight: 200;
 }
+
+body.dark .headline-v2,
+body.dark .headline-v2.bg-color-light {
+    background: #333 !important;
+}
