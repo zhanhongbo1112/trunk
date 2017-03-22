@@ -4,7 +4,6 @@
 <head>
   <title>Left Sidebar Search</title>
   <link rel="stylesheet" th:href="@{/css/pages/search-v1.css}"/>
-  <link rel="stylesheet" th:href="@{/css/blocks/blog-photos.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -17,8 +16,8 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content">
-  <div class="search-block-v2">
+<div layout:fragment="content" class="search-v1">
+  <div class="search-block">
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
         <h2>Search again</h2>
@@ -74,20 +73,6 @@
             </ul>
             <a class="see-all" href="#">See all</a>
             <hr/>
-          </div>
-
-          <div class="col-md-12 col-sm-4">
-            <h3>Related pictures</h3>
-            <ul class="list-unstyled blog-photos margin-bottom-30">
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/5.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/6.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/8.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/10.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/11.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/1.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/2.jpg}" class="hover-effect"/></a></li>
-              <li><a href="#"><img th:src="@{/img/sliders/elastislide/7.jpg}" class="hover-effect"/></a></li>
-            </ul>
           </div>
         </div>
       </div><!--/col-md-2-->

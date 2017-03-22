@@ -1,10 +1,10 @@
-.search-block {
+.search-v2 .search-block {
     padding: 40px 0 50px;
     border-bottom: 1px solid #eee;
     background: url(../../img/patterns/breadcrumbs.png) repeat;
 }
 
-.search-block h2 {
+.search-v2 .search-block h2 {
     font-size: 24px;
     font-weight: 200;
     text-align: center;
@@ -12,7 +12,7 @@
     text-transform: uppercase;
 }
 
-body.dark .search-block {
+body.dark .search-v2 .search-block {
     background: #202020;
     border-color: #303030;
 }

@@ -1,0 +1,43 @@
+/*Promo Box*/
+.promo-box {
+    padding: 20px;
+    margin: 25px 0 20px;
+    text-align: center;
+}
+
+.promo-box i {
+    display: block;
+    font-size: 50px;
+}
+
+.promo-box p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.promo-box strong,
+.promo-box strong a {
+    color: #555;
+    display: block;
+    font-size: 20px;
+    font-weight: 200;
+    margin: 20px 0 15px;
+}
+
+.promo-box:hover strong,
+.promo-box:hover strong a {
+    color: #72c02c;
+}
+
+/*Promo Service*/
+.promo-service {
+    margin-bottom: 20px;
+}
+
+.promo-service li {
+    margin-bottom: 5px;
+}
+
+.promo-service a.btn-u {
+    margin: 0 20px 10px 0;
+}
