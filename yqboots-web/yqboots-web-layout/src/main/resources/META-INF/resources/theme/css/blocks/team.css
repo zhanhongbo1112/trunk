@@ -1,18 +1,18 @@
-.team ul.team-socail {
+.team ul.team-social {
     text-align: right;
 }
 
-.team ul.team-socail li {
+.team ul.team-social li {
     margin: 0 !important;
     padding: 0 !important;
 }
 
-.team ul.team-socail li a,
-.team ul.team-socail li a:hover {
+.team ul.team-social li a,
+.team ul.team-social li a:hover {
     text-decoration: none;
 }
 
-.team ul.team-socail li i {
+.team ul.team-social li i {
     color: #aaa;
     padding: 6px 7px;
     min-width: 30px;
@@ -22,7 +22,7 @@
     display: inline-block;
 }
 
-.team ul.team-socail li i:hover {
+.team ul.team-social li i:hover {
     color: #fff;
     background: #72c02c;
     transition: all 0.2s ease-in-out;
@@ -48,4 +48,22 @@
     display: block;
     margin-top: 5px;
     font-size: 12px;
+}
+
+body.dark .team .thumbnail-style {
+    background: #292929;
+}
+
+body.dark .team .thumbnail-style small {
+    color: #555;
+}
+
+body.dark .team ul.team-social li i {
+    color: #999;
+    background: #222;
+}
+
+body.dark .team ul.team-social li i:hover {
+    color: #fff;
+    background: #333;
 }

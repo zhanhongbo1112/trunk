@@ -60,6 +60,10 @@
     margin-left: -25px;
 }
 
+.portfolio-box .portfolio-box-in i {
+    background: #72c02c;
+}
+
 .portfolio-box a.fancybox:hover .portfolio-box-in {
     visibility: visible;
 }

@@ -13,6 +13,14 @@ a:focus, a:hover, a:active {
     color: #18ba9b;
 }
 
+a.read-more:hover {
+    color: #18ba9b;
+}
+
+.linked:hover {
+    color: #18ba9b;
+}
+
 code {
     color: #18ba9b;
 }

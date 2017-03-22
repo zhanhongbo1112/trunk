@@ -30,6 +30,7 @@ figure {
     margin: 0;
     position: relative;
 }
+
 figure img {
     z-index: 10;
     height: auto;
@@ -38,11 +39,13 @@ figure img {
     position: relative;
     display: inline-block;
 }
+
 figure .img-hover {
     z-index: 5;
     display: block;
     position: absolute;
 }
+
 figure h4 {
     color: #fff;
     font-size: 14px;
@@ -73,12 +76,14 @@ figure h4 {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
+
 #effect-2 figure .img-hover h4 {
-  font-weight: 200;
-  line-height: 24px;
-  display: inline-block;
-  vertical-align: middle;
+    font-weight: 200;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: middle;
 }
+
 #effect-2 figure img {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -90,6 +95,7 @@ figure h4 {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
+
 #effect-2 figure:hover img,
 #effect-2 figure.hover img {
     -webkit-transform: rotateY(180deg);
@@ -98,6 +104,7 @@ figure h4 {
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
+
 #effect-2 figure:hover .img-hover,
 #effect-2 figure.hover .img-hover {
     -webkit-transform: rotateY(0);
@@ -105,4 +112,9 @@ figure h4 {
     -ms-transform: rotateY(0);
     -o-transform: rotateY(0);
     transform: rotateY(0);
+}
+
+body.dark #effect-2 figure .img-hover {
+    color: #999;
+    background: #303030;
 }
