@@ -1,5 +1,6 @@
 @import url(blog-trending.css);
 @import url(blog-latest-posts.css);
+@import url(blog-photos.css);
 @import url(blog-photostream.css);
 @import url(blog-newsletter.css);
 @import url(blog-post-quote.css);
@@ -27,6 +28,14 @@
 .blog h2 a:hover {
     color: #72c02c;
     text-decoration: none;
+}
+
+.blog h3 {
+    color: #72c02c;
+}
+
+.blog li a:hover {
+    color: #72c02c;
 }
 
 .blog .blog-img {

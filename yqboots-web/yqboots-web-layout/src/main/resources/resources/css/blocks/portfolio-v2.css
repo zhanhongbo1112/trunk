@@ -73,3 +73,20 @@
 .sorting-block .sorting-grid li a:hover .sorting-cover span {
     color: #fff;
 }
+
+.sorting-block .sorting-grid li a:hover span.sorting-cover {
+    background: #72c02c;
+}
+
+body.dark .sorting-block .sorting-grid li span.sorting-cover {
+    background: #222;
+}
+
+body.dark .sorting-block .sorting-grid li:hover span.sorting-cover {
+    background: #333;
+}
+
+body.dark .sorting-block .sorting-grid li a:hover span.sorting-cover p,
+body.dark .sorting-block .sorting-grid li a:hover span.sorting-cover span {
+    color: #999;
+}
