@@ -202,6 +202,31 @@ body.dark .breadcrumb a {
     color: #999;
 }
 
+/*Popover
+------------------------------------*/
+body.dark .popover {
+    color: #999;
+    box-shadow: none;
+    border-color: #444;
+    background-color: #333;
+}
+
+body.dark .popover.top .arrow:after {
+    border-top-color: #333;
+}
+
+body.dark .popover.left .arrow:after {
+    border-left-color: #333;
+}
+
+body.dark .popover.right .arrow:after {
+    border-right-color: #333;
+}
+
+body.dark .popover.bottom .arrow:after {
+    border-bottom-color: #333;
+}
+
 /*List Group
 ------------------------------------*/
 body.dark .list-group-item,

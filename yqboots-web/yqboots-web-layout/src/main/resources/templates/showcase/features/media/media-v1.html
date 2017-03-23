@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Audio/Videos &amp; Images</title>
+  <title>Images</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/box-shadow.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/heading-v1.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/tab-v1.css}"/>
@@ -10,21 +10,17 @@
 <body>
 <div layout:fragment="breadcrumbs">
   <div class="container">
-    <h1 class="pull-left">Audio/Videos &amp; Images</h1>
+    <h1 class="pull-left">Images</h1>
     <ul class="pull-right breadcrumb">
       <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
       <li>Features</li>
-      <li class="active">Audio/Videos &amp; Images</li>
+      <li class="active">Images</li>
     </ul>
   </div>
 </div>
 <div layout:fragment="content" class="container content">
-  <!-- Image Examples -->
   <div class="heading heading-v1 margin-bottom-40">
     <h2>Image Examples</h2>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-      scrambled.</p>
   </div>
 
   <div class="row margin-bottom-50">
@@ -130,7 +126,6 @@
       <!-- End Image Box Shadows -->
     </div>
   </div>
-  <!-- End Image Examples -->
 </div>
 </body>
 </html>

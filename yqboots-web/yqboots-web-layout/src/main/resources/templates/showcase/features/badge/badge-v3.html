@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Labels &amp; Badges</title>
+  <title>Badges</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/badge-box-v1.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/sidebar-nav-v1.css}"/>
 </head>
@@ -17,7 +17,7 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content" class="container content">
+<div layout:fragment="content" class="container content height-500">
   <!-- List Groups -->
   <div class="row margin-bottom-20">
     <div>
@@ -68,20 +68,26 @@
   </div>
   <!-- End List Groups -->
 
+  <hr/>
+
   <!-- Badges With Dropdown/Navigation  -->
   <div class="row">
     <!-- Dropdown With Badge -->
     <div class="col-md-6">
-      <ul class="dropdown-menu dropdown-show" role="menu">
-        <li>
-          <a href="#">Action <span class="badge badge-u rounded-x">7</span></a>
-        </li>
-        <li><a href="#">Another action <span class="badge badge-u rounded">5</span></a></li>
-        <li><a href="#">Others <span class="badge badge-u rounded-2x">16</span></a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link <span class="badge badge-u">3</span></a></li>
-      </ul>
+      <div class="btn-group">
+        <button type="button" class="btn-u dropdown-toggle" data-toggle="dropdown">
+          Action
+          <i class="fa fa-angle-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Action <span class="badge badge-u rounded-x">7</span></a></li>
+          <li><a href="#">Another action <span class="badge badge-u rounded">5</span></a></li>
+          <li><a href="#">Others <span class="badge badge-u rounded-2x">16</span></a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link <span class="badge badge-u">3</span></a></li>
+        </ul>
+      </div>
     </div>
     <!-- End Dropdown With Badge-->
 

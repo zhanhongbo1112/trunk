@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Labels &amp; Badges</title>
+  <title>Badges</title>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/badge-box-v1.css}"/>
 </head>
 <body>
@@ -16,8 +16,7 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content" class="container content">
-  <!-- Default Badges -->
+<div layout:fragment="content" class="container content height-500">
   <div class="margin-bottom-35">
     <p>Default Badges: Easily highlight new or unread items by adding a <code>&lt;span class="badge
       badge-*"&gt;</code>
@@ -71,7 +70,6 @@
     <span class="badge rounded-2x badge-u">11</span>
     <span class="badge rounded-2x badge-u">12</span>
   </div>
-  <!-- End Default Badges -->
 </div>
 </body>
 </html>

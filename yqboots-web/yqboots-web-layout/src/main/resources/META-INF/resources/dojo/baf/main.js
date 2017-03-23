@@ -8,6 +8,7 @@ define(['baf/_base/dynamicRequire', 'baf/_base/StickyHeader', 'baf/_base/MegaMen
 
         return {
             startup: function (templateName, locale) {
+                this._handleBootstrap();
                 NlsMessage.startup(locale);
                 StickyHeader.startup();
                 MegaMenu.startup();
@@ -19,6 +20,28 @@ define(['baf/_base/dynamicRequire', 'baf/_base/StickyHeader', 'baf/_base/MegaMen
                         Page.startup();
                     });
                 }
+            },
+
+            _handleBootstrap: function () {
+                /* Bootstrap Carousel */
+                $('.carousel').carousel({
+                    interval: 15000,
+                    pause: 'hover'
+                });
+
+                /* Tooltips */
+                $('.tooltips').tooltip();
+                $('.tooltips-show').tooltip('show');
+                $('.tooltips-hide').tooltip('hide');
+                $('.tooltips-toggle').tooltip('toggle');
+                $('.tooltips-destroy').tooltip('destroy');
+
+                /* Popovers */
+                $('.popovers').popover();
+                $('.popovers-show').popover('show');
+                $('.popovers-hide').popover('hide');
+                $('.popovers-toggle').popover('toggle');
+                $('.popovers-destroy').popover('destroy');
             }
         };
     });

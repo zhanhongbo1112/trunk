@@ -436,11 +436,6 @@ public class Application {
         return "showcase/features/thumbnail/thumbnail-v3";
     }
 
-    @RequestMapping(value = "/showcase/features/thumbnail/thumbnail-v4")
-    public String thumbnail_v4() {
-        return "showcase/features/thumbnail/thumbnail-v4";
-    }
-
     @RequestMapping(value = "/showcase/features/carousel/carousel-v1")
     public String carousel_v1() {
         return "showcase/features/carousel/carousel-v1";

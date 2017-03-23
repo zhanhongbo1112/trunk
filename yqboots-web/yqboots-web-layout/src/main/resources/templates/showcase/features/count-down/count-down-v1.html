@@ -2,70 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-    <title>Charts &amp; Countdowns</title>
-    <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box.css}"/>
-    <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box-v3.css}"/>
-    <link rel="stylesheet" th:href="@{/theme/css/blocks/counters.css}"/>
+  <title>Charts &amp; Countdowns</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/tag-box-v3.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/counters.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
-    <div class="container">
-        <h1 class="pull-left">Countdowns</h1>
-        <ul class="pull-right breadcrumb">
-            <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
-            <li>Features</li>
-            <li class="active">Countdowns</li>
-        </ul>
-    </div>
+  <div class="container">
+    <h1 class="pull-left">Countdowns</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
+      <li>Features</li>
+      <li class="active">Countdowns</li>
+    </ul>
+  </div>
 </div>
-<div layout:fragment="content" class="container content">
-    <div class="tag-box tag-box-v3">
-        <div class="main-counters margin-bottom-40">
-            <div class="headline"><h2>Counters</h2></div>
+<div layout:fragment="content" class="container content height-500">
+  <div class="main-counters">
+    <div class="headline"><h2>Counters</h2></div>
 
-            <div class="row margin-bottom-40">
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter">52147</span>
-                    <h4>Code Lines</h4>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter">24583</span>
-                    <h4>Projects</h4>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter">7349</span>
-                    <h4>Working Hours</h4>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter">87904</span>
-                    <h4>Job Offers</h4>
-                </div>
-            </div>
-
-            <div class="margin-bottom-50">
-                <hr/>
-            </div>
-
-            <div class="row">
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter-icon"><i class="fa fa-gift rounded"></i></span>
-                    <span class="counter">3254</span>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter-icon"><i class="fa fa-coffee rounded"></i></span>
-                    <span class="counter">7068</span>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter-icon"><i class="fa fa-thumbs-up rounded"></i></span>
-                    <span class="counter">5389</span>
-                </div>
-                <div class="counters col-md-3 col-sm-3">
-                    <span class="counter-icon"><i class="fa fa-comments rounded"></i></span>
-                    <span class="counter">9172</span>
-                </div>
-            </div>
-        </div>
+    <div class="row margin-bottom-40">
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter">52147</span>
+        <h4>Code Lines</h4>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter">24583</span>
+        <h4>Projects</h4>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter">7349</span>
+        <h4>Working Hours</h4>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter">87904</span>
+        <h4>Job Offers</h4>
+      </div>
     </div>
+
+    <div class="margin-bottom-50">
+      <hr/>
+    </div>
+
+    <div class="row">
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter-icon"><i class="fa fa-gift rounded"></i></span>
+        <span class="counter">3254</span>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter-icon"><i class="fa fa-coffee rounded"></i></span>
+        <span class="counter">7068</span>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter-icon"><i class="fa fa-thumbs-up rounded"></i></span>
+        <span class="counter">5389</span>
+      </div>
+      <div class="counters col-md-3 col-sm-3">
+        <span class="counter-icon"><i class="fa fa-comments rounded"></i></span>
+        <span class="counter">9172</span>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
