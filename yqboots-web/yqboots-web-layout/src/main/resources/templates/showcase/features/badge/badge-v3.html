@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
+<head>
+  <title>Labels &amp; Badges</title>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/badge-box-v1.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/sidebar-nav-v1.css}"/>
+</head>
+<body>
+<div layout:fragment="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">Badges</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="#" th:href="@{/showcase}">Showcase</a></li>
+      <li>Features</li>
+      <li class="active">Badges</li>
+    </ul>
+  </div>
+</div>
+<div layout:fragment="content" class="container content">
+  <!-- List Groups -->
+  <div class="row margin-bottom-20">
+    <div>
+      <ul class="list-group sidebar-nav-v1" id="sidebar-nav-1">
+        <li class="list-group-item list-toggle">
+          <span class="badge rounded-x badge-u">8</span>
+          <a data-toggle="collapse" data-parent="#sidebar-nav-1" href="#collapse-demo-1">Typography</a>
+          <ul id="collapse-demo-1" class="collapse">
+            <li><a href="#"><i class="fa fa-sort-alpha-asc"></i> General
+              Typography</a></li>
+            <li>
+              <span class="badge badge-u">New</span>
+              <a href="#"><i class="fa fa-magic"></i> Headings</a>
+            </li>
+            <li>
+              <span class="badge badge-u">New</span>
+              <a href="#"><i class="fa fa-ellipsis-h"></i> Dividers</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="list-group-item list-toggle">
+          <span class="badge rounded badge-u">2</span>
+          <a data-toggle="collapse" data-parent="#sidebar-nav-1" href="#collapse-demo-2">Buttons</a>
+          <ul id="collapse-demo-2" class="collapse">
+            <li><a href="#"><i class="fa fa-flask"></i> General Buttons</a></li>
+            <li>
+              <span class="badge badge-u">New</span>
+              <a href="#"><i class="fa fa-html5"></i> Brand &amp; Social Buttons</a>
+            </li>
+            <li>
+              <span class="badge badge-u">New</span>
+              <a href="#"><i class="fa fa-bolt"></i> Loading &amp; Hover
+                Effects</a>
+            </li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-u">New</span>
+          <a href="#">Icons</a>
+        </li>
+        <li class="list-group-item">
+          <span class="badge badge-u rounded-2x">New</span>
+          <a href="#">Accordion &amp; Tabs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- End List Groups -->
+
+  <!-- Badges With Dropdown/Navigation  -->
+  <div class="row">
+    <!-- Dropdown With Badge -->
+    <div class="col-md-6">
+      <ul class="dropdown-menu dropdown-show" role="menu">
+        <li>
+          <a href="#">Action <span class="badge badge-u rounded-x">7</span></a>
+        </li>
+        <li><a href="#">Another action <span class="badge badge-u rounded">5</span></a></li>
+        <li><a href="#">Others <span class="badge badge-u rounded-2x">16</span></a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link <span class="badge badge-u">3</span></a></li>
+      </ul>
+    </div>
+    <!-- End Dropdown With Badge-->
+
+    <!-- Badges With Navigation  -->
+    <div class="col-md-6">
+      <ul class="nav nav-pills nav-stacked" style="max-width: 260px;">
+        <li class="active">
+          <a href="#">
+            <span class="badge pull-right rounded-x">7</span>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="badge pull-right rounded-2x">37</span>
+            Messages
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="badge pull-right rounded">3</span>
+            Profile
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="badge pull-right">37</span>
+            Archive
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- End Badges With Navigation  -->
+  </div>
+  <!-- End Badges With Dropdown/Navigation  -->
+</div>
+</body>
+</html>
