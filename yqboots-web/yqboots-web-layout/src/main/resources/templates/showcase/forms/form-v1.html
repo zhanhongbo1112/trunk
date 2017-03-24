@@ -35,72 +35,77 @@
     <a target="_blank" href="http://getbootstrap.com/css/#forms">http://getbootstrap.com/css/#forms</a>
   </div>
 
-  <!-- Basic Form -->
-  <div class="panel margin-bottom-40">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-tasks"></i> Basic Form</h3>
-    </div>
-    <div class="panel-body">
-      <form role="form">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"/>
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Basic Form -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Basic Form</h3>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"/> Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn-u btn-u-blue">Submit</button>
-      </form>
-    </div>
-  </div>
-  <!-- End Basic Form -->
-
-  <!-- Horizontal Form -->
-  <div class="panel margin-bottom-40">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-tasks"></i> Horizontal Form</h3>
-    </div>
-    <div class="panel-body">
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-          <div class="col-lg-10">
-            <input type="email" class="form-control" id="inputEmail1" placeholder="Email"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-          <div class="col-lg-10">
-            <input type="password" class="form-control" id="inputPassword1" placeholder="Password"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"/>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+            </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox"/> Remember me
+                <input type="checkbox"/> Check me out
               </label>
             </div>
-          </div>
+            <button type="submit" class="btn-u btn-u-blue">Submit</button>
+          </form>
         </div>
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
-            <button type="submit" class="btn-u btn-u-green">Sign in</button>
-          </div>
+      </div>
+      <!-- End Basic Form -->
+    </div>
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-tasks"></i> Horizontal Form</h3>
         </div>
-      </form>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="email" class="form-control" id="inputEmail1" placeholder="Email"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword1" placeholder="Password"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"/> Remember me
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button type="submit" class="btn-u btn-u-green">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End Horizontal Form -->
     </div>
   </div>
-  <!-- End Horizontal Form -->
 
   <!-- Inline Form -->
-  <div class="panel margin-bottom-40">
+  <div class="panel">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-tasks"></i> Inline Form</h3>
     </div>
@@ -126,7 +131,7 @@
   <!-- End Inline Form -->
 
   <!-- Input Groups -->
-  <div class="panel margin-bottom-40">
+  <div class="panel">
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-tasks"></i> Input groups</h3>
     </div>
@@ -193,7 +198,7 @@
         <div class="col-md-6">
           <div class="input-group">
             <span class="input-group-btn">
-              <button class="btn btn-danger" type="button">Go!</button>
+              <button class="btn btn-u" type="button">Go!</button>
             </span>
             <input type="text" class="form-control"/>
           </div>
@@ -203,7 +208,7 @@
           <div class="input-group">
             <input type="text" class="form-control"/>
             <span class="input-group-btn">
-              <button class="btn btn-danger" type="button">Go!</button>
+              <button class="btn btn-u" type="button">Go!</button>
             </span>
           </div>
         </div>
@@ -213,7 +218,7 @@
         <div class="col-md-6">
           <div class="input-group">
             <div class="input-group-btn">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-u dropdown-toggle" data-toggle="dropdown">
                 Action
                 <span class="caret"></span>
               </button>
@@ -233,7 +238,7 @@
           <div class="input-group">
             <input type="text" class="form-control"/>
             <div class="input-group-btn">
-              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-u dropdown-toggle" data-toggle="dropdown">
                 Action <span class="caret"></span>
               </button>
               <ul class="dropdown-menu pull-right">
@@ -253,175 +258,172 @@
   <!-- End Input Groups -->
 
   <!-- Standard Form Controls -->
-  <div class="tag-box tag-box-v3 form-page">
-    <div class="headline"><h3>Standard Form Controls</h3></div>
+  <div class="headline"><h3>Standard Form Controls</h3></div>
 
-    <!--Inputs-->
-    <h4>Inputs</h4>
-    <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>,
-      <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>,
-      <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>,
-      <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p><br/>
-    <input type="text" class="form-control" placeholder="Text input"/>
-    <!--End Inputs-->
+  <!--Inputs-->
+  <h4>Inputs</h4>
+  <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>,
+    <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>,
+    <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>,
+    <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>.</p><br/>
+  <input type="text" class="form-control" placeholder="Text input"/>
+  <!--End Inputs-->
 
-    <div class="margin-bottom-40"></div>
+  <div class="margin-bottom-40"></div>
 
-    <!--Textarea-->
-    <h4>Textarea</h4>
-    <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
-    <br/>
-    <textarea class="form-control" rows="7"></textarea>
-    <!--End Textarea-->
+  <!--Textarea-->
+  <h4>Textarea</h4>
+  <p>Form control which supports multiple lines of text. Change <code>rows</code> attribute as necessary.</p>
+  <br/>
+  <textarea class="form-control" rows="7"></textarea>
+  <!--End Textarea-->
 
-    <div class="margin-bottom-40"></div>
+  <div class="margin-bottom-40"></div>
 
-    <!--Checkboxes and Radios-->
-    <h4>Checkboxes and Radios</h4>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value=""/>
-        Option one is this and that&mdash;be sure to include why it's great
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked"/>
-        Option one is this and that&mdash;be sure to include why it's great
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>
-        Option two can be something else and selecting it will deselect option one
-      </label>
-    </div>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox1" value="option1"/> 1
+  <!--Checkboxes and Radios-->
+  <h4>Checkboxes and Radios</h4>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value=""/>
+      Option one is this and that&mdash;be sure to include why it's great
     </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox2" value="option2"/> 2
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox3" value="option3"/> 3
-    </label>
-    <!--End Checkboxes and Radios-->
-
-    <div class="margin-bottom-40"></div>
-
-    <!--Selects-->
-    <h4>Selects</h4>
-    <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p><br/>
-    <select class="form-control">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-    <select multiple="multiple" class="form-control">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-    <!--End Selects-->
   </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked"/>
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"/>
+      Option two can be something else and selecting it will deselect option one
+    </label>
+  </div>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox1" value="option1"/> 1
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox2" value="option2"/> 2
+  </label>
+  <label class="checkbox-inline">
+    <input type="checkbox" id="inlineCheckbox3" value="option3"/> 3
+  </label>
+  <!--End Checkboxes and Radios-->
+
+  <div class="margin-bottom-40"></div>
+
+  <!--Selects-->
+  <h4>Selects</h4>
+  <p>Use the default option, or add <code>multiple</code> to show multiple options at once.</p>
+  <h5>Single Select</h5>
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+  <br/>
+  <h5>Multiple Select</h5>
+  <select multiple="multiple" class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+  <!--End Selects-->
   <!-- End Standard Form Controls -->
 
   <!-- Validation States -->
-  <div class="tag-box tag-box-v3">
-    <div class="headline"><h3>Validation States</h3></div>
+  <div class="headline"><h3>Validation States</h3></div>
+  <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add
+    <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any
+    <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element
+    will receive the validation styles.</p><br/>
 
-    <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add
-      <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any
-      <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element
-      will receive the validation styles.</p><br/>
-    <div class="form-group has-success">
-      <label class="control-label" for="inputSuccess">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess"/>
-    </div>
-    <div class="form-group has-warning">
-      <label class="control-label" for="inputWarning">Input with warning</label>
-      <input type="text" class="form-control" id="inputWarning"/>
-    </div>
-    <div class="form-group has-error">
-      <label class="control-label" for="inputError">Input with error</label>
-      <input type="text" class="form-control" id="inputError"/>
-    </div>
+  <div class="form-group has-success">
+    <label class="control-label" for="inputSuccess">Input with success</label>
+    <input type="text" class="form-control" id="inputSuccess"/>
+  </div>
+  <div class="form-group has-warning">
+    <label class="control-label" for="inputWarning">Input with warning</label>
+    <input type="text" class="form-control" id="inputWarning"/>
+  </div>
+  <div class="form-group has-error">
+    <label class="control-label" for="inputError">Input with error</label>
+    <input type="text" class="form-control" id="inputError"/>
   </div>
   <!-- End Validation States -->
 
   <!-- Control Sizing -->
-  <div class="tag-box tag-box-v3 form-page">
-    <div class="headline"><h3>Control Sizing</h3></div>
-    <h4>Control Sizing</h4>
-    <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like
-      <code>.col-lg-*</code>.
-    </p><br/>
+  <div class="headline"><h3>Control Sizing</h3></div>
+  <h4>Control Sizing</h4>
+  <p>Set heights using classes like <code>.input-lg</code>, and set widths using grid column classes like
+    <code>.col-lg-*</code>.
+  </p><br/>
 
-    <!-- Height Sizing -->
-    <input class="form-control input-lg" type="text" placeholder=".input-lg"/>
-    <input class="form-control" type="text" placeholder="Default input"/>
-    <input class="form-control input-sm" type="text" placeholder=".input-sm"/>
+  <!-- Height Sizing -->
+  <input class="form-control input-lg" type="text" placeholder=".input-lg"/>
+  <input class="form-control" type="text" placeholder="Default input"/>
+  <input class="form-control input-sm" type="text" placeholder=".input-sm"/>
 
-    <div class="margin-bottom-40"></div>
+  <div class="margin-bottom-40"></div>
 
-    <select class="form-control input-lg">
-      <option>input-lg</option>
-    </select>
-    <select class="form-control">
-      <option>form-control</option>
-    </select>
-    <select class="form-control input-sm">
-      <option>input-sm</option>
-    </select>
-    <!-- Height Sizing -->
+  <select class="form-control input-lg">
+    <option>input-lg</option>
+  </select>
+  <select class="form-control">
+    <option>form-control</option>
+  </select>
+  <select class="form-control input-sm">
+    <option>input-sm</option>
+  </select>
+  <!-- Height Sizing -->
 
-    <div class="margin-bottom-40"></div>
+  <div class="margin-bottom-40"></div>
 
-    <!-- Column Sizing -->
-    <div class="row">
-      <div class="col-lg-3">
-        <input type="text" class="form-control" placeholder=".col-lg-3"/>
-      </div>
-      <div class="col-lg-3">
-        <input type="text" class="form-control" placeholder=".col-lg-3"/>
-      </div>
-      <div class="col-lg-3">
-        <input type="text" class="form-control" placeholder=".col-lg-3"/>
-      </div>
-      <div class="col-lg-3">
-        <input type="text" class="form-control" placeholder=".col-lg-3"/>
-      </div>
+  <!-- Column Sizing -->
+  <div class="row">
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3"/>
     </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder=".col-lg-4"/>
-      </div>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder=".col-lg-4"/>
-      </div>
-      <div class="col-lg-4">
-        <input type="text" class="form-control" placeholder=".col-lg-4"/>
-      </div>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3"/>
     </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <input type="text" class="form-control" placeholder=".col-lg-6"/>
-      </div>
-      <div class="col-lg-6">
-        <input type="text" class="form-control" placeholder=".col-lg-6"/>
-      </div>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3"/>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <input type="text" class="form-control" placeholder=".col-lg-12"/>
-      </div>
+    <div class="col-lg-3">
+      <input type="text" class="form-control" placeholder=".col-lg-3"/>
     </div>
-    <!-- End Column Sizing -->
   </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <input type="text" class="form-control" placeholder=".col-lg-4"/>
+    </div>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" placeholder=".col-lg-4"/>
+    </div>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" placeholder=".col-lg-4"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <input type="text" class="form-control" placeholder=".col-lg-6"/>
+    </div>
+    <div class="col-lg-6">
+      <input type="text" class="form-control" placeholder=".col-lg-6"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <input type="text" class="form-control" placeholder=".col-lg-12"/>
+    </div>
+  </div>
+  <!-- End Column Sizing -->
   <!-- End Control Sizing -->
 </div>
 </body>
