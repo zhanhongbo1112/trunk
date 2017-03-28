@@ -28,7 +28,7 @@
         <li>In <a href="#">Design</a></li>
         <li>Posted January 24, 2015</li>
       </ul>
-      <h2><a href="#">Incredible standard post “IMAGE”</a></h2>
+      <h2><a href="#" th:href="@{/showcase/blogs/v05/item}">Incredible standard post “IMAGE”</a></h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec arcu ipsum. Curabitur tincidunt
         nisi ex, ut eleifend turpis egestas vitae. Proin convallis et eros eget rutrum. Duis luctus lorem id
         mattis placerat. Etiam pharetra libero ut suscipit mollis. Morbi augue mi, maximus at lectus id, mollis
@@ -48,23 +48,10 @@
         volutpat lacus in purus bibendum, at sollicitudin eros malesuada. Sed nec diam a eros eleifend mattis.
         Phasellus in facilisis enim. Vestibulum sodales lacinia lectus, quis efficitur velit posuere sed.</p>
       <ul class="post-shares post-shares-lg">
-        <li>
-          <a href="#">
-            <i class="rounded-x icon-speech"></i>
-            <span>28</span>
-          </a>
+        <li><a href="#"><i class="rounded-x icon-speech"></i><span>28</span></a></li>
+        <li><a href="#"><i class="rounded-x icon-share"></i><span>355</span></a>
         </li>
-        <li>
-          <a href="#">
-            <i class="rounded-x icon-share"></i>
-            <span>355</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="rounded-x icon-heart"></i>
-            <span>107</span>
-          </a>
+        <li><a href="#"><i class="rounded-x icon-heart"></i><span>107</span></a>
         </li>
       </ul>
     </div>
@@ -101,7 +88,7 @@
         </p>
       </div>
       <div class="news-v2-desc">
-        <h3><a href="#">Reading Some Books</a></h3>
+        <h3><a href="#" th:href="@{/showcase/blogs/v05/item}">Reading Some Books</a></h3>
         <small>By Admin | California, US | In <a href="#">Art</a></small>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
           pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
@@ -191,27 +178,19 @@
     <fieldset>
       <div class="row sky-space-30">
         <div class="col-md-6">
-          <div>
-            <input type="text" name="name" id="name" placeholder="Name" class="form-control"/>
-          </div>
+          <input type="text" name="name" id="name" placeholder="Name" class="form-control"/>
         </div>
         <div class="col-md-6">
-          <div>
-            <input type="text" name="email" id="email" placeholder="Email" class="form-control"/>
-          </div>
+          <input type="text" name="email" id="email" placeholder="Email" class="form-control"/>
         </div>
       </div>
 
       <div class="sky-space-30">
-        <div>
-          <textarea rows="8" name="message" id="message" placeholder="Write comment here ..."
-                    class="form-control"></textarea>
-        </div>
+        <textarea rows="8" name="message" id="message" placeholder="Write comment here ..."
+                  class="form-control"></textarea>
       </div>
 
-      <p>
-        <button type="submit" class="btn-u">Submit</button>
-      </p>
+      <button type="submit" class="btn-u">Submit</button>
     </fieldset>
 
     <div class="message">
