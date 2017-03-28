@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
-  <title>Our Team 1</title>
+  <title>About Our Team</title>
   <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/css/cubeportfolio.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/plugins/cube-portfolio/custom/custom-cubeportfolio.css}"/>
   <link rel="stylesheet" th:href="@{/theme/css/blocks/call-action-v2.css}"/>
@@ -18,9 +18,9 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content">
+<div layout:fragment="content" class="container content-sm">
   <!--=== Cube Portfolio ===-->
-  <div class="cube-portfolio container content-sm margin-bottom-30">
+  <div class="cube-portfolio margin-bottom-30">
     <div id="filters-container" class="cbp-l-filters-text no-padding">
       <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"> All</div>
       |
