@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 
-.owl-work-v1 .item a:hover strong {
+.owl-work-v1 .item a:hover b {
     color: #555;
 }
 
@@ -29,7 +29,7 @@
     border-bottom: solid 2px #eee;
 }
 
-.owl-work-v1 .item a strong {
+.owl-work-v1 .item a b {
     color: #555;
     display: block;
 }

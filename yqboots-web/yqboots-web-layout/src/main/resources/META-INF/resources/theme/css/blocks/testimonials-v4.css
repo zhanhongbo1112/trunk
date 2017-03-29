@@ -99,17 +99,17 @@
     margin-bottom: 5px;
 }
 
-.testimonials-section3 .testimonials-item strong,
+.testimonials-section3 .testimonials-item b,
 .testimonials-section3 .testimonials-item em,
-.testimonials-section4 .testimonials-item strong,
+.testimonials-section4 .testimonials-item b,
 .testimonials-section4 .testimonials-item em {
     display: block;
     font-size: 14px;
     font-weight: 700;
 }
 
-.testimonials-section3 .testimonials-item strong,
-.testimonials-section4 .testimonials-item strong {
+.testimonials-section3 .testimonials-item b,
+.testimonials-section4 .testimonials-item b {
     padding-top: 10px;
 }
 

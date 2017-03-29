@@ -1,21 +1,21 @@
 .parallax-counter-v1 {
-  padding: 60px 0;
-  background: url(../../img/patterns/5.png) repeat fixed;
+    padding: 60px 0;
+    background: url(../../images/patterns/img_200x200.png) repeat fixed;
 }
 
 .parallax-counter-v1 .counters {
-  color: #fff;
-  padding: 15px 0 10px;
-  border: solid 1px #555;
+    color: #fff;
+    padding: 15px 0 10px;
+    border: solid 1px #555;
 }
 
 .parallax-counter-v1 h4 {
-  color: #eee;
-  font-size: 16px;
-  text-transform: uppercase;
+    color: #eee;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
 .parallax-counter-v1 span.counter {
-  font-size: 42px;
-  line-height: 48px;
+    font-size: 42px;
+    line-height: 48px;
 }
