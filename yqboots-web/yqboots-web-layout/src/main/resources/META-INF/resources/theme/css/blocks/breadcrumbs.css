@@ -3,11 +3,11 @@
     overflow: hidden;
     padding: 10px 0 6px;
     border-bottom: solid 1px #eee;
-    background: url(../../img/patterns/breadcrumbs.png) repeat;
+    /*background: url(../../img/patterns/breadcrumbs.png) repeat;*/
 }
 
 .video-business-img1 {
-    background: url(../../video/youtube-business/video-business-img1.jpg) no-repeat center;
+    /*background: url(../../video/youtube-business/video-business-img1.jpg) no-repeat center;*/
     background-size: cover; /*Scales the background image to be as large as possible*/
 }
 

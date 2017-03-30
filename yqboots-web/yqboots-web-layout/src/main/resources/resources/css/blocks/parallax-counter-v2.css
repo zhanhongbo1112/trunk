@@ -54,7 +54,7 @@
 }
 
 body.dark .parallax-counter-v2 {
-    background: #222 url(../../img/patterns/5.png) repeat fixed;
+    /*background: #222 url(../../img/patterns/5.png) repeat fixed;*/
 }
 
 body.dark .parallax-counter-v2:after {

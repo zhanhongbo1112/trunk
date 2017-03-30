@@ -3,7 +3,7 @@
 .faq-breadcrumb {
 	text-align: center;
 	position: relative;
-	background: url(../../img/bg/19.jpg) no-repeat center;
+	/*background: url(../../img/bg/19.jpg) no-repeat center;*/
 }
 
 .faq-breadcrumb:before {
@@ -85,7 +85,7 @@
 .service-info {
 	position: relative;
 	padding: 40px 0 50px;
-	background: url(../../img/patterns/17.png) repeat;
+	/*background: url(../../img/patterns/17.png) repeat;*/
 }
 
 .service-info .info-description {
@@ -115,5 +115,5 @@
 }
 
 body.dark .service-info {
-	background: #202020 url(../../img/patterns/5.png) repeat;
+	/*background: #202020 url(../../img/patterns/5.png) repeat;*/
 }

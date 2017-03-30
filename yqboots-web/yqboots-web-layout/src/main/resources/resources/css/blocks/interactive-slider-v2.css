@@ -3,7 +3,7 @@
     padding: 200px 0;
     position: relative;
     text-align: center;
-    background: url(../../img/bg/18.jpg) no-repeat;
+    /*background: url(../../img/bg/18.jpg) no-repeat;*/
     background-size: cover;
     background-position: center center;
 }
@@ -13,32 +13,32 @@
 }
 
 .interactive-slider-v2.img-v1 {
-    background: url(../../img/bg/25.jpg) no-repeat;
+    /*background: url(../../img/bg/25.jpg) no-repeat;*/
     background-size: cover;
     background-position: center center;
 }
 
 .interactive-slider-v2.img-v2 {
-    background: url(../../img/bg/14.jpg) no-repeat;
+    /*background: url(../../img/bg/14.jpg) no-repeat;*/
     background-size: cover;
     background-position: center center;
 }
 
 .interactive-slider-v2.img-v3 {
-    background: url(../../img/bg/img8.jpg) no-repeat;
+    /*background: url(../../img/bg/img8.jpg) no-repeat;*/
     background-size: cover;
     background-position: center center;
 }
 
 .interactive-slider-v2.img-v4 {
-    background: url(../../img/bg/img9.jpg) no-repeat;
+    /*background: url(../../img/bg/img9.jpg) no-repeat;*/
     background-size: cover;
     background-position: center center;
 }
 
 .interactive-slider-v2.intro-promo-img {
     padding: 80px 0;
-    background: url(../../img/intro/promo.jpg) repeat-x fixed center center / cover;
+    /*background: url(../../img/intro/promo.jpg) repeat-x fixed center center / cover;*/
     -webkit-animation: infiniteBackground 65s linear infinite;
     -moz-animation: infiniteBackground 65s linear infinite;
     animation: infiniteBackground 65s linear infinite;

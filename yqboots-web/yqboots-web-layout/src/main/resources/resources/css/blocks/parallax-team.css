@@ -1,5 +1,5 @@
 .parallax-team {
-    background: url(../../img/team/faces.jpg) 50% 0 repeat fixed;
+    /*background: url(../../img/team/faces.jpg) 50% 0 repeat fixed;*/
 }
 
 .parallax-team,
@@ -16,16 +16,6 @@
     content: " ";
     position: absolute;
     background: rgba(255, 255, 255, 0.9);
-}
-
-/*Parallax Team*/
-.parallax-team {
-    background: url(../../img/team/faces.jpg) 50% 0 repeat fixed;
-}
-
-.parallax-team,
-.parallax-team .title-box-v2 {
-    position: relative;
 }
 
 .parallax-team-dark:before {

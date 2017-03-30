@@ -3,7 +3,7 @@
     padding: 100px 0;
     position: relative;
     text-align: center;
-    background: url(../../img/team/faces.jpg) 50% 0 repeat fixed;
+    /*background: url(../../img/team/faces.jpg) 50% 0 repeat fixed;*/
 }
 
 .parallax-quote:after {
@@ -23,7 +23,7 @@
     height: 100%;
     content: " ";
     position: absolute;
-    background: url(../../img/patterns/gridtile.png) repeat;
+    /*background: url(../../img/patterns/gridtile.png) repeat;*/
 }
 
 /*Parallax Quote Inner*/

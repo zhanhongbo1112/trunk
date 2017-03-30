@@ -1,7 +1,7 @@
 .purchase {
     padding: 25px 0 30px;
     border-bottom: solid 1px #eee;
-    background: url(../img/patterns/breadcrumbs.png) repeat;
+    /*background: url(../img/patterns/breadcrumbs.png) repeat;*/
 }
 
 .purchase p {
