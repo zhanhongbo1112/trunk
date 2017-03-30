@@ -1,7 +1,26 @@
-define(['baf/util/CubePortfolioCreator', 'jquery/cube-portfolio/cube-portfolio'], function (CubePortfolioCreator) {
+define(['baf/util/CubePortfolioCreator'], function (CubePortfolioCreator) {
     return {
         startup: function () {
-            CubePortfolioCreator.startup4fw_ns($('#grid-container'), $('#filters-container'));
+            CubePortfolioCreator.startup($('#grid-container'), $('#filters-container'), {
+                gapHorizontal: 0,
+                gapVertical: 0,
+                mediaQueries: [{
+                    width: 1600,
+                    cols: 4
+                }, {
+                    width: 1200,
+                    cols: 4
+                }, {
+                    width: 800,
+                    cols: 3
+                }, {
+                    width: 500,
+                    cols: 2
+                }, {
+                    width: 320,
+                    cols: 1
+                }]
+            });
         }
     }
 });
