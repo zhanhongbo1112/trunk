@@ -3,16 +3,6 @@
     text-align: center;
 }
 
-@media (max-width: 767px) {
-    .counters {
-        margin-bottom: 30px;
-    }
-
-    .counters:last-child {
-        margin-bottom: inherit;
-    }
-}
-
 .counters span {
     font-size: 35px;
 }
@@ -47,6 +37,16 @@
 
 .counters:hover span.counter-icon i {
     border-color: #000;
+}
+
+@media (max-width: 767px) {
+    .counters {
+        margin-bottom: 30px;
+    }
+
+    .counters:last-child {
+        margin-bottom: inherit;
+    }
 }
 
 body.dark .counters {

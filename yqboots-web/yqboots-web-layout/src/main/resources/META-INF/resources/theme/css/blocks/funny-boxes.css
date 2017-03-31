@@ -23,16 +23,16 @@
     margin-bottom: 2px;
 }
 
-.funny-boxes .funny-boxes-img li i {
-    color: #72c02c;
-    font-size: 12px;
-    margin-right: 5px;
-}
-
 @media (max-width: 992px) {
     .funny-boxes .funny-boxes-img li {
         display: inline-block;
     }
+}
+
+.funny-boxes .funny-boxes-img li i {
+    color: #72c02c;
+    font-size: 12px;
+    margin-right: 5px;
 }
 
 .funny-boxes .funny-boxes-img img {

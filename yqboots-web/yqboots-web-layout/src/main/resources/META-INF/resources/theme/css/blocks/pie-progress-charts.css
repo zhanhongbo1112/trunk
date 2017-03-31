@@ -2,6 +2,12 @@
     text-align: center;
 }
 
+@media (max-width: 767px) {
+    .pie-progress-charts .inner-pchart {
+        margin-bottom: 40px;
+    }
+}
+
 .pie-progress-charts .circle {
     color: #555;
     font-weight: 200;
@@ -10,12 +16,6 @@
 
 .pie-progress-charts .circle-title {
     font-size: 22px;
-}
-
-@media (max-width: 767px) {
-    .pie-progress-charts .inner-pchart {
-        margin-bottom: 40px;
-    }
 }
 
 body.dark .pie-progress-charts .circle {

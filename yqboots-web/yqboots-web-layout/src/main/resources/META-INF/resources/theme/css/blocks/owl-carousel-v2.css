@@ -1,7 +1,3 @@
-.owl-carousel-v2 .owl-slider-v2 {
-    margin-bottom: 20px;
-}
-
 .owl-carousel-v2 .item {
     margin: 0 15px;
 }
@@ -16,4 +12,13 @@
 
 .owl-carousel-v2 .owl-pagination {
     display: none;
+}
+
+.owl-carousel-v2 .owl-carousel-style img {
+    width: 120px;
+    height: auto;
+}
+
+.owl-carousel-v2 .owl-slider {
+    margin-bottom: 20px;
 }

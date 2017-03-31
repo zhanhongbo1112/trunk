@@ -1,8 +1,3 @@
-.news-section {
-    border-top: solid 1px #eee;
-    border-bottom: solid 1px #eee;
-}
-
 .news-v1 .news-v1-in {
     background: #fafafa;
 }
@@ -43,6 +38,11 @@
 .news-v1 .news-v1-info li a:hover {
     color: #72c02c;
     text-decoration: none;
+}
+
+.news-section {
+    border-top: solid 1px #eee;
+    border-bottom: solid 1px #eee;
 }
 
 body.dark .news-v1-in.bg-color-white {

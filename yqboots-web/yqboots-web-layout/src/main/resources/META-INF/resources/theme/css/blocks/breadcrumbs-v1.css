@@ -1,11 +1,7 @@
-/*Breadcrumbs v1 and v3
-------------------------------------*/
 .breadcrumbs-v1 {
     transition: all 0.8s ease-in-out;
 }
 
-/*Breadcrumbs v1
-------------------------------------*/
 .breadcrumbs-v1 {
     padding: 100px 0;
     position: relative;

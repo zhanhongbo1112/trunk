@@ -49,9 +49,8 @@
 }
 
 .news-v3 .news-v3-in-sm .posted-info li {
-    padding: 0;
     font-size: 12px;
-    padding-left: 5px;
+    padding: 0 0 0 5px;
 }
 
 .news-v3 .posted-info li:before,

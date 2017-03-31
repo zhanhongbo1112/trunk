@@ -1,7 +1,7 @@
 define(['jquery/owl-carousel/owl-carousel'], function () {
     return {
         startup: function () {
-            var owl1 = $(".owl-slider-v2").owlCarousel({
+            var owl1 = $(".owl-carousel-v2 .owl-slider").owlCarousel({
                 itemsDesktop: [1000, 5],
                 itemsDesktopSmall: [900, 4],
                 itemsTablet: [600, 3],
@@ -9,11 +9,11 @@ define(['jquery/owl-carousel/owl-carousel'], function () {
                 slideSpeed: 1000
             });
 
-            $(".next-v2").click(function () {
+            $(".owl-carousel-v2 .next").click(function () {
                 owl1.trigger('owl.next');
             });
 
-            $(".prev-v2").click(function () {
+            $(".owl-carousel-v2 .prev").click(function () {
                 owl1.trigger('owl.prev');
             });
         }

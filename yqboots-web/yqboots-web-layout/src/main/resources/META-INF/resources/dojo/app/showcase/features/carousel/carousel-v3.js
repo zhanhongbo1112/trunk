@@ -1,7 +1,7 @@
 define(['jquery/owl-carousel/owl-carousel'], function () {
     return {
         startup: function () {
-            $(".owl-slider-v3").owlCarousel({
+            $(".owl-slider").owlCarousel({
                 items: 7,
                 autoPlay: 5000,
                 itemsDesktop: [1000, 5],
