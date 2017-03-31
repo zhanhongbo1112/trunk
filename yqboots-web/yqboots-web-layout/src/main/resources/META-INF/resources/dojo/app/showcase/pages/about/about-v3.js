@@ -14,7 +14,7 @@ define(['baf/util/ProgressBar', 'jquery/appear', 'jquery/fancybox/fancybox', 'jq
                     openEffect: 'elastic'
                 });
 
-                $(".owl-clients-v1").owlCarousel({
+                $(".owl-clients").owlCarousel({
                     items: 7,
                     autoPlay: 5000,
                     itemsDesktop: [1000, 5],

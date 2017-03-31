@@ -10,7 +10,7 @@ define(['baf/util/ProgressBar', 'jquery/appear', 'jquery/parallax', 'jquery/owl-
             $('.parallaxBg').parallax("50%", 0.2);
             $('.parallaxBg1').parallax("50%", 0.4);
 
-            $(".owl-clients-v1").owlCarousel({
+            $(".owl-clients").owlCarousel({
                 items: 7,
                 autoPlay: 5000,
                 itemsDesktop: [1000, 5],

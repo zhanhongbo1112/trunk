@@ -26,8 +26,7 @@
  * SOFTWARE.
  */
 
-;(function($) {
-
+;(function ($) {
     $.timer = Timer;
 
     /**
@@ -43,7 +42,6 @@
      * @returns {Timer}
      */
     function Timer(action, time, autostart) {
-
         if (this.constructor != Timer || this.init) {
             return new Timer(action, time, autostart);
         }
@@ -51,7 +49,6 @@
         this.set(action, time, autostart);
 
         return this;
-
     }
 
     /**
@@ -66,12 +63,9 @@
      * @param {boolean=} autostart
      * @returns {Timer}
      */
-    Timer.prototype.set = function(action, time, autostart) {
-
+    Timer.prototype.set = function (action, time, autostart) {
         this.init = true;
-
         if (typeof action == "object") {
-
             if (action.time) {
                 time = action.time;
             }
@@ -81,7 +75,6 @@
             }
 
             action = action.action;
-
         }
 
         if (typeof action == "function") {
@@ -98,25 +91,21 @@
         }
 
         return this;
-
     };
 
-    Timer.prototype.isReadyToStart = function() {
-
+    Timer.prototype.isReadyToStart = function () {
         var notActive = !this.active;
         var hasAction = typeof this.action == "function";
-        var hasTime   = !isNaN(this.intervalTime);
+        var hasTime = !isNaN(this.intervalTime);
 
         return notActive && hasAction && hasTime;
-
     };
 
     /**
      * @param {int=} time
      * @returns {Timer}
      */
-    Timer.prototype.once = function(time) {
-
+    Timer.prototype.once = function (time) {
         var timer = this;
 
         if (isNaN(time)) {
@@ -130,15 +119,13 @@
         function fnTimeout() {
             timer.action();
         }
-
     };
 
     /**
      * @param {boolean=} reset
      * @returns {Timer}
      */
-    Timer.prototype.play = function(reset) {
-
+    Timer.prototype.play = function (reset) {
         if (this.isReadyToStart()) {
 
             if (reset) {
@@ -153,17 +140,15 @@
         }
 
         return this;
-
     };
 
     /**
      * @returns {Timer}
      */
-    Timer.prototype.pause = function() {
-
+    Timer.prototype.pause = function () {
         if (this.isActive) {
 
-            this.isActive   = false;
+            this.isActive = false;
             this.remaining -= new Date() - this.last;
 
             this.clearTimer();
@@ -171,29 +156,25 @@
         }
 
         return this;
-
     };
 
     /**
      * @returns {Timer}
      */
-    Timer.prototype.stop = function() {
-
-        this.isActive  = false;
+    Timer.prototype.stop = function () {
+        this.isActive = false;
         this.remaining = this.intervalTime;
 
         this.clearTimer();
 
         return this;
-
     };
 
     /**
      * @param {boolean=} reset
      * @returns {Timer}
      */
-    Timer.prototype.toggle = function(reset) {
-
+    Timer.prototype.toggle = function (reset) {
         if (this.isActive) {
             this.pause();
         }
@@ -205,25 +186,22 @@
         }
 
         return this;
-
     };
 
     /**
      * @returns {Timer}
      */
-    Timer.prototype.reset = function() {
-
+    Timer.prototype.reset = function () {
         this.isActive = false;
         this.play(true);
 
         return this;
-
     };
 
     /**
      * @returns {Timer}
      */
-    Timer.prototype.clearTimer = function() {
+    Timer.prototype.clearTimer = function () {
         clearTimeout(this.timeoutObject);
         return this;
     };
@@ -231,8 +209,7 @@
     /**
      * @returns {Timer}
      */
-    Timer.prototype.setTimer = function(time) {
-
+    Timer.prototype.setTimer = function (time) {
         var timer = this;
 
         if (isNaN(time)) {
@@ -240,7 +217,7 @@
         }
 
         this.remaining = time;
-        this.last      = new Date();
+        this.last = new Date();
 
         this.clearTimer();
 
@@ -251,27 +228,21 @@
         function fnTimeout() {
             timer.execute();
         }
-
     };
 
     /**
      * @returns {Timer}
      */
-    Timer.prototype.execute = function() {
-
+    Timer.prototype.execute = function () {
         if (this.isActive) {
-
             try {
                 this.action();
             }
             finally {
                 this.setTimer();
             }
-
         }
 
         return this;
-
     };
-    
 })(jQuery);
