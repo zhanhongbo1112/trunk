@@ -1,7 +1,0 @@
-.heading-v1 h2:before,
-.heading-v1 h2:after {
-    top: 15px;
-    height: 6px;
-    border-top-style: solid;
-    border-bottom-style: solid;
-}

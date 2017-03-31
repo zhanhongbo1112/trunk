@@ -1,0 +1,460 @@
+.service-block {
+    padding: 60px 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.service-block p,
+.service-block h2 {
+    color: #fff;
+}
+
+.service-block h2 a:hover {
+    text-decoration: none;
+}
+
+.service-block-light,
+.service-block-default {
+    background: #fafafa;
+    border: solid 1px #eee;
+}
+
+.service-block-default:hover {
+    box-shadow: 0 0 8px #eee;
+}
+
+.service-block-light p,
+.service-block-light h2,
+.service-block-default p,
+.service-block-default h2 {
+    color: #555;
+}
+
+.service-block-u {
+    background: #72c02c;
+}
+
+.service-block-blue {
+    background: #3498db;
+}
+
+.service-block-red {
+    background: #e74c3c;
+}
+
+.service-block-sea {
+    background: #1abc9c;
+}
+
+.service-block-grey {
+    background: #95a5a6;
+}
+
+.service-block-yellow {
+    background: #f1c40f;
+}
+
+.service-block-orange {
+    background: #e67e22;
+}
+
+.service-block-green {
+    background: #2ecc71;
+}
+
+.service-block-purple {
+    background: #9b6bcc;
+}
+
+.service-block-aqua {
+    background: #27d7e7;
+}
+
+.service-block-brown {
+    background: #9c8061;
+}
+
+.service-block-dark-blue {
+    background: #4765a0;
+}
+
+.service-block-light-green {
+    background: #79d5b3;
+}
+
+.service-block-dark {
+    background: #555;
+}
+
+.service-block-light {
+    background: #ecf0f1;
+}
+
+body.dark .service-block-default {
+    background: #202020;
+    border-color: #303030;
+}
+
+body.dark .service-block-default i.icon-custom {
+    color: #ccc;
+    border-color: #ccc;
+}
+
+body.dark .service-block-default:hover {
+    box-shadow: none;
+}
+
+/*Service Block Colors*/
+body.dark .service-block.service-block-u h2,
+body.dark .service-block.service-block-blue h2,
+body.dark .service-block.service-block-red h2,
+body.dark .service-block.service-block-sea h2,
+body.dark .service-block.service-block-grey h2,
+body.dark .service-block.service-block-yellow h2,
+body.dark .service-block.service-block-orange h2,
+body.dark .service-block.service-block-green h2,
+body.dark .service-block.service-block-purple h2,
+body.dark .service-block.service-block-aqua h2,
+body.dark .service-block.service-block-brown h2,
+body.dark .service-block.service-block-dark-blue h2,
+body.dark .service-block.service-block-light-green h2,
+body.dark .service-block.service-block-dark h2 {
+    color: #fff !important;
+}
+
+body.dark .service-block.service-block-light h2,
+body.dark .service-block.service-block-light p {
+    color: #555 !important;
+}
+
+body.dark .service-block.service-block-u p,
+body.dark .service-block.service-block-blue p,
+body.dark .service-block.service-block-red p,
+body.dark .service-block.service-block-sea p,
+body.dark .service-block.service-block-grey p,
+body.dark .service-block.service-block-yellow p,
+body.dark .service-block.service-block-orange p,
+body.dark .service-block.service-block-green p,
+body.dark .service-block.service-block-purple p,
+body.dark .service-block.service-block-aqua p,
+body.dark .service-block.service-block-brown p,
+body.dark .service-block.service-block-dark-blue p,
+body.dark .service-block.service-block-light-green p,
+body.dark .service-block.service-block-dark p {
+    color: #fff !important;
+}
+
+.service-block-v1 {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    padding: 45px 20px 20px;
+    border: 1px solid #f2f2f2;
+}
+
+.service-block-v1 i {
+    left: 50%;
+    top: -30px;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    line-height: 62px;
+    margin-left: -30px;
+    text-align: center;
+    position: absolute;
+    background: #72c02c;
+    display: inline-block;
+}
+
+.service-block-v1 h3,
+.service-block-v1 p {
+    margin-bottom: 20px;
+}
+
+body.dark .service-block-v1 {
+    border-color: #555;
+}
+
+.service-block-v2 .service-block-in {
+    padding: 20px 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.service-block-v2 .service-block-in i {
+    font-size: 40px;
+}
+
+.service-block-v2 .service-block-in h4 {
+    line-height: 25px;
+}
+
+.service-block-v2 .service-block-in p {
+    margin-bottom: 20px;
+}
+
+.service-block-v2 .service-block-in i,
+.service-block-v2 .service-block-in h4,
+.service-block-v2 .service-block-in p {
+    color: #fff;
+}
+
+.service-block-v3 {
+    padding: 20px;
+}
+
+.service-block-v3 i {
+    color: #fff;
+    float: left;
+    font-size: 50px;
+    margin: 0 20px 20px 0;
+}
+
+.service-block-v3 .service-heading,
+.service-block-v3 .service-in small {
+    color: #fff;
+    opacity: 0.8;
+    line-height: 1;
+}
+
+.service-block-v3 .service-in h4,
+.service-block-v3 .counter {
+    color: #fff;
+}
+
+.service-block-v3 .service-heading {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.service-block-v3 .counter {
+    display: block;
+    line-height: 1;
+    font-size: 30px;
+}
+
+.service-block-v3 .progress {
+    margin-bottom: 7px;
+}
+
+/*Service Innner*/
+.service-block-v3 .service-in small {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.service-block-v3 .service-in h4 {
+    font-size: 16px;
+    line-height: 0.8;
+    margin-bottom: 0;
+}
+
+/*Statistics*/
+.service-block-v3 .statistics .heading-xs {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.service-block-v3 .statistics small {
+    color: #fff;
+}
+
+.service-block-v3 .statistics .progress {
+    background: #bbb;
+}
+
+.service-block-v3 .statistics .progress-bar-light {
+    background: #fff;
+}
+
+.service-block-v4 {
+    position: relative;
+    background: #f7f7f7;
+}
+
+.service-block-v4:after {
+    top: 0;
+    width: 0;
+    height: 0;
+    left: 50%;
+    content: '';
+    margin-left: -20px;
+    position: absolute;
+    border-style: solid;
+    border-width: 25px 20px 0 20px;
+    border-color: #fff transparent transparent transparent;
+}
+
+.service-block-v4 .service-desc {
+    text-align: center;
+}
+
+.service-block-v4 .service-desc i {
+    color: #72c02c;
+    display: block;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.service-block-v4 .service-desc h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+body.dark .service-block-v4 {
+    background: #2a2b2b;
+}
+
+body.dark .service-block-v4:after {
+    border-color: #252525 transparent transparent transparent;
+}
+
+.service-block-v5 {
+    text-align: center;
+    background: #f7f7f7;
+}
+
+.service-block-v5 .service-inner {
+    padding: 80px 40px;
+}
+
+.service-block-v5 .service-inner i {
+    margin-bottom: 30px;
+}
+
+.service-block-v5 .service-inner span {
+    display: block;
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.service-block-v5 .service-border {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+@media (max-width: 992px) {
+    .service-block-v5 .service-border {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+body.dark .service-block-v5 {
+    background: #333;
+}
+
+body.dark .service-block-v5 .service-border {
+    border-left-color: #252525;
+    border-right-color: #252525;
+}
+
+.service-block-v6 i {
+    float: left;
+    margin: 5px 15px 0 0;
+}
+
+.service-block-v6 .service-desc {
+    overflow: hidden;
+}
+
+.service-block-v6 .service-desc h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.service-block-v6 .service-desc a {
+    text-transform: uppercase;
+}
+
+.service-block-v7 {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 45px 20px 20px;
+}
+
+.service-block-v7 i {
+    left: 50%;
+    top: -25px;
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    line-height: 46px;
+    text-align: center;
+    position: absolute;
+    background: #72c02c;
+    margin-left: -22.5px;
+    display: inline-block;
+}
+
+.service-block-v7 h3,
+.service-block-v7 p {
+    margin-bottom: 20px;
+}
+
+.service-block-v8 {
+    padding: 25px;
+    background: #fff;
+}
+
+.service-block-v8 i {
+    color: #555;
+    float: left;
+    font-size: 22px;
+    margin: 5px 25px 0 0;
+}
+
+.service-block-v8 .service-block-desc {
+    overflow: hidden;
+}
+
+.service-block-v8 .service-block-desc h3 {
+    font-size: 18px;
+    margin: 0 0 30px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.service-block-v8 .service-block-desc h3:after {
+    left: 0;
+    top: 40px;
+    height: 1px;
+    width: 30px;
+    content: " ";
+    position: absolute;
+    background: #72c02c;
+}
+
+body.dark .service-block-v8 {
+    background: #333;
+}
+
+body.dark .service-block-v8 i {
+    color: #999;
+}
+
+.service-or {
+    overflow: hidden;
+    position: relative;
+}
+
+.service-bg {
+    width: 250px;
+    padding: 60px;
+    position: absolute;
+    top: -10px;
+    right: -100px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(55deg);
+}

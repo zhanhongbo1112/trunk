@@ -1,0 +1,55 @@
+.heading-v1 h2:before,
+.heading-v1 h2:after {
+    top: 15px;
+    height: 6px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+
+.headline-v2 {
+    display: block;
+    background: #fff;
+    padding: 1px 10px;
+    margin: 0 0 20px 0;
+    border-left: 2px solid #000;
+}
+
+.headline-v2 h2 {
+    margin: 3px 0;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.heading-v2 h2:before,
+.heading-v2 h2:after {
+    top: 15px;
+    height: 6px;
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+}
+
+.heading-v3 h2:before,
+.heading-v3 h2:after {
+    top: 15px;
+    height: 6px;
+    border-top-style: dotted;
+    border-bottom-style: dotted;
+}
+
+.heading-v4 h2:before,
+.heading-v4 h2:after {
+    top: 17px;
+    border-bottom-style: solid;
+}
+
+.heading-v5 h2:before,
+.heading-v5 h2:after {
+    top: 17px;
+    border-bottom-style: dashed;
+}
+
+.heading-v6 h2:before,
+.heading-v6 h2:after {
+    top: 17px;
+    border-bottom-style: dotted;
+}

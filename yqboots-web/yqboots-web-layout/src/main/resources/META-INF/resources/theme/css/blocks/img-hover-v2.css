@@ -1,9 +1,0 @@
-.img-hover-v2 img {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-}
-
-.img-hover-v2:hover img {
-    filter: grayscale(0);
-    -webkit-filter: grayscale(0);
-}

@@ -3,10 +3,9 @@
       xmlns="http://www.w3.org/1999/xhtml" layout:decorator="layouts/v01/layout">
 <head>
   <title>About Our Team</title>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v5.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/team-v6.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/headline-center.css}"/>
-  <link rel="stylesheet" th:href="@{/theme/css/blocks/call-action-v2.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/teams.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/headlines.css}"/>
+  <link rel="stylesheet" th:href="@{/theme/css/blocks/call-actions.css}"/>
 </head>
 <body>
 <div layout:fragment="breadcrumbs">
@@ -19,7 +18,7 @@
     </ul>
   </div>
 </div>
-<div layout:fragment="content">
+<div layout:fragment="content" class="content content-md">
   <!--=== Team v5 ===-->
   <div class="container">
     <div class="headline-center margin-bottom-60">
