@@ -13,23 +13,90 @@
 .cbp-l-filters-alignRight .cbp-filter-counter:after,
 .cbp-l-filters-button .cbp-filter-counter:after,
 .cbp-l-filters-buttonCenter .cbp-filter-counter:after,
-.cbp-l-filters-text .cbp-filter-counter:after, .cbp-l-filters-alignCenter, .cbp-l-filters-alignCenter *, .cbp-l-filters-alignLeft, .cbp-l-filters-alignLeft *, .cbp-l-filters-alignRight, .cbp-l-filters-alignRight *, .cbp-l-filters-button, .cbp-l-filters-button *, .cbp-l-filters-buttonCenter, .cbp-l-filters-buttonCenter *, .cbp-l-filters-dropdown, .cbp-l-filters-dropdown *, .cbp-l-filters-dropdownHeader:after, .cbp-l-filters-list, .cbp-l-filters-list *, .cbp-l-filters-work, .cbp-l-filters-work *, .cbp-l-filters-big, .cbp-l-filters-big *, .cbp-l-filters-text, .cbp-l-filters-text *, .cbp-l-filters-underline, .cbp-l-filters-underline *, .cbp-popup-wrap, .cbp-popup-wrap *, .cbp-popup-wrap:before, .cbp-popup-loadingBox:after, .cbp-l-loadMore-bgbutton, .cbp-l-loadMore-bgbutton *, .cbp-l-loadMore-button, .cbp-l-loadMore-button *, .cbp-l-loadMore-text, .cbp-l-loadMore-text *, .cbp-search, .cbp-search * {
+.cbp-l-filters-text .cbp-filter-counter:after,
+.cbp-l-filters-alignCenter,
+.cbp-l-filters-alignCenter *,
+.cbp-l-filters-alignLeft,
+.cbp-l-filters-alignLeft *,
+.cbp-l-filters-alignRight,
+.cbp-l-filters-alignRight *,
+.cbp-l-filters-button,
+.cbp-l-filters-button *,
+.cbp-l-filters-buttonCenter,
+.cbp-l-filters-buttonCenter *,
+.cbp-l-filters-dropdown,
+.cbp-l-filters-dropdown *,
+.cbp-l-filters-dropdownHeader:after,
+.cbp-l-filters-list,
+.cbp-l-filters-list *,
+.cbp-l-filters-work,
+.cbp-l-filters-work *,
+.cbp-l-filters-big,
+.cbp-l-filters-big *,
+.cbp-l-filters-text,
+.cbp-l-filters-text *,
+.cbp-l-filters-underline,
+.cbp-l-filters-underline *,
+.cbp-popup-wrap,
+.cbp-popup-wrap *,
+.cbp-popup-wrap:before,
+.cbp-popup-loadingBox:after,
+.cbp-l-loadMore-bgbutton,
+.cbp-l-loadMore-bgbutton *,
+.cbp-l-loadMore-button,
+.cbp-l-loadMore-button *,
+.cbp-l-loadMore-text,
+.cbp-l-loadMore-text *,
+.cbp-search,
+.cbp-search * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.cbp-l-grid-agency-title, .cbp-l-grid-agency-desc, .cbp-l-grid-work-title, .cbp-l-grid-work-desc, .cbp-l-grid-blog-title, .cbp-l-grid-projects-title, .cbp-l-grid-projects-desc, .cbp-l-grid-masonry-projects-title, .cbp-l-grid-masonry-projects-desc {
+.cbp-l-grid-agency-title,
+.cbp-l-grid-agency-desc,
+.cbp-l-grid-work-title,
+.cbp-l-grid-work-desc,
+.cbp-l-grid-blog-title,
+.cbp-l-grid-projects-title,
+.cbp-l-grid-projects-desc,
+.cbp-l-grid-masonry-projects-title,
+.cbp-l-grid-masonry-projects-desc {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.cbp-l-filters-alignCenter, .cbp-l-filters-alignCenter *, .cbp-l-filters-alignLeft, .cbp-l-filters-alignLeft *, .cbp-l-filters-alignRight, .cbp-l-filters-alignRight *, .cbp-l-filters-button, .cbp-l-filters-button *, .cbp-l-filters-buttonCenter, .cbp-l-filters-buttonCenter *, .cbp-l-filters-dropdown, .cbp-l-filters-dropdown *, .cbp-l-filters-list, .cbp-l-filters-list *, .cbp-l-filters-work, .cbp-l-filters-work *, .cbp-l-filters-big, .cbp-l-filters-big *, .cbp-l-filters-text, .cbp-l-filters-text *, .cbp-l-filters-underline, .cbp-l-filters-underline * {
+.cbp-l-filters-alignCenter,
+.cbp-l-filters-alignCenter *,
+.cbp-l-filters-alignLeft,
+.cbp-l-filters-alignLeft *,
+.cbp-l-filters-alignRight,
+.cbp-l-filters-alignRight *,
+.cbp-l-filters-button,
+.cbp-l-filters-button *,
+.cbp-l-filters-buttonCenter,
+.cbp-l-filters-buttonCenter *,
+.cbp-l-filters-dropdown,
+.cbp-l-filters-dropdown *,
+.cbp-l-filters-list,
+.cbp-l-filters-list *,
+.cbp-l-filters-work,
+.cbp-l-filters-work *,
+.cbp-l-filters-big,
+.cbp-l-filters-big *,
+.cbp-l-filters-text,
+.cbp-l-filters-text *,
+.cbp-l-filters-underline,
+.cbp-l-filters-underline * {
     -webkit-tap-highlight-color: transparent;
 }
 
-.cbp:after, .cbp-lazyload:after, .cbp-popup-loadingBox:after, .cbp-popup-singlePageInline:after {
+.cbp:after,
+.cbp-lazyload:after,
+.cbp-popup-loadingBox:after,
+.cbp-popup-singlePageInline:after {
     content: '';
     position: absolute;
     width: 34px;
@@ -41,10 +108,8 @@
     margin: auto;
     -webkit-animation: cbp-rotation .8s infinite linear;
     animation: cbp-rotation .8s infinite linear;
-    border-left: 3px solid rgba(114, 144, 182, 0.15);
-    border-right: 3px solid rgba(114, 144, 182, 0.15);
-    border-bottom: 3px solid rgba(114, 144, 182, 0.15);
-    border-top: 3px solid rgba(114, 144, 182, 0.8);
+    border: 3px solid rgba(114, 144, 182, 0.15);
+    border-top-color: rgba(114, 144, 182, 0.8);
     border-radius: 100%;
 }
 
@@ -2062,8 +2127,8 @@
 }
 
 .cbp-animation-3dflip .cbp-wrapper-helper .cbp-item-wrapper {
-    -webkit-transform-origin: 0% 50%;
-    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
     -webkit-animation: flip-out 0.6s both ease-in-out;
     animation: flip-out 0.6s both ease-in-out;
 }
@@ -2342,9 +2407,9 @@
 }
 
 .cbp-animation-unfold .cbp-wrapper .cbp-item-wrapper {
-    -webkit-transform-origin: 0% 50%;
+    -webkit-transform-origin: 0 50%;
     -webkit-animation: unfold-in .8s both ease;
-    transform-origin: 0% 50%;
+    transform-origin: 0 50%;
     animation: unfold-in .8s both ease;
 }
 
@@ -2524,8 +2589,8 @@
 }
 
 .cbp-animation-rotateRoom .cbp-wrapper .cbp-item-wrapper {
-    -webkit-transform-origin: 0% 50%;
-    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
     -webkit-animation: rotateRoom-in .8s both ease;
     animation: rotateRoom-in .8s both ease;
 }
@@ -3242,10 +3307,8 @@
 }
 
 .cbp-popup-lightbox .cbp-popup-loadingBox:after {
-    border-left: 3px solid rgba(255, 255, 255, 0.3);
-    border-right: 3px solid rgba(255, 255, 255, 0.3);
-    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-    border-top: 3px solid rgba(255, 255, 255, 0.85);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.85);
 }
 
 .cbp-popup-ready .cbp-popup-loadingBox {

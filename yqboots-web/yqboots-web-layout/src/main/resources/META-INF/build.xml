@@ -13,8 +13,8 @@
       <fileset dir="${css.compress.directory}" includes="**/*.css"/>
       <arg line="-jar"/>
       <arg path="${yuicompressor}"/>
-      <arg line="--charset UTF-8"/>
-      <arg value="--type"/>
+      <arg line="&#45;&#45;charset UTF-8"/>
+      <arg value="&#45;&#45;type"/>
       <arg value="css"/>
       <srcfile/>
       <arg line="-o"/>
@@ -28,7 +28,9 @@
     <echo message="Compress css files successfully"/>
     <echo message="Compress javascript files..."/>
     <apply executable="java" parallel="false" failonerror="true" dest="${js.compress.directory}">
-      <fileset dir="${js.compress.directory}" includes="**/*.js" excludes="**/fragments/*.js" />
+      <fileset dir="${js.compress.directory}" includes="**/*.js">
+        <exclude name="**/fragments/*.js"/>
+      </fileset>
       <arg line="-jar"/>
       <arg path="${closure-compiler}"/>
       <arg line="--warning_level DEFAULT"/>

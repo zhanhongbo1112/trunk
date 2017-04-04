@@ -1,0 +1,2 @@
+#20170404
+1.  counterup.js L64 commented the "delete $this.data('counterup-nums');", because it can not pass the compressor process
