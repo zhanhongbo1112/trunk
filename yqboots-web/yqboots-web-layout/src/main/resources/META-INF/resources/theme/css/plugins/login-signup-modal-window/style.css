@@ -156,15 +156,15 @@ xsigin/signup popup
 }
 
 .cd-form label.cd-username {
-    background-image: url("../img/cd-icon-username.svg");
+    background-image: url("img/cd-icon-username.svg");
 }
 
 .cd-form label.cd-email {
-    background-image: url("../img/cd-icon-email.svg");
+    background-image: url("img/cd-icon-email.svg");
 }
 
 .cd-form label.cd-password {
-    background-image: url("../img/cd-icon-password.svg");
+    background-image: url("img/cd-icon-password.svg");
 }
 
 .cd-form input {
@@ -352,7 +352,7 @@ xsigin/signup popup
     height: 40px;
     right: 0;
     top: -40px;
-    background: url("../img/cd-icon-close.svg") no-repeat center center;
+    background: url("img/cd-icon-close.svg") no-repeat center center;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
