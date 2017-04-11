@@ -17,7 +17,7 @@
  */
 package com.yqboots.web.thymeleaf.processor.attr;
 
-import com.yqboots.dict.core.DataDictManager;
+import com.yqboots.dict.facade.DataDictManager;
 import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;

@@ -1,4 +1,4 @@
-package com.yqboots.dict.core.repository;
+package com.yqboots.dict.service.repository;
 
 import com.yqboots.dict.Application;
 import org.junit.Test;

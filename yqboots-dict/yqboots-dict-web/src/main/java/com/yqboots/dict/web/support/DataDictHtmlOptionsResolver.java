@@ -18,9 +18,9 @@
 package com.yqboots.dict.web.support;
 
 import com.yqboots.dict.core.DataDict;
-import com.yqboots.dict.core.DataDictManager;
-import com.yqboots.web.thymeleaf.support.HtmlOption;
+import com.yqboots.dict.facade.DataDictManager;
 import com.yqboots.web.thymeleaf.support.AbstractHtmlOptionsResolver;
+import com.yqboots.web.thymeleaf.support.HtmlOption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.annotation.Order;

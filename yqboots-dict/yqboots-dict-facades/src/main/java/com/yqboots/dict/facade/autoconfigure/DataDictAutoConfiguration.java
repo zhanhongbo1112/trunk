@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.autoconfigure;
+package com.yqboots.dict.facade.autoconfigure;
 
-import com.yqboots.dict.context.DataDictImportListener;
-import com.yqboots.dict.core.DataDictManager;
-import com.yqboots.dict.core.DataDictManagerImpl;
-import com.yqboots.dict.core.repository.DataDictRepository;
+import com.yqboots.dict.service.repository.DataDictRepository;
+import com.yqboots.dict.facade.DataDictManager;
+import com.yqboots.dict.facade.context.DataDictImportListener;
+import com.yqboots.dict.facade.impl.DataDictManagerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

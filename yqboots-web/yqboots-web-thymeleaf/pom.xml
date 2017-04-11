@@ -16,7 +16,7 @@
     </dependency>
     <dependency>
       <groupId>com.yqboots.dict</groupId>
-      <artifactId>yqboots-dict-core</artifactId>
+      <artifactId>yqboots-dict-facades</artifactId>
     </dependency>
 
     <dependency>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.core.repository;
+package com.yqboots.dict.service.repository;
 
 import com.yqboots.dict.core.DataDict;
 import org.springframework.data.domain.Page;

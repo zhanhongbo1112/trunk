@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.core;
+package com.yqboots.dict.facade;
 
+import com.yqboots.dict.core.DataDict;
+import com.yqboots.dict.core.DataDictExistsException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.core;
+package com.yqboots.dict.facade.impl;
 
 import com.yqboots.core.util.DBUtils;
-import com.yqboots.dict.autoconfigure.DataDictProperties;
-import com.yqboots.dict.core.repository.DataDictRepository;
+import com.yqboots.dict.core.DataDict;
+import com.yqboots.dict.core.DataDictExistsException;
+import com.yqboots.dict.core.DataDicts;
+import com.yqboots.dict.facade.autoconfigure.DataDictProperties;
+import com.yqboots.dict.service.repository.DataDictRepository;
+import com.yqboots.dict.facade.DataDictManager;
 import com.yqboots.fss.core.support.FileType;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.context;
+package com.yqboots.dict.facade.context;
 
-import com.yqboots.dict.autoconfigure.DataDictProperties;
-import com.yqboots.dict.core.DataDictManager;
+import com.yqboots.dict.facade.DataDictManager;
+import com.yqboots.dict.facade.autoconfigure.DataDictProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.util.ResourceUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * A listener, which importing data dictionaries from XML after the application context refreshed.

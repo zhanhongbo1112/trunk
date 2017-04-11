@@ -17,7 +17,7 @@ package com.yqboots.dict.web.controller;
 
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
-import com.yqboots.dict.core.DataDictManager;
+import com.yqboots.dict.facade.DataDictManager;
 import com.yqboots.dict.web.access.DataDictPermissions;
 import com.yqboots.dict.web.form.DataDictSearchForm;
 import com.yqboots.dict.web.form.FileUploadForm;
