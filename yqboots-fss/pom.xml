@@ -14,5 +14,6 @@
     <modules>
         <module>yqboots-fss-core</module>
         <module>yqboots-fss-web</module>
+      <module>yqboots-fss-services</module>
     </modules>
 </project>
