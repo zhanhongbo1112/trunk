@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 the original author or authors.
+ * Copyright 2015-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 
 /**
- * Manages the Data Dictionary the project has.
+ * Facades the Data Dictionary the project has.
  *
  * @author Eric H B Zhan
  * @since 1.4.0
@@ -113,19 +110,4 @@ public class DataDictFacadeImpl implements DataDictFacade {
         dataDictService.delete(id);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void imports(final InputStream inputStream) throws IOException {
-        dataDictService.imports(inputStream);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Path exports() throws IOException {
-        return dataDictService.exports();
-    }
 }

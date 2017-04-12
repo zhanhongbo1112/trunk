@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 the original author or authors.
+ * Copyright 2015-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,43 +16,27 @@
 package com.yqboots.dict.service.impl;
 
 import com.yqboots.core.util.DBUtils;
+import com.yqboots.dict.cache.DataDictCache;
+import com.yqboots.dict.cache.impl.NullDataDictCache;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
-import com.yqboots.dict.core.DataDicts;
 import com.yqboots.dict.service.DataDictService;
-import com.yqboots.dict.service.autoconfigure.DataDictProperties;
 import com.yqboots.dict.service.repository.DataDictRepository;
-import com.yqboots.fss.core.support.FileType;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
-import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Predicate;
 
 /**
  * Manages the Data Dictionary the project has.
@@ -60,25 +44,16 @@ import java.util.function.Predicate;
  * @author Eric H B Zhan
  * @since 1.4.0
  */
+@Service
 @Transactional(readOnly = true)
 public class DataDictServiceImpl implements DataDictService {
     private static final Logger LOG = LoggerFactory.getLogger(DataDictServiceImpl.class);
 
-    private final DataDictRepository dataDictRepository;
+    @Autowired
+    private DataDictRepository dataDictRepository;
 
-    private final DataDictProperties properties;
-
-    private final DataDictCache cache = new DefaultDataDictCache();
-
-    /**
-     * For marshalling and unmarshalling Data Dictionaries.
-     */
-    private static Jaxb2Marshaller jaxb2Marshaller;
-
-    static {
-        jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setClassesToBeBound(DataDicts.class, DataDict.class);
-    }
+    @Autowired
+    private DataDictCache cache = new NullDataDictCache();
 
     @PostConstruct
     protected void initialize() {
@@ -86,15 +61,6 @@ public class DataDictServiceImpl implements DataDictService {
         for (final String name : names) {
             cache.initialize(name, dataDictRepository.findByNameOrderByText(name));
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Autowired
-    public DataDictServiceImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
-        this.dataDictRepository = dataDictRepository;
-        this.properties = properties;
     }
 
     /**
@@ -138,7 +104,7 @@ public class DataDictServiceImpl implements DataDictService {
             return results;
         }
 
-        results = dataDictRepository.findByNameOrderByText(getCachedKey(name, locale));
+        results = dataDictRepository.findByNameOrderByText(cache.getCachedKey(name, locale));
         if (results.isEmpty()) { // fall back to default
             LOG.warn("data dicts for the specified locale {} of name {} did not set", locale, name);
             results = dataDictRepository.findByNameOrderByText(name);
@@ -211,181 +177,6 @@ public class DataDictServiceImpl implements DataDictService {
         if (dict != null) {
             dataDictRepository.delete(dict);
             cache.evict(dict);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public void imports(final InputStream inputStream) throws IOException {
-        final DataDicts dataDicts = (DataDicts) jaxb2Marshaller.unmarshal(new StreamSource(inputStream));
-        if (dataDicts == null) {
-            return;
-        }
-
-        for (final DataDict dict : dataDicts.getDataDicts()) {
-            LOG.debug("importing data dict with name \"{}\", text \"{}\" and value \"{}\"",
-                    dict.getName(), dict.getText(), dict.getValue());
-            final DataDict existOne = dataDictRepository.findByNameAndValue(dict.getName(), dict.getValue());
-            if (existOne == null) {
-                DataDict result = dataDictRepository.save(dict);
-                cache.put(result);
-                continue;
-            }
-
-            existOne.setText(dict.getText());
-            existOne.setDescription(dict.getDescription());
-            final DataDict result = dataDictRepository.save(existOne);
-
-            cache.put(result);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Path exports() throws IOException {
-        final String fileName = properties.getExportFileNamePrefix() + LocalDate.now() + FileType.DOT_XML;
-
-        final Path exportFileLocation = properties.getExportFileLocation();
-        if (!Files.exists(exportFileLocation)) {
-            Files.createDirectories(exportFileLocation);
-        }
-
-        final Path result = Paths.get(exportFileLocation + File.separator + fileName);
-        try (final FileWriter writer = new FileWriter(result.toFile())) {
-            final List<DataDict> dataDicts = dataDictRepository.findAll();
-            jaxb2Marshaller.marshal(new DataDicts(dataDicts), new StreamResult(writer));
-        }
-
-        return result;
-    }
-
-
-    /**
-     * Gets the cached key.
-     *
-     * @param name   name
-     * @param locale locale
-     * @return the caching key
-     */
-    private static String getCachedKey(final String name, final Locale locale) {
-        return name + "_" + locale.toString();
-    }
-
-    private interface DataDictCache {
-        /**
-         * Initialize the cache.
-         *
-         * @param key       the caching key
-         * @param dataDicts list of data dict for the key
-         */
-        void initialize(String key, List<DataDict> dataDicts);
-
-        /**
-         * Puts to the cache.
-         *
-         * @param dataDict data dict
-         */
-        void put(DataDict dataDict);
-
-        /**
-         * Evicts from the cache.
-         *
-         * @param dataDict data dict
-         */
-        void evict(DataDict dataDict);
-
-        /**
-         * Gets from cache.
-         *
-         * @param name   actual name
-         * @param locale locale
-         * @return list of data dict
-         */
-        List<DataDict> get(String name, Locale locale);
-    }
-
-    @SuppressWarnings({"unchecked"})
-    private static class DefaultDataDictCache implements DataDictCache {
-        private static final String CACHE_NAME = "dicts";
-
-        private final ConcurrentMapCache cache = new ConcurrentMapCache(CACHE_NAME, false);
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void initialize(final String key, final List<DataDict> dicts) {
-            cache.put(key, dicts);
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void put(final DataDict entity) {
-            final Cache.ValueWrapper wrapper = cache.get(entity.getName());
-            if (wrapper == null) {
-                final List<DataDict> dicts = new ArrayList<>();
-                dicts.add(entity);
-                cache.put(entity.getName(), dicts);
-            } else {
-                final List<DataDict> dicts = (List<DataDict>) wrapper.get();
-                dicts.removeIf(new DataDictEqualsPredicate(entity));
-                dicts.add(entity);
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public void evict(final DataDict entity) {
-            final Cache.ValueWrapper wrapper = cache.get(entity.getName());
-            if (wrapper != null) {
-                final List<DataDict> dicts = (List<DataDict>) wrapper.get();
-                dicts.removeIf(new DataDictEqualsPredicate(entity));
-            }
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public List<DataDict> get(final String name, final Locale locale) {
-            List<DataDict> results = new ArrayList<>();
-
-            Cache.ValueWrapper wrapper = cache.get(getCachedKey(name, locale));
-            if (wrapper != null) {
-                results = (List<DataDict>) wrapper.get();
-            } else {// fall back to name
-                wrapper = cache.get(name);
-                if (wrapper != null) {
-                    results = (List<DataDict>) wrapper.get();
-                }
-            }
-
-            return results;
-        }
-    }
-
-    private static class DataDictEqualsPredicate implements Predicate<DataDict> {
-        private final DataDict dataDict;
-
-        public DataDictEqualsPredicate(final DataDict dataDict) {
-            this.dataDict = dataDict;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean test(final DataDict dict) {
-            return Objects.equals(dataDict.getId(), dict.getId());
         }
     }
 }

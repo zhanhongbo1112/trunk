@@ -17,22 +17,16 @@ package com.yqboots.dict.web.controller;
 
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
+import com.yqboots.dict.core.DataDictPermissions;
 import com.yqboots.dict.facade.DataDictFacade;
-import com.yqboots.dict.web.access.DataDictPermissions;
 import com.yqboots.dict.web.form.DataDictSearchForm;
-import com.yqboots.dict.web.form.FileUploadForm;
-import com.yqboots.dict.web.form.FileUploadFormValidator;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
-import com.yqboots.web.util.FileWebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.MediaType;
-import org.springframework.oxm.XmlMappingException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,9 +37,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 
 /**
  * The main Controller for DataDict.
@@ -64,15 +55,10 @@ public class DataDictController extends AbstractController {
     private DataDictFacade dataDictFacade;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
-    protected SearchForm<DataDictSearchForm> searchForm() {
+    public SearchForm<DataDictSearchForm> searchForm() {
         SearchForm<DataDictSearchForm> result = new SearchForm<>();
         result.setCriterion(new DataDictSearchForm());
         return result;
-    }
-
-    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
-    protected FileUploadForm fileUploadForm() {
-        return new FileUploadForm();
     }
 
     @PreAuthorize(DataDictPermissions.READ)
@@ -133,41 +119,5 @@ public class DataDictController extends AbstractController {
         model.clear();
 
         return REDIRECT_VIEW_PATH;
-    }
-
-    @PreAuthorize(DataDictPermissions.WRITE)
-    @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
-    public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
-                          @PageableDefault final Pageable pageable,
-                          final BindingResult bindingResult,
-                          final ModelMap model) throws IOException {
-        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(StringUtils.EMPTY, pageable));
-            return VIEW_HOME;
-        }
-
-        try (final InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
-            dataDictFacade.imports(inputStream);
-        } catch (XmlMappingException e) {
-            bindingResult.rejectValue(WebKeys.FILE, "I0003");
-        }
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(StringUtils.EMPTY, pageable));
-            return VIEW_HOME;
-        }
-
-        model.clear();
-
-        return REDIRECT_VIEW_PATH;
-    }
-
-    @PreAuthorize(DataDictPermissions.READ)
-    @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
-    public HttpEntity<byte[]> exports() throws IOException {
-        final Path path = dataDictFacade.exports();
-
-        return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

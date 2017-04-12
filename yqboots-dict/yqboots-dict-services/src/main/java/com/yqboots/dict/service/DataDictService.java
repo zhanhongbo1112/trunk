@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 the original author or authors.
+ * Copyright 2015-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,20 +100,4 @@ public interface DataDictService {
      * @param id the primary key
      */
     void delete(Long id);
-
-    /**
-     * Imports an XML-presented file, which contains menu items.
-     *
-     * @param inputStream the file stream
-     * @throws IOException if failed
-     */
-    void imports(InputStream inputStream) throws IOException;
-
-    /**
-     * Exports all data dictionaries to a file for downloading.
-     *
-     * @return the exported file path
-     * @throws IOException if failed
-     */
-    Path exports() throws IOException;
 }
