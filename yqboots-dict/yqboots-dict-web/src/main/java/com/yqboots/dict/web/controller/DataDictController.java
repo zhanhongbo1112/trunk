@@ -17,7 +17,7 @@ package com.yqboots.dict.web.controller;
 
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
-import com.yqboots.dict.facade.DataDictManager;
+import com.yqboots.dict.facade.DataDictFacade;
 import com.yqboots.dict.web.access.DataDictPermissions;
 import com.yqboots.dict.web.form.DataDictSearchForm;
 import com.yqboots.dict.web.form.FileUploadForm;
@@ -61,7 +61,7 @@ public class DataDictController extends AbstractController {
     private static final String VIEW_FORM = "dict/form";
 
     @Autowired
-    private DataDictManager dataDictManager;
+    private DataDictFacade dataDictFacade;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<DataDictSearchForm> searchForm() {
@@ -87,7 +87,7 @@ public class DataDictController extends AbstractController {
             criterion = _searchForm.getName() + "_" + _searchForm.getLocale();
         }
 
-        model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(criterion, pageable));
+        model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(criterion, pageable));
         return VIEW_HOME;
     }
 
@@ -101,7 +101,7 @@ public class DataDictController extends AbstractController {
     @PreAuthorize(DataDictPermissions.WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, dataDictManager.getDataDict(id));
+        model.addAttribute(WebKeys.MODEL, dataDictFacade.getDataDict(id));
         return VIEW_FORM;
     }
 
@@ -115,7 +115,7 @@ public class DataDictController extends AbstractController {
         }
 
         try {
-            dataDictManager.update(dict);
+            dataDictFacade.update(dict);
         } catch (DataDictExistsException e) {
             bindingResult.reject("I0001");
             return VIEW_FORM;
@@ -129,7 +129,7 @@ public class DataDictController extends AbstractController {
     @PreAuthorize(DataDictPermissions.DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
-        dataDictManager.delete(id);
+        dataDictFacade.delete(id);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
@@ -143,18 +143,18 @@ public class DataDictController extends AbstractController {
                           final ModelMap model) throws IOException {
         new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(StringUtils.EMPTY, pageable));
+            model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
         try (final InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
-            dataDictManager.imports(inputStream);
+            dataDictFacade.imports(inputStream);
         } catch (XmlMappingException e) {
             bindingResult.rejectValue(WebKeys.FILE, "I0003");
         }
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, dataDictManager.getDataDicts(StringUtils.EMPTY, pageable));
+            model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
@@ -166,7 +166,7 @@ public class DataDictController extends AbstractController {
     @PreAuthorize(DataDictPermissions.READ)
     @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
     public HttpEntity<byte[]> exports() throws IOException {
-        final Path path = dataDictManager.exports();
+        final Path path = dataDictFacade.exports();
 
         return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }

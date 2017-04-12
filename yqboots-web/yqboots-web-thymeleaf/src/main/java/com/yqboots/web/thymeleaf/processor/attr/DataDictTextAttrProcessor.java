@@ -17,7 +17,7 @@
  */
 package com.yqboots.web.thymeleaf.processor.attr;
 
-import com.yqboots.dict.facade.DataDictManager;
+import com.yqboots.dict.facade.DataDictFacade;
 import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
@@ -68,8 +68,8 @@ public class DataDictTextAttrProcessor extends AbstractTextChildModifierAttrProc
         final String dictValue = ((Text) node).getContent();
         if (StringUtils.isNotBlank(dictValue)) {
             final SpringWebContext context = (SpringWebContext) arguments.getContext();
-            final DataDictManager dataDictManager = context.getApplicationContext().getBean(DataDictManager.class);
-            return dataDictManager.getText(dictName, dictValue);
+            final DataDictFacade dataDictFacade = context.getApplicationContext().getBean(DataDictFacade.class);
+            return dataDictFacade.getText(dictName, dictValue);
         }
 
         return dictValue;

@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.facade.context;
+package com.yqboots.dict.service.context;
 
-import com.yqboots.dict.facade.DataDictManager;
-import com.yqboots.dict.facade.autoconfigure.DataDictProperties;
+import com.yqboots.dict.service.DataDictService;
+import com.yqboots.dict.service.autoconfigure.DataDictProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ public class DataDictImportListener implements ApplicationListener<ContextRefres
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         final ApplicationContext context = event.getApplicationContext();
 
-        final DataDictManager manager = context.getBean(DataDictManager.class);
+        final DataDictService service = context.getBean(DataDictService.class);
         final DataDictProperties properties = context.getBean(DataDictProperties.class);
         if (!properties.isImportEnabled()) {
             return;
@@ -62,7 +62,7 @@ public class DataDictImportListener implements ApplicationListener<ContextRefres
         try {
             final File file = ResourceUtils.getFile(location);
             try (final InputStream inputStream = new FileInputStream(file)) {
-                manager.imports(inputStream);
+                service.imports(inputStream);
             }
         } catch (IOException e) {
             LOG.error("Failed to import Data Dicts", e);

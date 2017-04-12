@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.facade;
+package com.yqboots.dict.service;
 
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
@@ -30,9 +30,9 @@ import java.util.Locale;
  * The Interface class for Data Dictionary.
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.4.0
  */
-public interface DataDictManager {
+public interface DataDictService {
     /**
      * Gets the Data Dictionary by its identity.
      *

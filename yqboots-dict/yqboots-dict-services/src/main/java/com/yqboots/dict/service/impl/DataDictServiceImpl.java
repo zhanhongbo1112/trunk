@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.dict.facade.impl;
+package com.yqboots.dict.service.impl;
 
 import com.yqboots.core.util.DBUtils;
 import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
 import com.yqboots.dict.core.DataDicts;
-import com.yqboots.dict.facade.autoconfigure.DataDictProperties;
+import com.yqboots.dict.service.DataDictService;
+import com.yqboots.dict.service.autoconfigure.DataDictProperties;
 import com.yqboots.dict.service.repository.DataDictRepository;
-import com.yqboots.dict.facade.DataDictManager;
 import com.yqboots.fss.core.support.FileType;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -39,7 +40,10 @@ import org.springframework.util.Assert;
 import javax.annotation.PostConstruct;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -54,11 +58,11 @@ import java.util.function.Predicate;
  * Manages the Data Dictionary the project has.
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.4.0
  */
 @Transactional(readOnly = true)
-public class DataDictManagerImpl implements DataDictManager {
-    private static final Logger LOG = LoggerFactory.getLogger(DataDictManagerImpl.class);
+public class DataDictServiceImpl implements DataDictService {
+    private static final Logger LOG = LoggerFactory.getLogger(DataDictServiceImpl.class);
 
     private final DataDictRepository dataDictRepository;
 
@@ -87,7 +91,8 @@ public class DataDictManagerImpl implements DataDictManager {
     /**
      * {@inheritDoc}
      */
-    public DataDictManagerImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
+    @Autowired
+    public DataDictServiceImpl(final DataDictRepository dataDictRepository, final DataDictProperties properties) {
         this.dataDictRepository = dataDictRepository;
         this.properties = properties;
     }
@@ -262,7 +267,8 @@ public class DataDictManagerImpl implements DataDictManager {
 
     /**
      * Gets the cached key.
-     * @param name name
+     *
+     * @param name   name
      * @param locale locale
      * @return the caching key
      */
@@ -270,29 +276,33 @@ public class DataDictManagerImpl implements DataDictManager {
         return name + "_" + locale.toString();
     }
 
-    private static interface DataDictCache {
+    private interface DataDictCache {
         /**
          * Initialize the cache.
-         * @param key the caching key
+         *
+         * @param key       the caching key
          * @param dataDicts list of data dict for the key
          */
         void initialize(String key, List<DataDict> dataDicts);
 
         /**
          * Puts to the cache.
+         *
          * @param dataDict data dict
          */
         void put(DataDict dataDict);
 
         /**
          * Evicts from the cache.
+         *
          * @param dataDict data dict
          */
         void evict(DataDict dataDict);
 
         /**
          * Gets from cache.
-         * @param name actual name
+         *
+         * @param name   actual name
          * @param locale locale
          * @return list of data dict
          */

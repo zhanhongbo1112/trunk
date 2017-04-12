@@ -18,7 +18,7 @@
 package com.yqboots.dict.web.support;
 
 import com.yqboots.dict.core.DataDict;
-import com.yqboots.dict.facade.DataDictManager;
+import com.yqboots.dict.facade.DataDictFacade;
 import com.yqboots.web.thymeleaf.support.AbstractHtmlOptionsResolver;
 import com.yqboots.web.thymeleaf.support.HtmlOption;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +39,12 @@ import java.util.function.Consumer;
 @Component
 @Order // be the last one
 public class DataDictHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
-    private final DataDictManager dataDictManager;
+    private final DataDictFacade dataDictFacade;
 
     @Autowired
-    public DataDictHtmlOptionsResolver(final DataDictManager dataDictManager) {
+    public DataDictHtmlOptionsResolver(final DataDictFacade dataDictFacade) {
         super();
-        this.dataDictManager = dataDictManager;
+        this.dataDictFacade = dataDictFacade;
     }
 
     /**
@@ -63,7 +63,7 @@ public class DataDictHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
     public List<HtmlOption> getHtmlOptions(final String name, final String... attributes) {
         final List<HtmlOption> results = new ArrayList<>();
 
-        final List<DataDict> dataDicts = dataDictManager.getDataDicts(name, LocaleContextHolder.getLocale());
+        final List<DataDict> dataDicts = dataDictFacade.getDataDicts(name, LocaleContextHolder.getLocale());
         dataDicts.forEach(new DataDictConsumer(results));
 
         return results;
