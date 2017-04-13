@@ -8,20 +8,13 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="DATA_DICT"/>
 </div>
-<div class="content content-sm height-600" layout:fragment="content">
-  <div class="container">
-    <yq:alert level="danger"/>
-    <div class="row">
-      <div class="col-md-12">
-        <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
+<div layout:fragment="content">
+  <div class="search-block">
+    <div class="container">
+      <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
+        <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
-            <input class="form-control" type="text" th:field="*{criterion.name}" th:placeholder="#{DCT0005}"
-                   th:title="#{DCT0005}" style="width: 50%"/>
-            <select class="form-control" type="select" th:field="*{criterion.locale}" th:title="#{DCT0012}"
-                    style="width: 50%">
-              <option value="" th:text="#{DCT0011}"></option>
-              <yq:options name="SUPPORTED_LOCALES"/>
-            </select>
+            <input type="text" class="form-control" th:field="*{criterion.name}" th:placeholder="#{DCT0005}"/>
             <span class="input-group-btn">
                 <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{DCT0014}"
@@ -37,22 +30,26 @@
                 </ul>
             </span>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
-    <div class="divider divider-blank"></div>
-    <div class="panel">
-      <table class="table table-hover table-responsive">
+  </div>
+  <div class="content content-sm container">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
         <thead>
         <tr>
+          <th th:text="#{DCT0022}">Seq</th>
           <th th:text="#{DCT0005}">Name</th>
           <th th:text="#{DCT0006}">Text</th>
           <th th:text="#{DCT0007}">Value</th>
           <th th:text="#{DCT0008}">Description</th>
+          <th>&nbsp;</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${page}">
+        <tr th:each="item, itemStat : ${page}">
+          <th th:text="${itemStat.index + 1}">&nbsp;</th>
           <td th:text="${item.name}">NAME 1</td>
           <td th:text="${item.text}">Text 1</td>
           <td th:text="${item.value}">1</td>
@@ -75,7 +72,7 @@
         </tr>
         </tfoot>
       </table>
-      <div class="panel-footer text-center">
+      <div class="text-center">
         <yq:pagination page="${page}" th:href="@{/dict}"/>
       </div>
     </div>
