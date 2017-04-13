@@ -8,56 +8,54 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="MENU_ITEM"/>
 </div>
-<div class="content content-sm height-600" layout:fragment="content">
-  <div class="container">
-    <yq:alert level="danger" />
-    <form class="sky-form" action="#" th:action="@{/menu/}" th:object="${model}" method="post">
-      <input th:field="*{id}" type="hidden"/>
-      <header th:text="#{MNU0003}">Form</header>
-      <fieldset>
-        <div class="row">
-          <section class="col col-4">
-            <label class="label" th:text="#{MNU0008}">Name</label>
-            <label class="input">
-              <input th:field="*{name}" type="text" maxlength="32"/>
-            </label>
+<div class="container content content-sm height-600" layout:fragment="content">
+  <yq:alert level="danger"/>
+  <form class="sky-form" action="#" th:action="@{/menu/}" th:object="${model}" method="post">
+    <input th:field="*{id}" type="hidden"/>
+    <header th:text="#{MNU0003}">Form</header>
+    <fieldset>
+      <div class="row">
+        <section class="col col-4">
+          <label class="label" th:text="#{MNU0008}">Name</label>
+          <label class="input">
+            <input th:field="*{name}" type="text" maxlength="32"/>
+          </label>
 
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-          </section>
-          <section class="col col-8">
-            <label class="label" th:text="#{MNU0009}">URL</label>
-            <label class="input">
-              <input th:field="*{url}" type="text" maxlength="64"/>
-            </label>
+          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </section>
+        <section class="col col-8">
+          <label class="label" th:text="#{MNU0009}">URL</label>
+          <label class="input">
+            <input th:field="*{url}" type="text" maxlength="64"/>
+          </label>
 
-            <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></p>
-          </section>
-        </div>
-        <div class="row">
-          <section class="col col-6">
-            <label class="label" th:text="#{MNU0010}">Menu Group</label>
-            <label class="input">
-              <input th:field="*{menuGroup}" type="text" maxlength="32"/>
-            </label>
+          <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></p>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col col-6">
+          <label class="label" th:text="#{MNU0010}">Menu Group</label>
+          <label class="input">
+            <input th:field="*{menuGroup}" type="text" maxlength="32"/>
+          </label>
 
-            <p th:if="${#fields.hasErrors('menuGroup')}" th:errors="*{menuGroup}"></p>
-          </section>
-          <section class="col col-6">
-            <label class="label" th:text="#{MNU0011}">Menu Item Group</label>
-            <label class="input">
-              <input th:field="*{menuItemGroup}" type="text" maxlength="32"/>
-            </label>
+          <p th:if="${#fields.hasErrors('menuGroup')}" th:errors="*{menuGroup}"></p>
+        </section>
+        <section class="col col-6">
+          <label class="label" th:text="#{MNU0011}">Menu Item Group</label>
+          <label class="input">
+            <input th:field="*{menuItemGroup}" type="text" maxlength="32"/>
+          </label>
 
-            <p th:if="${#fields.hasErrors('menuItemGroup')}" th:errors="*{menuItemGroup}"></p>
-          </section>
-        </div>
-      </fieldset>
-      <footer>
-        <button class="btn-u rounded" id="submit" type="submit" th:text="#{MNU0016}">Submit</button>
-        <button class="btn-u rounded" id="cancel" type="button" th:text="#{MNU0018}">Cancel</button>
-      </footer>
-    </form>
-  </div>
+          <p th:if="${#fields.hasErrors('menuItemGroup')}" th:errors="*{menuItemGroup}"></p>
+        </section>
+      </div>
+    </fieldset>
+    <footer>
+      <button class="btn-u rounded" id="submit" type="submit" th:text="#{MNU0016}">Submit</button>
+      <button class="btn-u rounded" id="cancel" type="button" th:text="#{MNU0018}">Cancel</button>
+    </footer>
+  </form>
 </div>
 </body>
 </html>

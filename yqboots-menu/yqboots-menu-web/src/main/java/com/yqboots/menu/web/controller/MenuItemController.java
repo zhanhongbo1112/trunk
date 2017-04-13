@@ -19,21 +19,14 @@ package com.yqboots.menu.web.controller;
 
 import com.yqboots.menu.core.MenuItem;
 import com.yqboots.menu.core.MenuItemExistsException;
-import com.yqboots.menu.core.MenuItemManager;
-import com.yqboots.menu.web.access.MenuItemPermissions;
-import com.yqboots.menu.web.form.FileUploadForm;
-import com.yqboots.menu.web.form.FileUploadFormValidator;
+import com.yqboots.menu.core.MenuItemPermissions;
+import com.yqboots.menu.facade.MenuItemFacade;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
-import com.yqboots.web.util.FileWebUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.MediaType;
-import org.springframework.oxm.XmlMappingException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -44,9 +37,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 
 /**
  * The controller for MenuItem.
@@ -62,16 +52,11 @@ public class MenuItemController extends AbstractController {
     private static final String VIEW_FORM = "menu/form";
 
     @Autowired
-    private MenuItemManager menuItemManager;
+    private MenuItemFacade menuItemFacade;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
         return new SearchForm<>();
-    }
-
-    @ModelAttribute(WebKeys.FILE_UPLOAD_FORM)
-    protected FileUploadForm fileUploadForm() {
-        return new FileUploadForm();
     }
 
     @PreAuthorize(MenuItemPermissions.READ)
@@ -79,7 +64,7 @@ public class MenuItemController extends AbstractController {
     public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault final Pageable pageable,
                        final ModelMap model) {
-        model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(searchForm.getCriterion(), pageable));
+        model.addAttribute(WebKeys.PAGE, menuItemFacade.getMenuItems(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
@@ -93,7 +78,7 @@ public class MenuItemController extends AbstractController {
     @PreAuthorize(MenuItemPermissions.WRITE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_UPDATE}, method = RequestMethod.GET)
     public String preUpdate(@RequestParam final Long id, final ModelMap model) {
-        model.addAttribute(WebKeys.MODEL, menuItemManager.getMenuItem(id));
+        model.addAttribute(WebKeys.MODEL, menuItemFacade.getMenuItem(id));
         return VIEW_FORM;
     }
 
@@ -107,7 +92,7 @@ public class MenuItemController extends AbstractController {
         }
 
         try {
-            menuItemManager.update(menuItem);
+            menuItemFacade.update(menuItem);
         } catch (MenuItemExistsException e) {
             bindingResult.reject("I0001");
             return VIEW_FORM;
@@ -121,45 +106,9 @@ public class MenuItemController extends AbstractController {
     @PreAuthorize(MenuItemPermissions.DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam final Long id, final ModelMap model) {
-        menuItemManager.delete(id);
+        menuItemFacade.delete(id);
         model.clear();
 
         return REDIRECT_VIEW_PATH;
-    }
-
-    @PreAuthorize(MenuItemPermissions.WRITE)
-    @RequestMapping(value = WebKeys.MAPPING_IMPORTS, method = RequestMethod.POST)
-    public String imports(@ModelAttribute(WebKeys.FILE_UPLOAD_FORM) FileUploadForm fileUploadForm,
-                          @PageableDefault final Pageable pageable,
-                          final BindingResult bindingResult,
-                          final ModelMap model) throws IOException {
-        new FileUploadFormValidator().validate(fileUploadForm, bindingResult);
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(StringUtils.EMPTY, pageable));
-            return VIEW_HOME;
-        }
-
-        try (final InputStream inputStream = fileUploadForm.getFile().getInputStream()) {
-            menuItemManager.imports(inputStream);
-        } catch (XmlMappingException e) {
-            bindingResult.rejectValue(WebKeys.FILE, "I0003");
-        }
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, menuItemManager.getMenuItems(StringUtils.EMPTY, pageable));
-            return VIEW_HOME;
-        }
-
-        model.clear();
-
-        return REDIRECT_VIEW_PATH;
-    }
-
-    @PreAuthorize(MenuItemPermissions.READ)
-    @RequestMapping(value = WebKeys.MAPPING_EXPORTS, method = {RequestMethod.GET, RequestMethod.POST})
-    public HttpEntity<byte[]> exports() throws IOException {
-        final Path path = menuItemManager.exports();
-
-        return FileWebUtils.downloadFile(path, MediaType.APPLICATION_XML);
     }
 }

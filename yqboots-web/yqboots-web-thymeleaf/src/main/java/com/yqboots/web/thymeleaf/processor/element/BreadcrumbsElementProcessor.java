@@ -18,7 +18,7 @@
 package com.yqboots.web.thymeleaf.processor.element;
 
 import com.yqboots.menu.core.MenuItem;
-import com.yqboots.menu.core.MenuItemManager;
+import com.yqboots.menu.service.MenuItemService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,7 +63,7 @@ public class BreadcrumbsElementProcessor extends AbstractMarkupSubstitutionEleme
         final List<Node> nodes = new ArrayList<>();
 
         final SpringWebContext context = (SpringWebContext) arguments.getContext();
-        final MenuItemManager manager = context.getApplicationContext().getBean(MenuItemManager.class);
+        final MenuItemService manager = context.getApplicationContext().getBean(MenuItemService.class);
 
         final String menuAttrValue = element.getAttributeValue(ATTR_MENU);
         if (StringUtils.isBlank(menuAttrValue)) {

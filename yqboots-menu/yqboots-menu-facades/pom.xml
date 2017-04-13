@@ -9,4 +9,10 @@
   </parent>
   <artifactId>yqboots-menu-facades</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.yqboots.menu</groupId>
+      <artifactId>yqboots-menu-services</artifactId>
+    </dependency>
+  </dependencies>
 </project>

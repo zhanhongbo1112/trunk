@@ -15,14 +15,12 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.menu.core;
+package com.yqboots.menu.service;
 
+import com.yqboots.menu.core.MenuItem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -31,7 +29,7 @@ import java.util.List;
  * @author Eric H B Zhan
  * @since 1.0.0
  */
-public interface MenuItemManager {
+public interface MenuItemService {
     /**
      * Gets all menu items.
      *
@@ -77,20 +75,4 @@ public interface MenuItemManager {
      * @param id the primary key
      */
     void delete(Long id);
-
-    /**
-     * Imports an XML-presented file, which contains menu items.
-     *
-     * @param inputStream the file stream
-     * @throws IOException if failed
-     */
-    void imports(InputStream inputStream) throws IOException;
-
-    /**
-     * Exports all menu items to a file for downloading.
-     *
-     * @return the exported file path
-     * @throws IOException if failed
-     */
-    Path exports() throws IOException;
 }

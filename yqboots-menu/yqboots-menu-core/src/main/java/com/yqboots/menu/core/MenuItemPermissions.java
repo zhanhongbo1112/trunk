@@ -1,4 +1,4 @@
-package com.yqboots.menu.web.access;
+package com.yqboots.menu.core;
 
 /**
  * Permission constants for {@link com.yqboots.menu.core.MenuItem}.

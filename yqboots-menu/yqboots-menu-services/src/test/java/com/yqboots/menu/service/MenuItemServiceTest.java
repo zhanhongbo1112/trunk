@@ -1,4 +1,4 @@
-package com.yqboots.menu.core;
+package com.yqboots.menu.service;
 
 import com.yqboots.menu.Application;
 import org.junit.Test;
@@ -11,12 +11,12 @@ import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-public class MenuItemManagerTest {
+public class MenuItemServiceTest {
     @Autowired
-    private MenuItemManager menuItemManager;
+    private MenuItemService menuItemService;
 
     @Test
     public void testGetMenus() throws Exception {
-        assertFalse(menuItemManager.getMenuItems().isEmpty());
+        assertFalse(menuItemService.getMenuItems().isEmpty());
     }
 }

@@ -8,116 +8,70 @@
 <div layout:fragment="breadcrumbs">
   <yq:breadcrumbs menu="MENU_ITEM"/>
 </div>
-<div class="content content-sm height-600" layout:fragment="content">
-  <div class="container">
-    <yq:alert level="danger"/>
-    <div class="tab">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a data-toggle="tab" href="#list">
-            <i class="glyphicon glyphicon-list"></i> <span th:text="#{MNU0002}">Domain List</span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#import">
-            <i class="glyphicon glyphicon-import"></i> <span th:text="#{MNU0004}">Import</span>
-          </a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane fade in active" id="list">
-          <div class="row">
-            <div class="col-md-12">
-              <form action="#" th:action="@{/menu}" th:object="${searchForm}" method="post">
-                <div class="input-group">
-                  <input class="form-control" th:field="*{criterion}" type="text"/>
-                  <span class="input-group-btn">
-                      <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                      <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{MNU0005}"
-                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-angle-down"></i>
-                      </button>
-                      <ul class="dropdown-menu" role="menu">
-                        <li>
-                          <a th:href="@{/menu(action='new')}">
-                            <i class="glyphicon glyphicon-plus"></i> <span th:text="#{MNU0006}">New</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a th:href="@{/menu/exports}">
-                            <i class="glyphicon glyphicon-export"></i> <span th:text="#{MNU0007}">Export</span>
-                          </a>
-                        </li>
-                      </ul>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="divider divider-blank"></div>
-          <div class="panel">
-            <table class="table table-hover table-responsive">
-              <thead>
-              <tr>
-                <th th:text="#{MNU0008}">Name</th>
-                <th th:text="#{MNU0009}">URL</th>
-                <th th:text="#{MNU0010}">Menu Group</th>
-                <th th:text="#{MNU0011}">Menu Item Group</th>
-                <th>&nbsp;</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr th:each="item : ${page}">
-                <td th:text="${item.name}">NAME 1</td>
-                <td th:text="${item.url}">/menu</td>
-                <td th:text="${item.menuGroup}">Group 1</td>
-                <td th:text="${item.menuItemGroup}">Item Group 1</td>
-                <td>
-                  <a th:href="@{/menu(id=${item.id},action='update')}" th:title="#{MNU0012}">
-                    <i class="glyphicon glyphicon-pencil"></i>
-                  </a>
-                  <a th:href="@{/menu(id=${item.id},action='delete')}" th:title="#{MNU0013}">
-                    <i class="glyphicon glyphicon-remove-sign"></i>
-                  </a>
-                </td>
-              </tr>
-              </tbody>
-              <tfoot>
-              <tr>
-                <th colspan="8">
-                  <div yq:pageSummary="${page}"></div>
-                </th>
-              </tr>
-              </tfoot>
-            </table>
-            <div class="panel-footer text-center">
-              <yq:pagination page="${page}" th:href="@{/menu}"/>
-            </div>
+<div layout:fragment="content">
+  <div class="search-block">
+    <div class="container">
+      <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="input-group">
+            <input type="text" class="form-control" th:field="*{criterion}" th:placeholder="#{DCT0005}"/>
+            <span class="input-group-btn">
+                <button class="btn-u" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn-u btn-u-split dropdown-toggle" type="button" th:title="#{DCT0014}"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a th:href="@{/menu(action='new')}">
+                      <i class="glyphicon glyphicon-plus"></i> <span th:text="#{MNU0006}">New</span>
+                    </a>
+                  </li>
+                </ul>
+            </span>
           </div>
         </div>
-        <div id="import" class="tab-pane fade in">
-          <form class="sky-form" action="#" th:action="@{/menu/imports}" method="post"
-                enctype="multipart/form-data" th:object="${fileUploadForm}">
-            <fieldset>
-              <section>
-                <label class="label" th:text="#{MNU0014}">Input a File (XML Format)</label>
-                <label class="input input-file">
-                  <div class="button">
-                    <input th:field="*{file}" type="file"/>
-                    <span th:text="#{MNU0015}">Browse</span>
-                  </div>
-                  <input type="text" readonly="readonly"/>
-                </label>
-
-                <p th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></p>
-              </section>
-            </fieldset>
-            <footer>
-              <button class="btn-u rounded" type="submit" th:text="#{MNU0016}">Submit</button>
-              <button class="btn-u rounded" type="reset" th:text="#{MNU0017}">Reset</button>
-            </footer>
-          </form>
-        </div>
+      </form>
+    </div>
+  </div>
+  <div class="content content-sm container">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th th:text="#{MNU0008}">Name</th>
+          <th th:text="#{MNU0009}">URL</th>
+          <th th:text="#{MNU0010}">Menu Group</th>
+          <th th:text="#{MNU0011}">Menu Item Group</th>
+          <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${page}">
+          <td th:text="${item.name}">NAME 1</td>
+          <td th:text="${item.url}">/menu</td>
+          <td th:text="${item.menuGroup}">Group 1</td>
+          <td th:text="${item.menuItemGroup}">Item Group 1</td>
+          <td>
+            <a th:href="@{/menu(id=${item.id},action='update')}" th:title="#{MNU0012}">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+            <a th:href="@{/menu(id=${item.id},action='delete')}" th:title="#{MNU0013}">
+              <i class="glyphicon glyphicon-remove-sign"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th colspan="8">
+            <div yq:pageSummary="${page}"></div>
+          </th>
+        </tr>
+        </tfoot>
+      </table>
+      <div class="text-center">
+        <yq:pagination page="${page}" th:href="@{/menu}"/>
       </div>
     </div>
   </div>

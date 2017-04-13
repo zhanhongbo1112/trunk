@@ -15,20 +15,18 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.menu.autoconfigure;
+package com.yqboots.menu.context;
 
-import com.yqboots.menu.context.MenuItemImportListener;
-import com.yqboots.menu.core.MenuItemManagerImpl;
-import com.yqboots.menu.core.MenuItemManager;
-import com.yqboots.menu.core.repository.MenuItemRepository;
+import com.yqboots.menu.MenuItemConstants;
+import com.yqboots.menu.core.MenuItem;
+import com.yqboots.menu.core.MenuItems;
 import com.yqboots.menu.security.access.MenuItemObjectIdentityRetrieval;
 import com.yqboots.security.access.support.ObjectIdentityRetrieval;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 /**
  * The auto configuration class for MenuItem.
@@ -37,23 +35,14 @@ import org.springframework.context.annotation.Import;
  * @since 1.0.0
  */
 @Configuration
-@EnableConfigurationProperties(MenuItemProperties.class)
-@Import({MenuItemImportListener.class})
-public class MenuItemAutoConfiguration {
-    @Autowired
-    private MenuItemRepository menuItemRepository;
+public class MenuItemConfiguration {
+    @Lazy
+    @Bean(name = MenuItemConstants.BEAN_JAXB2_MARSHALLER)
+    public Jaxb2Marshaller menuItemJaxb2Marshaller() {
+        Jaxb2Marshaller bean = new Jaxb2Marshaller();
+        bean.setClassesToBeBound(MenuItems.class, MenuItem.class);
 
-    @Autowired
-    private MenuItemProperties properties;
-
-    /**
-     * Gets the bean of MenuItemManager.
-     *
-     * @return bean of MenuItemManager
-     */
-    @Bean
-    public MenuItemManager menuItemManager() {
-        return new MenuItemManagerImpl(menuItemRepository, properties);
+        return bean;
     }
 
     @Configuration
@@ -64,5 +53,4 @@ public class MenuItemAutoConfiguration {
             return new MenuItemObjectIdentityRetrieval();
         }
     }
-
 }

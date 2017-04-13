@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.menu.core.repository;
+package com.yqboots.menu.service.repository;
 
 import com.yqboots.menu.core.MenuItem;
 import org.springframework.data.domain.Page;
