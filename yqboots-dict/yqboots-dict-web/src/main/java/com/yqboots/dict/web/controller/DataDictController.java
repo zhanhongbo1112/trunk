@@ -19,11 +19,9 @@ import com.yqboots.dict.core.DataDict;
 import com.yqboots.dict.core.DataDictExistsException;
 import com.yqboots.dict.core.DataDictPermissions;
 import com.yqboots.dict.facade.DataDictFacade;
-import com.yqboots.dict.web.form.DataDictSearchForm;
 import com.yqboots.web.form.SearchForm;
 import com.yqboots.web.support.AbstractController;
 import com.yqboots.web.support.WebKeys;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -55,25 +53,16 @@ public class DataDictController extends AbstractController {
     private DataDictFacade dataDictFacade;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
-    public SearchForm<DataDictSearchForm> searchForm() {
-        SearchForm<DataDictSearchForm> result = new SearchForm<>();
-        result.setCriterion(new DataDictSearchForm());
-        return result;
+    public SearchForm<String> searchForm() {
+        return new SearchForm<>();
     }
 
     @PreAuthorize(DataDictPermissions.READ)
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<DataDictSearchForm> searchForm,
+    public String list(@ModelAttribute(WebKeys.SEARCH_FORM) final SearchForm<String> searchForm,
                        @PageableDefault(sort = {"name", "text", "value"}) final Pageable pageable,
                        final ModelMap model) {
-        final DataDictSearchForm _searchForm = searchForm.getCriterion();
-
-        String criterion = _searchForm.getName();
-        if (StringUtils.isNotBlank(_searchForm.getLocale())) {
-            criterion = _searchForm.getName() + "_" + _searchForm.getLocale();
-        }
-
-        model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(criterion, pageable));
+        model.addAttribute(WebKeys.PAGE, dataDictFacade.getDataDicts(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 

@@ -75,7 +75,7 @@ public class DataDictHtmlOptionsResolver extends AbstractHtmlOptionsResolver {
          */
         private final List<HtmlOption> options;
 
-        public DataDictConsumer(final List<HtmlOption> options) {
+        DataDictConsumer(final List<HtmlOption> options) {
             this.options = options;
         }
 
