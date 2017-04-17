@@ -19,6 +19,7 @@ import com.yqboots.menu.cache.MenuItemCache;
 import com.yqboots.menu.core.MenuItem;
 import org.springframework.cache.Cache;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
  * @author Eric H B Zhan
  * @since 1.4.0
  */
+@Component
 public class MenuItemCacheImpl implements MenuItemCache {
     private static final String CACHE_NAME = "menus";
 

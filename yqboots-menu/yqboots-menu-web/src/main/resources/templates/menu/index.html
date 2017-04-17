@@ -11,7 +11,7 @@
 <div layout:fragment="content">
   <div class="search-block">
     <div class="container">
-      <form action="#" th:action="@{/dict}" th:object="${searchForm}" method="post">
+      <form action="#" th:action="@{/menu}" th:object="${searchForm}" method="post">
         <div class="col-md-6 col-md-offset-3">
           <div class="input-group">
             <input type="text" class="form-control" th:field="*{criterion}" th:placeholder="#{DCT0005}"/>

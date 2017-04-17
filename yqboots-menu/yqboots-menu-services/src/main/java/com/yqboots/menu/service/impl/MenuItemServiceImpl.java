@@ -50,7 +50,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-    @Autowired
+    @Autowired(required = false)
     private MenuItemCache cache = new NullMenuItemCache();
 
     @PostConstruct
