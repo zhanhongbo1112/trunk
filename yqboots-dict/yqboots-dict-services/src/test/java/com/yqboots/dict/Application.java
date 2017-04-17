@@ -15,11 +15,9 @@
  */
 package com.yqboots.dict;
 
-import com.yqboots.fss.autoconfigure.FssAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
-import org.springframework.context.annotation.Import;
 
 /**
  * The entrance of a project.
@@ -29,7 +27,6 @@ import org.springframework.context.annotation.Import;
  * @since 1.0.0
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@Import({FssAutoConfiguration.class})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

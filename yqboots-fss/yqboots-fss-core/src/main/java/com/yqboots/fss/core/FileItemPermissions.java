@@ -1,4 +1,4 @@
-package com.yqboots.fss.web.access;
+package com.yqboots.fss.core;
 
 /**
  * Permission constants for {@link com.yqboots.fss.core.FileItem}.

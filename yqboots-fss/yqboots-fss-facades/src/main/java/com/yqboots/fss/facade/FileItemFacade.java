@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.fss.core;
+package com.yqboots.fss.facade;
 
+import com.yqboots.fss.core.FileItem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -25,9 +26,9 @@ import java.nio.file.Path;
  * The interface that manages the FileItem..
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.4.0
  */
-public interface FileItemManager {
+public interface FileItemFacade {
     /**
      * Finds by directory path.
      *
@@ -42,7 +43,7 @@ public interface FileItemManager {
      * Deletes the file with the specified path.
      *
      * @param path the file path, not directory.
-     * @throws IOException
+     * @throws IOException if failed
      */
     void delete(String path) throws IOException;
 

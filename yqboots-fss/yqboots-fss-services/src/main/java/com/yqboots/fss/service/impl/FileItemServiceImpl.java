@@ -13,17 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yqboots.fss.core;
+package com.yqboots.fss.service.impl;
 
-import com.yqboots.fss.autoconfigure.FssProperties;
+import com.yqboots.fss.context.FssProperties;
+import com.yqboots.fss.core.FileItem;
 import com.yqboots.fss.core.support.FileItemConsumer;
 import com.yqboots.fss.core.support.FileTypeFilterPredicate;
+import com.yqboots.fss.service.FileItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +37,10 @@ import java.util.List;
  * The service implementation that manages the FileItem..
  *
  * @author Eric H B Zhan
- * @since 1.0.0
+ * @since 1.4.0
  */
-public class FileItemManagerImpl implements FileItemManager {
+@Service
+public class FileItemServiceImpl implements FileItemService {
     private final FssProperties properties;
 
     /**
@@ -41,7 +48,8 @@ public class FileItemManagerImpl implements FileItemManager {
      */
     private final Path root;
 
-    public FileItemManagerImpl(final FssProperties properties) {
+    @Autowired
+    public FileItemServiceImpl(final FssProperties properties) {
         this.properties = properties;
         this.root = properties.getRoot();
     }

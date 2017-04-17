@@ -31,7 +31,7 @@ public class StringToPathConverter implements Converter<String, Path> {
      */
     @Override
     public Path convert(final String source) {
-        Path result = Paths.get(source.replace("\\", File.separator));
+        final Path result = Paths.get(source.replace("\\", File.separator));
         if (!Files.exists(result)) {
             LOG.error("Path not found [{}]", result);
         }

@@ -15,15 +15,10 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.fss.autoconfigure;
+package com.yqboots.fss.context;
 
-import com.yqboots.fss.core.FileItemManager;
-import com.yqboots.fss.core.FileItemManagerImpl;
 import com.yqboots.fss.core.convert.StringToPathConverter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -36,13 +31,5 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @EnableConfigurationProperties({FssProperties.class})
 @Import({StringToPathConverter.class})
-public class FssAutoConfiguration {
-    @Autowired
-    private FssProperties properties;
-
-    @Bean
-    @ConditionalOnMissingBean({FileItemManager.class})
-    public FileItemManager fileItemManager() {
-        return new FileItemManagerImpl(properties);
-    }
+public class FssConfiguration {
 }

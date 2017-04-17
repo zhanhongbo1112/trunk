@@ -9,4 +9,11 @@
   </parent>
   <artifactId>yqboots-fss-facades</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.yqboots.fss</groupId>
+      <artifactId>yqboots-fss-services</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
 </project>

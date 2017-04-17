@@ -17,7 +17,7 @@
  */
 package com.yqboots.fss.web.support;
 
-import com.yqboots.fss.core.FileItemManager;
+import com.yqboots.fss.facade.FileItemFacade;
 import com.yqboots.fss.core.support.DirectoryPredicate;
 import com.yqboots.web.thymeleaf.support.AbstractHtmlTreeResolver;
 import com.yqboots.web.thymeleaf.support.HtmlTree;
@@ -47,15 +47,15 @@ public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {
 
     private static final String NAME_KEY = "FSS_AVAILABLE_DIRS";
 
-    private final FileItemManager fileItemManager;
+    private final FileItemFacade fileItemFacade;
 
     /**
      * Constructs {@link AvailableDirectoriesTreeResolver}
      */
     @Autowired
-    public AvailableDirectoriesTreeResolver(final FileItemManager fileItemManager) {
+    public AvailableDirectoriesTreeResolver(final FileItemFacade fileItemFacade) {
         super(NAME_KEY);
-        this.fileItemManager = fileItemManager;
+        this.fileItemFacade = fileItemFacade;
     }
 
     /**
@@ -65,7 +65,7 @@ public class AvailableDirectoriesTreeResolver extends AbstractHtmlTreeResolver {
     public HtmlTree getHtmlTree(final String name, final String... attributes) {
         final HtmlTree result = new HtmlTree();
 
-        final Path root = fileItemManager.getRootPath();
+        final Path root = fileItemFacade.getRootPath();
         result.setId("/");
         result.setText(root.getFileName().toString());
         result.setNodes(getHtmlTreeNodes(root));

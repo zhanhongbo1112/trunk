@@ -17,10 +17,9 @@
  */
 package com.yqboots.fss.web.controller;
 
-import com.yqboots.dict.core.DataDict;
 import com.yqboots.fss.core.FileItem;
-import com.yqboots.fss.core.FileItemManager;
-import com.yqboots.fss.web.access.FileItemPermissions;
+import com.yqboots.fss.facade.FileItemFacade;
+import com.yqboots.fss.core.FileItemPermissions;
 import com.yqboots.fss.web.form.FileUploadForm;
 import com.yqboots.fss.web.form.FileUploadFormValidator;
 import com.yqboots.web.form.SearchForm;
@@ -66,7 +65,7 @@ public class FileItemController extends AbstractController {
     private static final String VIEW_FORM = "fss/form";
 
     @Autowired
-    private FileItemManager fileItemManager;
+    private FileItemFacade fileItemFacade;
 
     @ModelAttribute(WebKeys.SEARCH_FORM)
     protected SearchForm<String> searchForm() {
@@ -88,7 +87,7 @@ public class FileItemController extends AbstractController {
             return VIEW_HOME;
         }
 
-        model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(searchForm.getCriterion(), pageable));
+        model.addAttribute(WebKeys.PAGE, fileItemFacade.findByPath(searchForm.getCriterion(), pageable));
         return VIEW_HOME;
     }
 
@@ -107,7 +106,7 @@ public class FileItemController extends AbstractController {
                          final ModelMap model) throws IOException {
         new FileUploadFormValidator().validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
-            model.addAttribute(WebKeys.PAGE, fileItemManager.findByPath(StringUtils.EMPTY, pageable));
+            model.addAttribute(WebKeys.PAGE, fileItemFacade.findByPath(StringUtils.EMPTY, pageable));
             return VIEW_HOME;
         }
 
@@ -115,7 +114,7 @@ public class FileItemController extends AbstractController {
         final String path = form.getPath();
         final boolean overrideExisting = form.isOverrideExisting();
 
-        final Path destination = Paths.get(fileItemManager.getFullPath(path) + File.separator + file.getOriginalFilename());
+        final Path destination = Paths.get(fileItemFacade.getFullPath(path) + File.separator + file.getOriginalFilename());
         if (Files.exists(destination) && overrideExisting) {
             file.transferTo(destination.toFile());
         } else {
@@ -131,13 +130,13 @@ public class FileItemController extends AbstractController {
     @PreAuthorize(FileItemPermissions.READ)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DOWNLOAD}, method = RequestMethod.GET)
     public HttpEntity<byte[]> download(@RequestParam(WebKeys.ID) final String path) throws IOException {
-        return FileWebUtils.downloadFile(fileItemManager.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
+        return FileWebUtils.downloadFile(fileItemFacade.getFullPath(path), MediaType.APPLICATION_OCTET_STREAM);
     }
 
     @PreAuthorize(FileItemPermissions.DELETE)
     @RequestMapping(params = {WebKeys.ID, WebKeys.ACTION_DELETE}, method = RequestMethod.GET)
     public String delete(@RequestParam(WebKeys.ID) final String path, final ModelMap model) throws IOException {
-        fileItemManager.delete(path);
+        fileItemFacade.delete(path);
         model.clear();
 
         return REDIRECT_VIEW_PATH;

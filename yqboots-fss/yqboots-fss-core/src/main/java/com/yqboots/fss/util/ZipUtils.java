@@ -41,7 +41,7 @@ public class ZipUtils {
      *
      * @param dir the directory to compress
      * @return the compressed file
-     * @throws IOException
+     * @throws IOException if failed
      */
     public static Path compress(Path dir) throws IOException {
         Assert.isTrue(Files.exists(dir), "The directory does not exist: " + dir.toAbsolutePath());

@@ -15,7 +15,7 @@
  *  * limitations under the License.
  *
  */
-package com.yqboots.fss.autoconfigure;
+package com.yqboots.fss.context;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
